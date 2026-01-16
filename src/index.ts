@@ -1,8 +1,6 @@
 import './style.css'
 export * from './components/atoms/Button'
 export * from './components/atoms/IconButton'
-export * from './components/atoms/ToggleButton'
-export * from './components/atoms/ToggleIconButton'
 export * from './components/molecules/ButtonGroup'
 export * from './components/molecules/SplitButton'
 export * from './components/molecules/SegmentedButtons'

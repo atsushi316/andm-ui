@@ -12,15 +12,12 @@
       :variant="iconButtonVariant"
       :size="props.size"
       :disabled="props.disabled"
-      :aria-label="`${props.label} menu`"
-      :aria-expanded="props.menuExpanded"
-      aria-haspopup="menu"
+      :ariaLabel="`${props.label} menu`"
+      v-bind="{ 'aria-expanded': props.menuExpanded, 'aria-haspopup': 'menu' }"
       @click="handleMenuClick"
     >
       <template #icon>
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 9l6 6 6-6" />
-        </svg>
+        <Icon name="chevron-down" :size="props.size" />
       </template>
     </IconButton>
   </ButtonGroup>
@@ -34,6 +31,7 @@ import { computed } from "vue";
 import Button from "@/components/atoms/Button/Button.vue";
 import IconButton from "@/components/atoms/IconButton/IconButton.vue";
 import ButtonGroup from "@/components/molecules/ButtonGroup/ButtonGroup.vue";
+import Icon from "@/components/atoms/Icon/Icon.vue";
 
 interface Props {
   variant?: "elevated" | "filled" | "tonal" | "outlined" | "text";
@@ -57,8 +55,14 @@ const emit = defineEmits<{
 
 // IconButtonのvariantをマッピング
 // filled/tonal/outlined は同名、elevated/text は standard にマッピング
-const iconButtonVariant = computed<"standard" | "filled" | "tonal" | "outlined">(() => {
-  if (props.variant === "filled" || props.variant === "tonal" || props.variant === "outlined") {
+const iconButtonVariant = computed<
+  "standard" | "filled" | "tonal" | "outlined"
+>(() => {
+  if (
+    props.variant === "filled" ||
+    props.variant === "tonal" ||
+    props.variant === "outlined"
+  ) {
     return props.variant;
   }
   return "standard";
@@ -76,4 +80,3 @@ const handleMenuClick = () => {
   }
 };
 </script>
-

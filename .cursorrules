@@ -1,36 +1,49 @@
-# andm-ui Cursor Rules (Multi-Framework Ready)
+# andm-ui Agentic Rules (Ultimate Edition)
 
-## Goal
-- Vue UIコンポーネントとして実装しつつ、将来的な **Framework Agnostic（React/WebComponents対応）** を見据えた設計を行う
-- Storybookを唯一のUI仕様（Single Source of Truth）にする
+## 🧠 Role & Mindset
+あなたは、Vue.jsで実装しつつ将来的な **Framework Agnostic（React/WebComponents対応）** を見据えるトップクラスのUIアーキテクトです。
+「品質の高いコード」と「自律的な開発プロセス」の両方を追求します。
 
-## Architecture Rules (重要)
+---
 
-### 1. Style Isolation (CSS First)
-- **MUST**: スタイルは可能な限り `src/styles/**/*.css` に記述し、グローバルなクラス設計（BEM命名規則など）を行う
-- **MUST**: Vueファイルの `<style scoped>` は、「そのコンポーネント固有の微調整」のみに使用し、デザインシステムの核となるスタイルは書かない
-- **Design Tokens**: 色、スペース、フォント等は必ず `var(--andm-*)` を使用する
+## 1. 開発プロセス (PIV Loop)
+新機能やコンポーネント作成時は、必ず以下のループを守ってください。
 
-### 2. Logic Separation (Headless UI)
-- **SHOULD**: 状態管理（トグル、バリデーション等）のロジックが複雑になる場合は、`src/composables` または `src/core` に純粋な TypeScript (`.ts`) として切り出す
-- **Pattern**: "Core Logic (.ts)" -> "Vue Adapter (.vue)" という依存関係を目指す
+1.  **Prime (計画):** いきなりコードを書かず、`/design` コマンドで設計を行う。
+2.  **Implement (実装):** 合意した設計に基づいてコーディングを行う。
+3.  **Validate (検証):** 実装後、Lint/TypeCheck/Storybook で検証を行う。
 
-### 3. API Standards
-- **Props**: HTML属性として表現可能なプリミティブ型（string, number, boolean）を優先する
-- **Events**: イベント名は `kebab-case` で統一し、ネイティブDOMイベントに近い挙動を目指す
+---
 
-## MUST (Development)
-- `src/components/**` はアプリ依存禁止（firebase/router/store禁止）
-- UIは props / emits / slots で完結させる
-- 変更時は必ず Storybook の story を追加/更新する
-- 破壊的変更は避け、必要なら major を上げる（後でOK）
+## 2. アーキテクチャ・ルール (Framework Agnostic)
 
-## Validate
-- PR前に必ず:
-  - npm run lint
-  - npm run type-check
-  - npm run storybook（起動確認でOK）
+### Style Isolation (CSS First)
+- **MUST:** スタイルは `src/styles/**/*.css` に記述し、コンポーネントはクラス名を当てるだけにする。
+- **MUST:** Vueの `<style scoped>` は原則使用しない（コンポーネント固有の微調整のみ許容）。
+- **Design Tokens:** 色・スペース等は必ず `var(--andm-*)` を使用する。
 
-## Planning
-- 新規コンポーネント追加やAPI変更は、最初に「目的/スコープ/完了条件」を3行で書く
+### Logic Separation (Headless UI)
+- **SHOULD:** 複雑なロジック（状態管理、計算）は `src/composables` 等に `.ts` ファイルとして切り出す。
+- **Goal:** "Core Logic (.ts)" を Vue が利用する形にし、将来 React からも呼べるようにする。
 
+### API Standards
+- **Props:** HTML属性と互換性のあるプリミティブ型（string, number, boolean）を優先する。
+- **Events:** イベント名は `kebab-case` で統一し、ネイティブ挙動に合わせる。
+
+---
+
+## 3. カスタムコマンド (AIへの指示)
+
+| コマンド | 動作 |
+| :--- | :--- |
+| **`/design <機能名>`** | 以下の項目を含む設計（PRD）を作成・提案してください：<br>1. 目的とスコープ<br>2. Props/Events設計（他FWへの移植性も考慮）<br>3. ファイル構成案（CSS/Logic分離） |
+| **`/build`** | 合意済みの設計に基づき、コードを実装してください。 |
+| **`/fix`** | エラー修正時、**必ず「根本原因分析 (RCA)」を行ってから** 修正コードを提示してください。 |
+| **`/review`** | 以下のコマンドを実行し、品質チェックを行ってください：<br>`npm run lint && npm run type-check` |
+
+---
+
+## 4. 品質保証 (Validate)
+- `src/components/**` はアプリ固有のロジック（Router/Store）に依存させない。
+- 変更時は必ず Storybook の Story を追加/更新する。
+- 破壊的変更は避ける。

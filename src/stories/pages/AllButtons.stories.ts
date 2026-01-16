@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import Button from "../../components/atoms/Button/Button.vue";
 import IconButton from "../../components/atoms/IconButton/IconButton.vue";
-import ToggleButton from "../../components/atoms/ToggleButton/ToggleButton.vue";
-import ToggleIconButton from "../../components/atoms/ToggleIconButton/ToggleIconButton.vue";
 import ButtonGroup from "../../components/molecules/ButtonGroup/ButtonGroup.vue";
 import SplitButton from "../../components/molecules/SplitButton/SplitButton.vue";
 import SegmentedButtons from "../../components/molecules/SegmentedButtons/SegmentedButtons.vue";
@@ -14,7 +12,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          "Material Design 3の「All buttons」ページ。Common buttons、States、Icon buttons、Toggle buttons、Button groups、Split buttons、Segmented buttonsを含む包括的な仕様書として機能します。",
+          "Material Design 3の「All buttons」ページ。Common buttons、States、Icon buttons、Button groups、Split buttons、Segmented buttonsを含む包括的な仕様書として機能します。各セクションには、コンポーネントの使用ケースと適用場面が記載されています。",
       },
     },
   },
@@ -49,8 +47,6 @@ export const AllButtons: Story = {
     components: {
       Button,
       IconButton,
-      ToggleButton,
-      ToggleIconButton,
       ButtonGroup,
       SplitButton,
       SegmentedButtons,
@@ -69,16 +65,9 @@ export const AllButtons: Story = {
         "tonal",
         "outlined",
       ] as const;
-      const toggleButtonVariants = [
-        "filled",
-        "tonal",
-        "outlined",
-        "text",
-      ] as const;
       return {
         variants,
         iconButtonVariants,
-        toggleButtonVariants,
         iconTemplate,
         addIconTemplate,
         chevronDownTemplate,
@@ -91,9 +80,17 @@ export const AllButtons: Story = {
           <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--andm-color-on-surface);">
             A) Common buttons
           </h2>
-          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px;">
+          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 8px;">
             Material Design 3の5つのvariant: elevated, filled, tonal, outlined, text
           </p>
+          <div style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px; padding: 12px; background: var(--andm-color-surface-container); border-radius: 8px; line-height: 1.6;">
+            <strong style="color: var(--andm-color-on-surface);">使用ケース:</strong><br>
+            • <strong>Elevated:</strong> カードやダイアログ内で、影（elevation）を使って強調したい場合。例：カード内の「詳細を見る」ボタン<br>
+            • <strong>Filled:</strong> 最も重要なアクション。例：フォームの「保存」「送信」「購入」など、フローを完了する操作<br>
+            • <strong>Tonal:</strong> 中程度の重要度のアクション。例：「続ける」「次へ」「詳細を編集」など、補助的な操作<br>
+            • <strong>Outlined:</strong> 中程度の強調が必要な操作。例：「編集」「共有」「設定を開く」など、主要フローの外にあるサブ操作<br>
+            • <strong>Text:</strong> 優先度の低い操作や補助的な操作。例：モーダルの「キャンセル」「戻る」など、視覚的な主張を抑えたい場合
+          </div>
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
             <Button v-for="variant in variants" :key="variant" :variant="variant">
               {{ variant }}
@@ -203,9 +200,15 @@ export const AllButtons: Story = {
           <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--andm-color-on-surface);">
             D) Icon buttons
           </h2>
-          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px;">
+          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 8px;">
             アイコンのみのボタン。ariaLabelが必須です。
           </p>
+          <div style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px; padding: 12px; background: var(--andm-color-surface-container); border-radius: 8px; line-height: 1.6;">
+            <strong style="color: var(--andm-color-on-surface);">使用ケース:</strong><br>
+            • ツールバーやアプリバーなど、限られたスペースでの補助操作<br>
+            • お気に入り、削除、検索、設定など、単一のアクションで視覚的に直感的な操作を提供する場合<br>
+            • テーブルの行アクションや、カードの右上に配置する操作ボタンなど
+          </div>
           <div style="display: grid; gap: 24px;">
             <div>
               <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
@@ -256,114 +259,19 @@ export const AllButtons: Story = {
           </div>
         </section>
 
-        <!-- E) Toggle buttons -->
-        <section>
-          <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--andm-color-on-surface);">
-            E) Toggle buttons
-          </h2>
-          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px;">
-            トグル可能なボタン。pressed状態で選択状態を表現します。
-          </p>
-          <div style="display: grid; gap: 24px;">
-            <div>
-              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
-                Toggle button variants
-              </h3>
-              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                <ToggleButton
-                  v-for="variant in toggleButtonVariants"
-                  :key="variant"
-                  :variant="variant"
-                >
-                  {{ variant }}
-                </ToggleButton>
-              </div>
-            </div>
-            <div>
-              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
-                Toggle button states
-              </h3>
-              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                <ToggleButton variant="filled">Unpressed</ToggleButton>
-                <ToggleButton variant="filled" :pressed="true">Pressed</ToggleButton>
-                <ToggleButton variant="filled" disabled>Disabled</ToggleButton>
-              </div>
-            </div>
-            <div>
-              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
-                Toggle button with icon
-              </h3>
-              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                <ToggleButton variant="filled">
-                  <template #icon>${iconTemplate}</template>
-                  With icon
-                </ToggleButton>
-                <ToggleButton variant="filled" :pressed="true">
-                  <template #icon>${iconTemplate}</template>
-                  Pressed
-                </ToggleButton>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- F) Toggle icon buttons -->
-        <section>
-          <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--andm-color-on-surface);">
-            F) Toggle icon buttons
-          </h2>
-          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px;">
-            トグル可能なアイコンボタン。pressed状態で選択状態を表現します。
-          </p>
-          <div style="display: grid; gap: 24px;">
-            <div>
-              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
-                Toggle icon button variants
-              </h3>
-              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                <ToggleIconButton
-                  v-for="variant in iconButtonVariants"
-                  :key="variant"
-                  :variant="variant"
-                  aria-label="Toggle icon button"
-                  icon-name="add"
-                />
-              </div>
-            </div>
-            <div>
-              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
-                Toggle icon button states
-              </h3>
-              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                <ToggleIconButton variant="standard" aria-label="Unpressed" icon-name="add" />
-                <ToggleIconButton variant="standard" :pressed="true" aria-label="Pressed" icon-name="add" />
-                <ToggleIconButton variant="standard" aria-label="Disabled" icon-name="add" disabled />
-              </div>
-            </div>
-            <div>
-              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
-                Toggle icon button with slot
-              </h3>
-              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                <ToggleIconButton variant="standard" aria-label="Add">
-                  <template #icon>${addIconTemplate}</template>
-                </ToggleIconButton>
-                <ToggleIconButton variant="standard" :pressed="true" aria-label="Add pressed">
-                  <template #icon>${addIconTemplate}</template>
-                </ToggleIconButton>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- G) Button groups -->
+        <!-- E) Button groups -->
         <section>
           <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--andm-color-on-surface);">
             G) Button groups
           </h2>
-          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px;">
+          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 8px;">
             ボタンをグループ化するコンテナ。standard（gapあり）とconnected（一体化）の2種類があります。
           </p>
+          <div style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px; padding: 12px; background: var(--andm-color-surface-container); border-radius: 8px; line-height: 1.6;">
+            <strong style="color: var(--andm-color-on-surface);">使用ケース:</strong><br>
+            • <strong>Standard:</strong> 関連する複数のアクションを視覚的にグループ化したい場合（例：編集ツールバー）<br>
+            • <strong>Connected:</strong> 関連する操作を一体化して表示し、1つの操作セットとして認識させたい場合（例：SegmentedButtonsの基盤、関連するアイコンボタンのグループ）
+          </div>
           <div style="display: grid; gap: 24px;">
             <div>
               <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
@@ -416,14 +324,21 @@ export const AllButtons: Story = {
           </div>
         </section>
 
-        <!-- H) Split buttons -->
+        <!-- F) Split buttons -->
         <section>
           <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--andm-color-on-surface);">
             H) Split buttons
           </h2>
-          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px;">
+          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 8px;">
             プライマリアクションとメニュートグルを一体化したボタン。
           </p>
+          <div style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px; padding: 12px; background: var(--andm-color-surface-container); border-radius: 8px; line-height: 1.6;">
+            <strong style="color: var(--andm-color-on-surface);">使用ケース:</strong><br>
+            • プライマリアクション（左側）と、そのアクションのバリエーションを選択するメニュー（右側）を組み合わせたい場合<br>
+            • 例：「保存」ボタンと「名前を付けて保存」「テンプレートとして保存」などのメニュー<br>
+            • 例：「共有」ボタンと「メールで共有」「リンクをコピー」などのメニュー<br>
+            • スペースを節約しながら、主要なアクションとそのバリエーションを提供したい場合
+          </div>
           <div style="display: grid; gap: 24px;">
             <div>
               <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
@@ -458,14 +373,20 @@ export const AllButtons: Story = {
           </div>
         </section>
 
-        <!-- I) Segmented buttons -->
+        <!-- G) Segmented buttons -->
         <section>
           <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--andm-color-on-surface);">
             I) Segmented buttons
           </h2>
-          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px;">
+          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 8px;">
             複数の選択肢から1つまたは複数を選択できるセグメントボタン。
           </p>
+          <div style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px; padding: 12px; background: var(--andm-color-surface-container); border-radius: 8px; line-height: 1.6;">
+            <strong style="color: var(--andm-color-on-surface);">使用ケース:</strong><br>
+            • <strong>Single selection:</strong> 排他的な選択肢から1つを選択する場合（例：「左揃え・中央揃え・右揃え」「グリッド・リスト・マップ表示」）<br>
+            • <strong>Multiple selection:</strong> 複数の選択肢から複数を選択できる場合（例：フィルターの複数選択「カテゴリA・カテゴリB・カテゴリC」）<br>
+            • 関連する選択肢を視覚的にグループ化し、現在の選択状態を明確に示したい場合
+          </div>
           <div style="display: grid; gap: 24px;">
             <div>
               <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">

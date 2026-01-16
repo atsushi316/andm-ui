@@ -4,27 +4,29 @@
     role="group"
   >
     <template v-for="(option, index) in props.options" :key="option.value">
-      <ToggleButton
+      <Button
         v-if="option.label"
         :variant="variant"
         :size="size"
-        :pressed="isPressed(option.value)"
+        :aria-pressed="isPressed(option.value)"
         :disabled="props.disabled"
+        :class="{ 'andm-toggle-btn--selected': isPressed(option.value) }"
         @click="handleClick(option.value)"
       >
         <template v-if="option.iconName" #icon>
           <Icon :name="option.iconName" aria-label="button icon" />
         </template>
         {{ option.label }}
-      </ToggleButton>
-      <ToggleIconButton
+      </Button>
+      <IconButton
         v-else-if="option.iconName"
-        :variant="variant"
+        :variant="variant === 'text' ? 'standard' : variant"
         :size="size"
-        :pressed="isPressed(option.value)"
-        :disabled="props.disabled"
         :aria-label="option.value"
+        :aria-pressed="isPressed(option.value)"
+        :disabled="props.disabled"
         :icon-name="option.iconName"
+        :class="{ 'andm-toggle-btn--selected': isPressed(option.value) }"
         @click="handleClick(option.value)"
       />
     </template>
@@ -36,8 +38,8 @@ defineOptions({
   name: "UiSegmentedButtons",
 });
 import { computed } from "vue";
-import ToggleButton from "@/components/atoms/ToggleButton/ToggleButton.vue";
-import ToggleIconButton from "@/components/atoms/ToggleIconButton/ToggleIconButton.vue";
+import Button from "@/components/atoms/Button/Button.vue";
+import IconButton from "@/components/atoms/IconButton/IconButton.vue";
 import ButtonGroup from "@/components/molecules/ButtonGroup/ButtonGroup.vue";
 import Icon from "@/components/atoms/Icon/Icon.vue";
 
