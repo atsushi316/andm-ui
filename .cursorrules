@@ -22,6 +22,15 @@
 - **MUST:** Vueの `<style scoped>` は原則使用しない（コンポーネント固有の微調整のみ許容）。
 - **Design Tokens:** 色・スペース等は必ず `var(--andm-*)` を使用する。
 
+### Motion Implementation (M3 Motion準拠)
+- **MUST:** すべてのモーションは `src/styles/tokens.css` で定義されたモーショントークンを使用する。
+- **MUST:** プレス操作（:active）は `short1` (50ms) + `accelerate` easing を使用する。
+- **MUST:** ホバー/フォーカス操作は `short2` (100ms) + `decelerate` easing を使用する。
+- **MUST:** 状態変更（選択状態など）は `short3` (150ms) + `standard` easing を使用する。
+- **MUST:** 形状変化（Shape Morphing）は `short4` (200ms) + `standard` easing を使用する。
+- **MUST:** `prefers-reduced-motion: reduce` に対応する（`@media (prefers-reduced-motion: reduce)` でモーションを無効化）。
+- **詳細:** `src/docs/モーション実装ガイド.md` を参照すること。
+
 ### Logic Separation (Headless UI)
 - **SHOULD:** 複雑なロジック（状態管理、計算）は `src/composables` 等に `.ts` ファイルとして切り出す。
 - **Goal:** "Core Logic (.ts)" を Vue が利用する形にし、将来 React からも呼べるようにする。

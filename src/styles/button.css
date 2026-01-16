@@ -11,10 +11,16 @@
   justify-content: center;
   gap: var(--andm-space-2);
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease,
-    color 0.2s ease;
+    transform var(--andm-motion-duration-short2)
+      var(--andm-motion-easing-standard),
+    box-shadow var(--andm-motion-duration-short2)
+      var(--andm-motion-easing-decelerate),
+    background-color var(--andm-motion-duration-short2)
+      var(--andm-motion-easing-decelerate),
+    color var(--andm-motion-duration-short2)
+      var(--andm-motion-easing-decelerate),
+    border-color var(--andm-motion-duration-short2)
+      var(--andm-motion-easing-decelerate);
   height: var(--andm-btn-height-md);
   padding: 0 var(--andm-btn-padding-x-md);
   border-radius: var(--andm-radius-btn);
@@ -111,10 +117,23 @@
   background: var(--andm-overlay-hover-light);
   border-radius: inherit;
   pointer-events: none;
+  transition: opacity var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
+}
+
+.andm-btn--filled:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(0.96);
+  transition:
+    transform var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate),
+    box-shadow var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate);
 }
 
 .andm-btn--filled:active:not(:disabled):not([aria-disabled="true"])::before {
   background: var(--andm-overlay-active-light);
+  transition: opacity var(--andm-motion-duration-short1)
+    var(--andm-motion-easing-accelerate);
 }
 
 .andm-btn--elevated {
@@ -128,6 +147,8 @@
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.3),
     0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: box-shadow var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
 }
 
 .andm-btn--elevated:hover:not(:disabled):not([aria-disabled="true"])::before {
@@ -137,14 +158,24 @@
   background: var(--andm-overlay-hover);
   border-radius: inherit;
   pointer-events: none;
+  transition: opacity var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
 }
 
 .andm-btn--elevated:active:not(:disabled):not([aria-disabled="true"]) {
   box-shadow: var(--andm-shadow-1);
+  transform: scale(0.96);
+  transition:
+    transform var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate),
+    box-shadow var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate);
 }
 
 .andm-btn--elevated:active:not(:disabled):not([aria-disabled="true"])::before {
   background: var(--andm-overlay-active);
+  transition: opacity var(--andm-motion-duration-short1)
+    var(--andm-motion-easing-accelerate);
 }
 
 .andm-btn--tonal {
@@ -160,10 +191,23 @@
   background: var(--andm-overlay-hover);
   border-radius: inherit;
   pointer-events: none;
+  transition: opacity var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
+}
+
+.andm-btn--tonal:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(0.96);
+  transition:
+    transform var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate),
+    box-shadow var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate);
 }
 
 .andm-btn--tonal:active:not(:disabled):not([aria-disabled="true"])::before {
   background: var(--andm-overlay-active);
+  transition: opacity var(--andm-motion-duration-short1)
+    var(--andm-motion-easing-accelerate);
 }
 
 .andm-btn--outlined {
@@ -177,12 +221,20 @@
   background: rgb(
     var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
   );
+  transition: background-color var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
 }
 
 .andm-btn--outlined:active:not(:disabled):not([aria-disabled="true"]) {
   background: rgb(
     var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
   );
+  transform: scale(0.96);
+  transition:
+    transform var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate),
+    background-color var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate);
 }
 
 .andm-btn--text {
@@ -195,12 +247,20 @@
   background: rgb(
     var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
   );
+  transition: background-color var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
 }
 
 .andm-btn--text:active:not(:disabled):not([aria-disabled="true"]) {
   background: rgb(
     var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
   );
+  transform: scale(0.96);
+  transition:
+    transform var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate),
+    background-color var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate);
 }
 
 /* Button sizes */
@@ -231,14 +291,9 @@
 /* Button states */
 /* .andm-btn--pressed: Storybookの擬似状態専用（操作中の視覚的フィードバック） */
 .andm-btn--pressed {
-  transform: scale(0.97);
-}
-
-/* :active: 実操作用（マウス/タッチ操作時の即時フィードバック） */
-.andm-btn:active:not(:disabled):not([aria-disabled="true"]):not(
-    .andm-btn--pressed
-  ) {
-  transform: scale(0.98);
+  transform: scale(0.96);
+  transition: transform var(--andm-motion-duration-short1)
+    var(--andm-motion-easing-accelerate);
 }
 
 /* Icon Button */
@@ -270,12 +325,20 @@
   background: rgb(
     var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
   );
+  transition: background-color var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
 }
 
 .andm-icon-btn--standard:active:not(:disabled):not([aria-disabled="true"]) {
   background: rgb(
     var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
   );
+  transform: scale(0.96);
+  transition:
+    transform var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate),
+    background-color var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate);
 }
 
 .andm-icon-btn--filled {
@@ -292,12 +355,25 @@
   background: var(--andm-overlay-hover-light);
   border-radius: inherit;
   pointer-events: none;
+  transition: opacity var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
+}
+
+.andm-icon-btn--filled:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(0.96);
+  transition:
+    transform var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate),
+    box-shadow var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate);
 }
 
 .andm-icon-btn--filled:active:not(:disabled):not(
     [aria-disabled="true"]
   )::before {
   background: var(--andm-overlay-active-light);
+  transition: opacity var(--andm-motion-duration-short1)
+    var(--andm-motion-easing-accelerate);
 }
 
 .andm-icon-btn--tonal {
@@ -312,12 +388,25 @@
   background: var(--andm-overlay-hover);
   border-radius: inherit;
   pointer-events: none;
+  transition: opacity var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
+}
+
+.andm-icon-btn--tonal:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(0.96);
+  transition:
+    transform var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate),
+    box-shadow var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate);
 }
 
 .andm-icon-btn--tonal:active:not(:disabled):not(
     [aria-disabled="true"]
   )::before {
   background: var(--andm-overlay-active);
+  transition: opacity var(--andm-motion-duration-short1)
+    var(--andm-motion-easing-accelerate);
 }
 
 .andm-icon-btn--outlined {
@@ -330,12 +419,20 @@
   background: rgb(
     var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
   );
+  transition: background-color var(--andm-motion-duration-short2)
+    var(--andm-motion-easing-decelerate);
 }
 
 .andm-icon-btn--outlined:active:not(:disabled):not([aria-disabled="true"]) {
   background: rgb(
     var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
   );
+  transform: scale(0.96);
+  transition:
+    transform var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate),
+    background-color var(--andm-motion-duration-short1)
+      var(--andm-motion-easing-accelerate);
 }
 
 /* Toggle Button selected state */
@@ -343,6 +440,10 @@
 .andm-toggle-btn--selected {
   background: var(--andm-color-selected-container);
   color: var(--andm-color-on-selected-container);
+  transition:
+    background-color var(--andm-motion-duration-short3)
+      var(--andm-motion-easing-standard),
+    color var(--andm-motion-duration-short3) var(--andm-motion-easing-standard);
 }
 
 .andm-toggle-btn--selected.andm-btn--outlined,
@@ -422,14 +523,12 @@
 
 .andm-group--connected.andm-group--horizontal > :not(:first-child) {
   border-left: 1px solid var(--andm-color-divider);
+  transition: border-color var(--andm-motion-duration-short3)
+    var(--andm-motion-easing-standard);
 }
 
 .andm-group--connected.andm-group--vertical > :not(:first-child) {
   border-top: 1px solid var(--andm-color-divider);
-}
-
-.andm-group--connected > :focus-visible,
-.andm-group--connected > .andm-is-focus-visible {
-  position: relative;
-  z-index: 1;
+  transition: border-color var(--andm-motion-duration-short3)
+    var(--andm-motion-easing-standard);
 }

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import Button from "../../components/atoms/Button/Button.vue";
 import IconButton from "../../components/atoms/IconButton/IconButton.vue";
+import FAB from "../../components/atoms/FAB/FAB.vue";
 import ButtonGroup from "../../components/molecules/ButtonGroup/ButtonGroup.vue";
 import SplitButton from "../../components/molecules/SplitButton/SplitButton.vue";
 import SegmentedButtons from "../../components/molecules/SegmentedButtons/SegmentedButtons.vue";
@@ -12,7 +13,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          "Material Design 3の「All buttons」ページ。Common buttons、States、Icon buttons、Button groups、Split buttons、Segmented buttonsを含む包括的な仕様書として機能します。各セクションには、コンポーネントの使用ケースと適用場面が記載されています。",
+          "Material Design 3の「All buttons」ページ。Common buttons、States、Icon buttons、FAB & Extended FAB、Button groups、Split buttons、Segmented buttonsを含む包括的な仕様書として機能します。各セクションには、コンポーネントの使用ケースと適用場面が記載されています。",
       },
     },
   },
@@ -47,6 +48,7 @@ export const AllButtons: Story = {
     components: {
       Button,
       IconButton,
+      FAB,
       ButtonGroup,
       SplitButton,
       SegmentedButtons,
@@ -373,7 +375,99 @@ export const AllButtons: Story = {
           </div>
         </section>
 
-        <!-- G) Segmented buttons -->
+        <!-- H) FAB & Extended FAB -->
+        <section>
+          <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--andm-color-on-surface);">
+            H) FAB & Extended FAB
+          </h2>
+          <p style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 8px;">
+            Floating Action Button（FAB）とExtended FAB（ラベル付きFAB）。主要なアクションを強調表示します。
+          </p>
+          <div style="font-size: 12px; color: var(--andm-color-on-surface-variant); margin-bottom: 16px; padding: 12px; background: var(--andm-color-surface-container); border-radius: 8px; line-height: 1.6;">
+            <strong style="color: var(--andm-color-on-surface);">使用ケース:</strong><br>
+            • <strong>Standard FAB:</strong> 画面の主要なアクションを強調したい場合。例：メールアプリの「新規作成」、タスク管理アプリの「タスク追加」<br>
+            • <strong>Extended FAB:</strong> ラベル付きで、アクションの意図を明確にしたい場合。例：「新しいドキュメントを作成」「写真を追加」など、より具体的なアクション<br>
+            • <strong>Lowered variant:</strong> スクロール可能なコンテンツ上に配置する場合、elevationを低くして視覚的な干渉を減らす<br>
+            • 画面の右下や中央下部に配置し、ユーザーの注意を引く主要な操作として使用
+          </div>
+          <div style="display: grid; gap: 24px;">
+            <div>
+              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
+                Standard FAB sizes
+              </h3>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <FAB variant="primary" size="sm" aria-label="Small FAB" icon-name="add" />
+                <FAB variant="primary" size="md" aria-label="Medium FAB" icon-name="add" />
+                <FAB variant="primary" size="lg" aria-label="Large FAB" icon-name="add" />
+              </div>
+            </div>
+            <div>
+              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
+                Extended FAB sizes
+              </h3>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <FAB variant="primary" size="sm" label="Small" aria-label="Small Extended FAB" icon-name="add" />
+                <FAB variant="primary" size="md" label="Medium" aria-label="Medium Extended FAB" icon-name="add" />
+                <FAB variant="primary" size="lg" label="Large" aria-label="Large Extended FAB" icon-name="add" />
+              </div>
+            </div>
+            <div>
+              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
+                FAB variants
+              </h3>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <FAB variant="surface" aria-label="Surface FAB" icon-name="add" />
+                <FAB variant="primary" aria-label="Primary FAB" icon-name="add" />
+                <FAB variant="secondary" aria-label="Secondary FAB" icon-name="add" />
+                <FAB variant="tertiary" aria-label="Tertiary FAB" icon-name="add" />
+              </div>
+            </div>
+            <div>
+              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
+                Extended FAB variants
+              </h3>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <FAB variant="surface" label="Surface" aria-label="Surface Extended FAB" icon-name="add" />
+                <FAB variant="primary" label="Primary" aria-label="Primary Extended FAB" icon-name="add" />
+                <FAB variant="secondary" label="Secondary" aria-label="Secondary Extended FAB" icon-name="add" />
+                <FAB variant="tertiary" label="Tertiary" aria-label="Tertiary Extended FAB" icon-name="add" />
+              </div>
+            </div>
+            <div>
+              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
+                Lowered variant
+              </h3>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <FAB variant="primary" lowered aria-label="Lowered FAB" icon-name="add" />
+                <FAB variant="primary" lowered label="Lowered Extended" aria-label="Lowered Extended FAB" icon-name="add" />
+              </div>
+            </div>
+            <div>
+              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
+                FAB states
+              </h3>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <FAB variant="primary" aria-label="Default" icon-name="add" />
+                <FAB variant="primary" class="andm-fab--pressed" aria-label="Pressed" icon-name="add" />
+                <FAB variant="primary" class="andm-is-focus-visible" aria-label="Focus" icon-name="add" />
+                <FAB variant="primary" disabled aria-label="Disabled" icon-name="add" />
+              </div>
+            </div>
+            <div>
+              <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--andm-color-on-surface);">
+                Extended FAB states
+              </h3>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <FAB variant="primary" label="Default" aria-label="Default Extended" icon-name="add" />
+                <FAB variant="primary" label="Pressed" class="andm-fab--pressed" aria-label="Pressed Extended" icon-name="add" />
+                <FAB variant="primary" label="Focus" class="andm-is-focus-visible" aria-label="Focus Extended" icon-name="add" />
+                <FAB variant="primary" label="Disabled" disabled aria-label="Disabled Extended" icon-name="add" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- I) Segmented buttons -->
         <section>
           <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--andm-color-on-surface);">
             I) Segmented buttons
