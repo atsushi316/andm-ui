@@ -1,11 +1,26 @@
-# andm-ui Cursor Rules（軽量）
+# andm-ui Cursor Rules (Multi-Framework Ready)
 
 ## Goal
-- Vue UIコンポーネントを再利用可能な形で提供する
+- Vue UIコンポーネントとして実装しつつ、将来的な **Framework Agnostic（React/WebComponents対応）** を見据えた設計を行う
 - Storybookを唯一のUI仕様（Single Source of Truth）にする
 
-## MUST
-- src/components/** はアプリ依存禁止（firebase/router/store禁止）
+## Architecture Rules (重要)
+
+### 1. Style Isolation (CSS First)
+- **MUST**: スタイルは可能な限り `src/styles/**/*.css` に記述し、グローバルなクラス設計（BEM命名規則など）を行う
+- **MUST**: Vueファイルの `<style scoped>` は、「そのコンポーネント固有の微調整」のみに使用し、デザインシステムの核となるスタイルは書かない
+- **Design Tokens**: 色、スペース、フォント等は必ず `var(--andm-*)` を使用する
+
+### 2. Logic Separation (Headless UI)
+- **SHOULD**: 状態管理（トグル、バリデーション等）のロジックが複雑になる場合は、`src/composables` または `src/core` に純粋な TypeScript (`.ts`) として切り出す
+- **Pattern**: "Core Logic (.ts)" -> "Vue Adapter (.vue)" という依存関係を目指す
+
+### 3. API Standards
+- **Props**: HTML属性として表現可能なプリミティブ型（string, number, boolean）を優先する
+- **Events**: イベント名は `kebab-case` で統一し、ネイティブDOMイベントに近い挙動を目指す
+
+## MUST (Development)
+- `src/components/**` はアプリ依存禁止（firebase/router/store禁止）
 - UIは props / emits / slots で完結させる
 - 変更時は必ず Storybook の story を追加/更新する
 - 破壊的変更は避け、必要なら major を上げる（後でOK）
@@ -14,9 +29,8 @@
 - PR前に必ず:
   - npm run lint
   - npm run type-check
-  - npm run test:unit（存在する場合）
   - npm run storybook（起動確認でOK）
 
-## Planning（軽量）
+## Planning
 - 新規コンポーネント追加やAPI変更は、最初に「目的/スコープ/完了条件」を3行で書く
 

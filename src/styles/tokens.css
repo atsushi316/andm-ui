@@ -12,7 +12,7 @@
   --andm-color-outline: #79747e;
   --andm-color-outline-variant: color-mix(
     in srgb,
-    var(--andm-color-outline) 12%,
+    var(--andm-color-outline) 24%,
     transparent
   );
   --andm-color-divider: color-mix(

@@ -1,7 +1,7 @@
 <template>
   <ButtonGroup
     :connected="true"
-    :role="props.mode === 'single' ? 'radiogroup' : 'group'"
+    role="group"
   >
     <template v-for="(option, index) in props.options" :key="option.value">
       <ToggleButton

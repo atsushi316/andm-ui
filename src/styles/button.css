@@ -414,6 +414,12 @@
   border-bottom-right-radius: var(--andm-radius-btn);
 }
 
+.andm-group--connected > :focus-visible,
+.andm-group--connected > .andm-is-focus-visible {
+  position: relative;
+  z-index: 1;
+}
+
 .andm-group--connected.andm-group--horizontal > :not(:first-child) {
   border-left: 1px solid var(--andm-color-divider);
 }
@@ -422,7 +428,8 @@
   border-top: 1px solid var(--andm-color-divider);
 }
 
-.andm-group--connected > :focus-visible {
+.andm-group--connected > :focus-visible,
+.andm-group--connected > .andm-is-focus-visible {
   position: relative;
   z-index: 1;
 }

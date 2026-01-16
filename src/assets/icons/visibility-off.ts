@@ -4,3 +4,4 @@ export const pathData = [
   "M1 1l22 22",
 ] as const;
 
+
