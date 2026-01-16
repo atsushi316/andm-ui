@@ -1,0 +1,71 @@
+:root {
+  --andm-color-primary: #6750a4;
+  --andm-color-primary-rgb: 103 80 164;
+  --andm-color-on-primary: #ffffff;
+  --andm-color-secondary-container: #e8def8;
+  --andm-color-on-secondary-container: #1d192b;
+  --andm-color-tertiary-container: #ffd8e4;
+  --andm-color-on-tertiary-container: #31111d;
+  --andm-color-surface: #fffbfe;
+  --andm-color-on-surface: #1c1b1f;
+  --andm-color-on-surface-variant: #49454f;
+  --andm-color-outline: #79747e;
+  --andm-color-outline-variant: color-mix(
+    in srgb,
+    var(--andm-color-outline) 12%,
+    transparent
+  );
+  --andm-color-divider: color-mix(
+    in srgb,
+    var(--andm-color-outline) 12%,
+    transparent
+  );
+
+  --andm-color-selected-container: var(--andm-color-secondary-container);
+  --andm-color-on-selected-container: var(--andm-color-on-secondary-container);
+
+  --andm-color-danger: #b3261e;
+  --andm-color-on-danger: #ffffff;
+  --andm-color-danger-container: #f9dedc;
+  --andm-color-on-danger-container: #410e0b;
+
+  --andm-radius-btn: 20px;
+  --andm-radius-fab: 16px;
+
+  --andm-space-0: 0;
+  --andm-space-1: 4px;
+  --andm-space-2: 8px;
+  --andm-space-3: 12px;
+  --andm-space-4: 16px;
+  --andm-space-6: 24px;
+  --andm-space-8: 32px;
+
+  --andm-btn-height-sm: 32px;
+  --andm-btn-height-md: 40px;
+  --andm-btn-height-lg: 48px;
+  --andm-btn-padding-x-sm: 12px;
+  --andm-btn-padding-x-md: 20px;
+  --andm-btn-padding-x-lg: 28px;
+
+  --andm-fab-size-sm: 40px;
+  --andm-fab-size-md: 56px;
+  --andm-fab-size-lg: 80px;
+
+  --andm-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --andm-shadow-2: 0 6px 10px rgba(0, 0, 0, 0.3);
+
+  --andm-overlay-hover: rgba(0, 0, 0, 0.08);
+  --andm-overlay-hover-light: rgba(255, 255, 255, 0.08);
+  --andm-overlay-active: rgba(0, 0, 0, 0.12);
+  --andm-overlay-active-light: rgba(255, 255, 255, 0.12);
+
+  --andm-state-hover-opacity: 0.08;
+  --andm-state-pressed-opacity: 0.12;
+  --andm-focus-ring-color: var(--andm-color-primary);
+  --andm-focus-ring-width: 2px;
+
+  --andm-font-size-sm: 12px;
+  --andm-font-size-md: 14px;
+  --andm-font-size-lg: 16px;
+  --andm-font-weight-medium: 600;
+}

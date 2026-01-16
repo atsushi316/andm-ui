@@ -1,0 +1,22 @@
+# andm-ui Cursor Rules（軽量）
+
+## Goal
+- Vue UIコンポーネントを再利用可能な形で提供する
+- Storybookを唯一のUI仕様（Single Source of Truth）にする
+
+## MUST
+- src/components/** はアプリ依存禁止（firebase/router/store禁止）
+- UIは props / emits / slots で完結させる
+- 変更時は必ず Storybook の story を追加/更新する
+- 破壊的変更は避け、必要なら major を上げる（後でOK）
+
+## Validate
+- PR前に必ず:
+  - npm run lint
+  - npm run type-check
+  - npm run test:unit（存在する場合）
+  - npm run storybook（起動確認でOK）
+
+## Planning（軽量）
+- 新規コンポーネント追加やAPI変更は、最初に「目的/スコープ/完了条件」を3行で書く
+
