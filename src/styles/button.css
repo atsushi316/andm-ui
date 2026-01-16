@@ -24,16 +24,65 @@
   position: relative;
 }
 
-.andm-btn:focus-visible {
+.andm-btn:focus-visible,
+.andm-btn.andm-is-focus-visible,
+.andm-icon-btn:focus-visible,
+.andm-icon-btn.andm-is-focus-visible {
   outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
   outline-offset: var(--andm-focus-ring-offset);
 }
 
+/* Disabled state - base */
 .andm-btn:disabled,
 .andm-btn[aria-disabled="true"] {
-  opacity: 0.5;
   cursor: not-allowed;
   box-shadow: none;
+}
+
+/* Disabled state - variant specific */
+.andm-btn--filled:disabled,
+.andm-btn--filled[aria-disabled="true"],
+.andm-btn--elevated:disabled,
+.andm-btn--elevated[aria-disabled="true"],
+.andm-btn--tonal:disabled,
+.andm-btn--tonal[aria-disabled="true"] {
+  background: var(--andm-color-disabled-container);
+  color: var(--andm-color-on-disabled);
+}
+
+.andm-btn--outlined:disabled,
+.andm-btn--outlined[aria-disabled="true"] {
+  background: transparent;
+  color: var(--andm-color-on-disabled);
+  border-color: var(--andm-color-disabled-outline);
+}
+
+.andm-btn--text:disabled,
+.andm-btn--text[aria-disabled="true"] {
+  background: transparent;
+  color: var(--andm-color-on-disabled);
+}
+
+/* Icon Button disabled state */
+.andm-icon-btn--standard:disabled,
+.andm-icon-btn--standard[aria-disabled="true"] {
+  background: transparent;
+  color: var(--andm-color-on-disabled);
+}
+
+.andm-icon-btn--filled:disabled,
+.andm-icon-btn--filled[aria-disabled="true"],
+.andm-icon-btn--tonal:disabled,
+.andm-icon-btn--tonal[aria-disabled="true"] {
+  background: var(--andm-color-disabled-container);
+  color: var(--andm-color-on-disabled);
+}
+
+.andm-icon-btn--outlined:disabled,
+.andm-icon-btn--outlined[aria-disabled="true"] {
+  background: transparent;
+  color: var(--andm-color-on-disabled);
+  border-color: var(--andm-color-disabled-outline);
 }
 
 .andm-btn__icon {
@@ -180,10 +229,12 @@
 }
 
 /* Button states */
+/* .andm-btn--pressed: Storybookの擬似状態専用（操作中の視覚的フィードバック） */
 .andm-btn--pressed {
   transform: scale(0.97);
 }
 
+/* :active: 実操作用（マウス/タッチ操作時の即時フィードバック） */
 .andm-btn:active:not(:disabled):not([aria-disabled="true"]):not(
     .andm-btn--pressed
   ) {
@@ -288,6 +339,7 @@
 }
 
 /* Toggle Button selected state */
+/* .andm-toggle-btn--selected: 選択状態（toggle/segmentedで使用、pressedとは別） */
 .andm-toggle-btn--selected {
   background: var(--andm-color-selected-container);
   color: var(--andm-color-on-selected-container);

@@ -4,4 +4,3 @@ export const pathData = [
   "M12 9v4",
   "M12 17h.01",
 ] as const;
-

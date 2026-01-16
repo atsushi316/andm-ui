@@ -137,7 +137,7 @@ export const AllButtons: Story = {
               <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
                 <Button variant="filled">Default</Button>
                 <Button variant="filled" class="andm-btn--pressed">Pressed</Button>
-                <Button variant="filled" style="outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color); outline-offset: var(--andm-focus-ring-width);">
+                <Button variant="filled" class="andm-is-focus-visible">
                   Focus
                 </Button>
                 <Button variant="filled" disabled>Disabled</Button>
@@ -150,7 +150,7 @@ export const AllButtons: Story = {
               <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
                 <Button variant="elevated">Default</Button>
                 <Button variant="elevated" class="andm-btn--pressed">Pressed</Button>
-                <Button variant="elevated" style="outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color); outline-offset: var(--andm-focus-ring-width);">
+                <Button variant="elevated" class="andm-is-focus-visible">
                   Focus
                 </Button>
                 <Button variant="elevated" disabled>Disabled</Button>
@@ -163,7 +163,7 @@ export const AllButtons: Story = {
               <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
                 <Button variant="tonal">Default</Button>
                 <Button variant="tonal" class="andm-btn--pressed">Pressed</Button>
-                <Button variant="tonal" style="outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color); outline-offset: var(--andm-focus-ring-width);">
+                <Button variant="tonal" class="andm-is-focus-visible">
                   Focus
                 </Button>
                 <Button variant="tonal" disabled>Disabled</Button>
@@ -176,7 +176,7 @@ export const AllButtons: Story = {
               <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
                 <Button variant="outlined">Default</Button>
                 <Button variant="outlined" class="andm-btn--pressed">Pressed</Button>
-                <Button variant="outlined" style="outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color); outline-offset: var(--andm-focus-ring-width);">
+                <Button variant="outlined" class="andm-is-focus-visible">
                   Focus
                 </Button>
                 <Button variant="outlined" disabled>Disabled</Button>
@@ -189,7 +189,7 @@ export const AllButtons: Story = {
               <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
                 <Button variant="text">Default</Button>
                 <Button variant="text" class="andm-btn--pressed">Pressed</Button>
-                <Button variant="text" style="outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color); outline-offset: var(--andm-focus-ring-width);">
+                <Button variant="text" class="andm-is-focus-visible">
                   Focus
                 </Button>
                 <Button variant="text" disabled>Disabled</Button>

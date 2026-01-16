@@ -24,6 +24,22 @@
   --andm-color-selected-container: var(--andm-color-secondary-container);
   --andm-color-on-selected-container: var(--andm-color-on-secondary-container);
 
+  --andm-color-disabled-container: color-mix(
+    in srgb,
+    var(--andm-color-on-surface) 12%,
+    transparent
+  );
+  --andm-color-on-disabled: color-mix(
+    in srgb,
+    var(--andm-color-on-surface) 38%,
+    transparent
+  );
+  --andm-color-disabled-outline: color-mix(
+    in srgb,
+    var(--andm-color-outline) 12%,
+    transparent
+  );
+
   --andm-color-danger: #b3261e;
   --andm-color-on-danger: #ffffff;
   --andm-color-danger-container: #f9dedc;
