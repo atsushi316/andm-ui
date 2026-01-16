@@ -2,6 +2,7 @@
   <button
     :class="buttonClasses"
     v-bind="$attrs"
+    :disabled="props.disabled"
     :aria-disabled="props.disabled"
     :tabindex="props.disabled ? -1 : 0"
     @mousedown="handleMouseDown"

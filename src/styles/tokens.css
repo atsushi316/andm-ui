@@ -63,6 +63,7 @@
   --andm-state-pressed-opacity: 0.12;
   --andm-focus-ring-color: var(--andm-color-primary);
   --andm-focus-ring-width: 2px;
+  --andm-focus-ring-offset: 2px;
 
   --andm-font-size-sm: 12px;
   --andm-font-size-md: 14px;

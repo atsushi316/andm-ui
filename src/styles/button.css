@@ -26,7 +26,7 @@
 
 .andm-btn:focus-visible {
   outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
-  outline-offset: var(--andm-focus-ring-width);
+  outline-offset: var(--andm-focus-ring-offset);
 }
 
 .andm-btn:disabled,

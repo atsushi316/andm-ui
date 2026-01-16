@@ -2,6 +2,7 @@
   <button
     :class="iconButtonClasses"
     v-bind="$attrs"
+    :disabled="props.disabled"
     :aria-disabled="props.disabled"
     :aria-label="props.ariaLabel"
     :tabindex="props.disabled ? -1 : 0"

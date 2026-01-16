@@ -2,6 +2,7 @@
   <button
     :class="toggleIconButtonClasses"
     v-bind="$attrs"
+    :disabled="props.disabled"
     :aria-disabled="props.disabled"
     :aria-pressed="props.pressed"
     :aria-label="props.ariaLabel"

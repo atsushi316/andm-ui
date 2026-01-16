@@ -2,6 +2,7 @@
   <button
     :class="toggleButtonClasses"
     v-bind="$attrs"
+    :disabled="props.disabled"
     :aria-disabled="props.disabled"
     :aria-pressed="props.pressed"
     :tabindex="props.disabled ? -1 : 0"

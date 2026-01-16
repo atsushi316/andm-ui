@@ -9,7 +9,7 @@
       {{ props.label }}
     </Button>
     <IconButton
-      :variant="props.variant"
+      :variant="iconButtonVariant"
       :size="props.size"
       :disabled="props.disabled"
       :aria-label="`${props.label} menu`"
@@ -30,6 +30,7 @@
 defineOptions({
   name: "UiSplitButton",
 });
+import { computed } from "vue";
 import Button from "@/components/atoms/Button/Button.vue";
 import IconButton from "@/components/atoms/IconButton/IconButton.vue";
 import ButtonGroup from "@/components/molecules/ButtonGroup/ButtonGroup.vue";
@@ -53,6 +54,15 @@ const emit = defineEmits<{
   click: [];
   menuClick: [];
 }>();
+
+// IconButtonのvariantをマッピング
+// filled/tonal/outlined は同名、elevated/text は standard にマッピング
+const iconButtonVariant = computed<"standard" | "filled" | "tonal" | "outlined">(() => {
+  if (props.variant === "filled" || props.variant === "tonal" || props.variant === "outlined") {
+    return props.variant;
+  }
+  return "standard";
+});
 
 const handlePrimaryClick = () => {
   if (!props.disabled) {

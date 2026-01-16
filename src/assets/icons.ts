@@ -1,182 +1,40 @@
 /**
  * @description アイコンデータと型定義
- * Material Design Iconsの24x24版SVGパスデータを管理
+ * src/assets/icons/*.ts から動的に読み込む
  */
 
-// アイコン名の型定義
-export type IconName =
-  | "add"
-  | "plus"
-  | "check"
-  | "close"
-  | "search"
-  | "settings"
-  | "chevron-down"
-  | "chevron-up"
-  | "chevron-left"
-  | "chevron-right"
-  | "delete"
-  | "edit"
-  | "menu"
-  | "more-vert"
-  | "more-horiz"
-  | "grid"
-  | "grid-view"
-  | "list"
-  | "map"
-  | "home"
-  | "save"
-  | "send"
-  | "undo"
-  | "redo"
-  | "visibility"
-  | "visibility-off"
-  | "info"
-  | "warning"
-  | "error"
-  | "dangerous";
+// アイコンファイルを動的に読み込む
+const iconModules = import.meta.glob<{ pathData: string | string[] }>(
+  "./icons/*.ts",
+  { eager: true }
+);
 
-// アイコンデータの型定義
-export type IconData = Record<IconName, string | string[]>;
+// ファイル名からアイコン名を抽出
+function getIconName(path: string): string {
+  return path.match(/\/([^/]+)\.ts$/)?.[1] ?? "";
+}
 
-// アイコンデータ（24x24版、strokeベース）
-export const icons: IconData = {
-  // 既存のアイコン（複数パス）
-  add: ["M12 5v14", "M5 12h14"],
-  plus: ["M12 5v14", "M5 12h14"],
+// アイコンデータを構築
+const iconsMap: Record<string, string | string[]> = {};
 
-  // チェックマーク
-  check: "M20 6L9 17l-5-5",
+for (const path in iconModules) {
+  const module = iconModules[path];
+  const iconName = getIconName(path);
+  if (iconName && module?.pathData) {
+    iconsMap[iconName] = module.pathData;
+  }
+}
 
-  // 閉じる
-  close: ["M18 6L6 18", "M6 6l12 12"],
+// 型定義（動的に生成されたアイコン名から推論）
+export type IconName = keyof typeof iconsMap;
 
-  // 検索
-  search: ["M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"],
+// アイコンデータ（型安全）
+export const icons = iconsMap as Record<IconName, string | string[]>;
 
-  // 設定
-  settings: [
-    "M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.73l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.72v.51a2 2 0 01-1 1.74l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 001 1.73V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.73l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.74v-.5a2 2 0 011-1.74l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.73V4a2 2 0 00-2-2z",
-    "M12 15.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z",
-  ],
-
-  // 下矢印
-  "chevron-down": "M6 9l6 6 6-6",
-
-  // 上矢印
-  "chevron-up": "M18 15l-6-6-6 6",
-
-  // 左矢印
-  "chevron-left": "M15 18l-6-6 6-6",
-
-  // 右矢印
-  "chevron-right": "M9 18l6-6-6-6",
-
-  // 削除
-  delete: [
-    "M3 6h18",
-    "M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2",
-    "M10 11v6",
-    "M14 11v6",
-  ],
-
-  // 編集
-  edit: [
-    "M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7",
-    "M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z",
-  ],
-
-  // メニュー
-  menu: ["M3 12h18", "M3 6h18", "M3 18h18"],
-
-  // 縦三点
-  "more-vert": ["M12 8v.01", "M12 12v.01", "M12 16v.01"],
-
-  // 横三点
-  "more-horiz": ["M5 12h.01", "M12 12h.01", "M19 12h.01"],
-
-  // グリッド
-  grid: ["M3 3h7v7H3z", "M14 3h7v7h-7z", "M14 14h7v7h-7z", "M3 14h7v7H3z"],
-  "grid-view": [
-    "M3 3h7v7H3z",
-    "M14 3h7v7h-7z",
-    "M14 14h7v7h-7z",
-    "M3 14h7v7H3z",
-  ],
-
-  // リスト
-  list: [
-    "M8 6h13",
-    "M8 12h13",
-    "M8 18h13",
-    "M3 6h.01",
-    "M3 12h.01",
-    "M3 18h.01",
-  ],
-
-  // 地図
-  map: ["M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z", "M8 2v20", "M16 6v20"],
-
-  // ホーム
-  home: ["M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z", "M9 22V12h6v10"],
-
-  // 保存
-  save: [
-    "M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z",
-    "M17 21v-8H7v8",
-    "M7 3v5h8",
-  ],
-
-  // 送信
-  send: ["M22 2L11 13", "M22 2l-7 20-4-9-9-4 20-7z"],
-
-  // 元に戻す
-  undo: ["M3 7v6h6", "M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"],
-
-  // やり直し
-  redo: ["M21 7v6h-6", "M3 17a9 9 0 019-9 9 9 0 016 2.3L21 13"],
-
-  // 表示
-  visibility: [
-    "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z",
-    "M12 9a3 3 0 100 6 3 3 0 000-6z",
-  ],
-
-  // 非表示
-  "visibility-off": [
-    "M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24",
-    "M1 1l22 22",
-  ],
-
-  // 情報
-  info: ["M12 16v-4", "M12 8h.01", "M21 12a9 9 0 11-18 0 9 9 0 0118 0z"],
-
-  // 警告
-  warning: [
-    "M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z",
-    "M12 9v4",
-    "M12 17h.01",
-  ],
-
-  // エラー
-  error: [
-    "M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z",
-    "M12 9v4",
-    "M12 17h.01",
-  ],
-
-  // 危険
-  dangerous: [
-    "M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z",
-    "M12 9v4",
-    "M12 17h.01",
-  ],
-} as const;
-
-// アイコン名の配列（動的に取得）
+// アイコン名の配列
 export const iconNames = Object.keys(icons) as IconName[];
 
-// アイコンが存在するかチェックする関数
+// アイコンが存在するかチェック（型ガード）
 export const isValidIconName = (name: string): name is IconName => {
   return name in icons;
 };
