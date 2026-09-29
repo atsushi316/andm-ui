@@ -43,7 +43,7 @@ Series 本機能ではなく比較・プロトタイプ用の Token remapping �
 </div>
 ```
 
-製品 Gallery（`/gallery/`）では、部品の確認（使えるのは Button）と、Baseline / Expressive / DADS の用途つき比較ができます。
+製品 Gallery（`/gallery/`）では、用途を見て比べて選びます。andm の方向は Baseline。DADS と M3 Expressive は参考体系です。使える部品は Button で、単体と申請フォームの中を見られます。
 
 ## 開発
 

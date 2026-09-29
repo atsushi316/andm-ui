@@ -11,7 +11,7 @@
 
 - Design Tokens（`--andm-*`）と Cascade Layers（`andm.tokens` / `base` / `components` / `utilities`）
 - Button: elevated / filled / tonal / outlined / text × sm / md / lg、標準 state、`andm-btn__icon`
-- 製品 Gallery（`gallery/`、`dist/style.css` 参照）— Components / Directions。使える部品は Button、他は予定
+- 製品 Gallery（`gallery/`、`dist/style.css` 参照）— Component / Pattern / Experience。andm の方向（Baseline）と参考体系（DADS、M3 Expressive）は分けて比較。Button は単体と申請フォーム内
 - Direction デモ: `andm-series--expressive`（pill / shape morph / expressive easing / asymmetric modifier）。Series 本機能ではない
 - Direction デモ: `andm-series--dads`（デジタル庁デザインシステムの色・角丸・タイポ・ボタン性格の Token remapping。公式アセットの再配布ではない）
 - `examples/consumer/` 最小利用例

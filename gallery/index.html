@@ -276,6 +276,31 @@
         background: var(--andm-color-surface);
       }
 
+      .g-kicker {
+        margin: 0 0 var(--andm-space-2);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-context {
+        margin: 0 0 var(--andm-space-6);
+        padding: var(--andm-space-4);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        background: var(--andm-color-surface);
+      }
+
+      .g-context p {
+        margin: 0 0 var(--andm-space-4);
+        line-height: 1.5;
+      }
+
+      .g-context .g-row {
+        justify-content: flex-end;
+      }
+
       .g-panel__title {
         margin: 0 0 var(--andm-space-1);
         font-size: var(--andm-font-size-md);
@@ -451,7 +476,19 @@
         <p class="g-nav__tag">Product Gallery</p>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Components</span>
+          <span class="g-nav__label">選ぶ</span>
+          <ul>
+            <li>
+              <a href="#compare"
+                >用途を比べる
+                <span class="g-nav__hint">見た目が先</span></a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">Component</span>
           <ul>
             <li>
               <a href="#button"
@@ -477,27 +514,50 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Directions</span>
+          <span class="g-nav__label">Pattern</span>
           <ul>
             <li>
-              <a href="#directions"
-                >3方向を比べる
-                <span class="g-nav__hint">見た目と用途</span></a
+              <a href="#pattern"
+                >対の操作 <span class="g-badge g-badge--ready">最小</span></a
               >
             </li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">Experience</span>
+          <ul>
+            <li>
+              <a href="#experience"
+                >申請の確認 <span class="g-badge g-badge--ready">最小</span></a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">andm の方向</span>
+          <ul>
             <li>
               <a href="#baseline"
                 >Baseline <span class="g-nav__hint">汎用・中立</span></a
               >
             </li>
-            <li>
-              <a href="#expressive"
-                >Expressive <span class="g-nav__hint">表現寄り・消費者向け</span></a
-              >
-            </li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">参考体系</span>
+          <ul>
             <li>
               <a href="#dads"
                 >DADS <span class="g-nav__hint">行政・公共</span></a
+              >
+            </li>
+            <li>
+              <a href="#expressive"
+                >M3 Expressive
+                <span class="g-nav__hint">表現寄り・消費者向け</span></a
               >
             </li>
           </ul>
@@ -506,27 +566,29 @@
 
       <main class="g-main" id="top">
         <header class="g-hero">
-          <h1>プロトタイプの前に、部品と方向を選ぶ</h1>
-          <p class="lead">この Gallery でできることは、次の3つです。</p>
+          <h1>用途を見て、比べて、選ぶ</h1>
+          <p class="lead">
+            最初に見えるのは見た目と用途です。クラス名は、あとから開きます。
+          </p>
         </header>
 
         <div class="g-goals" aria-label="この Gallery でできること">
           <a class="g-goal" href="#button">
-            <p class="g-goal__title">部品を確認する</p>
+            <p class="g-goal__title">部品を見る</p>
             <p class="g-goal__desc">
-              今使えるのは Button だけ。Chip・Text Field・FAB は予定の枠です。
+              今使えるのは Button だけ。単体と、申請フォームの中の両方を見られます。
             </p>
           </a>
-          <a class="g-goal" href="#directions">
-            <p class="g-goal__title">方向を比べる</p>
+          <a class="g-goal" href="#pattern">
+            <p class="g-goal__title">並びと流れを見る</p>
             <p class="g-goal__desc">
-              同じ Button を Baseline / Expressive / DADS で並べます。
+              Pattern はボタンの並び、Experience は申請の一歩です。どちらも Button だけです。
             </p>
           </a>
-          <a class="g-goal" href="#directions">
-            <p class="g-goal__title">用途で判断する</p>
+          <a class="g-goal" href="#compare">
+            <p class="g-goal__title">系統を比べる</p>
             <p class="g-goal__desc">
-              汎用か、表現寄りか、行政・公共か。向いている用途を各方向に書いています。
+              andm の方向は Baseline。DADS と M3 Expressive は参考体系で、別の欄です。
             </p>
           </a>
         </div>
@@ -552,16 +614,17 @@
 
         <section
           class="g-section"
-          id="directions"
-          aria-labelledby="directions-title"
+          id="compare"
+          aria-labelledby="compare-title"
         >
-          <h2 id="directions-title">方向を比べる</h2>
+          <h2 id="compare-title">用途を見て比べる</h2>
           <p class="g-desc">
-            同じボタンを3つの方向で並べています。どれが正解ということはありません。見た目と、向いている用途で選んでください。
+            同じボタンです。左は andm の方向。中央と右は参考体系で、andm の方向ではありません。見た目と用途で選んでください。
           </p>
 
           <div class="g-compare">
             <div class="g-panel" id="baseline" data-direction="baseline">
+              <p class="g-kicker">andm の方向</p>
               <h3 class="g-panel__title">Baseline</h3>
               <p class="g-panel__use">向いている用途: 汎用・中立</p>
               <p class="g-panel__note">
@@ -608,7 +671,8 @@
               id="expressive"
               data-direction="expressive"
             >
-              <h3 class="g-panel__title">Expressive</h3>
+              <p class="g-kicker">参考体系</p>
+              <h3 class="g-panel__title">M3 Expressive</h3>
               <p class="g-panel__use">向いている用途: 表現寄り・消費者向け</p>
               <p class="g-panel__note">
                 丸が基本で、押すと角が立ちます。大きさでも強調します。ブランドやキャンペーンなど、印象を残したい画面向けです。
@@ -650,6 +714,7 @@
             </div>
 
             <div class="g-panel andm-series--dads" id="dads" data-direction="dads">
+              <p class="g-kicker">参考体系</p>
               <h3 class="g-panel__title">DADS</h3>
               <p class="g-panel__use">
                 向いている用途: 行政・公共サービスの分かりやすさ・信頼・アクセシビリティ
@@ -697,9 +762,9 @@
           <details class="g-details">
             <summary>クラス名と補足（見た目のあとで）</summary>
             <p>
-              方向は親にクラスを付けるだけです。Series
-              の切替機能ではなく、デモ用の Token remapping です。Button の
-              variant 名はそのまま使えます。
+              見た目の切り替えは親にクラスを付けるだけです。Series
+              の切替機能ではありません。Baseline は andm の方向、DADS と M3
+              Expressive は参考体系です。
             </p>
             <p>
               Baseline は追加クラスなし。Expressive は
@@ -750,11 +815,26 @@
             Button <span class="g-badge g-badge--ready">使える</span>
           </h2>
           <p class="g-desc">
-            いま確認できる部品です。下は Baseline（方向を付けないときの見た目）です。
+            いま使える部品です。先に場面の中、そのあと単体です。見た目は andm の Baseline です。
           </p>
 
-          <div class="g-block">
-            <h3>Variants</h3>
+          <div class="g-block" id="button-context">
+            <h3>In Context</h3>
+            <div class="g-context">
+              <p>申請内容を確認してから保存します。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                  キャンセル
+                </button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                  保存
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="g-block" id="button-isolated">
+            <h3>Isolated — 種類</h3>
             <div class="g-row">
               <button type="button" class="andm-btn andm-btn--elevated andm-btn--md">
                 Elevated
@@ -775,7 +855,7 @@
           </div>
 
           <div class="g-block">
-            <h3>Sizes</h3>
+            <h3>Isolated — 大きさ</h3>
             <div class="g-row">
               <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
                 Small
@@ -790,7 +870,7 @@
           </div>
 
           <div class="g-block">
-            <h3>Icons（leading / trailing）</h3>
+            <h3>Isolated — アイコン</h3>
             <div class="g-row">
               <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
                 <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -818,7 +898,7 @@
           </div>
 
           <div class="g-block">
-            <h3>States</h3>
+            <h3>Isolated — 状態</h3>
             <div class="g-grid">
               <div class="g-pair">
                 <span class="g-label">default</span>
@@ -988,6 +1068,46 @@
               <code>andm-btn__icon</code>。
             </p>
           </details>
+        </section>
+
+        <section class="g-section" id="pattern" aria-labelledby="pattern-title">
+          <h2 id="pattern-title">
+            Pattern <span class="g-badge g-badge--ready">最小</span>
+          </h2>
+          <p class="g-desc">
+            部品の並びです。新しい部品は作っていません。進む操作を右、やめる操作を左に置きます。
+          </p>
+          <div class="g-context">
+            <p>保存するか、やめます。</p>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                キャンセル
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                保存
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="g-section" id="experience" aria-labelledby="experience-title">
+          <h2 id="experience-title">
+            Experience <span class="g-badge g-badge--ready">最小</span>
+          </h2>
+          <p class="g-desc">
+            画面の流れの切れ端です。Button だけで、申請の確認までを示します。
+          </p>
+          <div class="g-context">
+            <p>入力した内容を確認しました。この内容で申請しますか？</p>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
+                戻る
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                申請する
+              </button>
+            </div>
+          </div>
         </section>
 
         <section class="g-section" id="chip" aria-labelledby="chip-title">

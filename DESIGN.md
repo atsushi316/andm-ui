@@ -25,7 +25,7 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 
 ## Direction デモ（Series 本機能ではない）
 
-巨大 Theme Engine / Series 切替 UI ではない。**デモ用親スコープ（Token remapping）** で方向を試せる。Baseline を壊さず、いずれの方向も唯一の正解にしない。テーマ追加は同じ親スコープパターンで拡張する。
+巨大 Theme Engine / Series 切替 UI ではない。**デモ用親スコープ（Token remapping）** で見た目を試せる。Baseline は andm の方向。DADS と M3 Expressive は参考体系であり、同じ分類にしない。いずれも唯一の正解にしない。
 
 ### Expressive
 
