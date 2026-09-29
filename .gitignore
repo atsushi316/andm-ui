@@ -7,12 +7,19 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Research: 元素材（ライセンス素材混入防止）
+research/inbox/
+research/assets/
+
+# Editor / OS
 .vscode/*
 !.vscode/extensions.json
 .idea

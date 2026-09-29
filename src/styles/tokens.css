@@ -1,109 +1,106 @@
-:root {
-  --andm-color-primary: #6750a4;
-  --andm-color-primary-rgb: 103 80 164;
-  --andm-color-on-primary: #ffffff;
-  --andm-color-secondary-container: #e8def8;
-  --andm-color-on-secondary-container: #1d192b;
-  --andm-color-tertiary-container: #ffd8e4;
-  --andm-color-on-tertiary-container: #31111d;
-  --andm-color-surface: #fffbfe;
-  --andm-color-on-surface: #1c1b1f;
-  --andm-color-on-surface-variant: #49454f;
-  --andm-color-outline: #79747e;
-  --andm-color-outline-variant: color-mix(
-    in srgb,
-    var(--andm-color-outline) 24%,
-    transparent
-  );
-  --andm-color-divider: color-mix(
-    in srgb,
-    var(--andm-color-outline) 12%,
-    transparent
-  );
+@layer andm.tokens {
+  :root {
+    /* —— Primitive color —— */
+    --andm-color-blue-40: #0b57d0;
+    --andm-color-blue-90: #d3e3fd;
+    --andm-color-neutral-10: #1a1c1e;
+    --andm-color-neutral-40: #5f6368;
+    --andm-color-neutral-90: #e3e3e3;
+    --andm-color-neutral-95: #f2f2f2;
+    --andm-color-neutral-99: #fcfcfc;
+    --andm-color-white: #ffffff;
 
-  --andm-color-selected-container: var(--andm-color-secondary-container);
-  --andm-color-on-selected-container: var(--andm-color-on-secondary-container);
+    /* —— Semantic color —— */
+    --andm-color-primary: var(--andm-color-blue-40);
+    --andm-color-primary-rgb: 11 87 208;
+    --andm-color-on-primary: var(--andm-color-white);
+    --andm-color-secondary-container: var(--andm-color-blue-90);
+    --andm-color-on-secondary-container: #041e49;
+    --andm-color-surface: var(--andm-color-neutral-99);
+    --andm-color-on-surface: var(--andm-color-neutral-10);
+    --andm-color-on-surface-variant: var(--andm-color-neutral-40);
+    --andm-color-outline: #74777f;
+    --andm-color-outline-variant: color-mix(
+      in srgb,
+      var(--andm-color-outline) 24%,
+      transparent
+    );
 
-  --andm-color-disabled-container: color-mix(
-    in srgb,
-    var(--andm-color-on-surface) 12%,
-    transparent
-  );
-  --andm-color-on-disabled: color-mix(
-    in srgb,
-    var(--andm-color-on-surface) 38%,
-    transparent
-  );
-  --andm-color-disabled-outline: color-mix(
-    in srgb,
-    var(--andm-color-outline) 12%,
-    transparent
-  );
+    --andm-color-disabled-container: color-mix(
+      in srgb,
+      var(--andm-color-on-surface) 12%,
+      transparent
+    );
+    --andm-color-on-disabled: color-mix(
+      in srgb,
+      var(--andm-color-on-surface) 38%,
+      transparent
+    );
+    --andm-color-disabled-outline: color-mix(
+      in srgb,
+      var(--andm-color-outline) 12%,
+      transparent
+    );
 
-  --andm-color-danger: #b3261e;
-  --andm-color-on-danger: #ffffff;
-  --andm-color-danger-container: #f9dedc;
-  --andm-color-on-danger-container: #410e0b;
+    /* —— Spacing —— */
+    --andm-space-0: 0;
+    --andm-space-1: 4px;
+    --andm-space-2: 8px;
+    --andm-space-3: 12px;
+    --andm-space-4: 16px;
+    --andm-space-6: 24px;
+    --andm-space-8: 32px;
 
-  --andm-radius-btn: 20px;
-  --andm-radius-fab: 16px;
+    /* —— Radius（少数段階。唯一値へ収束しない） —— */
+    --andm-radius-sm: 8px;
+    --andm-radius-md: 12px;
+    --andm-radius-lg: 16px;
+    --andm-radius-pill: 9999px;
 
-  --andm-space-0: 0;
-  --andm-space-1: 4px;
-  --andm-space-2: 8px;
-  --andm-space-3: 12px;
-  --andm-space-4: 16px;
-  --andm-space-6: 24px;
-  --andm-space-8: 32px;
+    /* —— Typography —— */
+    --andm-font-family: "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    --andm-font-size-sm: 12px;
+    --andm-font-size-md: 14px;
+    --andm-font-size-lg: 16px;
+    --andm-font-weight-medium: 600;
+    --andm-line-height-tight: 1.25;
 
-  --andm-btn-height-sm: 32px;
-  --andm-btn-height-md: 40px;
-  --andm-btn-height-lg: 48px;
-  --andm-btn-padding-x-sm: 12px;
-  --andm-btn-padding-x-md: 20px;
-  --andm-btn-padding-x-lg: 28px;
+    /* —— Shadow / elevation —— */
+    --andm-shadow-1: 0 1px 2px rgb(0 0 0 / 0.2), 0 1px 3px rgb(0 0 0 / 0.12);
+    --andm-shadow-2: 0 2px 6px rgb(0 0 0 / 0.22), 0 1px 2px rgb(0 0 0 / 0.14);
 
-  --andm-fab-size-sm: 40px;
-  --andm-fab-size-md: 56px;
-  --andm-fab-size-lg: 80px;
+    /* —— State layers —— */
+    --andm-state-hover-opacity: 0.08;
+    --andm-state-pressed-opacity: 0.12;
+    --andm-overlay-hover: rgb(0 0 0 / 0.08);
+    --andm-overlay-hover-light: rgb(255 255 255 / 0.1);
+    --andm-overlay-active: rgb(0 0 0 / 0.12);
+    --andm-overlay-active-light: rgb(255 255 255 / 0.14);
 
-  --andm-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --andm-shadow-2: 0 6px 10px rgba(0, 0, 0, 0.3);
+    /* —— Focus —— */
+    --andm-focus-ring-color: var(--andm-color-primary);
+    --andm-focus-ring-width: 2px;
+    --andm-focus-ring-offset: 2px;
 
-  --andm-overlay-hover: rgba(0, 0, 0, 0.08);
-  --andm-overlay-hover-light: rgba(255, 255, 255, 0.08);
-  --andm-overlay-active: rgba(0, 0, 0, 0.12);
-  --andm-overlay-active-light: rgba(255, 255, 255, 0.12);
+    /* —— Motion（M3 Motion 準拠の短時間トークン） —— */
+    --andm-motion-duration-short1: 50ms;
+    --andm-motion-duration-short2: 100ms;
+    --andm-motion-duration-short3: 150ms;
+    --andm-motion-duration-short4: 200ms;
+    --andm-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+    --andm-motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
 
-  --andm-state-hover-opacity: 0.08;
-  --andm-state-pressed-opacity: 0.12;
-  --andm-focus-ring-color: var(--andm-color-primary);
-  --andm-focus-ring-width: 2px;
-  --andm-focus-ring-offset: 2px;
-
-  --andm-font-size-sm: 12px;
-  --andm-font-size-md: 14px;
-  --andm-font-size-lg: 16px;
-  --andm-font-weight-medium: 600;
-
-  /* Elevation tokens for FAB */
-  --andm-elevation-fab-default: 0 6px 10px rgba(0, 0, 0, 0.3);
-  --andm-elevation-fab-hover:
-    0 8px 12px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
-  --andm-elevation-fab-pressed: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --andm-elevation-fab-lowered: 0 1px 2px rgba(0, 0, 0, 0.3);
-
-  /* Motion tokens (M3 Motion公式仕様に準拠) */
-  --andm-motion-duration-short1: 50ms;
-  --andm-motion-duration-short2: 100ms;
-  --andm-motion-duration-short3: 150ms;
-  --andm-motion-duration-short4: 200ms;
-  --andm-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
-  --andm-motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
-  --andm-motion-easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
-
-  /* Extended FAB tokens */
-  --andm-fab-extended-padding-x: 16px;
-  --andm-fab-extended-gap: 8px;
+    /* —— Component: Button —— */
+    --andm-btn-height-sm: 32px;
+    --andm-btn-height-md: 40px;
+    --andm-btn-height-lg: 48px;
+    --andm-btn-padding-x-sm: 12px;
+    --andm-btn-padding-x-md: 20px;
+    --andm-btn-padding-x-lg: 28px;
+    --andm-btn-radius: var(--andm-radius-md);
+    --andm-btn-icon-size-sm: 16px;
+    --andm-btn-icon-size-md: 18px;
+    --andm-btn-icon-size-lg: 20px;
+  }
 }
