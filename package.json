@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",
-    "gallery": "npx --yes serve . -l 4173",
+    "gallery": "npx --yes serve . -l tcp://0.0.0.0:4173 -n --no-port-switching",
     "prepublishOnly": "npm run build"
   },
   "keywords": [

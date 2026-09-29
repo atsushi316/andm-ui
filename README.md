@@ -31,10 +31,11 @@ import '@atsushi316/andm-ui/style.css'
 
 ```bash
 npm run build      # src/styles → dist/style.css
-npm run gallery    # 製品 Gallery（要: 先に build）
+npm run gallery    # 製品 Gallery（要: 先に build）→ http://localhost:4173/gallery/
 ```
 
 製品 Gallery は必ず `dist/style.css` を参照します（`src/styles` 直参照ではない）。
+ルート `/` は `/gallery/` へ誘導します。ポートは `4173` 固定（使用中なら失敗します。既存の `serve` を止めてから再実行してください）。
 
 ## 構成
 
