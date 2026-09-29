@@ -23,6 +23,18 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 
 現状 Core に実装しているのは Style（variant）・Size・Icon（leading/trailing）・標準 state。Shape / Density / Emphasis の追加 modifier は人間確認後に最小限足す。
 
+## Direction デモ: Expressive（Series 本機能ではない）
+
+M3 Expressive 寄りの表現を、**デモ用親スコープ**で試せる。巨大 Theme Engine / Series 切替 UI ではない。Baseline を壊さず、Expressive を唯一の正解にしない。
+
+| 項目 | 内容 |
+|------|------|
+| スコープ | 親に `andm-series--expressive`（Token remapping） |
+| Shape | より丸い（pill）・押下で `border-radius` morph・任意 `andm-btn--shape-asymmetric` |
+| Emphasis | やや高めの字重・高さ・tonal のコントラスト |
+| Motion | 既存 `short*`。空間は `--andm-motion-easing-expressive`（overshoot 近似）。`prefers-reduced-motion` は base で無効化 |
+| 既存 variant | filled / tonal / outlined / text / elevated はそのまま |
+
 ## Research 境界
 
 ```

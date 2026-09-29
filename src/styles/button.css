@@ -34,6 +34,8 @@
         var(--andm-motion-easing-decelerate),
       box-shadow var(--andm-motion-duration-short2)
         var(--andm-motion-easing-decelerate),
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard),
       transform var(--andm-motion-duration-short2)
         var(--andm-motion-easing-standard);
   }
@@ -120,11 +122,14 @@
   }
 
   .andm-btn--filled:active:not(:disabled):not([disabled]) {
-    transform: scale(0.96);
+    transform: scale(var(--andm-btn-press-scale));
+    border-radius: var(--andm-btn-radius-pressed);
     box-shadow: none;
     transition:
       transform var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate),
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard),
       box-shadow var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate);
   }
@@ -167,11 +172,14 @@
   }
 
   .andm-btn--elevated:active:not(:disabled):not([disabled]) {
-    transform: scale(0.96);
+    transform: scale(var(--andm-btn-press-scale));
+    border-radius: var(--andm-btn-radius-pressed);
     box-shadow: var(--andm-shadow-1);
     transition:
       transform var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate),
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard),
       box-shadow var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate);
   }
@@ -210,9 +218,13 @@
   }
 
   .andm-btn--tonal:active:not(:disabled):not([disabled]) {
-    transform: scale(0.96);
-    transition: transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
+    transform: scale(var(--andm-btn-press-scale));
+    border-radius: var(--andm-btn-radius-pressed);
+    transition:
+      transform var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard);
   }
 
   .andm-btn--tonal:active:not(:disabled):not([disabled])::before {
@@ -248,10 +260,13 @@
     background: rgb(
       var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
     );
-    transform: scale(0.96);
+    transform: scale(var(--andm-btn-press-scale));
+    border-radius: var(--andm-btn-radius-pressed);
     transition:
       transform var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate),
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard),
       background-color var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate);
   }
@@ -287,10 +302,13 @@
     background: rgb(
       var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
     );
-    transform: scale(0.96);
+    transform: scale(var(--andm-btn-press-scale));
+    border-radius: var(--andm-btn-radius-pressed);
     transition:
       transform var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate),
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard),
       background-color var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate);
   }
@@ -298,5 +316,61 @@
   .andm-btn--text:disabled,
   .andm-btn--text[disabled] {
     color: var(--andm-color-on-disabled);
+  }
+
+  /*
+   * Expressive demo scope（andm-series--expressive）
+   * — 既存 variant は維持。Token remapping + spatial motion / shape morph のみ。
+   * — Series 本機能ではない（Gallery 比較・将来 Design Space 用のデモスコープ）
+   */
+  .andm-series--expressive .andm-btn {
+    transition:
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      border-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard),
+      transform var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-expressive);
+  }
+
+  .andm-series--expressive .andm-btn:hover:not(:disabled):not([disabled]) {
+    transform: scale(1.02);
+    transition:
+      transform var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-expressive),
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard);
+  }
+
+  .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]) {
+    transition:
+      transform var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard),
+      box-shadow var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      background-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate);
+  }
+
+  /* 非対称 shape（CSS で妥当な範囲の asymmetry）。任意 modifier */
+  .andm-series--expressive .andm-btn--shape-asymmetric {
+    border-radius: var(--andm-btn-radius-asymmetric);
+  }
+
+  .andm-series--expressive
+    .andm-btn--shape-asymmetric:active:not(:disabled):not([disabled]) {
+    border-radius: var(--andm-btn-radius-pressed);
   }
 }

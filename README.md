@@ -27,6 +27,21 @@ import '@atsushi316/andm-ui/style.css'
 
 状態はブラウザ標準（`:hover` / `:active` / `:focus-visible` / `:disabled`）で表現します。
 
+### Direction デモ（Expressive）
+
+親に `andm-series--expressive` を付けると、子孫 Button の Token（shape / density 寄り / tonal）が切り替わります。既存 variant クラスはそのまま。Series 本機能ではなく比較用デモです。
+
+```html
+<div class="andm-series--expressive">
+  <button class="andm-btn andm-btn--filled andm-btn--md">保存</button>
+  <button class="andm-btn andm-btn--filled andm-btn--md andm-btn--shape-asymmetric">
+    Asym
+  </button>
+</div>
+```
+
+製品 Gallery（`/gallery/`）の **Directions** で Baseline と並べて確認できます。
+
 ## 開発
 
 ```bash

@@ -3,252 +3,753 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>andm-ui Product Gallery — Button</title>
+    <title>andm-ui Product Gallery</title>
     <link rel="stylesheet" href="../dist/style.css" />
     <style>
-      /* Gallery layout only — no component look overrides */
-      .g {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: var(--andm-space-6) var(--andm-space-4) var(--andm-space-8);
+      /* Gallery layout only — component look comes from dist/style.css */
+      :root {
+        --g-nav-width: 12.5rem;
+        --g-surface-muted: color-mix(
+          in srgb,
+          var(--andm-color-on-surface) 4%,
+          var(--andm-color-surface)
+        );
+        --g-border: color-mix(
+          in srgb,
+          var(--andm-color-outline) 28%,
+          transparent
+        );
       }
-      .g h1 {
-        font-size: 1.5rem;
-        font-weight: 650;
-        margin: 0 0 var(--andm-space-2);
+
+      body {
+        min-height: 100vh;
       }
-      .g p.lead {
+
+      .g-shell {
+        display: grid;
+        grid-template-columns: var(--g-nav-width) minmax(0, 1fr);
+        min-height: 100vh;
+      }
+
+      .g-nav {
+        position: sticky;
+        top: 0;
+        align-self: start;
+        height: 100vh;
+        overflow: auto;
+        padding: var(--andm-space-6) var(--andm-space-4);
+        border-right: 1px solid var(--g-border);
+        background: var(--g-surface-muted);
+      }
+
+      .g-nav__brand {
+        display: block;
+        font-size: var(--andm-font-size-md);
+        font-weight: 700;
+        color: var(--andm-color-on-surface);
+        text-decoration: none;
+        margin-bottom: var(--andm-space-1);
+      }
+
+      .g-nav__tag {
         margin: 0 0 var(--andm-space-6);
+        font-size: var(--andm-font-size-sm);
         color: var(--andm-color-on-surface-variant);
       }
-      .g h2 {
-        font-size: 1rem;
-        font-weight: 650;
-        margin: var(--andm-space-6) 0 var(--andm-space-3);
+
+      .g-nav__group {
+        margin: 0 0 var(--andm-space-6);
       }
+
+      .g-nav__label {
+        display: block;
+        margin: 0 0 var(--andm-space-2);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .g-nav a {
+        display: block;
+        padding: var(--andm-space-1) 0;
+        color: var(--andm-color-on-surface);
+        text-decoration: none;
+        font-size: var(--andm-font-size-sm);
+        border-radius: var(--andm-radius-sm);
+        transition: color var(--andm-motion-duration-short2)
+          var(--andm-motion-easing-decelerate);
+      }
+
+      .g-nav a:hover {
+        color: var(--andm-color-primary);
+      }
+
+      .g-nav a:focus-visible {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-nav__soon {
+        color: var(--andm-color-on-surface-variant);
+        opacity: 0.7;
+      }
+
+      .g-main {
+        padding: var(--andm-space-6) var(--andm-space-6) var(--andm-space-8);
+        max-width: 72rem;
+      }
+
+      .g-hero h1 {
+        margin: 0 0 var(--andm-space-2);
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .g-hero .lead {
+        margin: 0 0 var(--andm-space-4);
+        max-width: 40rem;
+        color: var(--andm-color-on-surface-variant);
+        line-height: 1.5;
+      }
+
+      .g-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-2) var(--andm-space-4);
+        margin: 0 0 var(--andm-space-8);
+        padding: 0;
+        list-style: none;
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-meta code {
+        font-size: 0.85em;
+      }
+
+      .g-section {
+        margin: 0 0 var(--andm-space-8);
+        padding-top: var(--andm-space-2);
+        scroll-margin-top: var(--andm-space-4);
+      }
+
+      .g-section > h2 {
+        margin: 0 0 var(--andm-space-2);
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .g-section > .g-desc {
+        margin: 0 0 var(--andm-space-4);
+        color: var(--andm-color-on-surface-variant);
+        font-size: var(--andm-font-size-sm);
+        line-height: 1.45;
+        max-width: 40rem;
+      }
+
+      .g-block {
+        margin: 0 0 var(--andm-space-6);
+      }
+
+      .g-block h3 {
+        margin: 0 0 var(--andm-space-3);
+        font-size: var(--andm-font-size-md);
+        font-weight: 650;
+      }
+
       .g-row {
         display: flex;
         flex-wrap: wrap;
         gap: var(--andm-space-3);
         align-items: center;
       }
+
       .g-grid {
         display: grid;
         gap: var(--andm-space-3);
       }
+
       .g-label {
         font-size: var(--andm-font-size-sm);
         color: var(--andm-color-on-surface-variant);
         min-width: 5.5rem;
       }
+
       .g-pair {
         display: flex;
         flex-wrap: wrap;
         gap: var(--andm-space-3);
         align-items: center;
       }
+
+      .g-hint {
+        color: var(--andm-color-on-surface-variant);
+        font-size: var(--andm-font-size-sm);
+      }
+
+      .g-compare {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--andm-space-4);
+      }
+
+      .g-panel {
+        padding: var(--andm-space-4);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-lg);
+        background: var(--andm-color-surface);
+      }
+
+      .g-panel__title {
+        margin: 0 0 var(--andm-space-1);
+        font-size: var(--andm-font-size-md);
+        font-weight: 700;
+      }
+
+      .g-panel__note {
+        margin: 0 0 var(--andm-space-4);
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+        line-height: 1.4;
+      }
+
+      .g-placeholder {
+        padding: var(--andm-space-6) var(--andm-space-4);
+        border: 1px dashed var(--g-border);
+        border-radius: var(--andm-radius-md);
+        color: var(--andm-color-on-surface-variant);
+        font-size: var(--andm-font-size-sm);
+        line-height: 1.45;
+      }
+
+      .g-placeholder strong {
+        color: var(--andm-color-on-surface);
+      }
+
+      @media (max-width: 800px) {
+        .g-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .g-nav {
+          position: static;
+          height: auto;
+          border-right: none;
+          border-bottom: 1px solid var(--g-border);
+        }
+
+        .g-nav__group {
+          display: inline-block;
+          vertical-align: top;
+          margin-right: var(--andm-space-6);
+        }
+
+        .g-main {
+          padding: var(--andm-space-4);
+        }
+
+        .g-compare {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
-    <main class="g">
-      <h1>andm-ui — Button</h1>
-      <p class="lead">
-        製品 Gallery。必ず <code>dist/style.css</code> を参照しています。
-      </p>
+    <div class="g-shell">
+      <nav class="g-nav" aria-label="Gallery">
+        <a class="g-nav__brand" href="#top">andm-ui</a>
+        <p class="g-nav__tag">Product Gallery</p>
 
-      <h2>Variants</h2>
-      <div class="g-row">
-        <button type="button" class="andm-btn andm-btn--elevated andm-btn--md">
-          Elevated
-        </button>
-        <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-          Filled
-        </button>
-        <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
-          Tonal
-        </button>
-        <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
-          Outlined
-        </button>
-        <button type="button" class="andm-btn andm-btn--text andm-btn--md">
-          Text
-        </button>
-      </div>
+        <div class="g-nav__group">
+          <span class="g-nav__label">Components</span>
+          <ul>
+            <li><a href="#button">Button</a></li>
+            <li>
+              <a class="g-nav__soon" href="#chip" aria-disabled="true">Chip</a>
+            </li>
+            <li>
+              <a class="g-nav__soon" href="#text-field" aria-disabled="true"
+                >Text Field</a
+              >
+            </li>
+            <li>
+              <a class="g-nav__soon" href="#fab" aria-disabled="true">FAB</a>
+            </li>
+          </ul>
+        </div>
 
-      <h2>Sizes</h2>
-      <div class="g-row">
-        <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
-          Small
-        </button>
-        <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-          Medium
-        </button>
-        <button type="button" class="andm-btn andm-btn--filled andm-btn--lg">
-          Large
-        </button>
-      </div>
+        <div class="g-nav__group">
+          <span class="g-nav__label">Directions</span>
+          <ul>
+            <li><a href="#directions">Baseline vs Expressive</a></li>
+            <li><a href="#expressive-detail">Expressive detail</a></li>
+          </ul>
+        </div>
+      </nav>
 
-      <h2>Icons（leading / trailing）</h2>
-      <div class="g-row">
-        <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-          <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-          Leading
-        </button>
-        <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
-          Trailing
-          <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
-          </svg>
-        </button>
-        <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
-          <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-            />
-          </svg>
-          Save
-        </button>
-      </div>
+      <main class="g-main" id="top">
+        <header class="g-hero">
+          <h1>andm-ui Gallery</h1>
+          <p class="lead">
+            配布 CSS（<code>dist/style.css</code>）の検証面です。コンポーネントと
+            Direction（Baseline / Expressive）を並べて比較できます。Expressive
+            は唯一の正解ではなく、Design Space 上の一方向です。
+          </p>
+          <ul class="g-meta">
+            <li>CSS: <code>../dist/style.css</code></li>
+            <li>API: Native HTML + <code>andm-*</code></li>
+            <li>FW / Storybook: なし</li>
+          </ul>
+        </header>
 
-      <h2>States</h2>
-      <div class="g-grid">
-        <div class="g-pair">
-          <span class="g-label">default</span>
-          <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-            Default
-          </button>
-          <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
-            Default
-          </button>
-        </div>
-        <div class="g-pair">
-          <span class="g-label">hover</span>
-          <span style="color: var(--andm-color-on-surface-variant); font-size: var(--andm-font-size-sm)"
-            >マウスオーバーで確認</span
-          >
-        </div>
-        <div class="g-pair">
-          <span class="g-label">active</span>
-          <span style="color: var(--andm-color-on-surface-variant); font-size: var(--andm-font-size-sm)"
-            >押下で確認</span
-          >
-        </div>
-        <div class="g-pair">
-          <span class="g-label">focus-visible</span>
-          <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-            Tab でフォーカス
-          </button>
-          <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
-            Tab でフォーカス
-          </button>
-        </div>
-        <div class="g-pair">
-          <span class="g-label">disabled</span>
-          <button
-            type="button"
-            class="andm-btn andm-btn--filled andm-btn--md"
-            disabled
-          >
-            Disabled
-          </button>
-          <button
-            type="button"
-            class="andm-btn andm-btn--elevated andm-btn--md"
-            disabled
-          >
-            Disabled
-          </button>
-          <button
-            type="button"
-            class="andm-btn andm-btn--tonal andm-btn--md"
-            disabled
-          >
-            Disabled
-          </button>
-          <button
-            type="button"
-            class="andm-btn andm-btn--outlined andm-btn--md"
-            disabled
-          >
-            Disabled
-          </button>
-          <button
-            type="button"
-            class="andm-btn andm-btn--text andm-btn--md"
-            disabled
-          >
-            Disabled
-          </button>
-        </div>
-      </div>
+        <!-- —— Components: Button —— -->
+        <section class="g-section" id="button" aria-labelledby="button-title">
+          <h2 id="button-title">Button</h2>
+          <p class="g-desc">
+            Baseline（既定トークン）。variants / sizes / icons / states。
+          </p>
 
-      <h2>Variant × Size</h2>
-      <div class="g-grid">
-        <div class="g-pair">
-          <span class="g-label">elevated</span>
-          <button type="button" class="andm-btn andm-btn--elevated andm-btn--sm">
-            Sm
-          </button>
-          <button type="button" class="andm-btn andm-btn--elevated andm-btn--md">
-            Md
-          </button>
-          <button type="button" class="andm-btn andm-btn--elevated andm-btn--lg">
-            Lg
-          </button>
-        </div>
-        <div class="g-pair">
-          <span class="g-label">filled</span>
-          <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
-            Sm
-          </button>
-          <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-            Md
-          </button>
-          <button type="button" class="andm-btn andm-btn--filled andm-btn--lg">
-            Lg
-          </button>
-        </div>
-        <div class="g-pair">
-          <span class="g-label">tonal</span>
-          <button type="button" class="andm-btn andm-btn--tonal andm-btn--sm">
-            Sm
-          </button>
-          <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
-            Md
-          </button>
-          <button type="button" class="andm-btn andm-btn--tonal andm-btn--lg">
-            Lg
-          </button>
-        </div>
-        <div class="g-pair">
-          <span class="g-label">outlined</span>
-          <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">
-            Sm
-          </button>
-          <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
-            Md
-          </button>
-          <button type="button" class="andm-btn andm-btn--outlined andm-btn--lg">
-            Lg
-          </button>
-        </div>
-        <div class="g-pair">
-          <span class="g-label">text</span>
-          <button type="button" class="andm-btn andm-btn--text andm-btn--sm">
-            Sm
-          </button>
-          <button type="button" class="andm-btn andm-btn--text andm-btn--md">
-            Md
-          </button>
-          <button type="button" class="andm-btn andm-btn--text andm-btn--lg">
-            Lg
-          </button>
-        </div>
-      </div>
-    </main>
+          <div class="g-block">
+            <h3>Variants</h3>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--elevated andm-btn--md">
+                Elevated
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                Filled
+              </button>
+              <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
+                Tonal
+              </button>
+              <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
+                Outlined
+              </button>
+              <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                Text
+              </button>
+            </div>
+          </div>
+
+          <div class="g-block">
+            <h3>Sizes</h3>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
+                Small
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                Medium
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--lg">
+                Large
+              </button>
+            </div>
+          </div>
+
+          <div class="g-block">
+            <h3>Icons（leading / trailing）</h3>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                </svg>
+                Leading
+              </button>
+              <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
+                Trailing
+                <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
+                <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                  />
+                </svg>
+                Save
+              </button>
+            </div>
+          </div>
+
+          <div class="g-block">
+            <h3>States</h3>
+            <div class="g-grid">
+              <div class="g-pair">
+                <span class="g-label">default</span>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                  Default
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Default
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">hover / active</span>
+                <span class="g-hint">マウスオーバー・押下で確認</span>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">focus-visible</span>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                  Tab でフォーカス
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Tab でフォーカス
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">disabled</span>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--tonal andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--text andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="g-block">
+            <h3>Variant × Size</h3>
+            <div class="g-grid">
+              <div class="g-pair">
+                <span class="g-label">elevated</span>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--sm"
+                >
+                  Sm
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--md"
+                >
+                  Md
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--lg"
+                >
+                  Lg
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">filled</span>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
+                  Sm
+                </button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                  Md
+                </button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--lg">
+                  Lg
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">tonal</span>
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--sm">
+                  Sm
+                </button>
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
+                  Md
+                </button>
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--lg">
+                  Lg
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">outlined</span>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--sm"
+                >
+                  Sm
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Md
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--lg"
+                >
+                  Lg
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">text</span>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--sm">
+                  Sm
+                </button>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                  Md
+                </button>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--lg">
+                  Lg
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- —— Placeholders for future components —— -->
+        <section class="g-section" id="chip" aria-labelledby="chip-title">
+          <h2 id="chip-title">Chip</h2>
+          <p class="g-desc">未実装。後からセクションを足しやすいプレースホルダ。</p>
+          <div class="g-placeholder">
+            <strong>Coming soon</strong> — Assist / Filter / Input / Suggestion
+            など。Button 完了後に段階追加。
+          </div>
+        </section>
+
+        <section
+          class="g-section"
+          id="text-field"
+          aria-labelledby="text-field-title"
+        >
+          <h2 id="text-field-title">Text Field</h2>
+          <p class="g-desc">未実装。プレースホルダ。</p>
+          <div class="g-placeholder">
+            <strong>Coming soon</strong> — filled / outlined 等。
+          </div>
+        </section>
+
+        <section class="g-section" id="fab" aria-labelledby="fab-title">
+          <h2 id="fab-title">FAB</h2>
+          <p class="g-desc">未実装。プレースホルダ。</p>
+          <div class="g-placeholder">
+            <strong>Coming soon</strong> — small / regular / large / extended。
+          </div>
+        </section>
+
+        <!-- —— Directions: Baseline vs Expressive —— -->
+        <section
+          class="g-section"
+          id="directions"
+          aria-labelledby="directions-title"
+        >
+          <h2 id="directions-title">Directions — Baseline vs Expressive</h2>
+          <p class="g-desc">
+            同じ markup（variant クラス）を、親スコープ
+            <code>andm-series--expressive</code> の有無だけで並べます。Series
+            本機能ではなく、デモ用 Token remapping です。
+          </p>
+
+          <div class="g-compare">
+            <div class="g-panel" data-direction="baseline">
+              <h3 class="g-panel__title">Baseline（Default）</h3>
+              <p class="g-panel__note">
+                <code>:root</code> 既定。radius-md・標準 press scale。
+              </p>
+              <div class="g-row">
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                >
+                  Filled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--tonal andm-btn--md"
+                >
+                  Tonal
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Outlined
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--md"
+                >
+                  Elevated
+                </button>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                  Text
+                </button>
+              </div>
+              <div class="g-row" style="margin-top: var(--andm-space-3)">
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--sm"
+                >
+                  Sm
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                >
+                  Md
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--lg"
+                >
+                  Lg
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="g-panel andm-series--expressive"
+              data-direction="expressive"
+            >
+              <h3 class="g-panel__title">Expressive</h3>
+              <p class="g-panel__note">
+                親に <code>andm-series--expressive</code>。pill shape・強めの
+                press morph・expressive easing（空間のみ）。
+              </p>
+              <div class="g-row">
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                >
+                  Filled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--tonal andm-btn--md"
+                >
+                  Tonal
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Outlined
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--md"
+                >
+                  Elevated
+                </button>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                  Text
+                </button>
+              </div>
+              <div class="g-row" style="margin-top: var(--andm-space-3)">
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--sm"
+                >
+                  Sm
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                >
+                  Md
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--lg"
+                >
+                  Lg
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="g-section"
+          id="expressive-detail"
+          aria-labelledby="expressive-detail-title"
+        >
+          <h2 id="expressive-detail-title">Expressive detail</h2>
+          <p class="g-desc">
+            M3 Expressive 寄りの shape（丸み・非対称）と強調。既存 variant
+            名はそのまま。ホバー／押下で shape morph と spatial motion を確認。
+          </p>
+
+          <div class="andm-series--expressive g-panel">
+            <h3 class="g-panel__title">Shape &amp; emphasis</h3>
+            <p class="g-panel__note">
+              既定は pill。任意で
+              <code>andm-btn--shape-asymmetric</code>（角の対角差）。
+            </p>
+            <div class="g-row">
+              <button
+                type="button"
+                class="andm-btn andm-btn--filled andm-btn--md"
+              >
+                Pill morph
+              </button>
+              <button
+                type="button"
+                class="andm-btn andm-btn--filled andm-btn--md andm-btn--shape-asymmetric"
+              >
+                Asymmetric
+              </button>
+              <button
+                type="button"
+                class="andm-btn andm-btn--tonal andm-btn--md andm-btn--shape-asymmetric"
+              >
+                Tonal asym
+              </button>
+              <button
+                type="button"
+                class="andm-btn andm-btn--outlined andm-btn--lg"
+              >
+                <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                </svg>
+                Emphasized
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
