@@ -22,13 +22,17 @@
     font: inherit;
   }
 
+  /*
+   * 移動・拡大の animation は抑える。
+   * transition-duration の一括 0.01ms は色の状態変化まで消すので置かない。
+   * Button の拡大と形状は andm.components 側で抑える。
+   */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
   }

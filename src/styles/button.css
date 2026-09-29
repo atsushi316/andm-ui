@@ -33,11 +33,22 @@
       border-color var(--andm-motion-duration-short2)
         var(--andm-motion-easing-decelerate),
       box-shadow var(--andm-motion-duration-short2)
-        var(--andm-motion-easing-decelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard),
-      transform var(--andm-motion-duration-short2)
-        var(--andm-motion-easing-standard);
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-btn:active:not(:disabled):not([disabled]) {
+    transform: scale(var(--andm-btn-press-scale));
+    transition:
+      background-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      border-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      box-shadow var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      transform var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate);
   }
 
   .andm-btn:focus {
@@ -122,16 +133,7 @@
   }
 
   .andm-btn--filled:active:not(:disabled):not([disabled]) {
-    transform: scale(var(--andm-btn-press-scale));
-    border-radius: var(--andm-btn-radius-pressed);
     box-shadow: none;
-    transition:
-      transform var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard),
-      box-shadow var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate);
   }
 
   .andm-btn--filled:active:not(:disabled):not([disabled])::before {
@@ -172,16 +174,7 @@
   }
 
   .andm-btn--elevated:active:not(:disabled):not([disabled]) {
-    transform: scale(var(--andm-btn-press-scale));
-    border-radius: var(--andm-btn-radius-pressed);
     box-shadow: var(--andm-shadow-1);
-    transition:
-      transform var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard),
-      box-shadow var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate);
   }
 
   .andm-btn--elevated:active:not(:disabled):not([disabled])::before {
@@ -217,16 +210,6 @@
     pointer-events: none;
   }
 
-  .andm-btn--tonal:active:not(:disabled):not([disabled]) {
-    transform: scale(var(--andm-btn-press-scale));
-    border-radius: var(--andm-btn-radius-pressed);
-    transition:
-      transform var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard);
-  }
-
   .andm-btn--tonal:active:not(:disabled):not([disabled])::before {
     content: "";
     position: absolute;
@@ -260,15 +243,6 @@
     background: rgb(
       var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
     );
-    transform: scale(var(--andm-btn-press-scale));
-    border-radius: var(--andm-btn-radius-pressed);
-    transition:
-      transform var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard),
-      background-color var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate);
   }
 
   .andm-btn--outlined:disabled,
@@ -302,15 +276,6 @@
     background: rgb(
       var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
     );
-    transform: scale(var(--andm-btn-press-scale));
-    border-radius: var(--andm-btn-radius-pressed);
-    transition:
-      transform var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard),
-      background-color var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate);
   }
 
   .andm-btn--text:disabled,
@@ -339,8 +304,13 @@
   }
 
   .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]) {
+    border-radius: var(--andm-btn-radius-pressed);
     transition:
       background-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      border-color var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate),
       box-shadow var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate),
@@ -531,5 +501,41 @@
   .andm-series--dads .andm-btn--text:focus-visible {
     background: var(--andm-focus-ring-inner);
     color: var(--andm-color-primary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-btn:active:not(:disabled):not([disabled]) {
+      transform: none;
+    }
+
+    .andm-series--expressive .andm-btn,
+    .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]),
+    .andm-series--expressive
+      .andm-btn--sm:active:not(:disabled):not([disabled]),
+    .andm-series--expressive
+      .andm-btn--lg:active:not(:disabled):not([disabled]) {
+      transform: none;
+      border-radius: var(--andm-btn-radius);
+      transition-property: background-color, color, border-color, box-shadow;
+    }
+
+    .andm-series--expressive
+      .andm-btn--shape-asymmetric:active:not(:disabled):not([disabled]) {
+      border-radius: var(--andm-btn-radius-asymmetric);
+    }
+
+    .andm-series--expressive
+      .andm-btn--sm.andm-btn--shape-asymmetric:active:not(:disabled):not(
+        [disabled]
+      ) {
+      border-radius: 12px;
+    }
+
+    .andm-series--expressive
+      .andm-btn--lg.andm-btn--shape-asymmetric:active:not(:disabled):not(
+        [disabled]
+      ) {
+      border-radius: 28px;
+    }
   }
 }
