@@ -1,0 +1,155 @@
+# Carbon
+
+未実装の UI をあとで再現するためのルール。確認日は 2026-09-29。公式アイコン、フォントファイル、CSS は埋め込まない。本文と JSON に無い値は書かない。
+
+## 公式 URL
+
+リポジトリ: https://github.com/carbon-design-system/carbon
+
+取得したファイル:
+
+- `packages/themes/src/v10/white.ts`
+- `packages/themes/src/v10/g10.ts`
+- `packages/colors/src/dtcg/colors.json`
+- `packages/layout/src/dtcg/layout.json`
+- `packages/styles/scss/components/button/_vars.scss`
+- `packages/styles/scss/utilities/_layout.scss`
+- `packages/styles/scss/components/button/_mixins.scss` と `_button.scss` の、高さと色の参照箇所
+- `packages/type/scss/_font-family.scss`
+- `packages/themes/src/dtcg/components/button.json`（hover の別名。今回の Button には未使用）
+
+## 考え方
+
+white と g10 は、ボタンの primary / secondary が同じ色を指す。面の色は違う。white の `uiBackground` は white。g10 の `uiBackground` は gray10。シリーズの Button は white を既定にしている。
+
+ボタンの高さは汎用の size トークンを使い、ボタン自身の既定ステップは `lg`（48px）。角の既定は 0。
+
+## color
+
+`colors.json` の値。white.ts と g10.ts が名前で参照している。
+
+| 名前 | 値 |
+|------|----|
+| blue60 | `#0f62fe` |
+| blue70 | `#0043ce` |
+| blue80 | `#002d9c` |
+| blue60Hover | `#0050e6` |
+| gray10 | `#f4f4f4` |
+| gray30 | `#c6c6c6` |
+| gray50 | `#8d8d8d` |
+| gray60 | `#6f6f6f` |
+| gray70 | `#525252` |
+| gray80 | `#393939` |
+| gray100 | `#161616` |
+| white | `#ffffff` |
+| red60 | `#da1e28` |
+| red80 | `#750e13` |
+
+white.ts と g10.ts に直書きされている値:
+
+- `hoverPrimary` / `hoverTertiary` = `#0353e9`
+- `hoverSecondary` = `#4c4c4c`
+- `buttonSeparator` = `#e0e0e0`
+
+white と g10 の対応:
+
+- primary = blue60。hover = `#0353e9`。active = blue80
+- secondary = gray80。hover = `#4c4c4c`。active = gray60
+- tertiary = blue60。active = blue80。hover 背景は `#0353e9`。hover と active の文字は `textInverse`（white）
+- 塗りの文字 `textOnColor` は white
+- 無効背景 `disabled02` は gray30。無効文字 `disabled03` は gray50
+- 本文 `text01` は gray100。補助 `text02` は gray70
+- white の面は `#ffffff`。g10 の面は gray10 `#f4f4f4`
+- focus は blue60
+
+`button.json` の primary-hover は `{blue.60Hover}`（`#0050e6`）。white.ts の `#0353e9` とは違う。Button は white.ts / g10.ts を採用した。
+
+`hoverDanger` は `adjustLightness` の結果で、hex がファイルに無い。未採用。
+
+## typography
+
+- `$button-font-size` は `0.875rem`
+- `$button-font-weight` は 400
+- 書体名は IBM Plex Sans。日本語向けの名前は IBM Plex Sans JP。ファイルは置かない
+- body-compact の行高は、mixin が参照しているが、今回その数値は取得していない。未確認
+
+## spacing
+
+`layout.json` の記述（値は mini unit。説明文の px を採用）:
+
+| トークン | 説明 |
+|----------|------|
+| spacing-03 | 8px |
+| spacing-04 | 12px |
+| spacing-05 | 16px |
+| spacing-10 | 64px |
+
+size トークン（説明文が px）:
+
+| トークン | px |
+|----------|----|
+| size-xs | 24 |
+| size-sm | 32 |
+| size-md | 40 |
+| size-lg | 48 |
+| size-xl | 64 |
+| size-2xl | 80 |
+
+density の normal は spacing-05（16px）。condensed は spacing-03（8px）。
+
+ボタンの横余白は、leading が density から 1px を引いた値、trailing が density の 3 倍に 16px を足して 1px を引いた値。normal なら 15px と 63px。63px はアイコンの置き場。テキストだけのボタンには未採用。採用した横余白は spacing-05 の 16px。
+
+## radius
+
+`$button-border-radius` は 0。v12 フラグが有効なときの fallback は `border-radius-max`（layout.json では `999999px`）。フラグは有効にしていない。
+
+layout の角トークン: 0、2px、4px、8px、16px、24px、max。ボタンの既定は 0。4px は「inputs, cards, and general components」の説明。8px はパネルとモーダル。
+
+## elevation
+
+ボタンの既定にドロップシャドウは無い。focus は inset の 1px（`$button-outline-width`）と 2px（`$button-border-width`）。外側の影の式は取得していない。
+
+## motion
+
+mixin は `$duration-fast-01` と `motion(entrance, productive)` を参照する。数値は今回取得していない。未確認。
+
+## コンポーネント（ボタン）
+
+- 境界幅の見た目は `$button-outline-width` の 1px。primary と secondary の境界色は transparent
+- primary: 背景 blue60、文字 white。hover `#0353e9`。active blue80
+- secondary: 背景 gray80、文字 white。hover `#4c4c4c`。active gray60
+- tertiary: 背景透明、境界と文字は blue60。hover 背景 `#0353e9`、文字 white。active 背景 blue80、境界は transparent、文字 white
+- 無効: 背景 gray30、文字 gray50
+- 高さの既定ステップは `lg`（48px）。使える範囲は xs から 2xl
+- 角は 0
+- 最大幅の記述は 320px。アイコンは 16px。expressive のアイコンは 20px。expressive は今回のシリーズに入れていない
+
+## andm の `andm-series--carbon` に今反映している数値
+
+- 塗り `#0f62fe`、hover `#0353e9`、active `#002d9c`、文字 white
+- tonal は secondary（`#393939` / `#4c4c4c` / `#6f6f6f`）
+- outlined は tertiary
+- 面は white。本文 `#161616`。補助 `#525252`
+- 無効は `#c6c6c6` / `#8d8d8d`
+- 高さ 32 / 40 / 48px（size-sm / md / lg）。Gallery の中は 40px。Carbon のボタン既定は 48px
+- 角 0。横余白 16px。字 14px（0.875rem）。字重 400
+- 書体名は IBM Plex Sans と IBM Plex Sans JP
+- 影なし。押下の縮小なし。境界幅 1px。フォーカス色は blue60、幅トークンは 2px
+
+## まだ Button 以外を作るときに使うルール
+
+- g10 の面は `#f4f4f4`。white の面は `#ffffff`。ボタン色は同じ
+- 入力やカードの角は layout の 4px。パネルとモーダルは 8px。ボタンの 0 と混ぜない
+- 余白は 8 / 12 / 16px（spacing-03 / 04 / 05）。大きい区間は 64px（spacing-10）
+- 部品の高さは 24 / 32 / 40 / 48 / 64 / 80px
+- アイコン付きボタンの trailing は、normal で 63px。アイコンは 16px
+- danger の既定は red60 `#da1e28`、active は red80 `#750e13`。hover の hex は未確認なので足さない
+- focus は外側の輪ではなく、inset の 1px と 2px
+- `button.json` の hover `#0050e6` は、white.ts の `#0353e9` と別に存在する。混ぜない
+
+## 検証不能
+
+- `hoverDanger` の計算結果
+- `$duration-fast-01` のミリ秒
+- body-compact-01 の行高
+- v12 を有効にしたときのボタン角（フラグの中身は未確認。fallback 名だけ取得）

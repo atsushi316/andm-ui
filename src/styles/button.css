@@ -536,6 +536,88 @@
     background: transparent;
   }
 
+  /*
+   * Fluent 2（andm-series--fluent）
+   * Large buttons の角は 8px（shapes の Large）。それ以外は Token の 4px。
+   * 既存 variant 名は維持。角のモーフィングはしない。
+   */
+  .andm-series--fluent .andm-btn--lg,
+  .andm-series--fluent .andm-btn--lg:active:not(:disabled):not([disabled]) {
+    border-radius: 8px;
+  }
+
+  /*
+   * Carbon（andm-series--carbon）
+   * 既存 variant 名は維持。角は Token の 0。境界幅は outline の 1px。
+   * 塗りは primary。hover #0353e9、active #002d9c。
+   * outlined は tertiary。tonal は secondary。
+   */
+  .andm-series--carbon .andm-btn {
+    border-style: solid;
+    border-width: 1px;
+    border-color: transparent;
+  }
+
+  .andm-series--carbon .andm-btn--filled:hover:not(:disabled):not([disabled]) {
+    background-color: var(--andm-color-primary-hover);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    background-color: var(--andm-color-primary-active);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon
+    .andm-btn--filled:hover:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--filled:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  .andm-series--carbon .andm-btn--outlined {
+    border-color: var(--andm-color-primary);
+    color: var(--andm-color-primary);
+    background: transparent;
+  }
+
+  .andm-series--carbon .andm-btn--outlined:hover:not(:disabled):not([disabled]) {
+    background-color: var(--andm-color-primary-hover);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--outlined:active:not(:disabled):not([disabled]) {
+    border-color: transparent;
+    background-color: var(--andm-color-primary-active);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--tonal {
+    background: var(--andm-color-secondary-container);
+    color: var(--andm-color-on-secondary-container);
+  }
+
+  .andm-series--carbon .andm-btn--tonal:hover:not(:disabled):not([disabled]) {
+    background-color: #4c4c4c;
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--tonal:active:not(:disabled):not([disabled]) {
+    background-color: #6f6f6f;
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon
+    .andm-btn--tonal:hover:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--tonal:active:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--outlined:hover:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--outlined:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .andm-btn:active:not(:disabled):not([disabled]) {
       transform: none;

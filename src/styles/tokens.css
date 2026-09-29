@@ -323,4 +323,71 @@
     --andm-btn-press-scale: 1;
     --andm-focus-ring-width: 2px;
   }
+
+  /*
+   * 切替シリーズ: Fluent 2。
+   * 出典は fluent2.microsoft.design の shapes / typography（2026-09-29 の本文）。
+   * 公式アイコン、フォントファイル、CSS は同梱しない。ボタンのクラスは共通のまま。
+   *
+   * shapes: Medium は Buttons / dropdown で 4px。Large は Large buttons で 8px（lg のみ button.css）。
+   * 32px 未満は 2px、と本文にある。現行 sm は高さ 32px なので 2px にはしない。
+   * typography（Web）: Caption 1 は 12px、Body 1 は 14px、Subtitle 2 は 16px。
+   * 書体名は Segoe UI。ファイルは置かない。
+   * 色、余白、高さ、影、duration の数値はこれらのページ本文に無かったので書かない。
+   */
+  .andm-series--fluent {
+    --andm-btn-radius: 4px;
+    --andm-btn-radius-pressed: 4px;
+    --andm-font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+    --andm-font-size-sm: 12px;
+    --andm-font-size-md: 14px;
+    --andm-font-size-lg: 16px;
+  }
+
+  /*
+   * 切替シリーズ: IBM Carbon。white テーマ。
+   * 出典は carbon-design-system/carbon の公開トークン（2026-09-29 に取得）。
+   * 公式アイコン、フォントファイル、CSS は同梱しない。ボタンのクラスは共通のまま。
+   *
+   * 色: packages/themes/src/v10/white.ts と g10.ts。
+   *   primary は blue60 #0f62fe。hover は #0353e9。active は blue80 #002d9c。
+   *   secondary は gray80 #393939。hover は #4c4c4c。active は gray60 #6f6f6f。
+   *   無効背景は gray30 #c6c6c6。無効文字は gray50 #8d8d8d。
+   * 高さ: packages/layout の size-sm / size-md / size-lg = 32 / 40 / 48px。
+   *   ボタン SCSS の既定ステップは lg（48px）。ここでの md は size-md（40px）。
+   * 角: packages/styles の $button-border-radius は 0。
+   * 字: $button-font-size は 0.875rem、字重は 400。書体名は IBM Plex Sans。ファイルは置かない。
+   * 横余白: spacing-05 は 16px（density normal）。アイコン用の右側余白は未採用。
+   */
+  .andm-series--carbon {
+    --andm-color-primary: #0f62fe;
+    --andm-color-primary-rgb: 15 98 254;
+    --andm-color-primary-hover: #0353e9;
+    --andm-color-primary-active: #002d9c;
+    --andm-color-on-primary: #ffffff;
+    --andm-color-secondary-container: #393939;
+    --andm-color-on-secondary-container: #ffffff;
+    --andm-color-surface: #ffffff;
+    --andm-color-on-surface: #161616;
+    --andm-color-on-surface-variant: #525252;
+    --andm-color-outline: #0f62fe;
+    --andm-color-disabled-container: #c6c6c6;
+    --andm-color-on-disabled: #8d8d8d;
+    --andm-focus-ring-color: #0f62fe;
+    --andm-focus-ring-width: 2px;
+    --andm-font-family: "IBM Plex Sans", "IBM Plex Sans JP", system-ui, sans-serif;
+    --andm-font-weight-medium: 400;
+    --andm-font-size-md: 14px;
+    --andm-btn-radius: 0;
+    --andm-btn-radius-pressed: 0;
+    --andm-btn-height-sm: 32px;
+    --andm-btn-height-md: 40px;
+    --andm-btn-height-lg: 48px;
+    --andm-btn-padding-x-sm: 16px;
+    --andm-btn-padding-x-md: 16px;
+    --andm-btn-padding-x-lg: 16px;
+    --andm-shadow-1: none;
+    --andm-shadow-2: none;
+    --andm-btn-press-scale: 1;
+  }
 }

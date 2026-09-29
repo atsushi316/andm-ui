@@ -656,7 +656,7 @@
           <a class="g-goal" href="#series">
             <p class="g-goal__title">シリーズを切り替える</p>
             <p class="g-goal__desc">
-              Soft、Dense、Technical、Editorial、Playful、M3 Expressive、DADS、Apple、Spectrum。クラス名なしで選べます。
+              Soft、Dense、Technical、Editorial、Playful、M3 Expressive、DADS、Apple、Spectrum、Fluent 2、Carbon。クラス名なしで選べます。
             </p>
           </a>
           <a class="g-goal" href="#series-scene">
@@ -795,6 +795,26 @@
               <span>Spectrum</span>
               <span class="g-switch__hint">業務の画面</span>
             </label>
+            <label class="g-switch__opt" id="fluent">
+              <input
+                type="radio"
+                name="series"
+                value="fluent"
+                data-class="andm-series--fluent"
+              />
+              <span>Fluent 2</span>
+              <span class="g-switch__hint">角は 4px</span>
+            </label>
+            <label class="g-switch__opt" id="carbon">
+              <input
+                type="radio"
+                name="series"
+                value="carbon"
+                data-class="andm-series--carbon"
+              />
+              <span>Carbon</span>
+              <span class="g-switch__hint">角は直角</span>
+            </label>
             </div>
           </fieldset>
           <details class="g-details">
@@ -819,6 +839,23 @@
             <p>
               Spectrum は業務 UI の解釈です。Express
               のような遊びは入れていません。公式の CSS やフォントファイルは含みません。
+            </p>
+            <p>
+              Fluent 2 は
+              <a href="https://fluent2.microsoft.design/shapes" rel="noopener noreferrer"
+                >shapes</a
+              >
+              と
+              <a href="https://fluent2.microsoft.design/typography" rel="noopener noreferrer"
+                >typography</a
+              >
+              の本文だけを使います。ボタンの角は 4px、大きいボタンは 8px。Segoe UI
+              のファイルや公式アイコン、公式 CSS は含みません。
+            </p>
+            <p>
+              Carbon は IBM Carbon の white テーマです。塗りは
+              #0f62fe、角は 0、高さは 32 / 40 / 48px。IBM Plex
+              のファイルや公式アイコン、公式 CSS は含みません。
             </p>
           </details>
         </section>
@@ -933,6 +970,28 @@
               </div>
               <p class="g-panel__note">
                 Spectrum 2 の公開値です。塗りは blue-900、角は高さの半分、境界は 2px。Express は使っていません。
+              </p>
+            </div>
+            <div class="g-context" data-scene="fluent" hidden>
+              <p class="g-panel__use">向いている用途: 慣れた操作で、仕事に集中する画面</p>
+              <p>この変更を保存します。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
+              </div>
+              <p class="g-panel__note">
+                ボタンの角は 4px。大きいボタンは 8px。色や影の公式値は、参照したページの本文に無かったので当てていません。
+              </p>
+            </div>
+            <div class="g-context" data-scene="carbon" hidden>
+              <p class="g-panel__use">向いている用途: 製品の画面。角は立て、青で主操作を示す</p>
+              <p>この変更を適用します。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">適用</button>
+              </div>
+              <p class="g-panel__note">
+                white テーマです。塗りは #0f62fe、角は 0。ボタンの既定ステップは 48px で、ここでの中は 40px です。
               </p>
             </div>
           </section>
@@ -1289,6 +1348,8 @@
           dads: "andm-series--dads",
           apple: "andm-series--apple",
           spectrum: "andm-series--spectrum",
+          fluent: "andm-series--fluent",
+          carbon: "andm-series--carbon",
         };
         var preview = document.getElementById("series-preview");
         var classHelp = document.getElementById("series-class");

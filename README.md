@@ -43,6 +43,8 @@ Gallery で切り替えられます。同じ `andm-btn` に、親の Token を�
 | DADS | `andm-series--dads` | 行政・公共の分かりやすさ |
 | Apple | `andm-series--apple` | 今の Apple の画面に近い、案内や設定 |
 | Spectrum | `andm-series--spectrum` | 業務の画面。境界がはっきりして、詰めすぎない |
+| Fluent 2 | `andm-series--fluent` | 慣れた操作で、仕事に集中する画面 |
+| Carbon | `andm-series--carbon` | 製品の画面。角は立て、青で主操作を示す |
 
 ```html
 <div class="andm-series--soft">

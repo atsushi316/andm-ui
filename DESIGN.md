@@ -38,8 +38,10 @@ Gallery で今使える例です。共通の Button に Token を当てます。
 | DADS | `andm-series--dads` | 濃い青、控えめな角、太めの字。手続きで迷わず押せる |
 | Apple | `andm-series--apple` | システムフォントのみ。色と寸法は未確認 |
 | Spectrum | `andm-series--spectrum` | Spectrum 2。青のアクセント、height/2 の角、2px の境界 |
+| Fluent 2 | `andm-series--fluent` | ボタンの角は 4px。大きいボタンは 8px |
+| Carbon | `andm-series--carbon` | 角は 0。塗りは #0f62fe。高さは 32 / 40 / 48px |
 
-Baseline は追加クラスなし。上の 9 つは Gallery で切り替えるシリーズです。ボタンのクラスは共通のままです。
+Baseline は追加クラスなし。上の 11 は Gallery で切り替えるシリーズです。ボタンのクラスは共通のままです。
 
 ## シリーズの詳細（M3 Expressive / DADS）
 
@@ -93,6 +95,28 @@ Baseline は追加クラスなし。上の 9 つは Gallery で切り替える�
 | Border | 幅 2px。アウトラインは blue-900、浮かせの境界は gray-400 |
 | 影 | ドロップシャドウは無し（フォーカスリング 2px のみ） |
 | フォント | トークン名は Adobe Clean。フォントファイルは同梱しない |
+
+### Fluent 2
+
+| 項目 | 内容 |
+|------|------|
+| スコープ | 親に `andm-series--fluent`（Token remapping） |
+| 向いている用途 | 慣れた操作で、仕事に集中する画面 |
+| 出典 | [shapes](https://fluent2.microsoft.design/shapes)、[typography](https://fluent2.microsoft.design/typography)。入口は [Fluent 2](https://fluent2.microsoft.design/) |
+| Shape | Buttons は 4px。Large buttons は 8px。押しても角は変えない |
+| Typography | Web の Caption 1 / Body 1 / Subtitle 2 は 12 / 14 / 16px。書体名は Segoe UI。ファイルは同梱しない |
+| 未確認 | 色、余白、コントロール高さ、影、duration。motion と design-principles に px や ms は無かった |
+
+### Carbon
+
+| 項目 | 内容 |
+|------|------|
+| スコープ | 親に `andm-series--carbon`（Token remapping） |
+| 向いている用途 | 製品の画面。角は立て、青で主操作を示す |
+| 出典 | [carbon](https://github.com/carbon-design-system/carbon) の `packages/themes/src/v10/white.ts`、`g10.ts`、`packages/colors`、`packages/layout`、button の `$button-border-radius` |
+| Color | 塗りは #0f62fe。hover は #0353e9。active は #002d9c |
+| Shape | 角は 0。高さは 32 / 40 / 48px。ボタン SCSS の既定ステップは 48px |
+| Typography | ボタンの字は 0.875rem、字重 400。書体名は IBM Plex Sans。ファイルは同梱しない |
 
 ## Research 境界
 
