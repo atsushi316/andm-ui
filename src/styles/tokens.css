@@ -263,73 +263,64 @@
   }
 
   /*
-   * 切替シリーズ: 今の Apple の画面に近い解釈。
-   * 親に付けるだけで子孫の Button が切り替わる。ボタンのクラスは共通のまま。
-   * SF Pro のファイル、SF Symbols、ロゴ、公式 CSS は同梱しない。
-   * フォントはシステムフォント。角のモーフィングはしない。
+   * 切替シリーズ: Apple。出典は Human Interface Guidelines。
+   * https://developer.apple.com/jp/design/human-interface-guidelines
+   * 英語の color / layout / materials / buttons も同じガイドライン。
+   * 2026-09-29 時点で本文は JavaScript 必須。タイトル以外は検証不能。
+   * 色・角丸・余白・高さ・境界・影・ぼかし・押下縮小は公式値として書かない。
+   * 下のフォントは HIG の数値ではない。システムスタックのみ。
+   * SF のファイル、SF Symbols、ロゴは同梱しない。
    */
   .andm-series--apple {
-    --andm-color-primary: #007aff;
-    --andm-color-primary-rgb: 0 122 255;
-    --andm-color-on-primary: #ffffff;
-    --andm-color-secondary-container: rgb(0 122 255 / 0.12);
-    --andm-color-on-secondary-container: #0040a8;
-    --andm-color-surface: #f5f5f7;
-    --andm-color-on-surface: #1d1d1f;
-    --andm-color-on-surface-variant: #6e6e73;
-    --andm-color-outline: rgb(0 0 0 / 0.16);
     --andm-font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
       "Segoe UI", sans-serif;
-    --andm-font-weight-medium: 500;
-    --andm-font-size-sm: 13px;
-    --andm-font-size-md: 15px;
-    --andm-font-size-lg: 17px;
-    --andm-btn-tracking: -0.01em;
-    --andm-btn-radius: var(--andm-radius-pill);
-    --andm-btn-radius-pressed: var(--andm-radius-pill);
-    --andm-btn-height-sm: 36px;
-    --andm-btn-height-md: 44px;
-    --andm-btn-height-lg: 52px;
-    --andm-btn-padding-x-sm: 16px;
-    --andm-btn-padding-x-md: 22px;
-    --andm-btn-padding-x-lg: 28px;
-    --andm-shadow-1: 0 1px 2px rgb(0 0 0 / 0.06);
-    --andm-shadow-2: 0 4px 14px rgb(0 0 0 / 0.08);
-    --andm-btn-press-scale: 0.98;
   }
 
   /*
-   * 切替シリーズ: Adobe Spectrum 本体（業務 UI）の解釈。
-   * Express の遊びある方ではない。公式アセットも公式 CSS も同梱しない。
-   * 親に付けるだけで子孫の Button が切り替わる。ボタンのクラスは共通のまま。
-   * 角は中間。pill にも押下時の morph にもしない。
+   * 切替シリーズ: Spectrum 2。desktop / light。Express は使わない。
+   * 公式 CSS とフォントファイルは同梱しない。ボタンのクラスは共通のまま。
+   *
+   * 値は @spectrum-css/tokens 16.0.2 の medium-vars / light-vars / global-vars
+   * と、@spectrum-css/button のサイズ対応（S / 既定 / L）。
+   * 色の rgb は packages/tokens/src の light とも一致。
+   * 角はボタン式 height/2。corner-radius-100（4px）はボタンの角ではない。
+   *
+   * 高さ: component-height-75/100/200 = 24 / 32 / 40px
+   * 字: font-size-75/100/200 = 12 / 14 / 16px、bold-font-weight = 700
+   * 横余白: pill-edge-to-text 13/16/20px から border-width-200（2px）を引く → 11 / 14 / 18px
+   * 塗り: blue-900-rgb 59,99,251。hover/down: blue-1000-rgb 39,77,234。文字は white
+   * 薄い面: blue-200-rgb 229,240,254。境界: gray-400-rgb 198,198,198
+   * 面: gray-50-rgb 248,248,248。本文: gray-800-rgb 41,41,41
+   * フォント名: sans-serif-font-family = Adobe Clean（ファイルは置かない）
+   * 影: ボタンの box-shadow はフォーカス以外 none
    */
   .andm-series--spectrum {
-    --andm-color-primary: #0265dc;
-    --andm-color-primary-rgb: 2 101 220;
-    --andm-color-on-primary: #ffffff;
-    --andm-color-secondary-container: #e8f4ff;
-    --andm-color-on-secondary-container: #024ea8;
-    --andm-color-surface: #ffffff;
-    --andm-color-on-surface: #222222;
-    --andm-color-on-surface-variant: #464646;
-    --andm-color-outline: #6d6d6d;
-    --andm-font-family: "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    --andm-color-primary: rgb(59, 99, 251);
+    --andm-color-primary-rgb: 59 99 251;
+    --andm-color-on-primary: rgb(255, 255, 255);
+    --andm-color-secondary-container: rgb(229, 240, 254);
+    --andm-color-on-secondary-container: rgb(59, 99, 251);
+    --andm-color-surface: rgb(248, 248, 248);
+    --andm-color-on-surface: rgb(41, 41, 41);
+    --andm-color-on-surface-variant: rgb(80, 80, 80);
+    --andm-color-outline: rgb(198, 198, 198);
+    --andm-font-family: "Adobe Clean", "Segoe UI", "Hiragino Sans", sans-serif;
     --andm-font-weight-medium: 700;
-    --andm-font-size-sm: 13px;
+    --andm-font-size-sm: 12px;
     --andm-font-size-md: 14px;
     --andm-font-size-lg: 16px;
     --andm-btn-tracking: 0;
-    --andm-btn-radius: 8px;
-    --andm-btn-radius-pressed: 8px;
-    --andm-btn-height-sm: 32px;
-    --andm-btn-height-md: 40px;
-    --andm-btn-height-lg: 48px;
-    --andm-btn-padding-x-sm: 12px;
-    --andm-btn-padding-x-md: 16px;
-    --andm-btn-padding-x-lg: 20px;
-    --andm-shadow-1: 0 1px 2px rgb(0 0 0 / 0.08);
-    --andm-shadow-2: 0 2px 6px rgb(0 0 0 / 0.1);
-    --andm-btn-press-scale: 0.98;
+    --andm-btn-radius: var(--andm-radius-pill);
+    --andm-btn-radius-pressed: var(--andm-radius-pill);
+    --andm-btn-height-sm: 24px;
+    --andm-btn-height-md: 32px;
+    --andm-btn-height-lg: 40px;
+    --andm-btn-padding-x-sm: 11px;
+    --andm-btn-padding-x-md: 14px;
+    --andm-btn-padding-x-lg: 18px;
+    --andm-shadow-1: none;
+    --andm-shadow-2: none;
+    --andm-btn-press-scale: 1;
+    --andm-focus-ring-width: 2px;
   }
 }

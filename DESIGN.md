@@ -36,8 +36,8 @@ Gallery で今使える例です。共通の Button に Token を当てます。
 | Playful | `andm-series--playful` | 丸い、ティール、押下の縮小が少し大きい |
 | M3 Expressive | `andm-series--expressive` | 丸が基本。押すと角が立つ。大きさでも強調する |
 | DADS | `andm-series--dads` | 濃い青、控えめな角、太めの字。手続きで迷わず押せる |
-| Apple | `andm-series--apple` | システムブルー、pill に近い角、ゆったり、細い境界、薄い影 |
-| Spectrum | `andm-series--spectrum` | 青のアクセント、中間の角丸、はっきりした境界、弱めの影 |
+| Apple | `andm-series--apple` | システムフォントのみ。色と寸法は未確認 |
+| Spectrum | `andm-series--spectrum` | Spectrum 2。青のアクセント、height/2 の角、2px の境界 |
 
 Baseline は追加クラスなし。上の 9 つは Gallery で切り替えるシリーズです。ボタンのクラスは共通のままです。
 
@@ -77,25 +77,22 @@ Baseline は追加クラスなし。上の 9 つは Gallery で切り替える�
 |------|------|
 | スコープ | 親に `andm-series--apple`（Token remapping） |
 | 向いている用途 | 今の Apple の画面に近い、案内や設定 |
-| Color | システムブルー（`#007AFF`）の解釈 |
-| Shape | 主要ボタンは pill に近い連続した角。押しても角は変えない |
-| Density | 高さ 36 / 44 / 52。横余白はゆったり |
-| Surface | 浮かせと薄い塗りは半透明。`backdrop-filter` は対応環境だけ |
-| Motion | 押下はわずかな縮小（`short1` + accelerate）。形状変化はしない |
-| フォント | `-apple-system, BlinkMacSystemFont` を含むシステムフォント。ファイルは同梱しない |
+| 出典 | [HIG（日本語）](https://developer.apple.com/jp/design/human-interface-guidelines)。英語は [入口](https://developer.apple.com/design/human-interface-guidelines) から color / layout / materials / buttons |
+| HIG から採用した数値 | なし。上記ページはタイトルのみで本文が取れない |
+| フォント | `-apple-system, BlinkMacSystemFont` は HIG の測定値ではない。ファイルは同梱しない |
 
 ### Spectrum
 
 | 項目 | 内容 |
 |------|------|
 | スコープ | 親に `andm-series--spectrum`（Token remapping） |
-| 向いている用途 | 業務の画面。境界がはっきりして、詰めすぎない |
-| Color | 青のアクセント（`#0265DC`）の解釈 |
-| Shape | 中間の角丸（8px）。pill にも押下時の morph にもしない |
-| Density | 高さ 32 / 40 / 48。詰めすぎない |
-| Surface | 浮かせ・薄い塗り・アウトラインに 1px の境界。影は弱め |
-| 方向 | Spectrum 本体の業務 UI。Express の遊びは入れない |
-| フォント | システムフォント。公式フォントファイルは同梱しない |
+| 向いている用途 | 業務の画面。Spectrum 2。Express は使わない |
+| Color | light の blue-900 `rgb(59, 99, 251)`。hover/down は blue-1000 `rgb(39, 77, 234)` |
+| Shape | ボタンの角は高さの半分。`corner-radius-100`（4px）は使わない |
+| Density | desktop の S / M / L = 24 / 32 / 40px。字は 12 / 14 / 16px |
+| Border | 幅 2px。アウトラインは blue-900、浮かせの境界は gray-400 |
+| 影 | ドロップシャドウは無し（フォーカスリング 2px のみ） |
+| フォント | トークン名は Adobe Clean。フォントファイルは同梱しない |
 
 ## Research 境界
 

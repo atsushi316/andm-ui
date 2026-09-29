@@ -504,45 +504,36 @@
   }
 
   /*
-   * Apple（andm-series--apple）
-   * Token だけでは出せない面だけを足す。
-   * 細い境界、半透明の面。ぼかしは対応環境だけ。
-   * 既存 variant 名は維持。角のモーフィングはしない。
-   */
-  .andm-series--apple .andm-btn--elevated,
-  .andm-series--apple .andm-btn--tonal,
-  .andm-series--apple .andm-btn--outlined {
-    border: 1px solid var(--andm-color-outline);
-  }
-
-  .andm-series--apple .andm-btn--elevated {
-    background-color: rgb(255 255 255 / 0.62);
-  }
-
-  .andm-series--apple .andm-btn--tonal {
-    background-color: rgb(var(--andm-color-primary-rgb) / 0.12);
-    border-color: rgb(var(--andm-color-primary-rgb) / 0.2);
-  }
-
-  @supports (
-    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
-  ) {
-    .andm-series--apple .andm-btn--elevated,
-    .andm-series--apple .andm-btn--tonal {
-      -webkit-backdrop-filter: saturate(1.2) blur(16px);
-      backdrop-filter: saturate(1.2) blur(16px);
-    }
-  }
-
-  /*
    * Spectrum（andm-series--spectrum）
-   * 業務 UI の境界だけを足す。塗りは青のアクセントのまま。
-   * 既存 variant 名は維持。pill にも角のモーフィングにもしない。
+   * 既存 variant 名は維持。数値は tokens.css の出典コメントと同じ。
+   * 塗りボタンの境界色は透明、幅は 2px。hover/down は blue-1000。
+   * 角は Token の pill（height/2）。モーフィングはしない。
    */
-  .andm-series--spectrum .andm-btn--elevated,
-  .andm-series--spectrum .andm-btn--tonal,
+  .andm-series--spectrum .andm-btn {
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent;
+  }
+
   .andm-series--spectrum .andm-btn--outlined {
-    border: 1px solid var(--andm-color-outline);
+    border-color: var(--andm-color-primary);
+  }
+
+  .andm-series--spectrum .andm-btn--elevated {
+    border-color: var(--andm-color-outline);
+    background-color: var(--andm-color-surface);
+  }
+
+  .andm-series--spectrum .andm-btn--filled:hover:not(:disabled):not([disabled]),
+  .andm-series--spectrum .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    background-color: rgb(39, 77, 234);
+  }
+
+  .andm-series--spectrum
+    .andm-btn--filled:hover:not(:disabled):not([disabled])::before,
+  .andm-series--spectrum
+    .andm-btn--filled:active:not(:disabled):not([disabled])::before {
+    background: transparent;
   }
 
   @media (prefers-reduced-motion: reduce) {
