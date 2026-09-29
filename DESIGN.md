@@ -23,7 +23,21 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 
 現状 Core に実装しているのは Style（variant）・Size・Icon（leading/trailing）・標準 state。Shape / Density / Emphasis の追加 modifier は人間確認後に最小限足す。
 
-## Direction デモ（Series 本機能ではない）
+## 使える見た目
+
+Gallery で今使える例です。共通の Button に Token を当てます。Component は増やしません。速度の割当はしません。
+
+| 見た目 | スコープ | 性格 |
+|--------|----------|------|
+| Soft | `andm-series--soft` | 角は大きめ、余白はゆったり、影は薄い |
+| Dense | `andm-series--dense` | 低く、詰めた余白、小さい字 |
+| Technical | `andm-series--technical` | 角はほぼ直角、等幅、影なし |
+| Editorial | `andm-series--editorial` | 角なし、セリフ、字間を少し開ける |
+| Playful | `andm-series--playful` | 丸い、ティール、押下の縮小が少し大きい |
+
+DADS と M3 Expressive は参考資料のデモであり、この表には入れません。
+
+## Direction デモ（参考資料）
 
 巨大 Theme Engine / Series 切替 UI ではない。**デモ用親スコープ（Token remapping）** で見た目を試せる。Baseline は andm の方向。DADS と M3 Expressive は参考体系であり、同じ分類にしない。いずれも唯一の正解にしない。
 
@@ -36,7 +50,7 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 | Shape | 静止は丸（full）。押下で角を立てる（Small 8 / Medium 12 / Large 16）。任意 `andm-btn--shape-asymmetric` は square（12 / 16 / 28） |
 | Size | Small 40 / Medium 56 / Large 96。横 padding は Small の推奨 16px。アイコン 20px |
 | Emphasis | 大きさ。字重は M3 label の Medium（500）。色ロールは Baseline のまま |
-| Motion | 形だけ spatial の overshoot 近似。色は decelerate。ホバー拡大・押下縮小はしない。`prefers-reduced-motion` は base で無効化 |
+| Motion | 形だけ spatial の overshoot 近似。色は decelerate。ホバー拡大・押下縮小はしない。`prefers-reduced-motion` では拡大と形状を抑え、色の状態変化は残す |
 | 既存 variant | filled / tonal / outlined / text / elevated はそのまま |
 
 ### DADS（デジタル庁デザインシステムの方向）
@@ -63,7 +77,7 @@ Research → Design Space → Principle / Direction / Series候補
 - `research/` は Build 外 / Runtime 非依存 / dist・npm・製品 Gallery 非含有
 - Research で発見したすべてを Core へ実装しない
 - AI は候補提示まで。採用（recommended）は人間が決める
-- Design Direction / Design Series は将来概念。Theme / Series 切替は今は実装しない
+- Design Direction / Design Series の切替 UI（ページ全体のスイッチャー）は今は作らない。Gallery の使える見た目は、親スコープの Token mapping でその場の UI に使える
 
 ## 採用基準
 

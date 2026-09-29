@@ -151,7 +151,7 @@
 
       .g-goals {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
         gap: var(--andm-space-3);
         margin: 0 0 var(--andm-space-8);
       }
@@ -267,6 +267,12 @@
 
       .g-compare--2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .g-looks {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--andm-space-4);
       }
 
       .g-panel {
@@ -436,7 +442,8 @@
 
       @media (max-width: 960px) {
         .g-goals,
-        .g-compare {
+        .g-compare,
+        .g-looks {
           grid-template-columns: 1fr;
         }
 
@@ -536,12 +543,31 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">andm の方向</span>
+          <span class="g-nav__label">使える見た目</span>
           <ul>
             <li>
               <a href="#baseline"
                 >Baseline <span class="g-nav__hint">汎用・中立</span></a
               >
+            </li>
+            <li>
+              <a href="#soft">Soft <span class="g-nav__hint">穏やか</span></a>
+            </li>
+            <li>
+              <a href="#dense">Dense <span class="g-nav__hint">詰めて置く</span></a>
+            </li>
+            <li>
+              <a href="#technical"
+                >Technical <span class="g-nav__hint">境界が明確</span></a
+              >
+            </li>
+            <li>
+              <a href="#editorial"
+                >Editorial <span class="g-nav__hint">文字で語る</span></a
+              >
+            </li>
+            <li>
+              <a href="#playful">Playful <span class="g-nav__hint">丸く温かい</span></a>
             </li>
           </ul>
         </div>
@@ -585,10 +611,16 @@
               Pattern はボタンの並び、Experience は申請の一歩です。どちらも Button だけです。
             </p>
           </a>
+          <a class="g-goal" href="#looks">
+            <p class="g-goal__title">見た目を使ってみる</p>
+            <p class="g-goal__desc">
+              Soft、Dense、Technical、Editorial、Playful は、同じ Button を別の見た目で使えます。
+            </p>
+          </a>
           <a class="g-goal" href="#compare">
             <p class="g-goal__title">系統を比べる</p>
             <p class="g-goal__desc">
-              andm の方向は Baseline。DADS と M3 Expressive は参考体系で、別の欄です。
+              andm の方向は Baseline。DADS と M3 Expressive は参考資料で、別の欄です。
             </p>
           </a>
         </div>
@@ -612,6 +644,87 @@
           </li>
         </ul>
 
+        <section class="g-section" id="looks" aria-labelledby="looks-title">
+          <h2 id="looks-title">使える見た目</h2>
+          <p class="g-desc">
+            同じ Button です。親にクラスを付けると、その場面の見た目が変わります。一覧は固定ではなく、ここにあるのは今使える例です。DADS と M3 Expressive は下の参考資料です。
+          </p>
+          <div class="g-looks">
+            <div class="g-panel andm-series--soft" id="soft">
+              <p class="g-kicker">andm</p>
+              <h3 class="g-panel__title">Soft</h3>
+              <p class="g-panel__use">向いている用途: 設定や案内など、落ち着いた画面</p>
+              <div class="g-context">
+                <p>変更を保存しますか。</p>
+                <div class="g-row">
+                  <button type="button" class="andm-btn andm-btn--text andm-btn--md">あとで</button>
+                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存する</button>
+                </div>
+              </div>
+            </div>
+            <div class="g-panel andm-series--dense" id="dense">
+              <p class="g-kicker">andm</p>
+              <h3 class="g-panel__title">Dense</h3>
+              <p class="g-panel__use">向いている用途: 表やツールバーなど、情報が多い画面</p>
+              <div class="g-context">
+                <p>3 件を選択中</p>
+                <div class="g-row">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">編集</button>
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">移動</button>
+                  <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">削除</button>
+                </div>
+              </div>
+            </div>
+            <div class="g-panel andm-series--technical" id="technical">
+              <p class="g-kicker">andm</p>
+              <h3 class="g-panel__title">Technical</h3>
+              <p class="g-panel__use">向いている用途: 開発ツールやログなど、境界をはっきりさせたい画面</p>
+              <div class="g-context">
+                <p>job #184 は停止しています。</p>
+                <div class="g-row">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">ログ</button>
+                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">再実行</button>
+                </div>
+              </div>
+            </div>
+            <div class="g-panel andm-series--editorial" id="editorial">
+              <p class="g-kicker">andm</p>
+              <h3 class="g-panel__title">Editorial</h3>
+              <p class="g-panel__use">向いている用途: 記事や読み物の末尾</p>
+              <div class="g-context">
+                <p>この章はここまでです。</p>
+                <div class="g-row">
+                  <button type="button" class="andm-btn andm-btn--text andm-btn--md">目次へ</button>
+                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">次の章</button>
+                </div>
+              </div>
+            </div>
+            <div class="g-panel andm-series--playful" id="playful">
+              <p class="g-kicker">andm</p>
+              <h3 class="g-panel__title">Playful</h3>
+              <p class="g-panel__use">向いている用途: はじめての操作や、気軽な招待</p>
+              <div class="g-context">
+                <p>下書きができました。</p>
+                <div class="g-row">
+                  <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">あとで見る</button>
+                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">公開する</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <details class="g-details">
+            <summary>この見た目のクラス</summary>
+            <p>
+              親に <code>andm-series--soft</code> /
+              <code>andm-series--dense</code> /
+              <code>andm-series--technical</code> /
+              <code>andm-series--editorial</code> /
+              <code>andm-series--playful</code>。
+              ボタン自体は <code>andm-btn</code> のままです。
+            </p>
+          </details>
+        </section>
+
         <section
           class="g-section"
           id="compare"
@@ -619,7 +732,7 @@
         >
           <h2 id="compare-title">用途を見て比べる</h2>
           <p class="g-desc">
-            同じボタンです。左は andm の方向。中央と右は参考体系で、andm の方向ではありません。見た目と用途で選んでください。
+            同じボタンです。左は andm の Baseline。中央と右は参考資料で、使える見た目の一覧ではありません。
           </p>
 
           <div class="g-compare">

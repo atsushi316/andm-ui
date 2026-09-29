@@ -20,7 +20,7 @@
     font-size: var(--andm-font-size-md);
     font-weight: var(--andm-font-weight-medium);
     line-height: var(--andm-line-height-tight);
-    letter-spacing: 0.15px;
+    letter-spacing: var(--andm-btn-tracking);
     text-decoration: none;
     white-space: nowrap;
     user-select: none;

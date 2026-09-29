@@ -29,31 +29,29 @@ import '@atsushi316/andm-ui/style.css'
 
 ### Direction デモ（親スコープ）
 
-Series 本機能ではなく比較・プロトタイプ用の Token remapping です。既存 variant クラスはそのまま。
+使える見た目は Soft / Dense / Technical / Editorial / Playful です。同じ `andm-btn` に Token を当てます。公式の全一覧ではありません。
+
+DADS と M3 Expressive は参考資料です。使える見た目の一覧には入れません。
 
 ```html
-<!-- Expressive: 強調・丸み -->
-<div class="andm-series--expressive">
+<div class="andm-series--soft">
   <button class="andm-btn andm-btn--filled andm-btn--md">保存</button>
-</div>
-
-<!-- DADS: 行政・公共。公開色の解釈。公式アセットの再配布ではない -->
-<div class="andm-series--dads">
-  <button class="andm-btn andm-btn--filled andm-btn--md">申請する</button>
 </div>
 ```
 
-製品 Gallery（`/gallery/`）では、用途を見て比べて選びます。andm の方向は Baseline。DADS と M3 Expressive は参考体系です。使える部品は Button で、単体と申請フォームの中を見られます。
+参考資料として比べるときだけ、`andm-series--expressive` と `andm-series--dads` を使います。
 
 ## 開発
 
 ```bash
 npm run build      # src/styles → dist/style.css
-npm run gallery    # 製品 Gallery（要: 先に build）→ http://localhost:4173/gallery/
+npm start          # build してから Gallery を起動
+# または npm run gallery
+# http://127.0.0.1:4173/gallery/
 ```
 
-製品 Gallery は必ず `dist/style.css` を参照します（`src/styles` 直参照ではない）。
-ルート `/` は `/gallery/` へ誘導します。ポートは `4173` 固定（使用中なら失敗します。既存の `serve` を止めてから再実行してください）。
+製品 Gallery は必ず `dist/style.css` を参照します。`npm start` と `npm run gallery` は、起動前に build します。`dist/` は Git に含まれないので、build なしで HTML だけ開くと見た目が出ません。
+ルート `/` は `/gallery/` へ誘導します。ポートは `4173` 固定です。すでに Gallery が応答しているときは、その URL を表示して終了します。別プロセスが 4173 を塞いでいて Gallery ではない場合は、そのプロセスを止めてから再実行してください。
 
 ## 構成
 
