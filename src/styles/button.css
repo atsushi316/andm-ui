@@ -324,6 +324,7 @@
    * — Series 本機能ではない（Gallery 比較・将来 Design Space 用のデモスコープ）
    */
   .andm-series--expressive .andm-btn {
+    /* 形（spatial）だけ overshoot 近似。色は effects なので decelerate */
     transition:
       background-color var(--andm-motion-duration-short2)
         var(--andm-motion-easing-decelerate),
@@ -334,43 +335,201 @@
       box-shadow var(--andm-motion-duration-short2)
         var(--andm-motion-easing-decelerate),
       border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard),
-      transform var(--andm-motion-duration-short3)
         var(--andm-motion-easing-expressive);
-  }
-
-  .andm-series--expressive .andm-btn:hover:not(:disabled):not([disabled]) {
-    transform: scale(1.02);
-    transition:
-      transform var(--andm-motion-duration-short2)
-        var(--andm-motion-easing-expressive),
-      background-color var(--andm-motion-duration-short2)
-        var(--andm-motion-easing-decelerate),
-      box-shadow var(--andm-motion-duration-short2)
-        var(--andm-motion-easing-decelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard);
   }
 
   .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]) {
     transition:
-      transform var(--andm-motion-duration-short1)
+      background-color var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard),
       box-shadow var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate),
-      background-color var(--andm-motion-duration-short1)
+      border-radius var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-expressive),
+      transform var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate);
   }
 
-  /* 非対称 shape（CSS で妥当な範囲の asymmetry）。任意 modifier */
+  /* Pressed はサイズごとに角を立てる（icon button 公開表の pressed） */
+  .andm-series--expressive
+    .andm-btn--sm:active:not(:disabled):not([disabled]) {
+    border-radius: 8px;
+  }
+
+  .andm-series--expressive
+    .andm-btn--lg:active:not(:disabled):not([disabled]) {
+    border-radius: 16px;
+  }
+
+  /* square。クラス名は既存 modifier を維持し、半径は公式の square */
   .andm-series--expressive .andm-btn--shape-asymmetric {
     border-radius: var(--andm-btn-radius-asymmetric);
+  }
+
+  .andm-series--expressive .andm-btn--sm.andm-btn--shape-asymmetric {
+    border-radius: 12px;
+  }
+
+  .andm-series--expressive .andm-btn--lg.andm-btn--shape-asymmetric {
+    border-radius: 28px;
   }
 
   .andm-series--expressive
     .andm-btn--shape-asymmetric:active:not(:disabled):not([disabled]) {
     border-radius: var(--andm-btn-radius-pressed);
+  }
+
+  .andm-series--expressive
+    .andm-btn--sm.andm-btn--shape-asymmetric:active:not(:disabled):not([disabled]) {
+    border-radius: 8px;
+  }
+
+  .andm-series--expressive
+    .andm-btn--lg.andm-btn--shape-asymmetric:active:not(:disabled):not([disabled]) {
+    border-radius: 16px;
+  }
+
+  /*
+   * DADS demo scope（andm-series--dads）
+   * Token だけでは出せないボタンの性格だけを足す。
+   * 塗りはホバーで濃くする、テキストは下線、フォーカスは黒+黄。
+   * 既存 variant 名は維持。shape morph / pill はしない。
+   */
+  .andm-series--dads .andm-btn {
+    gap: var(--andm-space-1);
+    letter-spacing: 0.02em;
+    text-underline-offset: 0.1875rem;
+    min-width: 96px;
+  }
+
+  .andm-series--dads .andm-btn--sm {
+    min-width: 80px;
+  }
+
+  .andm-series--dads .andm-btn--lg {
+    min-width: 136px;
+  }
+
+  .andm-series--dads .andm-btn--sm,
+  .andm-series--dads .andm-btn--sm:active:not(:disabled):not([disabled]) {
+    border-radius: 6px;
+  }
+
+  /* sm は見た目 36px。ターゲットは 44px（公式の ::after） */
+  .andm-series--dads .andm-btn--sm::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 44px;
+    margin: auto;
+  }
+
+  .andm-series--dads .andm-btn--text {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--elevated {
+    box-shadow: none;
+    border: 1px solid var(--andm-color-line);
+    background: var(--andm-color-surface);
+  }
+
+  .andm-series--dads
+    .andm-btn--filled:hover:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--filled:active:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--elevated:hover:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--elevated:active:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--tonal:hover:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--tonal:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  .andm-series--dads .andm-btn--filled:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-hover);
+    box-shadow: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-active);
+    box-shadow: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--outlined:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash);
+    color: var(--andm-color-primary-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--outlined:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash-strong);
+    color: var(--andm-color-primary-active);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--text:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-soft);
+    color: var(--andm-color-primary-hover);
+    text-decoration-thickness: 3px;
+  }
+
+  .andm-series--dads .andm-btn--text:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-muted);
+    color: var(--andm-color-primary-active);
+  }
+
+  .andm-series--dads .andm-btn--tonal:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash);
+  }
+
+  .andm-series--dads .andm-btn--tonal:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash-strong);
+  }
+
+  .andm-series--dads .andm-btn--elevated:hover:not(:disabled):not([disabled]) {
+    box-shadow: none;
+    background: var(--andm-color-primary-soft);
+  }
+
+  .andm-series--dads .andm-btn--elevated:active:not(:disabled):not([disabled]) {
+    box-shadow: none;
+    background: var(--andm-color-primary-muted);
+  }
+
+  .andm-series--dads .andm-btn--filled:disabled,
+  .andm-series--dads .andm-btn--filled[disabled] {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled-fill);
+    text-decoration: none;
+  }
+
+  .andm-series--dads .andm-btn--elevated:disabled,
+  .andm-series--dads .andm-btn--elevated[disabled] {
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+    box-shadow: none;
+  }
+
+  .andm-series--dads .andm-btn:focus-visible {
+    outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+    box-shadow: 0 0 0 2px var(--andm-focus-ring-inner);
+  }
+
+  .andm-series--dads .andm-btn--text:focus-visible {
+    background: var(--andm-focus-ring-inner);
+    color: var(--andm-color-primary);
   }
 }

@@ -37,13 +37,13 @@ Series 本機能ではなく比較・プロトタイプ用の Token remapping �
   <button class="andm-btn andm-btn--filled andm-btn--md">保存</button>
 </div>
 
-<!-- デジタル庁寄り（模倣テーマ。公式パッケージの再配布ではない） -->
-<div class="andm-series--digital-gov">
+<!-- DADS: 行政・公共。公開色の解釈。公式アセットの再配布ではない -->
+<div class="andm-series--dads">
   <button class="andm-btn andm-btn--filled andm-btn--md">申請する</button>
 </div>
 ```
 
-製品 Gallery（`/gallery/`）は目的別導線（コンポーネントを見る / 方向を比べる / テーマを選ぶ）で Baseline・Expressive・デジタル庁を比較できます。
+製品 Gallery（`/gallery/`）では、部品の確認（使えるのは Button）と、Baseline / Expressive / DADS の用途つき比較ができます。
 
 ## 開発
 

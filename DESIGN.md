@@ -32,25 +32,26 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 | 項目 | 内容 |
 |------|------|
 | スコープ | 親に `andm-series--expressive`（Token remapping） |
-| いつ使うか | 強調・遊び・マーケティング寄りのプロトタイプ |
-| Shape | より丸い（pill）・押下で `border-radius` morph・任意 `andm-btn--shape-asymmetric` |
-| Emphasis | やや高めの字重・高さ・tonal のコントラスト |
-| Motion | 既存 `short*`。空間は `--andm-motion-easing-expressive`（overshoot 近似）。`prefers-reduced-motion` は base で無効化 |
+| 向いている用途 | 表現寄り・消費者向け（強調や印象を残したい画面） |
+| Shape | 静止は丸（full）。押下で角を立てる（Small 8 / Medium 12 / Large 16）。任意 `andm-btn--shape-asymmetric` は square（12 / 16 / 28） |
+| Size | Small 40 / Medium 56 / Large 96。横 padding は Small の推奨 16px。アイコン 20px |
+| Emphasis | 大きさ。字重は M3 label の Medium（500）。色ロールは Baseline のまま |
+| Motion | 形だけ spatial の overshoot 近似。色は decelerate。ホバー拡大・押下縮小はしない。`prefers-reduced-motion` は base で無効化 |
 | 既存 variant | filled / tonal / outlined / text / elevated はそのまま |
 
-### デジタル庁寄り（模倣テーマ）
+### DADS（デジタル庁デザインシステムの方向）
 
 | 項目 | 内容 |
 |------|------|
-| スコープ | 親に `andm-series--digital-gov`（Token remapping） |
-| いつ使うか | 行政・公共系プロトタイプ、高コントラスト・可読性優先 |
-| Color | Primary Blue 900（`#0017C1`）、tonal は Blue 50 寄り、表面は白／Solid Gray |
-| Shape | 角丸スモール（8px）。pill / morph はしない |
-| Typography | `Noto Sans JP` 優先、字重 700 |
-| Focus | 黄フォーカス環（DADS の黄リング方向に寄せた近似） |
+| スコープ | 親に `andm-series--dads`（Token remapping） |
+| 向いている用途 | 行政・公共サービスの分かりやすさ・信頼・アクセシビリティ |
+| Color | 塗りは Blue 900（`#0017C1`）、ホバー Blue 1000、押下 Blue 1200。フォーカスは黒 + Yellow 300 |
+| Shape | md / lg は 8px、sm は 6px。pill にも押下時の morph にもしない。最小幅 96 / 80 / 136 |
+| Typography | ボタンは Oln-16B-100（16px / Bold 700 / 行間 100% / 字間 0.02em）。CDN は使わない |
+| Button | 公式は塗り・アウトライン・テキスト。塗りはホバーで Blue 1000、押下で Blue 1200、下線。テキストのフォーカス背景は黄。sm のターゲットは 44px |
 | 既存 variant | filled / tonal / outlined / text / elevated はそのまま |
 
-**ライセンス・ブランド注意:** `andm-series--digital-gov` は [デジタル庁デザインシステム](https://design.digital.go.jp/dads/) の公開ドキュメントに寄せた**模倣テーマ**です。公式パッケージ（例: `@digital-go-jp/design-tokens`）やブランド資産の再配布ではありません。本番の行政サイトでは公式アセットとガイドラインを確認してください。
+**ライセンス・ブランド注意:** `andm-series--dads` は [デジタル庁デザインシステム](https://design.digital.go.jp/dads/) の公開されている色・形状・タイポの**解釈**です。公式パッケージ（例: `@digital-go-jp/design-tokens`）やロゴなどのブランド資産の再配布ではありません。本番の行政サイトでは公式アセットとガイドラインを確認してください。
 
 ## Research 境界
 
