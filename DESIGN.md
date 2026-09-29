@@ -23,17 +23,34 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 
 現状 Core に実装しているのは Style（variant）・Size・Icon（leading/trailing）・標準 state。Shape / Density / Emphasis の追加 modifier は人間確認後に最小限足す。
 
-## Direction デモ: Expressive（Series 本機能ではない）
+## Direction デモ（Series 本機能ではない）
 
-M3 Expressive 寄りの表現を、**デモ用親スコープ**で試せる。巨大 Theme Engine / Series 切替 UI ではない。Baseline を壊さず、Expressive を唯一の正解にしない。
+巨大 Theme Engine / Series 切替 UI ではない。**デモ用親スコープ（Token remapping）** で方向を試せる。Baseline を壊さず、いずれの方向も唯一の正解にしない。テーマ追加は同じ親スコープパターンで拡張する。
+
+### Expressive
 
 | 項目 | 内容 |
 |------|------|
 | スコープ | 親に `andm-series--expressive`（Token remapping） |
+| いつ使うか | 強調・遊び・マーケティング寄りのプロトタイプ |
 | Shape | より丸い（pill）・押下で `border-radius` morph・任意 `andm-btn--shape-asymmetric` |
 | Emphasis | やや高めの字重・高さ・tonal のコントラスト |
 | Motion | 既存 `short*`。空間は `--andm-motion-easing-expressive`（overshoot 近似）。`prefers-reduced-motion` は base で無効化 |
 | 既存 variant | filled / tonal / outlined / text / elevated はそのまま |
+
+### デジタル庁寄り（模倣テーマ）
+
+| 項目 | 内容 |
+|------|------|
+| スコープ | 親に `andm-series--digital-gov`（Token remapping） |
+| いつ使うか | 行政・公共系プロトタイプ、高コントラスト・可読性優先 |
+| Color | Primary Blue 900（`#0017C1`）、tonal は Blue 50 寄り、表面は白／Solid Gray |
+| Shape | 角丸スモール（8px）。pill / morph はしない |
+| Typography | `Noto Sans JP` 優先、字重 700 |
+| Focus | 黄フォーカス環（DADS の黄リング方向に寄せた近似） |
+| 既存 variant | filled / tonal / outlined / text / elevated はそのまま |
+
+**ライセンス・ブランド注意:** `andm-series--digital-gov` は [デジタル庁デザインシステム](https://design.digital.go.jp/dads/) の公開ドキュメントに寄せた**模倣テーマ**です。公式パッケージ（例: `@digital-go-jp/design-tokens`）やブランド資産の再配布ではありません。本番の行政サイトでは公式アセットとガイドラインを確認してください。
 
 ## Research 境界
 

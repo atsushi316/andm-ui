@@ -27,20 +27,23 @@ import '@atsushi316/andm-ui/style.css'
 
 状態はブラウザ標準（`:hover` / `:active` / `:focus-visible` / `:disabled`）で表現します。
 
-### Direction デモ（Expressive）
+### Direction デモ（親スコープ）
 
-親に `andm-series--expressive` を付けると、子孫 Button の Token（shape / density 寄り / tonal）が切り替わります。既存 variant クラスはそのまま。Series 本機能ではなく比較用デモです。
+Series 本機能ではなく比較・プロトタイプ用の Token remapping です。既存 variant クラスはそのまま。
 
 ```html
+<!-- Expressive: 強調・丸み -->
 <div class="andm-series--expressive">
   <button class="andm-btn andm-btn--filled andm-btn--md">保存</button>
-  <button class="andm-btn andm-btn--filled andm-btn--md andm-btn--shape-asymmetric">
-    Asym
-  </button>
+</div>
+
+<!-- デジタル庁寄り（模倣テーマ。公式パッケージの再配布ではない） -->
+<div class="andm-series--digital-gov">
+  <button class="andm-btn andm-btn--filled andm-btn--md">申請する</button>
 </div>
 ```
 
-製品 Gallery（`/gallery/`）の **Directions** で Baseline と並べて確認できます。
+製品 Gallery（`/gallery/`）は目的別導線（コンポーネントを見る / 方向を比べる / テーマを選ぶ）で Baseline・Expressive・デジタル庁を比較できます。
 
 ## 開発
 

@@ -131,4 +131,40 @@
     --andm-color-secondary-container: #b8d4fb;
     --andm-color-on-secondary-container: #062e6f;
   }
+
+  /*
+   * Demo scope: デジタル庁デザインシステム（DADS）寄りの Token remapping。
+   * 公式アセットの再配布ではない模倣テーマ。Series 本機能ではない。
+   * 参照: design.digital.go.jp（Blue 900 / 角丸スモール / Noto Sans JP）
+   * Baseline / Expressive を壊さない。唯一の正解にしない。
+   */
+  .andm-series--digital-gov {
+    --andm-color-primary: #0017c1;
+    --andm-color-primary-rgb: 0 23 193;
+    --andm-color-on-primary: #ffffff;
+    --andm-color-secondary-container: #e8f1fe;
+    --andm-color-on-secondary-container: #0017c1;
+    --andm-color-surface: #ffffff;
+    --andm-color-on-surface: #333333;
+    --andm-color-on-surface-variant: #666666;
+    --andm-color-outline: #767676;
+    --andm-focus-ring-color: #ffd43d;
+    --andm-focus-ring-width: 4px;
+    --andm-focus-ring-offset: 2px;
+    --andm-font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont,
+      "Hiragino Sans", sans-serif;
+    --andm-font-weight-medium: 700;
+    --andm-font-size-sm: 14px;
+    --andm-font-size-md: 16px;
+    --andm-font-size-lg: 16px;
+    --andm-btn-height-sm: 36px;
+    --andm-btn-height-md: 48px;
+    --andm-btn-height-lg: 56px;
+    --andm-btn-padding-x-sm: 12px;
+    --andm-btn-padding-x-md: 16px;
+    --andm-btn-padding-x-lg: 20px;
+    --andm-btn-radius: var(--andm-radius-sm);
+    --andm-btn-radius-pressed: var(--andm-radius-sm);
+    --andm-btn-press-scale: 0.98;
+  }
 }

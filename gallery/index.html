@@ -8,7 +8,7 @@
     <style>
       /* Gallery layout only — component look comes from dist/style.css */
       :root {
-        --g-nav-width: 12.5rem;
+        --g-nav-width: 13.5rem;
         --g-surface-muted: color-mix(
           in srgb,
           var(--andm-color-on-surface) 4%,
@@ -102,6 +102,15 @@
         opacity: 0.7;
       }
 
+      .g-nav__hint {
+        display: block;
+        margin-top: 0.15rem;
+        font-size: 0.7rem;
+        color: var(--andm-color-on-surface-variant);
+        font-weight: 400;
+        line-height: 1.35;
+      }
+
       .g-main {
         padding: var(--andm-space-6) var(--andm-space-6) var(--andm-space-8);
         max-width: 72rem;
@@ -116,7 +125,7 @@
 
       .g-hero .lead {
         margin: 0 0 var(--andm-space-4);
-        max-width: 40rem;
+        max-width: 42rem;
         color: var(--andm-color-on-surface-variant);
         line-height: 1.5;
       }
@@ -125,7 +134,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: var(--andm-space-2) var(--andm-space-4);
-        margin: 0 0 var(--andm-space-8);
+        margin: 0 0 var(--andm-space-6);
         padding: 0;
         list-style: none;
         font-size: var(--andm-font-size-sm);
@@ -134,6 +143,56 @@
 
       .g-meta code {
         font-size: 0.85em;
+      }
+
+      .g-goals {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--andm-space-3);
+        margin: 0 0 var(--andm-space-8);
+      }
+
+      .g-goal {
+        display: block;
+        padding: var(--andm-space-4);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        background: var(--andm-color-surface);
+        text-decoration: none;
+        color: inherit;
+        transition:
+          border-color var(--andm-motion-duration-short2)
+            var(--andm-motion-easing-decelerate),
+          background-color var(--andm-motion-duration-short2)
+            var(--andm-motion-easing-decelerate);
+      }
+
+      .g-goal:hover {
+        border-color: color-mix(
+          in srgb,
+          var(--andm-color-primary) 40%,
+          var(--g-border)
+        );
+        background: var(--g-surface-muted);
+      }
+
+      .g-goal:focus-visible {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-goal__title {
+        margin: 0 0 var(--andm-space-1);
+        font-size: var(--andm-font-size-md);
+        font-weight: 700;
+        color: var(--andm-color-on-surface);
+      }
+
+      .g-goal__desc {
+        margin: 0;
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+        line-height: 1.45;
       }
 
       .g-section {
@@ -153,7 +212,7 @@
         color: var(--andm-color-on-surface-variant);
         font-size: var(--andm-font-size-sm);
         line-height: 1.45;
-        max-width: 40rem;
+        max-width: 42rem;
       }
 
       .g-block {
@@ -198,8 +257,12 @@
 
       .g-compare {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: var(--andm-space-4);
+      }
+
+      .g-compare--2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .g-panel {
@@ -215,11 +278,26 @@
         font-weight: 700;
       }
 
+      .g-panel__use {
+        margin: 0 0 var(--andm-space-2);
+        font-size: var(--andm-font-size-sm);
+        font-weight: 650;
+        color: var(--andm-color-primary);
+        line-height: 1.4;
+      }
+
       .g-panel__note {
         margin: 0 0 var(--andm-space-4);
         font-size: var(--andm-font-size-sm);
         color: var(--andm-color-on-surface-variant);
         line-height: 1.4;
+      }
+
+      .g-panel__code {
+        display: inline-block;
+        margin-bottom: var(--andm-space-3);
+        font-size: 0.75rem;
+        color: var(--andm-color-on-surface-variant);
       }
 
       .g-placeholder {
@@ -233,6 +311,31 @@
 
       .g-placeholder strong {
         color: var(--andm-color-on-surface);
+      }
+
+      .g-notice {
+        margin: var(--andm-space-8) 0 0;
+        padding: var(--andm-space-4);
+        border-left: 3px solid var(--g-border);
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+        line-height: 1.5;
+        max-width: 42rem;
+      }
+
+      .g-notice a {
+        color: var(--andm-color-primary);
+      }
+
+      @media (max-width: 960px) {
+        .g-goals,
+        .g-compare {
+          grid-template-columns: 1fr;
+        }
+
+        .g-compare--2 {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 800px) {
@@ -256,10 +359,6 @@
         .g-main {
           padding: var(--andm-space-4);
         }
-
-        .g-compare {
-          grid-template-columns: 1fr;
-        }
       }
     </style>
   </head>
@@ -268,6 +367,30 @@
       <nav class="g-nav" aria-label="Gallery">
         <a class="g-nav__brand" href="#top">andm-ui</a>
         <p class="g-nav__tag">Product Gallery</p>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">目的で探す</span>
+          <ul>
+            <li>
+              <a href="#goal-components"
+                >コンポーネントを見る
+                <span class="g-nav__hint">API・状態の確認</span></a
+              >
+            </li>
+            <li>
+              <a href="#goal-compare"
+                >デザイン方向を比べる
+                <span class="g-nav__hint">Baseline / Expressive / デジタル庁</span></a
+              >
+            </li>
+            <li>
+              <a href="#goal-themes"
+                >プロトタイプ用テーマを選ぶ
+                <span class="g-nav__hint">用途説明つき</span></a
+              >
+            </li>
+          </ul>
+        </div>
 
         <div class="g-nav__group">
           <span class="g-nav__label">Components</span>
@@ -288,10 +411,12 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Directions</span>
+          <span class="g-nav__label">Themes</span>
           <ul>
-            <li><a href="#directions">Baseline vs Expressive</a></li>
-            <li><a href="#expressive-detail">Expressive detail</a></li>
+            <li><a href="#theme-baseline">Baseline</a></li>
+            <li><a href="#theme-expressive">Expressive</a></li>
+            <li><a href="#theme-digital-gov">デジタル庁</a></li>
+            <li><a href="#goal-compare">3方向比較</a></li>
           </ul>
         </div>
       </nav>
@@ -300,9 +425,9 @@
         <header class="g-hero">
           <h1>andm-ui Gallery</h1>
           <p class="lead">
-            配布 CSS（<code>dist/style.css</code>）の検証面です。コンポーネントと
-            Direction（Baseline / Expressive）を並べて比較できます。Expressive
-            は唯一の正解ではなく、Design Space 上の一方向です。
+            配布 CSS（<code>dist/style.css</code>）の検証面です。カタログを並べるだけでなく、
+            「何をしたいか」から進めます。実装済みコンポーネントは Button 中心（Chip /
+            Text Field / FAB はプレースホルダ）。
           </p>
           <ul class="g-meta">
             <li>CSS: <code>../dist/style.css</code></li>
@@ -311,7 +436,39 @@
           </ul>
         </header>
 
-        <!-- —— Components: Button —— -->
+        <div class="g-goals" aria-label="目的エントリ">
+          <a class="g-goal" href="#goal-components">
+            <p class="g-goal__title">コンポーネントを見る</p>
+            <p class="g-goal__desc">
+              variant / size / icon / state を確認。実装済みは Button。
+            </p>
+          </a>
+          <a class="g-goal" href="#goal-compare">
+            <p class="g-goal__title">デザイン方向を比べる</p>
+            <p class="g-goal__desc">
+              同じ markup を Baseline / Expressive / デジタル庁で並べる。
+            </p>
+          </a>
+          <a class="g-goal" href="#goal-themes">
+            <p class="g-goal__title">プロトタイプ用テーマを選ぶ</p>
+            <p class="g-goal__desc">
+              いつ使うかの用途説明つき。親スコープ class をコピーして試す。
+            </p>
+          </a>
+        </div>
+
+        <!-- —— Goal: Components —— -->
+        <section
+          class="g-section"
+          id="goal-components"
+          aria-labelledby="goal-components-title"
+        >
+          <h2 id="goal-components-title">コンポーネントを見る</h2>
+          <p class="g-desc">
+            本体 CSS の Button を Baseline（既定トークン）で確認します。
+          </p>
+        </section>
+
         <section class="g-section" id="button" aria-labelledby="button-title">
           <h2 id="button-title">Button</h2>
           <p class="g-desc">
@@ -539,7 +696,6 @@
           </div>
         </section>
 
-        <!-- —— Placeholders for future components —— -->
         <section class="g-section" id="chip" aria-labelledby="chip-title">
           <h2 id="chip-title">Chip</h2>
           <p class="g-desc">未実装。後からセクションを足しやすいプレースホルダ。</p>
@@ -569,25 +725,126 @@
           </div>
         </section>
 
-        <!-- —— Directions: Baseline vs Expressive —— -->
+        <!-- —— Goal: Pick a theme —— -->
         <section
           class="g-section"
-          id="directions"
-          aria-labelledby="directions-title"
+          id="goal-themes"
+          aria-labelledby="goal-themes-title"
         >
-          <h2 id="directions-title">Directions — Baseline vs Expressive</h2>
+          <h2 id="goal-themes-title">プロトタイプ用テーマを選ぶ</h2>
           <p class="g-desc">
-            同じ markup（variant クラス）を、親スコープ
-            <code>andm-series--expressive</code> の有無だけで並べます。Series
-            本機能ではなく、デモ用 Token remapping です。
+            Series 本機能ではなく、デモ用親スコープ（Token remapping）です。用途に合う
+            class を親に付けて試してください。テーマを増やすときは同じパターンでパネルを追加します。
+          </p>
+
+          <div class="g-compare">
+            <div class="g-panel" id="theme-baseline" data-direction="baseline">
+              <h3 class="g-panel__title">Baseline（Default）</h3>
+              <p class="g-panel__use">いつ使うか: 標準の製品 UI・一般アプリの出発点</p>
+              <p class="g-panel__note">
+                <code>:root</code> 既定。radius-md・標準 press。追加 class 不要。
+              </p>
+              <code class="g-panel__code">（スコープなし）</code>
+              <div class="g-row">
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                >
+                  Filled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Outlined
+                </button>
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
+                  Tonal
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="g-panel andm-series--expressive"
+              id="theme-expressive"
+              data-direction="expressive"
+            >
+              <h3 class="g-panel__title">Expressive</h3>
+              <p class="g-panel__use">
+                いつ使うか: 強調・遊び・マーケティング寄りのプロトタイプ
+              </p>
+              <p class="g-panel__note">
+                pill shape・強めの press morph・expressive easing（空間のみ）。
+              </p>
+              <code class="g-panel__code">andm-series--expressive</code>
+              <div class="g-row">
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                >
+                  Filled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Outlined
+                </button>
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
+                  Tonal
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="g-panel andm-series--digital-gov"
+              id="theme-digital-gov"
+              data-direction="digital-gov"
+            >
+              <h3 class="g-panel__title">デジタル庁寄り</h3>
+              <p class="g-panel__use">
+                いつ使うか: 行政・公共系プロトタイプ、高コントラスト・可読性優先
+              </p>
+              <p class="g-panel__note">
+                Blue 900・角丸 8px・Noto Sans JP・黄フォーカス環。公式再配布ではない模倣。
+              </p>
+              <code class="g-panel__code">andm-series--digital-gov</code>
+              <div class="g-row">
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                >
+                  送信
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  戻る
+                </button>
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
+                  詳細
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- —— Goal: Compare —— -->
+        <section
+          class="g-section"
+          id="goal-compare"
+          aria-labelledby="goal-compare-title"
+        >
+          <h2 id="goal-compare-title">デザイン方向を比べる</h2>
+          <p class="g-desc">
+            同じ markup（variant クラス）を、親スコープの有無だけで並べます。どれも唯一の正解ではありません。
           </p>
 
           <div class="g-compare">
             <div class="g-panel" data-direction="baseline">
-              <h3 class="g-panel__title">Baseline（Default）</h3>
-              <p class="g-panel__note">
-                <code>:root</code> 既定。radius-md・標準 press scale。
-              </p>
+              <h3 class="g-panel__title">Baseline</h3>
+              <p class="g-panel__use">標準・汎用</p>
               <div class="g-row">
                 <button
                   type="button"
@@ -606,15 +863,6 @@
                   class="andm-btn andm-btn--outlined andm-btn--md"
                 >
                   Outlined
-                </button>
-                <button
-                  type="button"
-                  class="andm-btn andm-btn--elevated andm-btn--md"
-                >
-                  Elevated
-                </button>
-                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
-                  Text
                 </button>
               </div>
               <div class="g-row" style="margin-top: var(--andm-space-3)">
@@ -644,10 +892,7 @@
               data-direction="expressive"
             >
               <h3 class="g-panel__title">Expressive</h3>
-              <p class="g-panel__note">
-                親に <code>andm-series--expressive</code>。pill shape・強めの
-                press morph・expressive easing（空間のみ）。
-              </p>
+              <p class="g-panel__use">丸み・強調モーション</p>
               <div class="g-row">
                 <button
                   type="button"
@@ -667,14 +912,53 @@
                 >
                   Outlined
                 </button>
+              </div>
+              <div class="g-row" style="margin-top: var(--andm-space-3)">
                 <button
                   type="button"
-                  class="andm-btn andm-btn--elevated andm-btn--md"
+                  class="andm-btn andm-btn--filled andm-btn--sm"
                 >
-                  Elevated
+                  Sm
                 </button>
-                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
-                  Text
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                >
+                  Md
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--lg"
+                >
+                  Lg
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="g-panel andm-series--digital-gov"
+              data-direction="digital-gov"
+            >
+              <h3 class="g-panel__title">デジタル庁寄り</h3>
+              <p class="g-panel__use">公共・高コントラスト</p>
+              <div class="g-row">
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                >
+                  Filled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--tonal andm-btn--md"
+                >
+                  Tonal
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Outlined
                 </button>
               </div>
               <div class="g-row" style="margin-top: var(--andm-space-3)">
@@ -749,6 +1033,60 @@
             </div>
           </div>
         </section>
+
+        <section
+          class="g-section"
+          id="digital-gov-detail"
+          aria-labelledby="digital-gov-detail-title"
+        >
+          <h2 id="digital-gov-detail-title">デジタル庁寄り detail</h2>
+          <p class="g-desc">
+            親に <code>andm-series--digital-gov</code>。色・角丸・タイポを DADS
+            の公開仕様に寄せた Token remapping。variant 名はそのまま。
+          </p>
+
+          <div class="andm-series--digital-gov g-panel">
+            <h3 class="g-panel__title">Filled / Outlined / Text</h3>
+            <p class="g-panel__note">
+              Primary <code>#0017C1</code>、radius 8px、黄フォーカス（Tab
+              で確認）。Tab でフォーカス環を確認してください。
+            </p>
+            <div class="g-row">
+              <button
+                type="button"
+                class="andm-btn andm-btn--filled andm-btn--lg"
+              >
+                申請する
+              </button>
+              <button
+                type="button"
+                class="andm-btn andm-btn--outlined andm-btn--lg"
+              >
+                キャンセル
+              </button>
+              <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                詳しく見る
+              </button>
+              <button
+                type="button"
+                class="andm-btn andm-btn--tonal andm-btn--md"
+              >
+                保存
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="g-notice" aria-label="ライセンス注意">
+          <strong>デジタル庁テーマについて:</strong>
+          本デモの <code>andm-series--digital-gov</code> は
+          <a href="https://design.digital.go.jp/dads/" rel="noopener noreferrer"
+            >デジタル庁デザインシステム</a
+          >
+          の公開ドキュメントに寄せた<strong>模倣テーマ</strong>です。公式パッケージ（例:
+          <code>@digital-go-jp/design-tokens</code>）やブランド資産の再配布ではありません。本番の行政サイトでは公式アセットとガイドラインを確認してください。詳細は
+          <code>DESIGN.md</code> も参照。
+        </aside>
       </main>
     </div>
   </body>
