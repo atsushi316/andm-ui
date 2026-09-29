@@ -5,7 +5,7 @@ import { extname, join, normalize, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(fileURLToPath(new URL(".", import.meta.url)), "..");
-const port = 4173;
+const port = 4180;
 const host = "0.0.0.0";
 
 await import("./build-css.mjs");

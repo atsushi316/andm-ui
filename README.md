@@ -56,11 +56,11 @@ DADS はデジタル庁デザインシステムの公開情報の解釈です。
 npm run build      # src/styles → dist/style.css
 npm start          # build してから Gallery を起動
 # または npm run gallery
-# http://127.0.0.1:4173/gallery/
+# http://127.0.0.1:4180/gallery/
 ```
 
 製品 Gallery は必ず `dist/style.css` を参照します。`npm start` と `npm run gallery` は、起動前に build します。`dist/` は Git に含まれないので、build なしで HTML だけ開くと見た目が出ません。
-ルート `/` は `/gallery/` へ誘導します。ポートは `4173` 固定です。すでに Gallery が応答しているときは、その URL を表示して終了します。別プロセスが 4173 を塞いでいて Gallery ではない場合は、そのプロセスを止めてから再実行してください。
+ルート `/` は `/gallery/` へ誘導します。ポートは `4180` 固定です。すでに Gallery が応答しているときは、その URL を表示して終了します。別プロセスが 4180 を塞いでいて Gallery ではない場合は、そのプロセスを止めてから再実行してください。
 
 ## 構成
 
