@@ -12,6 +12,24 @@
 - 本文が取れた公式ページ: https://developer.android.com/develop/ui/compose/designsystems/material3  
   このページは Material Design 3 in Compose。冒頭で M3 Expressive を Material Design 3 の拡張と書いている。以降の数値は、このページの本文に出た M3 の既定値。Expressive 専用のボタン寸法としては書かれていない。
 
+## 思想・概念
+
+https://m3.material.io/ と、get-started、building-with-m3-expressive、Jetpack Compose の入口はタイトルのみで本文が取れない。検証不能。思想として書けるのは、本文が取れた次のページだけ。
+
+- https://developer.android.com/develop/ui/compose/designsystems/material3
+
+このページの本文から要約する。
+
+- M3 Expressive は Material Design 3 の拡張である。テーマ、コンポーネント、モーション、タイポグラフィなどの更新を含み、研究に基づく、と本文にある。目的は、使いたくなる魅力のある製品を作れるようにすること。
+- Material You の personalization として dynamic color を扱う。アルゴリズムが壁紙から色を作り、アプリとシステム UI に当てる。
+- テーマは color scheme、typography、shapes の3つ。変えると、使う M3 コンポーネントに反映される。
+- 強調は、surface / surface-variant / background と対応する on-color の組み合わせか、字重で足す。
+- 高さは主にトーナルカラーの重ねで表す。影も使う。暗いテーマの重ね色は primary から来る。
+- 個人向けの調整と柔軟さを勧める。部品の色には既定があるが、必要なら変えられる、と本文にある。
+- 部品に組み込まれたアクセシビリティ基準は、インクルーシブな製品設計の土台である。dynamic color は色のコントラスト基準を満たすように作られている。カスタムするときは、on-primary を primary の上に置くなど、対応する色ロールを使う。
+
+形状のモーフィング、spring、感情に働きかける戦術の本文は、このページに無い。m3.material.io 側は本文が取れないため、そこは検証不能のまま。
+
 ## 考え方（読めた範囲）
 
 Jetpack Compose は Material You と Material 3 Expressive の実装を提供する。M3 Expressive は Material Design 3 の拡張で、テーマ、コンポーネント、モーション、タイポグラフィなどの更新を含む。dynamic color も扱う。用語 Material Design 3、Material 3、M3 はこのページでは同じものを指す。

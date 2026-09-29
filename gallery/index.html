@@ -205,6 +205,10 @@
         scroll-margin-top: var(--andm-space-4);
       }
 
+      .g-stick-scope .g-section {
+        scroll-margin-top: 11rem;
+      }
+
       .g-section > h2 {
         margin: 0 0 var(--andm-space-2);
         font-size: 1.25rem;
@@ -311,14 +315,6 @@
         margin: 0 0 var(--andm-space-1);
         font-size: var(--andm-font-size-md);
         font-weight: 700;
-      }
-
-      .g-panel__use {
-        margin: 0 0 var(--andm-space-2);
-        font-size: var(--andm-font-size-sm);
-        font-weight: 650;
-        color: var(--andm-color-primary);
-        line-height: 1.4;
       }
 
       .g-panel__note {
@@ -486,8 +482,48 @@
         outline-offset: var(--andm-focus-ring-offset);
       }
 
-      .g-switch__hint {
-        font-size: 0.7rem;
+      .g-stick-scope {
+        min-width: 0;
+      }
+
+      .g-switch-bar {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        margin: 0 0 var(--andm-space-4);
+        padding: var(--andm-space-2) 0 var(--andm-space-3);
+        background: var(--andm-color-surface);
+        border-bottom: 1px solid var(--g-border);
+      }
+
+      .g-switch-bar .g-switch {
+        margin-bottom: 0;
+      }
+
+      .g-series-brief {
+        display: grid;
+        gap: var(--andm-space-1);
+        margin: var(--andm-space-3) 0 0;
+        max-width: 42rem;
+      }
+
+      .g-series-brief div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-2);
+        margin: 0;
+      }
+
+      .g-series-brief dt {
+        margin: 0;
+        font-size: var(--andm-font-size-sm);
+        font-weight: 700;
+      }
+
+      .g-series-brief dd {
+        margin: 0;
+        font-size: var(--andm-font-size-sm);
+        line-height: 1.45;
         color: var(--andm-color-on-surface-variant);
       }
 
@@ -605,16 +641,16 @@
               <a href="#soft">Soft <span class="g-nav__hint">穏やか</span></a>
             </li>
             <li>
-              <a href="#dense">Dense <span class="g-nav__hint">詰めて置く</span></a>
+              <a href="#dense">Dense <span class="g-nav__hint">余白を詰める</span></a>
             </li>
             <li>
               <a href="#technical"
-                >Technical <span class="g-nav__hint">境界が明確</span></a
+                >Technical <span class="g-nav__hint">境界がはっきり</span></a
               >
             </li>
             <li>
               <a href="#editorial"
-                >Editorial <span class="g-nav__hint">文字で語る</span></a
+                >Editorial <span class="g-nav__hint">読み物向け</span></a
               >
             </li>
             <li>
@@ -622,11 +658,25 @@
             </li>
             <li>
               <a href="#expressive"
-                >M3 Expressive <span class="g-nav__hint">表現寄り</span></a
+                >M3 Expressive <span class="g-nav__hint">印象を残す</span></a
               >
             </li>
             <li>
               <a href="#dads">DADS <span class="g-nav__hint">行政・公共</span></a>
+            </li>
+            <li>
+              <a href="#apple">Apple <span class="g-nav__hint">案内・設定</span></a>
+            </li>
+            <li>
+              <a href="#spectrum"
+                >Spectrum <span class="g-nav__hint">業務の画面</span></a
+              >
+            </li>
+            <li>
+              <a href="#fluent">Fluent 2 <span class="g-nav__hint">角は 4px</span></a>
+            </li>
+            <li>
+              <a href="#carbon">Carbon <span class="g-nav__hint">角は直角</span></a>
             </li>
           </ul>
         </div>
@@ -634,9 +684,9 @@
 
       <main class="g-main" id="top">
         <header class="g-hero">
-          <h1>用途を見て、比べて、選ぶ</h1>
+          <h1>見た目と用途を比べて選ぶ</h1>
           <p class="lead">
-            最初に見えるのは見た目と用途です。クラス名は、あとから開きます。
+            先に見えるのは見た目と用途です。クラス名は、詳細を開くと確認できます。
           </p>
         </header>
 
@@ -656,13 +706,13 @@
           <a class="g-goal" href="#series">
             <p class="g-goal__title">シリーズを切り替える</p>
             <p class="g-goal__desc">
-              Soft、Dense、Technical、Editorial、Playful、M3 Expressive、DADS、Apple、Spectrum、Fluent 2、Carbon。クラス名なしで選べます。
+              Soft、Dense、Technical、Editorial、Playful、M3 Expressive、DADS、Apple、Spectrum、Fluent 2、Carbon。クラス名を出さずに選べます。
             </p>
           </a>
           <a class="g-goal" href="#series-scene">
             <p class="g-goal__title">場面で見る</p>
             <p class="g-goal__desc">
-              選んだシリーズの用途と、Button の場面例が下に出ます。主要プレビューも同じ見た目です。
+              選んだシリーズの特徴と用途、Button の場面例が下に出ます。部品の見た目も同じになります。
             </p>
           </a>
         </div>
@@ -689,8 +739,12 @@
         <section class="g-section" id="series" aria-labelledby="series-title">
           <h2 id="series-title">シリーズを切り替える</h2>
           <p class="g-desc">
-            名前を選ぶだけです。クラス名は覚えなくて大丈夫です。選ぶと、下の場面例と Button・Pattern・Experience が、そのシリーズの見た目になります。ボタン自体のクラスは変わりません。
+            名前を選ぶと、下の場面例と Button、Pattern、Experience がそのシリーズの見た目になります。ボタンのクラス自体は変わりません。クラス名は詳細にあります。
           </p>
+        </section>
+
+        <div class="g-stick-scope">
+          <div class="g-switch-bar">
           <fieldset class="g-switch">
             <legend>シリーズ</legend>
             <div class="g-switch__list">
@@ -703,7 +757,6 @@
                 checked
               />
               <span>Baseline</span>
-              <span class="g-switch__hint">汎用・中立</span>
             </label>
             <label class="g-switch__opt" id="soft">
               <input
@@ -713,7 +766,6 @@
                 data-class="andm-series--soft"
               />
               <span>Soft</span>
-              <span class="g-switch__hint">穏やか</span>
             </label>
             <label class="g-switch__opt" id="dense">
               <input
@@ -723,7 +775,6 @@
                 data-class="andm-series--dense"
               />
               <span>Dense</span>
-              <span class="g-switch__hint">詰めて置く</span>
             </label>
             <label class="g-switch__opt" id="technical">
               <input
@@ -733,7 +784,6 @@
                 data-class="andm-series--technical"
               />
               <span>Technical</span>
-              <span class="g-switch__hint">境界が明確</span>
             </label>
             <label class="g-switch__opt" id="editorial">
               <input
@@ -743,7 +793,6 @@
                 data-class="andm-series--editorial"
               />
               <span>Editorial</span>
-              <span class="g-switch__hint">文字で語る</span>
             </label>
             <label class="g-switch__opt" id="playful">
               <input
@@ -753,7 +802,6 @@
                 data-class="andm-series--playful"
               />
               <span>Playful</span>
-              <span class="g-switch__hint">丸く温かい</span>
             </label>
             <label class="g-switch__opt" id="expressive">
               <input
@@ -763,7 +811,6 @@
                 data-class="andm-series--expressive"
               />
               <span>M3 Expressive</span>
-              <span class="g-switch__hint">表現寄り</span>
             </label>
             <label class="g-switch__opt" id="dads">
               <input
@@ -773,7 +820,6 @@
                 data-class="andm-series--dads"
               />
               <span>DADS</span>
-              <span class="g-switch__hint">行政・公共</span>
             </label>
             <label class="g-switch__opt" id="apple">
               <input
@@ -783,7 +829,6 @@
                 data-class="andm-series--apple"
               />
               <span>Apple</span>
-              <span class="g-switch__hint">案内・設定</span>
             </label>
             <label class="g-switch__opt" id="spectrum">
               <input
@@ -793,7 +838,6 @@
                 data-class="andm-series--spectrum"
               />
               <span>Spectrum</span>
-              <span class="g-switch__hint">業務の画面</span>
             </label>
             <label class="g-switch__opt" id="fluent">
               <input
@@ -803,7 +847,6 @@
                 data-class="andm-series--fluent"
               />
               <span>Fluent 2</span>
-              <span class="g-switch__hint">角は 4px</span>
             </label>
             <label class="g-switch__opt" id="carbon">
               <input
@@ -813,10 +856,20 @@
                 data-class="andm-series--carbon"
               />
               <span>Carbon</span>
-              <span class="g-switch__hint">角は直角</span>
             </label>
             </div>
           </fieldset>
+          <dl class="g-series-brief">
+            <div>
+              <dt>特徴</dt>
+              <dd id="series-trait">角も余白も中くらいで、色は強く出しません。</dd>
+            </div>
+            <div>
+              <dt>向いている用途</dt>
+              <dd id="series-use">どの画面にも置きやすい、中立な出発点です。</dd>
+            </div>
+          </dl>
+          </div>
           <details class="g-details">
             <summary>このシリーズのクラス</summary>
             <p id="series-class">
@@ -829,16 +882,16 @@
                 rel="noopener noreferrer"
                 >デジタル庁デザインシステム</a
               >
-              の公開されている色・角丸・タイポ・ボタンの性格を解釈したものです。公式のボタンは塗り・アウトライン・テキストの3種です。ここにある薄い塗りと浮かせは、既存の variant を残したもので公式の3種には入りません。ロゴや公式ファイルは含みません。Web フォントは読み込まず、入っていれば Noto Sans JP、なければ日本語ゴシックで近づけています。
+              の公開されている色・角丸・文字・ボタンの性格を解釈したものです。公式のボタンは、塗り、アウトライン、テキストの3種類です。ここにある薄い塗りと浮かせは、既存の種類を残したもので、公式の3種類には入りません。ロゴや公式ファイルは含みません。Web フォントは読み込みません。端末に Noto Sans JP があればそれを使い、なければ日本語のゴシック体で近づけます。
             </p>
             <p>
-              Apple は今の画面に近い解釈です。システムフォント（-apple-system,
+              Apple は、今の画面に近づけた解釈です。システムフォント（-apple-system、
               BlinkMacSystemFont）だけを使い、SF Pro
               のファイル、SF Symbols、ロゴ、公式 CSS は含みません。
             </p>
             <p>
-              Spectrum は業務 UI の解釈です。Express
-              のような遊びは入れていません。公式の CSS やフォントファイルは含みません。
+              Spectrum は業務画面向けの解釈です。Express
+              の装飾は入れていません。公式の CSS やフォントファイルは含みません。
             </p>
             <p>
               Fluent 2 は
@@ -849,16 +902,20 @@
               <a href="https://fluent2.microsoft.design/typography" rel="noopener noreferrer"
                 >typography</a
               >
-              の本文だけを使います。ボタンの角は 4px、大きいボタンは 8px。Segoe UI
+              の本文だけを使います。ボタンの角は 4px、大きいボタンは 8px です。Segoe UI
               のファイルや公式アイコン、公式 CSS は含みません。
             </p>
             <p>
               Carbon は IBM Carbon の white テーマです。塗りは
-              #0f62fe、角は 0、高さは 32 / 40 / 48px。IBM Plex
+              #0f62fe、角は直角、高さは 32 / 40 / 48px です。IBM Plex
               のファイルや公式アイコン、公式 CSS は含みません。
             </p>
+            <p>
+              M3 Expressive で角ばった静止形にするときは
+              <code>andm-btn--shape-asymmetric</code>
+              です。
+            </p>
           </details>
-        </section>
 
         <div id="series-preview">
           <section
@@ -868,7 +925,6 @@
           >
             <h2 id="series-scene-title">このシリーズの場面</h2>
             <div class="g-context" data-scene="baseline">
-              <p class="g-panel__use">向いている用途: 汎用・中立。どの画面にも置きやすい出発点</p>
               <p>申請内容を確認してから保存します。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--text andm-btn--md">キャンセル</button>
@@ -876,7 +932,6 @@
               </div>
             </div>
             <div class="g-context" data-scene="soft" hidden>
-              <p class="g-panel__use">向いている用途: 設定や案内など、落ち着いた画面</p>
               <p>変更を保存しますか。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--text andm-btn--md">あとで</button>
@@ -884,8 +939,7 @@
               </div>
             </div>
             <div class="g-context" data-scene="dense" hidden>
-              <p class="g-panel__use">向いている用途: 表やツールバーなど、情報が多い画面</p>
-              <p>3 件を選択中</p>
+              <p>3 件を選択中です。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">編集</button>
                 <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">移動</button>
@@ -893,7 +947,6 @@
               </div>
             </div>
             <div class="g-context" data-scene="technical" hidden>
-              <p class="g-panel__use">向いている用途: 開発ツールやログなど、境界をはっきりさせたい画面</p>
               <p>job #184 は停止しています。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">ログ</button>
@@ -901,7 +954,6 @@
               </div>
             </div>
             <div class="g-context" data-scene="editorial" hidden>
-              <p class="g-panel__use">向いている用途: 記事や読み物の末尾</p>
               <p>この章はここまでです。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--text andm-btn--md">目次へ</button>
@@ -909,7 +961,6 @@
               </div>
             </div>
             <div class="g-context" data-scene="playful" hidden>
-              <p class="g-panel__use">向いている用途: はじめての操作や、気軽な招待</p>
               <p>下書きができました。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">あとで見る</button>
@@ -917,16 +968,13 @@
               </div>
             </div>
             <div class="g-context" data-scene="expressive" hidden>
-              <p class="g-panel__use">向いている用途: 表現寄り・消費者向け。印象を残したい画面</p>
               <p>新しい機能を試しますか。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--text andm-btn--md">あとで</button>
                 <button type="button" class="andm-btn andm-btn--filled andm-btn--md">試してみる</button>
               </div>
               <p class="g-panel__note">
-                既定は丸。押すと角が立ちます。任意の
-                <code>andm-btn--shape-asymmetric</code>
-                は角ばった静止形です。
+                ふだんは丸く、押すと角が立ちます。角ばった静止形も選べます。
               </p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--filled andm-btn--md">丸い</button>
@@ -940,58 +988,53 @@
               </div>
             </div>
             <div class="g-context" data-scene="dads" hidden>
-              <p class="g-panel__use">向いている用途: 行政・公共サービスの分かりやすさ・信頼・アクセシビリティ</p>
-              <p>入力した内容を確認しました。この内容で申請しますか？</p>
+              <p>入力した内容を確認しました。この内容で申請しますか。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">戻る</button>
                 <button type="button" class="andm-btn andm-btn--filled andm-btn--md">申請する</button>
               </div>
               <p class="g-panel__note">
-                濃い青、控えめな角、太めの字。手続きで迷わず押せることを優先します。ロゴや公式ファイルは含みません。
+                手続きで迷わず押せることを優先しています。ロゴや公式ファイルは含みません。
               </p>
             </div>
             <div class="g-context" data-scene="apple" hidden>
-              <p class="g-panel__use">向いている用途: 今の Apple の画面に近い、案内や設定</p>
               <p>この設定を保存しますか。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--text andm-btn--md">キャンセル</button>
                 <button type="button" class="andm-btn andm-btn--filled andm-btn--md">続ける</button>
               </div>
               <p class="g-panel__note">
-                公式の色・角丸・余白・高さ・影は未確認のため当てていません。システムフォントだけです。
+                公式ページの本文が取れないため、色・角丸・余白・高さ・影は入れていません。使っているのはシステムフォントだけです。
               </p>
             </div>
             <div class="g-context" data-scene="spectrum" hidden>
-              <p class="g-panel__use">向いている用途: 業務の画面。境界がはっきりして、詰めすぎない</p>
               <p>選択した項目を更新します。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">キャンセル</button>
                 <button type="button" class="andm-btn andm-btn--filled andm-btn--md">更新</button>
               </div>
               <p class="g-panel__note">
-                Spectrum 2 の公開値です。塗りは blue-900、角は高さの半分、境界は 2px。Express は使っていません。
+                Spectrum 2 の公開値です。塗りは blue-900、角は高さの半分、境界は 2px です。Express は使っていません。
               </p>
             </div>
             <div class="g-context" data-scene="fluent" hidden>
-              <p class="g-panel__use">向いている用途: 慣れた操作で、仕事に集中する画面</p>
               <p>この変更を保存します。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">キャンセル</button>
                 <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
               </div>
               <p class="g-panel__note">
-                ボタンの角は 4px。大きいボタンは 8px。色や影の公式値は、参照したページの本文に無かったので当てていません。
+                ボタンの角は 4px、大きいボタンは 8px です。色や影は、参照したページの本文に無かったので入れていません。
               </p>
             </div>
             <div class="g-context" data-scene="carbon" hidden>
-              <p class="g-panel__use">向いている用途: 製品の画面。角は立て、青で主操作を示す</p>
               <p>この変更を適用します。</p>
               <div class="g-row">
                 <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">キャンセル</button>
                 <button type="button" class="andm-btn andm-btn--filled andm-btn--md">適用</button>
               </div>
               <p class="g-panel__note">
-                white テーマです。塗りは #0f62fe、角は 0。ボタンの既定ステップは 48px で、ここでの中は 40px です。
+                white テーマです。塗りは #0f62fe、角は直角です。ボタンの既定の高さは 48px で、ここの中サイズは 40px です。
               </p>
             </div>
           </section>
@@ -1001,7 +1044,7 @@
             Button <span class="g-badge g-badge--ready">使える</span>
           </h2>
           <p class="g-desc">
-            いま使える部品です。先に場面の中、そのあと単体です。見た目は、上で選んだシリーズです。
+            いま使える部品です。先に場面の中で見て、そのあと単体で見ます。見た目は、上で選んだシリーズです。
           </p>
 
           <div class="g-block" id="button-context">
@@ -1020,7 +1063,7 @@
           </div>
 
           <div class="g-block" id="button-isolated">
-            <h3>Isolated — 種類</h3>
+            <h3>単体 — 種類</h3>
             <div class="g-row">
               <button type="button" class="andm-btn andm-btn--elevated andm-btn--md">
                 Elevated
@@ -1041,7 +1084,7 @@
           </div>
 
           <div class="g-block">
-            <h3>Isolated — 大きさ</h3>
+            <h3>単体 — 大きさ</h3>
             <div class="g-row">
               <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
                 Small
@@ -1056,7 +1099,7 @@
           </div>
 
           <div class="g-block">
-            <h3>Isolated — アイコン</h3>
+            <h3>単体 — アイコン</h3>
             <div class="g-row">
               <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
                 <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -1084,7 +1127,7 @@
           </div>
 
           <div class="g-block">
-            <h3>Isolated — 状態</h3>
+            <h3>単体 — 状態</h3>
             <div class="g-grid">
               <div class="g-pair">
                 <span class="g-label">default</span>
@@ -1261,10 +1304,10 @@
             Pattern <span class="g-badge g-badge--ready">最小</span>
           </h2>
           <p class="g-desc">
-            部品の並びです。新しい部品は作っていません。進む操作を右、やめる操作を左に置きます。
+            部品の並びです。新しい部品は足していません。進む操作を右、やめる操作を左に置きます。
           </p>
           <div class="g-context">
-            <p>保存するか、やめます。</p>
+            <p>保存するか、やめますか。</p>
             <div class="g-row">
               <button type="button" class="andm-btn andm-btn--text andm-btn--md">
                 キャンセル
@@ -1281,10 +1324,10 @@
             Experience <span class="g-badge g-badge--ready">最小</span>
           </h2>
           <p class="g-desc">
-            画面の流れの切れ端です。Button だけで、申請の確認までを示します。
+            画面の流れの一部です。Button だけで、申請の確認までを示します。
           </p>
           <div class="g-context">
-            <p>入力した内容を確認しました。この内容で申請しますか？</p>
+            <p>入力した内容を確認しました。この内容で申請しますか。</p>
             <div class="g-row">
               <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
                 戻る
@@ -1302,7 +1345,7 @@
           <h2 id="chip-title">
             Chip <span class="g-badge g-badge--planned">予定</span>
           </h2>
-          <p class="g-desc">まだ使えません。枠だけ残しています。</p>
+          <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
           <div class="g-placeholder">
             <strong>予定</strong> — Assist / Filter / Input / Suggestion
             など。Button のあとで段階的に足します。
@@ -1317,7 +1360,7 @@
           <h2 id="text-field-title">
             Text Field <span class="g-badge g-badge--planned">予定</span>
           </h2>
-          <p class="g-desc">まだ使えません。枠だけ残しています。</p>
+          <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
           <div class="g-placeholder">
             <strong>予定</strong> — filled / outlined など。
           </div>
@@ -1327,11 +1370,12 @@
           <h2 id="fab-title">
             FAB <span class="g-badge g-badge--planned">予定</span>
           </h2>
-          <p class="g-desc">まだ使えません。枠だけ残しています。</p>
+          <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
           <div class="g-placeholder">
             <strong>予定</strong> — small / regular / large / extended。
           </div>
         </section>
+        </div>
 
       </main>
     </div>
@@ -1351,9 +1395,61 @@
           fluent: "andm-series--fluent",
           carbon: "andm-series--carbon",
         };
+        var briefs = {
+          baseline: {
+            trait: "角も余白も中くらいで、色は強く出しません。",
+            use: "どの画面にも置きやすい、中立な出発点です。",
+          },
+          soft: {
+            trait: "角は大きめ、余白はゆったり、影は薄いです。",
+            use: "設定や案内など、落ち着いた画面に向きます。",
+          },
+          dense: {
+            trait: "高さを抑え、余白と文字を詰めます。",
+            use: "表やツールバーなど、情報の多い画面に向きます。",
+          },
+          technical: {
+            trait: "角はほぼ直角で、等幅、影はありません。",
+            use: "開発ツールやログなど、境界をはっきりさせたい画面に向きます。",
+          },
+          editorial: {
+            trait: "角はなく、セリフ体で、字間を少し開けます。",
+            use: "記事や読み物の末尾に向きます。",
+          },
+          playful: {
+            trait: "丸く、ティールで、押したときの縮みが少し大きいです。",
+            use: "はじめての操作や、気軽な招待に向きます。",
+          },
+          expressive: {
+            trait: "ふだんは丸く、押すと角が立ちます。大きさでも強調します。",
+            use: "印象を残したい、利用者向けの画面に向きます。",
+          },
+          dads: {
+            trait: "濃い青、控えめな角、太めの字です。",
+            use: "行政や公共の手続きで、迷わず押してほしい画面に向きます。",
+          },
+          apple: {
+            trait: "システムフォントだけです。色や寸法は公式の値を入れていません。",
+            use: "案内や設定など、Apple の画面に近づけたいときに向きます。",
+          },
+          spectrum: {
+            trait: "青の塗り、角は高さの半分、境界は 2px です。",
+            use: "業務画面に向きます。境界ははっきりさせ、余白は詰めすぎません。",
+          },
+          fluent: {
+            trait: "ボタンの角は 4px、大きいボタンは 8px です。",
+            use: "いつもの操作で、作業に集中する画面に向きます。",
+          },
+          carbon: {
+            trait: "角は直角で、主操作は青です。高さは 32、40、48px です。",
+            use: "製品の画面で、主操作を青で示したいときに向きます。",
+          },
+        };
         var preview = document.getElementById("series-preview");
         var classHelp = document.getElementById("series-class");
-        var radios = document.querySelectorAll('#series input[name="series"]');
+        var traitEl = document.getElementById("series-trait");
+        var useEl = document.getElementById("series-use");
+        var radios = document.querySelectorAll('.g-switch input[name="series"]');
 
         function setClassHelp(seriesClass) {
           classHelp.replaceChildren();
@@ -1362,10 +1458,17 @@
           if (seriesClass) {
             var code = document.createElement("code");
             code.textContent = seriesClass;
-            classHelp.append("親に ", code, "。ボタンは ", btn, " のままです。");
+            classHelp.append("親に ", code, " を付けます。ボタンは ", btn, " のままです。");
           } else {
             classHelp.append("Baseline は追加クラスなし。ボタンは ", btn, " のままです。");
           }
+        }
+
+        function setBrief(id) {
+          var item = briefs[id];
+          if (!item) return;
+          traitEl.textContent = item.trait;
+          useEl.textContent = item.use;
         }
 
         function apply(id) {
@@ -1382,6 +1485,7 @@
             el.hidden = el.getAttribute("data-scene") !== id;
           });
           setClassHelp(seriesClass);
+          setBrief(id);
         }
 
         radios.forEach(function (radio) {
@@ -1401,7 +1505,7 @@
 
         window.addEventListener("hashchange", fromHash);
         fromHash();
-        var checked = document.querySelector('#series input[name="series"]:checked');
+        var checked = document.querySelector('.g-switch input[name="series"]:checked');
         if (checked && !Object.prototype.hasOwnProperty.call(allowed, location.hash.replace("#", ""))) {
           apply(checked.value);
         }

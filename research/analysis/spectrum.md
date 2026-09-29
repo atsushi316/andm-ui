@@ -9,6 +9,19 @@
 - ボタンの角の式: `@spectrum-css/button` の `height / 2`
 - https://spectrum.adobe.com/page/theming/ はタイトルのみで本文は検証不能
 
+## 思想・概念
+
+https://spectrum.adobe.com/page/principles/ と https://spectrum.adobe.com/page/theming/ はタイトルのみで本文は検証不能。
+
+本文が取れたのは https://s2.spectrum.adobe.com/ 。見出しは Rational. Human. Focused. Collaborative. そこからの要約。
+
+- Spectrum 2 は見た目の更新だけではない。状況に合い、まとまり、性能のよい体験にするための、合わせられる資源の集まりである。現実の状況に基づき、人の必要を先に置く。必要なものを、必要なときに渡す。変わり続ける。誰のものでもある、と本文にある。
+- 利用者を中心に、デザイナー、リサーチャー、プロダクトマネージャー、エンジニアなどが一緒に方向を決めた。
+- 柔軟さと、個人に合わせること。初めて使う人にも、長く使う人にも、いる場所で合わせる。desktop、web、mobile、mixed reality の文脈と慣習に合わせる。
+- 多様な人に、考えを表現し伝える力を渡す。大きさ、縮尺、色、コントラストの好みに注意する。次の世代の製品は、これまででいちばんインクルーシブに設計する、と本文にある。
+- 強力な業務の道具であると同時に、多くの人が使う道具である。詳しい人にも、ときどき使う人にも、より親しみやすく、近づきやすく、表現のあるものにする。
+- 変化の本体は細部である。アイコン、イラスト、書体、色を見直し、細かい調整を多く入れた、と本文にある。
+
 ## 考え方（読めた範囲）
 
 desktop、light、medium の Spectrum 2。ボタンは pill（高さの半分）。`corner-radius-100` の 4px はボタンの角ではない。Express テーマは採用しない。
@@ -77,5 +90,6 @@ duration の公式値は今回のトークン取得に含まれていない。�
 
 ## 検証不能
 
+- https://spectrum.adobe.com/page/principles/ の本文。
 - https://spectrum.adobe.com/page/theming/ の本文。
 - ボタン以外の spacing スケールと motion の duration。今回の採用範囲外。

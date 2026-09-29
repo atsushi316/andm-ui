@@ -15,6 +15,10 @@
 - https://developer.apple.com/design/human-interface-guidelines/materials
 - https://developer.apple.com/design/human-interface-guidelines/buttons
 
+## 思想・概念
+
+書いていない。日本語の入口、英語の入口、color、layout、materials、buttons はタイトルだけで本文が取れない。本文が無いので、思想も原則も置かない。検証不能。
+
 ## 考え方
 
 本文が取れないため、考え方は検証不能。

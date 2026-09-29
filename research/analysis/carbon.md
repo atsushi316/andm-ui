@@ -18,6 +18,21 @@
 - `packages/type/scss/_font-family.scss`
 - `packages/themes/src/dtcg/components/button.json`（hover の別名。今回の Button には未使用）
 
+## 思想・概念
+
+README の本文が取れた。https://github.com/carbon-design-system/carbon の `README.md`。
+
+- Carbon は、IBM のオープンソースのデザインシステムである。製品と体験のため。
+- このリポジトリは、React と Web Components、Sass、デザイントークン、アイコン、ピクトグラム、使うためのツールを含む。
+- `@carbon/elements` の説明は、IBM Design Language の基盤（トークンとアセット）。`@carbon/motion` の説明は、productive と expressive のモーション曲線。曲線の意味は README には無い。
+
+原則の本文が取れた公式ページは https://carbondesignsystem.com/all-about-carbon/what-is-carbon/ 。そこからの要約。
+
+- IBM Design Language を土台に、動くコード、デザインツールと資源、ヒューマンインターフェースガイドライン、貢献するコミュニティからなる。
+- 名前の由来は、元素の炭素が単純な化合物から複雑な構造を作ること。スタイルとコンポーネントの組み合わせで、複雑で自然で直感的なデザインを作る、という比喩だと本文にある。
+- 原則は5つ。開かれている（使う人が作り手でもあり、貢献を勧める）。インクルーシブ（能力や状況を問わずアクセスできる）。モジュールで柔軟（部品は、必要な組み合わせで互いにつながる）。利用者を先に置く（利用者の必要についての調査に基づく）。一貫性を作る（IBM Design Language に基づき、要素は最初から一緒に働くように設計されている）。
+- IBM にとっては、ブランドのデジタルな表現であり、製品とデジタル体験の土台である。人間中心のデザイン、高い品質基準、IBM ブランドに根ざした体験で、一貫性を届ける、と本文にある。
+
 ## 考え方
 
 white と g10 は、ボタンの primary / secondary が同じ色を指す。面の色は違う。white の `uiBackground` は white。g10 の `uiBackground` は gray10。シリーズの Button は white を既定にしている。
