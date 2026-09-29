@@ -36,8 +36,10 @@ Gallery で今使える例です。共通の Button に Token を当てます。
 | Playful | `andm-series--playful` | 丸い、ティール、押下の縮小が少し大きい |
 | M3 Expressive | `andm-series--expressive` | 丸が基本。押すと角が立つ。大きさでも強調する |
 | DADS | `andm-series--dads` | 濃い青、控えめな角、太めの字。手続きで迷わず押せる |
+| Apple | `andm-series--apple` | システムブルー、pill に近い角、ゆったり、細い境界、薄い影 |
+| Spectrum | `andm-series--spectrum` | 青のアクセント、中間の角丸、はっきりした境界、弱めの影 |
 
-Baseline は追加クラスなし。上の 7 つは Gallery で切り替えるシリーズです。ボタンのクラスは共通のままです。
+Baseline は追加クラスなし。上の 9 つは Gallery で切り替えるシリーズです。ボタンのクラスは共通のままです。
 
 ## シリーズの詳細（M3 Expressive / DADS）
 
@@ -68,6 +70,32 @@ Baseline は追加クラスなし。上の 7 つは Gallery で切り替える�
 | 既存 variant | filled / tonal / outlined / text / elevated はそのまま |
 
 **ライセンス・ブランド注意:** `andm-series--dads` は [デジタル庁デザインシステム](https://design.digital.go.jp/dads/) の公開されている色・形状・タイポの**解釈**です。公式パッケージ（例: `@digital-go-jp/design-tokens`）やロゴなどのブランド資産の再配布ではありません。本番の行政サイトでは公式アセットとガイドラインを確認してください。
+
+### Apple
+
+| 項目 | 内容 |
+|------|------|
+| スコープ | 親に `andm-series--apple`（Token remapping） |
+| 向いている用途 | 今の Apple の画面に近い、案内や設定 |
+| Color | システムブルー（`#007AFF`）の解釈 |
+| Shape | 主要ボタンは pill に近い連続した角。押しても角は変えない |
+| Density | 高さ 36 / 44 / 52。横余白はゆったり |
+| Surface | 浮かせと薄い塗りは半透明。`backdrop-filter` は対応環境だけ |
+| Motion | 押下はわずかな縮小（`short1` + accelerate）。形状変化はしない |
+| フォント | `-apple-system, BlinkMacSystemFont` を含むシステムフォント。ファイルは同梱しない |
+
+### Spectrum
+
+| 項目 | 内容 |
+|------|------|
+| スコープ | 親に `andm-series--spectrum`（Token remapping） |
+| 向いている用途 | 業務の画面。境界がはっきりして、詰めすぎない |
+| Color | 青のアクセント（`#0265DC`）の解釈 |
+| Shape | 中間の角丸（8px）。pill にも押下時の morph にもしない |
+| Density | 高さ 32 / 40 / 48。詰めすぎない |
+| Surface | 浮かせ・薄い塗り・アウトラインに 1px の境界。影は弱め |
+| 方向 | Spectrum 本体の業務 UI。Express の遊びは入れない |
+| フォント | システムフォント。公式フォントファイルは同梱しない |
 
 ## Research 境界
 

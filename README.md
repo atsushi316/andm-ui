@@ -41,6 +41,8 @@ Gallery で切り替えられます。同じ `andm-btn` に、親の Token を�
 | Playful | `andm-series--playful` | 気軽な招待 |
 | M3 Expressive | `andm-series--expressive` | 表現寄り・消費者向け |
 | DADS | `andm-series--dads` | 行政・公共の分かりやすさ |
+| Apple | `andm-series--apple` | 今の Apple の画面に近い、案内や設定 |
+| Spectrum | `andm-series--spectrum` | 業務の画面。境界がはっきりして、詰めすぎない |
 
 ```html
 <div class="andm-series--soft">

@@ -656,7 +656,7 @@
           <a class="g-goal" href="#series">
             <p class="g-goal__title">シリーズを切り替える</p>
             <p class="g-goal__desc">
-              Soft、Dense、Technical、Editorial、Playful、M3 Expressive、DADS。クラス名なしで選べます。
+              Soft、Dense、Technical、Editorial、Playful、M3 Expressive、DADS、Apple、Spectrum。クラス名なしで選べます。
             </p>
           </a>
           <a class="g-goal" href="#series-scene">
@@ -775,6 +775,26 @@
               <span>DADS</span>
               <span class="g-switch__hint">行政・公共</span>
             </label>
+            <label class="g-switch__opt" id="apple">
+              <input
+                type="radio"
+                name="series"
+                value="apple"
+                data-class="andm-series--apple"
+              />
+              <span>Apple</span>
+              <span class="g-switch__hint">案内・設定</span>
+            </label>
+            <label class="g-switch__opt" id="spectrum">
+              <input
+                type="radio"
+                name="series"
+                value="spectrum"
+                data-class="andm-series--spectrum"
+              />
+              <span>Spectrum</span>
+              <span class="g-switch__hint">業務の画面</span>
+            </label>
             </div>
           </fieldset>
           <details class="g-details">
@@ -790,6 +810,15 @@
                 >デジタル庁デザインシステム</a
               >
               の公開されている色・角丸・タイポ・ボタンの性格を解釈したものです。公式のボタンは塗り・アウトライン・テキストの3種です。ここにある薄い塗りと浮かせは、既存の variant を残したもので公式の3種には入りません。ロゴや公式ファイルは含みません。Web フォントは読み込まず、入っていれば Noto Sans JP、なければ日本語ゴシックで近づけています。
+            </p>
+            <p>
+              Apple は今の画面に近い解釈です。システムフォント（-apple-system,
+              BlinkMacSystemFont）だけを使い、SF Pro
+              のファイル、SF Symbols、ロゴ、公式 CSS は含みません。
+            </p>
+            <p>
+              Spectrum は業務 UI の解釈です。Express
+              のような遊びは入れていません。公式の CSS やフォントファイルは含みません。
             </p>
           </details>
         </section>
@@ -882,6 +911,28 @@
               </div>
               <p class="g-panel__note">
                 濃い青、控えめな角、太めの字。手続きで迷わず押せることを優先します。ロゴや公式ファイルは含みません。
+              </p>
+            </div>
+            <div class="g-context" data-scene="apple" hidden>
+              <p class="g-panel__use">向いている用途: 今の Apple の画面に近い、案内や設定</p>
+              <p>この設定を保存しますか。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">続ける</button>
+              </div>
+              <p class="g-panel__note">
+                システムブルー、pill に近い角、ゆったりした余白、細い境界、薄い影。面は半透明で、ぼかしは対応環境だけです。押すとわずかに縮み、角は変えません。
+              </p>
+            </div>
+            <div class="g-context" data-scene="spectrum" hidden>
+              <p class="g-panel__use">向いている用途: 業務の画面。境界がはっきりして、詰めすぎない</p>
+              <p>選択した項目を更新します。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">更新</button>
+              </div>
+              <p class="g-panel__note">
+                青のアクセント、中間の角丸、はっきりした境界、弱めの影。Express のような遊びは入れていません。
               </p>
             </div>
           </section>
@@ -1236,6 +1287,8 @@
           playful: "andm-series--playful",
           expressive: "andm-series--expressive",
           dads: "andm-series--dads",
+          apple: "andm-series--apple",
+          spectrum: "andm-series--spectrum",
         };
         var preview = document.getElementById("series-preview");
         var classHelp = document.getElementById("series-class");

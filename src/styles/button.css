@@ -503,6 +503,48 @@
     color: var(--andm-color-primary);
   }
 
+  /*
+   * Apple（andm-series--apple）
+   * Token だけでは出せない面だけを足す。
+   * 細い境界、半透明の面。ぼかしは対応環境だけ。
+   * 既存 variant 名は維持。角のモーフィングはしない。
+   */
+  .andm-series--apple .andm-btn--elevated,
+  .andm-series--apple .andm-btn--tonal,
+  .andm-series--apple .andm-btn--outlined {
+    border: 1px solid var(--andm-color-outline);
+  }
+
+  .andm-series--apple .andm-btn--elevated {
+    background-color: rgb(255 255 255 / 0.62);
+  }
+
+  .andm-series--apple .andm-btn--tonal {
+    background-color: rgb(var(--andm-color-primary-rgb) / 0.12);
+    border-color: rgb(var(--andm-color-primary-rgb) / 0.2);
+  }
+
+  @supports (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+  ) {
+    .andm-series--apple .andm-btn--elevated,
+    .andm-series--apple .andm-btn--tonal {
+      -webkit-backdrop-filter: saturate(1.2) blur(16px);
+      backdrop-filter: saturate(1.2) blur(16px);
+    }
+  }
+
+  /*
+   * Spectrum（andm-series--spectrum）
+   * 業務 UI の境界だけを足す。塗りは青のアクセントのまま。
+   * 既存 variant 名は維持。pill にも角のモーフィングにもしない。
+   */
+  .andm-series--spectrum .andm-btn--elevated,
+  .andm-series--spectrum .andm-btn--tonal,
+  .andm-series--spectrum .andm-btn--outlined {
+    border: 1px solid var(--andm-color-outline);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .andm-btn:active:not(:disabled):not([disabled]) {
       transform: none;

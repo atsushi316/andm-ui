@@ -261,4 +261,75 @@
     --andm-btn-padding-x-md: 22px;
     --andm-btn-press-scale: 0.94;
   }
+
+  /*
+   * 切替シリーズ: 今の Apple の画面に近い解釈。
+   * 親に付けるだけで子孫の Button が切り替わる。ボタンのクラスは共通のまま。
+   * SF Pro のファイル、SF Symbols、ロゴ、公式 CSS は同梱しない。
+   * フォントはシステムフォント。角のモーフィングはしない。
+   */
+  .andm-series--apple {
+    --andm-color-primary: #007aff;
+    --andm-color-primary-rgb: 0 122 255;
+    --andm-color-on-primary: #ffffff;
+    --andm-color-secondary-container: rgb(0 122 255 / 0.12);
+    --andm-color-on-secondary-container: #0040a8;
+    --andm-color-surface: #f5f5f7;
+    --andm-color-on-surface: #1d1d1f;
+    --andm-color-on-surface-variant: #6e6e73;
+    --andm-color-outline: rgb(0 0 0 / 0.16);
+    --andm-font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+      "Segoe UI", sans-serif;
+    --andm-font-weight-medium: 500;
+    --andm-font-size-sm: 13px;
+    --andm-font-size-md: 15px;
+    --andm-font-size-lg: 17px;
+    --andm-btn-tracking: -0.01em;
+    --andm-btn-radius: var(--andm-radius-pill);
+    --andm-btn-radius-pressed: var(--andm-radius-pill);
+    --andm-btn-height-sm: 36px;
+    --andm-btn-height-md: 44px;
+    --andm-btn-height-lg: 52px;
+    --andm-btn-padding-x-sm: 16px;
+    --andm-btn-padding-x-md: 22px;
+    --andm-btn-padding-x-lg: 28px;
+    --andm-shadow-1: 0 1px 2px rgb(0 0 0 / 0.06);
+    --andm-shadow-2: 0 4px 14px rgb(0 0 0 / 0.08);
+    --andm-btn-press-scale: 0.98;
+  }
+
+  /*
+   * 切替シリーズ: Adobe Spectrum 本体（業務 UI）の解釈。
+   * Express の遊びある方ではない。公式アセットも公式 CSS も同梱しない。
+   * 親に付けるだけで子孫の Button が切り替わる。ボタンのクラスは共通のまま。
+   * 角は中間。pill にも押下時の morph にもしない。
+   */
+  .andm-series--spectrum {
+    --andm-color-primary: #0265dc;
+    --andm-color-primary-rgb: 2 101 220;
+    --andm-color-on-primary: #ffffff;
+    --andm-color-secondary-container: #e8f4ff;
+    --andm-color-on-secondary-container: #024ea8;
+    --andm-color-surface: #ffffff;
+    --andm-color-on-surface: #222222;
+    --andm-color-on-surface-variant: #464646;
+    --andm-color-outline: #6d6d6d;
+    --andm-font-family: "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    --andm-font-weight-medium: 700;
+    --andm-font-size-sm: 13px;
+    --andm-font-size-md: 14px;
+    --andm-font-size-lg: 16px;
+    --andm-btn-tracking: 0;
+    --andm-btn-radius: 8px;
+    --andm-btn-radius-pressed: 8px;
+    --andm-btn-height-sm: 32px;
+    --andm-btn-height-md: 40px;
+    --andm-btn-height-lg: 48px;
+    --andm-btn-padding-x-sm: 12px;
+    --andm-btn-padding-x-md: 16px;
+    --andm-btn-padding-x-lg: 20px;
+    --andm-shadow-1: 0 1px 2px rgb(0 0 0 / 0.08);
+    --andm-shadow-2: 0 2px 6px rgb(0 0 0 / 0.1);
+    --andm-btn-press-scale: 0.98;
+  }
 }
