@@ -34,12 +34,14 @@ Gallery で今使える例です。共通の Button に Token を当てます。
 | Technical | `andm-series--technical` | 角はほぼ直角、等幅、影なし |
 | Editorial | `andm-series--editorial` | 角なし、セリフ、字間を少し開ける |
 | Playful | `andm-series--playful` | 丸い、ティール、押下の縮小が少し大きい |
+| M3 Expressive | `andm-series--expressive` | 丸が基本。押すと角が立つ。大きさでも強調する |
+| DADS | `andm-series--dads` | 濃い青、控えめな角、太めの字。手続きで迷わず押せる |
 
-DADS と M3 Expressive は参考資料のデモであり、この表には入れません。
+Baseline は追加クラスなし。上の 7 つは Gallery で切り替えるシリーズです。ボタンのクラスは共通のままです。
 
-## Direction デモ（参考資料）
+## シリーズの詳細（M3 Expressive / DADS）
 
-巨大 Theme Engine / Series 切替 UI ではない。**デモ用親スコープ（Token remapping）** で見た目を試せる。Baseline は andm の方向。DADS と M3 Expressive は参考体系であり、同じ分類にしない。いずれも唯一の正解にしない。
+巨大 Theme Engine ではない。**親スコープの Token remapping** で見た目を切り替える。いずれも唯一の正解にしない。公式ロゴ・公式ファイルの再配布はしない。
 
 ### Expressive
 
@@ -77,7 +79,7 @@ Research → Design Space → Principle / Direction / Series候補
 - `research/` は Build 外 / Runtime 非依存 / dist・npm・製品 Gallery 非含有
 - Research で発見したすべてを Core へ実装しない
 - AI は候補提示まで。採用（recommended）は人間が決める
-- Design Direction / Design Series の切替 UI（ページ全体のスイッチャー）は今は作らない。Gallery の使える見た目は、親スコープの Token mapping でその場の UI に使える
+- Gallery のシリーズ切替は、親スコープの Token mapping（`andm-series--*`）だけ。ページ全体の Theme Engine ではない。Button のクラスは増やさない
 
 ## 採用基準
 

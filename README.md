@@ -27,11 +27,20 @@ import '@atsushi316/andm-ui/style.css'
 
 状態はブラウザ標準（`:hover` / `:active` / `:focus-visible` / `:disabled`）で表現します。
 
-### Direction デモ（親スコープ）
+### シリーズ（親スコープ）
 
-使える見た目は Soft / Dense / Technical / Editorial / Playful です。同じ `andm-btn` に Token を当てます。公式の全一覧ではありません。
+Gallery で切り替えられます。同じ `andm-btn` に、親の Token を当てます。公式の全一覧ではありません。シリーズ別のボタンクラスはありません。
 
-DADS と M3 Expressive は参考資料です。使える見た目の一覧には入れません。
+| シリーズ | 親クラス | 用途の目安 |
+|----------|----------|------------|
+| Baseline | なし | 汎用・中立 |
+| Soft | `andm-series--soft` | 設定や案内など、落ち着いた画面 |
+| Dense | `andm-series--dense` | 表やツールバーなど、情報が多い画面 |
+| Technical | `andm-series--technical` | 境界をはっきりさせたい画面 |
+| Editorial | `andm-series--editorial` | 記事や読み物 |
+| Playful | `andm-series--playful` | 気軽な招待 |
+| M3 Expressive | `andm-series--expressive` | 表現寄り・消費者向け |
+| DADS | `andm-series--dads` | 行政・公共の分かりやすさ |
 
 ```html
 <div class="andm-series--soft">
@@ -39,7 +48,7 @@ DADS と M3 Expressive は参考資料です。使える見た目の一覧には
 </div>
 ```
 
-参考資料として比べるときだけ、`andm-series--expressive` と `andm-series--dads` を使います。
+DADS はデジタル庁デザインシステムの公開情報の解釈です。ロゴや公式ファイルは含みません。
 
 ## 開発
 

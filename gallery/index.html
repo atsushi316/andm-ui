@@ -440,6 +440,57 @@
         font-size: 0.9em;
       }
 
+      .g-switch {
+        margin: 0 0 var(--andm-space-4);
+        padding: 0;
+        border: 0;
+        min-inline-size: 0;
+      }
+
+      .g-switch legend {
+        margin: 0 0 var(--andm-space-2);
+        padding: 0;
+        font-size: var(--andm-font-size-sm);
+        font-weight: 700;
+      }
+
+      .g-switch__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-2);
+      }
+
+      .g-switch__opt {
+        display: inline-flex;
+        align-items: baseline;
+        gap: var(--andm-space-2);
+        padding: var(--andm-space-2) var(--andm-space-3);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        background: var(--andm-color-surface);
+        cursor: pointer;
+        font-size: var(--andm-font-size-sm);
+      }
+
+      .g-switch__opt:has(:checked) {
+        border-color: var(--andm-color-primary);
+        background: color-mix(
+          in srgb,
+          var(--andm-color-primary) 10%,
+          var(--andm-color-surface)
+        );
+      }
+
+      .g-switch__opt:has(:focus-visible) {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-switch__hint {
+        font-size: 0.7rem;
+        color: var(--andm-color-on-surface-variant);
+      }
+
       @media (max-width: 960px) {
         .g-goals,
         .g-compare,
@@ -486,8 +537,8 @@
           <span class="g-nav__label">選ぶ</span>
           <ul>
             <li>
-              <a href="#compare"
-                >用途を比べる
+              <a href="#series"
+                >シリーズを選ぶ
                 <span class="g-nav__hint">見た目が先</span></a
               >
             </li>
@@ -543,7 +594,7 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">使える見た目</span>
+          <span class="g-nav__label">シリーズ</span>
           <ul>
             <li>
               <a href="#baseline"
@@ -569,22 +620,13 @@
             <li>
               <a href="#playful">Playful <span class="g-nav__hint">丸く温かい</span></a>
             </li>
-          </ul>
-        </div>
-
-        <div class="g-nav__group">
-          <span class="g-nav__label">参考体系</span>
-          <ul>
             <li>
-              <a href="#dads"
-                >DADS <span class="g-nav__hint">行政・公共</span></a
+              <a href="#expressive"
+                >M3 Expressive <span class="g-nav__hint">表現寄り</span></a
               >
             </li>
             <li>
-              <a href="#expressive"
-                >M3 Expressive
-                <span class="g-nav__hint">表現寄り・消費者向け</span></a
-              >
+              <a href="#dads">DADS <span class="g-nav__hint">行政・公共</span></a>
             </li>
           </ul>
         </div>
@@ -611,16 +653,16 @@
               Pattern はボタンの並び、Experience は申請の一歩です。どちらも Button だけです。
             </p>
           </a>
-          <a class="g-goal" href="#looks">
-            <p class="g-goal__title">見た目を使ってみる</p>
+          <a class="g-goal" href="#series">
+            <p class="g-goal__title">シリーズを切り替える</p>
             <p class="g-goal__desc">
-              Soft、Dense、Technical、Editorial、Playful は、同じ Button を別の見た目で使えます。
+              Soft、Dense、Technical、Editorial、Playful、M3 Expressive、DADS。クラス名なしで選べます。
             </p>
           </a>
-          <a class="g-goal" href="#compare">
-            <p class="g-goal__title">系統を比べる</p>
+          <a class="g-goal" href="#series-scene">
+            <p class="g-goal__title">場面で見る</p>
             <p class="g-goal__desc">
-              andm の方向は Baseline。DADS と M3 Expressive は参考資料で、別の欄です。
+              選んだシリーズの用途と、Button の場面例が下に出ます。主要プレビューも同じ見た目です。
             </p>
           </a>
         </div>
@@ -644,275 +686,186 @@
           </li>
         </ul>
 
-        <section class="g-section" id="looks" aria-labelledby="looks-title">
-          <h2 id="looks-title">使える見た目</h2>
+        <section class="g-section" id="series" aria-labelledby="series-title">
+          <h2 id="series-title">シリーズを切り替える</h2>
           <p class="g-desc">
-            同じ Button です。親にクラスを付けると、その場面の見た目が変わります。一覧は固定ではなく、ここにあるのは今使える例です。DADS と M3 Expressive は下の参考資料です。
+            名前を選ぶだけです。クラス名は覚えなくて大丈夫です。選ぶと、下の場面例と Button・Pattern・Experience が、そのシリーズの見た目になります。ボタン自体のクラスは変わりません。
           </p>
-          <div class="g-looks">
-            <div class="g-panel andm-series--soft" id="soft">
-              <p class="g-kicker">andm</p>
-              <h3 class="g-panel__title">Soft</h3>
-              <p class="g-panel__use">向いている用途: 設定や案内など、落ち着いた画面</p>
-              <div class="g-context">
-                <p>変更を保存しますか。</p>
-                <div class="g-row">
-                  <button type="button" class="andm-btn andm-btn--text andm-btn--md">あとで</button>
-                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存する</button>
-                </div>
-              </div>
+          <fieldset class="g-switch">
+            <legend>シリーズ</legend>
+            <div class="g-switch__list">
+            <label class="g-switch__opt" id="baseline">
+              <input
+                type="radio"
+                name="series"
+                value="baseline"
+                data-class=""
+                checked
+              />
+              <span>Baseline</span>
+              <span class="g-switch__hint">汎用・中立</span>
+            </label>
+            <label class="g-switch__opt" id="soft">
+              <input
+                type="radio"
+                name="series"
+                value="soft"
+                data-class="andm-series--soft"
+              />
+              <span>Soft</span>
+              <span class="g-switch__hint">穏やか</span>
+            </label>
+            <label class="g-switch__opt" id="dense">
+              <input
+                type="radio"
+                name="series"
+                value="dense"
+                data-class="andm-series--dense"
+              />
+              <span>Dense</span>
+              <span class="g-switch__hint">詰めて置く</span>
+            </label>
+            <label class="g-switch__opt" id="technical">
+              <input
+                type="radio"
+                name="series"
+                value="technical"
+                data-class="andm-series--technical"
+              />
+              <span>Technical</span>
+              <span class="g-switch__hint">境界が明確</span>
+            </label>
+            <label class="g-switch__opt" id="editorial">
+              <input
+                type="radio"
+                name="series"
+                value="editorial"
+                data-class="andm-series--editorial"
+              />
+              <span>Editorial</span>
+              <span class="g-switch__hint">文字で語る</span>
+            </label>
+            <label class="g-switch__opt" id="playful">
+              <input
+                type="radio"
+                name="series"
+                value="playful"
+                data-class="andm-series--playful"
+              />
+              <span>Playful</span>
+              <span class="g-switch__hint">丸く温かい</span>
+            </label>
+            <label class="g-switch__opt" id="expressive">
+              <input
+                type="radio"
+                name="series"
+                value="expressive"
+                data-class="andm-series--expressive"
+              />
+              <span>M3 Expressive</span>
+              <span class="g-switch__hint">表現寄り</span>
+            </label>
+            <label class="g-switch__opt" id="dads">
+              <input
+                type="radio"
+                name="series"
+                value="dads"
+                data-class="andm-series--dads"
+              />
+              <span>DADS</span>
+              <span class="g-switch__hint">行政・公共</span>
+            </label>
             </div>
-            <div class="g-panel andm-series--dense" id="dense">
-              <p class="g-kicker">andm</p>
-              <h3 class="g-panel__title">Dense</h3>
-              <p class="g-panel__use">向いている用途: 表やツールバーなど、情報が多い画面</p>
-              <div class="g-context">
-                <p>3 件を選択中</p>
-                <div class="g-row">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">編集</button>
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">移動</button>
-                  <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">削除</button>
-                </div>
-              </div>
-            </div>
-            <div class="g-panel andm-series--technical" id="technical">
-              <p class="g-kicker">andm</p>
-              <h3 class="g-panel__title">Technical</h3>
-              <p class="g-panel__use">向いている用途: 開発ツールやログなど、境界をはっきりさせたい画面</p>
-              <div class="g-context">
-                <p>job #184 は停止しています。</p>
-                <div class="g-row">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">ログ</button>
-                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">再実行</button>
-                </div>
-              </div>
-            </div>
-            <div class="g-panel andm-series--editorial" id="editorial">
-              <p class="g-kicker">andm</p>
-              <h3 class="g-panel__title">Editorial</h3>
-              <p class="g-panel__use">向いている用途: 記事や読み物の末尾</p>
-              <div class="g-context">
-                <p>この章はここまでです。</p>
-                <div class="g-row">
-                  <button type="button" class="andm-btn andm-btn--text andm-btn--md">目次へ</button>
-                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">次の章</button>
-                </div>
-              </div>
-            </div>
-            <div class="g-panel andm-series--playful" id="playful">
-              <p class="g-kicker">andm</p>
-              <h3 class="g-panel__title">Playful</h3>
-              <p class="g-panel__use">向いている用途: はじめての操作や、気軽な招待</p>
-              <div class="g-context">
-                <p>下書きができました。</p>
-                <div class="g-row">
-                  <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">あとで見る</button>
-                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">公開する</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          </fieldset>
           <details class="g-details">
-            <summary>この見た目のクラス</summary>
+            <summary>このシリーズのクラス</summary>
+            <p id="series-class">
+              Baseline は追加クラスなし。ボタンは <code>andm-btn</code> のままです。
+            </p>
             <p>
-              親に <code>andm-series--soft</code> /
-              <code>andm-series--dense</code> /
-              <code>andm-series--technical</code> /
-              <code>andm-series--editorial</code> /
-              <code>andm-series--playful</code>。
-              ボタン自体は <code>andm-btn</code> のままです。
+              DADS は
+              <a
+                href="https://design.digital.go.jp/dads/"
+                rel="noopener noreferrer"
+                >デジタル庁デザインシステム</a
+              >
+              の公開されている色・角丸・タイポ・ボタンの性格を解釈したものです。公式のボタンは塗り・アウトライン・テキストの3種です。ここにある薄い塗りと浮かせは、既存の variant を残したもので公式の3種には入りません。ロゴや公式ファイルは含みません。Web フォントは読み込まず、入っていれば Noto Sans JP、なければ日本語ゴシックで近づけています。
             </p>
           </details>
         </section>
 
-        <section
-          class="g-section"
-          id="compare"
-          aria-labelledby="compare-title"
-        >
-          <h2 id="compare-title">用途を見て比べる</h2>
-          <p class="g-desc">
-            同じボタンです。左は andm の Baseline。中央と右は参考資料で、使える見た目の一覧ではありません。
-          </p>
-
-          <div class="g-compare">
-            <div class="g-panel" id="baseline" data-direction="baseline">
-              <p class="g-kicker">andm の方向</p>
-              <h3 class="g-panel__title">Baseline</h3>
-              <p class="g-panel__use">向いている用途: 汎用・中立</p>
-              <p class="g-panel__note">
-                角は中くらい。主張しすぎない、どの画面にも置きやすい出発点です。
-              </p>
+        <div id="series-preview">
+          <section
+            class="g-section"
+            id="series-scene"
+            aria-labelledby="series-scene-title"
+          >
+            <h2 id="series-scene-title">このシリーズの場面</h2>
+            <div class="g-context" data-scene="baseline">
+              <p class="g-panel__use">向いている用途: 汎用・中立。どの画面にも置きやすい出発点</p>
+              <p>申請内容を確認してから保存します。</p>
               <div class="g-row">
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-                  申請する
-                </button>
-                <button
-                  type="button"
-                  class="andm-btn andm-btn--outlined andm-btn--md"
-                >
-                  確認する
-                </button>
-                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
-                  下書き
-                </button>
-                <button
-                  type="button"
-                  class="andm-btn andm-btn--elevated andm-btn--md"
-                >
-                  ヘルプ
-                </button>
-                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
-                  キャンセル
-                </button>
-              </div>
-              <div class="g-row" style="margin-top: var(--andm-space-3)">
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
-                  小
-                </button>
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-                  中
-                </button>
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--lg">
-                  大
-                </button>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
               </div>
             </div>
-
-            <div
-              class="g-panel andm-series--expressive"
-              id="expressive"
-              data-direction="expressive"
-            >
-              <p class="g-kicker">参考体系</p>
-              <h3 class="g-panel__title">M3 Expressive</h3>
-              <p class="g-panel__use">向いている用途: 表現寄り・消費者向け</p>
-              <p class="g-panel__note">
-                丸が基本で、押すと角が立ちます。大きさでも強調します。ブランドやキャンペーンなど、印象を残したい画面向けです。
-              </p>
+            <div class="g-context" data-scene="soft" hidden>
+              <p class="g-panel__use">向いている用途: 設定や案内など、落ち着いた画面</p>
+              <p>変更を保存しますか。</p>
               <div class="g-row">
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-                  申請する
-                </button>
-                <button
-                  type="button"
-                  class="andm-btn andm-btn--outlined andm-btn--md"
-                >
-                  確認する
-                </button>
-                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
-                  下書き
-                </button>
-                <button
-                  type="button"
-                  class="andm-btn andm-btn--elevated andm-btn--md"
-                >
-                  ヘルプ
-                </button>
-                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
-                  キャンセル
-                </button>
-              </div>
-              <div class="g-row" style="margin-top: var(--andm-space-3)">
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
-                  小
-                </button>
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-                  中
-                </button>
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--lg">
-                  大
-                </button>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">あとで</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存する</button>
               </div>
             </div>
-
-            <div class="g-panel andm-series--dads" id="dads" data-direction="dads">
-              <p class="g-kicker">参考体系</p>
-              <h3 class="g-panel__title">DADS</h3>
-              <p class="g-panel__use">
-                向いている用途: 行政・公共サービスの分かりやすさ・信頼・アクセシビリティ
-              </p>
-              <p class="g-panel__note">
-                濃い青、控えめな角丸、太めの字。手続きや案内で、迷わず押せることを優先します。
-              </p>
+            <div class="g-context" data-scene="dense" hidden>
+              <p class="g-panel__use">向いている用途: 表やツールバーなど、情報が多い画面</p>
+              <p>3 件を選択中</p>
               <div class="g-row">
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-                  申請する
-                </button>
-                <button
-                  type="button"
-                  class="andm-btn andm-btn--outlined andm-btn--md"
-                >
-                  確認する
-                </button>
-                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
-                  下書き
-                </button>
-                <button
-                  type="button"
-                  class="andm-btn andm-btn--elevated andm-btn--md"
-                >
-                  ヘルプ
-                </button>
-                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
-                  キャンセル
-                </button>
-              </div>
-              <div class="g-row" style="margin-top: var(--andm-space-3)">
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
-                  小
-                </button>
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-                  中
-                </button>
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--lg">
-                  大
-                </button>
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">編集</button>
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">移動</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">削除</button>
               </div>
             </div>
-          </div>
-
-          <details class="g-details">
-            <summary>クラス名と補足（見た目のあとで）</summary>
-            <p>
-              見た目の切り替えは親にクラスを付けるだけです。Series
-              の切替機能ではありません。Baseline は andm の方向、DADS と M3
-              Expressive は参考体系です。
-            </p>
-            <p>
-              Baseline は追加クラスなし。Expressive は
-              <code>andm-series--expressive</code>。DADS は
-              <code>andm-series--dads</code>。
-            </p>
-            <p>
-              DADS は
-              <a href="https://design.digital.go.jp/dads/" rel="noopener noreferrer"
-                >デジタル庁デザインシステム</a
-              >
-              の公開されている色・角丸・タイポ・ボタンの性格を解釈したものです。公式のボタンは塗り・アウトライン・テキストの3種です。ここにある薄い塗りと浮かせは、既存の variant を残したもので公式の3種には入りません。ロゴや公式ファイルは含みません。Web
-              フォントは読み込まず、公式が認めるシステムフォント＋日本語ゴシックで近づけています。
-            </p>
-            <div class="andm-series--expressive g-panel" style="margin-top: var(--andm-space-4)">
-              <h3 class="g-panel__title">Expressive の形の差</h3>
+            <div class="g-context" data-scene="technical" hidden>
+              <p class="g-panel__use">向いている用途: 開発ツールやログなど、境界をはっきりさせたい画面</p>
+              <p>job #184 は停止しています。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">ログ</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">再実行</button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="editorial" hidden>
+              <p class="g-panel__use">向いている用途: 記事や読み物の末尾</p>
+              <p>この章はここまでです。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">目次へ</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">次の章</button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="playful" hidden>
+              <p class="g-panel__use">向いている用途: はじめての操作や、気軽な招待</p>
+              <p>下書きができました。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">あとで見る</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">公開する</button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="expressive" hidden>
+              <p class="g-panel__use">向いている用途: 表現寄り・消費者向け。印象を残したい画面</p>
+              <p>新しい機能を試しますか。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">あとで</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">試してみる</button>
+              </div>
               <p class="g-panel__note">
                 既定は丸。押すと角が立ちます。任意の
                 <code>andm-btn--shape-asymmetric</code>
-                は公式の square（角ばった静止形）です。
+                は角ばった静止形です。
               </p>
               <div class="g-row">
-                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
-                  丸い
-                </button>
-                <button
-                  type="button"
-                  class="andm-btn andm-btn--filled andm-btn--md andm-btn--shape-asymmetric"
-                >
-                  角ばった
-                </button>
-                <button
-                  type="button"
-                  class="andm-btn andm-btn--outlined andm-btn--lg"
-                >
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">丸い</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md andm-btn--shape-asymmetric">角ばった</button>
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--lg">
                   <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
                   </svg>
@@ -920,15 +873,25 @@
                 </button>
               </div>
             </div>
-          </details>
-        </section>
+            <div class="g-context" data-scene="dads" hidden>
+              <p class="g-panel__use">向いている用途: 行政・公共サービスの分かりやすさ・信頼・アクセシビリティ</p>
+              <p>入力した内容を確認しました。この内容で申請しますか？</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">戻る</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">申請する</button>
+              </div>
+              <p class="g-panel__note">
+                濃い青、控えめな角、太めの字。手続きで迷わず押せることを優先します。ロゴや公式ファイルは含みません。
+              </p>
+            </div>
+          </section>
 
         <section class="g-section" id="button" aria-labelledby="button-title">
           <h2 id="button-title">
             Button <span class="g-badge g-badge--ready">使える</span>
           </h2>
           <p class="g-desc">
-            いま使える部品です。先に場面の中、そのあと単体です。見た目は andm の Baseline です。
+            いま使える部品です。先に場面の中、そのあと単体です。見た目は、上で選んだシリーズです。
           </p>
 
           <div class="g-block" id="button-context">
@@ -1223,6 +1186,8 @@
           </div>
         </section>
 
+        </div>
+
         <section class="g-section" id="chip" aria-labelledby="chip-title">
           <h2 id="chip-title">
             Chip <span class="g-badge g-badge--planned">予定</span>
@@ -1260,5 +1225,73 @@
 
       </main>
     </div>
+    <script>
+      (function () {
+        var allowed = {
+          baseline: "",
+          soft: "andm-series--soft",
+          dense: "andm-series--dense",
+          technical: "andm-series--technical",
+          editorial: "andm-series--editorial",
+          playful: "andm-series--playful",
+          expressive: "andm-series--expressive",
+          dads: "andm-series--dads",
+        };
+        var preview = document.getElementById("series-preview");
+        var classHelp = document.getElementById("series-class");
+        var radios = document.querySelectorAll('#series input[name="series"]');
+
+        function setClassHelp(seriesClass) {
+          classHelp.replaceChildren();
+          var btn = document.createElement("code");
+          btn.textContent = "andm-btn";
+          if (seriesClass) {
+            var code = document.createElement("code");
+            code.textContent = seriesClass;
+            classHelp.append("親に ", code, "。ボタンは ", btn, " のままです。");
+          } else {
+            classHelp.append("Baseline は追加クラスなし。ボタンは ", btn, " のままです。");
+          }
+        }
+
+        function apply(id) {
+          if (!Object.prototype.hasOwnProperty.call(allowed, id)) return;
+          var seriesClass = allowed[id];
+          Object.keys(allowed).forEach(function (key) {
+            if (allowed[key]) preview.classList.remove(allowed[key]);
+          });
+          if (seriesClass) preview.classList.add(seriesClass);
+          radios.forEach(function (radio) {
+            radio.checked = radio.value === id;
+          });
+          document.querySelectorAll("[data-scene]").forEach(function (el) {
+            el.hidden = el.getAttribute("data-scene") !== id;
+          });
+          setClassHelp(seriesClass);
+        }
+
+        radios.forEach(function (radio) {
+          radio.addEventListener("change", function () {
+            if (!radio.checked) return;
+            apply(radio.value);
+            if (location.hash.replace("#", "") !== radio.value) {
+              history.replaceState(null, "", "#" + radio.value);
+            }
+          });
+        });
+
+        function fromHash() {
+          var id = location.hash.replace("#", "");
+          if (Object.prototype.hasOwnProperty.call(allowed, id)) apply(id);
+        }
+
+        window.addEventListener("hashchange", fromHash);
+        fromHash();
+        var checked = document.querySelector('#series input[name="series"]:checked');
+        if (checked && !Object.prototype.hasOwnProperty.call(allowed, location.hash.replace("#", ""))) {
+          apply(checked.value);
+        }
+      })();
+    </script>
   </body>
 </html>

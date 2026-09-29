@@ -112,9 +112,9 @@
   }
 
   /*
-   * Demo scope: M3 Expressive 寄りの Token remapping。
-   * Design Series 本機能ではない。親に付けるだけで子孫の Button が切り替わる。
-   * Baseline（:root）を壊さない。Expressive を唯一の正解にしない。
+   * M3 Expressive の Token remapping。
+   * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
+   * ボタンのクラスは共通のまま。Baseline（:root）を壊さない。唯一の正解にしない。
    */
   .andm-series--expressive {
     /* サイズは Expressive の Small / Medium / Large（40 / 56 / 96）。
@@ -139,8 +139,9 @@
   }
 
   /*
-   * Demo scope: デジタル庁デザインシステム（DADS）の Token remapping。
-   * Design Series 本機能ではない。親に付けるだけで子孫の Button が切り替わる。
+   * デジタル庁デザインシステム（DADS）の Token remapping。
+   * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
+   * ボタンのクラスは共通のまま。
    * 公開されている色・角丸・タイポ・ボタンの性格の解釈。公式アセットは再配布しない。
    * Web フォントは読まない（入っていれば Noto Sans JP、なければ日本語ゴシック）。
    * Baseline / Expressive を壊さない。唯一の正解にしない。
@@ -199,8 +200,8 @@
   }
 
   /*
-   * 使える見た目。共通の andm-btn に Token を当てるだけ。
-   * 公式一覧ではない。DADS / M3 Expressive は参考資料であり、ここには入れない。
+   * 切替シリーズ。共通の andm-btn に Token を当てるだけ。
+   * 公式一覧ではない。DADS / M3 Expressive も同じ仕組みのシリーズ。
    * 速度の Series 割当はしない。
    */
   .andm-series--soft {

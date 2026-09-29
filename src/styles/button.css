@@ -284,9 +284,9 @@
   }
 
   /*
-   * Expressive demo scope（andm-series--expressive）
+   * Expressive（andm-series--expressive）
    * — 既存 variant は維持。Token remapping + spatial motion / shape morph のみ。
-   * — Series 本機能ではない（Gallery 比較・将来 Design Space 用のデモスコープ）
+   * — シリーズ別の Button クラスは作らない。
    */
   .andm-series--expressive .andm-btn {
     /* 形（spatial）だけ overshoot 近似。色は effects なので decelerate */
@@ -360,7 +360,7 @@
   }
 
   /*
-   * DADS demo scope（andm-series--dads）
+   * DADS（andm-series--dads）
    * Token だけでは出せないボタンの性格だけを足す。
    * 塗りはホバーで濃くする、テキストは下線、フォーカスは黒+黄。
    * 既存 variant 名は維持。shape morph / pill はしない。
