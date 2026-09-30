@@ -1,0 +1,16 @@
+@layer andm.tokens {
+  /*
+     * 切替シリーズ。共通の andm-btn に Token を当てるだけ。
+     * 公式一覧ではない。DADS / M3 Expressive も同じ仕組みのシリーズ。
+     * 速度の Series 割当はしない。
+     */
+    .andm-series--soft {
+      --andm-btn-radius: var(--andm-radius-lg);
+      --andm-btn-radius-pressed: var(--andm-radius-lg);
+      --andm-btn-height-md: 44px;
+      --andm-btn-padding-x-md: var(--andm-space-6);
+      --andm-shadow-1: 0 1px 2px rgb(0 0 0 / 0.08);
+      --andm-shadow-2: 0 8px 20px rgb(0 0 0 / 0.08);
+      --andm-btn-press-scale: 0.98;
+    }
+}

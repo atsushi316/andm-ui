@@ -1,0 +1,55 @@
+@layer andm.tokens {
+  /*
+     * 切替シリーズ: IBM Carbon。white テーマ。
+     * 出典は carbon-design-system/carbon の公開トークン（2026-09-29 に取得）。
+     * 公式アイコン、フォントファイル、CSS は同梱しない。ボタンのクラスは共通のまま。
+     *
+     * 色: packages/themes/src/v10/white.ts と g10.ts。
+     *   primary は blue60 #0f62fe。hover は #0353e9。active は blue80 #002d9c。
+     *   secondary は gray80 #393939。hover は #4c4c4c。active は gray60 #6f6f6f。
+     *   無効背景は gray30 #c6c6c6。無効文字は gray50 #8d8d8d。
+     * 高さ: packages/layout の size-sm / size-md / size-lg = 32 / 40 / 48px。
+     *   ボタン SCSS の既定ステップは lg（48px）。ここでの md は size-md（40px）。
+     * 角: packages/styles の $button-border-radius は 0。
+     * 字: $button-font-size は 0.875rem、字重は 400。書体名は IBM Plex Sans。ファイルは置かない。
+     * 横余白: spacing-05 は 16px（density normal）。アイコン用の右側余白は未採用。
+     * motion ページの duration-fast-01 は 70ms。ボタン mixin はこれと entrance productive。
+     * short1 / short2 と、押下・ホバーの easing、standard をその本文の値にする。押下縮小は 1。
+     */
+    .andm-series--carbon {
+      --andm-color-primary: #0f62fe;
+      --andm-color-primary-rgb: 15 98 254;
+      --andm-color-primary-hover: #0353e9;
+      --andm-color-primary-active: #002d9c;
+      --andm-color-on-primary: var(--andm-color-white);
+      --andm-color-secondary-container: #393939;
+      --andm-color-on-secondary-container: var(--andm-color-white);
+      --andm-color-surface: var(--andm-color-white);
+      --andm-color-on-surface: #161616;
+      --andm-color-on-surface-variant: #525252;
+      --andm-color-outline: #0f62fe;
+      --andm-color-disabled-container: var(--andm-color-neutral-80);
+      --andm-color-on-disabled: #8d8d8d;
+      --andm-focus-ring-color: #0f62fe;
+      --andm-focus-ring-width: var(--andm-space-05);
+      --andm-font-family: "IBM Plex Sans", "IBM Plex Sans JP", system-ui, sans-serif;
+      --andm-font-weight-medium: 400;
+      --andm-font-size-md: 14px;
+      --andm-btn-radius: 0;
+      --andm-btn-radius-pressed: 0;
+      --andm-btn-height-sm: var(--andm-space-8);
+      --andm-btn-height-md: var(--andm-space-10);
+      --andm-btn-height-lg: var(--andm-space-12);
+      --andm-btn-padding-x-sm: var(--andm-space-4);
+      --andm-btn-padding-x-md: var(--andm-space-4);
+      --andm-btn-padding-x-lg: var(--andm-space-4);
+      --andm-shadow-1: none;
+      --andm-shadow-2: none;
+      --andm-btn-press-scale: 1;
+      --andm-motion-duration-short1: 70ms;
+      --andm-motion-duration-short2: 70ms;
+      --andm-motion-easing-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
+      --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.38, 0.9);
+      --andm-motion-easing-accelerate: cubic-bezier(0, 0, 0.38, 0.9);
+    }
+}

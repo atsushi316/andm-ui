@@ -1,0 +1,8 @@
+@layer andm.tokens {
+  :root {
+    /* —— Typography —— */
+    --andm-font-family: "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    --andm-font-weight-medium: 600;
+    --andm-line-height-tight: 1.25;
+  }
+}

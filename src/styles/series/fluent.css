@@ -1,0 +1,22 @@
+@layer andm.tokens {
+  /*
+     * 切替シリーズ: Fluent 2。
+     * 出典は fluent2.microsoft.design の shapes / typography（2026-09-29 の本文）。
+     * 公式アイコン、フォントファイル、CSS は同梱しない。ボタンのクラスは共通のまま。
+     *
+     * shapes: Medium は Buttons / dropdown で 4px。Large は Large buttons で 8px（lg のみ button.css）。
+     * 32px 未満は 2px、と本文にある。現行 sm は高さ 32px なので 2px にはしない。
+     * typography（Web）: Caption 1 は 12px、Body 1 は 14px、Subtitle 2 は 16px。
+     * 書体名は Segoe UI。ファイルは置かない。
+     * 色、余白、高さ、影、duration の数値はこれらのページ本文に無かったので書かない。
+     * 速度トークンは差し替えない。
+     */
+    .andm-series--fluent {
+      --andm-btn-radius: var(--andm-space-1);
+      --andm-btn-radius-pressed: var(--andm-space-1);
+      --andm-font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+      --andm-font-size-sm: 12px;
+      --andm-font-size-md: 14px;
+      --andm-font-size-lg: 16px;
+    }
+}

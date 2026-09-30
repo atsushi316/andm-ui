@@ -1,0 +1,19 @@
+@layer andm.tokens {
+  :root {
+    /* 長さ。1 = 4px。05 は 2px（半分の一段）。番号は 4px の倍数。 */
+    --andm-space-0: 0;
+    --andm-space-05: 2px;
+    --andm-space-1: 4px;
+    --andm-space-2: 8px;
+    --andm-space-3: 12px;
+    --andm-space-4: 16px;
+    --andm-space-5: 20px;
+    --andm-space-6: 24px;
+    --andm-space-8: 32px;
+    --andm-space-10: 40px;
+    --andm-space-12: 48px;
+    --andm-space-16: 64px;
+    --andm-space-20: 80px;
+    --andm-space-24: 96px;
+  }
+}

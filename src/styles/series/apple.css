@@ -1,0 +1,18 @@
+@layer andm.tokens {
+  /*
+     * 切替シリーズ: Apple。出典は Human Interface Guidelines。
+     * https://developer.apple.com/jp/design/human-interface-guidelines
+     * 英語の color / layout / materials / buttons も同じガイドライン。
+     * 2026-09-29 時点で本文は JavaScript 必須。タイトル以外は検証不能。
+     * 色・角丸・余白・高さ・境界・影・ぼかし・押下縮小は公式値として書かない。
+     * 下のフォントは HIG の数値ではない。システムスタックのみ。
+     * SF のファイル、SF Symbols、ロゴは同梱しない。
+     * motion の duration は公式本文に無い（official value not specified）。
+     * cubic-bezier、縮小率、spring は足さない。速度トークンは差し替えない。
+     * 押下の scale は Baseline の 0.96 のまま。HIG の測定値ではない。
+     */
+    .andm-series--apple {
+      --andm-font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+        "Segoe UI", sans-serif;
+    }
+}

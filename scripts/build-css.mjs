@@ -10,9 +10,27 @@ const sources = ["index.css", "tokens.css", "base.css", "button.css"];
 
 const banner = "/*! @atsushi316/andm-ui — built from src/styles */\n";
 
+async function readCss(file) {
+  const css = await readFile(file, "utf8");
+  const dir = dirname(file);
+  const re = /@import\s+["']([^"']+)["']\s*;/g;
+  let out = "";
+  let last = 0;
+  let match;
+  let any = false;
+  while ((match = re.exec(css))) {
+    any = true;
+    out += css.slice(last, match.index);
+    out += `${(await readCss(join(dir, match[1]))).trim()}\n`;
+    last = match.index + match[0].length;
+  }
+  out += css.slice(last);
+  return any ? out : css;
+}
+
 const chunks = [];
 for (const name of sources) {
-  const css = await readFile(join(stylesDir, name), "utf8");
+  const css = await readCss(join(stylesDir, name));
   chunks.push(`/* --- ${name} --- */\n${css.trim()}\n`);
 }
 
