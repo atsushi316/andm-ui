@@ -103,6 +103,7 @@ RectangleShape は角なし。CircleShape は円。単位は dp。px への換�
 - 形（角）は expressive fast spatial。曲線 `cubic-bezier(0.42, 1.67, 0.21, 0.9)`、350ms。色は expressive fast effects。曲線 `cubic-bezier(0.31, 0.94, 0.34, 1)`、150ms。ホバーでも押下でも色はこの effects。角が変わるのは押下だけ。
 - 出典: https://m3.material.io/styles/motion/overview/how-it-works は、部品の動きは expressive fast spatial と expressive fast effects だと書く。ミリ秒と曲線は https://m3.material.io/styles/motion/overview/specs の「Web: Convert springs to curves」。
 - 押下の角は https://m3.material.io/components/buttons/specs の Corner sizes。Round は Full。Pressed は XS 8dp、S 8dp、M 12dp、L 16dp、XL 16dp。Square の静止は XS 12dp、S 12dp、M 16dp、L 28dp、XL 28dp。実装の小 / 中 / 大は S / M / L に合わせてあり、半径は変えていない。ホバーで角は変えない。本文は「When pressed, buttons can morph to become more square」。
+- 押下中に四角（半径 0）は経由しない。静止の pill はボタン高さの半分として補間し、押下は 8 / 12 / 16px で終わる。
 
 検証不能:
 
@@ -122,7 +123,7 @@ RectangleShape は角なし。CircleShape は円。単位は dp。px への換�
 
 - 高さ 40 / 56 / 96px
 - 横余白はサイズごと。Small 16px、Medium 24px、Large 48px。Material3 の ButtonSmall / Medium / Large トークンの LeadingSpace と TrailingSpace（生成コード v0_11_0）。Small の 16px を中と大に流用すると、短いラベルの幅が高さに近づき円になる。text が固定している横余白も、Expressive ではこの値に戻す
-- 静止の角は pill（specs の Round = Full）。ラベル付きは高さより幅が広い。押下は小 8px、中 12px、大 16px。specs の S / M / L の Pressed と一致。ホバーでは角を変えない
+- 静止の角は pill（specs の Round = Full）。指定値はボタン高さの半分で、9999px からは補間しない。ラベル付きは高さより幅が広い。押下は小 8px、中 12px、大 16px。specs の S / M / L の Pressed と一致。ホバーでは角を変えない。押下中に半径 0 の四角は経由しない
 - 字重 500
 - アイコン 20px
 - 色は Baseline のまま
@@ -143,3 +144,4 @@ RectangleShape は角なし。CircleShape は円。単位は dp。px への換�
 - spacing のスケール。
 - elevation の dp と影の式。
 - 旧 easing / duration を Expressive の Button に使うこと。適用ページ自身が、Expressive では保守しないと書く。
+- 2026-09-30 の再確認では https://m3.material.io/components/buttons/overview は「This website requires JavaScript.」で本文がなく、https://m3.material.io/styles/motion/overview/specs はタイトルのみだった。新しい角の数値は足していない。四角経由をやめたのは、既にある fast spatial を 9999px の pill から掛けていた実装が、押下中に半径 0 を経由していたため。

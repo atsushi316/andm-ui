@@ -127,7 +127,8 @@
     --andm-btn-padding-x-sm: 16px;
     --andm-btn-padding-x-md: 24px;
     --andm-btn-padding-x-lg: 48px;
-    --andm-btn-radius: var(--andm-radius-pill);
+    /* 静止の pill は高さの半分。9999px から fast spatial で補間すると overshoot で半径が 0 を下回る。 */
+    --andm-btn-radius: calc(var(--andm-btn-height-md) / 2);
     /* Medium の pressed。Small 8 / Large 16 は button.css で上書き */
     --andm-btn-radius-pressed: 12px;
     --andm-btn-press-scale: 1;

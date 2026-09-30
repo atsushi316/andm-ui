@@ -315,8 +315,10 @@
         var(--andm-motion-easing-expressive-fast-spatial);
   }
 
-  /* Pressed は specs の S / M / L（8 / 12 / 16）。値はトークン。ホバーでは角を変えない */
+  /* Pressed は specs の S / M / L（8 / 12 / 16）。値はトークン。ホバーでは角を変えない。
+     静止半径は各高さの半分（pill）。9999px は補間しない。押下中に半径 0 は経由しない。 */
   .andm-series--expressive .andm-btn--sm {
+    --andm-btn-radius: calc(var(--andm-btn-height-sm) / 2);
     --andm-btn-radius-pressed: 8px;
   }
 
@@ -338,6 +340,7 @@
   }
 
   .andm-series--expressive .andm-btn--lg {
+    --andm-btn-radius: calc(var(--andm-btn-height-lg) / 2);
     --andm-btn-radius-pressed: 16px;
   }
 
