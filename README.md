@@ -70,7 +70,7 @@ npm start          # build してから Gallery を起動
 
 ```
 src/styles/     Design Tokens + CSS Components
-gallery/        製品 Gallery（dist 参照）
+gallery/        Design System Explorer（dist 参照。Series と Tokens）
 examples/       消費側の最小例
 research/       研究ワークスペース（npm 非含有）
 DESIGN.md       デザイン原則・Design Space

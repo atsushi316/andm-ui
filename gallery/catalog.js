@@ -190,6 +190,17 @@
     return /font|line-height|tracking/.test(name);
   }
 
+  function tokenCategory(name) {
+    if (/motion/.test(name)) return "motion";
+    if (/state-|overlay|focus-ring/.test(name)) return "interaction";
+    if (/color/.test(name)) return "color";
+    if (/font|line-height|tracking/.test(name)) return "typography";
+    if (/space/.test(name)) return "spacing";
+    if (/radius|shape/.test(name)) return "shape";
+    if (/shadow/.test(name)) return "elevation";
+    return "";
+  }
+
   function paintValue(value) {
     var v = String(value || "").trim();
     if (isSingleColor(v)) return v;
@@ -215,6 +226,7 @@
     computedOn: computedOn,
     isColorToken: isColorToken,
     isTypeToken: isTypeToken,
+    tokenCategory: tokenCategory,
     isSingleColor: isSingleColor,
     paintValue: paintValue,
     loadCss: loadCss,

@@ -8,6 +8,11 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 - **Design Tokens** — 見た目の根拠は `--andm-*` Token system（単一ソース）。各プロパティを唯一値に固定する意味ではない
 - **少ない部品で多様** — Component / Token は少数。方向軸の組み合わせで表現する
 - **平均収束禁止** — 「最も多いパターン = 正解」にしない。frequency と recommended を分離する
+- **Series は Design Language** — Theme ではない。見え方、反応、動きの傾向。UI 構造は定義しない
+- **Token は檻にしない** — Global Token で表せるときはそれを優先する。足りない Component 固有の意味は Component-local Token。名前が要らない局所値だけ Local Value。特殊な UI を既存 Token に無理に合わせない
+- **Motion は三層** — Character は傾向。Pattern は Trigger × Effect（highlight / lift / compress / morph）。Token は duration と easing。Pattern を増やすために Token 名は増やさない
+
+Custom UI は Series に所属しなくてよい。Global Token、Component-local Token、Core Component、Composition、最小の Local Value で作る。Research は Runtime にも Gallery の値にも流さない。
 
 ## Design Space（Button）
 

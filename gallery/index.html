@@ -556,27 +556,150 @@
           padding: var(--andm-space-4);
         }
       }
+
+      .g-series-label {
+        display: block;
+        margin: 0 0 var(--andm-space-2);
+        font-size: var(--andm-font-size-sm);
+        font-weight: 700;
+      }
+
+      .g-series-select {
+        font: inherit;
+        color: var(--andm-color-on-surface);
+        background: var(--andm-color-surface);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        padding: var(--andm-space-2) var(--andm-space-3);
+        min-width: min(100%, 18rem);
+      }
+
+      .g-series-select:focus-visible,
+      .g-motion-demo:focus-visible {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-exp-character {
+        margin: 0 0 var(--andm-space-3);
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .g-exp-visual,
+      .g-token-cards,
+      #series-motion-tokens {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+        gap: var(--andm-space-3);
+        margin: var(--andm-space-3) 0 var(--andm-space-4);
+      }
+
+      .g-exp-swatch,
+      .g-token-card,
+      .g-exp-motion {
+        margin: 0;
+        padding: var(--andm-space-3);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        background: var(--andm-color-surface);
+      }
+
+      .g-exp-chip,
+      .g-exp-preview {
+        min-height: 3rem;
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-sm);
+      }
+
+      .g-exp-type {
+        margin: 0;
+        grid-column: 1 / -1;
+      }
+
+      .g-exp-space {
+        display: flex;
+        align-items: center;
+        gap: var(--andm-space-2);
+        font-size: var(--andm-font-size-sm);
+      }
+
+      .g-exp-space span:first-child,
+      .g-exp-bar {
+        display: inline-block;
+        height: 0.75rem;
+        background: var(--andm-color-primary);
+      }
+
+      .g-exp-shape,
+      .g-exp-elev {
+        min-height: 4rem;
+        padding: var(--andm-space-2);
+        border: 1px solid var(--g-border);
+        background: var(--andm-color-surface);
+        font-size: var(--andm-font-size-sm);
+      }
+
+      .g-token-card h3,
+      .g-exp-swatch figcaption,
+      .g-exp-motion p,
+      .g-token-card__where {
+        margin: 0 0 var(--andm-space-1);
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        word-break: break-all;
+      }
+
+      .g-token-card__value {
+        margin: 0 0 var(--andm-space-2);
+        font-weight: 700;
+      }
+
+      .g-motion-demo {
+        font: inherit;
+        color: var(--andm-color-on-surface);
+        background: var(--andm-color-surface);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        padding: var(--andm-space-2) var(--andm-space-3);
+        cursor: pointer;
+      }
+
+      .g-motion-demo.is-on {
+        background: var(--andm-color-primary);
+        color: var(--andm-color-on-primary);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .g-motion-demo {
+          transition-duration: var(--andm-motion-duration-short2) !important;
+          transform: none !important;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="g-shell">
       <nav class="g-nav" aria-label="Gallery">
         <a class="g-nav__brand" href="#top">andm-ui</a>
-        <p class="g-nav__tag">Product Gallery</p>
+        <p class="g-nav__tag">Design System Explorer</p>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">選ぶ</span>
+          <span class="g-nav__label">Series</span>
+          <ul id="nav-series"></ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">Tokens</span>
           <ul>
-            <li>
-              <a href="#series"
-                >シリーズを選ぶ
-                <span class="g-nav__hint">見た目が先</span></a
-              >
-            </li>
-            <li><a href="colors/">色</a></li>
-            <li><a href="motion/">モーション</a></li>
-            <li><a href="typography/">タイポグラフィ</a></li>
-            <li><a href="tokens/">トークン</a></li>
+            <li><a href="#/tokens/color" data-token-nav="color">Color</a></li>
+            <li><a href="#/tokens/typography" data-token-nav="typography">Typography</a></li>
+            <li><a href="#/tokens/spacing" data-token-nav="spacing">Spacing</a></li>
+            <li><a href="#/tokens/shape" data-token-nav="shape">Shape</a></li>
+            <li><a href="#/tokens/density" data-token-nav="density">Density</a></li>
+            <li><a href="#/tokens/elevation" data-token-nav="elevation">Elevation</a></li>
+            <li><a href="#/tokens/motion" data-token-nav="motion">Motion</a></li>
+            <li><a href="#/tokens/interaction" data-token-nav="interaction">Interaction</a></li>
           </ul>
         </div>
 
@@ -683,9 +806,9 @@
 
       <main class="g-main" id="top">
         <header class="g-hero">
-          <h1>見た目と用途を比べて選ぶ</h1>
+          <h1>Design System Explorer</h1>
           <p class="lead">
-            先に見えるのは見た目と用途です。クラス名は、詳細を開くと確認できます。
+            Series で Design Language を体験し、Tokens で名前と値と見た目を調べます。Button のクラスは共通のままです。
           </p>
         </header>
 
@@ -742,122 +865,12 @@
           </p>
         </section>
 
-        <div class="g-stick-scope">
+        <div class="g-stick-scope" id="view-series">
           <div class="g-switch-bar">
-          <fieldset class="g-switch">
-            <legend>シリーズ</legend>
-            <div class="g-switch__list">
-            <label class="g-switch__opt" id="baseline">
-              <input
-                type="radio"
-                name="series"
-                value="baseline"
-                data-class=""
-                checked
-              />
-              <span>Baseline</span>
-            </label>
-            <label class="g-switch__opt" id="soft">
-              <input
-                type="radio"
-                name="series"
-                value="soft"
-                data-class="andm-series--soft"
-              />
-              <span>Soft</span>
-            </label>
-            <label class="g-switch__opt" id="dense">
-              <input
-                type="radio"
-                name="series"
-                value="dense"
-                data-class="andm-series--dense"
-              />
-              <span>Dense</span>
-            </label>
-            <label class="g-switch__opt" id="technical">
-              <input
-                type="radio"
-                name="series"
-                value="technical"
-                data-class="andm-series--technical"
-              />
-              <span>Technical</span>
-            </label>
-            <label class="g-switch__opt" id="editorial">
-              <input
-                type="radio"
-                name="series"
-                value="editorial"
-                data-class="andm-series--editorial"
-              />
-              <span>Editorial</span>
-            </label>
-            <label class="g-switch__opt" id="playful">
-              <input
-                type="radio"
-                name="series"
-                value="playful"
-                data-class="andm-series--playful"
-              />
-              <span>Playful</span>
-            </label>
-            <label class="g-switch__opt" id="expressive">
-              <input
-                type="radio"
-                name="series"
-                value="expressive"
-                data-class="andm-series--expressive"
-              />
-              <span>M3 Expressive</span>
-            </label>
-            <label class="g-switch__opt" id="dads">
-              <input
-                type="radio"
-                name="series"
-                value="dads"
-                data-class="andm-series--dads"
-              />
-              <span>DADS</span>
-            </label>
-            <label class="g-switch__opt" id="apple">
-              <input
-                type="radio"
-                name="series"
-                value="apple"
-                data-class="andm-series--apple"
-              />
-              <span>Apple</span>
-            </label>
-            <label class="g-switch__opt" id="spectrum">
-              <input
-                type="radio"
-                name="series"
-                value="spectrum"
-                data-class="andm-series--spectrum"
-              />
-              <span>Spectrum</span>
-            </label>
-            <label class="g-switch__opt" id="fluent">
-              <input
-                type="radio"
-                name="series"
-                value="fluent"
-                data-class="andm-series--fluent"
-              />
-              <span>Fluent 2</span>
-            </label>
-            <label class="g-switch__opt" id="carbon">
-              <input
-                type="radio"
-                name="series"
-                value="carbon"
-                data-class="andm-series--carbon"
-              />
-              <span>Carbon</span>
-            </label>
-            </div>
-          </fieldset>
+          <div class="g-switch">
+            <label class="g-series-label" for="series-select">シリーズ</label>
+            <select id="series-select" class="g-series-select"></select>
+          </div>
           <dl class="g-series-brief">
             <div>
               <dt>特徴</dt>
@@ -923,6 +936,41 @@
           </details>
 
         <div id="series-preview">
+          <section class="g-section" id="series-overview" aria-labelledby="series-overview-title">
+            <h2 id="series-overview-title">Overview</h2>
+            <p class="g-exp-character" id="series-character"></p>
+            <dl class="g-series-brief">
+              <div>
+                <dt>公式</dt>
+                <dd id="series-official"></dd>
+              </div>
+              <div>
+                <dt>andm の解釈</dt>
+                <dd id="series-interpretation"></dd>
+              </div>
+              <div>
+                <dt>source / verification</dt>
+                <dd id="series-source"></dd>
+              </div>
+              <div>
+                <dt>出典</dt>
+                <dd id="series-source-note"></dd>
+              </div>
+            </dl>
+            <h3>Visual Language</h3>
+            <div class="g-exp-visual" id="series-visual"></div>
+            <p class="g-desc">Density の Global Token はありません。高さの差は Series の remapping です。</p>
+            <h3>Motion</h3>
+            <p class="g-desc">Character は傾向。Pattern は Trigger と Effect。Token は速度と曲線。数値は computed style です。</p>
+            <p id="series-duration-note"></p>
+            <ul id="series-patterns"></ul>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">Hover / Press</button>
+              <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">Focus</button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md" disabled>Disabled</button>
+            </div>
+            <div id="series-motion-tokens"></div>
+          </section>
           <section
             class="g-section"
             id="series-scene"
@@ -1352,6 +1400,13 @@
           </div>
         </section>
 
+          <section class="g-section" id="custom-ui" aria-labelledby="custom-ui-title">
+            <h2 id="custom-ui-title">Custom UI</h2>
+            <p class="g-desc">
+              Series に所属しない UI も作れます。Global Token を優先し、Component 固有の意味は Component-local Token、名前を付ける必要がない値だけ Local Value にします。見本はまだ置いていません。
+            </p>
+          </section>
+
         </div>
 
         <section class="g-section" id="chip" aria-labelledby="chip-title">
@@ -1390,93 +1445,16 @@
         </section>
         </div>
 
+        <section class="g-section" id="view-tokens" hidden aria-labelledby="token-title">
+          <h2 id="token-title">Tokens</h2>
+          <p class="g-desc" id="token-status">読み込み中</p>
+          <div class="g-token-cards" id="token-cards"></div>
+        </section>
+
       </main>
     </div>
     <script src="series-copy.js"></script>
-    <script>
-      (function () {
-        var allowed = {
-          baseline: "",
-          soft: "andm-series--soft",
-          dense: "andm-series--dense",
-          technical: "andm-series--technical",
-          editorial: "andm-series--editorial",
-          playful: "andm-series--playful",
-          expressive: "andm-series--expressive",
-          dads: "andm-series--dads",
-          apple: "andm-series--apple",
-          spectrum: "andm-series--spectrum",
-          fluent: "andm-series--fluent",
-          carbon: "andm-series--carbon",
-        };
-        var briefs = window.ANDM_SERIES_COPY.briefs;
-        var preview = document.getElementById("series-preview");
-        var classHelp = document.getElementById("series-class");
-        var traitEl = document.getElementById("series-trait");
-        var useEl = document.getElementById("series-use");
-        var motionEl = document.getElementById("series-motion");
-        var radios = document.querySelectorAll('.g-switch input[name="series"]');
-
-        function setClassHelp(seriesClass) {
-          classHelp.replaceChildren();
-          var btn = document.createElement("code");
-          btn.textContent = "andm-btn";
-          if (seriesClass) {
-            var code = document.createElement("code");
-            code.textContent = seriesClass;
-            classHelp.append("親に ", code, " を付けます。ボタンは ", btn, " のままです。");
-          } else {
-            classHelp.append("Baseline は追加クラスなし。ボタンは ", btn, " のままです。");
-          }
-        }
-
-        function setBrief(id) {
-          var item = briefs[id];
-          if (!item) return;
-          traitEl.textContent = item.trait;
-          useEl.textContent = item.use;
-          motionEl.textContent = item.motion;
-        }
-
-        function apply(id) {
-          if (!Object.prototype.hasOwnProperty.call(allowed, id)) return;
-          var seriesClass = allowed[id];
-          Object.keys(allowed).forEach(function (key) {
-            if (allowed[key]) preview.classList.remove(allowed[key]);
-          });
-          if (seriesClass) preview.classList.add(seriesClass);
-          radios.forEach(function (radio) {
-            radio.checked = radio.value === id;
-          });
-          document.querySelectorAll("[data-scene]").forEach(function (el) {
-            el.hidden = el.getAttribute("data-scene") !== id;
-          });
-          setClassHelp(seriesClass);
-          setBrief(id);
-        }
-
-        radios.forEach(function (radio) {
-          radio.addEventListener("change", function () {
-            if (!radio.checked) return;
-            apply(radio.value);
-            if (location.hash.replace("#", "") !== radio.value) {
-              history.replaceState(null, "", "#" + radio.value);
-            }
-          });
-        });
-
-        function fromHash() {
-          var id = location.hash.replace("#", "");
-          if (Object.prototype.hasOwnProperty.call(allowed, id)) apply(id);
-        }
-
-        window.addEventListener("hashchange", fromHash);
-        fromHash();
-        var checked = document.querySelector('.g-switch input[name="series"]:checked');
-        if (checked && !Object.prototype.hasOwnProperty.call(allowed, location.hash.replace("#", ""))) {
-          apply(checked.value);
-        }
-      })();
-    </script>
+    <script src="catalog.js"></script>
+    <script src="explorer.js"></script>
   </body>
 </html>
