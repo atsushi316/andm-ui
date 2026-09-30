@@ -126,9 +126,15 @@ layout の角トークン: 0、2px、4px、8px、16px、24px、max。ボタン�
 
 ## motion
 
-mixin は `$duration-fast-01` と `motion(entrance, productive)` を参照する。数値は今回取得していない。未確認。
+2026-09-30 に https://carbondesignsystem.com/elements/motion/overview/ の本文を取得した。ボタン mixin（`packages/styles/scss/components/button/_mixins.scss`）は、背景・影・境界・outline を `$duration-fast-01` と `motion(entrance, productive)` にしている。
 
-採用: 押下の縮小はしない（下の反映一覧。`--andm-btn-press-scale: 1`）。`$duration-fast-01` のミリ秒が無いので、速度トークン（short1–short4）は差し替えない。
+採用:
+
+- `duration-fast-01` は 70ms。`--andm-motion-duration-short1` と `short2` を 70ms。
+- entrance productive は `cubic-bezier(0, 0, 0.38, 0.9)`。`--andm-motion-easing-decelerate` と `accelerate` をこの曲線にする。押下とホバーで別の曲線は mixin に無い。
+- standard productive は `cubic-bezier(0.2, 0, 0.38, 0.9)`。`--andm-motion-easing-standard` をこの曲線にする。
+- short3 / short4 は差し替えない。fast-02 以降をどれに割り当てるかは本文に無い。
+- 押下の縮小はしない（`--andm-btn-press-scale: 1`）。
 
 ## コンポーネント（ボタン）
 
@@ -167,6 +173,6 @@ mixin は `$duration-fast-01` と `motion(entrance, productive)` を参照する
 ## 検証不能
 
 - `hoverDanger` の計算結果
-- `$duration-fast-01` のミリ秒
+- fast-02 以降を short3 / short4 に割り当てる対応。本文に無い
 - body-compact-01 の行高
 - v12 を有効にしたときのボタン角（フラグの中身は未確認。fallback 名だけ取得）

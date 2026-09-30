@@ -115,8 +115,8 @@
    * M3 Expressive の Token remapping。
    * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
    * ボタンのクラスは共通のまま。Baseline（:root）を壊さない。唯一の正解にしない。
-   * motion の duration / easing は公式本文に数値が無い。short1–short4 は差し替えない。
-   * 形状変化は button.css の既存のまま。spring の公式値ではない。
+   * motion の物理ページは spring 名だけで、ms と stiffness / damping の数値は無い。
+   * short1–short4 は差し替えない。形状変化は button.css の既存のまま。
    */
   .andm-series--expressive {
     /* サイズは Expressive の Small / Medium / Large（40 / 56 / 96）。
@@ -297,7 +297,9 @@
    * 面: gray-50-rgb 248,248,248。本文: gray-800-rgb 41,41,41
    * フォント名: sans-serif-font-family = Adobe Clean（ファイルは置かない）
    * 影: ボタンの box-shadow はフォーカス以外 none
-   * duration の公式値はトークン取得に無い。速度は差し替えない。押下縮小は 1。
+   * motion ページの duration-100 は 130ms。ease-out は cubic-bezier(0, 0, 0.40, 1)。
+   * ボタンの色遷移はこの duration と ease-out。short1 / short2 と、押下・ホバーの easing だけ差し替える。
+   * 押下縮小は 1。
    */
   .andm-series--spectrum {
     --andm-color-primary: rgb(59, 99, 251);
@@ -327,6 +329,10 @@
     --andm-shadow-2: none;
     --andm-btn-press-scale: 1;
     --andm-focus-ring-width: 2px;
+    --andm-motion-duration-short1: 130ms;
+    --andm-motion-duration-short2: 130ms;
+    --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.4, 1);
+    --andm-motion-easing-accelerate: cubic-bezier(0, 0, 0.4, 1);
   }
 
   /*
@@ -364,7 +370,8 @@
    * 角: packages/styles の $button-border-radius は 0。
    * 字: $button-font-size は 0.875rem、字重は 400。書体名は IBM Plex Sans。ファイルは置かない。
    * 横余白: spacing-05 は 16px（density normal）。アイコン用の右側余白は未採用。
-   * $duration-fast-01 のミリ秒は未取得。速度は差し替えない。押下縮小は 1。
+   * motion ページの duration-fast-01 は 70ms。ボタン mixin はこれと entrance productive。
+   * short1 / short2 と、押下・ホバーの easing、standard をその本文の値にする。押下縮小は 1。
    */
   .andm-series--carbon {
     --andm-color-primary: #0f62fe;
@@ -396,5 +403,10 @@
     --andm-shadow-1: none;
     --andm-shadow-2: none;
     --andm-btn-press-scale: 1;
+    --andm-motion-duration-short1: 70ms;
+    --andm-motion-duration-short2: 70ms;
+    --andm-motion-easing-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
+    --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.38, 0.9);
+    --andm-motion-easing-accelerate: cubic-bezier(0, 0, 0.38, 0.9);
   }
 }

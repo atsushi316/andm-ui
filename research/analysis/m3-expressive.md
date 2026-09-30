@@ -96,9 +96,11 @@ RectangleShape は角なし。CircleShape は円。単位は dp。px への換�
 
 ## motion
 
-このページの本文に duration や easing の数値は無い。検証不能。
+2026-09-30 に https://m3.material.io/styles/motion/overview/how-it-works の本文を取得した。Expressive は spring で、easing と duration の旧方式を置き換える、とある。本文にある spring 名は `md.sys.motion.spring.fast.spatial` だけ。stiffness、damping、ms の数値は無い。検証不能。
 
-採用: 速度トークン（short1–short4）は差し替えない。押下時の角の変化は既存の Button に残している。spring と duration の公式値ではない。
+https://m3.material.io/styles/motion/easing-and-duration/tokens-specs には short1 50ms から long4 600ms と cubic-bezier がある。同ページは、これは Expressive へ更新していないチーム向けで、もう保守しない、と書く。Expressive の速度としては採用しない。
+
+採用: 速度トークン（short1–short4）は差し替えない。押下時の角の変化は既存の Button に残している。spring の公式値ではない。
 
 ## コンポーネント
 

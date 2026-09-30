@@ -68,9 +68,15 @@ light で採用した値:
 
 ## motion
 
-duration の公式値は今回のトークン取得に含まれていない。未確認。押下の縮小はしていない。
+2026-09-30 に https://spectrum.adobe.com/page/motion/ の本文を取得した。`@spectrum-css/tokens` 16.0.2 の animation トークンも同じ値。
 
-採用: 押下の縮小はしない（`--andm-btn-press-scale: 1`）。出典はこの節。duration の数値が無いので、速度トークン（short1–short4）は差し替えない。
+採用:
+
+- ボタンの色遷移は `duration-100`（130ms）と ease-out `cubic-bezier(0, 0, 0.40, 1)`。`@spectrum-css/button` の transition がこの duration と ease-out。
+- `--andm-motion-duration-short1` と `short2` を 130ms。
+- `--andm-motion-easing-decelerate` と `accelerate` をその ease-out。押下とホバーで別の曲線は本文に無い。
+- short3 / short4 は差し替えない。duration-200 以降をどれに割り当てるかは本文に無い。
+- 押下の縮小はしない（`--andm-btn-press-scale: 1`）。
 
 ## コンポーネント（ボタン）
 
@@ -94,4 +100,5 @@ duration の公式値は今回のトークン取得に含まれていない。�
 
 - https://spectrum.adobe.com/page/principles/ の本文。
 - https://spectrum.adobe.com/page/theming/ の本文。
-- ボタン以外の spacing スケールと motion の duration。今回の採用範囲外。
+- ボタン以外の spacing スケール。
+- duration-200 以降を short3 / short4 に割り当てる対応。本文に無い。

@@ -45,7 +45,7 @@
 
 ## motion
 
-検証不能。入口はタイトルだけで本文が取れない。このシリーズのモーションは実装しない。速度トークン（short1–short4）は差し替えない。
+2026-09-30 に https://developer.apple.com/design/human-interface-guidelines/motion の本文を取得した。duration も cubic-bezier も無い。easing はレイアウトと外観のアニメーションに組み込みで、消せない、変えられない、とある。数値がないので実装しない。検証不能。速度トークン（short1–short4）は差し替えない。
 
 ## コンポーネント
 

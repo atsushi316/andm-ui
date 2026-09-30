@@ -109,7 +109,7 @@ Mono は等幅。行高 150%、字間 0。17 / 16 / 14px の B と N。
 
 ## motion
 
-foundations の一覧にモーションのページは無い。duration は未確認。
+2026-09-30 に https://design.digital.go.jp/dads/foundations/ の一覧を再取得した。モーションの項目は無い。https://design.digital.go.jp/dads/foundations/motion/ は 404。duration も easing も本文に無い。検証不能。
 
 採用: 速度トークン（short1–short4）は差し替えない。
 
