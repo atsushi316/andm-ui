@@ -67,7 +67,10 @@
     pointer-events: none;
   }
 
-  /* —— Icon element —— */
+  /* —— Icon element ——
+   * Gallery はクラスを svg 自身に付ける。
+   * 子孫 svg だけ塗ると path の初期値 black が、ボタン色の上に残る。
+   */
   .andm-btn__icon {
     display: inline-flex;
     flex-shrink: 0;
@@ -75,11 +78,16 @@
     justify-content: center;
     width: var(--andm-btn-icon-size-md);
     height: var(--andm-btn-icon-size-md);
+    fill: currentColor;
   }
 
   .andm-btn__icon svg {
     width: 100%;
     height: 100%;
+    fill: currentColor;
+  }
+
+  .andm-btn__icon path {
     fill: currentColor;
   }
 
