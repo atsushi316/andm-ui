@@ -59,7 +59,7 @@
   }
 
   .andm-btn:focus-visible {
-    outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color);
     outline-offset: var(--andm-focus-ring-offset);
   }
 
@@ -490,7 +490,7 @@
   }
 
   .andm-series--dads .andm-btn:focus-visible {
-    outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color);
     outline-offset: var(--andm-focus-ring-offset);
     box-shadow: 0 0 0 2px var(--andm-focus-ring-inner);
   }

@@ -1,15 +1,17 @@
-/* Token の入口。定義は各層のファイル。 */
-@import "./primitives/colors.css";
-@import "./primitives/spacing.css";
-@import "./primitives/typography.css";
-@import "./primitives/radius.css";
-@import "./primitives/motion.css";
-@import "./semantic/colors.css";
-@import "./semantic/spacing.css";
-@import "./semantic/typography.css";
-@import "./semantic/motion.css";
+/* Token の入口。定義は各系統のファイル。 */
+@import "./tokens/color/primitive.css";
+@import "./tokens/color/semantic.css";
+@import "./tokens/typography/primitive.css";
+@import "./tokens/typography/semantic.css";
+@import "./tokens/spacing/primitive.css";
+@import "./tokens/spacing/semantic.css";
+@import "./tokens/radius/primitive.css";
+@import "./tokens/motion/primitive.css";
+@import "./tokens/motion/semantic.css";
+@import "./tokens/elevation/primitive.css";
+@import "./tokens/focus/semantic.css";
+@import "./tokens/state/semantic.css";
 @import "./components/button.css";
-@import "./candidates.css";
 @import "./series/expressive.css";
 @import "./series/dads.css";
 @import "./series/soft.css";
