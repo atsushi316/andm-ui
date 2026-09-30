@@ -293,19 +293,25 @@
     return "1" + (n < 10 ? "0" : "") + n;
   }
 
+  function isPaletteColor(name) {
+    return name === "--andm-color-white" || /^--andm-color-(?:[a-z0-9]+-)+\d+$/.test(name);
+  }
+
   function collectTokens(category) {
     var seen = Object.create(null);
     var list = [];
     decls.forEach(function (decl) {
       if (catalog.tokenCategory(decl.name) !== category) return;
-      var key = decl.selector + "\0" + decl.name;
-      if (seen[key]) return;
-      seen[key] = true;
+      if (decl.selector !== ":root") return;
+      if (decl.name.indexOf("--andm-btn-") === 0) return;
+      if (category === "color" && isPaletteColor(decl.name)) return;
+      if (seen[decl.name]) return;
+      seen[decl.name] = true;
       list.push({
         selector: decl.selector,
         name: decl.name,
         authored: decl.value,
-        computed: catalog.computedValue(decl.selector, decl.name) || decl.value,
+        computed: catalog.computedValue(":root", decl.name) || decl.value,
       });
     });
     return list;
@@ -669,9 +675,6 @@
   function renderScope(category, group) {
     var section = document.createElement("section");
     section.className = "g-token-scope";
-    var heading = document.createElement("h3");
-    heading.textContent = group.label;
-    section.appendChild(heading);
     if (category === "color") section.appendChild(renderColors(group.items));
     else if (category === "shape" || category === "elevation") section.appendChild(renderBoxes(category, group.items));
     else section.appendChild(renderScale(category, group.items));
@@ -695,7 +698,7 @@
     groupsOf(list).forEach(function (group) {
       tokenCards.appendChild(renderScope(category, group));
     });
-    tokenStatus.textContent = list.length + " 件。基準は Default。Series はそこで差し替えた値だけ。値は dist/style.css と computed style。";
+    tokenStatus.textContent = list.length + " 件のセマンティックトークン。値は :root。Series の差し替えは Series のページで見ます。";
   }
 
   function render() {
