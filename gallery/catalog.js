@@ -186,6 +186,10 @@
     return name.indexOf("color") !== -1 || isSingleColor(value);
   }
 
+  function isTypeToken(name) {
+    return /font|line-height|tracking/.test(name);
+  }
+
   function paintValue(value) {
     var v = String(value || "").trim();
     if (isSingleColor(v)) return v;
@@ -210,6 +214,7 @@
     computedValue: computedValue,
     computedOn: computedOn,
     isColorToken: isColorToken,
+    isTypeToken: isTypeToken,
     isSingleColor: isSingleColor,
     paintValue: paintValue,
     loadCss: loadCss,
