@@ -1,0 +1,34 @@
+@layer andm.tokens {
+  :root {
+    /* —— Semantic color —— */
+    --andm-color-primary: var(--andm-color-blue-40);
+    --andm-color-primary-rgb: 11 87 208;
+    --andm-color-on-primary: var(--andm-color-white);
+    --andm-color-secondary-container: var(--andm-color-blue-90);
+    --andm-color-on-secondary-container: #041e49;
+    --andm-color-surface: var(--andm-color-neutral-99);
+    --andm-color-on-surface: var(--andm-color-neutral-10);
+    --andm-color-on-surface-variant: var(--andm-color-neutral-40);
+    --andm-color-outline: #74777f;
+    --andm-color-outline-variant: color-mix(
+      in srgb,
+      var(--andm-color-outline) 24%,
+      transparent
+    );
+    --andm-color-disabled-container: color-mix(
+      in srgb,
+      var(--andm-color-on-surface) 12%,
+      transparent
+    );
+    --andm-color-on-disabled: color-mix(
+      in srgb,
+      var(--andm-color-on-surface) 38%,
+      transparent
+    );
+    --andm-color-disabled-outline: color-mix(
+      in srgb,
+      var(--andm-color-outline) 12%,
+      transparent
+    );
+  }
+}

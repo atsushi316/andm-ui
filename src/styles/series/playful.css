@@ -1,0 +1,17 @@
+@layer andm.tokens {
+  /*
+     * Playful。andm の Series。公式の Reference ではない。
+     * 速度トークンは差し替えない。Hover は short2、Press の色は short1。
+     * scale 0.94 は andm の設計値であり、公式値ではない。
+     * 角は 22px のまま（morph しない）。hover の lift は必須にしない。
+     */
+    .andm-series--playful {
+      --andm-color-primary: #0f766e;
+      --andm-color-primary-rgb: 15 118 110;
+      --andm-btn-radius: 22px;
+      --andm-btn-radius-pressed: 22px;
+      --andm-btn-height-md: 48px;
+      --andm-btn-padding-x-md: 22px;
+      --andm-btn-press-scale: 0.94;
+    }
+}

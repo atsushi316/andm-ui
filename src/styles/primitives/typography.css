@@ -1,0 +1,7 @@
+@layer andm.tokens {
+  :root {
+    --andm-font-size-sm: 12px;
+    --andm-font-size-md: 14px;
+    --andm-font-size-lg: 16px;
+  }
+}

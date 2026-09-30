@@ -1,0 +1,12 @@
+@layer andm.tokens {
+  :root {
+    /* —— Spacing —— */
+    --andm-space-0: 0;
+    --andm-space-1: 4px;
+    --andm-space-2: 8px;
+    --andm-space-3: 12px;
+    --andm-space-4: 16px;
+    --andm-space-6: 24px;
+    --andm-space-8: 32px;
+  }
+}

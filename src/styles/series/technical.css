@@ -1,0 +1,13 @@
+@layer andm.tokens {
+  .andm-series--technical {
+      --andm-btn-radius: 2px;
+      --andm-btn-radius-pressed: 2px;
+      --andm-btn-height-md: 32px;
+      --andm-font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      --andm-font-size-md: 13px;
+      --andm-btn-press-scale: 1;
+      --andm-btn-tracking: 0.02em;
+      --andm-shadow-1: none;
+      --andm-shadow-2: none;
+    }
+}

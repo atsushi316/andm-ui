@@ -1,0 +1,13 @@
+@layer andm.tokens {
+  :root {
+    /* —— Primitive color —— */
+    --andm-color-blue-40: #0b57d0;
+    --andm-color-blue-90: #d3e3fd;
+    --andm-color-neutral-10: #1a1c1e;
+    --andm-color-neutral-40: #5f6368;
+    --andm-color-neutral-90: #e3e3e3;
+    --andm-color-neutral-95: #f2f2f2;
+    --andm-color-neutral-99: #fcfcfc;
+    --andm-color-white: #ffffff;
+  }
+}

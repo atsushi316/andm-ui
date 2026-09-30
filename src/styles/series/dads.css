@@ -1,0 +1,63 @@
+@layer andm.tokens {
+  /*
+     * デジタル庁デザインシステム（DADS）の Token remapping。
+     * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
+     * ボタンのクラスは共通のまま。
+     * 公開されている色・角丸・タイポ・ボタンの性格の解釈。公式アセットは再配布しない。
+     * Web フォントは読まない（入っていれば Noto Sans JP、なければ日本語ゴシック）。
+     * Baseline / Expressive を壊さない。唯一の正解にしない。
+     * motion の duration は未確認。short1–short4 は差し替えない。
+     *
+     * 参照値（design.digital.go.jp / 公開トークンの解釈）:
+     *   primary Blue 900 #0017C1、hover Blue 1000、active Blue 1200
+     *   tonal Blue 100、outline hover Blue 200、text hover Blue 50
+     *   radius md/lg 8px・sm 6px、高さ 36/48/56、字重 700、行間 100%
+     *   focus は黒 4px + 黄 #FFD43D（Yellow 300）
+     */
+    .andm-series--dads {
+      --andm-color-primary: #0017c1;
+      --andm-color-primary-rgb: 0 23 193;
+      --andm-color-primary-hover: #00118f;
+      --andm-color-primary-active: #000060;
+      --andm-color-primary-soft: #e8f1fe;
+      --andm-color-primary-muted: #d9e6ff;
+      --andm-color-primary-wash: #c5d7fb;
+      --andm-color-primary-wash-strong: #9db7f9;
+      --andm-color-on-primary: #ffffff;
+      --andm-color-secondary-container: #d9e6ff;
+      --andm-color-on-secondary-container: #0017c1;
+      --andm-color-surface: #ffffff;
+      --andm-color-on-surface: #1a1a1a;
+      --andm-color-on-surface-variant: #4d4d4d;
+      --andm-color-outline: #0017c1;
+      --andm-color-line: #767676;
+      --andm-color-disabled-container: #b3b3b3;
+      --andm-color-on-disabled: #b3b3b3;
+      --andm-color-disabled-outline: #b3b3b3;
+      --andm-color-on-disabled-fill: #f2f2f2;
+      --andm-focus-ring-color: #000000;
+      --andm-focus-ring-width: 4px;
+      --andm-focus-ring-offset: 2px;
+      --andm-focus-ring-inner: #ffd43d;
+      --andm-font-family: "Noto Sans JP", "Hiragino Sans",
+        "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", "Yu Gothic", "YuGothic",
+        "Meiryo", sans-serif;
+      --andm-font-weight-medium: 700;
+      /* ボタンは Oln-16B-100。14px は xs のみで、sm 以上は 16px */
+      --andm-font-size-sm: 16px;
+      --andm-font-size-md: 16px;
+      --andm-font-size-lg: 16px;
+      --andm-line-height-tight: 1;
+      --andm-shadow-1: none;
+      --andm-shadow-2: none;
+      --andm-btn-height-sm: 36px;
+      --andm-btn-height-md: 48px;
+      --andm-btn-height-lg: 56px;
+      --andm-btn-padding-x-sm: 12px;
+      --andm-btn-padding-x-md: 16px;
+      --andm-btn-padding-x-lg: 16px;
+      --andm-btn-radius: 8px;
+      --andm-btn-radius-pressed: 8px;
+      --andm-btn-press-scale: 1;
+    }
+}
