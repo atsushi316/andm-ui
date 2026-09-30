@@ -118,13 +118,15 @@
    */
   .andm-series--expressive {
     /* サイズは Expressive の Small / Medium / Large（40 / 56 / 96）。
-       Small が既定。横 padding は Small の推奨 16px。色ロールは Baseline のまま。 */
+       横 padding はサイズごと（leading / trailing space の 16 / 24 / 48）。
+       Small の 16px を中・大に流用しない。ラベル付きは高さより幅の広い pill。
+       色ロールは Baseline のまま。 */
     --andm-btn-height-sm: 40px;
     --andm-btn-height-md: 56px;
     --andm-btn-height-lg: 96px;
     --andm-btn-padding-x-sm: 16px;
-    --andm-btn-padding-x-md: 16px;
-    --andm-btn-padding-x-lg: 16px;
+    --andm-btn-padding-x-md: 24px;
+    --andm-btn-padding-x-lg: 48px;
     --andm-btn-radius: var(--andm-radius-pill);
     /* Medium の pressed。Small 8 / Large 16 は button.css で上書き */
     --andm-btn-radius-pressed: 12px;

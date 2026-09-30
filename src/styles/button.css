@@ -320,6 +320,23 @@
     --andm-btn-radius-pressed: 8px;
   }
 
+  /*
+   * text は共通で padding-inline を space に固定している。
+   * Expressive の高さに対してそれだと短いラベルが円になる。
+   * 横 padding はサイズトークンに戻す。クラスは足さない。
+   */
+  .andm-series--expressive .andm-btn--text {
+    padding-inline: var(--andm-btn-padding-x-md);
+  }
+
+  .andm-series--expressive .andm-btn--text.andm-btn--sm {
+    padding-inline: var(--andm-btn-padding-x-sm);
+  }
+
+  .andm-series--expressive .andm-btn--text.andm-btn--lg {
+    padding-inline: var(--andm-btn-padding-x-lg);
+  }
+
   .andm-series--expressive .andm-btn--lg {
     --andm-btn-radius-pressed: 16px;
   }

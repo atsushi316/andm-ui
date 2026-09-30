@@ -34,7 +34,7 @@ Gallery で今使える例です。共通の Button に Token を当てます。
 | Technical | `andm-series--technical` | 角はほぼ直角、等幅、影なし |
 | Editorial | `andm-series--editorial` | 角なし、セリフ、字間を少し開ける |
 | Playful | `andm-series--playful` | 丸い、ティール、押下の縮小が少し大きい |
-| M3 Expressive | `andm-series--expressive` | 丸が基本。押すと角が立つ。大きさでも強調する |
+| M3 Expressive | `andm-series--expressive` | ラベル付きは横長の pill。押すと角が立つ。大きさでも強調する |
 | DADS | `andm-series--dads` | 濃い青、控えめな角、太めの字。手続きで迷わず押せる |
 | Apple | `andm-series--apple` | システムフォントのみ。色と寸法は未確認 |
 | Spectrum | `andm-series--spectrum` | Spectrum 2。青のアクセント、height/2 の角、2px の境界 |
@@ -53,8 +53,8 @@ Baseline は追加クラスなし。上の 11 は Gallery で切り替えるシ�
 |------|------|
 | スコープ | 親に `andm-series--expressive`（Token remapping） |
 | 向いている用途 | 表現寄り・消費者向け（強調や印象を残したい画面） |
-| Shape | 静止は丸（full）。押下で角を立てる（Small 8 / Medium 12 / Large 16）。任意 `andm-btn--shape-asymmetric` は square（12 / 16 / 28） |
-| Size | Small 40 / Medium 56 / Large 96。横 padding は Small の推奨 16px。アイコン 20px |
+| Shape | ラベル付きの静止は横長の pill（Round = Full）。押下は Small 8 / Medium 12 / Large 16。ホバーでは角を変えない。任意 `andm-btn--shape-asymmetric` は square（12 / 16 / 28） |
+| Size | Small 40 / Medium 56 / Large 96。横 padding は 16 / 24 / 48。アイコン 20px |
 | Emphasis | 大きさ。字重は M3 label の Medium（500）。色ロールは Baseline のまま |
 | Motion | 形は fast spatial（350ms、`cubic-bezier(0.42, 1.67, 0.21, 0.9)`）。色・背景・枠・影は fast effects（150ms、`cubic-bezier(0.31, 0.94, 0.34, 1)`）。short1–short4 には詰めない。ホバーでは角を変えない。押下で角が変わり、scale は 1。reduced motion は共通で、色と focus ring を残し、transform と形状変化を止める |
 | 既存 variant | filled / tonal / outlined / text / elevated はそのまま |

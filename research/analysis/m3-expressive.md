@@ -121,8 +121,8 @@ RectangleShape は角なし。CircleShape は円。単位は dp。px への換�
 実装にある値。今回取得した本文には無いので、公式値としては未確認のまま残している。
 
 - 高さ 40 / 56 / 96px
-- 横余白 16px
-- 静止の角は pill（specs の Round = Full）。押下は小 8px、中 12px、大 16px。specs の S / M / L の Pressed と一致
+- 横余白はサイズごと。Small 16px、Medium 24px、Large 48px。Material3 の ButtonSmall / Medium / Large トークンの LeadingSpace と TrailingSpace（生成コード v0_11_0）。Small の 16px を中と大に流用すると、短いラベルの幅が高さに近づき円になる。text が固定している横余白も、Expressive ではこの値に戻す
+- 静止の角は pill（specs の Round = Full）。ラベル付きは高さより幅が広い。押下は小 8px、中 12px、大 16px。specs の S / M / L の Pressed と一致。ホバーでは角を変えない
 - 字重 500
 - アイコン 20px
 - 色は Baseline のまま
