@@ -70,6 +70,8 @@ light で採用した値:
 
 duration の公式値は今回のトークン取得に含まれていない。未確認。押下の縮小はしていない。
 
+採用: 押下の縮小はしない（`--andm-btn-press-scale: 1`）。出典はこの節。duration の数値が無いので、速度トークン（short1–short4）は差し替えない。
+
 ## コンポーネント（ボタン）
 
 - desktop の component-height-75 / 100 / 200 = 24 / 32 / 40px（S / 既定 / L）

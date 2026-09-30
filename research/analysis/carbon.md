@@ -128,6 +128,8 @@ layout の角トークン: 0、2px、4px、8px、16px、24px、max。ボタン�
 
 mixin は `$duration-fast-01` と `motion(entrance, productive)` を参照する。数値は今回取得していない。未確認。
 
+採用: 押下の縮小はしない（下の反映一覧。`--andm-btn-press-scale: 1`）。`$duration-fast-01` のミリ秒が無いので、速度トークン（short1–short4）は差し替えない。
+
 ## コンポーネント（ボタン）
 
 - 境界幅の見た目は `$button-outline-width` の 1px。primary と secondary の境界色は transparent

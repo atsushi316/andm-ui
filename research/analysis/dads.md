@@ -111,6 +111,8 @@ Mono は等幅。行高 150%、字間 0。17 / 16 / 14px の B と N。
 
 foundations の一覧にモーションのページは無い。duration は未確認。
 
+採用: 速度トークン（short1–short4）は差し替えない。
+
 ## コンポーネント（ボタン）
 
 https://design.digital.go.jp/dads/components/button/ の本文:

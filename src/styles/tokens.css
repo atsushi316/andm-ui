@@ -115,6 +115,8 @@
    * M3 Expressive の Token remapping。
    * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
    * ボタンのクラスは共通のまま。Baseline（:root）を壊さない。唯一の正解にしない。
+   * motion の duration / easing は公式本文に数値が無い。short1–short4 は差し替えない。
+   * 形状変化は button.css の既存のまま。spring の公式値ではない。
    */
   .andm-series--expressive {
     /* サイズは Expressive の Small / Medium / Large（40 / 56 / 96）。
@@ -145,6 +147,7 @@
    * 公開されている色・角丸・タイポ・ボタンの性格の解釈。公式アセットは再配布しない。
    * Web フォントは読まない（入っていれば Noto Sans JP、なければ日本語ゴシック）。
    * Baseline / Expressive を壊さない。唯一の正解にしない。
+   * motion の duration は未確認。short1–short4 は差し替えない。
    *
    * 参照値（design.digital.go.jp / 公開トークンの解釈）:
    *   primary Blue 900 #0017C1、hover Blue 1000、active Blue 1200
@@ -270,6 +273,7 @@
    * 色・角丸・余白・高さ・境界・影・ぼかし・押下縮小は公式値として書かない。
    * 下のフォントは HIG の数値ではない。システムスタックのみ。
    * SF のファイル、SF Symbols、ロゴは同梱しない。
+   * motion はタイトルのみで検証不能。速度トークンは差し替えない。
    */
   .andm-series--apple {
     --andm-font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
@@ -293,6 +297,7 @@
    * 面: gray-50-rgb 248,248,248。本文: gray-800-rgb 41,41,41
    * フォント名: sans-serif-font-family = Adobe Clean（ファイルは置かない）
    * 影: ボタンの box-shadow はフォーカス以外 none
+   * duration の公式値はトークン取得に無い。速度は差し替えない。押下縮小は 1。
    */
   .andm-series--spectrum {
     --andm-color-primary: rgb(59, 99, 251);
@@ -334,6 +339,7 @@
    * typography（Web）: Caption 1 は 12px、Body 1 は 14px、Subtitle 2 は 16px。
    * 書体名は Segoe UI。ファイルは置かない。
    * 色、余白、高さ、影、duration の数値はこれらのページ本文に無かったので書かない。
+   * 速度トークンは差し替えない。
    */
   .andm-series--fluent {
     --andm-btn-radius: 4px;
@@ -358,6 +364,7 @@
    * 角: packages/styles の $button-border-radius は 0。
    * 字: $button-font-size は 0.875rem、字重は 400。書体名は IBM Plex Sans。ファイルは置かない。
    * 横余白: spacing-05 は 16px（density normal）。アイコン用の右側余白は未採用。
+   * $duration-fast-01 のミリ秒は未取得。速度は差し替えない。押下縮小は 1。
    */
   .andm-series--carbon {
     --andm-color-primary: #0f62fe;
