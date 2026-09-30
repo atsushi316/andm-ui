@@ -293,10 +293,6 @@
     return "1" + (n < 10 ? "0" : "") + n;
   }
 
-  function isPaletteColor(name) {
-    return name === "--andm-color-white" || /^--andm-color-(?:[a-z0-9]+-)+\d+$/.test(name);
-  }
-
   function collectTokens(category) {
     var seen = Object.create(null);
     var list = [];
@@ -304,7 +300,6 @@
       if (catalog.tokenCategory(decl.name) !== category) return;
       if (decl.selector !== ":root") return;
       if (decl.name.indexOf("--andm-btn-") === 0) return;
-      if (category === "color" && isPaletteColor(decl.name)) return;
       if (seen[decl.name]) return;
       seen[decl.name] = true;
       list.push({
@@ -480,20 +475,39 @@
 
   function renderColors(items) {
     var wrap = document.createElement("div");
-    colorFamilies(items).forEach(function (family) {
+    var families = colorFamilies(items);
+    var palette = families.filter(function (family) {
+      return family.numeric || family.key === "white";
+    });
+    var semantic = families.filter(function (family) {
+      return !family.numeric && family.key !== "white";
+    });
+    appendColorGroup(wrap, "Palette", palette);
+    appendColorGroup(wrap, "Semantic", semantic);
+    return wrap;
+  }
+
+  function appendColorGroup(wrap, label, families) {
+    if (!families.length) return;
+    var section = document.createElement("section");
+    section.className = "g-color-group";
+    var heading = document.createElement("h3");
+    heading.textContent = label;
+    section.appendChild(heading);
+    families.forEach(function (family) {
       var block = document.createElement("div");
       block.className = "g-ramp";
-      var heading = document.createElement("h4");
-      heading.textContent = family.key;
+      var name = document.createElement("h4");
+      name.textContent = family.key;
       var row = document.createElement("div");
       row.className = family.numeric ? "g-ramp__strip" : "g-ramp__grid";
       family.items.forEach(function (item) {
         row.appendChild(colorSwatch(item));
       });
-      block.append(heading, row);
-      wrap.appendChild(block);
+      block.append(name, row);
+      section.appendChild(block);
     });
-    return wrap;
+    wrap.appendChild(section);
   }
 
   function lengthPx(value) {
@@ -698,7 +712,11 @@
     groupsOf(list).forEach(function (group) {
       tokenCards.appendChild(renderScope(category, group));
     });
-    tokenStatus.textContent = list.length + " 件のセマンティックトークン。値は :root。Series の差し替えは Series のページで見ます。";
+    if (category === "color") {
+      tokenStatus.textContent = list.length + " 件。Palette はチップ、Semantic は役割。値は :root。Series の差し替えは出していません。";
+    } else {
+      tokenStatus.textContent = list.length + " 件。値は :root。Series の差し替えは Series のページで見ます。";
+    }
   }
 
   function render() {
