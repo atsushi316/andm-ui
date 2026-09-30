@@ -297,38 +297,25 @@
    * — シリーズ別の Button クラスは作らない。
    */
   .andm-series--expressive .andm-btn {
-    /* 形（spatial）だけ overshoot 近似。色は effects なので decelerate */
+    /* 色は fast effects。角は fast spatial。ホバーでは角を変えない */
     transition:
-      background-color var(--andm-motion-duration-short2)
-        var(--andm-motion-easing-decelerate),
-      color var(--andm-motion-duration-short2)
-        var(--andm-motion-easing-decelerate),
-      border-color var(--andm-motion-duration-short2)
-        var(--andm-motion-easing-decelerate),
-      box-shadow var(--andm-motion-duration-short2)
-        var(--andm-motion-easing-decelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-expressive);
+      background-color var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      color var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      border-color var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      box-shadow var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      border-radius var(--andm-motion-duration-expressive-fast-spatial)
+        var(--andm-motion-easing-expressive-fast-spatial);
   }
 
   .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]) {
     border-radius: var(--andm-btn-radius-pressed);
-    transition:
-      background-color var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate),
-      color var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate),
-      border-color var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate),
-      box-shadow var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate),
-      border-radius var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-expressive),
-      transform var(--andm-motion-duration-short1)
-        var(--andm-motion-easing-accelerate);
   }
 
-  /* Pressed はサイズごとに角を立てる（icon button 公開表の pressed） */
+  /* Pressed は specs の S / M / L（8 / 12 / 16dp）。ホバーでは角を変えない */
   .andm-series--expressive
     .andm-btn--sm:active:not(:disabled):not([disabled]) {
     border-radius: 8px;

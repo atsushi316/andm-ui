@@ -90,8 +90,6 @@
     --andm-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
     --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
     --andm-motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
-    /* Spatial 寄りの近似（spring overshoot）。Effects（色/opacity）には使わない */
-    --andm-motion-easing-expressive: cubic-bezier(0.34, 1.4, 0.64, 1);
 
     /* —— Component: Button（Baseline） —— */
     --andm-btn-height-sm: 32px;
@@ -115,8 +113,8 @@
    * M3 Expressive の Token remapping。
    * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
    * ボタンのクラスは共通のまま。Baseline（:root）を壊さない。唯一の正解にしない。
-   * motion の物理ページは spring 名だけで、ms と stiffness / damping の数値は無い。
-   * short1–short4 は差し替えない。形状変化は button.css の既存のまま。
+   * 形は expressive fast spatial、色は expressive fast effects。
+   * short1–short4 には詰めない。押下の角は specs の S / M / L のまま。
    */
   .andm-series--expressive {
     /* サイズは Expressive の Small / Medium / Large（40 / 56 / 96）。
@@ -138,6 +136,11 @@
     --andm-btn-icon-size-lg: 20px;
     /* M3 label は Medium（500）。700 にはしない */
     --andm-font-weight-medium: 500;
+    /* Web: Convert springs to curves。fast spatial / fast effects */
+    --andm-motion-duration-expressive-fast-spatial: 350ms;
+    --andm-motion-easing-expressive-fast-spatial: cubic-bezier(0.42, 1.67, 0.21, 0.9);
+    --andm-motion-duration-expressive-fast-effects: 150ms;
+    --andm-motion-easing-expressive-fast-effects: cubic-bezier(0.31, 0.94, 0.34, 1);
   }
 
   /*

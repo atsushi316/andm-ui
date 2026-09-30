@@ -96,11 +96,21 @@ RectangleShape は角なし。CircleShape は円。単位は dp。px への換�
 
 ## motion
 
-2026-09-30 に https://m3.material.io/styles/motion/overview/how-it-works の本文を取得した。Expressive は spring で、easing と duration の旧方式を置き換える、とある。本文にある spring 名は `md.sys.motion.spring.fast.spatial` だけ。stiffness、damping、ms の数値は無い。検証不能。
+2026-09-30 に本文を取り直した。
 
-https://m3.material.io/styles/motion/easing-and-duration/tokens-specs には short1 50ms から long4 600ms と cubic-bezier がある。同ページは、これは Expressive へ更新していないチーム向けで、もう保守しない、と書く。Expressive の速度としては採用しない。
+採用（Expressive の Button だけ。short1–short4 には詰めない）:
 
-採用: 速度トークン（short1–short4）は差し替えない。押下時の角の変化は既存の Button に残している。spring の公式値ではない。
+- 形（角）は expressive fast spatial。曲線 `cubic-bezier(0.42, 1.67, 0.21, 0.9)`、350ms。色は expressive fast effects。曲線 `cubic-bezier(0.31, 0.94, 0.34, 1)`、150ms。ホバーでも押下でも色はこの effects。角が変わるのは押下だけ。
+- 出典: https://m3.material.io/styles/motion/overview/how-it-works は、部品の動きは expressive fast spatial と expressive fast effects だと書く。ミリ秒と曲線は https://m3.material.io/styles/motion/overview/specs の「Web: Convert springs to curves」。
+- 押下の角は https://m3.material.io/components/buttons/specs の Corner sizes。Round は Full。Pressed は XS 8dp、S 8dp、M 12dp、L 16dp、XL 16dp。Square の静止は XS 12dp、S 12dp、M 16dp、L 28dp、XL 28dp。実装の小 / 中 / 大は S / M / L に合わせてあり、半径は変えていない。ホバーで角は変えない。本文は「When pressed, buttons can morph to become more square」。
+
+検証不能:
+
+- https://github.com/material-components の組織ページに、ボタンの角や spring の数値は無い。
+- https://m3.material.io/components は部品の一覧で、角の dp は無い。
+- https://m3.material.io/styles/motion/transitions/transition-patterns は旧 duration 系だと書き、ボタンの押下の数値は無い。
+- https://m3.material.io/styles/motion/easing-and-duration/applying-easing-and-duration には 200ms から 500ms の組がある。同ページは、Expressive は spring に移り、この方式はもう保守しない、と書く。Button には使わない。
+- stiffness と damping の生の数値は、specs の spring フォルダが開かず取れなかった。Web 向けの曲線と duration だけ採用した。
 
 ## コンポーネント
 
@@ -112,7 +122,7 @@ https://m3.material.io/styles/motion/easing-and-duration/tokens-specs には sho
 
 - 高さ 40 / 56 / 96px
 - 横余白 16px
-- 静止の角は pill。押下で角を変える（中は 12px。小 8px、大 16px は button.css）
+- 静止の角は pill（specs の Round = Full）。押下は小 8px、中 12px、大 16px。specs の S / M / L の Pressed と一致
 - 字重 500
 - アイコン 20px
 - 色は Baseline のまま
@@ -128,7 +138,8 @@ https://m3.material.io/styles/motion/easing-and-duration/tokens-specs には sho
 ## 検証不能
 
 - https://m3.material.io/get-started と、上記の m3.material.io 各ページ。本文なし。
-- Expressive 固有のボタン高さ、角のモーフィング、spring の数値。
+- ボタン高さの dp 表（specs の数値表には角だけが出た）。
+- spring の stiffness と damping。
 - spacing のスケール。
 - elevation の dp と影の式。
-- motion の duration と easing。
+- 旧 easing / duration を Expressive の Button に使うこと。適用ページ自身が、Expressive では保守しないと書く。
