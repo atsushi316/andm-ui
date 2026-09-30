@@ -643,6 +643,10 @@
         border-radius: 0 var(--andm-radius-md) var(--andm-radius-md) 0;
       }
 
+      .g-ramp__strip .g-swatch:only-child .g-swatch__chip {
+        border-radius: var(--andm-radius-md);
+      }
+
       .g-ramp__grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
@@ -713,11 +717,17 @@
 
       .g-token-line {
         display: grid;
-        grid-template-columns: minmax(12rem, 20rem) minmax(6rem, 1fr) minmax(7rem, 12rem);
+        grid-template-columns: minmax(12rem, 18rem) max-content minmax(7rem, 1fr);
         gap: var(--andm-space-4);
         align-items: center;
         padding: var(--andm-space-3) 0;
         border-bottom: 1px solid var(--g-border);
+      }
+
+      .g-token-line__preview {
+        display: flex;
+        align-items: center;
+        min-width: 2rem;
       }
 
       .g-token-line--type {
@@ -741,6 +751,7 @@
       .g-token-line__meta strong {
         color: var(--andm-color-on-surface);
         font-size: 0.95rem;
+        overflow-wrap: anywhere;
       }
 
       .g-meter__bar,
@@ -753,8 +764,7 @@
       }
 
       .g-inline-swatch {
-        width: 100%;
-        max-width: 16rem;
+        width: 10rem;
         min-height: 2.75rem;
         height: auto;
         padding: 0.55rem 0.7rem;

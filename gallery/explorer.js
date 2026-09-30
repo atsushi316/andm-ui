@@ -315,22 +315,30 @@
     var map = Object.create(null);
     var keys = [];
     list.forEach(function (item) {
-      if (!map[item.selector]) {
-        map[item.selector] = [];
-        keys.push(item.selector);
+      var key = scopeLabel(item.selector);
+      if (!map[key]) {
+        map[key] = { label: key, rank: scopeRank(item.selector), items: [] };
+        keys.push(key);
       }
-      map[item.selector].push(item);
+      if (scopeRank(item.selector) < map[key].rank) map[key].rank = scopeRank(item.selector);
+      map[key].items.push(item);
     });
     keys.sort(function (a, b) {
-      var ra = scopeRank(a);
-      var rb = scopeRank(b);
-      if (ra < rb) return -1;
-      if (ra > rb) return 1;
+      if (map[a].rank < map[b].rank) return -1;
+      if (map[a].rank > map[b].rank) return 1;
       return 0;
     });
     return keys.map(function (key) {
-      return { selector: key, items: map[key] };
+      return map[key];
     });
+  }
+
+  function selectorHint(selector) {
+    return selector
+      .replace(/:root/g, "")
+      .replace(/\.andm-series--[A-Za-z0-9-]+/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
   }
 
   var inkProbe = null;
@@ -573,7 +581,7 @@
         var bar = document.createElement("span");
         bar.className = "g-meter__bar";
         var px = lengthPx(item.computed);
-        bar.style.width = px === null ? item.computed : Math.max(px, 1) + "px";
+        bar.style.width = px === null ? item.computed : px + "px";
         preview.appendChild(bar);
         row.append(name, preview, meta);
       } else if (category === "motion") {
@@ -614,7 +622,17 @@
   function renderBoxes(category, items) {
     var row = document.createElement("div");
     row.className = "g-box-row";
-    items.forEach(function (item) {
+    var order = ["--andm-radius-sm", "--andm-radius-md", "--andm-radius-lg", "--andm-radius-pill", "--andm-shadow-1", "--andm-shadow-2"];
+    var sorted = items.slice().sort(function (a, b) {
+      var ia = order.indexOf(a.name);
+      var ib = order.indexOf(b.name);
+      if (ia === -1) ia = 20;
+      if (ib === -1) ib = 20;
+      if (ia !== ib) return ia - ib;
+      if (a.name !== b.name) return a.name < b.name ? -1 : 1;
+      return selectorHint(a.selector) < selectorHint(b.selector) ? -1 : 1;
+    });
+    sorted.forEach(function (item) {
       var fig = document.createElement("figure");
       fig.className = "g-box";
       var face = document.createElement("div");
@@ -625,6 +643,13 @@
       face.textContent = short;
       var cap = document.createElement("figcaption");
       cap.appendChild(tokenCode(item.name));
+      var hintText = selectorHint(item.selector);
+      if (hintText) {
+        var hint = document.createElement("span");
+        hint.className = "g-swatch__alias";
+        hint.textContent = hintText;
+        cap.appendChild(hint);
+      }
       var value = document.createElement("span");
       value.className = "g-swatch__use";
       value.textContent = item.computed;
@@ -645,7 +670,7 @@
     var section = document.createElement("section");
     section.className = "g-token-scope";
     var heading = document.createElement("h3");
-    heading.textContent = scopeLabel(group.selector);
+    heading.textContent = group.label;
     section.appendChild(heading);
     if (category === "color") section.appendChild(renderColors(group.items));
     else if (category === "shape" || category === "elevation") section.appendChild(renderBoxes(category, group.items));
