@@ -264,48 +264,400 @@
     });
   }
 
-  function previewFor(category, name, value) {
-    var node = document.createElement("div");
-    node.className = "g-exp-preview";
-    if (category === "color") {
-      var paint = catalog.paintValue(value);
-      if (paint) node.style.background = paint;
-      node.textContent = paint ? "" : value;
-    } else if (category === "typography") {
-      node.textContent = "あいうえお Ag";
-      if (name.indexOf("font-family") !== -1) node.style.fontFamily = value;
-      if (name.indexOf("font-size") !== -1) node.style.fontSize = value;
-      if (name.indexOf("font-weight") !== -1) node.style.fontWeight = value;
-      if (name.indexOf("line-height") !== -1) node.style.lineHeight = value;
-      if (name.indexOf("tracking") !== -1) node.style.letterSpacing = value;
-    } else if (category === "spacing") {
-      var bar = document.createElement("span");
-      bar.className = "g-exp-bar";
-      bar.style.width = value;
-      node.appendChild(bar);
-    } else if (category === "shape") {
-      node.className = "g-exp-shape";
-      node.style.borderRadius = value;
-    } else if (category === "elevation") {
-      node.className = "g-exp-elev";
-      node.style.boxShadow = value;
-    } else if (category === "motion" && name.indexOf("duration") !== -1) {
-      var demo = document.createElement("button");
-      demo.type = "button";
-      demo.className = "g-motion-demo";
-      demo.textContent = "触る";
-      demo.style.transition = "background-color " + value + " " + resolvedEasing(name);
-      demo.addEventListener("pointerenter", function () { demo.classList.add("is-on"); });
-      demo.addEventListener("pointerleave", function () { demo.classList.remove("is-on"); });
-      return demo;
-    } else if (category === "interaction") {
-      node.textContent = value;
+  function tokenCode(name) {
+    var code = document.createElement("code");
+    var parts = name.split("-");
+    parts.forEach(function (part, index) {
+      if (index) {
+        code.appendChild(document.createTextNode("-"));
+        code.appendChild(document.createElement("wbr"));
+      }
+      code.appendChild(document.createTextNode(part));
+    });
+    return code;
+  }
+
+  function scopeLabel(selector) {
+    if (selector === ":root") return "Default";
+    var match = selector.match(/\.andm-series--([A-Za-z0-9-]+)/);
+    if (match) return (copy.labels && copy.labels[match[1]]) || match[1];
+    return selector;
+  }
+
+  function scopeRank(selector) {
+    if (selector === ":root") return "0";
+    var match = selector.match(/\.andm-series--([A-Za-z0-9-]+)/);
+    if (!match) return "2" + selector;
+    var index = (copy.order || []).indexOf(match[1]);
+    var n = index === -1 ? 99 : index;
+    return "1" + (n < 10 ? "0" : "") + n;
+  }
+
+  function collectTokens(category) {
+    var seen = Object.create(null);
+    var list = [];
+    decls.forEach(function (decl) {
+      if (catalog.tokenCategory(decl.name) !== category) return;
+      var key = decl.selector + "\0" + decl.name;
+      if (seen[key]) return;
+      seen[key] = true;
+      list.push({
+        selector: decl.selector,
+        name: decl.name,
+        authored: decl.value,
+        computed: catalog.computedValue(decl.selector, decl.name) || decl.value,
+      });
+    });
+    return list;
+  }
+
+  function groupsOf(list) {
+    var map = Object.create(null);
+    var keys = [];
+    list.forEach(function (item) {
+      if (!map[item.selector]) {
+        map[item.selector] = [];
+        keys.push(item.selector);
+      }
+      map[item.selector].push(item);
+    });
+    keys.sort(function (a, b) {
+      var ra = scopeRank(a);
+      var rb = scopeRank(b);
+      if (ra < rb) return -1;
+      if (ra > rb) return 1;
+      return 0;
+    });
+    return keys.map(function (key) {
+      return { selector: key, items: map[key] };
+    });
+  }
+
+  var inkProbe = null;
+
+  function resolvedBackground(paint) {
+    if (!inkProbe) {
+      inkProbe = document.createElement("div");
+      inkProbe.style.cssText = "position:absolute;left:-9999px;top:0;width:1px;height:1px;pointer-events:none;";
+      document.body.appendChild(inkProbe);
     }
-    return node;
+    inkProbe.style.backgroundColor = paint;
+    return getComputedStyle(inkProbe).backgroundColor;
+  }
+
+  function channel(c) {
+    c = c / 255;
+    return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  }
+
+  function hexByte(n) {
+    var h = Math.max(0, Math.min(255, Math.round(n))).toString(16);
+    return h.length === 1 ? "0" + h : h;
+  }
+
+  function toneFor(paint) {
+    var bg = resolvedBackground(paint);
+    var match = String(bg).match(/rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:[,\s/]+([\d.]+))?\s*\)/i);
+    if (!match) return { ink: "#1a1c1e", label: paint };
+    var r = Number(match[1]);
+    var g = Number(match[2]);
+    var b = Number(match[3]);
+    var a = match[4] === undefined ? 1 : Number(match[4]);
+    var lum = 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
+    return {
+      ink: a < 0.45 || lum > 0.58 ? "#1a1c1e" : "#ffffff",
+      label: a < 1 ? bg : "#" + hexByte(r) + hexByte(g) + hexByte(b),
+    };
+  }
+
+  function colorMeta(name) {
+    var body = name.replace(/^--andm-color-/, "");
+    var numeric = body.match(/^(.*)-(\d+)$/);
+    if (numeric) {
+      return { key: numeric[1], label: numeric[2], numeric: true, rank: Number(numeric[2]) };
+    }
+    var base = body.replace(/^on-/, "").split("-")[0];
+    var rank = 200;
+    if (body === base) rank = 0;
+    else if (body.indexOf("on-") === 0) rank = 400;
+    return { key: base || body, label: body, numeric: false, rank: rank };
+  }
+
+  var familyOrder = ["blue", "neutral", "primary", "secondary", "surface", "outline", "line", "disabled", "white"];
+
+  function colorFamilies(items) {
+    var map = Object.create(null);
+    var keys = [];
+    items.forEach(function (item) {
+      var meta = colorMeta(item.name);
+      if (!map[meta.key]) {
+        map[meta.key] = { key: meta.key, numeric: meta.numeric, items: [] };
+        keys.push(meta.key);
+      }
+      if (meta.numeric) map[meta.key].numeric = true;
+      map[meta.key].items.push(item);
+    });
+    keys.sort(function (a, b) {
+      var ia = familyOrder.indexOf(a);
+      var ib = familyOrder.indexOf(b);
+      if (ia === -1) ia = 50;
+      if (ib === -1) ib = 50;
+      if (ia !== ib) return ia - ib;
+      return a < b ? -1 : 1;
+    });
+    return keys.map(function (key) {
+      var family = map[key];
+      family.items.sort(function (a, b) {
+        var ma = colorMeta(a.name);
+        var mb = colorMeta(b.name);
+        if (ma.rank !== mb.rank) return ma.rank - mb.rank;
+        return a.name < b.name ? -1 : 1;
+      });
+      return family;
+    });
+  }
+
+  function aliasLine(item) {
+    if (!/^var\(--andm-/.test(item.authored)) return "";
+    if (item.authored.replace(/\s+/g, "") === item.computed.replace(/\s+/g, "")) return "";
+    return item.authored;
+  }
+
+  function colorSwatch(item) {
+    var meta = colorMeta(item.name);
+    var fig = document.createElement("figure");
+    fig.className = "g-swatch";
+    var paint = catalog.paintValue(item.computed) || catalog.paintValue(item.authored);
+    var chip = document.createElement("div");
+    chip.className = "g-swatch__chip";
+    if (paint) {
+      var tone = toneFor(paint);
+      chip.style.background = paint;
+      chip.style.color = tone.ink;
+      var step = document.createElement("span");
+      step.className = "g-swatch__step";
+      step.textContent = meta.label;
+      var hex = document.createElement("span");
+      hex.className = "g-swatch__hex";
+      hex.textContent = tone.label;
+      chip.append(step, hex);
+    } else {
+      chip.classList.add("g-swatch__chip--plain");
+      chip.textContent = item.computed;
+    }
+    var cap = document.createElement("figcaption");
+    cap.appendChild(tokenCode(item.name));
+    if (usage[item.name]) {
+      var use = document.createElement("span");
+      use.className = "g-swatch__use";
+      use.textContent = usage[item.name];
+      cap.appendChild(use);
+    }
+    var alias = aliasLine(item);
+    if (alias) {
+      var note = document.createElement("span");
+      note.className = "g-swatch__alias";
+      note.textContent = alias;
+      cap.appendChild(note);
+    }
+    fig.append(chip, cap);
+    return fig;
+  }
+
+  function renderColors(items) {
+    var wrap = document.createElement("div");
+    colorFamilies(items).forEach(function (family) {
+      var block = document.createElement("div");
+      block.className = "g-ramp";
+      var heading = document.createElement("h4");
+      heading.textContent = family.key;
+      var row = document.createElement("div");
+      row.className = family.numeric ? "g-ramp__strip" : "g-ramp__grid";
+      family.items.forEach(function (item) {
+        row.appendChild(colorSwatch(item));
+      });
+      block.append(heading, row);
+      wrap.appendChild(block);
+    });
+    return wrap;
+  }
+
+  function lengthPx(value) {
+    var text = String(value || "").trim();
+    if (text === "0") return 0;
+    var match = text.match(/^(-?[\d.]+)px$/);
+    return match ? Number(match[1]) : null;
+  }
+
+  function motionDemo(item) {
+    var demo = document.createElement("button");
+    demo.type = "button";
+    demo.className = "g-motion-demo";
+    demo.textContent = "触る";
+    var duration = item.name.indexOf("duration") !== -1 ? item.computed : "100ms";
+    var easing = item.name.indexOf("easing") !== -1 ? item.computed : resolvedEasing(item.name);
+    demo.style.transition = "background-color " + duration + " " + easing;
+    demo.addEventListener("pointerenter", function () { demo.classList.add("is-on"); });
+    demo.addEventListener("pointerleave", function () { demo.classList.remove("is-on"); });
+    return demo;
+  }
+
+  function renderScale(category, items) {
+    var list = document.createElement("div");
+    list.className = "g-token-lines";
+    var sorted = items.slice();
+    if (category === "spacing") {
+      sorted.sort(function (a, b) {
+        var na = lengthPx(a.computed);
+        var nb = lengthPx(b.computed);
+        if (na !== null && nb !== null && na !== nb) return na - nb;
+        return a.name < b.name ? -1 : 1;
+      });
+    }
+    sorted.forEach(function (item) {
+      var row = document.createElement("div");
+      row.className = "g-token-line" + (category === "typography" ? " g-token-line--type" : "");
+      var name = tokenCode(item.name);
+      var preview = document.createElement("div");
+      preview.className = "g-token-line__preview";
+      var meta = document.createElement("div");
+      meta.className = "g-token-line__meta";
+      var value = document.createElement("strong");
+      value.textContent = item.computed;
+      meta.appendChild(value);
+      if (category === "motion" && item.name.indexOf("duration") !== -1) {
+        var ease = document.createElement("span");
+        ease.textContent = easingName(item.name).replace("--andm-motion-easing-", "");
+        meta.appendChild(ease);
+      }
+      if (usage[item.name]) {
+        var use = document.createElement("span");
+        use.textContent = usage[item.name];
+        meta.appendChild(use);
+      }
+      var alias = aliasLine(item);
+      if (alias) {
+        var note = document.createElement("span");
+        note.className = "g-swatch__alias";
+        note.textContent = alias;
+        meta.appendChild(note);
+      }
+
+      if (category === "typography") {
+        var sample = document.createElement("p");
+        sample.className = "g-token-line__sample";
+        sample.textContent = item.name.indexOf("line-height") !== -1 ? "あいうえお Ag\nあいうえお Ag" : "あいうえお Ag";
+        if (item.name.indexOf("font-family") !== -1) {
+          sample.style.fontFamily = item.computed;
+          sample.style.fontSize = "1.25rem";
+        }
+        if (item.name.indexOf("font-size") !== -1) sample.style.fontSize = item.computed;
+        if (item.name.indexOf("font-weight") !== -1) {
+          sample.style.fontWeight = item.computed;
+          sample.style.fontSize = "1.25rem";
+        }
+        if (item.name.indexOf("line-height") !== -1) {
+          sample.style.lineHeight = item.computed;
+          sample.style.whiteSpace = "pre-line";
+        }
+        if (item.name.indexOf("tracking") !== -1) {
+          sample.style.letterSpacing = item.computed;
+          sample.style.fontSize = "1.25rem";
+        }
+        preview.appendChild(sample);
+        var spec = document.createElement("div");
+        spec.className = "g-token-line__spec";
+        spec.append(name, meta);
+        row.append(preview, spec);
+      } else if (category === "spacing") {
+        var bar = document.createElement("span");
+        bar.className = "g-meter__bar";
+        var px = lengthPx(item.computed);
+        bar.style.width = px === null ? item.computed : Math.max(px, 1) + "px";
+        preview.appendChild(bar);
+        row.append(name, preview, meta);
+      } else if (category === "motion") {
+        preview.appendChild(motionDemo(item));
+        row.append(name, preview, meta);
+      } else if (category === "interaction") {
+        var paint = catalog.paintValue(item.computed);
+        if (paint) {
+          var tone = toneFor(paint);
+          var chip = document.createElement("span");
+          chip.className = "g-inline-swatch";
+          chip.style.background = paint;
+          chip.style.color = tone.ink;
+          chip.textContent = tone.label;
+          preview.appendChild(chip);
+        } else if (item.name.indexOf("opacity") !== -1) {
+          var tint = document.createElement("span");
+          tint.className = "g-meter__bar";
+          tint.style.width = (Number(item.computed) * 100 || 0) + "%";
+          tint.style.opacity = item.computed;
+          preview.appendChild(tint);
+        } else {
+          var mark = document.createElement("span");
+          mark.className = "g-meter__bar";
+          var len = lengthPx(item.computed);
+          mark.style.width = len === null ? "1rem" : Math.max(len, 1) + "px";
+          preview.appendChild(mark);
+        }
+        row.append(name, preview, meta);
+      } else {
+        row.append(name, preview, meta);
+      }
+      list.appendChild(row);
+    });
+    return list;
+  }
+
+  function renderBoxes(category, items) {
+    var row = document.createElement("div");
+    row.className = "g-box-row";
+    items.forEach(function (item) {
+      var fig = document.createElement("figure");
+      fig.className = "g-box";
+      var face = document.createElement("div");
+      face.className = category === "elevation" ? "g-box__face g-box__face--elev" : "g-box__face";
+      if (category === "shape") face.style.borderRadius = item.computed;
+      if (category === "elevation") face.style.boxShadow = item.computed;
+      var short = item.name.replace(/^--andm-(radius|shadow)-/, "");
+      face.textContent = short;
+      var cap = document.createElement("figcaption");
+      cap.appendChild(tokenCode(item.name));
+      var value = document.createElement("span");
+      value.className = "g-swatch__use";
+      value.textContent = item.computed;
+      cap.appendChild(value);
+      if (usage[item.name]) {
+        var use = document.createElement("span");
+        use.className = "g-swatch__use";
+        use.textContent = usage[item.name];
+        cap.appendChild(use);
+      }
+      fig.append(face, cap);
+      row.appendChild(fig);
+    });
+    return row;
+  }
+
+  function renderScope(category, group) {
+    var section = document.createElement("section");
+    section.className = "g-token-scope";
+    var heading = document.createElement("h3");
+    heading.textContent = scopeLabel(group.selector);
+    section.appendChild(heading);
+    if (category === "color") section.appendChild(renderColors(group.items));
+    else if (category === "shape" || category === "elevation") section.appendChild(renderBoxes(category, group.items));
+    else section.appendChild(renderScale(category, group.items));
+    return section;
   }
 
   function showTokens(category) {
     tokenCards.replaceChildren();
+    var cat = categories.find(function (item) { return item.id === category; });
+    var title = document.getElementById("token-title");
+    if (title) title.textContent = cat ? cat.label : "Tokens";
     document.querySelectorAll("[data-token-nav]").forEach(function (a) {
       if (a.dataset.tokenNav === category) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
@@ -314,37 +666,11 @@
       tokenStatus.textContent = "Density の Global Token はありません。Design Space の軸だけです。Core には昇格させていません。";
       return;
     }
-    var seen = Object.create(null);
-    var count = 0;
-    decls.forEach(function (decl) {
-      if (catalog.tokenCategory(decl.name) !== category) return;
-      var key = decl.selector + " " + decl.name;
-      if (seen[key]) return;
-      seen[key] = true;
-      var computed = catalog.computedValue(decl.selector, decl.name) || decl.value;
-      count += 1;
-      var card = document.createElement("article");
-      card.className = "g-token-card";
-      var title = document.createElement("h3");
-      title.textContent = decl.name;
-      var value = document.createElement("p");
-      value.className = "g-token-card__value";
-      value.textContent = computed;
-      var where = document.createElement("p");
-      where.className = "g-token-card__where";
-      where.textContent = decl.selector;
-      var defined = document.createElement("p");
-      defined.className = "g-token-card__where";
-      defined.textContent = decl.value;
-      card.append(title, value, previewFor(category, decl.name, computed), where, defined);
-      if (usage[decl.name]) {
-        var use = document.createElement("p");
-        use.textContent = usage[decl.name];
-        card.appendChild(use);
-      }
-      tokenCards.appendChild(card);
+    var list = collectTokens(category);
+    groupsOf(list).forEach(function (group) {
+      tokenCards.appendChild(renderScope(category, group));
     });
-    tokenStatus.textContent = count + " 件。dist/style.css と computed style。";
+    tokenStatus.textContent = list.length + " 件。基準は Default。Series はそこで差し替えた値だけ。値は dist/style.css と computed style。";
   }
 
   function render() {
