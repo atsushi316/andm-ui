@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>色 — andm-ui Gallery</title>
+    <link rel="stylesheet" href="../../dist/style.css" />
+    <link rel="stylesheet" href="../catalog.css" />
+  </head>
+  <body>
+    <div class="g-shell">
+      <nav class="g-nav" aria-label="Gallery">
+        <a class="g-nav__brand" href="../">andm-ui</a>
+        <p class="g-nav__tag">Product Gallery</p>
+        <ul>
+          <li><a href="../">Gallery</a></li>
+          <li><a href="./" aria-current="page">色</a></li>
+          <li><a href="../motion/">モーション</a></li>
+          <li><a href="../tokens/">トークン</a></li>
+        </ul>
+      </nav>
+      <main class="g-main">
+        <h1>色</h1>
+        <p class="g-lead">
+          シリーズを選ぶと、そのシリーズで解決された色トークンを表示します。名前は
+          <code>dist/style.css</code> から、値はこの画面の computed style から読みます。
+        </p>
+        <fieldset class="g-switch">
+          <legend>シリーズ</legend>
+          <div class="g-switch__list" id="series-switch"></div>
+        </fieldset>
+        <p class="g-status" id="status">読み込み中</p>
+        <div class="g-stage" id="stage">
+          <div class="g-swatches" id="swatches"></div>
+        </div>
+      </main>
+    </div>
+    <script src="../series-copy.js"></script>
+    <script src="../catalog.js"></script>
+    <script>
+      (function () {
+        var catalog = window.ANDM_CATALOG;
+        var list = document.getElementById("series-switch");
+        var stage = document.getElementById("stage");
+        var swatches = document.getElementById("swatches");
+        var status = document.getElementById("status");
+        var items = [];
+        var names = [];
+
+        function show(item) {
+          catalog.applySeries(stage, item.className);
+          swatches.replaceChildren();
+          var shown = 0;
+          names.forEach(function (name) {
+            var value = catalog.computedOn(stage, name);
+            if (!value || !catalog.isColorToken(name, value)) return;
+            shown += 1;
+            var row = document.createElement("figure");
+            row.className = "g-swatch";
+            var chip = document.createElement("div");
+            chip.className = "g-swatch__chip";
+            var paint = catalog.paintValue(value);
+            if (paint) chip.style.background = paint;
+            var body = document.createElement("figcaption");
+            var title = document.createElement("p");
+            title.className = "g-swatch__name";
+            title.textContent = name;
+            var note = document.createElement("p");
+            note.className = "g-swatch__value";
+            note.textContent = value;
+            body.append(title, note);
+            row.append(chip, body);
+            swatches.appendChild(row);
+          });
+          status.textContent =
+            shown +
+            " 件。dist/style.css のトークン名と、選択中シリーズの computed style です。";
+        }
+
+        catalog
+          .loadCss("../../dist/style.css")
+          .then(function (css) {
+            var seen = Object.create(null);
+            catalog.parseDeclarations(css).forEach(function (decl) {
+              if (seen[decl.name]) return;
+              seen[decl.name] = true;
+              names.push(decl.name);
+            });
+            items = catalog.seriesItems(css);
+            catalog.renderSwitch(list, items, function (item) {
+              if (location.hash.replace("#", "") !== item.id) {
+                history.replaceState(null, "", "#" + item.id);
+              }
+              show(item);
+            });
+            var id = location.hash.replace("#", "");
+            var current = items.find(function (item) {
+              return item.id === id;
+            });
+            if (!current) current = items[0];
+            catalog.selectSeries(list, current.id);
+            show(current);
+          })
+          .catch(function () {
+            status.textContent =
+              "dist/style.css を読めません。build したあと、再読み込みしてください。";
+          });
+
+        window.addEventListener("hashchange", function () {
+          var id = location.hash.replace("#", "");
+          var current = items.find(function (item) {
+            return item.id === id;
+          });
+          if (!current) return;
+          catalog.selectSeries(list, current.id);
+          show(current);
+        });
+      })();
+    </script>
+  </body>
+</html>

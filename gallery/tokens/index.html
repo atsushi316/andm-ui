@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>トークン — andm-ui Gallery</title>
+    <link rel="stylesheet" href="../../dist/style.css" />
+    <link rel="stylesheet" href="../catalog.css" />
+  </head>
+  <body>
+    <div class="g-shell">
+      <nav class="g-nav" aria-label="Gallery">
+        <a class="g-nav__brand" href="../">andm-ui</a>
+        <p class="g-nav__tag">Product Gallery</p>
+        <ul>
+          <li><a href="../">Gallery</a></li>
+          <li><a href="../colors/">色</a></li>
+          <li><a href="../motion/">モーション</a></li>
+          <li><a href="./" aria-current="page">トークン</a></li>
+        </ul>
+      </nav>
+      <main class="g-main">
+        <h1>トークン</h1>
+        <p class="g-lead">
+          <code>--andm-*</code> を <code>dist/style.css</code> から一覧します。計算値は、その宣言の要素の computed style です。トークンを足すか値を変えたら、再 build して再読み込みすると一覧が変わります。
+        </p>
+        <p class="g-status" id="status">読み込み中</p>
+        <input class="g-filter" id="filter" type="search" placeholder="名前、場所、値" aria-label="トークンを絞り込む" />
+        <table class="g-token">
+          <thead>
+            <tr>
+              <th>場所</th>
+              <th>名前</th>
+              <th>dist/style.css</th>
+              <th>計算値</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </main>
+    </div>
+    <script src="../catalog.js"></script>
+    <script>
+      (function () {
+        var catalog = window.ANDM_CATALOG;
+        var rows = document.getElementById("rows");
+        var status = document.getElementById("status");
+        var filter = document.getElementById("filter");
+        var decls = [];
+
+        function render() {
+          var query = filter.value.trim().toLowerCase();
+          rows.replaceChildren();
+          var shown = 0;
+          decls.forEach(function (decl) {
+            var blob = (decl.selector + " " + decl.name + " " + decl.value).toLowerCase();
+            if (query && blob.indexOf(query) === -1) return;
+            shown += 1;
+            var tr = document.createElement("tr");
+            [decl.selector, decl.name, decl.value, decl.computed].forEach(function (text) {
+              var td = document.createElement("td");
+              td.textContent = text;
+              tr.appendChild(td);
+            });
+            rows.appendChild(tr);
+          });
+          status.textContent =
+            shown +
+            " / " +
+            decls.length +
+            " 件。値は dist/style.css と computed style です。";
+        }
+
+        catalog
+          .loadCss("../../dist/style.css")
+          .then(function (css) {
+            decls = catalog.parseDeclarations(css).map(function (decl) {
+              var computed = catalog.computedValue(decl.selector, decl.name);
+              return {
+                selector: decl.selector,
+                name: decl.name,
+                value: decl.value,
+                computed: computed || "—",
+              };
+            });
+            render();
+          })
+          .catch(function () {
+            status.textContent =
+              "dist/style.css を読めません。build したあと、再読み込みしてください。";
+          });
+
+        filter.addEventListener("input", render);
+      })();
+    </script>
+  </body>
+</html>
