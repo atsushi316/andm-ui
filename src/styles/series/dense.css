@@ -1,15 +1,15 @@
 @layer andm.tokens {
   .andm-series--dense {
-      --andm-btn-radius: 4px;
-      --andm-btn-radius-pressed: 4px;
-      --andm-btn-height-sm: 24px;
+      --andm-btn-radius: var(--andm-space-1);
+      --andm-btn-radius-pressed: var(--andm-space-1);
+      --andm-btn-height-sm: var(--andm-space-6);
       --andm-btn-height-md: 28px;
-      --andm-btn-height-lg: 32px;
-      --andm-btn-padding-x-sm: 8px;
+      --andm-btn-height-lg: var(--andm-space-8);
+      --andm-btn-padding-x-sm: var(--andm-space-2);
       --andm-btn-padding-x-md: 10px;
-      --andm-btn-padding-x-lg: 12px;
+      --andm-btn-padding-x-lg: var(--andm-space-3);
       --andm-font-size-sm: 12px;
-      --andm-font-size-md: 12px;
+      --andm-font-size-md: var(--andm-font-size-sm);
       --andm-font-size-lg: 13px;
       --andm-btn-press-scale: 0.98;
       --andm-btn-tracking: 0;

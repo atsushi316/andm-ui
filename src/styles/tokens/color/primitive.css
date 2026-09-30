@@ -1,13 +1,39 @@
 @layer andm.tokens {
   :root {
-    /* —— Primitive color —— */
+    /* Blue。既存の 40 / 90 はそのまま。
+       0 と 100 はトーンの端。10–95 は既存の 40 / 90 と一致する baseline primary。
+       98 / 99 は 95 の色相・彩度から HCT で刻んだ。 */
+    --andm-color-blue-0: #000000;
+    --andm-color-blue-10: #041e49;
+    --andm-color-blue-20: #062e6f;
+    --andm-color-blue-30: #0842a0;
     --andm-color-blue-40: #0b57d0;
+    --andm-color-blue-50: #1b6ef3;
+    --andm-color-blue-60: #4c8df6;
+    --andm-color-blue-70: #7cacf8;
+    --andm-color-blue-80: #a8c7fa;
     --andm-color-blue-90: #d3e3fd;
+    --andm-color-blue-95: #ecf3fe;
+    --andm-color-blue-98: #f7f9ff;
+    --andm-color-blue-99: #fcfcff;
+    --andm-color-blue-100: #ffffff;
+
+    /* Neutral。既存の 10 / 40 / 90 / 95 / 99 はそのまま。
+       不足トーンは最も近い既存段の色相・彩度から HCT で刻んだ。 */
+    --andm-color-neutral-0: #000000;
     --andm-color-neutral-10: #1a1c1e;
+    --andm-color-neutral-20: #2f3133;
+    --andm-color-neutral-30: #43474c;
     --andm-color-neutral-40: #5f6368;
+    --andm-color-neutral-50: #73777d;
+    --andm-color-neutral-60: #8d9196;
+    --andm-color-neutral-70: #ababab;
+    --andm-color-neutral-80: #c6c6c6;
     --andm-color-neutral-90: #e3e3e3;
     --andm-color-neutral-95: #f2f2f2;
+    --andm-color-neutral-98: #f9f9f9;
     --andm-color-neutral-99: #fcfcfc;
-    --andm-color-white: #ffffff;
+    --andm-color-neutral-100: #ffffff;
+    --andm-color-white: var(--andm-color-neutral-100);
   }
 }

@@ -23,7 +23,7 @@
     .andm-series--spectrum {
       --andm-color-primary: rgb(59, 99, 251);
       --andm-color-primary-rgb: 59 99 251;
-      --andm-color-on-primary: rgb(255, 255, 255);
+      --andm-color-on-primary: var(--andm-color-white);
       --andm-color-secondary-container: rgb(229, 240, 254);
       --andm-color-on-secondary-container: rgb(59, 99, 251);
       --andm-color-surface: rgb(248, 248, 248);
@@ -38,16 +38,16 @@
       --andm-btn-tracking: 0;
       --andm-btn-radius: var(--andm-radius-pill);
       --andm-btn-radius-pressed: var(--andm-radius-pill);
-      --andm-btn-height-sm: 24px;
-      --andm-btn-height-md: 32px;
-      --andm-btn-height-lg: 40px;
+      --andm-btn-height-sm: var(--andm-space-6);
+      --andm-btn-height-md: var(--andm-space-8);
+      --andm-btn-height-lg: var(--andm-space-10);
       --andm-btn-padding-x-sm: 11px;
       --andm-btn-padding-x-md: 14px;
       --andm-btn-padding-x-lg: 18px;
       --andm-shadow-1: none;
       --andm-shadow-2: none;
       --andm-btn-press-scale: 1;
-      --andm-focus-ring-width: 2px;
+      --andm-focus-ring-width: var(--andm-space-05);
       --andm-motion-duration-short1: 130ms;
       --andm-motion-duration-short2: 130ms;
       --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.4, 1);

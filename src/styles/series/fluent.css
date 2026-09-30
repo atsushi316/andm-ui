@@ -12,8 +12,8 @@
      * 速度トークンは差し替えない。
      */
     .andm-series--fluent {
-      --andm-btn-radius: 4px;
-      --andm-btn-radius-pressed: 4px;
+      --andm-btn-radius: var(--andm-space-1);
+      --andm-btn-radius-pressed: var(--andm-space-1);
       --andm-font-family: "Segoe UI", "Hiragino Sans", sans-serif;
       --andm-font-size-sm: 12px;
       --andm-font-size-md: 14px;

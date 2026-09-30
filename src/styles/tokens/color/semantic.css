@@ -5,7 +5,7 @@
     --andm-color-primary-rgb: 11 87 208;
     --andm-color-on-primary: var(--andm-color-white);
     --andm-color-secondary-container: var(--andm-color-blue-90);
-    --andm-color-on-secondary-container: #041e49;
+    --andm-color-on-secondary-container: var(--andm-color-blue-10);
     --andm-color-surface: var(--andm-color-neutral-99);
     --andm-color-on-surface: var(--andm-color-neutral-10);
     --andm-color-on-surface-variant: var(--andm-color-neutral-40);

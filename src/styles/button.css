@@ -319,7 +319,7 @@
      静止半径は各高さの半分（pill）。9999px は補間しない。押下中に半径 0 は経由しない。 */
   .andm-series--expressive .andm-btn--sm {
     --andm-btn-radius: calc(var(--andm-btn-height-sm) / 2);
-    --andm-btn-radius-pressed: 8px;
+    --andm-btn-radius-pressed: var(--andm-radius-sm);
   }
 
   /*
@@ -341,7 +341,7 @@
 
   .andm-series--expressive .andm-btn--lg {
     --andm-btn-radius: calc(var(--andm-btn-height-lg) / 2);
-    --andm-btn-radius-pressed: 16px;
+    --andm-btn-radius-pressed: var(--andm-radius-lg);
   }
 
   /* square。クラス名は既存 modifier。静止半径だけ差し替える */
@@ -350,13 +350,13 @@
   }
 
   .andm-series--expressive .andm-btn--sm.andm-btn--shape-asymmetric {
-    --andm-btn-radius-rest: 12px;
-    --andm-btn-radius-pressed: 8px;
+    --andm-btn-radius-rest: var(--andm-radius-md);
+    --andm-btn-radius-pressed: var(--andm-radius-sm);
   }
 
   .andm-series--expressive .andm-btn--lg.andm-btn--shape-asymmetric {
     --andm-btn-radius-rest: 28px;
-    --andm-btn-radius-pressed: 16px;
+    --andm-btn-radius-pressed: var(--andm-radius-lg);
   }
 
   /*
@@ -369,11 +369,11 @@
     gap: var(--andm-space-1);
     letter-spacing: 0.02em;
     text-underline-offset: 0.1875rem;
-    min-width: 96px;
+    min-width: var(--andm-space-24);
   }
 
   .andm-series--dads .andm-btn--sm {
-    min-width: 80px;
+    min-width: var(--andm-space-20);
     --andm-btn-radius-rest: 6px;
     --andm-btn-radius-pressed: 6px;
   }
@@ -492,7 +492,7 @@
   .andm-series--dads .andm-btn:focus-visible {
     outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color);
     outline-offset: var(--andm-focus-ring-offset);
-    box-shadow: 0 0 0 2px var(--andm-focus-ring-inner);
+    box-shadow: 0 0 0 var(--andm-space-05) var(--andm-focus-ring-inner);
   }
 
   .andm-series--dads .andm-btn--text:focus-visible {
@@ -508,7 +508,7 @@
    */
   .andm-series--spectrum .andm-btn {
     border-style: solid;
-    border-width: 2px;
+    border-width: var(--andm-space-05);
     border-color: transparent;
   }
 
@@ -539,8 +539,8 @@
    * 既存 variant 名は維持。角のモーフィングはしない。
    */
   .andm-series--fluent .andm-btn--lg {
-    --andm-btn-radius-rest: 8px;
-    --andm-btn-radius-pressed: 8px;
+    --andm-btn-radius-rest: var(--andm-radius-sm);
+    --andm-btn-radius-pressed: var(--andm-radius-sm);
   }
 
   /*

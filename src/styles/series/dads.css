@@ -23,10 +23,10 @@
       --andm-color-primary-muted: #d9e6ff;
       --andm-color-primary-wash: #c5d7fb;
       --andm-color-primary-wash-strong: #9db7f9;
-      --andm-color-on-primary: #ffffff;
+      --andm-color-on-primary: var(--andm-color-white);
       --andm-color-secondary-container: #d9e6ff;
       --andm-color-on-secondary-container: #0017c1;
-      --andm-color-surface: #ffffff;
+      --andm-color-surface: var(--andm-color-white);
       --andm-color-on-surface: #1a1a1a;
       --andm-color-on-surface-variant: #4d4d4d;
       --andm-color-outline: #0017c1;
@@ -34,30 +34,30 @@
       --andm-color-disabled-container: #b3b3b3;
       --andm-color-on-disabled: #b3b3b3;
       --andm-color-disabled-outline: #b3b3b3;
-      --andm-color-on-disabled-fill: #f2f2f2;
-      --andm-focus-ring-color: #000000;
-      --andm-focus-ring-width: 4px;
-      --andm-focus-ring-offset: 2px;
+      --andm-color-on-disabled-fill: var(--andm-color-neutral-95);
+      --andm-focus-ring-color: var(--andm-color-neutral-0);
+      --andm-focus-ring-width: var(--andm-space-1);
+      --andm-focus-ring-offset: var(--andm-space-05);
       --andm-focus-ring-inner: #ffd43d;
       --andm-font-family: "Noto Sans JP", "Hiragino Sans",
         "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", "Yu Gothic", "YuGothic",
         "Meiryo", sans-serif;
       --andm-font-weight-medium: 700;
       /* ボタンは Oln-16B-100。14px は xs のみで、sm 以上は 16px */
-      --andm-font-size-sm: 16px;
-      --andm-font-size-md: 16px;
+      --andm-font-size-sm: var(--andm-font-size-lg);
+      --andm-font-size-md: var(--andm-font-size-lg);
       --andm-font-size-lg: 16px;
       --andm-line-height-tight: 1;
       --andm-shadow-1: none;
       --andm-shadow-2: none;
       --andm-btn-height-sm: 36px;
-      --andm-btn-height-md: 48px;
+      --andm-btn-height-md: var(--andm-space-12);
       --andm-btn-height-lg: 56px;
-      --andm-btn-padding-x-sm: 12px;
-      --andm-btn-padding-x-md: 16px;
-      --andm-btn-padding-x-lg: 16px;
-      --andm-btn-radius: 8px;
-      --andm-btn-radius-pressed: 8px;
+      --andm-btn-padding-x-sm: var(--andm-space-3);
+      --andm-btn-padding-x-md: var(--andm-space-4);
+      --andm-btn-padding-x-lg: var(--andm-space-4);
+      --andm-btn-radius: var(--andm-radius-sm);
+      --andm-btn-radius-pressed: var(--andm-radius-sm);
       --andm-btn-press-scale: 1;
     }
 }
