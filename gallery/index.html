@@ -1,0 +1,1460 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>andm-ui Product Gallery</title>
+    <link rel="stylesheet" href="../dist/style.css" />
+    <style>
+      /* Gallery layout only — component look comes from dist/style.css */
+      :root {
+        --g-nav-width: 15rem;
+        --g-surface-muted: color-mix(
+          in srgb,
+          var(--andm-color-on-surface) 4%,
+          var(--andm-color-surface)
+        );
+        --g-border: color-mix(
+          in srgb,
+          var(--andm-color-outline) 28%,
+          transparent
+        );
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      .g-shell {
+        display: grid;
+        grid-template-columns: var(--g-nav-width) minmax(0, 1fr);
+        min-height: 100vh;
+      }
+
+      .g-nav {
+        position: sticky;
+        top: 0;
+        align-self: start;
+        height: 100vh;
+        overflow: auto;
+        padding: var(--andm-space-6) var(--andm-space-4);
+        border-right: 1px solid var(--g-border);
+        background: var(--g-surface-muted);
+      }
+
+      .g-nav__brand {
+        display: block;
+        font-size: var(--andm-font-size-md);
+        font-weight: 700;
+        color: var(--andm-color-on-surface);
+        text-decoration: none;
+        margin-bottom: var(--andm-space-1);
+      }
+
+      .g-nav__tag {
+        margin: 0 0 var(--andm-space-6);
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-nav__group {
+        margin: 0 0 var(--andm-space-6);
+      }
+
+      .g-nav__label {
+        display: block;
+        margin: 0 0 var(--andm-space-2);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .g-nav a {
+        display: block;
+        padding: var(--andm-space-1) 0;
+        color: var(--andm-color-on-surface);
+        text-decoration: none;
+        font-size: var(--andm-font-size-sm);
+        border-radius: var(--andm-radius-sm);
+        transition: color var(--andm-motion-duration-short2)
+          var(--andm-motion-easing-decelerate);
+      }
+
+      .g-nav__name {
+        display: inline;
+      }
+
+      .g-nav a:hover {
+        color: var(--andm-color-primary);
+      }
+
+      .g-nav a:focus-visible {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-nav__soon {
+        color: var(--andm-color-on-surface-variant);
+        opacity: 0.7;
+      }
+
+      .g-nav__hint {
+        display: block;
+        margin-top: 0.15rem;
+        font-size: 0.7rem;
+        color: var(--andm-color-on-surface-variant);
+        font-weight: 400;
+        line-height: 1.35;
+      }
+
+      .g-main {
+        padding: var(--andm-space-6) var(--andm-space-6) var(--andm-space-8);
+        max-width: 72rem;
+      }
+
+      .g-hero h1 {
+        margin: 0 0 var(--andm-space-2);
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .g-hero .lead {
+        margin: 0 0 var(--andm-space-4);
+        max-width: 42rem;
+        color: var(--andm-color-on-surface-variant);
+        line-height: 1.5;
+      }
+
+      .g-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-2) var(--andm-space-4);
+        margin: 0 0 var(--andm-space-6);
+        padding: 0;
+        list-style: none;
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-meta code {
+        font-size: 0.85em;
+      }
+
+      .g-goals {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+        gap: var(--andm-space-3);
+        margin: 0 0 var(--andm-space-8);
+      }
+
+      .g-goal {
+        display: block;
+        padding: var(--andm-space-4);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        background: var(--andm-color-surface);
+        text-decoration: none;
+        color: inherit;
+        transition:
+          border-color var(--andm-motion-duration-short2)
+            var(--andm-motion-easing-decelerate),
+          background-color var(--andm-motion-duration-short2)
+            var(--andm-motion-easing-decelerate);
+      }
+
+      .g-goal:hover {
+        border-color: color-mix(
+          in srgb,
+          var(--andm-color-primary) 40%,
+          var(--g-border)
+        );
+        background: var(--g-surface-muted);
+      }
+
+      .g-goal:focus-visible {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-goal__title {
+        margin: 0 0 var(--andm-space-1);
+        font-size: var(--andm-font-size-md);
+        font-weight: 700;
+        color: var(--andm-color-on-surface);
+      }
+
+      .g-goal__desc {
+        margin: 0;
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+        line-height: 1.45;
+      }
+
+      .g-section {
+        margin: 0 0 var(--andm-space-8);
+        padding-top: var(--andm-space-2);
+        scroll-margin-top: var(--andm-space-4);
+      }
+
+      .g-stick-scope .g-section {
+        scroll-margin-top: 11rem;
+      }
+
+      .g-section > h2 {
+        margin: 0 0 var(--andm-space-2);
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .g-section > .g-desc {
+        margin: 0 0 var(--andm-space-4);
+        color: var(--andm-color-on-surface-variant);
+        font-size: var(--andm-font-size-sm);
+        line-height: 1.45;
+        max-width: 42rem;
+      }
+
+      .g-block {
+        margin: 0 0 var(--andm-space-6);
+      }
+
+      .g-block h3 {
+        margin: 0 0 var(--andm-space-3);
+        font-size: var(--andm-font-size-md);
+        font-weight: 650;
+      }
+
+      .g-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-3);
+        align-items: center;
+      }
+
+      .g-grid {
+        display: grid;
+        gap: var(--andm-space-3);
+      }
+
+      .g-label {
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+        min-width: 5.5rem;
+      }
+
+      .g-pair {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-3);
+        align-items: center;
+      }
+
+      .g-compare {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--andm-space-4);
+      }
+
+      .g-compare--2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .g-looks {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--andm-space-4);
+      }
+
+      .g-panel {
+        padding: var(--andm-space-4);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-lg);
+        background: var(--andm-color-surface);
+      }
+
+      .g-kicker {
+        margin: 0 0 var(--andm-space-2);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-context {
+        margin: 0 0 var(--andm-space-6);
+        padding: var(--andm-space-4);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        background: var(--andm-color-surface);
+      }
+
+      .g-context p {
+        margin: 0 0 var(--andm-space-4);
+        line-height: 1.5;
+      }
+
+      .g-context .g-row {
+        justify-content: flex-end;
+      }
+
+      .g-panel__title {
+        margin: 0 0 var(--andm-space-1);
+        font-size: var(--andm-font-size-md);
+        font-weight: 700;
+      }
+
+      .g-panel__note {
+        margin: 0 0 var(--andm-space-4);
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+        line-height: 1.4;
+      }
+
+      .g-panel__code {
+        display: inline-block;
+        margin-bottom: var(--andm-space-3);
+        font-size: 0.75rem;
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-placeholder {
+        padding: var(--andm-space-6) var(--andm-space-4);
+        border: 1px dashed var(--g-border);
+        border-radius: var(--andm-radius-md);
+        color: var(--andm-color-on-surface-variant);
+        font-size: var(--andm-font-size-sm);
+        line-height: 1.45;
+      }
+
+      .g-placeholder strong {
+        color: var(--andm-color-on-surface);
+      }
+
+      .g-notice {
+        margin: var(--andm-space-8) 0 0;
+        padding: var(--andm-space-4);
+        border-left: 3px solid var(--g-border);
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+        line-height: 1.5;
+        max-width: 42rem;
+      }
+
+      .g-notice a {
+        color: var(--andm-color-primary);
+      }
+
+      .g-badge {
+        display: inline-block;
+        margin-left: 0.35rem;
+        padding: 0 0.45rem;
+        border-radius: var(--andm-radius-sm);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        line-height: 1.55;
+        vertical-align: 0.15em;
+      }
+
+      .g-badge--ready {
+        background: color-mix(
+          in srgb,
+          var(--andm-color-primary) 14%,
+          var(--andm-color-surface)
+        );
+        color: var(--andm-color-primary);
+      }
+
+      .g-badge--planned {
+        background: var(--g-surface-muted);
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-status {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-2) var(--andm-space-4);
+        margin: 0 0 var(--andm-space-6);
+        padding: 0;
+        list-style: none;
+        font-size: var(--andm-font-size-sm);
+      }
+
+      .g-status a {
+        color: var(--andm-color-on-surface);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .g-status a:hover {
+        color: var(--andm-color-primary);
+      }
+
+      .g-status a:focus-visible {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-details {
+        margin-top: var(--andm-space-4);
+        max-width: 42rem;
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+        line-height: 1.5;
+      }
+
+      .g-details summary {
+        cursor: pointer;
+        font-weight: 700;
+        color: var(--andm-color-on-surface);
+      }
+
+      .g-details summary:focus-visible {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-details p {
+        margin: var(--andm-space-3) 0 0;
+      }
+
+      .g-details code {
+        font-size: 0.9em;
+      }
+
+      .g-switch {
+        margin: 0 0 var(--andm-space-4);
+        padding: 0;
+        border: 0;
+        min-inline-size: 0;
+      }
+
+      .g-switch legend {
+        margin: 0 0 var(--andm-space-2);
+        padding: 0;
+        font-size: var(--andm-font-size-sm);
+        font-weight: 700;
+      }
+
+      .g-switch__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-2);
+      }
+
+      .g-switch__opt {
+        display: inline-flex;
+        align-items: baseline;
+        gap: var(--andm-space-2);
+        padding: var(--andm-space-2) var(--andm-space-3);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        background: var(--andm-color-surface);
+        cursor: pointer;
+        font-size: var(--andm-font-size-sm);
+      }
+
+      .g-switch__opt:has(:checked) {
+        border-color: var(--andm-color-primary);
+        background: color-mix(
+          in srgb,
+          var(--andm-color-primary) 10%,
+          var(--andm-color-surface)
+        );
+      }
+
+      .g-switch__opt:has(:focus-visible) {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-stick-scope {
+        min-width: 0;
+      }
+
+      .g-switch-bar {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        margin: 0 0 var(--andm-space-4);
+        padding: var(--andm-space-2) 0 var(--andm-space-3);
+        background: var(--andm-color-surface);
+        border-bottom: 1px solid var(--g-border);
+      }
+
+      .g-switch-bar .g-switch {
+        margin-bottom: 0;
+      }
+
+      .g-series-brief {
+        display: grid;
+        gap: var(--andm-space-1);
+        margin: var(--andm-space-3) 0 0;
+        max-width: 42rem;
+      }
+
+      .g-series-brief div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-2);
+        margin: 0;
+      }
+
+      .g-series-brief dt {
+        margin: 0;
+        font-size: var(--andm-font-size-sm);
+        font-weight: 700;
+      }
+
+      .g-series-brief dd {
+        margin: 0;
+        font-size: var(--andm-font-size-sm);
+        line-height: 1.45;
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      @media (max-width: 960px) {
+        .g-goals,
+        .g-compare,
+        .g-looks {
+          grid-template-columns: 1fr;
+        }
+
+        .g-compare--2 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 800px) {
+        .g-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .g-nav {
+          position: static;
+          height: auto;
+          border-right: none;
+          border-bottom: 1px solid var(--g-border);
+        }
+
+        .g-nav__group {
+          display: inline-block;
+          vertical-align: top;
+          margin-right: var(--andm-space-6);
+        }
+
+        .g-main {
+          padding: var(--andm-space-4);
+        }
+      }
+
+      .g-series-label {
+        display: block;
+        margin: 0 0 var(--andm-space-2);
+        font-size: var(--andm-font-size-sm);
+        font-weight: 700;
+      }
+
+      .g-series-select {
+        font: inherit;
+        color: var(--andm-color-on-surface);
+        background: var(--andm-color-surface);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        padding: var(--andm-space-2) var(--andm-space-3);
+        min-width: min(100%, 18rem);
+      }
+
+      .g-series-select:focus-visible,
+      .g-motion-demo:focus-visible {
+        outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+        outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      .g-exp-character {
+        margin: 0 0 var(--andm-space-3);
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .g-exp-visual,
+      .g-token-cards,
+      #series-motion-tokens {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+        gap: var(--andm-space-3);
+        margin: var(--andm-space-3) 0 var(--andm-space-4);
+      }
+
+      .g-exp-swatch,
+      .g-token-card,
+      .g-exp-motion {
+        margin: 0;
+        padding: var(--andm-space-3);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        background: var(--andm-color-surface);
+      }
+
+      .g-exp-chip,
+      .g-exp-preview {
+        min-height: 3rem;
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-sm);
+      }
+
+      .g-exp-type {
+        margin: 0;
+        grid-column: 1 / -1;
+      }
+
+      .g-exp-space {
+        display: flex;
+        align-items: center;
+        gap: var(--andm-space-2);
+        font-size: var(--andm-font-size-sm);
+      }
+
+      .g-exp-space span:first-child,
+      .g-exp-bar {
+        display: inline-block;
+        height: 0.75rem;
+        background: var(--andm-color-primary);
+      }
+
+      .g-exp-shape,
+      .g-exp-elev {
+        min-height: 4rem;
+        padding: var(--andm-space-2);
+        border: 1px solid var(--g-border);
+        background: var(--andm-color-surface);
+        font-size: var(--andm-font-size-sm);
+      }
+
+      .g-token-card h3,
+      .g-exp-swatch figcaption,
+      .g-exp-motion p,
+      .g-token-card__where {
+        margin: 0 0 var(--andm-space-1);
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        word-break: break-all;
+      }
+
+      .g-token-card__value {
+        margin: 0 0 var(--andm-space-2);
+        font-weight: 700;
+      }
+
+      .g-motion-demo {
+        font: inherit;
+        color: var(--andm-color-on-surface);
+        background: var(--andm-color-surface);
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        padding: var(--andm-space-2) var(--andm-space-3);
+        cursor: pointer;
+      }
+
+      .g-motion-demo.is-on {
+        background: var(--andm-color-primary);
+        color: var(--andm-color-on-primary);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .g-motion-demo {
+          transition-duration: var(--andm-motion-duration-short2) !important;
+          transform: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="g-shell">
+      <nav class="g-nav" aria-label="Gallery">
+        <a class="g-nav__brand" href="#top">andm-ui</a>
+        <p class="g-nav__tag">Design System Explorer</p>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">Series</span>
+          <ul id="nav-series"></ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">Tokens</span>
+          <ul>
+            <li><a href="#/tokens/color" data-token-nav="color">Color</a></li>
+            <li><a href="#/tokens/typography" data-token-nav="typography">Typography</a></li>
+            <li><a href="#/tokens/spacing" data-token-nav="spacing">Spacing</a></li>
+            <li><a href="#/tokens/shape" data-token-nav="shape">Shape</a></li>
+            <li><a href="#/tokens/density" data-token-nav="density">Density</a></li>
+            <li><a href="#/tokens/elevation" data-token-nav="elevation">Elevation</a></li>
+            <li><a href="#/tokens/motion" data-token-nav="motion">Motion</a></li>
+            <li><a href="#/tokens/interaction" data-token-nav="interaction">Interaction</a></li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">Component</span>
+          <ul>
+            <li>
+              <a href="#button"
+                >Button <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#chip"
+                >Chip <span class="g-badge g-badge--planned">予定</span></a
+              >
+            </li>
+            <li>
+              <a href="#text-field"
+                >Text Field <span class="g-badge g-badge--planned">予定</span></a
+              >
+            </li>
+            <li>
+              <a href="#fab"
+                >FAB <span class="g-badge g-badge--planned">予定</span></a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">Pattern</span>
+          <ul>
+            <li>
+              <a href="#pattern"
+                >対の操作 <span class="g-badge g-badge--ready">最小</span></a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">Experience</span>
+          <ul>
+            <li>
+              <a href="#experience"
+                >申請の確認 <span class="g-badge g-badge--ready">最小</span></a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group">
+          <span class="g-nav__label">シリーズ</span>
+          <ul>
+            <li>
+              <a href="#baseline"
+                >Baseline <span class="g-nav__hint">汎用・中立</span></a
+              >
+            </li>
+            <li>
+              <a href="#soft">Soft <span class="g-nav__hint">穏やか</span></a>
+            </li>
+            <li>
+              <a href="#dense">Dense <span class="g-nav__hint">余白を詰める</span></a>
+            </li>
+            <li>
+              <a href="#technical"
+                >Technical <span class="g-nav__hint">境界がはっきり</span></a
+              >
+            </li>
+            <li>
+              <a href="#editorial"
+                >Editorial <span class="g-nav__hint">読み物向け</span></a
+              >
+            </li>
+            <li>
+              <a href="#playful">Playful <span class="g-nav__hint">丸く温かい</span></a>
+            </li>
+            <li>
+              <a href="#expressive"
+                >M3 Expressive <span class="g-nav__hint">印象を残す</span></a
+              >
+            </li>
+            <li>
+              <a href="#dads">DADS <span class="g-nav__hint">行政・公共</span></a>
+            </li>
+            <li>
+              <a href="#apple">Apple <span class="g-nav__hint">案内・設定</span></a>
+            </li>
+            <li>
+              <a href="#spectrum"
+                >Spectrum <span class="g-nav__hint">業務の画面</span></a
+              >
+            </li>
+            <li>
+              <a href="#fluent">Fluent 2 <span class="g-nav__hint">角は 4px</span></a>
+            </li>
+            <li>
+              <a href="#carbon">Carbon <span class="g-nav__hint">角は直角</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="g-main" id="top">
+        <header class="g-hero">
+          <h1>Design System Explorer</h1>
+          <p class="lead">
+            Series で Design Language を体験し、Tokens で名前と値と見た目を調べます。Button のクラスは共通のままです。
+          </p>
+        </header>
+
+        <div class="g-goals" aria-label="この Gallery でできること">
+          <a class="g-goal" href="#button">
+            <p class="g-goal__title">部品を見る</p>
+            <p class="g-goal__desc">
+              今使えるのは Button だけ。単体と、申請フォームの中の両方を見られます。
+            </p>
+          </a>
+          <a class="g-goal" href="#pattern">
+            <p class="g-goal__title">並びと流れを見る</p>
+            <p class="g-goal__desc">
+              Pattern はボタンの並び、Experience は申請の一歩です。どちらも Button だけです。
+            </p>
+          </a>
+          <a class="g-goal" href="#series">
+            <p class="g-goal__title">シリーズを切り替える</p>
+            <p class="g-goal__desc">
+              Soft、Dense、Technical、Editorial、Playful、M3 Expressive、DADS、Apple、Spectrum、Fluent 2、Carbon。クラス名を出さずに選べます。
+            </p>
+          </a>
+          <a class="g-goal" href="#series-scene">
+            <p class="g-goal__title">場面で見る</p>
+            <p class="g-goal__desc">
+              選んだシリーズの特徴と用途、Button の場面例が下に出ます。部品の見た目も同じになります。
+            </p>
+          </a>
+        </div>
+
+        <ul class="g-status" aria-label="完成状況">
+          <li>
+            <a href="#button">Button</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#chip">Chip</a>
+            <span class="g-badge g-badge--planned">予定</span>
+          </li>
+          <li>
+            <a href="#text-field">Text Field</a>
+            <span class="g-badge g-badge--planned">予定</span>
+          </li>
+          <li>
+            <a href="#fab">FAB</a>
+            <span class="g-badge g-badge--planned">予定</span>
+          </li>
+        </ul>
+
+        <section class="g-section" id="series" aria-labelledby="series-title">
+          <h2 id="series-title">シリーズを切り替える</h2>
+          <p class="g-desc">
+            名前を選ぶと、下の場面例と Button、Pattern、Experience がそのシリーズの見た目になります。ボタンのクラス自体は変わりません。クラス名は詳細にあります。
+          </p>
+        </section>
+
+        <div class="g-stick-scope" id="view-series">
+          <div class="g-switch-bar">
+          <div class="g-switch">
+            <label class="g-series-label" for="series-select">シリーズ</label>
+            <select id="series-select" class="g-series-select"></select>
+          </div>
+          <dl class="g-series-brief">
+            <div>
+              <dt>特徴</dt>
+              <dd id="series-trait">角も余白も中くらいで、色は強く出しません。</dd>
+            </div>
+            <div>
+              <dt>向いている用途</dt>
+              <dd id="series-use">どの画面にも置きやすい、中立な出発点です。</dd>
+            </div>
+            <div>
+              <dt>動き</dt>
+              <dd id="series-motion">
+                ホバーは色（100ms）。押すと縮みます（50ms）。角は変えません。
+              </dd>
+            </div>
+          </dl>
+          </div>
+          <details class="g-details">
+            <summary>このシリーズのクラス</summary>
+            <p id="series-class">
+              Baseline は追加クラスなし。ボタンは <code>andm-btn</code> のままです。
+            </p>
+            <p>
+              DADS は
+              <a
+                href="https://design.digital.go.jp/dads/"
+                rel="noopener noreferrer"
+                >デジタル庁デザインシステム</a
+              >
+              の公開されている色・角丸・文字・ボタンの性格を解釈したものです。公式のボタンは、塗り、アウトライン、テキストの3種類です。ここにある薄い塗りと浮かせは、既存の種類を残したもので、公式の3種類には入りません。ロゴや公式ファイルは含みません。Web フォントは読み込みません。端末に Noto Sans JP があればそれを使い、なければ日本語のゴシック体で近づけます。
+            </p>
+            <p>
+              Apple は、今の画面に近づけた解釈です。システムフォント（-apple-system、
+              BlinkMacSystemFont）だけを使い、SF Pro
+              のファイル、SF Symbols、ロゴ、公式 CSS は含みません。
+            </p>
+            <p>
+              Spectrum は業務画面向けの解釈です。Express
+              の装飾は入れていません。公式の CSS やフォントファイルは含みません。
+            </p>
+            <p>
+              Fluent 2 は
+              <a href="https://fluent2.microsoft.design/shapes" rel="noopener noreferrer"
+                >shapes</a
+              >
+              と
+              <a href="https://fluent2.microsoft.design/typography" rel="noopener noreferrer"
+                >typography</a
+              >
+              の本文だけを使います。ボタンの角は 4px、大きいボタンは 8px です。Segoe UI
+              のファイルや公式アイコン、公式 CSS は含みません。
+            </p>
+            <p>
+              Carbon は IBM Carbon の white テーマです。塗りは
+              #0f62fe、角は直角、高さは 32 / 40 / 48px です。IBM Plex
+              のファイルや公式アイコン、公式 CSS は含みません。
+            </p>
+            <p>
+              M3 Expressive で角ばった静止形にするときは
+              <code>andm-btn--shape-asymmetric</code>
+              です。
+            </p>
+          </details>
+
+        <div id="series-preview">
+          <section class="g-section" id="series-overview" aria-labelledby="series-overview-title">
+            <h2 id="series-overview-title">Overview</h2>
+            <p class="g-exp-character" id="series-character"></p>
+            <dl class="g-series-brief">
+              <div>
+                <dt>公式</dt>
+                <dd id="series-official"></dd>
+              </div>
+              <div>
+                <dt>andm の解釈</dt>
+                <dd id="series-interpretation"></dd>
+              </div>
+              <div>
+                <dt>source / verification</dt>
+                <dd id="series-source"></dd>
+              </div>
+              <div>
+                <dt>出典</dt>
+                <dd id="series-source-note"></dd>
+              </div>
+            </dl>
+            <h3>Visual Language</h3>
+            <div class="g-exp-visual" id="series-visual"></div>
+            <p class="g-desc">Density の Global Token はありません。高さの差は Series の remapping です。</p>
+            <h3>Motion</h3>
+            <p class="g-desc">Character は傾向。Pattern は Trigger と Effect。Token は速度と曲線。数値は computed style です。</p>
+            <p id="series-duration-note"></p>
+            <ul id="series-patterns"></ul>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">Hover / Press</button>
+              <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">Focus</button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md" disabled>Disabled</button>
+            </div>
+            <div id="series-motion-tokens"></div>
+          </section>
+          <section
+            class="g-section"
+            id="series-scene"
+            aria-labelledby="series-scene-title"
+          >
+            <h2 id="series-scene-title">このシリーズの場面</h2>
+            <div class="g-context" data-scene="baseline">
+              <p>申請内容を確認してから保存します。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="soft" hidden>
+              <p>変更を保存しますか。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">あとで</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存する</button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="dense" hidden>
+              <p>3 件を選択中です。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">編集</button>
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--sm">移動</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">削除</button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="technical" hidden>
+              <p>job #184 は停止しています。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">ログ</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">再実行</button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="editorial" hidden>
+              <p>この章はここまでです。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">目次へ</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">次の章</button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="playful" hidden>
+              <p>下書きができました。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">あとで見る</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">公開する</button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="expressive" hidden>
+              <p>新しい機能を試しますか。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">あとで</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">試してみる</button>
+              </div>
+              <p class="g-panel__note">
+                ラベル付きは横長の pill です。押すと角が立ちます。角ばった静止形も選べます。
+              </p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">横長</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md andm-btn--shape-asymmetric">角ばった</button>
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--lg">
+                  <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                  </svg>
+                  強調
+                </button>
+              </div>
+            </div>
+            <div class="g-context" data-scene="dads" hidden>
+              <p>入力した内容を確認しました。この内容で申請しますか。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">戻る</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">申請する</button>
+              </div>
+              <p class="g-panel__note">
+                手続きで迷わず押せることを優先しています。ロゴや公式ファイルは含みません。
+              </p>
+            </div>
+            <div class="g-context" data-scene="apple" hidden>
+              <p>この設定を保存しますか。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">続ける</button>
+              </div>
+              <p class="g-panel__note">
+                公式ページの本文が取れないため、色・角丸・余白・高さ・影は入れていません。使っているのはシステムフォントだけです。
+              </p>
+            </div>
+            <div class="g-context" data-scene="spectrum" hidden>
+              <p>選択した項目を更新します。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">更新</button>
+              </div>
+              <p class="g-panel__note">
+                Spectrum 2 の公開値です。塗りは blue-900、角は高さの半分、境界は 2px です。Express は使っていません。
+              </p>
+            </div>
+            <div class="g-context" data-scene="fluent" hidden>
+              <p>この変更を保存します。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
+              </div>
+              <p class="g-panel__note">
+                ボタンの角は 4px、大きいボタンは 8px です。色や影は、参照したページの本文に無かったので入れていません。
+              </p>
+            </div>
+            <div class="g-context" data-scene="carbon" hidden>
+              <p>この変更を適用します。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">キャンセル</button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">適用</button>
+              </div>
+              <p class="g-panel__note">
+                white テーマです。塗りは #0f62fe、角は直角です。ボタンの既定の高さは 48px で、ここの中サイズは 40px です。
+              </p>
+            </div>
+          </section>
+
+        <section class="g-section" id="button" aria-labelledby="button-title">
+          <h2 id="button-title">
+            Button <span class="g-badge g-badge--ready">使える</span>
+          </h2>
+          <p class="g-desc">
+            いま使える部品です。先に場面の中で見て、そのあと単体で見ます。見た目は、上で選んだシリーズです。
+          </p>
+
+          <div class="g-block" id="button-context">
+            <h3>In Context</h3>
+            <div class="g-context">
+              <p>申請内容を確認してから保存します。</p>
+              <div class="g-row">
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                  キャンセル
+                </button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                  保存
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="g-block" id="button-isolated">
+            <h3>単体 — 種類</h3>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--elevated andm-btn--md">
+                Elevated
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                Filled
+              </button>
+              <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
+                Tonal
+              </button>
+              <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
+                Outlined
+              </button>
+              <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                Text
+              </button>
+            </div>
+          </div>
+
+          <div class="g-block">
+            <h3>単体 — 大きさ</h3>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
+                Small
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                Medium
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--lg">
+                Large
+              </button>
+            </div>
+          </div>
+
+          <div class="g-block">
+            <h3>単体 — アイコン</h3>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                </svg>
+                Leading
+              </button>
+              <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
+                Trailing
+                <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
+                <svg class="andm-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                  />
+                </svg>
+                Save
+              </button>
+            </div>
+          </div>
+
+          <div class="g-block">
+            <h3>単体 — 状態</h3>
+            <div class="g-grid">
+              <div class="g-pair">
+                <span class="g-label">default</span>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                  Default
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Default
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">hover / active</span>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                  ホバーと押下
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  ホバーと押下
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">focus-visible</span>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                  Tab でフォーカス
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Tab でフォーカス
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">disabled</span>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--filled andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--tonal andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--text andm-btn--md"
+                  disabled
+                >
+                  Disabled
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="g-block">
+            <h3>Variant × Size</h3>
+            <div class="g-grid">
+              <div class="g-pair">
+                <span class="g-label">elevated</span>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--sm"
+                >
+                  Sm
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--md"
+                >
+                  Md
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--elevated andm-btn--lg"
+                >
+                  Lg
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">filled</span>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">
+                  Sm
+                </button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                  Md
+                </button>
+                <button type="button" class="andm-btn andm-btn--filled andm-btn--lg">
+                  Lg
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">tonal</span>
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--sm">
+                  Sm
+                </button>
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--md">
+                  Md
+                </button>
+                <button type="button" class="andm-btn andm-btn--tonal andm-btn--lg">
+                  Lg
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">outlined</span>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--sm"
+                >
+                  Sm
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--md"
+                >
+                  Md
+                </button>
+                <button
+                  type="button"
+                  class="andm-btn andm-btn--outlined andm-btn--lg"
+                >
+                  Lg
+                </button>
+              </div>
+              <div class="g-pair">
+                <span class="g-label">text</span>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--sm">
+                  Sm
+                </button>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                  Md
+                </button>
+                <button type="button" class="andm-btn andm-btn--text andm-btn--lg">
+                  Lg
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <details class="g-details">
+            <summary>クラス名</summary>
+            <p>
+              <code>andm-btn</code> に、種類
+              <code>andm-btn--filled</code> /
+              <code>andm-btn--outlined</code> /
+              <code>andm-btn--tonal</code> /
+              <code>andm-btn--elevated</code> /
+              <code>andm-btn--text</code>、大きさ
+              <code>andm-btn--sm</code> /
+              <code>andm-btn--md</code> /
+              <code>andm-btn--lg</code>。アイコンは
+              <code>andm-btn__icon</code>。
+            </p>
+          </details>
+        </section>
+
+        <section class="g-section" id="pattern" aria-labelledby="pattern-title">
+          <h2 id="pattern-title">
+            Pattern <span class="g-badge g-badge--ready">最小</span>
+          </h2>
+          <p class="g-desc">
+            部品の並びです。新しい部品は足していません。進む操作を右、やめる操作を左に置きます。
+          </p>
+          <div class="g-context">
+            <p>保存するか、やめますか。</p>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--text andm-btn--md">
+                キャンセル
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                保存
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="g-section" id="experience" aria-labelledby="experience-title">
+          <h2 id="experience-title">
+            Experience <span class="g-badge g-badge--ready">最小</span>
+          </h2>
+          <p class="g-desc">
+            画面の流れの一部です。Button だけで、申請の確認までを示します。
+          </p>
+          <div class="g-context">
+            <p>入力した内容を確認しました。この内容で申請しますか。</p>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">
+                戻る
+              </button>
+              <button type="button" class="andm-btn andm-btn--filled andm-btn--md">
+                申請する
+              </button>
+            </div>
+          </div>
+        </section>
+
+          <section class="g-section" id="custom-ui" aria-labelledby="custom-ui-title">
+            <h2 id="custom-ui-title">Custom UI</h2>
+            <p class="g-desc">
+              Series に所属しない UI も作れます。Global Token を優先し、Component 固有の意味は Component-local Token、名前を付ける必要がない値だけ Local Value にします。見本はまだ置いていません。
+            </p>
+          </section>
+
+        </div>
+
+        <section class="g-section" id="chip" aria-labelledby="chip-title">
+          <h2 id="chip-title">
+            Chip <span class="g-badge g-badge--planned">予定</span>
+          </h2>
+          <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
+          <div class="g-placeholder">
+            <strong>予定</strong> — Assist / Filter / Input / Suggestion
+            など。Button のあとで段階的に足します。
+          </div>
+        </section>
+
+        <section
+          class="g-section"
+          id="text-field"
+          aria-labelledby="text-field-title"
+        >
+          <h2 id="text-field-title">
+            Text Field <span class="g-badge g-badge--planned">予定</span>
+          </h2>
+          <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
+          <div class="g-placeholder">
+            <strong>予定</strong> — filled / outlined など。
+          </div>
+        </section>
+
+        <section class="g-section" id="fab" aria-labelledby="fab-title">
+          <h2 id="fab-title">
+            FAB <span class="g-badge g-badge--planned">予定</span>
+          </h2>
+          <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
+          <div class="g-placeholder">
+            <strong>予定</strong> — small / regular / large / extended。
+          </div>
+        </section>
+        </div>
+
+        <section class="g-section" id="view-tokens" hidden aria-labelledby="token-title">
+          <h2 id="token-title">Tokens</h2>
+          <p class="g-desc" id="token-status">読み込み中</p>
+          <div class="g-token-cards" id="token-cards"></div>
+        </section>
+
+      </main>
+    </div>
+    <script src="series-copy.js"></script>
+    <script src="catalog.js"></script>
+    <script src="explorer.js"></script>
+  </body>
+</html>

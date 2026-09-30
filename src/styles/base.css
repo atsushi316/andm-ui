@@ -1,18 +1,39 @@
-.andm-icon {
-  appearance: none;
-  border: none;
-  background: none;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--andm-space-2);
-  line-height: 1;
-}
+@layer andm.base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-.andm-icon__fallback {
-  font-size: 10px;
-  color: var(--andm-color-on-surface-variant);
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface);
+    background: var(--andm-color-surface);
+  }
+
+  button {
+    font: inherit;
+  }
+
+  /*
+   * 移動・拡大の animation は抑える。
+   * transition-duration の一括 0.01ms は色の状態変化まで消すので置かない。
+   * Button の拡大と形状は andm.components 側で抑える。
+   */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }

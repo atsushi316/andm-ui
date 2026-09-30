@@ -1,534 +1,639 @@
-/* Button base styles */
-.andm-btn {
-  appearance: none;
-  border: none;
-  background: none;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--andm-space-2);
-  transition:
-    transform var(--andm-motion-duration-short2)
-      var(--andm-motion-easing-standard),
-    box-shadow var(--andm-motion-duration-short2)
-      var(--andm-motion-easing-decelerate),
-    background-color var(--andm-motion-duration-short2)
-      var(--andm-motion-easing-decelerate),
-    color var(--andm-motion-duration-short2)
-      var(--andm-motion-easing-decelerate),
-    border-color var(--andm-motion-duration-short2)
-      var(--andm-motion-easing-decelerate);
-  height: var(--andm-btn-height-md);
-  padding: 0 var(--andm-btn-padding-x-md);
-  border-radius: var(--andm-radius-btn);
-  font-size: var(--andm-font-size-md);
-  font-weight: var(--andm-font-weight-medium);
-  letter-spacing: 0.2px;
-  position: relative;
-}
-
-.andm-btn:focus-visible,
-.andm-btn.andm-is-focus-visible,
-.andm-icon-btn:focus-visible,
-.andm-icon-btn.andm-is-focus-visible {
-  outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
-  outline-offset: var(--andm-focus-ring-offset);
-}
-
-/* Disabled state - base */
-.andm-btn:disabled,
-.andm-btn[aria-disabled="true"] {
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-/* Disabled state - variant specific */
-.andm-btn--filled:disabled,
-.andm-btn--filled[aria-disabled="true"],
-.andm-btn--elevated:disabled,
-.andm-btn--elevated[aria-disabled="true"],
-.andm-btn--tonal:disabled,
-.andm-btn--tonal[aria-disabled="true"] {
-  background: var(--andm-color-disabled-container);
-  color: var(--andm-color-on-disabled);
-}
-
-.andm-btn--outlined:disabled,
-.andm-btn--outlined[aria-disabled="true"] {
-  background: transparent;
-  color: var(--andm-color-on-disabled);
-  border-color: var(--andm-color-disabled-outline);
-}
-
-.andm-btn--text:disabled,
-.andm-btn--text[aria-disabled="true"] {
-  background: transparent;
-  color: var(--andm-color-on-disabled);
-}
-
-/* Icon Button disabled state */
-.andm-icon-btn--standard:disabled,
-.andm-icon-btn--standard[aria-disabled="true"] {
-  background: transparent;
-  color: var(--andm-color-on-disabled);
-}
-
-.andm-icon-btn--filled:disabled,
-.andm-icon-btn--filled[aria-disabled="true"],
-.andm-icon-btn--tonal:disabled,
-.andm-icon-btn--tonal[aria-disabled="true"] {
-  background: var(--andm-color-disabled-container);
-  color: var(--andm-color-on-disabled);
-}
-
-.andm-icon-btn--outlined:disabled,
-.andm-icon-btn--outlined[aria-disabled="true"] {
-  background: transparent;
-  color: var(--andm-color-on-disabled);
-  border-color: var(--andm-color-disabled-outline);
-}
-
-.andm-btn__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Button variants */
-.andm-btn--filled {
-  background: var(--andm-color-primary);
-  color: var(--andm-color-on-primary);
-}
-
-.andm-btn--filled:hover:not(:disabled):not([aria-disabled="true"]) {
-  background: var(--andm-color-primary);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.3),
-    0 1px 3px rgba(0, 0, 0, 0.15);
-}
-
-.andm-btn--filled:hover:not(:disabled):not([aria-disabled="true"])::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--andm-overlay-hover-light);
-  border-radius: inherit;
-  pointer-events: none;
-  transition: opacity var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-btn--filled:active:not(:disabled):not([aria-disabled="true"]) {
-  transform: scale(0.96);
-  transition:
-    transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate),
-    box-shadow var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
-}
-
-.andm-btn--filled:active:not(:disabled):not([aria-disabled="true"])::before {
-  background: var(--andm-overlay-active-light);
-  transition: opacity var(--andm-motion-duration-short1)
-    var(--andm-motion-easing-accelerate);
-}
-
-.andm-btn--elevated {
-  background: var(--andm-color-surface);
-  color: var(--andm-color-primary);
-  box-shadow: var(--andm-shadow-1);
-  position: relative;
-}
-
-.andm-btn--elevated:hover:not(:disabled):not([aria-disabled="true"]) {
-  box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.2);
-  transition: box-shadow var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-btn--elevated:hover:not(:disabled):not([aria-disabled="true"])::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--andm-overlay-hover);
-  border-radius: inherit;
-  pointer-events: none;
-  transition: opacity var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-btn--elevated:active:not(:disabled):not([aria-disabled="true"]) {
-  box-shadow: var(--andm-shadow-1);
-  transform: scale(0.96);
-  transition:
-    transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate),
-    box-shadow var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
-}
-
-.andm-btn--elevated:active:not(:disabled):not([aria-disabled="true"])::before {
-  background: var(--andm-overlay-active);
-  transition: opacity var(--andm-motion-duration-short1)
-    var(--andm-motion-easing-accelerate);
-}
-
-.andm-btn--tonal {
-  background: var(--andm-color-secondary-container);
-  color: var(--andm-color-on-secondary-container);
-  position: relative;
-}
-
-.andm-btn--tonal:hover:not(:disabled):not([aria-disabled="true"])::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--andm-overlay-hover);
-  border-radius: inherit;
-  pointer-events: none;
-  transition: opacity var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-btn--tonal:active:not(:disabled):not([aria-disabled="true"]) {
-  transform: scale(0.96);
-  transition:
-    transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate),
-    box-shadow var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
-}
-
-.andm-btn--tonal:active:not(:disabled):not([aria-disabled="true"])::before {
-  background: var(--andm-overlay-active);
-  transition: opacity var(--andm-motion-duration-short1)
-    var(--andm-motion-easing-accelerate);
-}
-
-.andm-btn--outlined {
-  background: transparent;
-  color: var(--andm-color-primary);
-  border: 1px solid var(--andm-color-outline);
-  position: relative;
-}
-
-.andm-btn--outlined:hover:not(:disabled):not([aria-disabled="true"]) {
-  background: rgb(
-    var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
-  );
-  transition: background-color var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-btn--outlined:active:not(:disabled):not([aria-disabled="true"]) {
-  background: rgb(
-    var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
-  );
-  transform: scale(0.96);
-  transition:
-    transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate),
-    background-color var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
-}
-
-.andm-btn--text {
-  background: transparent;
-  color: var(--andm-color-primary);
-  position: relative;
-}
-
-.andm-btn--text:hover:not(:disabled):not([aria-disabled="true"]) {
-  background: rgb(
-    var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
-  );
-  transition: background-color var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-btn--text:active:not(:disabled):not([aria-disabled="true"]) {
-  background: rgb(
-    var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
-  );
-  transform: scale(0.96);
-  transition:
-    transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate),
-    background-color var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
-}
-
-/* Button sizes */
-.andm-btn--sm {
-  height: var(--andm-btn-height-sm);
-  padding: 0 var(--andm-btn-padding-x-sm);
-  font-size: var(--andm-font-size-sm);
-}
-
-.andm-btn--md {
-  height: var(--andm-btn-height-md);
-  padding: 0 var(--andm-btn-padding-x-md);
-}
-
-.andm-btn--lg {
-  height: var(--andm-btn-height-lg);
-  padding: 0 var(--andm-btn-padding-x-lg);
-  font-size: var(--andm-font-size-lg);
-}
-
-.andm-btn--icon {
-  width: var(--andm-btn-height-md);
-  height: var(--andm-btn-height-md);
-  padding: 0;
-  gap: 0;
-}
-
-/* Button states */
-/* .andm-btn--pressed: Storybookの擬似状態専用（操作中の視覚的フィードバック） */
-.andm-btn--pressed {
-  transform: scale(0.96);
-  transition: transform var(--andm-motion-duration-short1)
-    var(--andm-motion-easing-accelerate);
-}
-
-/* Icon Button */
-.andm-icon-btn {
-  border-radius: 50%;
-}
-
-.andm-icon-btn--sm {
-  width: var(--andm-btn-height-sm);
-  height: var(--andm-btn-height-sm);
-}
-
-.andm-icon-btn--md {
-  width: var(--andm-btn-height-md);
-  height: var(--andm-btn-height-md);
-}
-
-.andm-icon-btn--lg {
-  width: var(--andm-btn-height-lg);
-  height: var(--andm-btn-height-lg);
-}
-
-.andm-icon-btn--standard {
-  background: transparent;
-  color: var(--andm-color-on-surface);
-}
-
-.andm-icon-btn--standard:hover:not(:disabled):not([aria-disabled="true"]) {
-  background: rgb(
-    var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
-  );
-  transition: background-color var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-icon-btn--standard:active:not(:disabled):not([aria-disabled="true"]) {
-  background: rgb(
-    var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
-  );
-  transform: scale(0.96);
-  transition:
-    transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate),
-    background-color var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
-}
-
-.andm-icon-btn--filled {
-  background: var(--andm-color-primary);
-  color: var(--andm-color-on-primary);
-}
-
-.andm-icon-btn--filled:hover:not(:disabled):not(
-    [aria-disabled="true"]
-  )::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--andm-overlay-hover-light);
-  border-radius: inherit;
-  pointer-events: none;
-  transition: opacity var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-icon-btn--filled:active:not(:disabled):not([aria-disabled="true"]) {
-  transform: scale(0.96);
-  transition:
-    transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate),
-    box-shadow var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
-}
-
-.andm-icon-btn--filled:active:not(:disabled):not(
-    [aria-disabled="true"]
-  )::before {
-  background: var(--andm-overlay-active-light);
-  transition: opacity var(--andm-motion-duration-short1)
-    var(--andm-motion-easing-accelerate);
-}
-
-.andm-icon-btn--tonal {
-  background: var(--andm-color-secondary-container);
-  color: var(--andm-color-on-secondary-container);
-}
-
-.andm-icon-btn--tonal:hover:not(:disabled):not([aria-disabled="true"])::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--andm-overlay-hover);
-  border-radius: inherit;
-  pointer-events: none;
-  transition: opacity var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-icon-btn--tonal:active:not(:disabled):not([aria-disabled="true"]) {
-  transform: scale(0.96);
-  transition:
-    transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate),
-    box-shadow var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
-}
-
-.andm-icon-btn--tonal:active:not(:disabled):not(
-    [aria-disabled="true"]
-  )::before {
-  background: var(--andm-overlay-active);
-  transition: opacity var(--andm-motion-duration-short1)
-    var(--andm-motion-easing-accelerate);
-}
-
-.andm-icon-btn--outlined {
-  background: transparent;
-  color: var(--andm-color-primary);
-  border: 1px solid var(--andm-color-outline);
-}
-
-.andm-icon-btn--outlined:hover:not(:disabled):not([aria-disabled="true"]) {
-  background: rgb(
-    var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
-  );
-  transition: background-color var(--andm-motion-duration-short2)
-    var(--andm-motion-easing-decelerate);
-}
-
-.andm-icon-btn--outlined:active:not(:disabled):not([aria-disabled="true"]) {
-  background: rgb(
-    var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
-  );
-  transform: scale(0.96);
-  transition:
-    transform var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate),
-    background-color var(--andm-motion-duration-short1)
-      var(--andm-motion-easing-accelerate);
-}
-
-/* Toggle Button selected state */
-/* .andm-toggle-btn--selected: 選択状態（toggle/segmentedで使用、pressedとは別） */
-.andm-toggle-btn--selected {
-  background: var(--andm-color-selected-container);
-  color: var(--andm-color-on-selected-container);
-  transition:
-    background-color var(--andm-motion-duration-short3)
-      var(--andm-motion-easing-standard),
-    color var(--andm-motion-duration-short3) var(--andm-motion-easing-standard);
-}
-
-.andm-toggle-btn--selected.andm-btn--outlined,
-.andm-toggle-btn--selected.andm-icon-btn--outlined {
-  border-color: var(--andm-color-outline-variant);
-}
-
-.andm-toggle-btn--selected.andm-btn--text {
-  background: var(--andm-color-selected-container);
-  color: var(--andm-color-on-selected-container);
-}
-
-.andm-toggle-btn--selected.andm-icon-btn--standard {
-  background: var(--andm-color-selected-container);
-  color: var(--andm-color-on-selected-container);
-}
-
-/* Button Group */
-.andm-group {
-  display: inline-flex;
-  gap: var(--andm-space-2);
-  align-items: center;
-}
-
-.andm-group--horizontal {
-  flex-direction: row;
-}
-
-.andm-group--vertical {
-  flex-direction: column;
-}
-
-.andm-group--connected {
-  gap: 0;
-  border: 1px solid var(--andm-color-outline-variant);
-  border-radius: var(--andm-radius-btn);
-  padding: 0;
-  background: transparent;
-}
-
-.andm-group--connected > * {
-  border: none;
-  border-radius: 0;
-  margin: 0;
-}
-
-.andm-group--connected .andm-btn--outlined,
-.andm-group--connected .andm-icon-btn--outlined {
-  border: none;
-}
-
-.andm-group--connected.andm-group--horizontal > :first-child {
-  border-top-left-radius: var(--andm-radius-btn);
-  border-bottom-left-radius: var(--andm-radius-btn);
-}
-
-.andm-group--connected.andm-group--horizontal > :last-child {
-  border-top-right-radius: var(--andm-radius-btn);
-  border-bottom-right-radius: var(--andm-radius-btn);
-}
-
-.andm-group--connected.andm-group--vertical > :first-child {
-  border-top-left-radius: var(--andm-radius-btn);
-  border-top-right-radius: var(--andm-radius-btn);
-}
-
-.andm-group--connected.andm-group--vertical > :last-child {
-  border-bottom-left-radius: var(--andm-radius-btn);
-  border-bottom-right-radius: var(--andm-radius-btn);
-}
-
-.andm-group--connected > :focus-visible,
-.andm-group--connected > .andm-is-focus-visible {
-  position: relative;
-  z-index: 1;
-}
-
-.andm-group--connected.andm-group--horizontal > :not(:first-child) {
-  border-left: 1px solid var(--andm-color-divider);
-  transition: border-color var(--andm-motion-duration-short3)
-    var(--andm-motion-easing-standard);
-}
-
-.andm-group--connected.andm-group--vertical > :not(:first-child) {
-  border-top: 1px solid var(--andm-color-divider);
-  transition: border-color var(--andm-motion-duration-short3)
-    var(--andm-motion-easing-standard);
+@layer andm.components {
+  /* —— Block —— */
+  .andm-btn {
+    appearance: none;
+    border: none;
+    margin: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--andm-space-2);
+    position: relative;
+    isolation: isolate;
+    height: var(--andm-btn-height-md);
+    padding: 0 var(--andm-btn-padding-x-md);
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    letter-spacing: var(--andm-btn-tracking);
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    vertical-align: middle;
+    border-radius: var(--andm-btn-radius-rest, var(--andm-btn-radius));
+    /* hover の highlight。色・背景・枠・影。lift は足さない */
+    transition:
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      border-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-btn:active:not(:disabled):not([disabled]) {
+    /* press の compress。morph は radius-pressed が静止と違うシリーズだけ */
+    transform: scale(var(--andm-btn-press-scale));
+    border-radius: var(--andm-btn-radius-pressed);
+    transition:
+      background-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      border-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      box-shadow var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      transform var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate);
+  }
+
+  .andm-btn:focus {
+    outline: none;
+  }
+
+  .andm-btn:focus-visible {
+    outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+
+  .andm-btn:disabled,
+  .andm-btn[disabled] {
+    cursor: not-allowed;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  /* —— Icon element ——
+   * Gallery はクラスを svg 自身に付ける。
+   * 子孫 svg だけ塗ると path の初期値 black が、ボタン色の上に残る。
+   */
+  .andm-btn__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--andm-btn-icon-size-md);
+    height: var(--andm-btn-icon-size-md);
+    fill: currentColor;
+  }
+
+  .andm-btn__icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+
+  .andm-btn__icon path {
+    fill: currentColor;
+  }
+
+  /* —— Sizes —— */
+  .andm-btn--sm {
+    height: var(--andm-btn-height-sm);
+    padding: 0 var(--andm-btn-padding-x-sm);
+    font-size: var(--andm-font-size-sm);
+  }
+
+  .andm-btn--sm .andm-btn__icon {
+    width: var(--andm-btn-icon-size-sm);
+    height: var(--andm-btn-icon-size-sm);
+  }
+
+  .andm-btn--md {
+    height: var(--andm-btn-height-md);
+    padding: 0 var(--andm-btn-padding-x-md);
+    font-size: var(--andm-font-size-md);
+  }
+
+  .andm-btn--lg {
+    height: var(--andm-btn-height-lg);
+    padding: 0 var(--andm-btn-padding-x-lg);
+    font-size: var(--andm-font-size-lg);
+  }
+
+  .andm-btn--lg .andm-btn__icon {
+    width: var(--andm-btn-icon-size-lg);
+    height: var(--andm-btn-icon-size-lg);
+  }
+
+  /* —— Variant: filled —— */
+  .andm-btn--filled {
+    background: var(--andm-color-primary);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-btn--filled:hover:not(:disabled):not([disabled]) {
+    box-shadow: var(--andm-shadow-1);
+  }
+
+  .andm-btn--filled:hover:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-hover-light);
+    pointer-events: none;
+  }
+
+  .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    box-shadow: none;
+  }
+
+  .andm-btn--filled:active:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-active-light);
+    pointer-events: none;
+  }
+
+  .andm-btn--filled:disabled,
+  .andm-btn--filled[disabled] {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+  }
+
+  /* —— Variant: elevated —— */
+  .andm-btn--elevated {
+    background: var(--andm-color-surface);
+    color: var(--andm-color-primary);
+    box-shadow: var(--andm-shadow-1);
+  }
+
+  .andm-btn--elevated:hover:not(:disabled):not([disabled]) {
+    box-shadow: var(--andm-shadow-2);
+  }
+
+  .andm-btn--elevated:hover:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-hover);
+    pointer-events: none;
+  }
+
+  .andm-btn--elevated:active:not(:disabled):not([disabled]) {
+    box-shadow: var(--andm-shadow-1);
+  }
+
+  .andm-btn--elevated:active:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-active);
+    pointer-events: none;
+  }
+
+  .andm-btn--elevated:disabled,
+  .andm-btn--elevated[disabled] {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+    box-shadow: none;
+  }
+
+  /* —— Variant: tonal —— */
+  .andm-btn--tonal {
+    background: var(--andm-color-secondary-container);
+    color: var(--andm-color-on-secondary-container);
+  }
+
+  .andm-btn--tonal:hover:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-hover);
+    pointer-events: none;
+  }
+
+  .andm-btn--tonal:active:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-active);
+    pointer-events: none;
+  }
+
+  .andm-btn--tonal:disabled,
+  .andm-btn--tonal[disabled] {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+  }
+
+  /* —— Variant: outlined —— */
+  .andm-btn--outlined {
+    background: transparent;
+    color: var(--andm-color-primary);
+    border: 1px solid var(--andm-color-outline);
+  }
+
+  .andm-btn--outlined:hover:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-btn--outlined:active:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
+    );
+  }
+
+  .andm-btn--outlined:disabled,
+  .andm-btn--outlined[disabled] {
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+  }
+
+  /* —— Variant: text —— */
+  .andm-btn--text {
+    background: transparent;
+    color: var(--andm-color-primary);
+    padding-inline: var(--andm-space-3);
+  }
+
+  .andm-btn--text.andm-btn--sm {
+    padding-inline: var(--andm-space-2);
+  }
+
+  .andm-btn--text.andm-btn--lg {
+    padding-inline: var(--andm-space-4);
+  }
+
+  .andm-btn--text:hover:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-btn--text:active:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
+    );
+  }
+
+  .andm-btn--text:disabled,
+  .andm-btn--text[disabled] {
+    color: var(--andm-color-on-disabled);
+  }
+
+  /*
+   * Expressive（andm-series--expressive）
+   * 色・背景・枠・影は fast effects。角の morph は fast spatial。
+   * short1–short4 には詰めない。ホバーでは角を変えない。押下の scale は 1。
+   * シリーズ別の Button クラスは作らない。lift は必須にしない。
+   */
+  .andm-series--expressive .andm-btn,
+  .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]) {
+    transition:
+      background-color var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      color var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      border-color var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      box-shadow var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      border-radius var(--andm-motion-duration-expressive-fast-spatial)
+        var(--andm-motion-easing-expressive-fast-spatial);
+  }
+
+  /* Pressed は specs の S / M / L（8 / 12 / 16）。値はトークン。ホバーでは角を変えない。
+     静止半径は各高さの半分（pill）。9999px は補間しない。押下中に半径 0 は経由しない。 */
+  .andm-series--expressive .andm-btn--sm {
+    --andm-btn-radius: calc(var(--andm-btn-height-sm) / 2);
+    --andm-btn-radius-pressed: 8px;
+  }
+
+  /*
+   * text は共通で padding-inline を space に固定している。
+   * Expressive の高さに対してそれだと短いラベルが円になる。
+   * 横 padding はサイズトークンに戻す。クラスは足さない。
+   */
+  .andm-series--expressive .andm-btn--text {
+    padding-inline: var(--andm-btn-padding-x-md);
+  }
+
+  .andm-series--expressive .andm-btn--text.andm-btn--sm {
+    padding-inline: var(--andm-btn-padding-x-sm);
+  }
+
+  .andm-series--expressive .andm-btn--text.andm-btn--lg {
+    padding-inline: var(--andm-btn-padding-x-lg);
+  }
+
+  .andm-series--expressive .andm-btn--lg {
+    --andm-btn-radius: calc(var(--andm-btn-height-lg) / 2);
+    --andm-btn-radius-pressed: 16px;
+  }
+
+  /* square。クラス名は既存 modifier。静止半径だけ差し替える */
+  .andm-series--expressive .andm-btn--shape-asymmetric {
+    --andm-btn-radius-rest: var(--andm-btn-radius-asymmetric);
+  }
+
+  .andm-series--expressive .andm-btn--sm.andm-btn--shape-asymmetric {
+    --andm-btn-radius-rest: 12px;
+    --andm-btn-radius-pressed: 8px;
+  }
+
+  .andm-series--expressive .andm-btn--lg.andm-btn--shape-asymmetric {
+    --andm-btn-radius-rest: 28px;
+    --andm-btn-radius-pressed: 16px;
+  }
+
+  /*
+   * DADS（andm-series--dads）
+   * Token だけでは出せないボタンの性格だけを足す。
+   * 塗りはホバーで濃くする、テキストは下線、フォーカスは黒+黄。
+   * 既存 variant 名は維持。shape morph / pill はしない。
+   */
+  .andm-series--dads .andm-btn {
+    gap: var(--andm-space-1);
+    letter-spacing: 0.02em;
+    text-underline-offset: 0.1875rem;
+    min-width: 96px;
+  }
+
+  .andm-series--dads .andm-btn--sm {
+    min-width: 80px;
+    --andm-btn-radius-rest: 6px;
+    --andm-btn-radius-pressed: 6px;
+  }
+
+  .andm-series--dads .andm-btn--lg {
+    min-width: 136px;
+  }
+
+  /* sm は見た目 36px。ターゲットは 44px（公式の ::after） */
+  .andm-series--dads .andm-btn--sm::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 44px;
+    margin: auto;
+  }
+
+  .andm-series--dads .andm-btn--text {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--elevated {
+    box-shadow: none;
+    border: 1px solid var(--andm-color-line);
+    background: var(--andm-color-surface);
+  }
+
+  .andm-series--dads
+    .andm-btn--filled:hover:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--filled:active:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--elevated:hover:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--elevated:active:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--tonal:hover:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--tonal:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  .andm-series--dads .andm-btn--filled:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-hover);
+    box-shadow: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-active);
+    box-shadow: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--outlined:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash);
+    color: var(--andm-color-primary-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--outlined:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash-strong);
+    color: var(--andm-color-primary-active);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--text:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-soft);
+    color: var(--andm-color-primary-hover);
+    text-decoration-thickness: 3px;
+  }
+
+  .andm-series--dads .andm-btn--text:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-muted);
+    color: var(--andm-color-primary-active);
+  }
+
+  .andm-series--dads .andm-btn--tonal:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash);
+  }
+
+  .andm-series--dads .andm-btn--tonal:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash-strong);
+  }
+
+  .andm-series--dads .andm-btn--elevated:hover:not(:disabled):not([disabled]) {
+    box-shadow: none;
+    background: var(--andm-color-primary-soft);
+  }
+
+  .andm-series--dads .andm-btn--elevated:active:not(:disabled):not([disabled]) {
+    box-shadow: none;
+    background: var(--andm-color-primary-muted);
+  }
+
+  .andm-series--dads .andm-btn--filled:disabled,
+  .andm-series--dads .andm-btn--filled[disabled] {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled-fill);
+    text-decoration: none;
+  }
+
+  .andm-series--dads .andm-btn--elevated:disabled,
+  .andm-series--dads .andm-btn--elevated[disabled] {
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+    box-shadow: none;
+  }
+
+  .andm-series--dads .andm-btn:focus-visible {
+    outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+    box-shadow: 0 0 0 2px var(--andm-focus-ring-inner);
+  }
+
+  .andm-series--dads .andm-btn--text:focus-visible {
+    background: var(--andm-focus-ring-inner);
+    color: var(--andm-color-primary);
+  }
+
+  /*
+   * Spectrum（andm-series--spectrum）
+   * 既存 variant 名は維持。数値は tokens.css の出典コメントと同じ。
+   * 塗りボタンの境界色は透明、幅は 2px。hover/down は blue-1000。
+   * 角は Token の pill（height/2）。モーフィングはしない。
+   */
+  .andm-series--spectrum .andm-btn {
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent;
+  }
+
+  .andm-series--spectrum .andm-btn--outlined {
+    border-color: var(--andm-color-primary);
+  }
+
+  .andm-series--spectrum .andm-btn--elevated {
+    border-color: var(--andm-color-outline);
+    background-color: var(--andm-color-surface);
+  }
+
+  .andm-series--spectrum .andm-btn--filled:hover:not(:disabled):not([disabled]),
+  .andm-series--spectrum .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    background-color: rgb(39, 77, 234);
+  }
+
+  .andm-series--spectrum
+    .andm-btn--filled:hover:not(:disabled):not([disabled])::before,
+  .andm-series--spectrum
+    .andm-btn--filled:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  /*
+   * Fluent 2（andm-series--fluent）
+   * Large buttons の角は 8px（shapes の Large）。それ以外は Token の 4px。
+   * 既存 variant 名は維持。角のモーフィングはしない。
+   */
+  .andm-series--fluent .andm-btn--lg {
+    --andm-btn-radius-rest: 8px;
+    --andm-btn-radius-pressed: 8px;
+  }
+
+  /*
+   * Carbon（andm-series--carbon）
+   * 既存 variant 名は維持。角は Token の 0。境界幅は outline の 1px。
+   * 塗りは primary。hover #0353e9、active #002d9c。
+   * outlined は tertiary。tonal は secondary。
+   */
+  .andm-series--carbon .andm-btn {
+    border-style: solid;
+    border-width: 1px;
+    border-color: transparent;
+  }
+
+  .andm-series--carbon .andm-btn--filled:hover:not(:disabled):not([disabled]) {
+    background-color: var(--andm-color-primary-hover);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    background-color: var(--andm-color-primary-active);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon
+    .andm-btn--filled:hover:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--filled:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  .andm-series--carbon .andm-btn--outlined {
+    border-color: var(--andm-color-primary);
+    color: var(--andm-color-primary);
+    background: transparent;
+  }
+
+  .andm-series--carbon .andm-btn--outlined:hover:not(:disabled):not([disabled]) {
+    background-color: var(--andm-color-primary-hover);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--outlined:active:not(:disabled):not([disabled]) {
+    border-color: transparent;
+    background-color: var(--andm-color-primary-active);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--tonal {
+    background: var(--andm-color-secondary-container);
+    color: var(--andm-color-on-secondary-container);
+  }
+
+  .andm-series--carbon .andm-btn--tonal:hover:not(:disabled):not([disabled]) {
+    background-color: #4c4c4c;
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--tonal:active:not(:disabled):not([disabled]) {
+    background-color: #6f6f6f;
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon
+    .andm-btn--tonal:hover:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--tonal:active:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--outlined:hover:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--outlined:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  /*
+   * reduced motion は共通。Series ごとのルールは足さない。
+   * 残す: 色・背景・枠・影と focus ring。
+   * 止める: transform（lift）、scale（compress）、形状変化（morph）。
+   * 色の duration は 0ms / 0.01ms にしない。
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .andm-btn:active:not(:disabled):not([disabled]) {
+      transform: none;
+      border-radius: var(--andm-btn-radius-rest, var(--andm-btn-radius));
+      transition:
+        background-color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        border-color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        box-shadow var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate);
+    }
+  }
 }

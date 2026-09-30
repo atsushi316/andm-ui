@@ -1,109 +1,426 @@
-:root {
-  --andm-color-primary: #6750a4;
-  --andm-color-primary-rgb: 103 80 164;
-  --andm-color-on-primary: #ffffff;
-  --andm-color-secondary-container: #e8def8;
-  --andm-color-on-secondary-container: #1d192b;
-  --andm-color-tertiary-container: #ffd8e4;
-  --andm-color-on-tertiary-container: #31111d;
-  --andm-color-surface: #fffbfe;
-  --andm-color-on-surface: #1c1b1f;
-  --andm-color-on-surface-variant: #49454f;
-  --andm-color-outline: #79747e;
-  --andm-color-outline-variant: color-mix(
-    in srgb,
-    var(--andm-color-outline) 24%,
-    transparent
-  );
-  --andm-color-divider: color-mix(
-    in srgb,
-    var(--andm-color-outline) 12%,
-    transparent
-  );
+@layer andm.tokens {
+  :root {
+    /* —— Primitive color —— */
+    --andm-color-blue-40: #0b57d0;
+    --andm-color-blue-90: #d3e3fd;
+    --andm-color-neutral-10: #1a1c1e;
+    --andm-color-neutral-40: #5f6368;
+    --andm-color-neutral-90: #e3e3e3;
+    --andm-color-neutral-95: #f2f2f2;
+    --andm-color-neutral-99: #fcfcfc;
+    --andm-color-white: #ffffff;
 
-  --andm-color-selected-container: var(--andm-color-secondary-container);
-  --andm-color-on-selected-container: var(--andm-color-on-secondary-container);
+    /* —— Semantic color —— */
+    --andm-color-primary: var(--andm-color-blue-40);
+    --andm-color-primary-rgb: 11 87 208;
+    --andm-color-on-primary: var(--andm-color-white);
+    --andm-color-secondary-container: var(--andm-color-blue-90);
+    --andm-color-on-secondary-container: #041e49;
+    --andm-color-surface: var(--andm-color-neutral-99);
+    --andm-color-on-surface: var(--andm-color-neutral-10);
+    --andm-color-on-surface-variant: var(--andm-color-neutral-40);
+    --andm-color-outline: #74777f;
+    --andm-color-outline-variant: color-mix(
+      in srgb,
+      var(--andm-color-outline) 24%,
+      transparent
+    );
 
-  --andm-color-disabled-container: color-mix(
-    in srgb,
-    var(--andm-color-on-surface) 12%,
-    transparent
-  );
-  --andm-color-on-disabled: color-mix(
-    in srgb,
-    var(--andm-color-on-surface) 38%,
-    transparent
-  );
-  --andm-color-disabled-outline: color-mix(
-    in srgb,
-    var(--andm-color-outline) 12%,
-    transparent
-  );
+    --andm-color-disabled-container: color-mix(
+      in srgb,
+      var(--andm-color-on-surface) 12%,
+      transparent
+    );
+    --andm-color-on-disabled: color-mix(
+      in srgb,
+      var(--andm-color-on-surface) 38%,
+      transparent
+    );
+    --andm-color-disabled-outline: color-mix(
+      in srgb,
+      var(--andm-color-outline) 12%,
+      transparent
+    );
 
-  --andm-color-danger: #b3261e;
-  --andm-color-on-danger: #ffffff;
-  --andm-color-danger-container: #f9dedc;
-  --andm-color-on-danger-container: #410e0b;
+    /* —— Spacing —— */
+    --andm-space-0: 0;
+    --andm-space-1: 4px;
+    --andm-space-2: 8px;
+    --andm-space-3: 12px;
+    --andm-space-4: 16px;
+    --andm-space-6: 24px;
+    --andm-space-8: 32px;
 
-  --andm-radius-btn: 20px;
-  --andm-radius-fab: 16px;
+    /* —— Radius（少数段階。唯一値へ収束しない） —— */
+    --andm-radius-sm: 8px;
+    --andm-radius-md: 12px;
+    --andm-radius-lg: 16px;
+    --andm-radius-pill: 9999px;
 
-  --andm-space-0: 0;
-  --andm-space-1: 4px;
-  --andm-space-2: 8px;
-  --andm-space-3: 12px;
-  --andm-space-4: 16px;
-  --andm-space-6: 24px;
-  --andm-space-8: 32px;
+    /* —— Typography —— */
+    --andm-font-family: "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    --andm-font-size-sm: 12px;
+    --andm-font-size-md: 14px;
+    --andm-font-size-lg: 16px;
+    --andm-font-weight-medium: 600;
+    --andm-line-height-tight: 1.25;
 
-  --andm-btn-height-sm: 32px;
-  --andm-btn-height-md: 40px;
-  --andm-btn-height-lg: 48px;
-  --andm-btn-padding-x-sm: 12px;
-  --andm-btn-padding-x-md: 20px;
-  --andm-btn-padding-x-lg: 28px;
+    /* —— Shadow / elevation —— */
+    --andm-shadow-1: 0 1px 2px rgb(0 0 0 / 0.2), 0 1px 3px rgb(0 0 0 / 0.12);
+    --andm-shadow-2: 0 2px 6px rgb(0 0 0 / 0.22), 0 1px 2px rgb(0 0 0 / 0.14);
 
-  --andm-fab-size-sm: 40px;
-  --andm-fab-size-md: 56px;
-  --andm-fab-size-lg: 80px;
+    /* —— State layers —— */
+    --andm-state-hover-opacity: 0.08;
+    --andm-state-pressed-opacity: 0.12;
+    --andm-overlay-hover: rgb(0 0 0 / 0.08);
+    --andm-overlay-hover-light: rgb(255 255 255 / 0.1);
+    --andm-overlay-active: rgb(0 0 0 / 0.12);
+    --andm-overlay-active-light: rgb(255 255 255 / 0.14);
 
-  --andm-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --andm-shadow-2: 0 6px 10px rgba(0, 0, 0, 0.3);
+    /* —— Focus —— */
+    --andm-focus-ring-color: var(--andm-color-primary);
+    --andm-focus-ring-width: 2px;
+    --andm-focus-ring-offset: 2px;
 
-  --andm-overlay-hover: rgba(0, 0, 0, 0.08);
-  --andm-overlay-hover-light: rgba(255, 255, 255, 0.08);
-  --andm-overlay-active: rgba(0, 0, 0, 0.12);
-  --andm-overlay-active-light: rgba(255, 255, 255, 0.12);
+    /* —— Motion（M3 Motion 準拠の短時間トークン） —— */
+    --andm-motion-duration-short1: 50ms;
+    --andm-motion-duration-short2: 100ms;
+    --andm-motion-duration-short3: 150ms;
+    --andm-motion-duration-short4: 200ms;
+    --andm-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+    --andm-motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
 
-  --andm-state-hover-opacity: 0.08;
-  --andm-state-pressed-opacity: 0.12;
-  --andm-focus-ring-color: var(--andm-color-primary);
-  --andm-focus-ring-width: 2px;
-  --andm-focus-ring-offset: 2px;
+    /* —— Component: Button（Baseline） —— */
+    --andm-btn-height-sm: 32px;
+    --andm-btn-height-md: 40px;
+    --andm-btn-height-lg: 48px;
+    --andm-btn-padding-x-sm: 12px;
+    --andm-btn-padding-x-md: 20px;
+    --andm-btn-padding-x-lg: 28px;
+    --andm-btn-radius: var(--andm-radius-md);
+    --andm-btn-radius-pressed: var(--andm-btn-radius);
+    --andm-btn-press-scale: 0.96;
+    --andm-btn-tracking: 0.15px;
+    --andm-btn-icon-size-sm: 16px;
+    --andm-btn-icon-size-md: 18px;
+    --andm-btn-icon-size-lg: 20px;
+    /* 非対称 shape 用（Baseline では未使用。Expressive デモで参照） */
+    --andm-btn-radius-asymmetric: 20px 8px 20px 8px;
+  }
 
-  --andm-font-size-sm: 12px;
-  --andm-font-size-md: 14px;
-  --andm-font-size-lg: 16px;
-  --andm-font-weight-medium: 600;
+  /*
+   * M3 Expressive の Token remapping。
+   * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
+   * ボタンのクラスは共通のまま。Baseline（:root）を壊さない。唯一の正解にしない。
+   * 形は expressive fast spatial、色は expressive fast effects。
+   * short1–short4 には詰めない。押下の角は specs の S / M / L のまま。
+   */
+  .andm-series--expressive {
+    /* サイズは Expressive の Small / Medium / Large（40 / 56 / 96）。
+       横 padding はサイズごと（leading / trailing space の 16 / 24 / 48）。
+       Small の 16px を中・大に流用しない。ラベル付きは高さより幅の広い pill。
+       色ロールは Baseline のまま。 */
+    --andm-btn-height-sm: 40px;
+    --andm-btn-height-md: 56px;
+    --andm-btn-height-lg: 96px;
+    --andm-btn-padding-x-sm: 16px;
+    --andm-btn-padding-x-md: 24px;
+    --andm-btn-padding-x-lg: 48px;
+    /* 静止の pill は高さの半分。9999px から fast spatial で補間すると overshoot で半径が 0 を下回る。 */
+    --andm-btn-radius: calc(var(--andm-btn-height-md) / 2);
+    /* Medium の pressed。Small 8 / Large 16 は button.css で上書き */
+    --andm-btn-radius-pressed: 12px;
+    --andm-btn-press-scale: 1;
+    /* square（Medium）。Small 12 / Large 28 は button.css */
+    --andm-btn-radius-asymmetric: 16px;
+    --andm-btn-icon-size-sm: 20px;
+    --andm-btn-icon-size-md: 20px;
+    --andm-btn-icon-size-lg: 20px;
+    /* M3 label は Medium（500）。700 にはしない */
+    --andm-font-weight-medium: 500;
+    /* Web: Convert springs to curves。fast spatial / fast effects */
+    --andm-motion-duration-expressive-fast-spatial: 350ms;
+    --andm-motion-easing-expressive-fast-spatial: cubic-bezier(0.42, 1.67, 0.21, 0.9);
+    --andm-motion-duration-expressive-fast-effects: 150ms;
+    --andm-motion-easing-expressive-fast-effects: cubic-bezier(0.31, 0.94, 0.34, 1);
+  }
 
-  /* Elevation tokens for FAB */
-  --andm-elevation-fab-default: 0 6px 10px rgba(0, 0, 0, 0.3);
-  --andm-elevation-fab-hover:
-    0 8px 12px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
-  --andm-elevation-fab-pressed: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --andm-elevation-fab-lowered: 0 1px 2px rgba(0, 0, 0, 0.3);
+  /*
+   * デジタル庁デザインシステム（DADS）の Token remapping。
+   * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
+   * ボタンのクラスは共通のまま。
+   * 公開されている色・角丸・タイポ・ボタンの性格の解釈。公式アセットは再配布しない。
+   * Web フォントは読まない（入っていれば Noto Sans JP、なければ日本語ゴシック）。
+   * Baseline / Expressive を壊さない。唯一の正解にしない。
+   * motion の duration は未確認。short1–short4 は差し替えない。
+   *
+   * 参照値（design.digital.go.jp / 公開トークンの解釈）:
+   *   primary Blue 900 #0017C1、hover Blue 1000、active Blue 1200
+   *   tonal Blue 100、outline hover Blue 200、text hover Blue 50
+   *   radius md/lg 8px・sm 6px、高さ 36/48/56、字重 700、行間 100%
+   *   focus は黒 4px + 黄 #FFD43D（Yellow 300）
+   */
+  .andm-series--dads {
+    --andm-color-primary: #0017c1;
+    --andm-color-primary-rgb: 0 23 193;
+    --andm-color-primary-hover: #00118f;
+    --andm-color-primary-active: #000060;
+    --andm-color-primary-soft: #e8f1fe;
+    --andm-color-primary-muted: #d9e6ff;
+    --andm-color-primary-wash: #c5d7fb;
+    --andm-color-primary-wash-strong: #9db7f9;
+    --andm-color-on-primary: #ffffff;
+    --andm-color-secondary-container: #d9e6ff;
+    --andm-color-on-secondary-container: #0017c1;
+    --andm-color-surface: #ffffff;
+    --andm-color-on-surface: #1a1a1a;
+    --andm-color-on-surface-variant: #4d4d4d;
+    --andm-color-outline: #0017c1;
+    --andm-color-line: #767676;
+    --andm-color-disabled-container: #b3b3b3;
+    --andm-color-on-disabled: #b3b3b3;
+    --andm-color-disabled-outline: #b3b3b3;
+    --andm-color-on-disabled-fill: #f2f2f2;
+    --andm-focus-ring-color: #000000;
+    --andm-focus-ring-width: 4px;
+    --andm-focus-ring-offset: 2px;
+    --andm-focus-ring-inner: #ffd43d;
+    --andm-font-family: "Noto Sans JP", "Hiragino Sans",
+      "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", "Yu Gothic", "YuGothic",
+      "Meiryo", sans-serif;
+    --andm-font-weight-medium: 700;
+    /* ボタンは Oln-16B-100。14px は xs のみで、sm 以上は 16px */
+    --andm-font-size-sm: 16px;
+    --andm-font-size-md: 16px;
+    --andm-font-size-lg: 16px;
+    --andm-line-height-tight: 1;
+    --andm-shadow-1: none;
+    --andm-shadow-2: none;
+    --andm-btn-height-sm: 36px;
+    --andm-btn-height-md: 48px;
+    --andm-btn-height-lg: 56px;
+    --andm-btn-padding-x-sm: 12px;
+    --andm-btn-padding-x-md: 16px;
+    --andm-btn-padding-x-lg: 16px;
+    --andm-btn-radius: 8px;
+    --andm-btn-radius-pressed: 8px;
+    --andm-btn-press-scale: 1;
+  }
 
-  /* Motion tokens (M3 Motion公式仕様に準拠) */
-  --andm-motion-duration-short1: 50ms;
-  --andm-motion-duration-short2: 100ms;
-  --andm-motion-duration-short3: 150ms;
-  --andm-motion-duration-short4: 200ms;
-  --andm-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
-  --andm-motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
-  --andm-motion-easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+  /*
+   * 切替シリーズ。共通の andm-btn に Token を当てるだけ。
+   * 公式一覧ではない。DADS / M3 Expressive も同じ仕組みのシリーズ。
+   * 速度の Series 割当はしない。
+   */
+  .andm-series--soft {
+    --andm-btn-radius: 16px;
+    --andm-btn-radius-pressed: 16px;
+    --andm-btn-height-md: 44px;
+    --andm-btn-padding-x-md: 24px;
+    --andm-shadow-1: 0 1px 2px rgb(0 0 0 / 0.08);
+    --andm-shadow-2: 0 8px 20px rgb(0 0 0 / 0.08);
+    --andm-btn-press-scale: 0.98;
+  }
 
-  /* Extended FAB tokens */
-  --andm-fab-extended-padding-x: 16px;
-  --andm-fab-extended-gap: 8px;
+  .andm-series--dense {
+    --andm-btn-radius: 4px;
+    --andm-btn-radius-pressed: 4px;
+    --andm-btn-height-sm: 24px;
+    --andm-btn-height-md: 28px;
+    --andm-btn-height-lg: 32px;
+    --andm-btn-padding-x-sm: 8px;
+    --andm-btn-padding-x-md: 10px;
+    --andm-btn-padding-x-lg: 12px;
+    --andm-font-size-sm: 12px;
+    --andm-font-size-md: 12px;
+    --andm-font-size-lg: 13px;
+    --andm-btn-press-scale: 0.98;
+    --andm-btn-tracking: 0;
+  }
+
+  .andm-series--technical {
+    --andm-btn-radius: 2px;
+    --andm-btn-radius-pressed: 2px;
+    --andm-btn-height-md: 32px;
+    --andm-font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --andm-font-size-md: 13px;
+    --andm-btn-press-scale: 1;
+    --andm-btn-tracking: 0.02em;
+    --andm-shadow-1: none;
+    --andm-shadow-2: none;
+  }
+
+  .andm-series--editorial {
+    --andm-font-family: Palatino, "Palatino Linotype", "Iowan Old Style", Georgia, serif;
+    --andm-btn-radius: 0;
+    --andm-btn-radius-pressed: 0;
+    --andm-btn-height-md: 44px;
+    --andm-font-weight-medium: 500;
+    --andm-btn-press-scale: 1;
+    --andm-btn-tracking: 0.04em;
+  }
+
+  /*
+   * Playful。andm の Series。公式の Reference ではない。
+   * 速度トークンは差し替えない。Hover は short2、Press の色は short1。
+   * scale 0.94 は andm の設計値であり、公式値ではない。
+   * 角は 22px のまま（morph しない）。hover の lift は必須にしない。
+   */
+  .andm-series--playful {
+    --andm-color-primary: #0f766e;
+    --andm-color-primary-rgb: 15 118 110;
+    --andm-btn-radius: 22px;
+    --andm-btn-radius-pressed: 22px;
+    --andm-btn-height-md: 48px;
+    --andm-btn-padding-x-md: 22px;
+    --andm-btn-press-scale: 0.94;
+  }
+
+  /*
+   * 切替シリーズ: Apple。出典は Human Interface Guidelines。
+   * https://developer.apple.com/jp/design/human-interface-guidelines
+   * 英語の color / layout / materials / buttons も同じガイドライン。
+   * 2026-09-29 時点で本文は JavaScript 必須。タイトル以外は検証不能。
+   * 色・角丸・余白・高さ・境界・影・ぼかし・押下縮小は公式値として書かない。
+   * 下のフォントは HIG の数値ではない。システムスタックのみ。
+   * SF のファイル、SF Symbols、ロゴは同梱しない。
+   * motion の duration は公式本文に無い（official value not specified）。
+   * cubic-bezier、縮小率、spring は足さない。速度トークンは差し替えない。
+   * 押下の scale は Baseline の 0.96 のまま。HIG の測定値ではない。
+   */
+  .andm-series--apple {
+    --andm-font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+      "Segoe UI", sans-serif;
+  }
+
+  /*
+   * 切替シリーズ: Spectrum 2。desktop / light。Express は使わない。
+   * 公式 CSS とフォントファイルは同梱しない。ボタンのクラスは共通のまま。
+   *
+   * 値は @spectrum-css/tokens 16.0.2 の medium-vars / light-vars / global-vars
+   * と、@spectrum-css/button のサイズ対応（S / 既定 / L）。
+   * 色の rgb は packages/tokens/src の light とも一致。
+   * 角はボタン式 height/2。corner-radius-100（4px）はボタンの角ではない。
+   *
+   * 高さ: component-height-75/100/200 = 24 / 32 / 40px
+   * 字: font-size-75/100/200 = 12 / 14 / 16px、bold-font-weight = 700
+   * 横余白: pill-edge-to-text 13/16/20px から border-width-200（2px）を引く → 11 / 14 / 18px
+   * 塗り: blue-900-rgb 59,99,251。hover/down: blue-1000-rgb 39,77,234。文字は white
+   * 薄い面: blue-200-rgb 229,240,254。境界: gray-400-rgb 198,198,198
+   * 面: gray-50-rgb 248,248,248。本文: gray-800-rgb 41,41,41
+   * フォント名: sans-serif-font-family = Adobe Clean（ファイルは置かない）
+   * 影: ボタンの box-shadow はフォーカス以外 none
+   * motion ページの duration-100 は 130ms。ease-out は cubic-bezier(0, 0, 0.40, 1)。
+   * ボタンの色遷移はこの duration と ease-out。short1 / short2 と、押下・ホバーの easing だけ差し替える。
+   * 押下縮小は 1。
+   */
+  .andm-series--spectrum {
+    --andm-color-primary: rgb(59, 99, 251);
+    --andm-color-primary-rgb: 59 99 251;
+    --andm-color-on-primary: rgb(255, 255, 255);
+    --andm-color-secondary-container: rgb(229, 240, 254);
+    --andm-color-on-secondary-container: rgb(59, 99, 251);
+    --andm-color-surface: rgb(248, 248, 248);
+    --andm-color-on-surface: rgb(41, 41, 41);
+    --andm-color-on-surface-variant: rgb(80, 80, 80);
+    --andm-color-outline: rgb(198, 198, 198);
+    --andm-font-family: "Adobe Clean", "Segoe UI", "Hiragino Sans", sans-serif;
+    --andm-font-weight-medium: 700;
+    --andm-font-size-sm: 12px;
+    --andm-font-size-md: 14px;
+    --andm-font-size-lg: 16px;
+    --andm-btn-tracking: 0;
+    --andm-btn-radius: var(--andm-radius-pill);
+    --andm-btn-radius-pressed: var(--andm-radius-pill);
+    --andm-btn-height-sm: 24px;
+    --andm-btn-height-md: 32px;
+    --andm-btn-height-lg: 40px;
+    --andm-btn-padding-x-sm: 11px;
+    --andm-btn-padding-x-md: 14px;
+    --andm-btn-padding-x-lg: 18px;
+    --andm-shadow-1: none;
+    --andm-shadow-2: none;
+    --andm-btn-press-scale: 1;
+    --andm-focus-ring-width: 2px;
+    --andm-motion-duration-short1: 130ms;
+    --andm-motion-duration-short2: 130ms;
+    --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.4, 1);
+    --andm-motion-easing-accelerate: cubic-bezier(0, 0, 0.4, 1);
+  }
+
+  /*
+   * 切替シリーズ: Fluent 2。
+   * 出典は fluent2.microsoft.design の shapes / typography（2026-09-29 の本文）。
+   * 公式アイコン、フォントファイル、CSS は同梱しない。ボタンのクラスは共通のまま。
+   *
+   * shapes: Medium は Buttons / dropdown で 4px。Large は Large buttons で 8px（lg のみ button.css）。
+   * 32px 未満は 2px、と本文にある。現行 sm は高さ 32px なので 2px にはしない。
+   * typography（Web）: Caption 1 は 12px、Body 1 は 14px、Subtitle 2 は 16px。
+   * 書体名は Segoe UI。ファイルは置かない。
+   * 色、余白、高さ、影、duration の数値はこれらのページ本文に無かったので書かない。
+   * 速度トークンは差し替えない。
+   */
+  .andm-series--fluent {
+    --andm-btn-radius: 4px;
+    --andm-btn-radius-pressed: 4px;
+    --andm-font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+    --andm-font-size-sm: 12px;
+    --andm-font-size-md: 14px;
+    --andm-font-size-lg: 16px;
+  }
+
+  /*
+   * 切替シリーズ: IBM Carbon。white テーマ。
+   * 出典は carbon-design-system/carbon の公開トークン（2026-09-29 に取得）。
+   * 公式アイコン、フォントファイル、CSS は同梱しない。ボタンのクラスは共通のまま。
+   *
+   * 色: packages/themes/src/v10/white.ts と g10.ts。
+   *   primary は blue60 #0f62fe。hover は #0353e9。active は blue80 #002d9c。
+   *   secondary は gray80 #393939。hover は #4c4c4c。active は gray60 #6f6f6f。
+   *   無効背景は gray30 #c6c6c6。無効文字は gray50 #8d8d8d。
+   * 高さ: packages/layout の size-sm / size-md / size-lg = 32 / 40 / 48px。
+   *   ボタン SCSS の既定ステップは lg（48px）。ここでの md は size-md（40px）。
+   * 角: packages/styles の $button-border-radius は 0。
+   * 字: $button-font-size は 0.875rem、字重は 400。書体名は IBM Plex Sans。ファイルは置かない。
+   * 横余白: spacing-05 は 16px（density normal）。アイコン用の右側余白は未採用。
+   * motion ページの duration-fast-01 は 70ms。ボタン mixin はこれと entrance productive。
+   * short1 / short2 と、押下・ホバーの easing、standard をその本文の値にする。押下縮小は 1。
+   */
+  .andm-series--carbon {
+    --andm-color-primary: #0f62fe;
+    --andm-color-primary-rgb: 15 98 254;
+    --andm-color-primary-hover: #0353e9;
+    --andm-color-primary-active: #002d9c;
+    --andm-color-on-primary: #ffffff;
+    --andm-color-secondary-container: #393939;
+    --andm-color-on-secondary-container: #ffffff;
+    --andm-color-surface: #ffffff;
+    --andm-color-on-surface: #161616;
+    --andm-color-on-surface-variant: #525252;
+    --andm-color-outline: #0f62fe;
+    --andm-color-disabled-container: #c6c6c6;
+    --andm-color-on-disabled: #8d8d8d;
+    --andm-focus-ring-color: #0f62fe;
+    --andm-focus-ring-width: 2px;
+    --andm-font-family: "IBM Plex Sans", "IBM Plex Sans JP", system-ui, sans-serif;
+    --andm-font-weight-medium: 400;
+    --andm-font-size-md: 14px;
+    --andm-btn-radius: 0;
+    --andm-btn-radius-pressed: 0;
+    --andm-btn-height-sm: 32px;
+    --andm-btn-height-md: 40px;
+    --andm-btn-height-lg: 48px;
+    --andm-btn-padding-x-sm: 16px;
+    --andm-btn-padding-x-md: 16px;
+    --andm-btn-padding-x-lg: 16px;
+    --andm-shadow-1: none;
+    --andm-shadow-2: none;
+    --andm-btn-press-scale: 1;
+    --andm-motion-duration-short1: 70ms;
+    --andm-motion-duration-short2: 70ms;
+    --andm-motion-easing-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
+    --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.38, 0.9);
+    --andm-motion-easing-accelerate: cubic-bezier(0, 0, 0.38, 0.9);
+  }
 }

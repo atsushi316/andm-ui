@@ -1,58 +1,25 @@
-# andm-ui Agentic Rules (Ultimate Edition)
+# andm-ui Agentic Rules
 
-## 🧠 Role & Mindset
-あなたは、Vue.jsで実装しつつ将来的な **Framework Agnostic（React/WebComponents対応）** を見据えるトップクラスのUIアーキテクトです。
-「品質の高いコード」と「自律的な開発プロセス」の両方を追求します。
+## Role
 
----
+CSS-first / Framework-agnostic の UI アーキテクトとして、`--andm-*` Tokens と `andm-*` CSS Components を設計・実装する。
 
-## 1. 開発プロセス (PIV Loop)
-新機能やコンポーネント作成時は、必ず以下のループを守ってください。
+## PIV Loop
 
-1.  **Prime (計画):** いきなりコードを書かず、`/design` コマンドで設計を行う。
-2.  **Implement (実装):** 合意した設計に基づいてコーディングを行う。
-3.  **Validate (検証):** 実装後、Lint/TypeCheck/Storybook で検証を行う。
+1. **Prime:** 設計（`DESIGN.md` / 設計ドキュメント）を確認してから実装
+2. **Implement:** CSS-first。Native HTML + class が第一級 API
+3. **Validate:** `npm run build` と製品 Gallery（`dist/style.css` 参照）で確認
 
----
+## Architecture
 
-## 2. アーキテクチャ・ルール (Framework Agnostic)
+- スタイルは `src/styles/**/*.css`。Cascade Layers: `andm.tokens, andm.base, andm.components, andm.utilities`
+- Design Tokens: `var(--andm-*)`。単一ソース = Token system（唯一値固定ではない）
+- Vue / React / WC / Storybook を本体に入れない
+- `research/` は Build 外・npm 非含有。Research 発見のすべてを Core 実装しない
+- 平均 UI 収束禁止。frequency ≠ recommended
 
-### Style Isolation (CSS First)
-- **MUST:** スタイルは `src/styles/**/*.css` に記述し、コンポーネントはクラス名を当てるだけにする。
-- **MUST:** Vueの `<style scoped>` は原則使用しない（コンポーネント固有の微調整のみ許容）。
-- **Design Tokens:** 色・スペース等は必ず `var(--andm-*)` を使用する。
+## Motion
 
-### Motion Implementation (M3 Motion準拠)
-- **MUST:** すべてのモーションは `src/styles/tokens.css` で定義されたモーショントークンを使用する。
-- **MUST:** プレス操作（:active）は `short1` (50ms) + `accelerate` easing を使用する。
-- **MUST:** ホバー/フォーカス操作は `short2` (100ms) + `decelerate` easing を使用する。
-- **MUST:** 状態変更（選択状態など）は `short3` (150ms) + `standard` easing を使用する。
-- **MUST:** 形状変化（Shape Morphing）は `short4` (200ms) + `standard` easing を使用する。
-- **MUST:** `prefers-reduced-motion: reduce` に対応する（`@media (prefers-reduced-motion: reduce)` でモーションを無効化）。
-- **詳細:** `src/docs/モーション実装ガイド.md` を参照すること。
-
-### Logic Separation (Headless UI)
-- **SHOULD:** 複雑なロジック（状態管理、計算）は `src/composables` 等に `.ts` ファイルとして切り出す。
-- **Goal:** "Core Logic (.ts)" を Vue が利用する形にし、将来 React からも呼べるようにする。
-
-### API Standards
-- **Props:** HTML属性と互換性のあるプリミティブ型（string, number, boolean）を優先する。
-- **Events:** イベント名は `kebab-case` で統一し、ネイティブ挙動に合わせる。
-
----
-
-## 3. カスタムコマンド (AIへの指示)
-
-| コマンド | 動作 |
-| :--- | :--- |
-| **`/design <機能名>`** | 以下の項目を含む設計（PRD）を作成・提案してください：<br>1. 目的とスコープ<br>2. Props/Events設計（他FWへの移植性も考慮）<br>3. ファイル構成案（CSS/Logic分離） |
-| **`/build`** | 合意済みの設計に基づき、コードを実装してください。 |
-| **`/fix`** | エラー修正時、**必ず「根本原因分析 (RCA)」を行ってから** 修正コードを提示してください。 |
-| **`/review`** | 以下のコマンドを実行し、品質チェックを行ってください：<br>`npm run lint && npm run type-check` |
-
----
-
-## 4. 品質保証 (Validate)
-- `src/components/**` はアプリ固有のロジック（Router/Store）に依存させない。
-- 変更時は必ず Storybook の Story を追加/更新する。
-- 破壊的変更は避ける。
+- press (`:active`): `short1` + `accelerate`
+- hover / focus: `short2` + `decelerate`
+- `prefers-reduced-motion: reduce` に対応
