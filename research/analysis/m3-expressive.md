@@ -137,7 +137,7 @@ RectangleShape は角なし。CircleShape は円。単位は dp。px への換�
 
 ## 検証不能
 
-- https://m3.material.io/get-started と、上記の m3.material.io 各ページ。本文なし。
+- https://m3.material.io/get-started はタイトルのみ。
 - ボタン高さの dp 表（specs の数値表には角だけが出た）。
 - spring の stiffness と damping。
 - spacing のスケール。
