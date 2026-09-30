@@ -15,7 +15,6 @@
     isolation: isolate;
     height: var(--andm-btn-height-md);
     padding: 0 var(--andm-btn-padding-x-md);
-    border-radius: var(--andm-btn-radius);
     font-family: var(--andm-font-family);
     font-size: var(--andm-font-size-md);
     font-weight: var(--andm-font-weight-medium);
@@ -25,6 +24,8 @@
     white-space: nowrap;
     user-select: none;
     vertical-align: middle;
+    border-radius: var(--andm-btn-radius-rest, var(--andm-btn-radius));
+    /* hover の highlight。色・背景・枠・影。lift は足さない */
     transition:
       background-color var(--andm-motion-duration-short2)
         var(--andm-motion-easing-decelerate),
@@ -37,7 +38,9 @@
   }
 
   .andm-btn:active:not(:disabled):not([disabled]) {
+    /* press の compress。morph は radius-pressed が静止と違うシリーズだけ */
     transform: scale(var(--andm-btn-press-scale));
+    border-radius: var(--andm-btn-radius-pressed);
     transition:
       background-color var(--andm-motion-duration-short1)
         var(--andm-motion-easing-accelerate),
@@ -293,11 +296,12 @@
 
   /*
    * Expressive（andm-series--expressive）
-   * — 既存 variant は維持。Token remapping + spatial motion / shape morph のみ。
-   * — シリーズ別の Button クラスは作らない。
+   * 色・背景・枠・影は fast effects。角の morph は fast spatial。
+   * short1–short4 には詰めない。ホバーでは角を変えない。押下の scale は 1。
+   * シリーズ別の Button クラスは作らない。lift は必須にしない。
    */
-  .andm-series--expressive .andm-btn {
-    /* 色は fast effects。角は fast spatial。ホバーでは角を変えない */
+  .andm-series--expressive .andm-btn,
+  .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]) {
     transition:
       background-color var(--andm-motion-duration-expressive-fast-effects)
         var(--andm-motion-easing-expressive-fast-effects),
@@ -311,47 +315,28 @@
         var(--andm-motion-easing-expressive-fast-spatial);
   }
 
-  .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]) {
-    border-radius: var(--andm-btn-radius-pressed);
+  /* Pressed は specs の S / M / L（8 / 12 / 16）。値はトークン。ホバーでは角を変えない */
+  .andm-series--expressive .andm-btn--sm {
+    --andm-btn-radius-pressed: 8px;
   }
 
-  /* Pressed は specs の S / M / L（8 / 12 / 16dp）。ホバーでは角を変えない */
-  .andm-series--expressive
-    .andm-btn--sm:active:not(:disabled):not([disabled]) {
-    border-radius: 8px;
+  .andm-series--expressive .andm-btn--lg {
+    --andm-btn-radius-pressed: 16px;
   }
 
-  .andm-series--expressive
-    .andm-btn--lg:active:not(:disabled):not([disabled]) {
-    border-radius: 16px;
-  }
-
-  /* square。クラス名は既存 modifier を維持し、半径は公式の square */
+  /* square。クラス名は既存 modifier。静止半径だけ差し替える */
   .andm-series--expressive .andm-btn--shape-asymmetric {
-    border-radius: var(--andm-btn-radius-asymmetric);
+    --andm-btn-radius-rest: var(--andm-btn-radius-asymmetric);
   }
 
   .andm-series--expressive .andm-btn--sm.andm-btn--shape-asymmetric {
-    border-radius: 12px;
+    --andm-btn-radius-rest: 12px;
+    --andm-btn-radius-pressed: 8px;
   }
 
   .andm-series--expressive .andm-btn--lg.andm-btn--shape-asymmetric {
-    border-radius: 28px;
-  }
-
-  .andm-series--expressive
-    .andm-btn--shape-asymmetric:active:not(:disabled):not([disabled]) {
-    border-radius: var(--andm-btn-radius-pressed);
-  }
-
-  .andm-series--expressive
-    .andm-btn--sm.andm-btn--shape-asymmetric:active:not(:disabled):not([disabled]) {
-    border-radius: 8px;
-  }
-
-  .andm-series--expressive
-    .andm-btn--lg.andm-btn--shape-asymmetric:active:not(:disabled):not([disabled]) {
-    border-radius: 16px;
+    --andm-btn-radius-rest: 28px;
+    --andm-btn-radius-pressed: 16px;
   }
 
   /*
@@ -369,15 +354,12 @@
 
   .andm-series--dads .andm-btn--sm {
     min-width: 80px;
+    --andm-btn-radius-rest: 6px;
+    --andm-btn-radius-pressed: 6px;
   }
 
   .andm-series--dads .andm-btn--lg {
     min-width: 136px;
-  }
-
-  .andm-series--dads .andm-btn--sm,
-  .andm-series--dads .andm-btn--sm:active:not(:disabled):not([disabled]) {
-    border-radius: 6px;
   }
 
   /* sm は見た目 36px。ターゲットは 44px（公式の ::after） */
@@ -536,9 +518,9 @@
    * Large buttons の角は 8px（shapes の Large）。それ以外は Token の 4px。
    * 既存 variant 名は維持。角のモーフィングはしない。
    */
-  .andm-series--fluent .andm-btn--lg,
-  .andm-series--fluent .andm-btn--lg:active:not(:disabled):not([disabled]) {
-    border-radius: 8px;
+  .andm-series--fluent .andm-btn--lg {
+    --andm-btn-radius-rest: 8px;
+    --andm-btn-radius-pressed: 8px;
   }
 
   /*
@@ -613,39 +595,25 @@
     background: transparent;
   }
 
+  /*
+   * reduced motion は共通。Series ごとのルールは足さない。
+   * 残す: 色・背景・枠・影と focus ring。
+   * 止める: transform（lift）、scale（compress）、形状変化（morph）。
+   * 色の duration は 0ms / 0.01ms にしない。
+   */
   @media (prefers-reduced-motion: reduce) {
     .andm-btn:active:not(:disabled):not([disabled]) {
       transform: none;
-    }
-
-    .andm-series--expressive .andm-btn,
-    .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]),
-    .andm-series--expressive
-      .andm-btn--sm:active:not(:disabled):not([disabled]),
-    .andm-series--expressive
-      .andm-btn--lg:active:not(:disabled):not([disabled]) {
-      transform: none;
-      border-radius: var(--andm-btn-radius);
-      transition-property: background-color, color, border-color, box-shadow;
-    }
-
-    .andm-series--expressive
-      .andm-btn--shape-asymmetric:active:not(:disabled):not([disabled]) {
-      border-radius: var(--andm-btn-radius-asymmetric);
-    }
-
-    .andm-series--expressive
-      .andm-btn--sm.andm-btn--shape-asymmetric:active:not(:disabled):not(
-        [disabled]
-      ) {
-      border-radius: 12px;
-    }
-
-    .andm-series--expressive
-      .andm-btn--lg.andm-btn--shape-asymmetric:active:not(:disabled):not(
-        [disabled]
-      ) {
-      border-radius: 28px;
+      border-radius: var(--andm-btn-radius-rest, var(--andm-btn-radius));
+      transition:
+        background-color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        border-color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        box-shadow var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate);
     }
   }
 }

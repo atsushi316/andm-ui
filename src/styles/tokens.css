@@ -258,6 +258,12 @@
     --andm-btn-tracking: 0.04em;
   }
 
+  /*
+   * Playful。andm の Series。公式の Reference ではない。
+   * 速度トークンは差し替えない。Hover は short2、Press の色は short1。
+   * scale 0.94 は andm の設計値であり、公式値ではない。
+   * 角は 22px のまま（morph しない）。hover の lift は必須にしない。
+   */
   .andm-series--playful {
     --andm-color-primary: #0f766e;
     --andm-color-primary-rgb: 15 118 110;
@@ -276,7 +282,9 @@
    * 色・角丸・余白・高さ・境界・影・ぼかし・押下縮小は公式値として書かない。
    * 下のフォントは HIG の数値ではない。システムスタックのみ。
    * SF のファイル、SF Symbols、ロゴは同梱しない。
-   * motion はタイトルのみで検証不能。速度トークンは差し替えない。
+   * motion の duration は公式本文に無い（official value not specified）。
+   * cubic-bezier、縮小率、spring は足さない。速度トークンは差し替えない。
+   * 押下の scale は Baseline の 0.96 のまま。HIG の測定値ではない。
    */
   .andm-series--apple {
     --andm-font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",

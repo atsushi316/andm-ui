@@ -25,7 +25,7 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 
 ## 使える見た目
 
-Gallery で今使える例です。共通の Button に Token を当てます。Component は増やしません。速度の割当はしません。
+Gallery で今使える例です。共通の Button に Token を当てます。Component は増やしません。速度は、出典に duration があるシリーズだけ既存トークンを差し替えます。
 
 | 見た目 | スコープ | 性格 |
 |--------|----------|------|
@@ -56,7 +56,7 @@ Baseline は追加クラスなし。上の 11 は Gallery で切り替えるシ�
 | Shape | 静止は丸（full）。押下で角を立てる（Small 8 / Medium 12 / Large 16）。任意 `andm-btn--shape-asymmetric` は square（12 / 16 / 28） |
 | Size | Small 40 / Medium 56 / Large 96。横 padding は Small の推奨 16px。アイコン 20px |
 | Emphasis | 大きさ。字重は M3 label の Medium（500）。色ロールは Baseline のまま |
-| Motion | 形だけ spatial の overshoot 近似。色は decelerate。ホバー拡大・押下縮小はしない。`prefers-reduced-motion` では拡大と形状を抑え、色の状態変化は残す |
+| Motion | 形は fast spatial（350ms、`cubic-bezier(0.42, 1.67, 0.21, 0.9)`）。色・背景・枠・影は fast effects（150ms、`cubic-bezier(0.31, 0.94, 0.34, 1)`）。short1–short4 には詰めない。ホバーでは角を変えない。押下で角が変わり、scale は 1。reduced motion は共通で、色と focus ring を残し、transform と形状変化を止める |
 | 既存 variant | filled / tonal / outlined / text / elevated はそのまま |
 
 ### DADS（デジタル庁デザインシステムの方向）
@@ -80,7 +80,8 @@ Baseline は追加クラスなし。上の 11 は Gallery で切り替えるシ�
 | スコープ | 親に `andm-series--apple`（Token remapping） |
 | 向いている用途 | 今の Apple の画面に近い、案内や設定 |
 | 出典 | [HIG（日本語）](https://developer.apple.com/jp/design/human-interface-guidelines)。英語は [入口](https://developer.apple.com/design/human-interface-guidelines) から color / layout / materials / buttons |
-| HIG から採用した数値 | なし。上記ページはタイトルのみで本文が取れない |
+| HIG から採用した数値 | なし。色・寸法のページはタイトルのみで本文が取れない |
+| Motion | duration は official value not specified。速度トークンは差し替えない。押下の縮小は Baseline の 0.96 のまま。HIG の測定値ではない |
 | フォント | `-apple-system, BlinkMacSystemFont` は HIG の測定値ではない。ファイルは同梱しない |
 
 ### Spectrum
