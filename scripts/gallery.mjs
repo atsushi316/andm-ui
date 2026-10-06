@@ -1,5 +1,6 @@
+import { createHash } from "node:crypto";
 import { createReadStream } from "node:fs";
-import { access, stat } from "node:fs/promises";
+import { access, readFile, stat } from "node:fs/promises";
 import http from "node:http";
 import { extname, join, normalize, sep } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -26,6 +27,8 @@ const types = {
   ".md": "text/plain; charset=utf-8",
 };
 
+const galleryScripts = ["series-copy.js", "catalog.js", "explorer.js"];
+
 function localPath(urlPath) {
   let pathname = decodeURIComponent(urlPath.split("?")[0]);
   if (pathname === "/") pathname = "/gallery/";
@@ -33,6 +36,24 @@ function localPath(urlPath) {
   const full = normalize(join(root, pathname));
   if (full !== root && !full.startsWith(root + sep)) return null;
   return full;
+}
+
+async function contentHash(relPath) {
+  const buf = await readFile(join(root, relPath));
+  return createHash("sha256").update(buf).digest("hex").slice(0, 10);
+}
+
+/** Simple Browser 等が古い explorer.js を掴み続けないよう、配信 HTML の script src に内容ハッシュを付ける。 */
+async function withScriptCacheBust(html) {
+  let out = html;
+  for (const name of galleryScripts) {
+    const ver = await contentHash(`gallery/${name}`);
+    out = out.replace(
+      new RegExp(`src="${name}(?:\\?[^"]*)?"`, "g"),
+      `src="${name}?v=${ver}"`,
+    );
+  }
+  return out;
 }
 
 async function galleryAlreadyUp() {
@@ -80,11 +101,22 @@ const server = http.createServer(async (req, res) => {
       headers["Pragma"] = "no-cache";
       headers["Expires"] = "0";
     }
-    res.writeHead(200, headers);
     if (req.method === "HEAD") {
+      res.writeHead(200, headers);
       res.end();
       return;
     }
+    const isGalleryHtml =
+      type.startsWith("text/html") &&
+      (file.endsWith(`${sep}gallery${sep}index.html`) ||
+        file.endsWith(`${sep}gallery/index.html`));
+    if (isGalleryHtml) {
+      const html = await withScriptCacheBust(await readFile(file, "utf8"));
+      res.writeHead(200, headers);
+      res.end(html);
+      return;
+    }
+    res.writeHead(200, headers);
     createReadStream(file).pipe(res);
   } catch (error) {
     res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
