@@ -147,6 +147,28 @@
     return "baseline";
   }
 
+  function scrollMainToTop() {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    if (viewSeries) viewSeries.scrollTop = 0;
+    var main = document.querySelector(".g-main");
+    if (main) main.scrollTop = 0;
+  }
+
+  function revealShownPart(shown) {
+    scrollMainToTop();
+    if (!shown) return;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        scrollMainToTop();
+        shown.scrollIntoView({ block: "start", behavior: "auto" });
+        var top = shown.getBoundingClientRect().top;
+        if (top > 32) window.scrollBy(0, top - 16);
+      });
+    });
+  }
+
   function showPart(route) {
     var onSeries = route.view === "series";
     var part = onSeries ? "series" : route.id;
@@ -157,24 +179,20 @@
       if (match && !shown) shown = el;
     });
     document.querySelectorAll("[data-part-nav]").forEach(function (a) {
-      if (!onSeries && route.view !== "tokens" && a.dataset.partNav === part) {
+      var navKey = a.getAttribute("data-part-nav");
+      if (!onSeries && route.view !== "tokens" && navKey === part) {
         a.setAttribute("aria-current", "page");
       } else {
         a.removeAttribute("aria-current");
       }
     });
     // Hash は #/overlays/drawer 形式で要素 id と一致しない。案内を隠したあと先頭へ戻す。
-    if (!onSeries) {
-      window.scrollTo(0, 0);
-      if (shown) {
-        requestAnimationFrame(function () {
-          shown.scrollIntoView({ block: "start", behavior: "auto" });
-        });
-      }
-    }
+    if (!onSeries) revealShownPart(shown);
   }
 
   function go(hash) {
+    if (!hash) return;
+    if (hash.charAt(0) !== "#") hash = "#" + hash;
     if (location.hash !== hash) location.hash = hash;
     else render();
   }
@@ -724,6 +742,17 @@
       return;
     }
     go("#/series/" + select.value);
+  });
+
+  // 左ナビ・完成状況チップ・goal など #/… リンクは必ず showPart 経由にする
+  //（hashchange が飛ばない同一ハッシュや、古いキャッシュ対策）。
+  document.addEventListener("click", function (event) {
+    var a = event.target.closest("a[href^='#/']");
+    if (!a || a.getAttribute("target") === "_blank") return;
+    var href = a.getAttribute("href");
+    if (!href) return;
+    event.preventDefault();
+    go(href);
   });
 
   initParts();

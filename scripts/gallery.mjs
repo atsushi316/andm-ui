@@ -46,13 +46,29 @@ async function contentHash(relPath) {
 /** Simple Browser 等が古い explorer.js を掴み続けないよう、配信 HTML の script src に内容ハッシュを付ける。 */
 async function withScriptCacheBust(html) {
   let out = html;
+  const stamps = [];
   for (const name of galleryScripts) {
     const ver = await contentHash(`gallery/${name}`);
+    stamps.push(ver);
     out = out.replace(
       new RegExp(`src="${name}(?:\\?[^"]*)?"`, "g"),
       `src="${name}?v=${ver}"`,
     );
   }
+  // HTML 自体も毎回変えて、index のクリックナビ再読込で旧ページを掴みにくくする。
+  const stamp = createHash("sha256").update(stamps.join("|")).digest("hex").slice(0, 8);
+  out = out.replace(
+    /data-gallery-build="[^"]*"/,
+    `data-gallery-build="${stamp}"`,
+  );
+  out = out.replace(
+    /content="click-reveal-1"/,
+    `content="${stamp}"`,
+  );
+  out = out.replace(
+    /<title>[^<]*<\/title>/,
+    `<title>andm-ui Gallery · ${stamp}</title>`,
+  );
   return out;
 }
 
