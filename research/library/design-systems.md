@@ -16,9 +16,9 @@
 | Carbon | [../analysis/carbon.md](../analysis/carbon.md) |
 | デジタル庁デザインシステム（DADS） | [../analysis/dads.md](../analysis/dads.md) |
 
-このブランチは `main` から切っており、上の分析ファイルは同梱していない。相対リンクは、分析が同じツリーに入ったときに解決する。
+上の5つは、このツリーの `research/analysis/` にファイルがある。相対リンクはそこへ解決する。
 
-Atlassian と USWDS は、シリーズ調査がプロジェクト内にありうるが、この作業時点のリポジトリ `research/analysis/` にはファイルが無かった。リンクは張らない。公式サイトの入口だけを書く。数値は、調査メモからも公式サイトからも、このカードには写さない。
+Atlassian と USWDS は、このツリーの `research/analysis/` にファイルが無い。リンクは張らない。公式サイトの入口だけを書く。数値は写さない。
 
 <a id="material"></a>
 
