@@ -1,0 +1,85 @@
+@layer andm.components {
+  .andm-drawer {
+    box-sizing: border-box;
+    width: min(
+      calc(var(--andm-space-24) * 4),
+      calc(100% - var(--andm-space-8))
+    );
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    margin-inline-start: auto;
+    padding: 0;
+    border: 0;
+    border-inline-start: 1px solid
+      color-mix(in srgb, var(--andm-color-on-surface) 24%, transparent);
+    border-radius: 0;
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-surface);
+    box-shadow: var(--andm-shadow-2);
+    font-family: var(--andm-font-family);
+    /* 端から出す。形状の移動 */
+    transition: transform var(--andm-motion-duration-short4)
+      var(--andm-motion-easing-standard);
+  }
+
+  .andm-drawer[open] {
+    transform: translateX(0);
+  }
+
+  @starting-style {
+    .andm-drawer[open] {
+      transform: translateX(100%);
+    }
+  }
+
+  .andm-drawer.is-closing {
+    transform: translateX(100%);
+  }
+
+  .andm-drawer::backdrop {
+    background: color-mix(
+      in srgb,
+      var(--andm-color-on-surface) 40%,
+      transparent
+    );
+  }
+
+  .andm-drawer__panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--andm-space-3);
+    box-sizing: border-box;
+    height: 100%;
+    padding: var(--andm-space-5);
+  }
+
+  .andm-drawer__title {
+    margin: 0;
+    font-size: var(--andm-font-size-lg);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+  }
+
+  .andm-drawer__body {
+    margin: 0;
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface-variant);
+  }
+
+  .andm-drawer__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--andm-space-2);
+    margin-top: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-drawer,
+    .andm-drawer[open],
+    .andm-drawer.is-closing {
+      transform: none;
+    }
+  }
+}

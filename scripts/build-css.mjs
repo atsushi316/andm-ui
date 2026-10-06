@@ -24,9 +24,12 @@ const sources = [
   "feedback/toast.css",
   "overlays/dialog.css",
   "overlays/tooltip.css",
+  "overlays/drawer.css",
+  "overlays/popover.css",
   "navigation/tabs.css",
   "navigation/breadcrumb.css",
   "navigation/pagination.css",
+  "navigation/menu.css",
 ];
 
 const banner = "/*! @atsushi316/andm-ui — built from src/styles */\n";

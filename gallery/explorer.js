@@ -60,9 +60,12 @@
     toast: "toast",
     dialog: "dialog",
     tooltip: "tooltip",
+    drawer: "drawer",
+    popover: "popover",
     tabs: "tabs",
     breadcrumb: "breadcrumb",
     pagination: "pagination",
+    menu: "menu",
   };
 
   var usage = {
@@ -547,6 +550,158 @@
           if (index >= 0 && index < pages.length - 1) selectPage(pages[index + 1]);
         });
       }
+    });
+
+    function setExpanded(root, selector, open) {
+      var trigger = root.querySelector(selector);
+      if (trigger) trigger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    function openPanel(root, panel, selector) {
+      if (!panel) return;
+      if (!panel.hidden && !panel.classList.contains("is-closed")) {
+        setExpanded(root, selector, true);
+        return;
+      }
+      panel.hidden = false;
+      panel.classList.add("is-closed");
+      setExpanded(root, selector, true);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          if (panel.hidden) return;
+          panel.classList.remove("is-closed");
+        });
+      });
+    }
+
+    function closePanel(root, panel, selector) {
+      if (!panel) return;
+      if (panel.hidden || panel.classList.contains("is-closed")) {
+        panel.hidden = true;
+        setExpanded(root, selector, false);
+        return;
+      }
+      panel.classList.add("is-closed");
+      setExpanded(root, selector, false);
+      function hide(event) {
+        if (event.propertyName !== "opacity") return;
+        panel.removeEventListener("transitionend", hide);
+        if (!panel.classList.contains("is-closed")) return;
+        panel.hidden = true;
+      }
+      panel.addEventListener("transitionend", hide);
+    }
+
+    document.querySelectorAll("[data-menu]").forEach(function (menu) {
+      var panel = menu.querySelector(".andm-menu__panel");
+      var trigger = menu.querySelector("[data-menu-open]");
+      if (trigger) {
+        trigger.addEventListener("click", function () {
+          if (panel && !panel.hidden && !panel.classList.contains("is-closed")) {
+            closePanel(menu, panel, "[data-menu-open]");
+          } else {
+            openPanel(menu, panel, "[data-menu-open]");
+          }
+        });
+      }
+      menu.querySelectorAll(".andm-menu__item").forEach(function (item) {
+        item.addEventListener("click", function () {
+          if (item.disabled) return;
+          menu.querySelectorAll(".andm-menu__item").forEach(function (other) {
+            if (other === item) other.setAttribute("aria-current", "page");
+            else other.removeAttribute("aria-current");
+          });
+          closePanel(menu, panel, "[data-menu-open]");
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-popover]").forEach(function (popover) {
+      var panel = popover.querySelector(".andm-popover__panel");
+      var trigger = popover.querySelector("[data-popover-open]");
+      if (trigger) {
+        trigger.addEventListener("click", function () {
+          if (panel && !panel.hidden && !panel.classList.contains("is-closed")) {
+            closePanel(popover, panel, "[data-popover-open]");
+          } else {
+            openPanel(popover, panel, "[data-popover-open]");
+          }
+        });
+      }
+      popover.querySelectorAll("[data-popover-close]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          closePanel(popover, panel, "[data-popover-open]");
+        });
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+      document.querySelectorAll("[data-menu]").forEach(function (menu) {
+        if (menu.contains(event.target)) return;
+        closePanel(menu, menu.querySelector(".andm-menu__panel"), "[data-menu-open]");
+      });
+      document.querySelectorAll("[data-popover]").forEach(function (popover) {
+        if (popover.contains(event.target)) return;
+        closePanel(popover, popover.querySelector(".andm-popover__panel"), "[data-popover-open]");
+      });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") return;
+      document.querySelectorAll("[data-menu]").forEach(function (menu) {
+        closePanel(menu, menu.querySelector(".andm-menu__panel"), "[data-menu-open]");
+      });
+      document.querySelectorAll("[data-popover]").forEach(function (popover) {
+        closePanel(popover, popover.querySelector(".andm-popover__panel"), "[data-popover-open]");
+      });
+    });
+
+    function closeDrawer(drawer) {
+      if (!drawer || !drawer.open || drawer.classList.contains("is-closing")) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        drawer.close();
+        return;
+      }
+      drawer.classList.add("is-closing");
+      var finished = false;
+      function finish() {
+        if (finished) return;
+        finished = true;
+        drawer.classList.remove("is-closing");
+        drawer.removeEventListener("transitionend", onEnd);
+        if (drawer.open) drawer.close();
+      }
+      function onEnd(event) {
+        if (event.target !== drawer || event.propertyName !== "transform") return;
+        finish();
+      }
+      drawer.addEventListener("transitionend", onEnd);
+      window.setTimeout(finish, 400);
+    }
+
+    document.querySelectorAll("[data-drawer-open]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var drawer = document.getElementById(button.getAttribute("data-drawer-open"));
+        if (!drawer || !drawer.showModal) return;
+        drawer.classList.remove("is-closing");
+        if (!drawer.open) drawer.showModal();
+      });
+    });
+
+    document.querySelectorAll("[data-drawer-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        closeDrawer(button.closest("dialog"));
+      });
+    });
+
+    document.querySelectorAll("dialog.andm-drawer").forEach(function (drawer) {
+      drawer.addEventListener("click", function (event) {
+        if (event.target === drawer) closeDrawer(drawer);
+      });
+      drawer.addEventListener("cancel", function (event) {
+        event.preventDefault();
+        closeDrawer(drawer);
+      });
     });
   }
 

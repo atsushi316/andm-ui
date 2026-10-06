@@ -825,6 +825,16 @@
                 >Tooltip <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
+            <li>
+              <a href="#/overlays/drawer" data-part-nav="drawer"
+                >Drawer <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/overlays/popover" data-part-nav="popover"
+                >Popover <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
           </ul>
         </div>
 
@@ -844,6 +854,11 @@
             <li>
               <a href="#/navigation/pagination" data-part-nav="pagination"
                 >Pagination <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/navigation/menu" data-part-nav="menu"
+                >Menu <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
           </ul>
@@ -1026,6 +1041,18 @@
           </li>
           <li>
             <a href="#/navigation/pagination">Pagination</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/navigation/menu">Menu</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/overlays/drawer">Drawer</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/overlays/popover">Popover</a>
             <span class="g-badge g-badge--ready">使える</span>
           </li>
           <li>
@@ -2252,6 +2279,162 @@
                 <code>andm-pagination</code>、<code>andm-pagination__control</code>、
                 <code>andm-pagination__list</code>、<code>andm-pagination__page</code>、
                 <code>andm-pagination__gap</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="menu" data-part="menu" hidden aria-labelledby="menu-title">
+            <h2 id="menu-title">
+              Menu <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              その場の操作一覧です。項目を選ぶと <code>aria-current="page"</code> になり、一覧は閉じます。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <p>申請の操作です。</p>
+                <div class="andm-menu" data-menu>
+                  <button
+                    type="button"
+                    class="andm-btn andm-btn--outlined andm-btn--md"
+                    data-menu-open
+                    aria-expanded="false"
+                    aria-haspopup="menu"
+                    aria-controls="apply-menu"
+                  >
+                    操作
+                  </button>
+                  <div class="andm-menu__panel is-closed" id="apply-menu" role="menu" hidden>
+                    <button type="button" class="andm-menu__item" role="menuitem" aria-current="page">概要</button>
+                    <button type="button" class="andm-menu__item" role="menuitem">詳細</button>
+                    <button type="button" class="andm-menu__item" role="menuitem">履歴</button>
+                    <hr class="andm-menu__separator" />
+                    <button type="button" class="andm-menu__item" role="menuitem" disabled>削除</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="g-block">
+              <h3>項目</h3>
+              <div class="andm-menu">
+                <div class="andm-menu__panel" role="menu" style="position: static">
+                  <button type="button" class="andm-menu__item" role="menuitem" aria-current="page">概要</button>
+                  <button type="button" class="andm-menu__item" role="menuitem">詳細</button>
+                  <hr class="andm-menu__separator" />
+                  <button type="button" class="andm-menu__item" role="menuitem" disabled>削除</button>
+                </div>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-menu</code>、<code>andm-menu__panel</code>、
+                <code>andm-menu__item</code>、<code>andm-menu__separator</code>。
+                しまうときは <code>is-closed</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="drawer" data-part="drawer" hidden aria-labelledby="drawer-title">
+            <h2 id="drawer-title">
+              Drawer <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              画面の端に出す native の dialog です。開く、閉じる、背面のクリック、Escape だけを Gallery が受けます。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <p>申請の一覧です。</p>
+                <div class="g-row">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md" data-drawer-open="filter-drawer">
+                    絞り込み
+                  </button>
+                </div>
+              </div>
+              <dialog class="andm-drawer" id="filter-drawer" aria-labelledby="filter-drawer-title">
+                <div class="andm-drawer__panel">
+                  <h3 class="andm-drawer__title" id="filter-drawer-title">絞り込み</h3>
+                  <p class="andm-drawer__body">状態で一覧を絞ります。</p>
+                  <label class="andm-checkbox">
+                    <input class="andm-checkbox__input" type="checkbox" checked />
+                    <span class="andm-checkbox__label">下書き</span>
+                  </label>
+                  <label class="andm-checkbox">
+                    <input class="andm-checkbox__input" type="checkbox" />
+                    <span class="andm-checkbox__label">提出済み</span>
+                  </label>
+                  <div class="andm-drawer__actions">
+                    <button type="button" class="andm-btn andm-btn--text andm-btn--md" data-drawer-close>閉じる</button>
+                    <button type="button" class="andm-btn andm-btn--filled andm-btn--md" data-drawer-close>適用</button>
+                  </div>
+                </div>
+              </dialog>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-drawer</code>、<code>andm-drawer__panel</code>、
+                <code>andm-drawer__title</code>、<code>andm-drawer__body</code>、
+                <code>andm-drawer__actions</code>。しまう途中は <code>is-closing</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="popover" data-part="popover" hidden aria-labelledby="popover-title">
+            <h2 id="popover-title">
+              Popover <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              クリックで開く短い面です。中の操作では閉じず、閉じる・外クリック・Escape でしまいます。ホバーの説明は Tooltip のままです。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <div class="andm-popover" data-popover>
+                  <button
+                    type="button"
+                    class="andm-btn andm-btn--outlined andm-btn--md"
+                    data-popover-open
+                    aria-expanded="false"
+                    aria-haspopup="dialog"
+                    aria-controls="share-popover"
+                  >
+                    共有
+                  </button>
+                  <div
+                    class="andm-popover__panel is-closed"
+                    id="share-popover"
+                    role="dialog"
+                    hidden
+                    aria-labelledby="share-popover-title"
+                  >
+                    <h3 class="andm-popover__title" id="share-popover-title">共有先</h3>
+                    <p class="andm-popover__body">リンクをコピーするか、このまま閉じます。</p>
+                    <div class="andm-popover__actions">
+                      <button type="button" class="andm-btn andm-btn--text andm-btn--sm" data-popover-close>閉じる</button>
+                      <button type="button" class="andm-btn andm-btn--filled andm-btn--sm">コピー</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="g-block">
+              <h3>中身</h3>
+              <div class="andm-popover">
+                <div class="andm-popover__panel" role="dialog" aria-labelledby="note-popover-title" style="position: static">
+                  <h3 class="andm-popover__title" id="note-popover-title">メモ</h3>
+                  <p class="andm-popover__body">提出前に、担当へ共有できます。</p>
+                </div>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-popover</code>、<code>andm-popover__panel</code>、
+                <code>andm-popover__title</code>、<code>andm-popover__body</code>、
+                <code>andm-popover__actions</code>。しまうときは <code>is-closed</code>。
               </p>
             </details>
           </section>
