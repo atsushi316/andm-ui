@@ -616,6 +616,15 @@
   }
 
   /*
+   * USWDS（andm-series--uswds）
+   * アウトラインのストロークは settings の 2px。角はトークンの 4px。
+   * 既存 variant 名は維持する。
+   */
+  .andm-series--uswds .andm-btn--outlined {
+    border-width: 2px;
+  }
+
+  /*
    * reduced motion は共通。Series ごとのルールは足さない。
    * 残す: 色・背景・枠・影と focus ring。
    * 止める: transform（lift）、scale（compress）、形状変化（morph）。

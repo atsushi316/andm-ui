@@ -1,0 +1,59 @@
+@layer andm.tokens {
+  /*
+   * 切替シリーズ: U.S. Web Design System。
+   * 出典は designsystem.digital.gov の foundations と settings（2026-10-06）。
+   * 公式フォントファイル、アイコン、CSS は同梱しない。ボタンのクラスは共通のまま。
+   *
+   * 色: theme primary は blue-60v #005ea2。ink / base-darkest は #1b1b1b。
+   *   base は gray-cool-50 #71767a。focus は blue-40v #2491ff。
+   *   secondary は red-50 #d83933。disabled-lighter は gray-20 #c9c9c9。
+   *   disabled は gray-50 #757575。
+   * 角: ボタン既定は border-radius md。md は 0.5 units。0.5 unit は 4px。
+   *   チェックは sm。sm トークンは 2px。カードとモーダルは lg。lg は 1 unit = 8px。
+   *   チェックとラジオのサイズは 2.5 units = 20px。選択の枠は 2px。
+   * 字: sans の既定は Source Sans Pro。theme sm は 16px。行高 1 はボタン。
+   * ボタンの高さと横余白の px は settings の表に無かった。Baseline のまま。
+   * white の hex は system tokens の取得本文に無かった。CSS の色名 white を使う。
+   * duration は今回の本文に無かった。short1–short4 は差し替えない。
+   */
+  .andm-series--uswds {
+    --andm-color-primary: #005ea2;
+    --andm-color-primary-rgb: 0 94 162;
+    --andm-color-on-primary: white;
+    --andm-color-secondary-container: #d83933;
+    --andm-color-on-secondary-container: white;
+    --andm-color-surface: white;
+    --andm-color-on-surface: #1b1b1b;
+    --andm-color-on-surface-variant: #71767a;
+    /* アウトラインボタンは色のストローク。既定の色は primary。andm は枠トークンをそれに合わせる。 */
+    --andm-color-outline: #005ea2;
+    --andm-color-disabled-container: #c9c9c9;
+    --andm-color-on-disabled: #757575;
+    --andm-color-disabled-outline: #757575;
+    --andm-focus-ring-color: #2491ff;
+    --andm-focus-ring-width: 4px;
+    --andm-focus-ring-offset: 0;
+    --andm-font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto",
+      "Arial", sans-serif;
+    /* sm 枠は theme 2xs。md は theme sm。lg は theme lg。スロット対応は andm。 */
+    --andm-font-size-sm: 14px;
+    --andm-font-size-md: 16px;
+    --andm-font-size-lg: 22px;
+    --andm-line-height-tight: 1;
+    --andm-btn-radius: 4px;
+    --andm-btn-radius-pressed: 4px;
+    /* テキスト入力固有の半径は未確認。ボタン md の 4px を andm が置く。 */
+    --andm-field-radius: 4px;
+    --andm-check-size: 20px;
+    --andm-radio-size: 20px;
+    --andm-check-radius: 2px;
+    --andm-check-border-width: 2px;
+    --andm-radio-border-width: 2px;
+    --andm-surface-radius: 8px;
+    --andm-dialog-radius: 8px;
+    /* アラート固有は未確認。カードの lg（8px）を andm が置く。 */
+    --andm-alert-radius: 8px;
+    /* 区切りの公式色は未確認。Baseline の outline-variant。見た目は変えない。 */
+    --andm-divider-color: var(--andm-color-outline-variant);
+  }
+}

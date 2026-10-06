@@ -46,8 +46,9 @@ Gallery で今使える例です。共通クラス（`andm-btn` など）に Tok
 | Fluent 2 | `andm-series--fluent` | ボタンの角は 4px。大きいボタンは 8px |
 | Carbon | `andm-series--carbon` | 角は 0。塗りは #0f62fe。高さは 32 / 40 / 48px |
 | Atlassian | `andm-series--atlassian` | ボタンと入力は 6px。カードは 8px。モーダルは 12px。色の hex は未確認 |
+| USWDS | `andm-series--uswds` | 塗りは #005ea2。ボタンの角は 4px。チェックは 20px / 角 2px |
 
-Baseline は追加クラスなし。上の 11 は Gallery で切り替えるシリーズです。部品のクラスは共通のままです。
+Baseline は追加クラスなし。上の 13 は Gallery で切り替えるシリーズです。部品のクラスは共通のままです。
 
 ## シリーズの詳細（M3 Expressive / DADS）
 

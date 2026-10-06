@@ -15,6 +15,7 @@
       "fluent",
       "carbon",
       "atlassian",
+      "uswds",
     ],
     labels: {
       baseline: "Baseline",
@@ -30,6 +31,7 @@
       fluent: "Fluent 2",
       carbon: "Carbon",
       atlassian: "Atlassian",
+      uswds: "USWDS",
     },
     briefs: {
       baseline: {
@@ -96,6 +98,11 @@
         trait: "ボタンと入力の角は 6px。カードは 8px、モーダルは 12px です。",
         use: "チームの作業画面で、操作の区切りを角と枠で示したいときに向きます。",
         motion: "ホバーの曲線だけ公式。duration は範囲なので速度トークンは差し替えない。押すと共有の縮み。",
+      },
+      uswds: {
+        trait: "塗りは #005ea2、ボタンの角は 4px、字は 16px です。",
+        use: "公的な手続きで、次の操作をはっきり示したいときに向きます。",
+        motion: "出典の本文に duration が無いので、速度は差し替えない。ホバーは色。押すと共有の縮み。",
       },
     },
     meta: {
@@ -248,6 +255,19 @@
         duration: "official value not specified",
         official: "操作の duration は 50–150ms の範囲。単一の ms は本文に無い。ホバーの曲線は ease-out practical。",
         interpretation: "速度トークンは差し替えない。押下の縮小は Baseline のまま。色は Baseline のまま。",
+        patterns: [
+          { trigger: "hover", effect: "highlight" },
+          { trigger: "press", effect: "compress" },
+        ],
+      },
+      uswds: {
+        character: "次の操作をはっきり示す",
+        sourceKind: "official",
+        sourceNote: "U.S. Web Design System のトークンと settings。公式ファイルは同梱しない。",
+        verification: "verified",
+        duration: "official value not specified",
+        official: "今回読んだ本文に duration は無い。",
+        interpretation: "速度トークンは差し替えない。押下の縮小は Baseline のまま。アウトラインの枠は 2px。",
         patterns: [
           { trigger: "hover", effect: "highlight" },
           { trigger: "press", effect: "compress" },
