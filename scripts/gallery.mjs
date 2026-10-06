@@ -74,7 +74,13 @@ const server = http.createServer(async (req, res) => {
       return;
     }
     const type = types[extname(file)] ?? "application/octet-stream";
-    res.writeHead(200, { "Content-Type": type, "Cache-Control": "no-cache" });
+    const headers = { "Content-Type": type, "Cache-Control": "no-cache" };
+    if (type.startsWith("text/html") || type.includes("javascript")) {
+      headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+      headers["Pragma"] = "no-cache";
+      headers["Expires"] = "0";
+    }
+    res.writeHead(200, headers);
     if (req.method === "HEAD") {
       res.end();
       return;
