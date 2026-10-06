@@ -6,18 +6,17 @@
     margin: 0;
     padding: var(--andm-space-3) var(--andm-space-4);
     border: 1px solid transparent;
-    border-radius: var(--andm-alert-radius, var(--andm-btn-radius));
+    border-radius: var(--andm-alert-radius, var(--andm-radius-md));
     font-family: var(--andm-font-family);
     font-size: var(--andm-font-size-md);
-    line-height: 1.45;
-    /* 意味の切り替えは highlight（色） */
+    line-height: var(--andm-line-height-tight);
+    /* 意味の切り替えは色 */
     transition:
       background-color var(--andm-motion-duration-short3)
         var(--andm-motion-easing-standard),
       border-color var(--andm-motion-duration-short3)
         var(--andm-motion-easing-standard),
-      color var(--andm-motion-duration-short3)
-        var(--andm-motion-easing-standard);
+      color var(--andm-motion-duration-short3) var(--andm-motion-easing-standard);
   }
 
   .andm-alert__title {
@@ -32,42 +31,26 @@
   }
 
   .andm-alert--info {
-    background: var(--andm-color-info-container);
-    border-color: color-mix(
-      in srgb,
-      var(--andm-color-info) 32%,
-      transparent
-    );
-    color: var(--andm-color-on-info-container);
+    background: var(--andm-color-secondary-container);
+    border-color: var(--andm-color-primary);
+    color: var(--andm-color-on-secondary-container);
   }
 
   .andm-alert--success {
     background: var(--andm-color-success-container);
-    border-color: color-mix(
-      in srgb,
-      var(--andm-color-success) 32%,
-      transparent
-    );
+    border-color: var(--andm-color-success);
     color: var(--andm-color-on-success-container);
   }
 
   .andm-alert--warning {
     background: var(--andm-color-warning-container);
-    border-color: color-mix(
-      in srgb,
-      var(--andm-color-warning) 32%,
-      transparent
-    );
+    border-color: var(--andm-color-warning);
     color: var(--andm-color-on-warning-container);
   }
 
   .andm-alert--error {
     background: var(--andm-color-error-container);
-    border-color: color-mix(
-      in srgb,
-      var(--andm-color-error) 32%,
-      transparent
-    );
+    border-color: var(--andm-color-error);
     color: var(--andm-color-on-error-container);
   }
 }

@@ -9,6 +9,7 @@
   var navSeries = document.getElementById("nav-series");
   var tokenCards = document.getElementById("token-cards");
   var tokenStatus = document.getElementById("token-status");
+  var planned = document.getElementById("planned-components");
   var decls = [];
   var items = [];
   var cssReady = null;
@@ -24,52 +25,47 @@
     { id: "interaction", label: "Interaction" },
   ];
 
-  var libViews = {
-    series: true,
+  var partViews = {
     controls: true,
     marks: true,
-    display: true,
     containers: true,
-    navigation: true,
     feedback: true,
     overlays: true,
-    patterns: true,
+    navigation: true,
   };
 
-  var libDefaults = {
+  var partDefaults = {
     controls: "button",
     marks: "divider",
-    containers: "surface",
-    navigation: "tabs",
+    containers: "card",
     feedback: "alert",
     overlays: "dialog",
-    patterns: "pair",
+    navigation: "tabs",
   };
 
-  var legacyRoutes = {
-    button: { view: "controls", id: "button" },
-    chip: { view: "controls", id: "chip" },
-    "text-field": { view: "controls", id: "text-field" },
-    checkbox: { view: "controls", id: "checkbox" },
-    radio: { view: "controls", id: "radio" },
-    select: { view: "controls", id: "select" },
-    fab: { view: "controls", id: "fab" },
-    pattern: { view: "patterns", id: "pair" },
-    experience: { view: "patterns", id: "confirm" },
-    divider: { view: "marks", id: "divider" },
-    badge: { view: "marks", id: "badge" },
-    surface: { view: "containers", id: "surface" },
-    tabs: { view: "navigation", id: "tabs" },
-    alert: { view: "feedback", id: "alert" },
-    dialog: { view: "overlays", id: "dialog" },
-    marks: { view: "marks", id: "divider" },
-    display: { view: "display", id: "" },
-    containers: { view: "containers", id: "surface" },
-    navigation: { view: "navigation", id: "tabs" },
-    feedback: { view: "feedback", id: "alert" },
-    overlays: { view: "overlays", id: "dialog" },
-    "series-scene": { view: "series", id: "baseline" },
-    top: { view: "series", id: "baseline" },
+  var legacyParts = {
+    button: "button",
+    "text-field": "text-field",
+    checkbox: "checkbox",
+    radio: "radio",
+    switch: "switch",
+    select: "select",
+    slider: "slider",
+    chip: "chip",
+    fab: "fab",
+    divider: "divider",
+    badge: "badge",
+    card: "card",
+    alert: "alert",
+    toast: "toast",
+    dialog: "dialog",
+    tooltip: "tooltip",
+    drawer: "drawer",
+    popover: "popover",
+    tabs: "tabs",
+    breadcrumb: "breadcrumb",
+    pagination: "pagination",
+    menu: "menu",
   };
 
   var usage = {
@@ -128,26 +124,16 @@
   function parseRoute() {
     var raw = location.hash.replace(/^#\/?/, "");
     var parts = raw.split("/").filter(Boolean);
-    if (parts[0] === "tokens" || parts[0] === "foundation") {
-      return { view: "foundation", id: parts[1] || "color" };
-    }
-    if (parts[0] === "series") {
-      return { view: "series", id: parts[1] || selectSeriesId() };
-    }
-    if (libViews[parts[0]]) {
+    if (parts[0] === "tokens") return { view: "tokens", id: parts[1] || "color" };
+    if (parts[0] === "series") return { view: "series", id: parts[1] || "baseline" };
+    if (partViews[parts[0]]) {
       return {
         view: parts[0],
-        id: parts[1] || libDefaults[parts[0]] || "",
-        seriesId: selectSeriesId(),
+        id: parts[1] || partDefaults[parts[0]] || "",
       };
     }
-    if (parts.length === 1 && legacyRoutes[parts[0]]) {
-      var legacy = legacyRoutes[parts[0]];
-      return {
-        view: legacy.view,
-        id: legacy.id,
-        seriesId: selectSeriesId(),
-      };
+    if (parts.length === 1 && legacyParts[parts[0]]) {
+      return { view: "part", id: legacyParts[parts[0]] };
     }
     if (parts.length === 1 && items.some(function (item) { return item.id === parts[0]; })) {
       return { view: "series", id: parts[0] };
@@ -155,9 +141,25 @@
     return { view: "series", id: "baseline" };
   }
 
-  function selectSeriesId() {
+  function seriesIdFor(route) {
+    if (route.view === "series") return route.id;
     if (select && select.value) return select.value;
     return "baseline";
+  }
+
+  function showPart(route) {
+    var onSeries = route.view === "series";
+    var part = onSeries ? "series" : route.id;
+    document.querySelectorAll("[data-part]").forEach(function (el) {
+      el.hidden = el.getAttribute("data-part") !== part;
+    });
+    document.querySelectorAll("[data-part-nav]").forEach(function (a) {
+      if (!onSeries && route.view !== "tokens" && a.dataset.partNav === part) {
+        a.setAttribute("aria-current", "page");
+      } else {
+        a.removeAttribute("aria-current");
+      }
+    });
   }
 
   function go(hash) {
@@ -215,14 +217,12 @@
     var classHelp = document.getElementById("series-class");
     if (classHelp) {
       classHelp.replaceChildren();
-      var btn = document.createElement("code");
-      btn.textContent = "andm-btn";
       if (item.className) {
         var code = document.createElement("code");
         code.textContent = item.className;
-        classHelp.append("親に ", code, " を付けます。ボタンは ", btn, " のままです。");
+        classHelp.append("親に ", code, " を付けます。部品のクラスはどのシリーズでも同じです。");
       } else {
-        classHelp.append("Baseline は追加クラスなし。ボタンは ", btn, " のままです。");
+        classHelp.append("Baseline は追加クラスなし。部品のクラスはどのシリーズでも同じです。");
       }
     }
     var patterns = document.getElementById("series-patterns");
@@ -335,442 +335,48 @@
     });
   }
 
-  function tokenCode(name) {
-    var code = document.createElement("code");
-    var parts = name.split("-");
-    parts.forEach(function (part, index) {
-      if (index) {
-        code.appendChild(document.createTextNode("-"));
-        code.appendChild(document.createElement("wbr"));
-      }
-      code.appendChild(document.createTextNode(part));
-    });
-    return code;
-  }
-
-  function scopeLabel(selector) {
-    if (selector === ":root") return "Default";
-    var match = selector.match(/\.andm-series--([A-Za-z0-9-]+)/);
-    if (match) return (copy.labels && copy.labels[match[1]]) || match[1];
-    return selector;
-  }
-
-  function scopeRank(selector) {
-    if (selector === ":root") return "0";
-    var match = selector.match(/\.andm-series--([A-Za-z0-9-]+)/);
-    if (!match) return "2" + selector;
-    var index = (copy.order || []).indexOf(match[1]);
-    var n = index === -1 ? 99 : index;
-    return "1" + (n < 10 ? "0" : "") + n;
-  }
-
-  function collectTokens(category) {
-    var seen = Object.create(null);
-    var list = [];
-    decls.forEach(function (decl) {
-      if (catalog.tokenCategory(decl.name) !== category) return;
-      if (decl.selector !== ":root") return;
-      if (decl.name.indexOf("--andm-btn-") === 0) return;
-      if (seen[decl.name]) return;
-      seen[decl.name] = true;
-      list.push({
-        selector: decl.selector,
-        name: decl.name,
-        authored: decl.value,
-        computed: catalog.computedValue(":root", decl.name) || decl.value,
-      });
-    });
-    return list;
-  }
-
-  function groupsOf(list) {
-    var map = Object.create(null);
-    var keys = [];
-    list.forEach(function (item) {
-      var key = scopeLabel(item.selector);
-      if (!map[key]) {
-        map[key] = { label: key, rank: scopeRank(item.selector), items: [] };
-        keys.push(key);
-      }
-      if (scopeRank(item.selector) < map[key].rank) map[key].rank = scopeRank(item.selector);
-      map[key].items.push(item);
-    });
-    keys.sort(function (a, b) {
-      if (map[a].rank < map[b].rank) return -1;
-      if (map[a].rank > map[b].rank) return 1;
-      return 0;
-    });
-    return keys.map(function (key) {
-      return map[key];
-    });
-  }
-
-  function selectorHint(selector) {
-    return selector
-      .replace(/:root/g, "")
-      .replace(/\.andm-series--[A-Za-z0-9-]+/g, "")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  var inkProbe = null;
-
-  function resolvedBackground(paint) {
-    if (!inkProbe) {
-      inkProbe = document.createElement("div");
-      inkProbe.style.cssText = "position:absolute;left:-9999px;top:0;width:1px;height:1px;pointer-events:none;";
-      document.body.appendChild(inkProbe);
+  function previewFor(category, name, value) {
+    var node = document.createElement("div");
+    node.className = "g-exp-preview";
+    if (category === "color") {
+      var paint = catalog.paintValue(value);
+      if (paint) node.style.background = paint;
+      node.textContent = paint ? "" : value;
+    } else if (category === "typography") {
+      node.textContent = "あいうえお Ag";
+      if (name.indexOf("font-family") !== -1) node.style.fontFamily = value;
+      if (name.indexOf("font-size") !== -1) node.style.fontSize = value;
+      if (name.indexOf("font-weight") !== -1) node.style.fontWeight = value;
+      if (name.indexOf("line-height") !== -1) node.style.lineHeight = value;
+      if (name.indexOf("tracking") !== -1) node.style.letterSpacing = value;
+    } else if (category === "spacing") {
+      var bar = document.createElement("span");
+      bar.className = "g-exp-bar";
+      bar.style.width = value;
+      node.appendChild(bar);
+    } else if (category === "shape") {
+      node.className = "g-exp-shape";
+      node.style.borderRadius = value;
+    } else if (category === "elevation") {
+      node.className = "g-exp-elev";
+      node.style.boxShadow = value;
+    } else if (category === "motion" && name.indexOf("duration") !== -1) {
+      var demo = document.createElement("button");
+      demo.type = "button";
+      demo.className = "g-motion-demo";
+      demo.textContent = "触る";
+      demo.style.transition = "background-color " + value + " " + resolvedEasing(name);
+      demo.addEventListener("pointerenter", function () { demo.classList.add("is-on"); });
+      demo.addEventListener("pointerleave", function () { demo.classList.remove("is-on"); });
+      return demo;
+    } else if (category === "interaction") {
+      node.textContent = value;
     }
-    inkProbe.style.backgroundColor = paint;
-    return getComputedStyle(inkProbe).backgroundColor;
-  }
-
-  function channel(c) {
-    c = c / 255;
-    return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
-  }
-
-  function hexByte(n) {
-    var h = Math.max(0, Math.min(255, Math.round(n))).toString(16);
-    return h.length === 1 ? "0" + h : h;
-  }
-
-  function toneFor(paint) {
-    var bg = resolvedBackground(paint);
-    var match = String(bg).match(/rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:[,\s/]+([\d.]+))?\s*\)/i);
-    if (!match) return { ink: "#1a1c1e", label: paint };
-    var r = Number(match[1]);
-    var g = Number(match[2]);
-    var b = Number(match[3]);
-    var a = match[4] === undefined ? 1 : Number(match[4]);
-    var lum = 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
-    return {
-      ink: a < 0.45 || lum > 0.58 ? "#1a1c1e" : "#ffffff",
-      label: a < 1 ? bg : "#" + hexByte(r) + hexByte(g) + hexByte(b),
-    };
-  }
-
-  function colorMeta(name) {
-    var body = name.replace(/^--andm-color-/, "");
-    var numeric = body.match(/^(.*)-(\d+)$/);
-    if (numeric) {
-      return { key: numeric[1], label: numeric[2], numeric: true, rank: Number(numeric[2]) };
-    }
-    var base = body.replace(/^on-/, "").split("-")[0];
-    var rank = 200;
-    if (body === base) rank = 0;
-    else if (body.indexOf("on-") === 0) rank = 400;
-    return { key: base || body, label: body, numeric: false, rank: rank };
-  }
-
-  var familyOrder = ["blue", "neutral", "primary", "secondary", "surface", "outline", "line", "disabled", "white"];
-
-  function colorFamilies(items) {
-    var map = Object.create(null);
-    var keys = [];
-    items.forEach(function (item) {
-      var meta = colorMeta(item.name);
-      if (!map[meta.key]) {
-        map[meta.key] = { key: meta.key, numeric: meta.numeric, items: [] };
-        keys.push(meta.key);
-      }
-      if (meta.numeric) map[meta.key].numeric = true;
-      map[meta.key].items.push(item);
-    });
-    keys.sort(function (a, b) {
-      var ia = familyOrder.indexOf(a);
-      var ib = familyOrder.indexOf(b);
-      if (ia === -1) ia = 50;
-      if (ib === -1) ib = 50;
-      if (ia !== ib) return ia - ib;
-      return a < b ? -1 : 1;
-    });
-    return keys.map(function (key) {
-      var family = map[key];
-      family.items.sort(function (a, b) {
-        var ma = colorMeta(a.name);
-        var mb = colorMeta(b.name);
-        if (ma.rank !== mb.rank) return ma.rank - mb.rank;
-        return a.name < b.name ? -1 : 1;
-      });
-      return family;
-    });
-  }
-
-  function aliasLine(item) {
-    if (!/^var\(--andm-/.test(item.authored)) return "";
-    if (item.authored.replace(/\s+/g, "") === item.computed.replace(/\s+/g, "")) return "";
-    return item.authored;
-  }
-
-  function colorSwatch(item) {
-    var meta = colorMeta(item.name);
-    var fig = document.createElement("figure");
-    fig.className = "g-swatch";
-    var paint = catalog.paintValue(item.computed) || catalog.paintValue(item.authored);
-    var chip = document.createElement("div");
-    chip.className = "g-swatch__chip";
-    if (paint) {
-      var tone = toneFor(paint);
-      chip.style.background = paint;
-      chip.style.color = tone.ink;
-      var step = document.createElement("span");
-      step.className = "g-swatch__step";
-      step.textContent = meta.label;
-      var hex = document.createElement("span");
-      hex.className = "g-swatch__hex";
-      hex.textContent = tone.label;
-      chip.append(step, hex);
-    } else {
-      chip.classList.add("g-swatch__chip--plain");
-      chip.textContent = item.computed;
-    }
-    var cap = document.createElement("figcaption");
-    cap.appendChild(tokenCode(item.name));
-    if (usage[item.name]) {
-      var use = document.createElement("span");
-      use.className = "g-swatch__use";
-      use.textContent = usage[item.name];
-      cap.appendChild(use);
-    }
-    var alias = aliasLine(item);
-    if (alias) {
-      var note = document.createElement("span");
-      note.className = "g-swatch__alias";
-      note.textContent = alias;
-      cap.appendChild(note);
-    }
-    fig.append(chip, cap);
-    return fig;
-  }
-
-  function renderColors(items) {
-    var wrap = document.createElement("div");
-    var families = colorFamilies(items);
-    var palette = families.filter(function (family) {
-      return family.numeric || family.key === "white";
-    });
-    var semantic = families.filter(function (family) {
-      return !family.numeric && family.key !== "white";
-    });
-    appendColorGroup(wrap, "Palette", palette);
-    appendColorGroup(wrap, "Semantic", semantic);
-    return wrap;
-  }
-
-  function appendColorGroup(wrap, label, families) {
-    if (!families.length) return;
-    var section = document.createElement("section");
-    section.className = "g-color-group";
-    var heading = document.createElement("h3");
-    heading.textContent = label;
-    section.appendChild(heading);
-    families.forEach(function (family) {
-      var block = document.createElement("div");
-      block.className = "g-ramp";
-      var name = document.createElement("h4");
-      name.textContent = family.key;
-      var row = document.createElement("div");
-      row.className = family.numeric ? "g-ramp__strip" : "g-ramp__grid";
-      family.items.forEach(function (item) {
-        row.appendChild(colorSwatch(item));
-      });
-      block.append(name, row);
-      section.appendChild(block);
-    });
-    wrap.appendChild(section);
-  }
-
-  function lengthPx(value) {
-    var text = String(value || "").trim();
-    if (text === "0") return 0;
-    var match = text.match(/^(-?[\d.]+)px$/);
-    return match ? Number(match[1]) : null;
-  }
-
-  function motionDemo(item) {
-    var demo = document.createElement("button");
-    demo.type = "button";
-    demo.className = "g-motion-demo";
-    demo.textContent = "触る";
-    var duration = item.name.indexOf("duration") !== -1 ? item.computed : "100ms";
-    var easing = item.name.indexOf("easing") !== -1 ? item.computed : resolvedEasing(item.name);
-    demo.style.transition = "background-color " + duration + " " + easing;
-    demo.addEventListener("pointerenter", function () { demo.classList.add("is-on"); });
-    demo.addEventListener("pointerleave", function () { demo.classList.remove("is-on"); });
-    return demo;
-  }
-
-  function renderScale(category, items) {
-    var list = document.createElement("div");
-    list.className = "g-token-lines";
-    var sorted = items.slice();
-    if (category === "spacing") {
-      sorted.sort(function (a, b) {
-        var na = lengthPx(a.computed);
-        var nb = lengthPx(b.computed);
-        if (na !== null && nb !== null && na !== nb) return na - nb;
-        return a.name < b.name ? -1 : 1;
-      });
-    }
-    sorted.forEach(function (item) {
-      var row = document.createElement("div");
-      row.className = "g-token-line" + (category === "typography" ? " g-token-line--type" : "");
-      var name = tokenCode(item.name);
-      var preview = document.createElement("div");
-      preview.className = "g-token-line__preview";
-      var meta = document.createElement("div");
-      meta.className = "g-token-line__meta";
-      var value = document.createElement("strong");
-      value.textContent = item.computed;
-      meta.appendChild(value);
-      if (category === "motion" && item.name.indexOf("duration") !== -1) {
-        var ease = document.createElement("span");
-        ease.textContent = easingName(item.name).replace("--andm-motion-easing-", "");
-        meta.appendChild(ease);
-      }
-      if (usage[item.name]) {
-        var use = document.createElement("span");
-        use.textContent = usage[item.name];
-        meta.appendChild(use);
-      }
-      var alias = aliasLine(item);
-      if (alias) {
-        var note = document.createElement("span");
-        note.className = "g-swatch__alias";
-        note.textContent = alias;
-        meta.appendChild(note);
-      }
-
-      if (category === "typography") {
-        var sample = document.createElement("p");
-        sample.className = "g-token-line__sample";
-        sample.textContent = item.name.indexOf("line-height") !== -1 ? "あいうえお Ag\nあいうえお Ag" : "あいうえお Ag";
-        if (item.name.indexOf("font-family") !== -1) {
-          sample.style.fontFamily = item.computed;
-          sample.style.fontSize = "1.25rem";
-        }
-        if (item.name.indexOf("font-size") !== -1) sample.style.fontSize = item.computed;
-        if (item.name.indexOf("font-weight") !== -1) {
-          sample.style.fontWeight = item.computed;
-          sample.style.fontSize = "1.25rem";
-        }
-        if (item.name.indexOf("line-height") !== -1) {
-          sample.style.lineHeight = item.computed;
-          sample.style.whiteSpace = "pre-line";
-        }
-        if (item.name.indexOf("tracking") !== -1) {
-          sample.style.letterSpacing = item.computed;
-          sample.style.fontSize = "1.25rem";
-        }
-        preview.appendChild(sample);
-        var spec = document.createElement("div");
-        spec.className = "g-token-line__spec";
-        spec.append(name, meta);
-        row.append(preview, spec);
-      } else if (category === "spacing") {
-        var bar = document.createElement("span");
-        bar.className = "g-meter__bar";
-        var px = lengthPx(item.computed);
-        bar.style.width = px === null ? item.computed : px + "px";
-        preview.appendChild(bar);
-        row.append(name, preview, meta);
-      } else if (category === "motion") {
-        preview.appendChild(motionDemo(item));
-        row.append(name, preview, meta);
-      } else if (category === "interaction") {
-        var paint = catalog.paintValue(item.computed);
-        if (paint) {
-          var tone = toneFor(paint);
-          var chip = document.createElement("span");
-          chip.className = "g-inline-swatch";
-          chip.style.background = paint;
-          chip.style.color = tone.ink;
-          chip.textContent = tone.label;
-          preview.appendChild(chip);
-        } else if (item.name.indexOf("opacity") !== -1) {
-          var tint = document.createElement("span");
-          tint.className = "g-meter__bar";
-          tint.style.width = (Number(item.computed) * 100 || 0) + "%";
-          tint.style.opacity = item.computed;
-          preview.appendChild(tint);
-        } else {
-          var mark = document.createElement("span");
-          mark.className = "g-meter__bar";
-          var len = lengthPx(item.computed);
-          mark.style.width = len === null ? "1rem" : Math.max(len, 1) + "px";
-          preview.appendChild(mark);
-        }
-        row.append(name, preview, meta);
-      } else {
-        row.append(name, preview, meta);
-      }
-      list.appendChild(row);
-    });
-    return list;
-  }
-
-  function renderBoxes(category, items) {
-    var row = document.createElement("div");
-    row.className = "g-box-row";
-    var order = ["--andm-radius-sm", "--andm-radius-md", "--andm-radius-lg", "--andm-radius-pill", "--andm-shadow-1", "--andm-shadow-2"];
-    var sorted = items.slice().sort(function (a, b) {
-      var ia = order.indexOf(a.name);
-      var ib = order.indexOf(b.name);
-      if (ia === -1) ia = 20;
-      if (ib === -1) ib = 20;
-      if (ia !== ib) return ia - ib;
-      if (a.name !== b.name) return a.name < b.name ? -1 : 1;
-      return selectorHint(a.selector) < selectorHint(b.selector) ? -1 : 1;
-    });
-    sorted.forEach(function (item) {
-      var fig = document.createElement("figure");
-      fig.className = "g-box";
-      var face = document.createElement("div");
-      face.className = category === "elevation" ? "g-box__face g-box__face--elev" : "g-box__face";
-      if (category === "shape") face.style.borderRadius = item.computed;
-      if (category === "elevation") face.style.boxShadow = item.computed;
-      var short = item.name.replace(/^--andm-(radius|shadow)-/, "");
-      face.textContent = short;
-      var cap = document.createElement("figcaption");
-      cap.appendChild(tokenCode(item.name));
-      var hintText = selectorHint(item.selector);
-      if (hintText) {
-        var hint = document.createElement("span");
-        hint.className = "g-swatch__alias";
-        hint.textContent = hintText;
-        cap.appendChild(hint);
-      }
-      var value = document.createElement("span");
-      value.className = "g-swatch__use";
-      value.textContent = item.computed;
-      cap.appendChild(value);
-      if (usage[item.name]) {
-        var use = document.createElement("span");
-        use.className = "g-swatch__use";
-        use.textContent = usage[item.name];
-        cap.appendChild(use);
-      }
-      fig.append(face, cap);
-      row.appendChild(fig);
-    });
-    return row;
-  }
-
-  function renderScope(category, group) {
-    var section = document.createElement("section");
-    section.className = "g-token-scope";
-    if (category === "color") section.appendChild(renderColors(group.items));
-    else if (category === "shape" || category === "elevation") section.appendChild(renderBoxes(category, group.items));
-    else section.appendChild(renderScale(category, group.items));
-    return section;
+    return node;
   }
 
   function showTokens(category) {
     tokenCards.replaceChildren();
-    var cat = categories.find(function (item) { return item.id === category; });
-    var title = document.getElementById("token-title");
-    if (title) title.textContent = cat ? cat.label : "Tokens";
     document.querySelectorAll("[data-token-nav]").forEach(function (a) {
       if (a.dataset.tokenNav === category) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
@@ -779,76 +385,336 @@
       tokenStatus.textContent = "Density の Global Token はありません。Design Space の軸だけです。Core には昇格させていません。";
       return;
     }
-    var list = collectTokens(category);
-    groupsOf(list).forEach(function (group) {
-      tokenCards.appendChild(renderScope(category, group));
+    var seen = Object.create(null);
+    var count = 0;
+    decls.forEach(function (decl) {
+      if (catalog.tokenCategory(decl.name) !== category) return;
+      var key = decl.selector + " " + decl.name;
+      if (seen[key]) return;
+      seen[key] = true;
+      var computed = catalog.computedValue(decl.selector, decl.name) || decl.value;
+      count += 1;
+      var card = document.createElement("article");
+      card.className = "g-token-card";
+      var title = document.createElement("h3");
+      title.textContent = decl.name;
+      var value = document.createElement("p");
+      value.className = "g-token-card__value";
+      value.textContent = computed;
+      var where = document.createElement("p");
+      where.className = "g-token-card__where";
+      where.textContent = decl.selector;
+      var defined = document.createElement("p");
+      defined.className = "g-token-card__where";
+      defined.textContent = decl.value;
+      card.append(title, value, previewFor(category, decl.name, computed), where, defined);
+      if (usage[decl.name]) {
+        var use = document.createElement("p");
+        use.textContent = usage[decl.name];
+        card.appendChild(use);
+      }
+      tokenCards.appendChild(card);
     });
-    if (category === "color") {
-      tokenStatus.textContent = list.length + " 件。Palette はチップ、Semantic は役割。値は :root。Series の差し替えは出していません。";
-    } else {
-      tokenStatus.textContent = list.length + " 件。値は :root。Series の差し替えは Series のページで見ます。";
-    }
-  }
-
-  function showPanels(route) {
-    document.querySelectorAll("[data-panel]").forEach(function (el) {
-      var panel = el.getAttribute("data-panel");
-      var panelId = el.getAttribute("data-panel-id");
-      var matchView = panel === route.view;
-      var matchId = !panelId || panelId === route.id;
-      el.hidden = !(matchView && matchId);
-    });
-  }
-
-  function markLibNav(route) {
-    var key = route.id ? route.view + "/" + route.id : route.view;
-    document.querySelectorAll("[data-lib-nav]").forEach(function (a) {
-      if (a.getAttribute("data-lib-nav") === key) a.setAttribute("aria-current", "page");
-      else a.removeAttribute("aria-current");
-    });
-    if (route.view === "series") return;
-    document.querySelectorAll("[data-series-nav]").forEach(function (a) {
-      a.removeAttribute("aria-current");
-    });
-  }
-
-  function seriesIdFor(route) {
-    if (route.view === "series") return route.id || "baseline";
-    return route.seriesId || selectSeriesId();
+    tokenStatus.textContent = count + " 件。dist/style.css と computed style。";
   }
 
   function render() {
     var route = parseRoute();
-    var onFoundation = route.view === "foundation";
-    viewSeries.hidden = onFoundation;
-    viewTokens.hidden = !onFoundation;
+    var onTokens = route.view === "tokens";
+    viewSeries.hidden = onTokens;
+    viewTokens.hidden = !onTokens;
+    if (planned) planned.hidden = onTokens;
     document.body.dataset.view = route.view;
-    if (onFoundation) {
-      document.querySelectorAll("[data-lib-nav]").forEach(function (a) {
-        a.removeAttribute("aria-current");
-      });
-      document.querySelectorAll("[data-series-nav]").forEach(function (a) {
-        a.removeAttribute("aria-current");
-      });
+    if (onTokens) {
       showTokens(route.id);
+      document.querySelectorAll("[data-part-nav]").forEach(function (a) {
+        a.removeAttribute("aria-current");
+      });
       return;
     }
-    showPanels(route);
     applySeries(seriesIdFor(route));
-    markLibNav(route);
+    showPart(route);
+  }
+
+  function initParts() {
+    document.querySelectorAll("[data-tabs]").forEach(function (root) {
+      var tabs = root.querySelectorAll('[role="tab"]');
+      var panels = root.querySelectorAll('[role="tabpanel"]');
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          var id = tab.getAttribute("aria-controls");
+          tabs.forEach(function (item) {
+            var on = item === tab;
+            item.setAttribute("aria-selected", on ? "true" : "false");
+            item.tabIndex = on ? 0 : -1;
+          });
+          panels.forEach(function (panel) {
+            panel.hidden = panel.id !== id;
+          });
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-dialog-open]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var dialog = document.getElementById(button.getAttribute("data-dialog-open"));
+        if (dialog && dialog.showModal) dialog.showModal();
+      });
+    });
+
+    document.querySelectorAll("[data-dialog-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var dialog = button.closest("dialog");
+        if (dialog && dialog.close) dialog.close();
+      });
+    });
+
+    document.querySelectorAll("dialog.andm-dialog").forEach(function (dialog) {
+      dialog.addEventListener("click", function (event) {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+
+    document.querySelectorAll(".andm-slider__input").forEach(function (input) {
+      function syncSlider() {
+        var min = Number(input.min || 0);
+        var max = Number(input.max || 100);
+        var value = Number(input.value);
+        var span = max === min ? 0 : ((value - min) / (max - min)) * 100;
+        input.style.setProperty("--andm-slider-fill", span + "%");
+        var output = input.parentElement && input.parentElement.querySelector(".andm-slider__value");
+        if (output) output.textContent = input.value;
+      }
+      input.addEventListener("input", syncSlider);
+      syncSlider();
+    });
+
+    document.querySelectorAll("[data-toast-open]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var toast = document.getElementById(button.getAttribute("data-toast-open"));
+        if (!toast) return;
+        if (!toast.hidden && !toast.classList.contains("is-dismissed")) return;
+        toast.hidden = false;
+        toast.classList.add("is-dismissed");
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            toast.classList.remove("is-dismissed");
+          });
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-toast-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var toast = button.closest(".andm-toast");
+        if (!toast) return;
+        toast.classList.add("is-dismissed");
+        function hide(event) {
+          if (event.propertyName !== "opacity") return;
+          toast.hidden = true;
+          toast.removeEventListener("transitionend", hide);
+        }
+        toast.addEventListener("transitionend", hide);
+      });
+    });
+
+    document.querySelectorAll("[data-pagination]").forEach(function (nav) {
+      var pages = nav.querySelectorAll(".andm-pagination__page");
+      var prev = nav.querySelector("[data-page-prev]");
+      var next = nav.querySelector("[data-page-next]");
+      function selectPage(page) {
+        var index = Array.prototype.indexOf.call(pages, page);
+        pages.forEach(function (button) {
+          if (button === page) button.setAttribute("aria-current", "page");
+          else button.removeAttribute("aria-current");
+        });
+        if (prev) prev.disabled = index <= 0;
+        if (next) next.disabled = index >= pages.length - 1;
+      }
+      pages.forEach(function (button) {
+        button.addEventListener("click", function () {
+          selectPage(button);
+        });
+      });
+      if (prev) {
+        prev.addEventListener("click", function () {
+          var current = nav.querySelector('[aria-current="page"]');
+          var index = Array.prototype.indexOf.call(pages, current);
+          if (index > 0) selectPage(pages[index - 1]);
+        });
+      }
+      if (next) {
+        next.addEventListener("click", function () {
+          var current = nav.querySelector('[aria-current="page"]');
+          var index = Array.prototype.indexOf.call(pages, current);
+          if (index >= 0 && index < pages.length - 1) selectPage(pages[index + 1]);
+        });
+      }
+    });
+
+    function setExpanded(root, selector, open) {
+      var trigger = root.querySelector(selector);
+      if (trigger) trigger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    function openPanel(root, panel, selector) {
+      if (!panel) return;
+      if (!panel.hidden && !panel.classList.contains("is-closed")) {
+        setExpanded(root, selector, true);
+        return;
+      }
+      panel.hidden = false;
+      panel.classList.add("is-closed");
+      setExpanded(root, selector, true);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          if (panel.hidden) return;
+          panel.classList.remove("is-closed");
+        });
+      });
+    }
+
+    function closePanel(root, panel, selector) {
+      if (!panel) return;
+      if (panel.hidden || panel.classList.contains("is-closed")) {
+        panel.hidden = true;
+        setExpanded(root, selector, false);
+        return;
+      }
+      panel.classList.add("is-closed");
+      setExpanded(root, selector, false);
+      function hide(event) {
+        if (event.propertyName !== "opacity") return;
+        panel.removeEventListener("transitionend", hide);
+        if (!panel.classList.contains("is-closed")) return;
+        panel.hidden = true;
+      }
+      panel.addEventListener("transitionend", hide);
+    }
+
+    document.querySelectorAll("[data-menu]").forEach(function (menu) {
+      var panel = menu.querySelector(".andm-menu__panel");
+      var trigger = menu.querySelector("[data-menu-open]");
+      if (trigger) {
+        trigger.addEventListener("click", function () {
+          if (panel && !panel.hidden && !panel.classList.contains("is-closed")) {
+            closePanel(menu, panel, "[data-menu-open]");
+          } else {
+            openPanel(menu, panel, "[data-menu-open]");
+          }
+        });
+      }
+      menu.querySelectorAll(".andm-menu__item").forEach(function (item) {
+        item.addEventListener("click", function () {
+          if (item.disabled) return;
+          menu.querySelectorAll(".andm-menu__item").forEach(function (other) {
+            if (other === item) other.setAttribute("aria-current", "page");
+            else other.removeAttribute("aria-current");
+          });
+          closePanel(menu, panel, "[data-menu-open]");
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-popover]").forEach(function (popover) {
+      var panel = popover.querySelector(".andm-popover__panel");
+      var trigger = popover.querySelector("[data-popover-open]");
+      if (trigger) {
+        trigger.addEventListener("click", function () {
+          if (panel && !panel.hidden && !panel.classList.contains("is-closed")) {
+            closePanel(popover, panel, "[data-popover-open]");
+          } else {
+            openPanel(popover, panel, "[data-popover-open]");
+          }
+        });
+      }
+      popover.querySelectorAll("[data-popover-close]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          closePanel(popover, panel, "[data-popover-open]");
+        });
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+      document.querySelectorAll("[data-menu]").forEach(function (menu) {
+        if (menu.contains(event.target)) return;
+        closePanel(menu, menu.querySelector(".andm-menu__panel"), "[data-menu-open]");
+      });
+      document.querySelectorAll("[data-popover]").forEach(function (popover) {
+        if (popover.contains(event.target)) return;
+        closePanel(popover, popover.querySelector(".andm-popover__panel"), "[data-popover-open]");
+      });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") return;
+      document.querySelectorAll("[data-menu]").forEach(function (menu) {
+        closePanel(menu, menu.querySelector(".andm-menu__panel"), "[data-menu-open]");
+      });
+      document.querySelectorAll("[data-popover]").forEach(function (popover) {
+        closePanel(popover, popover.querySelector(".andm-popover__panel"), "[data-popover-open]");
+      });
+    });
+
+    function closeDrawer(drawer) {
+      if (!drawer || !drawer.open || drawer.classList.contains("is-closing")) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        drawer.close();
+        return;
+      }
+      drawer.classList.add("is-closing");
+      var finished = false;
+      function finish() {
+        if (finished) return;
+        finished = true;
+        drawer.classList.remove("is-closing");
+        drawer.removeEventListener("transitionend", onEnd);
+        if (drawer.open) drawer.close();
+      }
+      function onEnd(event) {
+        if (event.target !== drawer || event.propertyName !== "transform") return;
+        finish();
+      }
+      drawer.addEventListener("transitionend", onEnd);
+      window.setTimeout(finish, 400);
+    }
+
+    document.querySelectorAll("[data-drawer-open]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var drawer = document.getElementById(button.getAttribute("data-drawer-open"));
+        if (!drawer || !drawer.showModal) return;
+        drawer.classList.remove("is-closing");
+        if (!drawer.open) drawer.showModal();
+      });
+    });
+
+    document.querySelectorAll("[data-drawer-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        closeDrawer(button.closest("dialog"));
+      });
+    });
+
+    document.querySelectorAll("dialog.andm-drawer").forEach(function (drawer) {
+      drawer.addEventListener("click", function (event) {
+        if (event.target === drawer) closeDrawer(drawer);
+      });
+      drawer.addEventListener("cancel", function (event) {
+        event.preventDefault();
+        closeDrawer(drawer);
+      });
+    });
   }
 
   select.addEventListener("change", function () {
     var route = parseRoute();
-    if (route.view === "series" || route.view === "foundation") {
-      go("#/series/" + select.value);
+    if (route.view !== "series" && route.view !== "tokens") {
+      applySeries(select.value);
       return;
     }
-    // シリーズは中立セレクトのまま。カテゴリページに留まる。
-    applySeries(select.value);
-    markLibNav(route);
+    go("#/series/" + select.value);
   });
 
+  initParts();
   window.addEventListener("hashchange", render);
 
   cssReady = catalog.loadCss("../dist/style.css").then(function (css) {

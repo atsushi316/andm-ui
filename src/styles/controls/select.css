@@ -15,6 +15,11 @@
     line-height: var(--andm-line-height-tight);
   }
 
+  .andm-select__field {
+    position: relative;
+    display: block;
+  }
+
   .andm-select__native {
     appearance: none;
     box-sizing: border-box;
@@ -29,20 +34,14 @@
       )
       0 var(--andm-field-padding-x, var(--andm-btn-padding-x-md));
     border: var(--andm-field-border-width, 1px) solid
-      var(--andm-field-border-color, var(--andm-color-outline));
-    border-radius: var(--andm-field-radius, var(--andm-btn-radius));
-    background-color: var(--andm-color-surface);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%235f6368' stroke-width='1.5' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right
-      var(--andm-field-padding-x, var(--andm-btn-padding-x-md)) center;
-    background-size: 12px 12px;
+      var(--andm-field-border-color, var(--andm-color-on-surface-variant));
+    border-radius: var(--andm-field-radius, var(--andm-radius-md));
+    background: var(--andm-color-surface);
     color: var(--andm-color-on-surface);
     font-family: inherit;
     font-size: var(--andm-font-size-md);
     line-height: var(--andm-line-height-tight);
     cursor: pointer;
-    /* hover / focus の highlight */
     transition:
       border-color var(--andm-motion-duration-short2)
         var(--andm-motion-easing-decelerate),
@@ -50,6 +49,20 @@
         var(--andm-motion-easing-decelerate),
       box-shadow var(--andm-motion-duration-short2)
         var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-select__chevron {
+    position: absolute;
+    top: 50%;
+    right: var(--andm-field-padding-x, var(--andm-btn-padding-x-md));
+    width: var(--andm-space-2);
+    height: var(--andm-space-2);
+    margin-top: calc(var(--andm-space-1) * -1);
+    border-right: var(--andm-space-05) solid var(--andm-color-on-surface-variant);
+    border-bottom: var(--andm-space-05) solid var(--andm-color-on-surface-variant);
+    /* 矢印の静止形。形状は遷移させない */
+    transform: rotate(45deg);
+    pointer-events: none;
   }
 
   .andm-select__native:hover:not(:disabled):not([disabled]):not(:focus) {
@@ -68,21 +81,21 @@
       --andm-field-focus-border-color,
       var(--andm-color-primary)
     );
-    outline: var(--andm-control-focus-width, var(--andm-focus-ring-width))
-      var(--andm-focus-ring-style)
-      var(--andm-control-focus-color, var(--andm-focus-ring-color));
-    outline-offset: var(
-      --andm-control-focus-offset,
-      var(--andm-focus-ring-offset)
-    );
-    box-shadow: var(--andm-control-focus-shadow, none);
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
   }
 
   .andm-select__native:disabled,
   .andm-select__native[disabled] {
     cursor: not-allowed;
-    background-color: var(--andm-color-disabled-container);
+    background: var(--andm-color-disabled-container);
     color: var(--andm-color-on-disabled);
     border-color: var(--andm-color-disabled-outline);
+  }
+
+  .andm-select__field:has(.andm-select__native:disabled) .andm-select__chevron,
+  .andm-select__field:has(.andm-select__native[disabled]) .andm-select__chevron {
+    border-color: var(--andm-color-on-disabled);
   }
 }

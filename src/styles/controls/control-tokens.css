@@ -1,34 +1,23 @@
 @layer andm.tokens {
   :root {
     /*
-     * 入力・選択・面の寸法。
-     * 高さ・角・横余白・枠色・focus は :root で Button への別名にしない。
+     * 入力・選択の Baseline 寸法。
+     * 高さ・横余白・角は :root で Button や radius への別名にしない。
      * 別名を :root に書くと、継承の時点で var() が解決され、
-     * シリーズの --andm-btn-* 差し替えが入力に届かない。
-     * 部品は var(--andm-field-*, var(--andm-btn-*)) を使う。
-     * 未設定なら Baseline は Button の md に寄る。
-     * 親の andm-series--* が同じ名前を置くと、ボタンと別に差し替わる。
-     * シリーズ専用の部品クラスは作らない。
-     *
-     * チェックとラジオの寸法は、公式値が analysis に無いシリーズでは差し替えない。
-     * ここにあるのは Baseline（現状と同じ 20px、角 4px、枠 2px）。
+     * シリーズの差し替えが入力に届かない。
+     * 部品は var(--andm-field-height, var(--andm-btn-height-md)) のように使う。
+     * 角は var(--andm-field-radius, var(--andm-radius-md))。
+     * ボタンの pill や直角を、入力へ流さない。
      */
     --andm-field-border-width: 1px;
     --andm-check-size: var(--andm-space-5);
     --andm-check-radius: var(--andm-space-1);
-    --andm-check-border-width: 2px;
-    --andm-check-mark-size: 12px;
+    --andm-check-border-width: var(--andm-space-05);
     --andm-radio-size: var(--andm-space-5);
-    --andm-radio-border-width: 2px;
+    --andm-radio-border-width: var(--andm-space-05);
     --andm-radio-mark: 35%;
-    --andm-badge-radius: var(--andm-radius-sm);
-    --andm-tabs-radius: 0;
-
-    /*
-     * 互換名。中身はライブなフォールバックと同じ参照にするが、
-     * :root で確定するとシリーズに届かないので、部品側のフォールバックを正とする。
-     * 古い参照が無効にならないよう、Button md を直接は書かず、
-     * 未設定時の見た目は部品の var(..., var(--andm-btn-*)) が担う。
-     */
+    --andm-switch-width: var(--andm-space-10);
+    --andm-switch-height: var(--andm-space-6);
+    --andm-switch-thumb: var(--andm-space-4);
   }
 }

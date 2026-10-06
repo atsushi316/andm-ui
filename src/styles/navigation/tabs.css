@@ -13,9 +13,7 @@
     gap: 0;
     margin: 0;
     padding: 0;
-    list-style: none;
-    border-bottom: 1px solid
-      var(--andm-divider-color, var(--andm-color-outline-variant));
+    border-bottom: 1px solid var(--andm-color-on-surface-variant);
   }
 
   .andm-tabs__tab {
@@ -24,10 +22,10 @@
     align-items: center;
     justify-content: center;
     min-height: var(--andm-field-height, var(--andm-btn-height-md));
-    margin: 0;
+    margin: 0 0 calc(var(--andm-focus-ring-width) * -1);
     padding: 0 var(--andm-space-4);
     border: 0;
-    border-bottom: var(--andm-tabs-indicator-width, 2px) solid transparent;
+    border-bottom: var(--andm-focus-ring-width) solid transparent;
     border-radius: var(--andm-tabs-radius, 0);
     background: transparent;
     color: var(--andm-color-on-surface-variant);
@@ -36,10 +34,8 @@
     font-weight: var(--andm-font-weight-medium);
     line-height: var(--andm-line-height-tight);
     cursor: pointer;
-    /* 選択状態の highlight */
     transition:
-      color var(--andm-motion-duration-short3)
-        var(--andm-motion-easing-standard),
+      color var(--andm-motion-duration-short3) var(--andm-motion-easing-standard),
       border-color var(--andm-motion-duration-short3)
         var(--andm-motion-easing-standard),
       background-color var(--andm-motion-duration-short2)
@@ -51,6 +47,19 @@
     background: rgb(
       var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
     );
+  }
+
+  .andm-tabs__tab:active:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
+    );
+    transition:
+      color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      border-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      background-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate);
   }
 
   .andm-tabs__tab--selected,
@@ -66,7 +75,7 @@
   .andm-tabs__tab:focus-visible {
     outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
       var(--andm-focus-ring-color);
-    outline-offset: calc(-1 * var(--andm-focus-ring-offset));
+    outline-offset: calc(var(--andm-focus-ring-offset) * -1);
   }
 
   .andm-tabs__tab:disabled,
@@ -78,7 +87,7 @@
   .andm-tabs__panel {
     margin: 0;
     font-size: var(--andm-font-size-md);
-    line-height: 1.5;
+    line-height: var(--andm-line-height-tight);
     color: var(--andm-color-on-surface);
   }
 

@@ -1,0 +1,128 @@
+@layer andm.components {
+  .andm-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--andm-space-2);
+    margin: 0;
+    font-family: var(--andm-font-family);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-pagination__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--andm-space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .andm-pagination__page,
+  .andm-pagination__control {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--andm-field-height, var(--andm-btn-height-md));
+    height: var(--andm-field-height, var(--andm-btn-height-md));
+    margin: 0;
+    padding: 0 var(--andm-space-2);
+    border: 1px solid
+      color-mix(in srgb, var(--andm-color-on-surface) 24%, transparent);
+    border-radius: var(--andm-radius-md);
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-surface);
+    font-family: inherit;
+    font-size: var(--andm-font-size-md);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    cursor: pointer;
+    /* hover / focus の highlight */
+    transition:
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      border-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-pagination__page:hover:not(:disabled):not([aria-current="page"]),
+  .andm-pagination__control:hover:not(:disabled) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-pagination__page:active:not(:disabled),
+  .andm-pagination__control:active:not(:disabled) {
+    transform: scale(var(--andm-btn-press-scale));
+    transition:
+      background-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      border-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      transform var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate);
+  }
+
+  .andm-pagination__page[aria-current="page"] {
+    background: var(--andm-color-primary);
+    border-color: var(--andm-color-primary);
+    color: var(--andm-color-on-primary);
+    /* 選択は状態変化 */
+    transition:
+      background-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      color var(--andm-motion-duration-short3) var(--andm-motion-easing-standard),
+      border-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard);
+  }
+
+  .andm-pagination__page:focus,
+  .andm-pagination__control:focus {
+    outline: none;
+  }
+
+  .andm-pagination__page:focus-visible,
+  .andm-pagination__control:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+
+  .andm-pagination__page:disabled,
+  .andm-pagination__control:disabled,
+  .andm-pagination__page[disabled],
+  .andm-pagination__control[disabled] {
+    cursor: not-allowed;
+    background: transparent;
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+  }
+
+  .andm-pagination__gap {
+    color: var(--andm-color-on-surface-variant);
+    padding-inline: var(--andm-space-1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-pagination__page:active:not(:disabled),
+    .andm-pagination__control:active:not(:disabled) {
+      transform: none;
+      transition:
+        background-color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        border-color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate);
+    }
+  }
+}

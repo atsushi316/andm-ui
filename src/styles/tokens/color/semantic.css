@@ -31,10 +31,13 @@
       transparent
     );
 
-    /* Status。Alert / Badge 用。段階パレットは増やさない */
-    --andm-color-info: var(--andm-color-blue-40);
-    --andm-color-info-container: var(--andm-color-blue-95);
-    --andm-color-on-info-container: var(--andm-color-blue-10);
+    /*
+     * 状態の意味。Alert / Badge / 入力エラー用。
+     * シリーズの公式パレットではない。同名をシリーズが置いたときだけ差し替わる。
+     * info はトークンを置かない。部品が primary / secondary-container にフォールバックし、
+     * シリーズの色差し替えがそのまま届く。
+     */
+
     --andm-color-success: #146c2e;
     --andm-color-success-container: #e6f4ea;
     --andm-color-on-success-container: #0d401c;

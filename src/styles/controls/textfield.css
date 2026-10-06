@@ -24,8 +24,8 @@
     margin: 0;
     padding: 0 var(--andm-field-padding-x, var(--andm-btn-padding-x-md));
     border: var(--andm-field-border-width, 1px) solid
-      var(--andm-field-border-color, var(--andm-color-outline));
-    border-radius: var(--andm-field-radius, var(--andm-btn-radius));
+      var(--andm-field-border-color, var(--andm-color-on-surface-variant));
+    border-radius: var(--andm-field-radius, var(--andm-radius-md));
     background: var(--andm-color-surface);
     color: var(--andm-color-on-surface);
     font-family: inherit;
@@ -61,14 +61,9 @@
       --andm-field-focus-border-color,
       var(--andm-color-primary)
     );
-    outline: var(--andm-control-focus-width, var(--andm-focus-ring-width))
-      var(--andm-focus-ring-style)
-      var(--andm-control-focus-color, var(--andm-focus-ring-color));
-    outline-offset: var(
-      --andm-control-focus-offset,
-      var(--andm-focus-ring-offset)
-    );
-    box-shadow: var(--andm-control-focus-shadow, none);
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
   }
 
   .andm-textfield__input:disabled,
@@ -102,5 +97,16 @@
 
   .andm-textfield--error .andm-textfield__label {
     color: var(--andm-color-error);
+  }
+
+  /* 同じ Control の複数行。クラスは足さず、modifier だけ。 */
+  .andm-textfield--textarea .andm-textfield__input {
+    height: auto;
+    min-height: calc(
+      var(--andm-field-height, var(--andm-btn-height-md)) * 2 +
+        var(--andm-space-4)
+    );
+    padding-block: var(--andm-space-2);
+    resize: vertical;
   }
 }

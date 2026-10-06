@@ -6,7 +6,10 @@
     margin: var(--andm-space-4) 0;
     border: 0;
     border-top: 1px solid
-      var(--andm-divider-color, var(--andm-color-outline-variant));
+      var(
+        --andm-divider-color,
+        color-mix(in srgb, var(--andm-color-on-surface) 24%, transparent)
+      );
     background: transparent;
   }
 
@@ -22,7 +25,10 @@
     margin: 0 var(--andm-space-3);
     border: 0;
     border-left: 1px solid
-      var(--andm-divider-color, var(--andm-color-outline-variant));
+      var(
+        --andm-divider-color,
+        color-mix(in srgb, var(--andm-color-on-surface) 24%, transparent)
+      );
     vertical-align: middle;
   }
 }
