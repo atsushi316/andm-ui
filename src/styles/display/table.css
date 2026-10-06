@@ -40,9 +40,10 @@
     background: var(--andm-color-surface);
   }
 
-  .andm-table td {
-    font-weight: var(--andm-font-weight-medium);
-  }
+  /*
+   * 行の字重は継承。Carbon の行は 14px / 400。
+   * ヘッダーだけ --andm-table-header-weight（Carbon は 600）。
+   */
 
   /* 公式の hover 時間は未記載。andm の hover は short2 + decelerate。 */
   .andm-table tbody tr {
