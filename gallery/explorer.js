@@ -150,8 +150,11 @@
   function showPart(route) {
     var onSeries = route.view === "series";
     var part = onSeries ? "series" : route.id;
+    var shown = null;
     document.querySelectorAll("[data-part]").forEach(function (el) {
-      el.hidden = el.getAttribute("data-part") !== part;
+      var match = el.getAttribute("data-part") === part;
+      el.hidden = !match;
+      if (match && !shown) shown = el;
     });
     document.querySelectorAll("[data-part-nav]").forEach(function (a) {
       if (!onSeries && route.view !== "tokens" && a.dataset.partNav === part) {
@@ -160,6 +163,10 @@
         a.removeAttribute("aria-current");
       }
     });
+    // Hash は #/overlays/drawer 形式で要素 id と一致しない。部品を表示したら先頭へスクロールする。
+    if (shown && !onSeries) {
+      shown.scrollIntoView({ block: "start", behavior: "auto" });
+    }
   }
 
   function go(hash) {
