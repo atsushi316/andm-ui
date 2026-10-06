@@ -10,6 +10,7 @@
 - `radio.css` — `.andm-radio`
 - `switch.css` — `.andm-switch`
 - `select.css` — `.andm-select`（native `<select>`）
+- `slider.css` — `.andm-slider`（native `<input type="range">`。塗り幅は `--andm-slider-fill`）
 
 シリーズ専用クラスは作らない。見た目の差は親の `andm-series--*` によるトークン差し替え。
 

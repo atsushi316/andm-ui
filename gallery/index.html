@@ -752,6 +752,11 @@
               >
             </li>
             <li>
+              <a href="#/controls/slider" data-part-nav="slider"
+                >Slider <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
               <a href="#/controls/chip" data-part-nav="chip"
                 >Chip <span class="g-badge g-badge--planned">予定</span></a
               >
@@ -799,6 +804,11 @@
                 >Alert <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
+            <li>
+              <a href="#/feedback/toast" data-part-nav="toast"
+                >Toast <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
           </ul>
         </div>
 
@@ -810,6 +820,11 @@
                 >Dialog <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
+            <li>
+              <a href="#/overlays/tooltip" data-part-nav="tooltip"
+                >Tooltip <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
           </ul>
         </div>
 
@@ -819,6 +834,16 @@
             <li>
               <a href="#/navigation/tabs" data-part-nav="tabs"
                 >Tabs <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/navigation/breadcrumb" data-part-nav="breadcrumb"
+                >Breadcrumb <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/navigation/pagination" data-part-nav="pagination"
+                >Pagination <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
           </ul>
@@ -911,7 +936,7 @@
           <a class="g-goal" href="#/controls/button">
             <p class="g-goal__title">部品を見る</p>
             <p class="g-goal__desc">
-              Button、入力、印、面、Alert、Dialog、Tabs。シリーズを切り替えてもクラスは同じです。
+              入力、印、面、結果、Dialog、案内。シリーズを切り替えてもクラスは同じです。
             </p>
           </a>
           <a class="g-goal" href="#pattern">
@@ -981,6 +1006,26 @@
           </li>
           <li>
             <a href="#/navigation/tabs">Tabs</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/controls/slider">Slider</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/feedback/toast">Toast</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/overlays/tooltip">Tooltip</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/navigation/breadcrumb">Breadcrumb</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/navigation/pagination">Pagination</a>
             <span class="g-badge g-badge--ready">使える</span>
           </li>
           <li>
@@ -1976,6 +2021,237 @@
                 <code>andm-tabs</code>、<code>andm-tabs__list</code>、
                 <code>andm-tabs__tab</code>、<code>andm-tabs__panel</code>。選択は
                 <code>aria-selected="true"</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="slider" data-part="slider" hidden aria-labelledby="slider-title">
+            <h2 id="slider-title">
+              Slider <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              範囲の中から一つの値を選びます。塗り幅は <code>--andm-slider-fill</code>。つまみの押下は Button と同じ縮小率です。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <div class="g-field">
+                  <label class="andm-slider">
+                    <span class="andm-slider__label">音量</span>
+                    <output class="andm-slider__value" for="volume">40</output>
+                    <input id="volume" class="andm-slider__input" type="range" min="0" max="100" value="40" style="--andm-slider-fill: 40%" />
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="g-block">
+              <h3>無効</h3>
+              <div class="g-field">
+                <label class="andm-slider">
+                  <span class="andm-slider__label">明るさ</span>
+                  <output class="andm-slider__value">20</output>
+                  <input class="andm-slider__input" type="range" min="0" max="100" value="20" disabled style="--andm-slider-fill: 20%" />
+                </label>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-slider</code>、<code>andm-slider__label</code>、
+                <code>andm-slider__input</code>、<code>andm-slider__value</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="toast" data-part="toast" hidden aria-labelledby="toast-title">
+            <h2 id="toast-title">
+              Toast <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              しばらく見せる結果です。info はシリーズの secondary container。閉じる操作は Button のままです。
+            </p>
+            <div class="g-block">
+              <h3>出す</h3>
+              <div class="g-context">
+                <div class="g-row">
+                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md" data-toast-open="save-toast">
+                    保存の結果を出す
+                  </button>
+                </div>
+                <div class="andm-toast-region">
+                  <div class="andm-toast andm-toast--success is-dismissed" id="save-toast" role="status" hidden>
+                    <div class="andm-toast__text">
+                      <p class="andm-toast__title">保存しました</p>
+                      <p class="andm-toast__body">下書きを更新しました。</p>
+                    </div>
+                    <button type="button" class="andm-btn andm-btn--text andm-btn--sm" data-toast-close>閉じる</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="g-block">
+              <h3>意味</h3>
+              <div class="g-stack">
+                <div class="andm-toast andm-toast--info" role="status">
+                  <div class="andm-toast__text">
+                    <p class="andm-toast__title">下書きです</p>
+                    <p class="andm-toast__body">まだ提出していません。</p>
+                  </div>
+                </div>
+                <div class="andm-toast andm-toast--success" role="status">
+                  <div class="andm-toast__text">
+                    <p class="andm-toast__title">保存しました</p>
+                    <p class="andm-toast__body">下書きを更新しました。</p>
+                  </div>
+                </div>
+                <div class="andm-toast andm-toast--warning" role="status">
+                  <div class="andm-toast__text">
+                    <p class="andm-toast__title">期限が近いです</p>
+                    <p class="andm-toast__body">今日中に提出してください。</p>
+                  </div>
+                </div>
+                <div class="andm-toast andm-toast--error" role="alert">
+                  <div class="andm-toast__text">
+                    <p class="andm-toast__title">保存できません</p>
+                    <p class="andm-toast__body">通信が切れました。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-toast</code> に <code>andm-toast--info</code> /
+                <code>andm-toast--success</code> /
+                <code>andm-toast--warning</code> /
+                <code>andm-toast--error</code>。しまうときは <code>is-dismissed</code>。並びは
+                <code>andm-toast-region</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="tooltip" data-part="tooltip" hidden aria-labelledby="tooltip-title">
+            <h2 id="tooltip-title">
+              Tooltip <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              ホバーかキーボードフォーカスで、短い説明を出します。クリックでは開きません。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <span class="andm-tooltip">
+                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
+                  <span class="andm-tooltip__bubble" role="tooltip">下書きを保存します</span>
+                </span>
+              </div>
+            </div>
+            <div class="g-block">
+              <h3>文字の上</h3>
+              <p>
+                提出の前に
+                <span class="andm-tooltip">
+                  <button type="button" class="andm-btn andm-btn--text andm-btn--sm">確認</button>
+                  <span class="andm-tooltip__bubble" role="tooltip">内容はあとから直せません</span>
+                </span>
+                してください。
+              </p>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-tooltip</code> がトリガーを包み、説明は
+                <code>andm-tooltip__bubble</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="breadcrumb" data-part="breadcrumb" hidden aria-labelledby="breadcrumb-title">
+            <h2 id="breadcrumb-title">
+              Breadcrumb <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">いまの場所までの道です。現在地はリンクにしません。</p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <nav class="andm-breadcrumb" aria-label="パンくず">
+                  <ol class="andm-breadcrumb__list">
+                    <li class="andm-breadcrumb__item">
+                      <a class="andm-breadcrumb__link" href="#/navigation/breadcrumb">申請</a>
+                    </li>
+                    <li class="andm-breadcrumb__item">
+                      <a class="andm-breadcrumb__link" href="#/navigation/breadcrumb">下書き</a>
+                    </li>
+                    <li class="andm-breadcrumb__item" aria-current="page">
+                      <span class="andm-breadcrumb__current">確認</span>
+                    </li>
+                  </ol>
+                </nav>
+                <p>この内容で申請しますか。</p>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-breadcrumb</code>、<code>andm-breadcrumb__list</code>、
+                <code>andm-breadcrumb__item</code>、<code>andm-breadcrumb__link</code>、
+                <code>andm-breadcrumb__current</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="pagination" data-part="pagination" hidden aria-labelledby="pagination-title">
+            <h2 id="pagination-title">
+              Pagination <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">同じ一覧のページを移します。選択は <code>aria-current="page"</code> です。</p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <p>申請の一覧です。1 ページに 20 件。</p>
+                <nav class="andm-pagination" aria-label="ページ" data-pagination>
+                  <button type="button" class="andm-pagination__control" data-page-prev disabled>前へ</button>
+                  <ol class="andm-pagination__list">
+                    <li>
+                      <button type="button" class="andm-pagination__page" aria-current="page">1</button>
+                    </li>
+                    <li>
+                      <button type="button" class="andm-pagination__page">2</button>
+                    </li>
+                    <li>
+                      <button type="button" class="andm-pagination__page">3</button>
+                    </li>
+                    <li>
+                      <button type="button" class="andm-pagination__page">4</button>
+                    </li>
+                  </ol>
+                  <button type="button" class="andm-pagination__control" data-page-next>次へ</button>
+                </nav>
+              </div>
+            </div>
+            <div class="g-block">
+              <h3>省略</h3>
+              <nav class="andm-pagination" aria-label="省略したページ">
+                <ol class="andm-pagination__list">
+                  <li>
+                    <button type="button" class="andm-pagination__page" aria-current="page">1</button>
+                  </li>
+                  <li>
+                    <button type="button" class="andm-pagination__page">2</button>
+                  </li>
+                  <li class="andm-pagination__gap" aria-hidden="true">…</li>
+                  <li>
+                    <button type="button" class="andm-pagination__page">12</button>
+                  </li>
+                </ol>
+              </nav>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-pagination</code>、<code>andm-pagination__control</code>、
+                <code>andm-pagination__list</code>、<code>andm-pagination__page</code>、
+                <code>andm-pagination__gap</code>。
               </p>
             </details>
           </section>

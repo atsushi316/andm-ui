@@ -50,14 +50,19 @@
     radio: "radio",
     switch: "switch",
     select: "select",
+    slider: "slider",
     chip: "chip",
     fab: "fab",
     divider: "divider",
     badge: "badge",
     card: "card",
     alert: "alert",
+    toast: "toast",
     dialog: "dialog",
+    tooltip: "tooltip",
     tabs: "tabs",
+    breadcrumb: "breadcrumb",
+    pagination: "pagination",
   };
 
   var usage = {
@@ -465,6 +470,83 @@
       dialog.addEventListener("click", function (event) {
         if (event.target === dialog) dialog.close();
       });
+    });
+
+    document.querySelectorAll(".andm-slider__input").forEach(function (input) {
+      function syncSlider() {
+        var min = Number(input.min || 0);
+        var max = Number(input.max || 100);
+        var value = Number(input.value);
+        var span = max === min ? 0 : ((value - min) / (max - min)) * 100;
+        input.style.setProperty("--andm-slider-fill", span + "%");
+        var output = input.parentElement && input.parentElement.querySelector(".andm-slider__value");
+        if (output) output.textContent = input.value;
+      }
+      input.addEventListener("input", syncSlider);
+      syncSlider();
+    });
+
+    document.querySelectorAll("[data-toast-open]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var toast = document.getElementById(button.getAttribute("data-toast-open"));
+        if (!toast) return;
+        if (!toast.hidden && !toast.classList.contains("is-dismissed")) return;
+        toast.hidden = false;
+        toast.classList.add("is-dismissed");
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            toast.classList.remove("is-dismissed");
+          });
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-toast-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var toast = button.closest(".andm-toast");
+        if (!toast) return;
+        toast.classList.add("is-dismissed");
+        function hide(event) {
+          if (event.propertyName !== "opacity") return;
+          toast.hidden = true;
+          toast.removeEventListener("transitionend", hide);
+        }
+        toast.addEventListener("transitionend", hide);
+      });
+    });
+
+    document.querySelectorAll("[data-pagination]").forEach(function (nav) {
+      var pages = nav.querySelectorAll(".andm-pagination__page");
+      var prev = nav.querySelector("[data-page-prev]");
+      var next = nav.querySelector("[data-page-next]");
+      function selectPage(page) {
+        var index = Array.prototype.indexOf.call(pages, page);
+        pages.forEach(function (button) {
+          if (button === page) button.setAttribute("aria-current", "page");
+          else button.removeAttribute("aria-current");
+        });
+        if (prev) prev.disabled = index <= 0;
+        if (next) next.disabled = index >= pages.length - 1;
+      }
+      pages.forEach(function (button) {
+        button.addEventListener("click", function () {
+          selectPage(button);
+        });
+      });
+      if (prev) {
+        prev.addEventListener("click", function () {
+          var current = nav.querySelector('[aria-current="page"]');
+          var index = Array.prototype.indexOf.call(pages, current);
+          if (index > 0) selectPage(pages[index - 1]);
+        });
+      }
+      if (next) {
+        next.addEventListener("click", function () {
+          var current = nav.querySelector('[aria-current="page"]');
+          var index = Array.prototype.indexOf.call(pages, current);
+          if (index >= 0 && index < pages.length - 1) selectPage(pages[index + 1]);
+        });
+      }
     });
   }
 

@@ -16,12 +16,17 @@ const sources = [
   "controls/radio.css",
   "controls/switch.css",
   "controls/select.css",
+  "controls/slider.css",
   "marks/divider.css",
   "marks/badge.css",
   "containers/card.css",
   "feedback/alert.css",
+  "feedback/toast.css",
   "overlays/dialog.css",
+  "overlays/tooltip.css",
   "navigation/tabs.css",
+  "navigation/breadcrumb.css",
+  "navigation/pagination.css",
 ];
 
 const banner = "/*! @atsushi316/andm-ui — built from src/styles */\n";
