@@ -214,6 +214,14 @@
         line-height: 1.45;
       }
 
+      /* 部品・Token ルートでは案内ブロックを隠し、対象セクションを先頭に出す */
+      body:not([data-view="series"]) .g-hero,
+      body:not([data-view="series"]) .g-goals,
+      body:not([data-view="series"]) .g-status,
+      body:not([data-view="series"]) #series {
+        display: none;
+      }
+
       .g-section {
         margin: 0 0 var(--andm-space-8);
         padding-top: var(--andm-space-2);
