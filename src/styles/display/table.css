@@ -1,0 +1,66 @@
+@layer andm.components {
+  /*
+   * 行の高さは既存の --andm-btn-height-md。
+   * Carbon data table style の md は 40px で、Carbon の btn-height-md と同じ。
+   * xs 24 / sm 32 / lg 48 / xl 64 はサイズ違いであり、既定にはしない。
+   * セル余白は space-4。Carbon の column padding 16px（$spacing-05）と一致する。
+   * M3 / Apple / Spectrum / Fluent / Atlassian / USWDS / DADS の
+   * 表の行高・余白・hover は公式ページに無い。official value not specified。
+   * ヘッダー字重は --andm-table-header-weight。無ければ font-weight-medium。
+   * Carbon の column header は 14px / 600、行は 14px / 400。
+   */
+  .andm-table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-table th,
+  .andm-table td {
+    padding: 0 var(--andm-space-4);
+    text-align: start;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--andm-color-outline-variant);
+  }
+
+  .andm-table tr {
+    height: var(--andm-btn-height-md);
+  }
+
+  .andm-table th {
+    font-weight: var(
+      --andm-table-header-weight,
+      var(--andm-font-weight-medium)
+    );
+    color: var(--andm-color-on-surface);
+    background: var(--andm-color-surface);
+  }
+
+  .andm-table td {
+    font-weight: var(--andm-font-weight-medium);
+  }
+
+  /* 公式の hover 時間は未記載。andm の hover は short2 + decelerate。 */
+  .andm-table tbody tr {
+    transition: background-color var(--andm-motion-duration-short2)
+      var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-table tbody tr:hover {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-table tbody tr:active {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
+    );
+    transition-duration: var(--andm-motion-duration-short1);
+    transition-timing-function: var(--andm-motion-easing-accelerate);
+  }
+}

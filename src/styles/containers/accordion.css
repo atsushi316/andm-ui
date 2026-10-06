@@ -1,0 +1,109 @@
+@layer andm.components {
+  /*
+   * 見出しの高さは既存の --andm-btn-height-md。
+   * Carbon accordion style の既定ヘッダーは 40px（sm 32 / md 40 / lg 48）。
+   * Carbon の btn-height-md が 40px なので、そのシリーズでは公式の既定と一致する。
+   * 本文の余白は space-2 / space-4 / space-6。Carbon の panel は上 8・左 16・下 24。
+   * 右 25% と幅による margin はレイアウト規則なのでコピーしない。
+   * USWDS / DADS のアコーディオンページに寸法・時間・hover は無い。
+   * M3 / Apple / Spectrum / Fluent / Atlassian に同名の公式寸法は確認できず。
+   * official value not specified。開閉の色は short3 + standard。
+   */
+  .andm-accordion {
+    margin: 0;
+    border-top: 1px solid var(--andm-color-outline-variant);
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-accordion__item {
+    border-bottom: 1px solid var(--andm-color-outline-variant);
+  }
+
+  .andm-accordion__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--andm-space-4);
+    min-height: var(--andm-btn-height-md);
+    padding: 0 var(--andm-space-4);
+    font-weight: var(--andm-font-weight-medium);
+    cursor: pointer;
+    list-style: none;
+    transition:
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      color var(--andm-motion-duration-short3) var(--andm-motion-easing-standard);
+  }
+
+  .andm-accordion__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .andm-accordion__summary::marker {
+    content: "";
+  }
+
+  .andm-accordion__summary::after {
+    content: "";
+    flex: none;
+    width: var(--andm-space-2);
+    height: var(--andm-space-2);
+    margin-inline-end: var(--andm-space-1);
+    border-right: var(--andm-focus-ring-width) solid currentColor;
+    border-bottom: var(--andm-focus-ring-width) solid currentColor;
+    transform: translateY(calc(var(--andm-space-05) * -1)) rotate(45deg);
+    transition: transform var(--andm-motion-duration-short3)
+      var(--andm-motion-easing-standard);
+  }
+
+  .andm-accordion__item[open] > .andm-accordion__summary::after {
+    transform: translateY(var(--andm-space-05)) rotate(225deg);
+  }
+
+  .andm-accordion__summary:hover {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-accordion__summary:active {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
+    );
+    transition-duration: var(--andm-motion-duration-short1);
+    transition-timing-function: var(--andm-motion-easing-accelerate);
+  }
+
+  .andm-accordion__summary:focus {
+    outline: none;
+  }
+
+  .andm-accordion__summary:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: calc(var(--andm-focus-ring-offset) * -1);
+  }
+
+  .andm-accordion__panel {
+    padding: var(--andm-space-2) var(--andm-space-4) var(--andm-space-6);
+    color: var(--andm-color-on-surface-variant);
+  }
+
+  .andm-accordion__panel > :first-child {
+    margin-top: 0;
+  }
+
+  .andm-accordion__panel > :last-child {
+    margin-bottom: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-accordion__summary,
+    .andm-accordion__summary::after {
+      transition: none;
+    }
+  }
+}

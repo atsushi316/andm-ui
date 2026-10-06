@@ -1,0 +1,30 @@
+@layer andm.components {
+  /*
+   * 公式の直径は未記載。official value not specified。
+   * M3 lists は leading avatar をスロットとして書くだけで、寸法は無い。
+   * 一辺は space-10。形は radius-pill。字は font-size-sm。
+   */
+  .andm-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: var(--andm-space-10);
+    height: var(--andm-space-10);
+    overflow: hidden;
+    border-radius: var(--andm-radius-pill);
+    background: var(--andm-color-secondary-container);
+    color: var(--andm-color-on-secondary-container);
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-sm);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    vertical-align: middle;
+  }
+
+  .andm-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

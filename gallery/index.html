@@ -467,6 +467,11 @@
         background: var(--andm-color-surface);
       }
 
+      .g-frame {
+        max-width: 100%;
+        overflow: auto;
+      }
+
       .g-context p {
         margin: 0 0 var(--andm-space-4);
         line-height: 1.5;
@@ -1087,6 +1092,11 @@
               >
             </li>
             <li>
+              <a href="#/controls/segmented" data-part-nav="segmented"
+                >Segmented control <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
               <a href="#/controls/chip" data-part-nav="chip"
                 >Chip <span class="g-badge g-badge--planned">予定</span></a
               >
@@ -1112,6 +1122,16 @@
                 >Badge <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
+            <li>
+              <a href="#/marks/avatar" data-part-nav="avatar"
+                >Avatar <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/marks/spinner" data-part-nav="spinner"
+                >Spinner <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
           </ul>
         </div>
 
@@ -1121,6 +1141,27 @@
             <li>
               <a href="#/containers/card" data-part-nav="card"
                 >Card <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/containers/list" data-part-nav="list"
+                >List <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/containers/accordion" data-part-nav="accordion"
+                >Accordion <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group">
+          <button type="button" class="g-nav__label" aria-expanded="false">Display</button>
+          <ul>
+            <li>
+              <a href="#/display/table" data-part-nav="table"
+                >Table <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
           </ul>
@@ -1137,6 +1178,16 @@
             <li>
               <a href="#/feedback/toast" data-part-nav="toast"
                 >Toast <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/feedback/progress" data-part-nav="progress"
+                >Progress <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/feedback/skeleton" data-part-nav="skeleton"
+                >Skeleton <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
           </ul>
@@ -1347,6 +1398,38 @@
           </li>
           <li>
             <a href="#/overlays/popover">Popover</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/display/table">Table</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/containers/list">List</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/feedback/progress">Progress</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/marks/spinner">Spinner</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/feedback/skeleton">Skeleton</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/marks/avatar">Avatar</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/containers/accordion">Accordion</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/controls/segmented">Segmented control</a>
             <span class="g-badge g-badge--ready">使える</span>
           </li>
           <li>
@@ -2725,6 +2808,240 @@
                 <code>andm-popover</code>、<code>andm-popover__panel</code>、
                 <code>andm-popover__title</code>、<code>andm-popover__body</code>、
                 <code>andm-popover__actions</code>。しまうときは <code>is-closed</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="table" data-part="table" hidden aria-labelledby="table-title">
+            <h2 id="table-title">
+              Table <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              表です。行の高さと字はシリーズの既存トークンです。Carbon の md 行とヘッダー 600 以外、公式の寸法は未記載です。official value not specified。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context g-frame">
+                <table class="andm-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">申請</th>
+                      <th scope="col">担当</th>
+                      <th scope="col">状態</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>184</td>
+                      <td>青木</td>
+                      <td>確認中</td>
+                    </tr>
+                    <tr>
+                      <td>185</td>
+                      <td>井上</td>
+                      <td>承認</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p><code>andm-table</code>。native の table です。</p>
+            </details>
+          </section>
+
+          <section class="g-section" id="list" data-part="list" hidden aria-labelledby="list-title">
+            <h2 id="list-title">
+              List <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              一覧です。M3 の one-line は 56 / 72 / 88dp で、一つの高さにはしていません。他の公式な行高は未記載です。official value not specified。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context g-frame">
+                <ul class="andm-list">
+                  <li class="andm-list__item">
+                    <span class="andm-avatar" aria-hidden="true">青</span>
+                    <span class="andm-list__title">申請 184</span>
+                    <span class="andm-list__meta">確認中</span>
+                  </li>
+                  <li class="andm-list__item">
+                    <span class="andm-avatar" aria-hidden="true">井</span>
+                    <span class="andm-list__title">申請 185</span>
+                    <span class="andm-list__meta">承認</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-list</code>、<code>andm-list__item</code>、
+                <code>andm-list__title</code>、<code>andm-list__meta</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="accordion" data-part="accordion" hidden aria-labelledby="accordion-title">
+            <h2 id="accordion-title">
+              Accordion <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              見出しで本文を開きます。流れの中に収まり、ページは覆いません。Carbon の既定ヘッダー以外、公式の寸法と hover 時間は未記載です。official value not specified。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context g-frame">
+                <div class="andm-accordion">
+                  <details class="andm-accordion__item" open>
+                    <summary class="andm-accordion__summary">提出前の確認</summary>
+                    <div class="andm-accordion__panel">
+                      <p>担当と期限を見てから保存します。</p>
+                    </div>
+                  </details>
+                  <details class="andm-accordion__item">
+                    <summary class="andm-accordion__summary">添付</summary>
+                    <div class="andm-accordion__panel">
+                      <p>必要なファイルはまだありません。</p>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-accordion</code>、<code>andm-accordion__item</code>、
+                <code>andm-accordion__summary</code>、<code>andm-accordion__panel</code>。
+                開閉は native の details です。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="progress" data-part="progress" hidden aria-labelledby="progress-title">
+            <h2 id="progress-title">
+              Progress <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              進み具合です。太さは M3 の track 既定 4dp と一致する space-1 です。Carbon の Big 8px は既定ではないので使いません。他の公式な太さと時間は未記載です。official value not specified。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <div
+                  class="andm-progress"
+                  role="progressbar"
+                  aria-valuenow="40"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-labelledby="progress-save-label"
+                >
+                  <span class="andm-progress__label" id="progress-save-label">保存しています</span>
+                  <span class="andm-progress__track">
+                    <span class="andm-progress__bar" style="--andm-progress-value: 40%"></span>
+                  </span>
+                  <span class="andm-progress__helper">4 件中 2 件</span>
+                </div>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-progress</code>、<code>andm-progress__label</code>、
+                <code>andm-progress__track</code>、<code>andm-progress__bar</code>、
+                <code>andm-progress__helper</code>。幅は <code>--andm-progress-value</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="spinner" data-part="spinner" hidden aria-labelledby="spinner-title">
+            <h2 id="spinner-title">
+              Spinner <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              待ちの印です。一辺は Carbon small の 16px と一致する space-4 です。回転周期の公式値は無いので short4 を使います。official value not specified。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <p><span class="andm-spinner" role="status" aria-label="読み込み中"></span> 読み込み中</p>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p><code>andm-spinner</code>。</p>
+            </details>
+          </section>
+
+          <section class="g-section" id="skeleton" data-part="skeleton" hidden aria-labelledby="skeleton-title">
+            <h2 id="skeleton-title">
+              Skeleton <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              中身が来る前の面です。公式の高さと点滅時間は未記載なので、点滅はしません。official value not specified。DADS はスケルトンを使わず、プログレスを案内します。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <div class="g-row">
+                  <span class="andm-skeleton andm-skeleton--avatar"></span>
+                  <span class="andm-skeleton" style="width: 12rem"></span>
+                </div>
+                <span class="andm-skeleton andm-skeleton--block"></span>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-skeleton</code>、<code>andm-skeleton--block</code>、
+                <code>andm-skeleton--avatar</code>。
+              </p>
+            </details>
+          </section>
+
+          <section class="g-section" id="avatar" data-part="avatar" hidden aria-labelledby="avatar-title">
+            <h2 id="avatar-title">
+              Avatar <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              人の印です。公式の直径は未記載です。official value not specified。一辺は space-10 です。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <p><span class="andm-avatar">青</span> 青木</p>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p><code>andm-avatar</code>。</p>
+            </details>
+          </section>
+
+          <section class="g-section" id="segmented" data-part="segmented" hidden aria-labelledby="segmented-title">
+            <h2 id="segmented-title">
+              Segmented control <span class="g-badge g-badge--ready">使える</span>
+            </h2>
+            <p class="g-desc">
+              同じ場で一つを選びます。Carbon content switcher の角 4px 以外、公式の寸法と hover 時間は未記載です。official value not specified。
+            </p>
+            <div class="g-block">
+              <h3>In Context</h3>
+              <div class="g-context">
+                <div class="andm-segmented" role="group" aria-label="表示" data-segmented>
+                  <button type="button" class="andm-segmented__option" aria-pressed="true">一覧</button>
+                  <button type="button" class="andm-segmented__option" aria-pressed="false">表</button>
+                  <button type="button" class="andm-segmented__option" aria-pressed="false">履歴</button>
+                </div>
+              </div>
+            </div>
+            <details class="g-details">
+              <summary>クラス名</summary>
+              <p>
+                <code>andm-segmented</code>、<code>andm-segmented__option</code>。
+                選択は <code>aria-pressed</code>。
               </p>
             </details>
           </section>

@@ -38,6 +38,7 @@
     feedback: true,
     overlays: true,
     navigation: true,
+    display: true,
   };
 
   var partDefaults = {
@@ -47,6 +48,7 @@
     feedback: "alert",
     overlays: "dialog",
     navigation: "tabs",
+    display: "table",
   };
 
   var legacyParts = {
@@ -72,6 +74,14 @@
     breadcrumb: "breadcrumb",
     pagination: "pagination",
     menu: "menu",
+    table: "table",
+    list: "list",
+    progress: "progress",
+    spinner: "spinner",
+    skeleton: "skeleton",
+    avatar: "avatar",
+    accordion: "accordion",
+    segmented: "segmented",
   };
 
   var usage = {
@@ -150,6 +160,7 @@
     feedback: "Feedback",
     overlays: "Overlays",
     navigation: "Navigation",
+    display: "Display",
     part: "部品",
   };
 
@@ -659,6 +670,18 @@
   }
 
   function initParts() {
+    document.querySelectorAll("[data-segmented]").forEach(function (group) {
+      var options = group.querySelectorAll(".andm-segmented__option");
+      options.forEach(function (option) {
+        option.addEventListener("click", function () {
+          if (option.disabled) return;
+          options.forEach(function (item) {
+            item.setAttribute("aria-pressed", item === option ? "true" : "false");
+          });
+        });
+      });
+    });
+
     document.querySelectorAll("[data-tabs]").forEach(function (root) {
       var tabs = root.querySelectorAll('[role="tab"]');
       var panels = root.querySelectorAll('[role="tabpanel"]');

@@ -1,0 +1,26 @@
+@layer andm.components {
+  /*
+   * 公式の高さ・角・点滅時間は、開いたページには無い。official value not specified。
+   * 高さは space-4、面は space-10、角は radius-md。色は disabled container。
+   * 点滅の周期を作らない。DADS はスケルトンを使わず、プログレスインジケーターを案内する。
+   * Carbon skeleton style の URL は 404。
+   */
+  .andm-skeleton {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--andm-space-4);
+    border-radius: var(--andm-radius-md);
+    background: var(--andm-color-disabled-container);
+  }
+
+  .andm-skeleton--block {
+    height: var(--andm-space-10);
+  }
+
+  .andm-skeleton--avatar {
+    width: var(--andm-space-10);
+    height: var(--andm-space-10);
+    border-radius: var(--andm-radius-pill);
+  }
+}

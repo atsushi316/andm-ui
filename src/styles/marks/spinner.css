@@ -1,0 +1,34 @@
+@layer andm.components {
+  /*
+   * 一辺は space-4。Carbon loading の small は 16px と一致する。
+   * large 88px はスペース階梯に無く、一つのスピナーには使わない。
+   * M3 circular の直径は specs 本文から取れなかった。
+   * Atlassian spinner は xsmall–xlarge の名前だけで px は無い。
+   * 回転周期の公式値は無い。official value not specified。
+   * 動かすときは既存の short4。reduced motion では止める。
+   */
+  .andm-spinner {
+    display: inline-block;
+    box-sizing: border-box;
+    width: var(--andm-space-4);
+    height: var(--andm-space-4);
+    border: var(--andm-focus-ring-width) solid var(--andm-color-secondary-container);
+    border-top-color: var(--andm-color-primary);
+    border-radius: var(--andm-radius-pill);
+    vertical-align: middle;
+    animation: andm-spinner-rotate var(--andm-motion-duration-short4) linear
+      infinite;
+  }
+
+  @keyframes andm-spinner-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-spinner {
+      animation: none;
+    }
+  }
+}

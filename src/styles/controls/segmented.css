@@ -1,0 +1,91 @@
+@layer andm.components {
+  /*
+   * 高さは既存の --andm-btn-height-md。角は --andm-segmented-radius、無ければ radius-md。
+   * Carbon content switcher style の角は 4px。高さは sm 32 / md 40 / lg 48。
+   * Carbon シリーズだけ segmented-radius を 4px にし、高さは btn-height-md に乗る。
+   * M3 segmented buttons は現行では非推奨。古い 40dp は Expressive の寸法にしない。
+   * Apple HIG の segmented controls ページから寸法は取れなかった。
+   * Spectrum / Fluent / Atlassian / USWDS / DADS の公式な角・hover 時間は未記載。
+   * official value not specified。hover は short2 + decelerate、押下は short1 + accelerate。
+   */
+  .andm-segmented {
+    display: inline-flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--andm-color-outline);
+    border-radius: var(--andm-segmented-radius, var(--andm-radius-md));
+    overflow: hidden;
+    font-family: var(--andm-font-family);
+  }
+
+  .andm-segmented__option {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--andm-btn-height-md);
+    margin: 0;
+    padding: 0 var(--andm-space-4);
+    border: 0;
+    border-inline-end: 1px solid var(--andm-color-outline);
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-surface);
+    font-family: inherit;
+    font-size: var(--andm-font-size-md);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    cursor: pointer;
+    transition:
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      color var(--andm-motion-duration-short3) var(--andm-motion-easing-standard);
+  }
+
+  .andm-segmented__option:last-child {
+    border-inline-end: 0;
+  }
+
+  .andm-segmented__option:hover:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-segmented__option[aria-pressed="true"] {
+    background: var(--andm-color-primary);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-segmented__option:active:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
+    );
+    transition-duration: var(--andm-motion-duration-short1);
+    transition-timing-function: var(--andm-motion-easing-accelerate);
+  }
+
+  .andm-segmented__option:focus {
+    outline: none;
+  }
+
+  .andm-segmented__option:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: calc(var(--andm-focus-ring-offset) * -1);
+  }
+
+  .andm-segmented__option:disabled,
+  .andm-segmented__option[disabled] {
+    cursor: not-allowed;
+    color: var(--andm-color-on-disabled);
+    background: var(--andm-color-disabled-container);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-segmented__option {
+      transition: none;
+    }
+  }
+}

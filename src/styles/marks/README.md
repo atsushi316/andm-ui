@@ -4,6 +4,8 @@
 
 - `divider.css` — `.andm-divider`
 - `badge.css` — `.andm-badge`
+- `avatar.css` — `.andm-avatar`
+- `spinner.css` — `.andm-spinner`
 
 Icon、Avatar、Spinner などもここに入る。Button や IconButton は Control。
 

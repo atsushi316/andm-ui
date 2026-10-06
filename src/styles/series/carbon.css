@@ -66,5 +66,9 @@
       --andm-control-focus-shadow: inset 0 0 0 1px var(--andm-focus-ring-color);
       /* divider の公式色は未確認。値は Baseline の outline-variant。見た目は変えない。 */
       --andm-divider-color: var(--andm-color-outline-variant);
+      /* data table style: column header 14px / 600。行は 14px / 400（font-weight-medium）。 */
+      --andm-table-header-weight: 600;
+      /* content switcher style: corner radius 4px。高さは size md で btn-height-md に乗る。 */
+      --andm-segmented-radius: 4px;
     }
 }

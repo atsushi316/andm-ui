@@ -1,0 +1,53 @@
+@layer andm.components {
+  /*
+   * M3 lists の one-line は 56 / 72 / 88dp。一つの既定高にはしない。
+   * Expressive の btn-height-md は 56px なので、そのシリーズだけ最短の公式行と一致する。
+   * Carbon structured list の既定行は 60px、condensed は 36px。data table の行高と違うのでコピーしない。
+   * 他シリーズの公式な list 高・余白・hover は未記載。official value not specified。
+   * 行の高さは既存の --andm-btn-height-md。余白は space-4。
+   */
+  .andm-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-list__item {
+    display: flex;
+    align-items: center;
+    gap: var(--andm-space-3);
+    min-height: var(--andm-btn-height-md);
+    padding: var(--andm-space-2) var(--andm-space-4);
+    border-bottom: 1px solid var(--andm-color-outline-variant);
+    transition: background-color var(--andm-motion-duration-short2)
+      var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-list__item:hover {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-list__item:active {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
+    );
+    transition-duration: var(--andm-motion-duration-short1);
+    transition-timing-function: var(--andm-motion-easing-accelerate);
+  }
+
+  .andm-list__title {
+    font-weight: var(--andm-font-weight-medium);
+  }
+
+  .andm-list__meta {
+    margin-inline-start: auto;
+    color: var(--andm-color-on-surface-variant);
+    font-size: var(--andm-font-size-sm);
+  }
+}

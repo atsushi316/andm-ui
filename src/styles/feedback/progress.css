@@ -1,0 +1,52 @@
+@layer andm.components {
+  /*
+   * トラックの太さは space-1（4px）。
+   * M3 progress indicators specs の track 既定は Fixed 4dp。
+   * Carbon progress bar は Big 8px / Small 4px。既定サイズの名は無いので 8px は採らない。
+   * Fluent / Atlassian / Apple / USWDS / DADS / Spectrum の公式な太さ・時間は未記載。
+   * official value not specified。確定値の幅は見本の --andm-progress-value（割合）であり寸法トークンではない。
+   */
+  .andm-progress {
+    --andm-progress-thickness: var(--andm-space-1);
+    display: grid;
+    gap: var(--andm-space-2);
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-progress__label {
+    font-size: var(--andm-font-size-md);
+  }
+
+  .andm-progress__helper {
+    color: var(--andm-color-on-surface-variant);
+    font-size: var(--andm-font-size-sm);
+  }
+
+  .andm-progress__track {
+    display: block;
+    height: var(--andm-progress-thickness);
+    overflow: hidden;
+    border-radius: var(--andm-radius-pill);
+    background: var(--andm-color-secondary-container);
+  }
+
+  .andm-progress__bar {
+    display: block;
+    height: 100%;
+    width: var(--andm-progress-value, 0%);
+    border-radius: inherit;
+    background: var(--andm-color-primary);
+    transition: width var(--andm-motion-duration-short3)
+      var(--andm-motion-easing-standard);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-progress__bar {
+      transition: none;
+    }
+  }
+}
