@@ -25,6 +25,41 @@
     { id: "interaction", label: "Interaction" },
   ];
 
+  var partViews = {
+    controls: true,
+    marks: true,
+    containers: true,
+    feedback: true,
+    overlays: true,
+    navigation: true,
+  };
+
+  var partDefaults = {
+    controls: "button",
+    marks: "divider",
+    containers: "card",
+    feedback: "alert",
+    overlays: "dialog",
+    navigation: "tabs",
+  };
+
+  var legacyParts = {
+    button: "button",
+    "text-field": "text-field",
+    checkbox: "checkbox",
+    radio: "radio",
+    switch: "switch",
+    select: "select",
+    chip: "chip",
+    fab: "fab",
+    divider: "divider",
+    badge: "badge",
+    card: "card",
+    alert: "alert",
+    dialog: "dialog",
+    tabs: "tabs",
+  };
+
   var usage = {
     "--andm-color-primary": "主な操作",
     "--andm-color-on-primary": "主な操作の上の文字",
@@ -83,10 +118,40 @@
     var parts = raw.split("/").filter(Boolean);
     if (parts[0] === "tokens") return { view: "tokens", id: parts[1] || "color" };
     if (parts[0] === "series") return { view: "series", id: parts[1] || "baseline" };
+    if (partViews[parts[0]]) {
+      return {
+        view: parts[0],
+        id: parts[1] || partDefaults[parts[0]] || "",
+      };
+    }
+    if (parts.length === 1 && legacyParts[parts[0]]) {
+      return { view: "part", id: legacyParts[parts[0]] };
+    }
     if (parts.length === 1 && items.some(function (item) { return item.id === parts[0]; })) {
       return { view: "series", id: parts[0] };
     }
     return { view: "series", id: "baseline" };
+  }
+
+  function seriesIdFor(route) {
+    if (route.view === "series") return route.id;
+    if (select && select.value) return select.value;
+    return "baseline";
+  }
+
+  function showPart(route) {
+    var onSeries = route.view === "series";
+    var part = onSeries ? "series" : route.id;
+    document.querySelectorAll("[data-part]").forEach(function (el) {
+      el.hidden = el.getAttribute("data-part") !== part;
+    });
+    document.querySelectorAll("[data-part-nav]").forEach(function (a) {
+      if (!onSeries && route.view !== "tokens" && a.dataset.partNav === part) {
+        a.setAttribute("aria-current", "page");
+      } else {
+        a.removeAttribute("aria-current");
+      }
+    });
   }
 
   function go(hash) {
@@ -144,14 +209,12 @@
     var classHelp = document.getElementById("series-class");
     if (classHelp) {
       classHelp.replaceChildren();
-      var btn = document.createElement("code");
-      btn.textContent = "andm-btn";
       if (item.className) {
         var code = document.createElement("code");
         code.textContent = item.className;
-        classHelp.append("親に ", code, " を付けます。ボタンは ", btn, " のままです。");
+        classHelp.append("親に ", code, " を付けます。部品のクラスはどのシリーズでも同じです。");
       } else {
-        classHelp.append("Baseline は追加クラスなし。ボタンは ", btn, " のままです。");
+        classHelp.append("Baseline は追加クラスなし。部品のクラスはどのシリーズでも同じです。");
       }
     }
     var patterns = document.getElementById("series-patterns");
@@ -356,15 +419,65 @@
     document.body.dataset.view = route.view;
     if (onTokens) {
       showTokens(route.id);
+      document.querySelectorAll("[data-part-nav]").forEach(function (a) {
+        a.removeAttribute("aria-current");
+      });
       return;
     }
-    applySeries(route.id);
+    applySeries(seriesIdFor(route));
+    showPart(route);
+  }
+
+  function initParts() {
+    document.querySelectorAll("[data-tabs]").forEach(function (root) {
+      var tabs = root.querySelectorAll('[role="tab"]');
+      var panels = root.querySelectorAll('[role="tabpanel"]');
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          var id = tab.getAttribute("aria-controls");
+          tabs.forEach(function (item) {
+            var on = item === tab;
+            item.setAttribute("aria-selected", on ? "true" : "false");
+            item.tabIndex = on ? 0 : -1;
+          });
+          panels.forEach(function (panel) {
+            panel.hidden = panel.id !== id;
+          });
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-dialog-open]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var dialog = document.getElementById(button.getAttribute("data-dialog-open"));
+        if (dialog && dialog.showModal) dialog.showModal();
+      });
+    });
+
+    document.querySelectorAll("[data-dialog-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var dialog = button.closest("dialog");
+        if (dialog && dialog.close) dialog.close();
+      });
+    });
+
+    document.querySelectorAll("dialog.andm-dialog").forEach(function (dialog) {
+      dialog.addEventListener("click", function (event) {
+        if (event.target === dialog) dialog.close();
+      });
+    });
   }
 
   select.addEventListener("change", function () {
+    var route = parseRoute();
+    if (route.view !== "series" && route.view !== "tokens") {
+      applySeries(select.value);
+      return;
+    }
     go("#/series/" + select.value);
   });
 
+  initParts();
   window.addEventListener("hashchange", render);
 
   cssReady = catalog.loadCss("../dist/style.css").then(function (css) {

@@ -2,4 +2,6 @@
 
 今の画面の上に、一時的に出す UI。
 
-Dialog、Drawer、Popover、Tooltip などがここに入る。ページ内の面は Container。
+- `dialog.css` — `.andm-dialog`（native `<dialog>`。開閉は Gallery の短いスクリプト）
+
+Drawer、Popover、Tooltip などもここに入る。ページ内の面は Container。

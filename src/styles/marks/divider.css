@@ -1,0 +1,34 @@
+@layer andm.components {
+  .andm-divider {
+    display: block;
+    width: 100%;
+    height: 0;
+    margin: var(--andm-space-4) 0;
+    border: 0;
+    border-top: 1px solid
+      var(
+        --andm-divider-color,
+        color-mix(in srgb, var(--andm-color-on-surface) 24%, transparent)
+      );
+    background: transparent;
+  }
+
+  .andm-divider--inset {
+    margin-inline: var(--andm-space-4);
+    width: auto;
+  }
+
+  .andm-divider--vertical {
+    display: inline-block;
+    width: 0;
+    height: var(--andm-space-6);
+    margin: 0 var(--andm-space-3);
+    border: 0;
+    border-left: 1px solid
+      var(
+        --andm-divider-color,
+        color-mix(in srgb, var(--andm-color-on-surface) 24%, transparent)
+      );
+    vertical-align: middle;
+  }
+}

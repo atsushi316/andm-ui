@@ -2,4 +2,6 @@
 
 中の並びと面をまとめる UI。
 
-Card、Panel、List、Section などがここに入る。子の業務意味は持たない。
+- `card.css` — `.andm-card`（面と、影だけの `--raised`。Panel を別部品にはしない）
+
+List、Section などもここに入る。子の業務意味は持たない。

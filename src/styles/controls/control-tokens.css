@@ -1,0 +1,23 @@
+@layer andm.tokens {
+  :root {
+    /*
+     * 入力・選択の Baseline 寸法。
+     * 高さ・横余白・角は :root で Button や radius への別名にしない。
+     * 別名を :root に書くと、継承の時点で var() が解決され、
+     * シリーズの差し替えが入力に届かない。
+     * 部品は var(--andm-field-height, var(--andm-btn-height-md)) のように使う。
+     * 角は var(--andm-field-radius, var(--andm-radius-md))。
+     * ボタンの pill や直角を、入力へ流さない。
+     */
+    --andm-field-border-width: 1px;
+    --andm-check-size: var(--andm-space-5);
+    --andm-check-radius: var(--andm-space-1);
+    --andm-check-border-width: var(--andm-space-05);
+    --andm-radio-size: var(--andm-space-5);
+    --andm-radio-border-width: var(--andm-space-05);
+    --andm-radio-mark: 35%;
+    --andm-switch-width: var(--andm-space-10);
+    --andm-switch-height: var(--andm-space-6);
+    --andm-switch-thumb: var(--andm-space-4);
+  }
+}

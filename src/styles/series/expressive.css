@@ -19,7 +19,7 @@
       --andm-btn-padding-x-lg: var(--andm-space-12);
       /* 静止の pill は高さの半分。9999px から fast spatial で補間すると overshoot で半径が 0 を下回る。 */
       --andm-btn-radius: calc(var(--andm-btn-height-md) / 2);
-      /* Medium の pressed。Small 8 / Large 16 は button.css で上書き */
+      /* Medium の pressed。Small 8 / Large 16 は controls/button.css で上書き */
       --andm-btn-radius-pressed: var(--andm-radius-md);
       --andm-btn-press-scale: 1;
       /* square（Medium）。Small 12 / Large 28 は button.css */

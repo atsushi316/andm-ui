@@ -1,0 +1,107 @@
+@layer andm.components {
+  .andm-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--andm-space-2);
+    margin: 0;
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .andm-switch__input {
+    appearance: none;
+    box-sizing: border-box;
+    position: relative;
+    flex-shrink: 0;
+    width: var(--andm-switch-width, var(--andm-space-10));
+    height: var(--andm-switch-height, var(--andm-space-6));
+    margin: 0;
+    border: 0;
+    border-radius: var(--andm-radius-pill);
+    background: var(--andm-color-on-surface-variant);
+    cursor: inherit;
+    /* 選択は状態変化。ホバーの枠は short2 */
+    transition:
+      background-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-switch__input::after {
+    content: "";
+    position: absolute;
+    top: var(--andm-space-1);
+    left: var(--andm-space-1);
+    width: var(--andm-switch-thumb, var(--andm-space-4));
+    height: var(--andm-switch-thumb, var(--andm-space-4));
+    border-radius: var(--andm-radius-pill);
+    background: var(--andm-color-surface);
+    /* つまみの移動は状態変化 */
+    transition:
+      transform var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      background-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard);
+  }
+
+  .andm-switch__input:hover:not(:disabled):not([disabled]) {
+    box-shadow: inset 0 0 0 var(--andm-space-05) var(--andm-color-on-surface);
+  }
+
+  .andm-switch__input:checked {
+    background: var(--andm-color-primary);
+  }
+
+  .andm-switch__input:checked::after {
+    background: var(--andm-color-on-primary);
+    transform: translateX(var(--andm-space-4));
+  }
+
+  .andm-switch__input:active:not(:disabled):not([disabled]) {
+    transition:
+      background-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      box-shadow var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate);
+  }
+
+  .andm-switch__input:focus {
+    outline: none;
+  }
+
+  .andm-switch__input:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+
+  .andm-switch__input:disabled,
+  .andm-switch__input[disabled] {
+    cursor: not-allowed;
+    background: var(--andm-color-disabled-container);
+  }
+
+  .andm-switch__input:disabled::after,
+  .andm-switch__input[disabled]::after {
+    background: var(--andm-color-on-disabled);
+  }
+
+  .andm-switch:has(.andm-switch__input:disabled),
+  .andm-switch:has(.andm-switch__input[disabled]) {
+    cursor: not-allowed;
+    color: var(--andm-color-on-disabled);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-switch__input::after {
+      transition:
+        background-color var(--andm-motion-duration-short3)
+          var(--andm-motion-easing-standard);
+    }
+  }
+}
