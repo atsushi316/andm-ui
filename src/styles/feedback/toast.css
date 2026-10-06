@@ -23,12 +23,17 @@
     font-family: var(--andm-font-family);
     font-size: var(--andm-font-size-md);
     line-height: var(--andm-line-height-tight);
-    /* 出現は移動。色の切り替えは状態変化 */
+    /*
+     * 出現: Carbon motion は toast に duration-moderate-02（240ms）と entrance。
+     * その値は Carbon シリーズの --andm-toast-enter-* だけ。
+     * M3 snackbar と Fluent toast に enter の ms は無い。official value not specified。
+     * 既定は short4 + standard。色は short3 + standard。
+     */
     transition:
-      transform var(--andm-motion-duration-short4)
-        var(--andm-motion-easing-standard),
-      opacity var(--andm-motion-duration-short3)
-        var(--andm-motion-easing-standard),
+      transform var(--andm-toast-enter-duration, var(--andm-motion-duration-short4))
+        var(--andm-toast-enter-easing, var(--andm-motion-easing-standard)),
+      opacity var(--andm-toast-enter-duration, var(--andm-motion-duration-short4))
+        var(--andm-toast-enter-easing, var(--andm-motion-easing-standard)),
       background-color var(--andm-motion-duration-short3)
         var(--andm-motion-easing-standard),
       border-color var(--andm-motion-duration-short3)

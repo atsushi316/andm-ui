@@ -31,6 +31,10 @@
     padding: 0 var(--andm-space-2);
     border: 1px solid
       color-mix(in srgb, var(--andm-color-on-surface) 24%, transparent);
+    /*
+     * M3 / Carbon / Fluent / Spectrum / USWDS / Atlassian の
+     * pagination に円形ページボタンは無い。円にはしない。
+     */
     border-radius: var(--andm-radius-md);
     background: var(--andm-color-surface);
     color: var(--andm-color-on-surface);

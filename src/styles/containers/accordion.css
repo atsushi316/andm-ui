@@ -7,7 +7,8 @@
    * 右 25% と幅による margin はレイアウト規則なのでコピーしない。
    * USWDS / DADS のアコーディオンページに寸法・時間・hover は無い。
    * M3 / Apple / Spectrum / Fluent / Atlassian に同名の公式寸法は確認できず。
-   * official value not specified。開閉の色は short3 + standard。
+   * 開閉の時間は公式ページに無い。official value not specified。
+   * 開閉は short4 + standard。hover は short2、押下は short1。
    */
   .andm-accordion {
     margin: 0;
@@ -20,6 +21,20 @@
 
   .andm-accordion__item {
     border-bottom: 1px solid var(--andm-color-outline-variant);
+    interpolate-size: allow-keywords;
+  }
+
+  .andm-accordion__item::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height var(--andm-motion-duration-short4) var(--andm-motion-easing-standard),
+      content-visibility var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard) allow-discrete;
+  }
+
+  .andm-accordion__item[open]::details-content {
+    height: auto;
   }
 
   .andm-accordion__summary {
@@ -55,7 +70,7 @@
     border-right: var(--andm-focus-ring-width) solid currentColor;
     border-bottom: var(--andm-focus-ring-width) solid currentColor;
     transform: translateY(calc(var(--andm-space-05) * -1)) rotate(45deg);
-    transition: transform var(--andm-motion-duration-short3)
+    transition: transform var(--andm-motion-duration-short4)
       var(--andm-motion-easing-standard);
   }
 
@@ -102,7 +117,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .andm-accordion__summary,
-    .andm-accordion__summary::after {
+    .andm-accordion__summary::after,
+    .andm-accordion__item::details-content {
       transition: none;
     }
   }

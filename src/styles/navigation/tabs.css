@@ -66,6 +66,11 @@
   .andm-tabs__tab[aria-selected="true"] {
     color: var(--andm-color-primary);
     border-bottom-color: var(--andm-color-primary);
+    /* Carbon tabs style（v10）の選択ラベルは 600。無ければ medium。 */
+    font-weight: var(
+      --andm-tabs-selected-weight,
+      var(--andm-font-weight-medium)
+    );
   }
 
   .andm-tabs__tab:focus {

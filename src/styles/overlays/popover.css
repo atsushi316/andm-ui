@@ -7,6 +7,22 @@
     color: var(--andm-color-on-surface);
   }
 
+  .andm-popover--top .andm-popover__panel {
+    inset-block-start: auto;
+    inset-block-end: calc(100% + var(--andm-space-2));
+  }
+
+  .andm-popover--left .andm-popover__panel {
+    inset-block-start: 0;
+    inset-inline-start: auto;
+    inset-inline-end: calc(100% + var(--andm-space-2));
+  }
+
+  .andm-popover--right .andm-popover__panel {
+    inset-block-start: 0;
+    inset-inline-start: calc(100% + var(--andm-space-2));
+  }
+
   .andm-popover__panel {
     position: absolute;
     z-index: 2;

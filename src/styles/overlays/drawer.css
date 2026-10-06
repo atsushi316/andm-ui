@@ -18,9 +18,18 @@
     color: var(--andm-color-on-surface);
     box-shadow: var(--andm-shadow-2);
     font-family: var(--andm-font-family);
-    /* 端から出す。形状の移動 */
-    transition: transform var(--andm-motion-duration-short4)
-      var(--andm-motion-easing-standard);
+    /*
+     * M3 side sheets と Carbon に drawer の enter ms は無い。
+     * official value not specified。開閉は short4 + standard。
+     */
+    transition:
+      transform var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard),
+      overlay var(--andm-motion-duration-short4) var(--andm-motion-easing-standard)
+        allow-discrete,
+      display var(--andm-motion-duration-short4) var(--andm-motion-easing-standard)
+        allow-discrete;
+    transition-behavior: allow-discrete;
   }
 
   .andm-drawer[open] {

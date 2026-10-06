@@ -672,14 +672,24 @@
   function initParts() {
     document.querySelectorAll("[data-segmented]").forEach(function (group) {
       var options = group.querySelectorAll(".andm-segmented__option");
+      function syncSegmented() {
+        var index = 0;
+        options.forEach(function (item, i) {
+          if (item.getAttribute("aria-pressed") === "true") index = i;
+        });
+        group.style.setProperty("--andm-segmented-count", String(options.length));
+        group.style.setProperty("--andm-segmented-index", String(index));
+      }
       options.forEach(function (option) {
         option.addEventListener("click", function () {
           if (option.disabled) return;
           options.forEach(function (item) {
             item.setAttribute("aria-pressed", item === option ? "true" : "false");
           });
+          syncSegmented();
         });
       });
+      syncSegmented();
     });
 
     document.querySelectorAll("[data-tabs]").forEach(function (root) {

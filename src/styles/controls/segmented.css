@@ -6,18 +6,36 @@
    * M3 segmented buttons は現行では非推奨。古い 40dp は Expressive の寸法にしない。
    * Apple HIG の segmented controls ページから寸法は取れなかった。
    * Spectrum / Fluent / Atlassian / USWDS / DADS の公式な角・hover 時間は未記載。
-   * official value not specified。hover は short2 + decelerate、押下は short1 + accelerate。
+   * 選択インジケータの移動時間は公式ページに無い。official value not specified。
+   * 移動は short3 + standard。hover は short2 + decelerate、押下は short1 + accelerate。
    */
   .andm-segmented {
-    display: inline-flex;
+    --andm-segmented-count: 1;
+    --andm-segmented-index: 0;
+    position: relative;
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     max-width: 100%;
-    flex-wrap: wrap;
     margin: 0;
     padding: 0;
     border: 1px solid var(--andm-color-outline);
     border-radius: var(--andm-segmented-radius, var(--andm-radius-md));
     overflow: hidden;
     font-family: var(--andm-font-family);
+  }
+
+  .andm-segmented__indicator {
+    position: absolute;
+    z-index: 0;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: calc(100% / var(--andm-segmented-count));
+    background: var(--andm-color-primary);
+    pointer-events: none;
+    transform: translateX(calc(var(--andm-segmented-index) * 100%));
+    transition: transform var(--andm-motion-duration-short3)
+      var(--andm-motion-easing-standard);
   }
 
   .andm-segmented__option {
@@ -29,8 +47,10 @@
     margin: 0;
     padding: 0 var(--andm-space-4);
     border: 0;
+    position: relative;
+    z-index: 1;
     border-inline-end: 1px solid var(--andm-color-outline);
-    background: var(--andm-color-surface);
+    background: transparent;
     color: var(--andm-color-on-surface);
     font-family: inherit;
     font-size: var(--andm-font-size-md);
@@ -54,7 +74,7 @@
   }
 
   .andm-segmented__option[aria-pressed="true"] {
-    background: var(--andm-color-primary);
+    background: transparent;
     color: var(--andm-color-on-primary);
   }
 
@@ -84,7 +104,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .andm-segmented__option {
+    .andm-segmented__option,
+    .andm-segmented__indicator {
       transition: none;
     }
   }

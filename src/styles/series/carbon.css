@@ -70,5 +70,10 @@
       --andm-table-header-weight: 600;
       /* content switcher style: corner radius 4px。高さは size md で btn-height-md に乗る。 */
       --andm-segmented-radius: 4px;
+      /* motion: toast は duration-moderate-02（240ms）。entrance は既存の decelerate。 */
+      --andm-toast-enter-duration: 240ms;
+      --andm-toast-enter-easing: var(--andm-motion-easing-decelerate);
+      /* tabs style（v10）: 選択ラベル SemiBold 600。未選択は 400（font-weight-medium）。 */
+      --andm-tabs-selected-weight: 600;
     }
 }

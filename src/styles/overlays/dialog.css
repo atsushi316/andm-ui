@@ -11,6 +11,33 @@
     color: var(--andm-color-on-surface);
     box-shadow: var(--andm-shadow-2);
     font-family: var(--andm-font-family);
+    /*
+     * M3 / Carbon / Fluent / Apple の dialog ページに enter の ms は無い。
+     * すぐ出す、とも書いていない。official value not specified。
+     * 出現は short4 + standard。
+     */
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity var(--andm-motion-duration-short4) var(--andm-motion-easing-standard),
+      transform var(--andm-motion-duration-short4)
+        var(--andm-motion-easing-standard),
+      overlay var(--andm-motion-duration-short4) var(--andm-motion-easing-standard)
+        allow-discrete,
+      display var(--andm-motion-duration-short4) var(--andm-motion-easing-standard)
+        allow-discrete;
+  }
+
+  .andm-dialog[open] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @starting-style {
+    .andm-dialog[open] {
+      opacity: 0;
+      transform: translateY(var(--andm-space-2));
+    }
   }
 
   .andm-dialog::backdrop {
@@ -19,6 +46,23 @@
       var(--andm-color-on-surface) 40%,
       transparent
     );
+    transition: opacity var(--andm-motion-duration-short4)
+      var(--andm-motion-easing-standard) allow-discrete;
+  }
+
+  @starting-style {
+    .andm-dialog[open]::backdrop {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-dialog,
+    .andm-dialog[open],
+    .andm-dialog::backdrop {
+      transform: none;
+      transition: none;
+    }
   }
 
   .andm-dialog__panel {

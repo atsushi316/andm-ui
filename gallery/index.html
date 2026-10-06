@@ -911,6 +911,96 @@
         pointer-events: auto;
       }
 
+      .g-menu-stage,
+      .g-place-stage,
+      .g-toast-stage {
+        position: relative;
+        overflow: clip;
+      }
+
+      .g-menu-stage {
+        padding-bottom: 16rem;
+      }
+
+      .g-place-stage {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--andm-space-6);
+        padding: 5.5rem 8rem;
+      }
+
+      .g-place-stage .andm-tooltip,
+      .g-place-stage .andm-popover {
+        justify-self: center;
+      }
+
+      .g-tip-show .andm-tooltip__bubble,
+      .g-place-stage .andm-popover__panel {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .g-tip-show .andm-tooltip:not(.andm-tooltip--left):not(.andm-tooltip--right) .andm-tooltip__bubble,
+      .g-place-stage .andm-popover:not(.andm-popover--left):not(.andm-popover--right) .andm-popover__panel {
+        transform: none;
+      }
+
+      .g-tip-show .andm-tooltip--left .andm-tooltip__bubble,
+      .g-tip-show .andm-tooltip--right .andm-tooltip__bubble {
+        transform: translate(0, -50%);
+      }
+
+      .g-menu-sample > .andm-menu__panel {
+        position: static;
+        inset: auto;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+
+      .g-toast-stage {
+        min-height: 12rem;
+      }
+
+      .g-toast-stage .andm-toast-region {
+        position: absolute;
+        inset-inline-end: var(--andm-space-4);
+        inset-block-end: var(--andm-space-4);
+        width: min(22rem, calc(100% - var(--andm-space-8)));
+      }
+
+      .andm-series--carbon .g-toast-stage .andm-toast-region {
+        inset-block-end: auto;
+        inset-block-start: var(--andm-space-4);
+      }
+
+      .g-skeleton-demo {
+        display: grid;
+        gap: var(--andm-space-3);
+        max-width: 24rem;
+      }
+
+      .g-skeleton-lines {
+        display: grid;
+        gap: var(--andm-space-2);
+        flex: 1;
+        min-width: 0;
+      }
+
+      .g-skeleton-dads {
+        display: none;
+        margin: 0;
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .andm-series--dads .g-skeleton-demo {
+        display: none;
+      }
+
+      .andm-series--dads .g-skeleton-dads {
+        display: block;
+      }
+
       .g-exp-character {
         margin: 0 0 var(--andm-space-3);
         font-size: 1.25rem;
@@ -2361,7 +2451,7 @@
               Dialog <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              native の dialog です。開く、閉じる、背面のクリック、Escape だけを Gallery が受けます。
+              native の dialog です。M3、Carbon、Fluent、Apple に出現の時間は無いので short4 + standard です。すぐ出す、とも書いていません。official value not specified。
             </p>
             <div class="g-block">
               <button type="button" class="andm-btn andm-btn--filled andm-btn--md" data-dialog-open="apply-dialog">
@@ -2392,7 +2482,9 @@
             <h2 id="tabs-title">
               Tabs <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">同じ画面の中で、パネルを切り替えます。ページ遷移はしません。</p>
+            <p class="g-desc">
+              同じ画面の中で、パネルを切り替えます。高さは各シリーズのボタン高さ、Carbon の選択ラベルだけ 600 です。それ以外のタブ専用の装飾は足していません。
+            </p>
             <div class="andm-tabs" data-tabs>
               <div class="andm-tabs__list" role="tablist" aria-label="申請">
                 <button type="button" class="andm-tabs__tab" role="tab" id="apply-tab-summary" aria-controls="apply-panel-summary" aria-selected="true">
@@ -2468,11 +2560,11 @@
               Toast <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              しばらく見せる結果です。info はシリーズの secondary container。閉じる操作は Button のままです。
+              しばらく見せる結果です。Carbon は右上から 240ms。M3 は画面下、enter の時間は未記載。Fluent は右上か右下で、時間は未記載。official value not specified。見本の中に収め、ページ見出しは覆いません。
             </p>
             <div class="g-block">
               <h3>出す</h3>
-              <div class="g-context">
+              <div class="g-context g-toast-stage">
                 <div class="g-row">
                   <button type="button" class="andm-btn andm-btn--filled andm-btn--md" data-toast-open="save-toast">
                     保存の結果を出す
@@ -2535,8 +2627,29 @@
               Tooltip <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              ホバーかキーボードフォーカスで、短い説明を出します。クリックでは開きません。
+              ホバーかキーボードフォーカスで、短い説明を出します。上・下・左・右は同じ部品です。間隔は space-2。公式の配置寸法は未記載です。official value not specified。
             </p>
+            <div class="g-block">
+              <h3>配置</h3>
+              <div class="g-context g-place-stage g-tip-show">
+                <span class="andm-tooltip andm-tooltip--top">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">上</button>
+                  <span class="andm-tooltip__bubble" role="tooltip">上に出します</span>
+                </span>
+                <span class="andm-tooltip andm-tooltip--bottom">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">下</button>
+                  <span class="andm-tooltip__bubble" role="tooltip">下に出します</span>
+                </span>
+                <span class="andm-tooltip andm-tooltip--left">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">左</button>
+                  <span class="andm-tooltip__bubble" role="tooltip">左に出します</span>
+                </span>
+                <span class="andm-tooltip andm-tooltip--right">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">右</button>
+                  <span class="andm-tooltip__bubble" role="tooltip">右に出します</span>
+                </span>
+              </div>
+            </div>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
@@ -2561,7 +2674,11 @@
               <summary>クラス名</summary>
               <p>
                 <code>andm-tooltip</code> がトリガーを包み、説明は
-                <code>andm-tooltip__bubble</code>。
+                <code>andm-tooltip__bubble</code>。配置は
+                <code>andm-tooltip--top</code> /
+                <code>andm-tooltip--bottom</code> /
+                <code>andm-tooltip--left</code> /
+                <code>andm-tooltip--right</code>。
               </p>
             </details>
           </section>
@@ -2570,7 +2687,9 @@
             <h2 id="breadcrumb-title">
               Breadcrumb <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">いまの場所までの道です。現在地はリンクにしません。</p>
+            <p class="g-desc">
+              いまの場所までの道です。現在地はリンクにしません。縦の余白は space-2 です。公式のパンくず測定ではありません。official value not specified。
+            </p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
@@ -2604,7 +2723,9 @@
             <h2 id="pagination-title">
               Pagination <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">同じ一覧のページを移します。選択は <code>aria-current="page"</code> です。</p>
+            <p class="g-desc">
+              同じ一覧のページを移します。M3、Carbon、Fluent、Spectrum、USWDS、Atlassian に円形のページボタンは無いので、円にはしていません。
+            </p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
@@ -2661,11 +2782,11 @@
               Menu <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              その場の操作一覧です。項目を選ぶと <code>aria-current="page"</code> になり、一覧は閉じます。
+              その場の操作一覧です。開いた見本は箱の中だけです。説明やシリーズは覆いません。
             </p>
             <div class="g-block">
               <h3>In Context</h3>
-              <div class="g-context">
+              <div class="g-context g-menu-stage">
                 <p>申請の操作です。</p>
                 <div class="andm-menu" data-menu>
                   <button
@@ -2690,8 +2811,8 @@
             </div>
             <div class="g-block">
               <h3>項目</h3>
-              <div class="andm-menu">
-                <div class="andm-menu__panel" role="menu" style="position: static">
+              <div class="andm-menu g-menu-sample">
+                <div class="andm-menu__panel" role="menu">
                   <button type="button" class="andm-menu__item" role="menuitem" aria-current="page">概要</button>
                   <button type="button" class="andm-menu__item" role="menuitem">詳細</button>
                   <hr class="andm-menu__separator" />
@@ -2714,7 +2835,7 @@
               Drawer <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              画面の端に出す native の dialog です。開く、閉じる、背面のクリック、Escape だけを Gallery が受けます。
+              画面の端に出す native の dialog です。開閉の公式時間は未記載なので short4 + standard です。official value not specified。
             </p>
             <div class="g-block">
               <h3>In Context</h3>
@@ -2760,7 +2881,7 @@
               Popover <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              クリックで開く短い面です。中の操作では閉じず、閉じる・外クリック・Escape でしまいます。ホバーの説明は Tooltip のままです。
+              クリックで開く短い面です。上・下・左・右は Tooltip と同じ配置です。見本は箱の中に収め、説明は覆いません。
             </p>
             <div class="g-block">
               <h3>In Context</h3>
@@ -2794,6 +2915,35 @@
               </div>
             </div>
             <div class="g-block">
+              <h3>配置</h3>
+              <div class="g-context g-place-stage">
+                <div class="andm-popover andm-popover--top">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">上</button>
+                  <div class="andm-popover__panel" role="dialog">
+                    <p class="andm-popover__body">上に出します。</p>
+                  </div>
+                </div>
+                <div class="andm-popover andm-popover--bottom">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">下</button>
+                  <div class="andm-popover__panel" role="dialog">
+                    <p class="andm-popover__body">下に出します。</p>
+                  </div>
+                </div>
+                <div class="andm-popover andm-popover--left">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">左</button>
+                  <div class="andm-popover__panel" role="dialog">
+                    <p class="andm-popover__body">左に出します。</p>
+                  </div>
+                </div>
+                <div class="andm-popover andm-popover--right">
+                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">右</button>
+                  <div class="andm-popover__panel" role="dialog">
+                    <p class="andm-popover__body">右に出します。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="g-block">
               <h3>中身</h3>
               <div class="andm-popover g-popover-sample">
                 <div class="andm-popover__panel" role="dialog" aria-labelledby="note-popover-title">
@@ -2807,7 +2957,11 @@
               <p>
                 <code>andm-popover</code>、<code>andm-popover__panel</code>、
                 <code>andm-popover__title</code>、<code>andm-popover__body</code>、
-                <code>andm-popover__actions</code>。しまうときは <code>is-closed</code>。
+                <code>andm-popover__actions</code>。配置は
+                <code>andm-popover--top</code> /
+                <code>andm-popover--bottom</code> /
+                <code>andm-popover--left</code> /
+                <code>andm-popover--right</code>。しまうときは <code>is-closed</code>。
               </p>
             </details>
           </section>
@@ -2889,7 +3043,7 @@
               Accordion <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              見出しで本文を開きます。流れの中に収まり、ページは覆いません。Carbon の既定ヘッダー以外、公式の寸法と hover 時間は未記載です。official value not specified。
+              見出しで本文を開きます。開閉の公式時間は無いので short4 + standard です。official value not specified。
             </p>
             <div class="g-block">
               <h3>In Context</h3>
@@ -2961,7 +3115,7 @@
               Spinner <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              待ちの印です。一辺は Carbon small の 16px と一致する space-4 です。回転周期の公式値は無いので short4 を使います。official value not specified。
+              待ちの印です。Carbon loading の回転は 690ms です。M3 と Fluent に周期は無いので、その 690ms を使います。
             </p>
             <div class="g-block">
               <h3>In Context</h3>
@@ -2980,16 +3134,22 @@
               Skeleton <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              中身が来る前の面です。公式の高さと点滅時間は未記載なので、点滅はしません。official value not specified。DADS はスケルトンを使わず、プログレスを案内します。
+              中身が来る前の静かな面です。Carbon の既定は四角で、style ページに点滅時間は無いので動かしません。official value not specified。DADS では出しません。
             </p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
-                <div class="g-row">
-                  <span class="andm-skeleton andm-skeleton--avatar"></span>
-                  <span class="andm-skeleton" style="width: 12rem"></span>
+                <p class="g-skeleton-dads">DADS はスケルトンを使わず、プログレスインジケーターを案内します。</p>
+                <div class="g-skeleton-demo">
+                  <div class="g-row">
+                    <span class="andm-skeleton andm-skeleton--avatar"></span>
+                    <span class="g-skeleton-lines">
+                      <span class="andm-skeleton" style="width: 42%"></span>
+                      <span class="andm-skeleton" style="width: 78%"></span>
+                    </span>
+                  </div>
+                  <span class="andm-skeleton andm-skeleton--block"></span>
                 </div>
-                <span class="andm-skeleton andm-skeleton--block"></span>
               </div>
             </div>
             <details class="g-details">
@@ -3025,12 +3185,13 @@
               Segmented control <span class="g-badge g-badge--ready">使える</span>
             </h2>
             <p class="g-desc">
-              同じ場で一つを選びます。Carbon content switcher の角 4px 以外、公式の寸法と hover 時間は未記載です。official value not specified。
+              同じ場で一つを選びます。選択の移動は short3 + standard です。公式の移動時間は未記載です。official value not specified。
             </p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
                 <div class="andm-segmented" role="group" aria-label="表示" data-segmented>
+                  <span class="andm-segmented__indicator" aria-hidden="true"></span>
                   <button type="button" class="andm-segmented__option" aria-pressed="true">一覧</button>
                   <button type="button" class="andm-segmented__option" aria-pressed="false">表</button>
                   <button type="button" class="andm-segmented__option" aria-pressed="false">履歴</button>

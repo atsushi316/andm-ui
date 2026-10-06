@@ -27,6 +27,16 @@
     color: var(--andm-color-on-surface-variant);
   }
 
+  .andm-breadcrumb__link,
+  .andm-breadcrumb__current {
+    /*
+     * Carbon は高さ 16/18 と左右 margin。縦 padding は未記載。
+     * Fluent / USWDS の公開ページにも縦 padding の px は無い。
+     * official value not specified。0 より一段上の space-2。公式の測定ではない。
+     */
+    padding-block: var(--andm-space-2);
+  }
+
   .andm-breadcrumb__link {
     color: var(--andm-color-primary);
     text-decoration: none;

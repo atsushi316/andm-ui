@@ -4,8 +4,10 @@
    * large 88px はスペース階梯に無く、一つのスピナーには使わない。
    * M3 circular の直径は specs 本文から取れなかった。
    * Atlassian spinner は xsmall–xlarge の名前だけで px は無い。
-   * 回転周期の公式値は無い。official value not specified。
-   * 動かすときは既存の short4。reduced motion では止める。
+   * 回転周期: Carbon loading の animation mixin は 690ms linear infinite。
+   * M3 progress / Fluent spinner のページに周期は無い。
+   * 690ms は既存の short トークンに無いが、出典の周期なのでそのまま使う。
+   * reduced motion では止める。
    */
   .andm-spinner {
     display: inline-block;
@@ -16,8 +18,7 @@
     border-top-color: var(--andm-color-primary);
     border-radius: var(--andm-radius-pill);
     vertical-align: middle;
-    animation: andm-spinner-rotate var(--andm-motion-duration-short4) linear
-      infinite;
+    animation: andm-spinner-rotate 690ms linear infinite;
   }
 
   @keyframes andm-spinner-rotate {
