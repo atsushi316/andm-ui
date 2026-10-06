@@ -825,20 +825,85 @@
         font-weight: 700;
       }
 
-      .g-series-select {
-        font: inherit;
-        color: var(--andm-color-on-surface);
-        background: var(--andm-color-surface);
-        border: 1px solid var(--g-border);
-        border-radius: var(--andm-radius-md);
-        padding: var(--andm-space-2) var(--andm-space-3);
-        min-width: min(100%, 18rem);
+      .g-series-switch {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--andm-space-2);
+        max-width: 42rem;
       }
 
-      .g-series-select:focus-visible,
+      .g-series-chip {
+        min-height: 2.5rem;
+        padding: 0.35rem 0.85rem;
+        border: 1px solid var(--g-border);
+        border-radius: var(--andm-radius-md);
+        background: var(--andm-color-surface);
+        color: var(--andm-color-on-surface);
+        font: inherit;
+        font-size: 0.9375rem;
+        line-height: 1.3;
+        cursor: pointer;
+        transition:
+          background-color var(--andm-motion-duration-short2)
+            var(--andm-motion-easing-decelerate),
+          border-color var(--andm-motion-duration-short2)
+            var(--andm-motion-easing-decelerate),
+          color var(--andm-motion-duration-short2) var(--andm-motion-easing-decelerate);
+      }
+
+      .g-series-chip:hover {
+        border-color: color-mix(
+          in srgb,
+          var(--andm-color-primary) 45%,
+          var(--g-border)
+        );
+      }
+
+      .g-series-chip:active {
+        transition-duration: var(--andm-motion-duration-short1);
+        transition-timing-function: var(--andm-motion-easing-accelerate);
+      }
+
+      .g-series-chip[aria-pressed="true"] {
+        border-color: var(--andm-color-primary);
+        background: color-mix(
+          in srgb,
+          var(--andm-color-primary) 14%,
+          var(--andm-color-surface)
+        );
+        color: var(--andm-color-primary);
+        font-weight: 700;
+      }
+
+      .g-series-chip:focus-visible,
       .g-motion-demo:focus-visible {
         outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
         outline-offset: var(--andm-focus-ring-offset);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .g-series-chip {
+          transition: none;
+        }
+      }
+
+      /* 開いた Popover は見本の箱の中だけ。見出し・説明・シリーズ・クラス名には被せない。 */
+      .g-popover-stage {
+        overflow: clip;
+        padding-bottom: 14rem;
+      }
+
+      .g-popover-sample {
+        display: block;
+      }
+
+      .g-popover-sample > .andm-popover__panel {
+        position: static;
+        inset: auto;
+        width: min(100%, 22rem);
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
       }
 
       .g-exp-character {
@@ -1160,8 +1225,13 @@
           <p class="g-pagehead__lead" id="page-lead"></p>
           <p class="g-pagehead__status" id="page-status"></p>
           <div id="series-tools">
-            <label class="g-series-label" for="series-select">シリーズ</label>
-            <select id="series-select" class="g-series-select"></select>
+            <p class="g-series-label" id="series-switch-label">シリーズ</p>
+            <div
+              class="g-series-switch"
+              id="series-switch"
+              role="group"
+              aria-labelledby="series-switch-label"
+            ></div>
           </div>
         </header>
         <header class="g-hero">
@@ -2611,7 +2681,7 @@
             </p>
             <div class="g-block">
               <h3>In Context</h3>
-              <div class="g-context">
+              <div class="g-context g-popover-stage">
                 <div class="andm-popover" data-popover>
                   <button
                     type="button"
@@ -2642,8 +2712,8 @@
             </div>
             <div class="g-block">
               <h3>中身</h3>
-              <div class="andm-popover">
-                <div class="andm-popover__panel" role="dialog" aria-labelledby="note-popover-title" style="position: static">
+              <div class="andm-popover g-popover-sample">
+                <div class="andm-popover__panel" role="dialog" aria-labelledby="note-popover-title">
                   <h3 class="andm-popover__title" id="note-popover-title">メモ</h3>
                   <p class="andm-popover__body">提出前に、担当へ共有できます。</p>
                 </div>

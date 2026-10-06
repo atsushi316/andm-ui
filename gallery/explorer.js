@@ -10,7 +10,8 @@
   var scrollTarget = "";
   var libraryToken = 0;
   var libraryCache = Object.create(null);
-  var select = document.getElementById("series-select");
+  var seriesSwitch = document.getElementById("series-switch");
+  var currentSeriesId = "baseline";
   var navSeries = document.getElementById("nav-series");
   var tokenCards = document.getElementById("token-cards");
   var tokenStatus = document.getElementById("token-status");
@@ -184,7 +185,7 @@
 
   function seriesIdFor(route) {
     if (route.view === "series") return route.id;
-    if (select && select.value) return select.value;
+    if (currentSeriesId) return currentSeriesId;
     return "baseline";
   }
 
@@ -271,12 +272,18 @@
   }
 
   function fillSelect() {
-    select.replaceChildren();
+    if (seriesSwitch) seriesSwitch.replaceChildren();
     items.forEach(function (item) {
-      var option = document.createElement("option");
-      option.value = item.id;
-      option.textContent = item.label;
-      select.appendChild(option);
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "g-series-chip";
+      button.textContent = item.label;
+      button.dataset.seriesId = item.id;
+      button.setAttribute("aria-pressed", "false");
+      button.addEventListener("click", function () {
+        chooseSeries(item.id);
+      });
+      if (seriesSwitch) seriesSwitch.appendChild(button);
     });
     navSeries.replaceChildren();
     items.forEach(function (item) {
@@ -294,7 +301,11 @@
     var item = items.find(function (entry) { return entry.id === id; }) || items[0];
     if (!item) return;
     catalog.applySeries(preview, item.className);
-    select.value = item.id;
+    currentSeriesId = item.id;
+    document.querySelectorAll(".g-series-chip").forEach(function (button) {
+      var on = button.dataset.seriesId === item.id;
+      button.setAttribute("aria-pressed", on ? "true" : "false");
+    });
     document.querySelectorAll("[data-scene]").forEach(function (el) {
       el.hidden = el.getAttribute("data-scene") !== item.id;
     });
@@ -916,15 +927,15 @@
     });
   }
 
-  select.addEventListener("change", function () {
+  function chooseSeries(id) {
     var route = parseRoute();
     if (route.view === "series") {
-      go("#/series/" + select.value);
+      go("#/series/" + id);
       return;
     }
     if (route.view === "tokens" || route.view === "library" || route.view === "home") return;
-    applySeries(select.value);
-  });
+    applySeries(id);
+  }
 
   document.querySelectorAll(".g-nav__group > .g-nav__label").forEach(function (btn) {
     if (btn.tagName !== "BUTTON") return;
@@ -958,7 +969,7 @@
     if (Object.prototype.hasOwnProperty.call(pageJumps, href)) {
       event.preventDefault();
       scrollTarget = pageJumps[href];
-      var series = (select && select.value) || "baseline";
+      var series = currentSeriesId || "baseline";
       go("#/series/" + series);
       return;
     }
