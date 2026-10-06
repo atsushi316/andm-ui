@@ -1,56 +1,87 @@
 # andm-ui
 
-Vue 3 + Vite を使った UI コンポーネントライブラリ（npm package 配布前提）の初期構成です。
+CSS-first の小さな UI ライブラリーです。Native HTML + `andm-*` class が第一級 API。Framework wrapper / Storybook は含みません。
 
-## Style
+## 使い方
 
+```bash
+npm install @atsushi316/andm-ui
 ```
+
+```js
 import '@atsushi316/andm-ui/style.css'
 ```
 
-## M3 Buttons
-
-### Button コンポーネント 公開 API
-
-| Prop       | 型                                                          | 説明                                              |
-| ---------- | ----------------------------------------------------------- | ------------------------------------------------- |
-| `variant`  | `'elevated' \| 'filled' \| 'tonal' \| 'outlined' \| 'text'` | ボタンのスタイル（M3の5種のみ）                   |
-| `size`     | `'sm' \| 'md' \| 'lg'`                                      | ボタンのサイズ                                    |
-| `disabled` | `boolean`                                                   | 無効化状態（デフォルト: `false`）                 |
-| `iconName` | `string`                                                    | アイコン名（フォールバック、推奨は`slot="icon"`） |
-
-**Icon**: `slot="icon"`を使用することを推奨。`iconName`はフォールバックとして利用可能。
-
-### FAB コンポーネント 公開 API
-
-| Prop       | 型                                                    | 説明                                              |
-| ---------- | ----------------------------------------------------- | ------------------------------------------------- |
-| `variant`  | `'primary' \| 'secondary' \| 'tertiary' \| 'surface'` | FABのバリアント                                   |
-| `size`     | `'sm' \| 'md' \| 'lg'`                                | FABのサイズ                                       |
-| `label`    | `string`                                              | Extended FABのラベルテキスト                      |
-| `iconName` | `string`                                              | アイコン名（フォールバック、推奨は`slot="icon"`） |
-| `icon`     | `string`                                              | アイコン名（`iconName`の代替）                    |
-
-**Icon**: `slot="icon"`を使用することを推奨。`iconName`または`icon`はフォールバックとして利用可能。
-
-### All Buttons ページ（仕様の中心）
-
-Storybookの「Atoms/Button/All Buttons」ページが、Material Design 3の「All buttons」仕様の**唯一の公式仕様書**として機能します。このページは以下のセクションを含みます：
-
-- **A) Common buttons**: 5つのvariant（elevated, filled, tonal, outlined, text）
-- **B) Common buttons with leading icon**: アイコン付きボタンの例
-- **C) States**: Default / Hover / Pressed / Focus / Disabled の状態比較
-- **D) FAB / Extended FAB**: Standard FAB（3 sizes）とExtended FAB（label付き）
-
-**このページをM3仕様書として参照してください。** 他のstories（Button.stories.ts、FAB.stories.ts）は補助的な役割であり、All Buttonsページが仕様の中心です。
-
-## Notes
-
-Toggle buttons are not implemented yet.
-Storybook Docs are generated via Autodocs.
-
-## Storybook
-
-```sh
-npm run storybook
+```html
+<button class="andm-btn andm-btn--filled andm-btn--md">保存</button>
 ```
+
+### Button
+
+| 種類 | クラス |
+|------|--------|
+| Block | `andm-btn` |
+| Variant | `andm-btn--elevated` / `--filled` / `--tonal` / `--outlined` / `--text` |
+| Size | `andm-btn--sm` / `--md` / `--lg` |
+| Icon | `andm-btn__icon`（leading / trailing） |
+
+状態はブラウザ標準（`:hover` / `:active` / `:focus-visible` / `:disabled`）で表現します。
+
+### シリーズ（親スコープ）
+
+Gallery で切り替えられます。同じ `andm-btn` に、親の Token を当てます。公式の全一覧ではありません。シリーズ別のボタンクラスはありません。
+
+| シリーズ | 親クラス | 用途の目安 |
+|----------|----------|------------|
+| Baseline | なし | 汎用・中立 |
+| Soft | `andm-series--soft` | 設定や案内など、落ち着いた画面 |
+| Dense | `andm-series--dense` | 表やツールバーなど、情報が多い画面 |
+| Technical | `andm-series--technical` | 境界をはっきりさせたい画面 |
+| Editorial | `andm-series--editorial` | 記事や読み物 |
+| Playful | `andm-series--playful` | 気軽な招待 |
+| M3 Expressive | `andm-series--expressive` | 表現寄り・消費者向け |
+| DADS | `andm-series--dads` | 行政・公共の分かりやすさ |
+| Apple | `andm-series--apple` | 今の Apple の画面に近い、案内や設定 |
+| Spectrum | `andm-series--spectrum` | 業務の画面。境界がはっきりして、詰めすぎない |
+| Fluent 2 | `andm-series--fluent` | 慣れた操作で、仕事に集中する画面 |
+| Carbon | `andm-series--carbon` | 製品の画面。角は立て、青で主操作を示す |
+
+```html
+<div class="andm-series--soft">
+  <button class="andm-btn andm-btn--filled andm-btn--md">保存</button>
+</div>
+```
+
+DADS はデジタル庁デザインシステムの公開情報の解釈です。ロゴや公式ファイルは含みません。
+
+## 開発
+
+```bash
+npm run build      # src/styles → dist/style.css
+npm start          # build してから Gallery を起動
+# または npm run gallery
+# http://127.0.0.1:4180/gallery/
+```
+
+製品 Gallery は必ず `dist/style.css` を参照します。`npm start` と `npm run gallery` は、起動前に build します。`dist/` は Git に含まれないので、build なしで HTML だけ開くと見た目が出ません。
+ルート `/` は `/gallery/` へ誘導します。ポートは `4180` 固定です。すでに Gallery が応答しているときは、その URL を表示して終了します。別プロセスが 4180 を塞いでいて Gallery ではない場合は、そのプロセスを止めてから再実行してください。
+
+## 構成
+
+```
+src/styles/
+  tokens/       Foundation（primitive / semantic）
+  controls/     Control（Button の Token と見た目）
+  marks/ …      責務カテゴリの置き場所（空は README のみ）
+  series/       Design Language（親クラスの Token remapping）
+gallery/        Design System Explorer（dist 参照）
+examples/       消費側の最小例
+research/       研究ワークスペース（npm 非含有）
+DESIGN.md       デザイン原則・Design Space
+```
+
+`research/` は Build 外です。削除しても本体は build 可能です。npm 公開対象は `package.json` の `files` で制御し、`research/` は含めません。
+
+## デザイン原則
+
+詳細は [DESIGN.md](./DESIGN.md)。平均 UI への収束を禁止し、Design Space 上の複数方向を保持します。

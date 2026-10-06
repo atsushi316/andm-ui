@@ -1,7 +1,0 @@
-import './style.css'
-export * from './components/atoms/Button'
-export * from './components/atoms/IconButton'
-export * from './components/atoms/FAB'
-export * from './components/molecules/ButtonGroup'
-export * from './components/molecules/SplitButton'
-export * from './components/molecules/SegmentedButtons'

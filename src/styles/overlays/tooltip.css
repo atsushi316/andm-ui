@@ -1,0 +1,51 @@
+@layer andm.components {
+  .andm-tooltip {
+    position: relative;
+    display: inline-flex;
+    max-width: 100%;
+  }
+
+  .andm-tooltip__bubble {
+    position: absolute;
+    z-index: 1;
+    inset-inline-start: 0;
+    inset-block-start: calc(100% + var(--andm-space-2));
+    width: max-content;
+    max-width: calc(var(--andm-space-24) * 3);
+    margin: 0;
+    padding: var(--andm-space-1) var(--andm-space-2);
+    border-radius: var(--andm-tooltip-radius, var(--andm-radius-sm));
+    background: var(--andm-color-on-surface);
+    color: var(--andm-color-surface);
+    box-shadow: var(--andm-shadow-1);
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-sm);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(var(--andm-space-1));
+    /* hover / focus で出す */
+    transition:
+      opacity var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      transform var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-tooltip:hover .andm-tooltip__bubble,
+  .andm-tooltip:focus-within .andm-tooltip__bubble {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .andm-tooltip__bubble,
+    .andm-tooltip:hover .andm-tooltip__bubble,
+    .andm-tooltip:focus-within .andm-tooltip__bubble {
+      transform: none;
+      transition: opacity var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+    }
+  }
+}

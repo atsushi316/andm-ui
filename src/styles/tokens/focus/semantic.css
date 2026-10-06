@@ -1,0 +1,8 @@
+@layer andm.tokens {
+  :root {
+    --andm-focus-ring-color: var(--andm-color-primary);
+    --andm-focus-ring-width: 2px;
+    --andm-focus-ring-offset: 2px;
+    --andm-focus-ring-style: solid;
+  }
+}

@@ -1,0 +1,11 @@
+@layer andm.tokens {
+  :root {
+    /* Hover / Press の状態層。Disabled の色は color の semantic。 */
+    --andm-state-hover-opacity: 0.08;
+    --andm-state-pressed-opacity: 0.12;
+    --andm-overlay-hover: rgb(0 0 0 / 0.08);
+    --andm-overlay-hover-light: rgb(255 255 255 / 0.1);
+    --andm-overlay-active: rgb(0 0 0 / 0.12);
+    --andm-overlay-active-light: rgb(255 255 255 / 0.14);
+  }
+}

@@ -1,0 +1,12 @@
+@layer andm.tokens {
+  :root {
+    /* —— Motion（M3 Motion 準拠の短時間トークン） —— */
+    --andm-motion-duration-short1: 50ms;
+    --andm-motion-duration-short2: 100ms;
+    --andm-motion-duration-short3: 150ms;
+    --andm-motion-duration-short4: 200ms;
+    --andm-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+    --andm-motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  }
+}

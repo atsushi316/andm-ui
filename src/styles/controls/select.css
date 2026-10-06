@@ -1,0 +1,101 @@
+@layer andm.components {
+  .andm-select {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--andm-space-1);
+    margin: 0;
+    font-family: var(--andm-font-family);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-select__label {
+    font-size: var(--andm-font-size-sm);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+  }
+
+  .andm-select__field {
+    position: relative;
+    display: block;
+  }
+
+  .andm-select__native {
+    appearance: none;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    height: var(--andm-field-height, var(--andm-btn-height-md));
+    margin: 0;
+    padding: 0
+      calc(
+        var(--andm-field-padding-x, var(--andm-btn-padding-x-md)) +
+          var(--andm-space-5)
+      )
+      0 var(--andm-field-padding-x, var(--andm-btn-padding-x-md));
+    border: var(--andm-field-border-width, 1px) solid
+      var(--andm-field-border-color, var(--andm-color-on-surface-variant));
+    border-radius: var(--andm-field-radius, var(--andm-radius-md));
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-surface);
+    font-family: inherit;
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    cursor: pointer;
+    transition:
+      border-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-select__chevron {
+    position: absolute;
+    top: 50%;
+    right: var(--andm-field-padding-x, var(--andm-btn-padding-x-md));
+    width: var(--andm-space-2);
+    height: var(--andm-space-2);
+    margin-top: calc(var(--andm-space-1) * -1);
+    border-right: var(--andm-space-05) solid var(--andm-color-on-surface-variant);
+    border-bottom: var(--andm-space-05) solid var(--andm-color-on-surface-variant);
+    /* 矢印の静止形。形状は遷移させない */
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+
+  .andm-select__native:hover:not(:disabled):not([disabled]):not(:focus) {
+    border-color: var(
+      --andm-field-border-color-hover,
+      var(--andm-color-on-surface)
+    );
+  }
+
+  .andm-select__native:focus {
+    outline: none;
+  }
+
+  .andm-select__native:focus-visible {
+    border-color: var(
+      --andm-field-focus-border-color,
+      var(--andm-color-primary)
+    );
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+
+  .andm-select__native:disabled,
+  .andm-select__native[disabled] {
+    cursor: not-allowed;
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+  }
+
+  .andm-select__field:has(.andm-select__native:disabled) .andm-select__chevron,
+  .andm-select__field:has(.andm-select__native[disabled]) .andm-select__chevron {
+    border-color: var(--andm-color-on-disabled);
+  }
+}

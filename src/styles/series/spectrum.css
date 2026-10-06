@@ -1,0 +1,67 @@
+@layer andm.tokens {
+  /*
+     * 切替シリーズ: Spectrum 2。desktop / light。Express は使わない。
+     * 公式 CSS とフォントファイルは同梱しない。ボタンのクラスは共通のまま。
+     *
+     * 値は @spectrum-css/tokens 16.0.2 の medium-vars / light-vars / global-vars
+     * と、@spectrum-css/button のサイズ対応（S / 既定 / L）。
+     * 色の rgb は packages/tokens/src の light とも一致。
+     * 角はボタン式 height/2。corner-radius-100（4px）はボタンの角ではない。
+     *
+     * 高さ: component-height-75/100/200 = 24 / 32 / 40px
+     * 字: font-size-75/100/200 = 12 / 14 / 16px、bold-font-weight = 700
+     * 横余白: pill-edge-to-text 13/16/20px から border-width-200（2px）を引く → 11 / 14 / 18px
+     * 塗り: blue-900-rgb 59,99,251。hover/down: blue-1000-rgb 39,77,234。文字は white
+     * 薄い面: blue-200-rgb 229,240,254。境界: gray-400-rgb 198,198,198
+     * 面: gray-50-rgb 248,248,248。本文: gray-800-rgb 41,41,41
+     * フォント名: sans-serif-font-family = Adobe Clean（ファイルは置かない）
+     * 影: ボタンの box-shadow はフォーカス以外 none
+     * motion ページの duration-100 は 130ms。ease-out は cubic-bezier(0, 0, 0.40, 1)。
+     * ボタンの色遷移はこの duration と ease-out。short1 / short2 と、押下・ホバーの easing だけ差し替える。
+     * 押下縮小は 1。
+     */
+    .andm-series--spectrum {
+      --andm-color-primary: rgb(59, 99, 251);
+      --andm-color-primary-rgb: 59 99 251;
+      --andm-color-on-primary: var(--andm-color-white);
+      --andm-color-secondary-container: rgb(229, 240, 254);
+      --andm-color-on-secondary-container: rgb(59, 99, 251);
+      --andm-color-surface: rgb(248, 248, 248);
+      --andm-color-on-surface: rgb(41, 41, 41);
+      --andm-color-on-surface-variant: rgb(80, 80, 80);
+      --andm-color-outline: rgb(198, 198, 198);
+      --andm-font-family: "Adobe Clean", "Segoe UI", "Hiragino Sans", sans-serif;
+      --andm-font-weight-medium: 700;
+      --andm-font-size-sm: 12px;
+      --andm-font-size-md: 14px;
+      --andm-font-size-lg: 16px;
+      --andm-btn-tracking: 0;
+      --andm-btn-radius: var(--andm-radius-pill);
+      --andm-btn-radius-pressed: var(--andm-radius-pill);
+      --andm-btn-height-sm: var(--andm-space-6);
+      --andm-btn-height-md: var(--andm-space-8);
+      --andm-btn-height-lg: var(--andm-space-10);
+      --andm-btn-padding-x-sm: 11px;
+      --andm-btn-padding-x-md: 14px;
+      --andm-btn-padding-x-lg: 18px;
+      --andm-shadow-1: none;
+      --andm-shadow-2: none;
+      --andm-btn-press-scale: 1;
+      --andm-focus-ring-width: var(--andm-space-05);
+      --andm-motion-duration-short1: 130ms;
+      --andm-motion-duration-short2: 130ms;
+      --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.4, 1);
+      --andm-motion-easing-accelerate: cubic-bezier(0, 0, 0.4, 1);
+      /* corner-radius-100。ボタンの pill ではない。 */
+      --andm-field-radius: 4px;
+      --andm-surface-radius: 4px;
+      /* ダイアログ・アラート・バッジ・チェック固有の半径は未確認。小さな角の 4px（andm の傾向）。 */
+      --andm-dialog-radius: 4px;
+      --andm-alert-radius: 4px;
+      --andm-badge-radius: 4px;
+      --andm-check-radius: 4px;
+      /* 境界は gray-400。outline が既にその色。 */
+      --andm-color-outline-variant: var(--andm-color-outline);
+      --andm-divider-color: var(--andm-color-outline);
+    }
+}

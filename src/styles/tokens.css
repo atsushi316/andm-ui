@@ -1,109 +1,28 @@
-:root {
-  --andm-color-primary: #6750a4;
-  --andm-color-primary-rgb: 103 80 164;
-  --andm-color-on-primary: #ffffff;
-  --andm-color-secondary-container: #e8def8;
-  --andm-color-on-secondary-container: #1d192b;
-  --andm-color-tertiary-container: #ffd8e4;
-  --andm-color-on-tertiary-container: #31111d;
-  --andm-color-surface: #fffbfe;
-  --andm-color-on-surface: #1c1b1f;
-  --andm-color-on-surface-variant: #49454f;
-  --andm-color-outline: #79747e;
-  --andm-color-outline-variant: color-mix(
-    in srgb,
-    var(--andm-color-outline) 24%,
-    transparent
-  );
-  --andm-color-divider: color-mix(
-    in srgb,
-    var(--andm-color-outline) 12%,
-    transparent
-  );
-
-  --andm-color-selected-container: var(--andm-color-secondary-container);
-  --andm-color-on-selected-container: var(--andm-color-on-secondary-container);
-
-  --andm-color-disabled-container: color-mix(
-    in srgb,
-    var(--andm-color-on-surface) 12%,
-    transparent
-  );
-  --andm-color-on-disabled: color-mix(
-    in srgb,
-    var(--andm-color-on-surface) 38%,
-    transparent
-  );
-  --andm-color-disabled-outline: color-mix(
-    in srgb,
-    var(--andm-color-outline) 12%,
-    transparent
-  );
-
-  --andm-color-danger: #b3261e;
-  --andm-color-on-danger: #ffffff;
-  --andm-color-danger-container: #f9dedc;
-  --andm-color-on-danger-container: #410e0b;
-
-  --andm-radius-btn: 20px;
-  --andm-radius-fab: 16px;
-
-  --andm-space-0: 0;
-  --andm-space-1: 4px;
-  --andm-space-2: 8px;
-  --andm-space-3: 12px;
-  --andm-space-4: 16px;
-  --andm-space-6: 24px;
-  --andm-space-8: 32px;
-
-  --andm-btn-height-sm: 32px;
-  --andm-btn-height-md: 40px;
-  --andm-btn-height-lg: 48px;
-  --andm-btn-padding-x-sm: 12px;
-  --andm-btn-padding-x-md: 20px;
-  --andm-btn-padding-x-lg: 28px;
-
-  --andm-fab-size-sm: 40px;
-  --andm-fab-size-md: 56px;
-  --andm-fab-size-lg: 80px;
-
-  --andm-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --andm-shadow-2: 0 6px 10px rgba(0, 0, 0, 0.3);
-
-  --andm-overlay-hover: rgba(0, 0, 0, 0.08);
-  --andm-overlay-hover-light: rgba(255, 255, 255, 0.08);
-  --andm-overlay-active: rgba(0, 0, 0, 0.12);
-  --andm-overlay-active-light: rgba(255, 255, 255, 0.12);
-
-  --andm-state-hover-opacity: 0.08;
-  --andm-state-pressed-opacity: 0.12;
-  --andm-focus-ring-color: var(--andm-color-primary);
-  --andm-focus-ring-width: 2px;
-  --andm-focus-ring-offset: 2px;
-
-  --andm-font-size-sm: 12px;
-  --andm-font-size-md: 14px;
-  --andm-font-size-lg: 16px;
-  --andm-font-weight-medium: 600;
-
-  /* Elevation tokens for FAB */
-  --andm-elevation-fab-default: 0 6px 10px rgba(0, 0, 0, 0.3);
-  --andm-elevation-fab-hover:
-    0 8px 12px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
-  --andm-elevation-fab-pressed: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --andm-elevation-fab-lowered: 0 1px 2px rgba(0, 0, 0, 0.3);
-
-  /* Motion tokens (M3 Motion公式仕様に準拠) */
-  --andm-motion-duration-short1: 50ms;
-  --andm-motion-duration-short2: 100ms;
-  --andm-motion-duration-short3: 150ms;
-  --andm-motion-duration-short4: 200ms;
-  --andm-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
-  --andm-motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
-  --andm-motion-easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
-
-  /* Extended FAB tokens */
-  --andm-fab-extended-padding-x: 16px;
-  --andm-fab-extended-gap: 8px;
-}
+/* Token の入口。定義は各系統のファイル。 */
+@import "./tokens/color/primitive.css";
+@import "./tokens/color/semantic.css";
+@import "./tokens/typography/primitive.css";
+@import "./tokens/typography/semantic.css";
+@import "./tokens/spacing/primitive.css";
+@import "./tokens/spacing/semantic.css";
+@import "./tokens/radius/primitive.css";
+@import "./tokens/motion/primitive.css";
+@import "./tokens/motion/semantic.css";
+@import "./tokens/elevation/primitive.css";
+@import "./tokens/focus/semantic.css";
+@import "./tokens/state/semantic.css";
+@import "./controls/button-tokens.css";
+@import "./controls/control-tokens.css";
+@import "./series/expressive.css";
+@import "./series/dads.css";
+@import "./series/soft.css";
+@import "./series/dense.css";
+@import "./series/technical.css";
+@import "./series/editorial.css";
+@import "./series/playful.css";
+@import "./series/apple.css";
+@import "./series/spectrum.css";
+@import "./series/fluent.css";
+@import "./series/carbon.css";
+@import "./series/atlassian.css";
+@import "./series/uswds.css";

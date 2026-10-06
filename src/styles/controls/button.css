@@ -1,0 +1,648 @@
+@layer andm.components {
+  /* —— Block —— */
+  .andm-btn {
+    appearance: none;
+    border: none;
+    margin: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--andm-space-2);
+    position: relative;
+    isolation: isolate;
+    height: var(--andm-btn-height-md);
+    padding: 0 var(--andm-btn-padding-x-md);
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    letter-spacing: var(--andm-btn-tracking);
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    vertical-align: middle;
+    border-radius: var(--andm-btn-radius-rest, var(--andm-btn-radius));
+    /* hover の highlight。色・背景・枠・影。lift は足さない */
+    transition:
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      border-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-btn:active:not(:disabled):not([disabled]) {
+    /* press の compress。morph は radius-pressed が静止と違うシリーズだけ */
+    transform: scale(var(--andm-btn-press-scale));
+    border-radius: var(--andm-btn-radius-pressed);
+    transition:
+      background-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      border-color var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      box-shadow var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate),
+      transform var(--andm-motion-duration-short1)
+        var(--andm-motion-easing-accelerate);
+  }
+
+  .andm-btn:focus {
+    outline: none;
+  }
+
+  .andm-btn:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+
+  .andm-btn:disabled,
+  .andm-btn[disabled] {
+    cursor: not-allowed;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  /* —— Icon element ——
+   * Gallery はクラスを svg 自身に付ける。
+   * 子孫 svg だけ塗ると path の初期値 black が、ボタン色の上に残る。
+   */
+  .andm-btn__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--andm-btn-icon-size-md);
+    height: var(--andm-btn-icon-size-md);
+    fill: currentColor;
+  }
+
+  .andm-btn__icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+
+  .andm-btn__icon path {
+    fill: currentColor;
+  }
+
+  /* —— Sizes —— */
+  .andm-btn--sm {
+    height: var(--andm-btn-height-sm);
+    padding: 0 var(--andm-btn-padding-x-sm);
+    font-size: var(--andm-font-size-sm);
+  }
+
+  .andm-btn--sm .andm-btn__icon {
+    width: var(--andm-btn-icon-size-sm);
+    height: var(--andm-btn-icon-size-sm);
+  }
+
+  .andm-btn--md {
+    height: var(--andm-btn-height-md);
+    padding: 0 var(--andm-btn-padding-x-md);
+    font-size: var(--andm-font-size-md);
+  }
+
+  .andm-btn--lg {
+    height: var(--andm-btn-height-lg);
+    padding: 0 var(--andm-btn-padding-x-lg);
+    font-size: var(--andm-font-size-lg);
+  }
+
+  .andm-btn--lg .andm-btn__icon {
+    width: var(--andm-btn-icon-size-lg);
+    height: var(--andm-btn-icon-size-lg);
+  }
+
+  /* —— Variant: filled —— */
+  .andm-btn--filled {
+    background: var(--andm-color-primary);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-btn--filled:hover:not(:disabled):not([disabled]) {
+    box-shadow: var(--andm-shadow-1);
+  }
+
+  .andm-btn--filled:hover:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-hover-light);
+    pointer-events: none;
+  }
+
+  .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    box-shadow: none;
+  }
+
+  .andm-btn--filled:active:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-active-light);
+    pointer-events: none;
+  }
+
+  .andm-btn--filled:disabled,
+  .andm-btn--filled[disabled] {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+  }
+
+  /* —— Variant: elevated —— */
+  .andm-btn--elevated {
+    background: var(--andm-color-surface);
+    color: var(--andm-color-primary);
+    box-shadow: var(--andm-shadow-1);
+  }
+
+  .andm-btn--elevated:hover:not(:disabled):not([disabled]) {
+    box-shadow: var(--andm-shadow-2);
+  }
+
+  .andm-btn--elevated:hover:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-hover);
+    pointer-events: none;
+  }
+
+  .andm-btn--elevated:active:not(:disabled):not([disabled]) {
+    box-shadow: var(--andm-shadow-1);
+  }
+
+  .andm-btn--elevated:active:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-active);
+    pointer-events: none;
+  }
+
+  .andm-btn--elevated:disabled,
+  .andm-btn--elevated[disabled] {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+    box-shadow: none;
+  }
+
+  /* —— Variant: tonal —— */
+  .andm-btn--tonal {
+    background: var(--andm-color-secondary-container);
+    color: var(--andm-color-on-secondary-container);
+  }
+
+  .andm-btn--tonal:hover:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-hover);
+    pointer-events: none;
+  }
+
+  .andm-btn--tonal:active:not(:disabled):not([disabled])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--andm-overlay-active);
+    pointer-events: none;
+  }
+
+  .andm-btn--tonal:disabled,
+  .andm-btn--tonal[disabled] {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+  }
+
+  /* —— Variant: outlined —— */
+  .andm-btn--outlined {
+    background: transparent;
+    color: var(--andm-color-primary);
+    border: 1px solid var(--andm-color-outline);
+  }
+
+  .andm-btn--outlined:hover:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-btn--outlined:active:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
+    );
+  }
+
+  .andm-btn--outlined:disabled,
+  .andm-btn--outlined[disabled] {
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+  }
+
+  /* —— Variant: text —— */
+  .andm-btn--text {
+    background: transparent;
+    color: var(--andm-color-primary);
+    padding-inline: var(--andm-space-3);
+  }
+
+  .andm-btn--text.andm-btn--sm {
+    padding-inline: var(--andm-space-2);
+  }
+
+  .andm-btn--text.andm-btn--lg {
+    padding-inline: var(--andm-space-4);
+  }
+
+  .andm-btn--text:hover:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-btn--text:active:not(:disabled):not([disabled]) {
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-pressed-opacity)
+    );
+  }
+
+  .andm-btn--text:disabled,
+  .andm-btn--text[disabled] {
+    color: var(--andm-color-on-disabled);
+  }
+
+  /*
+   * Expressive（andm-series--expressive）
+   * 色・背景・枠・影は fast effects。角の morph は fast spatial。
+   * short1–short4 には詰めない。ホバーでは角を変えない。押下の scale は 1。
+   * シリーズ別の Button クラスは作らない。lift は必須にしない。
+   */
+  .andm-series--expressive .andm-btn,
+  .andm-series--expressive .andm-btn:active:not(:disabled):not([disabled]) {
+    transition:
+      background-color var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      color var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      border-color var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      box-shadow var(--andm-motion-duration-expressive-fast-effects)
+        var(--andm-motion-easing-expressive-fast-effects),
+      border-radius var(--andm-motion-duration-expressive-fast-spatial)
+        var(--andm-motion-easing-expressive-fast-spatial);
+  }
+
+  /* Pressed は specs の S / M / L（8 / 12 / 16）。値はトークン。ホバーでは角を変えない。
+     静止半径は各高さの半分（pill）。9999px は補間しない。押下中に半径 0 は経由しない。 */
+  .andm-series--expressive .andm-btn--sm {
+    --andm-btn-radius: calc(var(--andm-btn-height-sm) / 2);
+    --andm-btn-radius-pressed: var(--andm-radius-sm);
+  }
+
+  /*
+   * text は共通で padding-inline を space に固定している。
+   * Expressive の高さに対してそれだと短いラベルが円になる。
+   * 横 padding はサイズトークンに戻す。クラスは足さない。
+   */
+  .andm-series--expressive .andm-btn--text {
+    padding-inline: var(--andm-btn-padding-x-md);
+  }
+
+  .andm-series--expressive .andm-btn--text.andm-btn--sm {
+    padding-inline: var(--andm-btn-padding-x-sm);
+  }
+
+  .andm-series--expressive .andm-btn--text.andm-btn--lg {
+    padding-inline: var(--andm-btn-padding-x-lg);
+  }
+
+  .andm-series--expressive .andm-btn--lg {
+    --andm-btn-radius: calc(var(--andm-btn-height-lg) / 2);
+    --andm-btn-radius-pressed: var(--andm-radius-lg);
+  }
+
+  /* square。クラス名は既存 modifier。静止半径だけ差し替える */
+  .andm-series--expressive .andm-btn--shape-asymmetric {
+    --andm-btn-radius-rest: var(--andm-btn-radius-asymmetric);
+  }
+
+  .andm-series--expressive .andm-btn--sm.andm-btn--shape-asymmetric {
+    --andm-btn-radius-rest: var(--andm-radius-md);
+    --andm-btn-radius-pressed: var(--andm-radius-sm);
+  }
+
+  .andm-series--expressive .andm-btn--lg.andm-btn--shape-asymmetric {
+    --andm-btn-radius-rest: 28px;
+    --andm-btn-radius-pressed: var(--andm-radius-lg);
+  }
+
+  /*
+   * DADS（andm-series--dads）
+   * Token だけでは出せないボタンの性格だけを足す。
+   * 塗りはホバーで濃くする、テキストは下線、フォーカスは黒+黄。
+   * 既存 variant 名は維持。shape morph / pill はしない。
+   */
+  .andm-series--dads .andm-btn {
+    gap: var(--andm-space-1);
+    letter-spacing: 0.02em;
+    text-underline-offset: 0.1875rem;
+    min-width: var(--andm-space-24);
+  }
+
+  .andm-series--dads .andm-btn--sm {
+    min-width: var(--andm-space-20);
+    --andm-btn-radius-rest: 6px;
+    --andm-btn-radius-pressed: 6px;
+  }
+
+  .andm-series--dads .andm-btn--lg {
+    min-width: 136px;
+  }
+
+  /* sm は見た目 36px。ターゲットは 44px（公式の ::after） */
+  .andm-series--dads .andm-btn--sm::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 44px;
+    margin: auto;
+  }
+
+  .andm-series--dads .andm-btn--text {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--elevated {
+    box-shadow: none;
+    border: 1px solid var(--andm-color-line);
+    background: var(--andm-color-surface);
+  }
+
+  .andm-series--dads
+    .andm-btn--filled:hover:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--filled:active:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--elevated:hover:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--elevated:active:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--tonal:hover:not(:disabled):not([disabled])::before,
+  .andm-series--dads
+    .andm-btn--tonal:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  .andm-series--dads .andm-btn--filled:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-hover);
+    box-shadow: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-active);
+    box-shadow: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--outlined:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash);
+    color: var(--andm-color-primary-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--outlined:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash-strong);
+    color: var(--andm-color-primary-active);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .andm-series--dads .andm-btn--text:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-soft);
+    color: var(--andm-color-primary-hover);
+    text-decoration-thickness: 3px;
+  }
+
+  .andm-series--dads .andm-btn--text:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-muted);
+    color: var(--andm-color-primary-active);
+  }
+
+  .andm-series--dads .andm-btn--tonal:hover:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash);
+  }
+
+  .andm-series--dads .andm-btn--tonal:active:not(:disabled):not([disabled]) {
+    background: var(--andm-color-primary-wash-strong);
+  }
+
+  .andm-series--dads .andm-btn--elevated:hover:not(:disabled):not([disabled]) {
+    box-shadow: none;
+    background: var(--andm-color-primary-soft);
+  }
+
+  .andm-series--dads .andm-btn--elevated:active:not(:disabled):not([disabled]) {
+    box-shadow: none;
+    background: var(--andm-color-primary-muted);
+  }
+
+  .andm-series--dads .andm-btn--filled:disabled,
+  .andm-series--dads .andm-btn--filled[disabled] {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled-fill);
+    text-decoration: none;
+  }
+
+  .andm-series--dads .andm-btn--elevated:disabled,
+  .andm-series--dads .andm-btn--elevated[disabled] {
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+    box-shadow: none;
+  }
+
+  .andm-series--dads .andm-btn:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+    box-shadow: 0 0 0 var(--andm-space-05) var(--andm-focus-ring-inner);
+  }
+
+  .andm-series--dads .andm-btn--text:focus-visible {
+    background: var(--andm-focus-ring-inner);
+    color: var(--andm-color-primary);
+  }
+
+  /*
+   * Spectrum（andm-series--spectrum）
+   * 既存 variant 名は維持。数値は tokens.css の出典コメントと同じ。
+   * 塗りボタンの境界色は透明、幅は 2px。hover/down は blue-1000。
+   * 角は Token の pill（height/2）。モーフィングはしない。
+   */
+  .andm-series--spectrum .andm-btn {
+    border-style: solid;
+    border-width: var(--andm-space-05);
+    border-color: transparent;
+  }
+
+  .andm-series--spectrum .andm-btn--outlined {
+    border-color: var(--andm-color-primary);
+  }
+
+  .andm-series--spectrum .andm-btn--elevated {
+    border-color: var(--andm-color-outline);
+    background-color: var(--andm-color-surface);
+  }
+
+  .andm-series--spectrum .andm-btn--filled:hover:not(:disabled):not([disabled]),
+  .andm-series--spectrum .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    background-color: rgb(39, 77, 234);
+  }
+
+  .andm-series--spectrum
+    .andm-btn--filled:hover:not(:disabled):not([disabled])::before,
+  .andm-series--spectrum
+    .andm-btn--filled:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  /*
+   * Fluent 2（andm-series--fluent）
+   * Large buttons の角は 8px（shapes の Large）。それ以外は Token の 4px。
+   * 既存 variant 名は維持。角のモーフィングはしない。
+   */
+  .andm-series--fluent .andm-btn--lg {
+    --andm-btn-radius-rest: var(--andm-radius-sm);
+    --andm-btn-radius-pressed: var(--andm-radius-sm);
+  }
+
+  /*
+   * Carbon（andm-series--carbon）
+   * 既存 variant 名は維持。角は Token の 0。境界幅は outline の 1px。
+   * 塗りは primary。hover #0353e9、active #002d9c。
+   * outlined は tertiary。tonal は secondary。
+   */
+  .andm-series--carbon .andm-btn {
+    border-style: solid;
+    border-width: 1px;
+    border-color: transparent;
+  }
+
+  .andm-series--carbon .andm-btn--filled:hover:not(:disabled):not([disabled]) {
+    background-color: var(--andm-color-primary-hover);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--filled:active:not(:disabled):not([disabled]) {
+    background-color: var(--andm-color-primary-active);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon
+    .andm-btn--filled:hover:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--filled:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  .andm-series--carbon .andm-btn--outlined {
+    border-color: var(--andm-color-primary);
+    color: var(--andm-color-primary);
+    background: transparent;
+  }
+
+  .andm-series--carbon .andm-btn--outlined:hover:not(:disabled):not([disabled]) {
+    background-color: var(--andm-color-primary-hover);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--outlined:active:not(:disabled):not([disabled]) {
+    border-color: transparent;
+    background-color: var(--andm-color-primary-active);
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--tonal {
+    background: var(--andm-color-secondary-container);
+    color: var(--andm-color-on-secondary-container);
+  }
+
+  .andm-series--carbon .andm-btn--tonal:hover:not(:disabled):not([disabled]) {
+    background-color: #4c4c4c;
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon .andm-btn--tonal:active:not(:disabled):not([disabled]) {
+    background-color: #6f6f6f;
+    color: var(--andm-color-on-primary);
+  }
+
+  .andm-series--carbon
+    .andm-btn--tonal:hover:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--tonal:active:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--outlined:hover:not(:disabled):not([disabled])::before,
+  .andm-series--carbon
+    .andm-btn--outlined:active:not(:disabled):not([disabled])::before {
+    background: transparent;
+  }
+
+  /*
+   * USWDS（andm-series--uswds）
+   * アウトラインのストロークは settings の 2px。角はトークンの 4px。
+   * 既存 variant 名は維持する。
+   */
+  .andm-series--uswds .andm-btn--outlined {
+    border-width: 2px;
+  }
+
+  /*
+   * reduced motion は共通。Series ごとのルールは足さない。
+   * 残す: 色・背景・枠・影と focus ring。
+   * 止める: transform（lift）、scale（compress）、形状変化（morph）。
+   * 色の duration は 0ms / 0.01ms にしない。
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .andm-btn:active:not(:disabled):not([disabled]) {
+      transform: none;
+      border-radius: var(--andm-btn-radius-rest, var(--andm-btn-radius));
+      transition:
+        background-color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        border-color var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate),
+        box-shadow var(--andm-motion-duration-short1)
+          var(--andm-motion-easing-accelerate);
+    }
+  }
+}

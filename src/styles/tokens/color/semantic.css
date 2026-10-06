@@ -1,0 +1,51 @@
+@layer andm.tokens {
+  :root {
+    /* —— Semantic color —— */
+    --andm-color-primary: var(--andm-color-blue-40);
+    --andm-color-primary-rgb: 11 87 208;
+    --andm-color-on-primary: var(--andm-color-white);
+    --andm-color-secondary-container: var(--andm-color-blue-90);
+    --andm-color-on-secondary-container: var(--andm-color-blue-10);
+    --andm-color-surface: var(--andm-color-neutral-99);
+    --andm-color-on-surface: var(--andm-color-neutral-10);
+    --andm-color-on-surface-variant: var(--andm-color-neutral-40);
+    --andm-color-outline: #74777f;
+    --andm-color-outline-variant: color-mix(
+      in srgb,
+      var(--andm-color-outline) 24%,
+      transparent
+    );
+    --andm-color-disabled-container: color-mix(
+      in srgb,
+      var(--andm-color-on-surface) 12%,
+      transparent
+    );
+    --andm-color-on-disabled: color-mix(
+      in srgb,
+      var(--andm-color-on-surface) 38%,
+      transparent
+    );
+    --andm-color-disabled-outline: color-mix(
+      in srgb,
+      var(--andm-color-outline) 12%,
+      transparent
+    );
+
+    /*
+     * 状態の意味。Alert / Badge / 入力エラー用。
+     * シリーズの公式パレットではない。同名をシリーズが置いたときだけ差し替わる。
+     * info はトークンを置かない。部品が primary / secondary-container にフォールバックし、
+     * シリーズの色差し替えがそのまま届く。
+     */
+
+    --andm-color-success: #146c2e;
+    --andm-color-success-container: #e6f4ea;
+    --andm-color-on-success-container: #0d401c;
+    --andm-color-warning: #9a6700;
+    --andm-color-warning-container: #fff4ce;
+    --andm-color-on-warning-container: #5c3d00;
+    --andm-color-error: #b3261e;
+    --andm-color-error-container: #fce8e6;
+    --andm-color-on-error-container: #410e0b;
+  }
+}

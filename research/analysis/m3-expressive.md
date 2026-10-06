@@ -1,0 +1,158 @@
+# M3 Expressive
+
+未実装の UI をあとで再現するためのルール。確認日は 2026-09-29。公式アセットは埋め込まない。推測で公式値を足さない。
+
+## 公式 URL
+
+- 指定の入口: https://m3.material.io/get-started  
+  取得結果はタイトルのみ。本文は「This website requires JavaScript.」で検証不能。
+- https://m3.material.io/ も同じ。検証不能。
+- https://m3.material.io/blog/building-with-m3-expressive も同じ。検証不能。
+- https://m3.material.io/develop/android/jetpack-compose も同じ。検証不能。
+- 本文が取れた公式ページ: https://developer.android.com/develop/ui/compose/designsystems/material3  
+  このページは Material Design 3 in Compose。冒頭で M3 Expressive を Material Design 3 の拡張と書いている。以降の数値は、このページの本文に出た M3 の既定値。Expressive 専用のボタン寸法としては書かれていない。
+
+## 思想・概念
+
+https://m3.material.io/ と、get-started、building-with-m3-expressive、Jetpack Compose の入口はタイトルのみで本文が取れない。検証不能。思想として書けるのは、本文が取れた次のページだけ。
+
+- https://developer.android.com/develop/ui/compose/designsystems/material3
+
+このページの本文から要約する。
+
+- M3 Expressive は Material Design 3 の拡張である。テーマ、コンポーネント、モーション、タイポグラフィなどの更新を含み、研究に基づく、と本文にある。目的は、使いたくなる魅力のある製品を作れるようにすること。
+- Material You の personalization として dynamic color を扱う。アルゴリズムが壁紙から色を作り、アプリとシステム UI に当てる。
+- テーマは color scheme、typography、shapes の3つ。変えると、使う M3 コンポーネントに反映される。
+- 強調は、surface / surface-variant / background と対応する on-color の組み合わせか、字重で足す。
+- 高さは主にトーナルカラーの重ねで表す。影も使う。暗いテーマの重ね色は primary から来る。
+- 個人向けの調整と柔軟さを勧める。部品の色には既定があるが、必要なら変えられる、と本文にある。
+- 部品に組み込まれたアクセシビリティ基準は、インクルーシブな製品設計の土台である。dynamic color は色のコントラスト基準を満たすように作られている。カスタムするときは、on-primary を primary の上に置くなど、対応する色ロールを使う。
+
+形状のモーフィング、spring、感情に働きかける戦術の本文は、このページに無い。m3.material.io 側は本文が取れないため、そこは検証不能のまま。
+
+## 考え方（読めた範囲）
+
+Jetpack Compose は Material You と Material 3 Expressive の実装を提供する。M3 Expressive は Material Design 3 の拡張で、テーマ、コンポーネント、モーション、タイポグラフィなどの更新を含む。dynamic color も扱う。用語 Material Design 3、Material 3、M3 はこのページでは同じものを指す。
+
+テーマは color scheme、typography、shapes の3つ。変えると M3 コンポーネントに反映される。
+
+## color
+
+本文にあるルール:
+
+- カラースキームの基礎は 5 つのキーカラー。それぞれ 13 トーンのパレットにつながる。
+- Primary は主要なボタン、アクティブ、持ち上がった面のティント。
+- Secondary はフィルターチップなど、主役より弱い部品。
+- Tertiary は対比のアクセント。
+- 強調は surface / surface-variant / background と、対応する on-color の組み合わせ。
+- 無効状態は on-x の色にアルファを使うことが許容される、と本文にある。アルファの数値は無い。
+- dynamic color は Android 12 以上。壁紙から light / dark を作る。無いときはカスタムの light / dark に戻す。
+
+本文のコード例にある `0xFF476810` などは Reply サンプルの生成例。M3 の標準色としては採用しない。
+
+## typography
+
+本文の既定スケール（Font、Size / Line Height）:
+
+| 名前 | 書体と太さ | Size / Line Height |
+|------|------------|--------------------|
+| displayLarge | Roboto | 57 / 64 |
+| displayMedium | Roboto | 45 / 52 |
+| displaySmall | Roboto | 36 / 44 |
+| headlineLarge | Roboto | 32 / 40 |
+| headlineMedium | Roboto | 28 / 36 |
+| headlineSmall | Roboto | 24 / 32 |
+| titleLarge | Roboto Medium | 22 / 28 |
+| titleMedium | Roboto Medium | 16 / 24 |
+| titleSmall | Roboto Medium | 14 / 20 |
+| bodyLarge | Roboto | 16 / 24 |
+| bodyMedium | Roboto | 14 / 20 |
+| bodySmall | Roboto | 12 / 16 |
+| labelLarge | Roboto Medium | 14 / 20 |
+| labelMedium | Roboto Medium | 12 / 16 |
+| labelSmall | Roboto Medium | 11 / 16 |
+
+グループは display、headline、title、body、label。それぞれ large、medium、small。強調は字重でも足せる、と本文にある。Roboto のファイルは置かない。
+
+## spacing
+
+このページの本文に spacing の px スケールは無い。検証不能。
+
+## radius
+
+本文は、形状スケールを Extra Small、Small、Medium、Large、Extra Large とし、例として次を置いている。
+
+- Extra Small 4dp
+- Small 8dp
+- Medium 12dp
+- Large 16dp
+- Extra Large 24dp
+
+RectangleShape は角なし。CircleShape は円。単位は dp。px への換算は本文に無い。
+
+## elevation
+
+本文は、M3 の高さは主にトーナルカラーの重ねで表し、影も使う、と書く。暗いテーマの重ね色は primary から来る。数値の dp や影の式は無い。
+
+## motion
+
+2026-09-30 に本文を取り直した。
+
+採用（Expressive の Button だけ。short1–short4 には詰めない）:
+
+- 形（角）は expressive fast spatial。曲線 `cubic-bezier(0.42, 1.67, 0.21, 0.9)`、350ms。色は expressive fast effects。曲線 `cubic-bezier(0.31, 0.94, 0.34, 1)`、150ms。ホバーでも押下でも色はこの effects。角が変わるのは押下だけ。
+- 出典: https://m3.material.io/styles/motion/overview/how-it-works は、部品の動きは expressive fast spatial と expressive fast effects だと書く。ミリ秒と曲線は https://m3.material.io/styles/motion/overview/specs の「Web: Convert springs to curves」。
+- 押下の角は https://m3.material.io/components/buttons/specs の Corner sizes。Round は Full。Pressed は XS 8dp、S 8dp、M 12dp、L 16dp、XL 16dp。Square の静止は XS 12dp、S 12dp、M 16dp、L 28dp、XL 28dp。実装の小 / 中 / 大は S / M / L に合わせてあり、半径は変えていない。ホバーで角は変えない。本文は「When pressed, buttons can morph to become more square」。
+- 押下中に四角（半径 0）は経由しない。静止の pill はボタン高さの半分として補間し、押下は 8 / 12 / 16px で終わる。
+
+検証不能:
+
+- https://github.com/material-components の組織ページに、ボタンの角や spring の数値は無い。
+- https://m3.material.io/components は部品の一覧で、角の dp は無い。
+- https://m3.material.io/styles/motion/transitions/transition-patterns は旧 duration 系だと書き、ボタンの押下の数値は無い。
+- https://m3.material.io/styles/motion/easing-and-duration/applying-easing-and-duration には 200ms から 500ms の組がある。同ページは、Expressive は spring に移り、この方式はもう保守しない、と書く。Button には使わない。
+- stiffness と damping の生の数値は、specs の spring フォルダが開かず取れなかった。Web 向けの曲線と duration だけ採用した。
+
+## コンポーネント
+
+本文は、ボタン、チップ、カード、ナビゲーションバーなどがテーマに従う、と書く。カードの例は medium、フローティングアクションボタンの例は large。ボタンの高さ、余白、押下時の角の変化は本文に無い。
+
+## andm の `andm-series--expressive` に今入っている数値
+
+実装にある値。今回取得した本文には無いので、公式値としては未確認のまま残している。
+
+- 高さ 40 / 56 / 96px
+- 横余白はサイズごと。Small 16px、Medium 24px、Large 48px。Material3 の ButtonSmall / Medium / Large トークンの LeadingSpace と TrailingSpace（生成コード v0_11_0）。Small の 16px を中と大に流用すると、短いラベルの幅が高さに近づき円になる。text が固定している横余白も、Expressive ではこの値に戻す
+- 静止の角は pill（specs の Round = Full）。指定値はボタン高さの半分で、9999px からは補間しない。ラベル付きは高さより幅が広い。押下は小 8px、中 12px、大 16px。specs の S / M / L の Pressed と一致。ホバーでは角を変えない。押下中に半径 0 の四角は経由しない
+- 字重 500
+- アイコン 20px
+- 色は Baseline のまま
+
+## まだ Button 以外を作るときに使うルール
+
+- テーマは色、字、形の3系統で部品に渡す。
+- 形は 4 / 8 / 12 / 16 / 24dp の5段から選ぶ。カードは medium、FAB は large、が本文の例。
+- 字は上の15段。全部を使わなくてよい、と本文にある。
+- 強調は面の色の組み合わせか、字重。
+- dynamic color が使える環境では壁紙由来にし、無ければ固定の light / dark。
+
+## 検証不能
+
+- https://m3.material.io/get-started はタイトルのみ。
+- ボタン高さの dp 表（specs の数値表には角だけが出た）。
+- spring の stiffness と damping。
+- spacing のスケール。
+- elevation の dp と影の式。
+- 旧 easing / duration を Expressive の Button に使うこと。適用ページ自身が、Expressive では保守しないと書く。
+- 2026-09-30 の再確認では https://m3.material.io/components/buttons/overview は「This website requires JavaScript.」で本文がなく、https://m3.material.io/styles/motion/overview/specs はタイトルのみだった。新しい角の数値は足していない。四角経由をやめたのは、既にある fast spatial を 9999px の pill から掛けていた実装が、押下中に半径 0 を経由していたため。
+
+## 入力・面・区切り（2026-10-06）
+
+Text field 固有の数値は未取得。未確認。
+
+- 入力・面・ダイアログ・アラートの角は形状スケールの Medium（12dp）を、ボタンと同じく px の数で `--andm-radius-md`（12px）にした。andm の傾向。公式の Text field / Dialog 半径ではない。ボタンの pill にはしない。
+- カードの例が medium、は本文にある。面の 12px はその例に合わせた andm の傾向。dp の px 換算は本文に無い。
+- 高さ・横余白はボタンの md にフォールバックする。入力専用は未確認。
+- Badge は `--andm-radius-sm`（8px）のまま。Small 8dp に近いが、Badge 固有は未確認。
+- Checkbox / Radio のサイズ・角・チェックの強さは未確認。Baseline のまま。
+- 色ロールと意味色は Baseline のまま。新しい duration 名は足していない。

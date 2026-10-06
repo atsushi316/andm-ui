@@ -1,0 +1,47 @@
+@layer andm.tokens {
+  /*
+     * M3 Expressive の Token remapping。
+     * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
+     * ボタンのクラスは共通のまま。Baseline（:root）を壊さない。唯一の正解にしない。
+     * 形は expressive fast spatial、色は expressive fast effects。
+     * short1–short4 には詰めない。押下の角は specs の S / M / L のまま。
+     */
+    .andm-series--expressive {
+      /* サイズは Expressive の Small / Medium / Large（40 / 56 / 96）。
+         横 padding はサイズごと（leading / trailing space の 16 / 24 / 48）。
+         Small の 16px を中・大に流用しない。ラベル付きは高さより幅の広い pill。
+         色ロールは Baseline のまま。 */
+      --andm-btn-height-sm: var(--andm-space-10);
+      --andm-btn-height-md: 56px;
+      --andm-btn-height-lg: var(--andm-space-24);
+      --andm-btn-padding-x-sm: var(--andm-space-4);
+      --andm-btn-padding-x-md: var(--andm-space-6);
+      --andm-btn-padding-x-lg: var(--andm-space-12);
+      /* 静止の pill は高さの半分。9999px から fast spatial で補間すると overshoot で半径が 0 を下回る。 */
+      --andm-btn-radius: calc(var(--andm-btn-height-md) / 2);
+      /* Medium の pressed。Small 8 / Large 16 は controls/button.css で上書き */
+      --andm-btn-radius-pressed: var(--andm-radius-md);
+      --andm-btn-press-scale: 1;
+      /* square（Medium）。Small 12 / Large 28 は button.css */
+      --andm-btn-radius-asymmetric: var(--andm-radius-lg);
+      --andm-btn-icon-size-sm: var(--andm-space-5);
+      --andm-btn-icon-size-md: var(--andm-space-5);
+      --andm-btn-icon-size-lg: var(--andm-space-5);
+      /* M3 label は Medium（500）。700 にはしない */
+      --andm-font-weight-medium: 500;
+      /* Web: Convert springs to curves。fast spatial / fast effects */
+      --andm-motion-duration-expressive-fast-spatial: 350ms;
+      --andm-motion-easing-expressive-fast-spatial: cubic-bezier(0.42, 1.67, 0.21, 0.9);
+      --andm-motion-duration-expressive-fast-effects: 150ms;
+      --andm-motion-easing-expressive-fast-effects: cubic-bezier(0.31, 0.94, 0.34, 1);
+      /*
+       * 入力・面・ダイアログ・アラートの公式 px は未確認。
+       * 形状スケールの Medium（12dp）を、ボタンと同じく px の数で置く。andm の傾向。
+       * ボタンの pill にはしない。dp の px 換算は本文に無い。
+       */
+      --andm-field-radius: var(--andm-radius-md);
+      --andm-surface-radius: var(--andm-radius-md);
+      --andm-dialog-radius: var(--andm-radius-md);
+      --andm-alert-radius: var(--andm-radius-md);
+    }
+}

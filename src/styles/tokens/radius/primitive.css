@@ -1,0 +1,9 @@
+@layer andm.tokens {
+  :root {
+    /* —— Radius（少数段階。唯一値へ収束しない） —— */
+    --andm-radius-sm: 8px;
+    --andm-radius-md: 12px;
+    --andm-radius-lg: 16px;
+    --andm-radius-pill: 9999px;
+  }
+}

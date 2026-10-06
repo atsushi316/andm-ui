@@ -1,0 +1,43 @@
+@layer andm.tokens {
+  /*
+   * 切替シリーズ: Atlassian Design System。
+   * 出典は atlassian.design の foundations（2026-10-06 に取得）。
+   * 公式フォントファイル、アイコン、CSS は同梱しない。ボタンのクラスは共通のまま。
+   *
+   * 角: radius.medium は 6px（ボタン、入力、セレクト）。
+   *   radius.large は 8px（カード）。radius.xlarge は 12px（モーダル）。
+   *   radius.xsmall は 2px（バッジ、チェックボックス）。
+   * 枠: border.width は 1px。選択は 2px。focus の幅は 2px、offset は 2px。
+   * 字: アプリは Atlassian Sans。Body 既定は 14px / 20px。Small 12px。Large 16px。
+   * 色の hex はパレット本文に残らなかった。色トークンは差し替えない。
+   * ボタンの高さ・横余白の単一 px は本文に無い。Baseline のまま。
+   * motion の duration は範囲だけなので short1–short4 は差し替えない。
+   * ホバーの曲線は ease-out practical。
+   */
+  .andm-series--atlassian {
+    --andm-font-family: "Atlassian Sans", ui-sans-serif, system-ui, sans-serif;
+    --andm-font-size-sm: 12px;
+    --andm-font-size-md: 14px;
+    --andm-font-size-lg: 16px;
+    /* Body M は 14px に対して行高 20px */
+    --andm-line-height-tight: calc(20 / 14);
+    --andm-btn-radius: 6px;
+    --andm-btn-radius-pressed: 6px;
+    --andm-field-radius: 6px;
+    --andm-field-border-width: 1px;
+    --andm-surface-radius: 8px;
+    --andm-dialog-radius: 12px;
+    /* アラート固有の半径は未確認。カードの large（8px）を andm が置く。 */
+    --andm-alert-radius: 8px;
+    --andm-badge-radius: 2px;
+    --andm-check-radius: 2px;
+    --andm-focus-ring-width: 2px;
+    --andm-focus-ring-offset: 2px;
+    /* 選択中のタブ。border.width.selected */
+    --andm-tabs-indicator-width: 2px;
+    /* 区切りの公式色は未確認。Baseline の outline-variant。見た目は変えない。 */
+    --andm-divider-color: var(--andm-color-outline-variant);
+    /* ease-out practical。ホバーの背景フェード */
+    --andm-motion-easing-decelerate: cubic-bezier(0.4, 1, 0.6, 1);
+  }
+}
