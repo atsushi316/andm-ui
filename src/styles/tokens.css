@@ -11,7 +11,7 @@
 @import "./tokens/elevation/primitive.css";
 @import "./tokens/focus/semantic.css";
 @import "./tokens/state/semantic.css";
-@import "./components/button.css";
+@import "./controls/button-tokens.css";
 @import "./series/expressive.css";
 @import "./series/dads.css";
 @import "./series/soft.css";

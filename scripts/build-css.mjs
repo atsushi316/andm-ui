@@ -6,7 +6,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const stylesDir = join(root, "src", "styles");
 const outFile = join(root, "dist", "style.css");
 
-const sources = ["index.css", "tokens.css", "base.css", "button.css"];
+const sources = ["index.css", "tokens.css", "base.css", "controls/button.css"];
 
 const banner = "/*! @atsushi316/andm-ui — built from src/styles */\n";
 
