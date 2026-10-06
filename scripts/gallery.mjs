@@ -56,7 +56,11 @@ async function withScriptCacheBust(html) {
     );
   }
   // HTML 自体も毎回変えて、index のクリックナビ再読込で旧ページを掴みにくくする。
-  const stamp = createHash("sha256").update(stamps.join("|")).digest("hex").slice(0, 8);
+  const htmlHash = createHash("sha256").update(html).digest("hex").slice(0, 8);
+  const stamp = createHash("sha256")
+    .update(stamps.join("|") + "|" + htmlHash)
+    .digest("hex")
+    .slice(0, 8);
   out = out.replace(
     /data-gallery-build="[^"]*"/,
     `data-gallery-build="${stamp}"`,
