@@ -20,11 +20,12 @@
     appearance: none;
     box-sizing: border-box;
     width: 100%;
-    height: var(--andm-control-height-md);
+    height: var(--andm-field-height, var(--andm-btn-height-md));
     margin: 0;
-    padding: 0 var(--andm-control-padding-x);
-    border: 1px solid var(--andm-color-outline);
-    border-radius: var(--andm-control-radius);
+    padding: 0 var(--andm-field-padding-x, var(--andm-btn-padding-x-md));
+    border: var(--andm-field-border-width, 1px) solid
+      var(--andm-field-border-color, var(--andm-color-outline));
+    border-radius: var(--andm-field-radius, var(--andm-btn-radius));
     background: var(--andm-color-surface);
     color: var(--andm-color-on-surface);
     font-family: inherit;
@@ -45,7 +46,10 @@
   }
 
   .andm-textfield__input:hover:not(:disabled):not([disabled]):not(:focus) {
-    border-color: var(--andm-color-on-surface);
+    border-color: var(
+      --andm-field-border-color-hover,
+      var(--andm-color-on-surface)
+    );
   }
 
   .andm-textfield__input:focus {
@@ -53,10 +57,18 @@
   }
 
   .andm-textfield__input:focus-visible {
-    border-color: var(--andm-color-primary);
-    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
-      var(--andm-focus-ring-color);
-    outline-offset: var(--andm-focus-ring-offset);
+    border-color: var(
+      --andm-field-focus-border-color,
+      var(--andm-color-primary)
+    );
+    outline: var(--andm-control-focus-width, var(--andm-focus-ring-width))
+      var(--andm-focus-ring-style)
+      var(--andm-control-focus-color, var(--andm-focus-ring-color));
+    outline-offset: var(
+      --andm-control-focus-offset,
+      var(--andm-focus-ring-offset)
+    );
+    box-shadow: var(--andm-control-focus-shadow, none);
   }
 
   .andm-textfield__input:disabled,

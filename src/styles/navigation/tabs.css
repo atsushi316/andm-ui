@@ -14,7 +14,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    border-bottom: 1px solid var(--andm-color-outline-variant);
+    border-bottom: 1px solid
+      var(--andm-divider-color, var(--andm-color-outline-variant));
   }
 
   .andm-tabs__tab {
@@ -22,12 +23,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: var(--andm-control-height-md);
+    min-height: var(--andm-field-height, var(--andm-btn-height-md));
     margin: 0;
     padding: 0 var(--andm-space-4);
     border: 0;
-    border-bottom: 2px solid transparent;
-    border-radius: 0;
+    border-bottom: var(--andm-tabs-indicator-width, 2px) solid transparent;
+    border-radius: var(--andm-tabs-radius, 0);
     background: transparent;
     color: var(--andm-color-on-surface-variant);
     font-family: inherit;

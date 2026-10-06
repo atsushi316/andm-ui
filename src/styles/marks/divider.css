@@ -5,7 +5,8 @@
     height: 0;
     margin: var(--andm-space-4) 0;
     border: 0;
-    border-top: 1px solid var(--andm-color-outline-variant);
+    border-top: 1px solid
+      var(--andm-divider-color, var(--andm-color-outline-variant));
     background: transparent;
   }
 
@@ -20,7 +21,8 @@
     height: var(--andm-space-6);
     margin: 0 var(--andm-space-3);
     border: 0;
-    border-left: 1px solid var(--andm-color-outline-variant);
+    border-left: 1px solid
+      var(--andm-divider-color, var(--andm-color-outline-variant));
     vertical-align: middle;
   }
 }

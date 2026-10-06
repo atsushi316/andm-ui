@@ -16,11 +16,11 @@
     appearance: none;
     box-sizing: border-box;
     flex-shrink: 0;
-    width: var(--andm-space-5);
-    height: var(--andm-space-5);
+    width: var(--andm-check-size, var(--andm-space-5));
+    height: var(--andm-check-size, var(--andm-space-5));
     margin: 0;
-    border: 2px solid var(--andm-color-outline);
-    border-radius: var(--andm-space-1);
+    border: var(--andm-check-border-width, 2px) solid var(--andm-color-outline);
+    border-radius: var(--andm-check-radius, var(--andm-space-1));
     background: var(--andm-color-surface);
     cursor: inherit;
     /* 選択状態の highlight */
@@ -43,7 +43,8 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' d='M3.5 8.5 6.5 11.5 12.5 4.5'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 12px 12px;
+    background-size: var(--andm-check-mark-size, 12px)
+      var(--andm-check-mark-size, 12px);
   }
 
   .andm-checkbox__input:focus {
@@ -51,9 +52,14 @@
   }
 
   .andm-checkbox__input:focus-visible {
-    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
-      var(--andm-focus-ring-color);
-    outline-offset: var(--andm-focus-ring-offset);
+    outline: var(--andm-control-focus-width, var(--andm-focus-ring-width))
+      var(--andm-focus-ring-style)
+      var(--andm-control-focus-color, var(--andm-focus-ring-color));
+    outline-offset: var(
+      --andm-control-focus-offset,
+      var(--andm-focus-ring-offset)
+    );
+    box-shadow: var(--andm-control-focus-shadow, none);
   }
 
   .andm-checkbox__input:disabled,

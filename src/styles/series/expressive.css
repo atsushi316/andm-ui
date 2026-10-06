@@ -34,5 +34,14 @@
       --andm-motion-easing-expressive-fast-spatial: cubic-bezier(0.42, 1.67, 0.21, 0.9);
       --andm-motion-duration-expressive-fast-effects: 150ms;
       --andm-motion-easing-expressive-fast-effects: cubic-bezier(0.31, 0.94, 0.34, 1);
+      /*
+       * 入力・面・ダイアログ・アラートの公式 px は未確認。
+       * 形状スケールの Medium（12dp）を、ボタンと同じく px の数で置く。andm の傾向。
+       * ボタンの pill にはしない。dp の px 換算は本文に無い。
+       */
+      --andm-field-radius: var(--andm-radius-md);
+      --andm-surface-radius: var(--andm-radius-md);
+      --andm-dialog-radius: var(--andm-radius-md);
+      --andm-alert-radius: var(--andm-radius-md);
     }
 }

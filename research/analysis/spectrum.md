@@ -102,3 +102,13 @@ light で採用した値:
 - https://spectrum.adobe.com/page/theming/ の本文。
 - ボタン以外の spacing スケール。
 - duration-200 以降を short3 / short4 に割り当てる対応。本文に無い。
+
+## 入力・面・区切り（2026-10-06 採用）
+
+- `--andm-field-radius: 4px` — `corner-radius-100`。ボタンの pill ではない。公式。
+- surface / dialog / alert / badge / checkbox の角も 4px。公式は「ボタン以外の小さな角」。Dialog・Alert・Badge・Checkbox 固有の半径は未確認なので、同じ 4px を andm の傾向として置いた。
+- 境界色は gray-400。`--andm-color-outline-variant` と `--andm-divider-color` を `--andm-color-outline` にした。
+- 入力の高さ・横余白はボタンの md にフォールバックする。Text field 固有は未確認。
+- 入力の枠幅は未確認。ボタンの 2px は入力に流用しない。Baseline の 1px。
+- Checkbox / Radio のサイズとチェックの強さは未確認。サイズは Baseline のまま。
+- 意味色は未確認。差し替えない。

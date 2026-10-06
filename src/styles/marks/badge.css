@@ -6,7 +6,7 @@
     gap: var(--andm-space-1);
     min-height: var(--andm-space-5);
     padding: 0 var(--andm-space-2);
-    border-radius: var(--andm-radius-sm);
+    border-radius: var(--andm-badge-radius, var(--andm-radius-sm));
     font-family: var(--andm-font-family);
     font-size: var(--andm-font-size-sm);
     font-weight: var(--andm-font-weight-medium);

@@ -68,3 +68,9 @@
 ## 検証不能
 
 日本語の入口、カラー、レイアウト、マテリアル、ボタン。英語の入口、color、layout、materials、buttons。いずれも本文なし。
+
+## 入力・面・区切り（2026-10-06）
+
+本文が無い。色も寸法も公式値として足していない。未確認。
+
+Text field、Select、Checkbox、Radio、Divider、Tabs、Surface、Dialog、Alert、Badge は Baseline のトークンのまま。シリーズが差し替えるのはフォント名だけ。

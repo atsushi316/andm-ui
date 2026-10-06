@@ -16,10 +16,10 @@
     appearance: none;
     box-sizing: border-box;
     flex-shrink: 0;
-    width: var(--andm-space-5);
-    height: var(--andm-space-5);
+    width: var(--andm-radio-size, var(--andm-space-5));
+    height: var(--andm-radio-size, var(--andm-space-5));
     margin: 0;
-    border: 2px solid var(--andm-color-outline);
+    border: var(--andm-radio-border-width, 2px) solid var(--andm-color-outline);
     border-radius: var(--andm-radius-pill);
     background: var(--andm-color-surface);
     cursor: inherit;
@@ -43,8 +43,8 @@
       radial-gradient(
         circle at center,
         var(--andm-color-primary) 0,
-        var(--andm-color-primary) 35%,
-        transparent 36%
+        var(--andm-color-primary) var(--andm-radio-mark, 35%),
+        transparent calc(var(--andm-radio-mark, 35%) + 1%)
       ),
       var(--andm-color-surface);
   }
@@ -54,9 +54,14 @@
   }
 
   .andm-radio__input:focus-visible {
-    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
-      var(--andm-focus-ring-color);
-    outline-offset: var(--andm-focus-ring-offset);
+    outline: var(--andm-control-focus-width, var(--andm-focus-ring-width))
+      var(--andm-focus-ring-style)
+      var(--andm-control-focus-color, var(--andm-focus-ring-color));
+    outline-offset: var(
+      --andm-control-focus-offset,
+      var(--andm-focus-ring-offset)
+    );
+    box-shadow: var(--andm-control-focus-shadow, none);
   }
 
   .andm-radio__input:disabled,
@@ -73,8 +78,8 @@
       radial-gradient(
         circle at center,
         var(--andm-color-on-disabled) 0,
-        var(--andm-color-on-disabled) 35%,
-        transparent 36%
+        var(--andm-color-on-disabled) var(--andm-radio-mark, 35%),
+        transparent calc(var(--andm-radio-mark, 35%) + 1%)
       ),
       var(--andm-color-disabled-container);
   }

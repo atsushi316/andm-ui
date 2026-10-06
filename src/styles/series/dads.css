@@ -59,5 +59,7 @@
       --andm-btn-radius: var(--andm-radius-sm);
       --andm-btn-radius-pressed: var(--andm-radius-sm);
       --andm-btn-press-scale: 1;
+      /* 区切りの公式色は未確認。Baseline の outline-variant。見た目は変えない。 */
+      --andm-divider-color: var(--andm-color-outline-variant);
     }
 }

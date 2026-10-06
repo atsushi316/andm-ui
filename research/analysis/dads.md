@@ -161,3 +161,13 @@ https://design.digital.go.jp/dads/components/button/ の本文:
 - ボタンの最小幅、最小高さ、Small / X-Small の px。
 - ドロップシャドウの px と色。
 - モーションの duration。
+
+## 入力・面・区切り（2026-10-06）
+
+公式の入力・タブ・ダイアログ・チェックの px は本文に無い。未確認。
+
+- 高さ・角・横余白はボタン用トークンへのフォールバックのまま（andm の傾向）。入力専用の公式値ではない。
+- Divider の色は未確認。トークンは触れるが、値は Baseline の outline-variant。見た目は変えない。
+- Checkbox / Radio のサイズ・角・チェックの強さは未確認。Baseline のまま。
+- ダイアログの影の px は本文に無い。既存の shadow（なし）のまま。
+- 意味色は未確認。差し替えない。

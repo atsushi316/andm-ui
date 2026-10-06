@@ -51,5 +51,20 @@
       --andm-motion-easing-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
       --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.38, 0.9);
       --andm-motion-easing-accelerate: cubic-bezier(0, 0, 0.38, 0.9);
+      /* 入力・カードは layout の 4px。ボタンの 0 とは別。パネルとモーダルは 8px。 */
+      --andm-field-radius: 4px;
+      --andm-surface-radius: 4px;
+      --andm-dialog-radius: 8px;
+      /* general components の 4px。Alert / Badge 固有の半径は未確認（andm の傾向）。 */
+      --andm-alert-radius: 4px;
+      --andm-badge-radius: 4px;
+      /* チェックの角は general components の 4px。サイズとチェックの強さは未確認。 */
+      --andm-check-radius: 4px;
+      /* 非ボタンの focus は外側の輪ではなく、inset の 2px と 1px。色は blue60。 */
+      --andm-control-focus-width: 2px;
+      --andm-control-focus-offset: -2px;
+      --andm-control-focus-shadow: inset 0 0 0 1px var(--andm-focus-ring-color);
+      /* divider の公式色は未確認。値は Baseline の outline-variant。見た目は変えない。 */
+      --andm-divider-color: var(--andm-color-outline-variant);
     }
 }

@@ -10,6 +10,8 @@
      * 書体名は Segoe UI。ファイルは置かない。
      * 色、余白、高さ、影、duration の数値はこれらのページ本文に無かったので書かない。
      * 速度トークンは差し替えない。
+     * dropdown の角は本文の 4px。入力の角はボタン角へのフォールバックなので 4px になる。
+     * Text field 固有の px は未確認。
      */
     .andm-series--fluent {
       --andm-btn-radius: var(--andm-space-1);

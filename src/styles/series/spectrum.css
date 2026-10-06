@@ -52,5 +52,16 @@
       --andm-motion-duration-short2: 130ms;
       --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.4, 1);
       --andm-motion-easing-accelerate: cubic-bezier(0, 0, 0.4, 1);
+      /* corner-radius-100。ボタンの pill ではない。 */
+      --andm-field-radius: 4px;
+      --andm-surface-radius: 4px;
+      /* ダイアログ・アラート・バッジ・チェック固有の半径は未確認。小さな角の 4px（andm の傾向）。 */
+      --andm-dialog-radius: 4px;
+      --andm-alert-radius: 4px;
+      --andm-badge-radius: 4px;
+      --andm-check-radius: 4px;
+      /* 境界は gray-400。outline が既にその色。 */
+      --andm-color-outline-variant: var(--andm-color-outline);
+      --andm-divider-color: var(--andm-color-outline);
     }
 }

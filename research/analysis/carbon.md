@@ -176,3 +176,19 @@ layout の角トークン: 0、2px、4px、8px、16px、24px、max。ボタン�
 - fast-02 以降を short3 / short4 に割り当てる対応。本文に無い
 - body-compact-01 の行高
 - v12 を有効にしたときのボタン角（フラグの中身は未確認。fallback 名だけ取得）
+
+## 入力・面・区切り（2026-10-06 採用）
+
+ボタンの角 0 は入力に使わない。
+
+- `--andm-field-radius: 4px` — layout の「inputs, cards, and general components」。公式。
+- `--andm-surface-radius: 4px` — 同じ。カード。公式。
+- `--andm-dialog-radius: 8px` — パネルとモーダル。公式。
+- `--andm-alert-radius` / `--andm-badge-radius` / `--andm-check-radius` は 4px。general components。Alert・Badge・Checkbox 固有の半径は未確認。andm の傾向。
+- 入力の高さと横余白は、既にある size-md（40px）と spacing-05（16px）をボタン md が指しているので、field はそれにフォールバックする。入力専用の測定は未確認。
+- 入力の枠色は未確認。`--andm-color-outline`（ボタン tertiary の blue60）を参照したまま。
+- 入力の枠の太さは未確認。Baseline の 1px。
+- focus は外側の輪にしない。幅 2px を offset -2px、inset 1px。非ボタンのルール。色は blue60。
+- Divider の色は未確認。`--andm-divider-color` は Baseline の outline-variant。見た目は変えない。
+- Checkbox / Radio のサイズとチェックの強さは未確認。サイズは Baseline（20px）のまま。
+- 意味色（info / success / warning / error）は未確認。差し替えない。

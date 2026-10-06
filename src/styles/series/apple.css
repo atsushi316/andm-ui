@@ -10,6 +10,7 @@
      * motion の duration は公式本文に無い（official value not specified）。
      * cubic-bezier、縮小率、spring は足さない。速度トークンは差し替えない。
      * 押下の scale は Baseline の 0.96 のまま。HIG の測定値ではない。
+     * 入力・チェック・区切り・面の公式 px は本文が無いので足さない。未確認。
      */
     .andm-series--apple {
       --andm-font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",

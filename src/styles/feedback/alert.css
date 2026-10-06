@@ -6,7 +6,7 @@
     margin: 0;
     padding: var(--andm-space-3) var(--andm-space-4);
     border: 1px solid transparent;
-    border-radius: var(--andm-control-radius, var(--andm-radius-md));
+    border-radius: var(--andm-alert-radius, var(--andm-btn-radius));
     font-family: var(--andm-font-family);
     font-size: var(--andm-font-size-md);
     line-height: 1.45;

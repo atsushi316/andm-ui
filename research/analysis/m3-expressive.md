@@ -145,3 +145,14 @@ RectangleShape は角なし。CircleShape は円。単位は dp。px への換�
 - elevation の dp と影の式。
 - 旧 easing / duration を Expressive の Button に使うこと。適用ページ自身が、Expressive では保守しないと書く。
 - 2026-09-30 の再確認では https://m3.material.io/components/buttons/overview は「This website requires JavaScript.」で本文がなく、https://m3.material.io/styles/motion/overview/specs はタイトルのみだった。新しい角の数値は足していない。四角経由をやめたのは、既にある fast spatial を 9999px の pill から掛けていた実装が、押下中に半径 0 を経由していたため。
+
+## 入力・面・区切り（2026-10-06）
+
+Text field 固有の数値は未取得。未確認。
+
+- 入力・面・ダイアログ・アラートの角は形状スケールの Medium（12dp）を、ボタンと同じく px の数で `--andm-radius-md`（12px）にした。andm の傾向。公式の Text field / Dialog 半径ではない。ボタンの pill にはしない。
+- カードの例が medium、は本文にある。面の 12px はその例に合わせた andm の傾向。dp の px 換算は本文に無い。
+- 高さ・横余白はボタンの md にフォールバックする。入力専用は未確認。
+- Badge は `--andm-radius-sm`（8px）のまま。Small 8dp に近いが、Badge 固有は未確認。
+- Checkbox / Radio のサイズ・角・チェックの強さは未確認。Baseline のまま。
+- 色ロールと意味色は Baseline のまま。新しい duration 名は足していない。

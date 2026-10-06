@@ -6,7 +6,7 @@
     margin: auto;
     padding: 0;
     border: 1px solid var(--andm-color-outline-variant);
-    border-radius: var(--andm-control-radius, var(--andm-radius-md));
+    border-radius: var(--andm-dialog-radius, var(--andm-btn-radius));
     background: var(--andm-color-surface);
     color: var(--andm-color-on-surface);
     box-shadow: var(--andm-shadow-2);
