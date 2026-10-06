@@ -62,8 +62,8 @@ async function withScriptCacheBust(html) {
     `data-gallery-build="${stamp}"`,
   );
   out = out.replace(
-    /content="click-reveal-1"/,
-    `content="${stamp}"`,
+    /(<meta name="andm-gallery-build" content=")[^"]*(")/,
+    `$1${stamp}$2`,
   );
   out = out.replace(
     /<title>[^<]*<\/title>/,
