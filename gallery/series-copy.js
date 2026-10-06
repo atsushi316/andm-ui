@@ -14,6 +14,7 @@
       "spectrum",
       "fluent",
       "carbon",
+      "atlassian",
     ],
     labels: {
       baseline: "Baseline",
@@ -28,6 +29,7 @@
       spectrum: "Spectrum",
       fluent: "Fluent 2",
       carbon: "Carbon",
+      atlassian: "Atlassian",
     },
     briefs: {
       baseline: {
@@ -89,6 +91,11 @@
         trait: "角は直角で、主操作は青です。高さは 32、40、48px です。",
         use: "製品の画面で、主操作を青で示したいときに向きます。",
         motion: "ホバーと押下は色。縮みと角の変化はない。速度は Token を見る。",
+      },
+      atlassian: {
+        trait: "ボタンと入力の角は 6px。カードは 8px、モーダルは 12px です。",
+        use: "チームの作業画面で、操作の区切りを角と枠で示したいときに向きます。",
+        motion: "ホバーの曲線だけ公式。duration は範囲なので速度トークンは差し替えない。押すと共有の縮み。",
       },
     },
     meta: {
@@ -232,6 +239,19 @@
         official: "ホバーと押下は色。角は変えない。",
         interpretation: "角は 0 のまま。押下の縮小はしない。",
         patterns: [{ trigger: "hover", effect: "highlight" }],
+      },
+      atlassian: {
+        character: "作業の区切りを角で示す",
+        sourceKind: "official",
+        sourceNote: "Atlassian Design の foundations。色の hex は本文に残らなかった。",
+        verification: "verified",
+        duration: "official value not specified",
+        official: "操作の duration は 50–150ms の範囲。単一の ms は本文に無い。ホバーの曲線は ease-out practical。",
+        interpretation: "速度トークンは差し替えない。押下の縮小は Baseline のまま。色は Baseline のまま。",
+        patterns: [
+          { trigger: "hover", effect: "highlight" },
+          { trigger: "press", effect: "compress" },
+        ],
       },
     },
   };
