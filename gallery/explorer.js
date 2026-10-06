@@ -163,9 +163,14 @@
         a.removeAttribute("aria-current");
       }
     });
-    // Hash は #/overlays/drawer 形式で要素 id と一致しない。部品を表示したら先頭へスクロールする。
-    if (shown && !onSeries) {
-      shown.scrollIntoView({ block: "start", behavior: "auto" });
+    // Hash は #/overlays/drawer 形式で要素 id と一致しない。案内を隠したあと先頭へ戻す。
+    if (!onSeries) {
+      window.scrollTo(0, 0);
+      if (shown) {
+        requestAnimationFrame(function () {
+          shown.scrollIntoView({ block: "start", behavior: "auto" });
+        });
+      }
     }
   }
 
