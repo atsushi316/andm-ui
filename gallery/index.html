@@ -587,7 +587,6 @@
       }
 
       .g-exp-visual,
-      .g-token-cards,
       #series-motion-tokens {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
@@ -595,8 +594,219 @@
         margin: var(--andm-space-3) 0 var(--andm-space-4);
       }
 
+      .g-token-cards {
+        margin: var(--andm-space-4) 0 var(--andm-space-6);
+      }
+
+      .g-token-scope {
+        margin: 0 0 var(--andm-space-8);
+      }
+
+      .g-token-scope > h3,
+      .g-color-group > h3 {
+        margin: 0 0 var(--andm-space-4);
+        font-size: 1.35rem;
+        font-weight: 650;
+        letter-spacing: -0.02em;
+      }
+
+      .g-ramp {
+        margin: 0 0 var(--andm-space-5);
+      }
+
+      .g-ramp h4 {
+        margin: 0 0 var(--andm-space-2);
+        font-size: var(--andm-font-size-sm);
+        font-weight: 700;
+      }
+
+      .g-ramp__strip {
+        display: flex;
+        gap: 2px;
+        overflow-x: auto;
+        padding-bottom: var(--andm-space-1);
+      }
+
+      .g-ramp__strip .g-swatch {
+        flex: 1 0 6.75rem;
+      }
+
+      .g-ramp__strip .g-swatch__chip {
+        border-radius: 0;
+        min-height: 6.75rem;
+      }
+
+      .g-ramp__strip .g-swatch:first-child .g-swatch__chip {
+        border-radius: var(--andm-radius-md) 0 0 var(--andm-radius-md);
+      }
+
+      .g-ramp__strip .g-swatch:last-child .g-swatch__chip {
+        border-radius: 0 var(--andm-radius-md) var(--andm-radius-md) 0;
+      }
+
+      .g-ramp__strip .g-swatch:only-child .g-swatch__chip {
+        border-radius: var(--andm-radius-md);
+      }
+
+      .g-ramp__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+        gap: var(--andm-space-3);
+      }
+
+      .g-swatch {
+        margin: 0;
+        min-width: 0;
+      }
+
+      .g-swatch__chip {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 5.5rem;
+        padding: 0.7rem 0.75rem;
+        border-radius: var(--andm-radius-md);
+        box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+      }
+
+      .g-swatch__chip--plain {
+        color: var(--andm-color-on-surface);
+        background: var(--g-surface-muted);
+        font-size: var(--andm-font-size-sm);
+      }
+
+      .g-swatch__step {
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      .g-swatch__hex {
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        line-height: 1.3;
+      }
+
+      .g-swatch figcaption,
+      .g-box figcaption {
+        margin: 0.4rem 0 0;
+      }
+
+      .g-swatch code,
+      .g-box code,
+      .g-token-line code {
+        display: block;
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.7rem;
+        line-height: 1.35;
+        color: var(--andm-color-on-surface);
+      }
+
+      .g-swatch__use,
+      .g-swatch__alias {
+        display: block;
+        margin-top: 0.15rem;
+        font-size: 0.75rem;
+        line-height: 1.35;
+        color: var(--andm-color-on-surface-variant);
+        overflow-wrap: anywhere;
+      }
+
+      .g-token-lines {
+        border-top: 1px solid var(--g-border);
+      }
+
+      .g-token-line {
+        display: grid;
+        grid-template-columns: minmax(12rem, 18rem) max-content minmax(7rem, 1fr);
+        gap: var(--andm-space-4);
+        align-items: center;
+        padding: var(--andm-space-3) 0;
+        border-bottom: 1px solid var(--g-border);
+      }
+
+      .g-token-line__preview {
+        display: flex;
+        align-items: center;
+        min-width: 2rem;
+      }
+
+      .g-token-line--type {
+        grid-template-columns: minmax(0, 1fr) minmax(14rem, 18rem);
+        align-items: end;
+      }
+
+      .g-token-line__sample {
+        margin: 0;
+        color: var(--andm-color-on-surface);
+      }
+
+      .g-token-line__meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        font-size: var(--andm-font-size-sm);
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-token-line__meta strong {
+        color: var(--andm-color-on-surface);
+        font-size: 0.95rem;
+        overflow-wrap: anywhere;
+      }
+
+      .g-meter__bar,
+      .g-inline-swatch {
+        display: block;
+        height: 1rem;
+        max-width: 100%;
+        background: var(--andm-color-primary);
+        border-radius: var(--andm-radius-sm);
+      }
+
+      .g-inline-swatch {
+        width: 10rem;
+        min-height: 2.75rem;
+        height: auto;
+        padding: 0.55rem 0.7rem;
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+      }
+
+      .g-box-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+        gap: var(--andm-space-4);
+      }
+
+      .g-box {
+        margin: 0;
+      }
+
+      .g-box__face {
+        display: flex;
+        align-items: flex-end;
+        min-height: 6.5rem;
+        padding: 0.7rem;
+        border: 1px solid var(--g-border);
+        background: var(--g-surface-muted);
+        font-size: var(--andm-font-size-sm);
+        font-weight: 600;
+      }
+
+      .g-box__face--elev {
+        background: var(--andm-color-surface);
+      }
+
+      @media (max-width: 800px) {
+        .g-token-line,
+        .g-token-line--type {
+          grid-template-columns: 1fr;
+          align-items: start;
+        }
+      }
+
       .g-exp-swatch,
-      .g-token-card,
       .g-exp-motion {
         margin: 0;
         padding: var(--andm-space-3);
@@ -640,19 +850,12 @@
         font-size: var(--andm-font-size-sm);
       }
 
-      .g-token-card h3,
       .g-exp-swatch figcaption,
-      .g-exp-motion p,
-      .g-token-card__where {
+      .g-exp-motion p {
         margin: 0 0 var(--andm-space-1);
         font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
         font-size: 0.75rem;
         word-break: break-all;
-      }
-
-      .g-token-card__value {
-        margin: 0 0 var(--andm-space-2);
-        font-weight: 700;
       }
 
       .g-motion-demo {
