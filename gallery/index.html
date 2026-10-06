@@ -9,7 +9,7 @@
     <style>
       /* Gallery layout only — component look comes from dist/style.css */
       :root {
-        --g-nav-width: 15rem;
+        --g-nav-width: 16.5rem;
         --g-surface-muted: color-mix(
           in srgb,
           var(--andm-color-on-surface) 4%,
@@ -22,23 +22,32 @@
         );
       }
 
+      html,
+      body {
+        height: 100%;
+      }
+
       body {
         min-height: 100vh;
+        overflow: hidden;
       }
 
       .g-shell {
         display: grid;
         grid-template-columns: var(--g-nav-width) minmax(0, 1fr);
-        min-height: 100vh;
+        height: 100vh;
+        min-height: 0;
       }
 
       .g-nav {
         position: sticky;
         top: 0;
-        align-self: start;
+        align-self: stretch;
         height: 100vh;
+        max-height: 100vh;
         overflow: auto;
-        padding: var(--andm-space-6) var(--andm-space-4);
+        overscroll-behavior: contain;
+        padding: var(--andm-space-5) var(--andm-space-3) var(--andm-space-6);
         border-right: 1px solid var(--g-border);
         background: var(--g-surface-muted);
       }
@@ -59,17 +68,58 @@
       }
 
       .g-nav__group {
-        margin: 0 0 var(--andm-space-6);
+        margin: 0 0 var(--andm-space-2);
+      }
+
+      .g-nav__group > ul {
+        display: none;
+        margin: 0 0 var(--andm-space-2);
+      }
+
+      .g-nav__group[data-open] > ul {
+        display: block;
       }
 
       .g-nav__label {
-        display: block;
-        margin: 0 0 var(--andm-space-2);
-        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        gap: var(--andm-space-2);
+        width: 100%;
+        min-height: 2.75rem;
+        margin: 0;
+        padding: 0.35rem 0.6rem;
+        border: 0;
+        border-radius: var(--andm-radius-sm);
+        background: var(--g-surface-muted);
+        color: var(--andm-color-on-surface);
+        font: inherit;
+        font-size: 0.8125rem;
         font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--andm-color-on-surface-variant);
+        letter-spacing: 0.02em;
+        text-align: left;
+        text-transform: none;
+        cursor: pointer;
+        position: static;
+      }
+
+      .g-nav__group[data-open] > .g-nav__label {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      .g-nav__label::after {
+        content: "";
+        margin-left: auto;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: translateY(-0.1rem) rotate(45deg);
+      }
+
+      .g-nav__group[data-open] > .g-nav__label::after {
+        transform: translateY(0.1rem) rotate(-135deg);
       }
 
       .g-nav ul {
@@ -79,27 +129,48 @@
       }
 
       .g-nav a {
-        display: block;
-        padding: var(--andm-space-1) 0;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        min-height: 2.5rem;
+        padding: 0.35rem 0.7rem;
         color: var(--andm-color-on-surface);
         text-decoration: none;
-        font-size: var(--andm-font-size-sm);
+        font-size: 0.9375rem;
+        line-height: 1.35;
         border-radius: var(--andm-radius-sm);
-        transition: color var(--andm-motion-duration-short2)
-          var(--andm-motion-easing-decelerate);
+        transition:
+          color var(--andm-motion-duration-short2) var(--andm-motion-easing-decelerate),
+          background-color var(--andm-motion-duration-short2)
+            var(--andm-motion-easing-decelerate);
       }
 
       .g-nav__name {
         display: inline;
       }
 
-      .g-nav a:hover,
-      .g-nav a[aria-current="page"] {
-        color: var(--andm-color-primary);
+      .g-nav a:hover {
+        background: color-mix(
+          in srgb,
+          var(--andm-color-on-surface) 6%,
+          var(--andm-color-surface)
+        );
       }
 
       .g-nav a[aria-current="page"] {
         font-weight: 700;
+        color: var(--andm-color-primary);
+        background: color-mix(
+          in srgb,
+          var(--andm-color-primary) 14%,
+          var(--andm-color-surface)
+        );
+        box-shadow: inset 3px 0 0 var(--andm-color-primary);
+      }
+
+      .g-nav__brand[aria-current="page"] {
+        color: var(--andm-color-primary);
       }
 
       .g-field {
@@ -112,7 +183,8 @@
         max-width: 36rem;
       }
 
-      .g-nav a:focus-visible {
+      .g-nav a:focus-visible,
+      .g-nav__label:focus-visible {
         outline: var(--andm-focus-ring-width) solid var(--andm-focus-ring-color);
         outline-offset: var(--andm-focus-ring-offset);
       }
@@ -132,8 +204,60 @@
       }
 
       .g-main {
-        padding: var(--andm-space-6) var(--andm-space-6) var(--andm-space-8);
-        max-width: 72rem;
+        height: 100vh;
+        overflow: auto;
+        overscroll-behavior: contain;
+        padding: 2.5rem 2.75rem 4rem;
+        max-width: none;
+      }
+
+      .g-pagehead {
+        max-width: 40rem;
+        margin: 0 0 2rem;
+      }
+
+      .g-pagehead__kicker {
+        margin: 0;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--andm-color-primary);
+      }
+
+      .g-pagehead h1 {
+        margin: 0.35rem 0 0.75rem;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+      }
+
+      .g-pagehead__lead,
+      .g-pagehead__status {
+        margin: 0;
+        max-width: 38rem;
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        color: var(--andm-color-on-surface-variant);
+      }
+
+      .g-pagehead__status:empty,
+      .g-pagehead__lead:empty {
+        display: none;
+      }
+
+      .g-pagehead__status {
+        margin-top: 0.35rem;
+      }
+
+      #series-tools {
+        display: none;
+        margin-top: 1.25rem;
+      }
+
+      body[data-shell="part"] #series-tools,
+      body[data-view="series"] #series-tools {
+        display: block;
       }
 
       .g-hero h1 {
@@ -167,9 +291,10 @@
 
       .g-goals {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+        grid-template-columns: 1fr;
         gap: var(--andm-space-3);
         margin: 0 0 var(--andm-space-8);
+        max-width: 40rem;
       }
 
       .g-goal {
@@ -215,14 +340,28 @@
         line-height: 1.45;
       }
 
-      /* 部品・Token ルートではホーム案内とシリーズ切替を隠し、部品をメイン先頭に出す。
-         #series-preview は部品セクションの親でもあるので消さない（中の data-part=series は hidden で消える）。 */
-      body:not([data-view="series"]) .g-hero,
-      body:not([data-view="series"]) .g-goals,
-      body:not([data-view="series"]) .g-status,
-      body:not([data-view="series"]) #series,
+      /* ホームの大きな案内は pagehead に移す。シリーズの帯は部品の見出しを覆わない。
+         #series-preview は部品セクションの親なので消さない。 */
+      .g-hero,
+      #series {
+        display: none;
+      }
+
+      body:not([data-view="home"]) .g-goals,
+      body:not([data-view="home"]) .g-status {
+        display: none;
+      }
+
       body:not([data-view="series"]) .g-switch-bar,
       body:not([data-view="series"]) .g-stick-scope > .g-details {
+        display: none;
+      }
+
+      body[data-shell="part"] .g-section[data-part] > h2 {
+        display: none;
+      }
+
+      body[data-view="tokens"] #token-title {
         display: none;
       }
 
@@ -233,7 +372,7 @@
       }
 
       body[data-view="series"] .g-stick-scope .g-section {
-        scroll-margin-top: 11rem;
+        scroll-margin-top: 1rem;
       }
 
       body:not([data-view="series"]) .g-section[data-part] {
@@ -249,9 +388,9 @@
       .g-section > .g-desc {
         margin: 0 0 var(--andm-space-4);
         color: var(--andm-color-on-surface-variant);
-        font-size: var(--andm-font-size-sm);
-        line-height: 1.45;
-        max-width: 42rem;
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        max-width: 40rem;
       }
 
       .g-block {
@@ -418,6 +557,7 @@
         padding: 0;
         list-style: none;
         font-size: var(--andm-font-size-sm);
+        max-width: 40rem;
       }
 
       .g-status a {
@@ -513,13 +653,13 @@
       }
 
       .g-switch-bar {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-        margin: 0 0 var(--andm-space-4);
-        padding: var(--andm-space-2) 0 var(--andm-space-3);
-        background: var(--andm-color-surface);
-        border-bottom: 1px solid var(--g-border);
+        position: static;
+        z-index: 0;
+        margin: 0 0 var(--andm-space-6);
+        padding: 0 0 var(--andm-space-4);
+        background: transparent;
+        border-bottom: 0;
+        max-width: 40rem;
       }
 
       .g-switch-bar .g-switch {
@@ -566,26 +706,116 @@
       }
 
       @media (max-width: 800px) {
+        body {
+          overflow: auto;
+        }
+
         .g-shell {
-          grid-template-columns: 1fr;
+          display: block;
+          height: auto;
         }
 
         .g-nav {
-          position: static;
+          position: sticky;
+          top: 0;
           height: auto;
+          max-height: 46vh;
           border-right: none;
           border-bottom: 1px solid var(--g-border);
         }
 
-        .g-nav__group {
-          display: inline-block;
-          vertical-align: top;
-          margin-right: var(--andm-space-6);
-        }
-
         .g-main {
-          padding: var(--andm-space-4);
+          height: auto;
+          overflow: visible;
+          padding: var(--andm-space-5) var(--andm-space-4) var(--andm-space-8);
         }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .g-nav a,
+        .g-nav__label {
+          transition: none;
+        }
+      }
+
+      .g-library-note {
+        margin: 0 0 1.5rem;
+        padding: 0.9rem 1rem;
+        max-width: 40rem;
+        border-left: 3px solid var(--andm-color-primary);
+        background: var(--g-surface-muted);
+        border-radius: 0 var(--andm-radius-md) var(--andm-radius-md) 0;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .g-prose {
+        max-width: 40rem;
+        font-size: 1.0625rem;
+        line-height: 1.7;
+      }
+
+      .g-prose > h1:first-child {
+        display: none;
+      }
+
+      .g-prose h2,
+      .g-prose h3 {
+        margin: 2rem 0 0.75rem;
+        line-height: 1.35;
+        scroll-margin-top: 1rem;
+      }
+
+      .g-prose h2 {
+        font-size: 1.35rem;
+      }
+
+      .g-prose h3 {
+        font-size: 1.125rem;
+      }
+
+      .g-prose p,
+      .g-prose li {
+        margin: 0 0 0.9rem;
+      }
+
+      .g-prose ul,
+      .g-prose ol {
+        margin: 0 0 1rem;
+        padding-left: 1.25rem;
+      }
+
+      .g-prose a {
+        color: var(--andm-color-primary);
+      }
+
+      .g-prose code {
+        font-size: 0.9em;
+      }
+
+      .g-table-wrap {
+        max-width: 40rem;
+        margin: 0 0 1.25rem;
+        overflow-x: auto;
+      }
+
+      .g-prose table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9375rem;
+        line-height: 1.45;
+      }
+
+      .g-prose th,
+      .g-prose td {
+        text-align: left;
+        vertical-align: top;
+        padding: 0.55rem 0.7rem;
+        border-bottom: 1px solid var(--g-border);
+      }
+
+      .g-prose th {
+        font-weight: 700;
       }
 
       .g-series-label {
@@ -712,16 +942,35 @@
   <body>
     <div class="g-shell">
       <nav class="g-nav" aria-label="Gallery">
-        <a class="g-nav__brand" href="#top">andm-ui</a>
-        <p class="g-nav__tag">Design System Explorer</p>
+        <a class="g-nav__brand" href="#/" data-home-nav>andm-ui</a>
+        <p class="g-nav__tag">見出しを押すと開きます</p>
 
-        <div class="g-nav__group">
-          <span class="g-nav__label">Series</span>
+        <div class="g-nav__group" data-nav-group="library">
+          <button type="button" class="g-nav__label" aria-expanded="false">文献</button>
+          <ul>
+            <li><a href="#/library" data-library-nav="index">索引</a></li>
+            <li>
+              <a href="#/library/academic" data-library-nav="academic">学術・理論</a>
+            </li>
+            <li>
+              <a href="#/library/standards" data-library-nav="standards">標準・ガイドライン</a>
+            </li>
+            <li>
+              <a href="#/library/design-systems" data-library-nav="design-systems"
+                >主要 Design System</a
+              >
+            </li>
+            <li><a href="#/library/books" data-library-nav="books">書籍</a></li>
+          </ul>
+        </div>
+
+        <div class="g-nav__group" data-nav-group="series">
+          <button type="button" class="g-nav__label" aria-expanded="false">Series</button>
           <ul id="nav-series"></ul>
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Tokens</span>
+          <button type="button" class="g-nav__label" aria-expanded="false">Tokens</button>
           <ul>
             <li><a href="#/tokens/color" data-token-nav="color">Color</a></li>
             <li><a href="#/tokens/typography" data-token-nav="typography">Typography</a></li>
@@ -735,7 +984,7 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Controls</span>
+          <button type="button" class="g-nav__label" aria-expanded="false">Controls</button>
           <ul>
             <li>
               <a href="#/controls/button" data-part-nav="button"
@@ -786,7 +1035,7 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Marks</span>
+          <button type="button" class="g-nav__label" aria-expanded="false">Marks</button>
           <ul>
             <li>
               <a href="#/marks/divider" data-part-nav="divider"
@@ -802,7 +1051,7 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Containers</span>
+          <button type="button" class="g-nav__label" aria-expanded="false">Containers</button>
           <ul>
             <li>
               <a href="#/containers/card" data-part-nav="card"
@@ -813,7 +1062,7 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Feedback</span>
+          <button type="button" class="g-nav__label" aria-expanded="false">Feedback</button>
           <ul>
             <li>
               <a href="#/feedback/alert" data-part-nav="alert"
@@ -829,7 +1078,7 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Overlays</span>
+          <button type="button" class="g-nav__label" aria-expanded="false">Overlays</button>
           <ul>
             <li>
               <a href="#/overlays/dialog" data-part-nav="dialog"
@@ -855,7 +1104,7 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Navigation</span>
+          <button type="button" class="g-nav__label" aria-expanded="false">Navigation</button>
           <ul>
             <li>
               <a href="#/navigation/tabs" data-part-nav="tabs"
@@ -881,7 +1130,7 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Pattern</span>
+          <button type="button" class="g-nav__label" aria-expanded="false">Pattern</button>
           <ul>
             <li>
               <a href="#pattern"
@@ -892,7 +1141,7 @@
         </div>
 
         <div class="g-nav__group">
-          <span class="g-nav__label">Experience</span>
+          <button type="button" class="g-nav__label" aria-expanded="false">Experience</button>
           <ul>
             <li>
               <a href="#experience"
@@ -902,60 +1151,19 @@
           </ul>
         </div>
 
-        <div class="g-nav__group">
-          <span class="g-nav__label">シリーズ</span>
-          <ul>
-            <li>
-              <a href="#baseline"
-                >Baseline <span class="g-nav__hint">汎用・中立</span></a
-              >
-            </li>
-            <li>
-              <a href="#soft">Soft <span class="g-nav__hint">穏やか</span></a>
-            </li>
-            <li>
-              <a href="#dense">Dense <span class="g-nav__hint">余白を詰める</span></a>
-            </li>
-            <li>
-              <a href="#technical"
-                >Technical <span class="g-nav__hint">境界がはっきり</span></a
-              >
-            </li>
-            <li>
-              <a href="#editorial"
-                >Editorial <span class="g-nav__hint">読み物向け</span></a
-              >
-            </li>
-            <li>
-              <a href="#playful">Playful <span class="g-nav__hint">丸く温かい</span></a>
-            </li>
-            <li>
-              <a href="#expressive"
-                >M3 Expressive <span class="g-nav__hint">印象を残す</span></a
-              >
-            </li>
-            <li>
-              <a href="#dads">DADS <span class="g-nav__hint">行政・公共</span></a>
-            </li>
-            <li>
-              <a href="#apple">Apple <span class="g-nav__hint">案内・設定</span></a>
-            </li>
-            <li>
-              <a href="#spectrum"
-                >Spectrum <span class="g-nav__hint">業務の画面</span></a
-              >
-            </li>
-            <li>
-              <a href="#fluent">Fluent 2 <span class="g-nav__hint">角は 4px</span></a>
-            </li>
-            <li>
-              <a href="#carbon">Carbon <span class="g-nav__hint">角は直角</span></a>
-            </li>
-          </ul>
-        </div>
       </nav>
 
       <main class="g-main" id="top">
+        <header class="g-pagehead" id="pagehead">
+          <p class="g-pagehead__kicker" id="page-kicker">Gallery</p>
+          <h1 id="page-title">Design System Explorer</h1>
+          <p class="g-pagehead__lead" id="page-lead"></p>
+          <p class="g-pagehead__status" id="page-status"></p>
+          <div id="series-tools">
+            <label class="g-series-label" for="series-select">シリーズ</label>
+            <select id="series-select" class="g-series-select"></select>
+          </div>
+        </header>
         <header class="g-hero">
           <h1>Design System Explorer</h1>
           <p class="lead">
@@ -1090,10 +1298,6 @@
 
         <div class="g-stick-scope" id="view-series">
           <div class="g-switch-bar">
-          <div class="g-switch">
-            <label class="g-series-label" for="series-select">シリーズ</label>
-            <select id="series-select" class="g-series-select"></select>
-          </div>
           <dl class="g-series-brief">
             <div>
               <dt>特徴</dt>
@@ -2479,6 +2683,11 @@
         </div>
         </div>
 
+        <section class="g-section g-library" id="view-library" hidden>
+          <p class="g-library-note">優先度は編集メモであり、部品の数値にはしない。</p>
+          <div class="g-prose" id="library-body"></div>
+        </section>
+
         <section class="g-section" id="view-tokens" hidden aria-labelledby="token-title">
           <h2 id="token-title">Tokens</h2>
           <p class="g-desc" id="token-status">読み込み中</p>
@@ -2489,6 +2698,7 @@
     </div>
     <script src="series-copy.js?v=click-reveal-2"></script>
     <script src="catalog.js?v=click-reveal-2"></script>
+    <script src="library.js?v=click-reveal-2"></script>
     <script src="explorer.js?v=click-reveal-2"></script>
   </body>
 </html>

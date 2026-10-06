@@ -1,10 +1,15 @@
-/* Design System Explorer。値は dist/style.css と computed style。Research は読まない。 */
+/* Design System Explorer。値は dist/style.css と computed style。文献は Markdown の表示だけで、Token にはしない。 */
 (function () {
   var catalog = window.ANDM_CATALOG;
   var copy = window.ANDM_SERIES_COPY;
   var preview = document.getElementById("series-preview");
   var viewSeries = document.getElementById("view-series");
   var viewTokens = document.getElementById("view-tokens");
+  var viewLibrary = document.getElementById("view-library");
+  var libraryBody = document.getElementById("library-body");
+  var scrollTarget = "";
+  var libraryToken = 0;
+  var libraryCache = Object.create(null);
   var select = document.getElementById("series-select");
   var navSeries = document.getElementById("nav-series");
   var tokenCards = document.getElementById("token-cards");
@@ -121,24 +126,60 @@
     return "--andm-motion-easing-standard";
   }
 
+  var libraryFiles = {
+    index: "README.md",
+    academic: "academic.md",
+    standards: "standards.md",
+    "design-systems": "design-systems.md",
+    books: "books.md",
+  };
+
+  var libraryTitles = {
+    index: "文献ライブラリ",
+    academic: "学術・理論",
+    standards: "標準・ガイドライン",
+    "design-systems": "主要 Design System",
+    books: "書籍",
+  };
+
+  var partKickers = {
+    controls: "Controls",
+    marks: "Marks",
+    containers: "Containers",
+    feedback: "Feedback",
+    overlays: "Overlays",
+    navigation: "Navigation",
+    part: "部品",
+  };
+
   function parseRoute() {
-    var raw = location.hash.replace(/^#\/?/, "");
+    var hash = location.hash || "";
+    if (hash === "" || hash === "#" || hash === "#/" || hash === "#top") {
+      return { view: "home", id: "", anchor: "" };
+    }
+    var raw = hash.replace(/^#\/?/, "");
     var parts = raw.split("/").filter(Boolean);
-    if (parts[0] === "tokens") return { view: "tokens", id: parts[1] || "color" };
-    if (parts[0] === "series") return { view: "series", id: parts[1] || "baseline" };
+    if (!parts.length) return { view: "home", id: "", anchor: "" };
+    if (parts[0] === "library") {
+      var shelf = parts[1] && libraryFiles[parts[1]] ? parts[1] : "index";
+      return { view: "library", id: shelf, anchor: parts[2] ? decodeURIComponent(parts[2]) : "" };
+    }
+    if (parts[0] === "tokens") return { view: "tokens", id: parts[1] || "color", anchor: "" };
+    if (parts[0] === "series") return { view: "series", id: parts[1] || "baseline", anchor: parts[2] || "" };
     if (partViews[parts[0]]) {
       return {
         view: parts[0],
         id: parts[1] || partDefaults[parts[0]] || "",
+        anchor: "",
       };
     }
     if (parts.length === 1 && legacyParts[parts[0]]) {
-      return { view: "part", id: legacyParts[parts[0]] };
+      return { view: "part", id: legacyParts[parts[0]], anchor: "" };
     }
     if (parts.length === 1 && items.some(function (item) { return item.id === parts[0]; })) {
-      return { view: "series", id: parts[0] };
+      return { view: "series", id: parts[0], anchor: "" };
     }
-    return { view: "series", id: "baseline" };
+    return { view: "home", id: "", anchor: "" };
   }
 
   function seriesIdFor(route) {
@@ -147,26 +188,25 @@
     return "baseline";
   }
 
+  function mainEl() {
+    return document.querySelector(".g-main");
+  }
+
   function scrollMainToTop() {
     window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    if (viewSeries) viewSeries.scrollTop = 0;
-    var main = document.querySelector(".g-main");
+    var main = mainEl();
     if (main) main.scrollTop = 0;
   }
 
-  function revealShownPart(shown) {
-    scrollMainToTop();
-    if (!shown) return;
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        scrollMainToTop();
-        shown.scrollIntoView({ block: "start", behavior: "auto" });
-        var top = shown.getBoundingClientRect().top;
-        if (top > 32) window.scrollBy(0, top - 16);
-      });
-    });
+  function scrollMainToId(id) {
+    var main = mainEl();
+    var el = id && document.getElementById(id);
+    if (!main || !el) {
+      scrollMainToTop();
+      return;
+    }
+    var top = el.getBoundingClientRect().top - main.getBoundingClientRect().top + main.scrollTop;
+    main.scrollTop = Math.max(0, top - 12);
   }
 
   function showPart(route) {
@@ -186,8 +226,37 @@
         a.removeAttribute("aria-current");
       }
     });
-    // Hash は #/overlays/drawer 形式で要素 id と一致しない。案内を隠したあと先頭へ戻す。
-    if (!onSeries) revealShownPart(shown);
+    if (!onSeries && shown) {
+      var h2 = shown.querySelector("h2");
+      setPagehead(partKickers[route.view] || "部品", headingText(h2) || route.id, "");
+      var status = document.getElementById("page-status");
+      if (status) status.textContent = headingBadge(h2);
+    }
+  }
+
+  function headingText(el) {
+    if (!el) return "";
+    var clone = el.cloneNode(true);
+    clone.querySelectorAll(".g-badge").forEach(function (badge) {
+      badge.remove();
+    });
+    return clone.textContent.replace(/\s+/g, " ").trim();
+  }
+
+  function headingBadge(el) {
+    var badge = el && el.querySelector(".g-badge");
+    return badge ? badge.textContent.replace(/\s+/g, " ").trim() : "";
+  }
+
+  function setPagehead(kicker, title, lead) {
+    var kick = document.getElementById("page-kicker");
+    var heading = document.getElementById("page-title");
+    var copy = document.getElementById("page-lead");
+    var status = document.getElementById("page-status");
+    if (kick) kick.textContent = kicker || "";
+    if (heading) heading.textContent = title || "";
+    if (copy) copy.textContent = lead || "";
+    if (status && arguments.length >= 3) status.textContent = "";
   }
 
   function go(hash) {
@@ -229,8 +298,9 @@
     document.querySelectorAll("[data-scene]").forEach(function (el) {
       el.hidden = el.getAttribute("data-scene") !== item.id;
     });
+    var onSeriesPage = parseRoute().view === "series";
     document.querySelectorAll("[data-series-nav]").forEach(function (a) {
-      if (a.dataset.seriesNav === item.id) a.setAttribute("aria-current", "page");
+      if (onSeriesPage && a.dataset.seriesNav === item.id) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
     });
     var brief = (copy.briefs && copy.briefs[item.id]) || {};
@@ -448,22 +518,133 @@
     tokenStatus.textContent = count + " 件。dist/style.css と computed style。";
   }
 
+  function clearNav(selector) {
+    document.querySelectorAll(selector).forEach(function (a) {
+      a.removeAttribute("aria-current");
+    });
+  }
+
+  function markNav(selector, key, id) {
+    document.querySelectorAll(selector).forEach(function (a) {
+      if (a.getAttribute(key) === id) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+  }
+
+  function syncNavGroups() {
+    var current = document.querySelector(".g-nav a[aria-current='page']");
+    document.querySelectorAll(".g-nav__group").forEach(function (group) {
+      var open = !!(current && group.contains(current));
+      group.toggleAttribute("data-open", open);
+      var btn = group.querySelector(":scope > .g-nav__label");
+      if (btn && btn.tagName === "BUTTON") btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    if (!current) return;
+    var nav = document.querySelector(".g-nav");
+    if (!nav) return;
+    var navRect = nav.getBoundingClientRect();
+    var rect = current.getBoundingClientRect();
+    if (rect.top < navRect.top + 40 || rect.bottom > navRect.bottom - 8) {
+      nav.scrollTop += rect.top - navRect.top - 56;
+    }
+  }
+
+  function showLibrary(route) {
+    var id = libraryFiles[route.id] ? route.id : "index";
+    setPagehead("文献", libraryTitles[id] || "文献", "");
+    markNav("[data-library-nav]", "data-library-nav", id);
+    if (!libraryBody || !window.ANDM_LIBRARY) return;
+    var file = libraryFiles[id];
+    var seq = ++libraryToken;
+    libraryBody.textContent = "読み込み中";
+    var load = libraryCache[file]
+      ? Promise.resolve(libraryCache[file])
+      : fetch("/research/library/" + file, { cache: "no-store" }).then(function (res) {
+          if (!res.ok) throw new Error("missing");
+          return res.text();
+        }).then(function (text) {
+          libraryCache[file] = text;
+          return text;
+        });
+    load.then(function (text) {
+      if (seq !== libraryToken) return;
+      window.ANDM_LIBRARY.renderInto(libraryBody, text, id);
+      if (route.anchor) scrollMainToId(route.anchor);
+    }).catch(function () {
+      if (seq !== libraryToken) return;
+      libraryBody.textContent = "文献を読めません。";
+    });
+  }
+
   function render() {
     var route = parseRoute();
     var onTokens = route.view === "tokens";
-    viewSeries.hidden = onTokens;
-    viewTokens.hidden = !onTokens;
-    if (planned) planned.hidden = onTokens;
+    var onLibrary = route.view === "library";
+    var onHome = route.view === "home";
+    var onSeries = route.view === "series";
+    var shell = onHome || onSeries || onTokens || onLibrary ? route.view : "part";
     document.body.dataset.view = route.view;
-    if (onTokens) {
-      showTokens(route.id);
-      document.querySelectorAll("[data-part-nav]").forEach(function (a) {
-        a.removeAttribute("aria-current");
-      });
+    document.body.dataset.shell = shell;
+    if (viewSeries) viewSeries.hidden = onTokens || onLibrary || onHome;
+    if (viewTokens) viewTokens.hidden = !onTokens;
+    if (viewLibrary) viewLibrary.hidden = !onLibrary;
+    if (planned) planned.hidden = !onHome;
+    var brand = document.querySelector("[data-home-nav]");
+    if (brand) {
+      if (onHome) brand.setAttribute("aria-current", "page");
+      else brand.removeAttribute("aria-current");
+    }
+    if (onLibrary) {
+      clearNav("[data-part-nav]");
+      clearNav("[data-token-nav]");
+      clearNav("[data-series-nav]");
+      showLibrary(route);
+      scrollMainToTop();
+      syncNavGroups();
       return;
     }
+    if (onTokens) {
+      clearNav("[data-part-nav]");
+      clearNav("[data-library-nav]");
+      clearNav("[data-series-nav]");
+      var token = categories.find(function (item) { return item.id === route.id; });
+      setPagehead("Tokens", token ? token.label : route.id, "");
+      showTokens(route.id);
+      scrollMainToTop();
+      syncNavGroups();
+      return;
+    }
+    if (onHome) {
+      clearNav("[data-part-nav]");
+      clearNav("[data-token-nav]");
+      clearNav("[data-library-nav]");
+      clearNav("[data-series-nav]");
+      setPagehead(
+        "Gallery",
+        "Design System Explorer",
+        "左の見出しから、部品、Token、文献を開きます。シリーズの見た目は、部品のページで切り替えます。",
+      );
+      scrollMainToTop();
+      syncNavGroups();
+      return;
+    }
+    clearNav("[data-library-nav]");
+    clearNav("[data-token-nav]");
     applySeries(seriesIdFor(route));
-    showPart(route);
+    if (onSeries) {
+      var item = items.find(function (entry) { return entry.id === route.id; }) || items[0];
+      var brief = (copy.briefs && item && copy.briefs[item.id]) || {};
+      setPagehead("Series", item ? item.label : route.id, brief.use || "");
+      showPart(route);
+      if (scrollTarget) scrollMainToId(scrollTarget);
+      else if (route.anchor) scrollMainToId(route.anchor);
+      else scrollMainToTop();
+    } else {
+      showPart(route);
+      scrollMainToTop();
+    }
+    scrollTarget = "";
+    syncNavGroups();
   }
 
   function initParts() {
@@ -737,20 +918,51 @@
 
   select.addEventListener("change", function () {
     var route = parseRoute();
-    if (route.view !== "series" && route.view !== "tokens") {
-      applySeries(select.value);
+    if (route.view === "series") {
+      go("#/series/" + select.value);
       return;
     }
-    go("#/series/" + select.value);
+    if (route.view === "tokens" || route.view === "library" || route.view === "home") return;
+    applySeries(select.value);
   });
 
-  // 左ナビ・完成状況チップ・goal など #/… リンクは必ず showPart 経由にする
-  //（hashchange が飛ばない同一ハッシュや、古いキャッシュ対策）。
+  document.querySelectorAll(".g-nav__group > .g-nav__label").forEach(function (btn) {
+    if (btn.tagName !== "BUTTON") return;
+    btn.addEventListener("click", function () {
+      var group = btn.parentElement;
+      var willOpen = !group.hasAttribute("data-open");
+      document.querySelectorAll(".g-nav__group").forEach(function (other) {
+        var on = other === group && willOpen;
+        other.toggleAttribute("data-open", on);
+        var label = other.querySelector(":scope > .g-nav__label");
+        if (label && label.tagName === "BUTTON") {
+          label.setAttribute("aria-expanded", on ? "true" : "false");
+        }
+      });
+    });
+  });
+
+  var pageJumps = {
+    "#pattern": "pattern",
+    "#experience": "experience",
+    "#series": "",
+    "#series-scene": "series-scene",
+  };
+
+  // 左ナビ・完成状況・goal の #/… は hash が同じでも描き直す。
   document.addEventListener("click", function (event) {
-    var a = event.target.closest("a[href^='#/']");
+    var a = event.target.closest("a[href^='#']");
     if (!a || a.getAttribute("target") === "_blank") return;
     var href = a.getAttribute("href");
-    if (!href) return;
+    if (!href || href === "#") return;
+    if (Object.prototype.hasOwnProperty.call(pageJumps, href)) {
+      event.preventDefault();
+      scrollTarget = pageJumps[href];
+      var series = (select && select.value) || "baseline";
+      go("#/series/" + series);
+      return;
+    }
+    if (href.indexOf("#/") !== 0 && href !== "#/") return;
     event.preventDefault();
     go(href);
   });
