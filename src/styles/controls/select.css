@@ -1,0 +1,71 @@
+@layer andm.components {
+  .andm-select {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--andm-space-1);
+    margin: 0;
+    font-family: var(--andm-font-family);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-select__label {
+    font-size: var(--andm-font-size-sm);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+  }
+
+  .andm-select__native {
+    appearance: none;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    height: var(--andm-control-height-md);
+    margin: 0;
+    padding: 0 calc(var(--andm-control-padding-x) + var(--andm-space-5)) 0
+      var(--andm-control-padding-x);
+    border: 1px solid var(--andm-color-outline);
+    border-radius: var(--andm-control-radius);
+    background-color: var(--andm-color-surface);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%235f6368' stroke-width='1.5' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--andm-control-padding-x) center;
+    background-size: 12px 12px;
+    color: var(--andm-color-on-surface);
+    font-family: inherit;
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    cursor: pointer;
+    /* hover / focus の highlight */
+    transition:
+      border-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-select__native:hover:not(:disabled):not([disabled]):not(:focus) {
+    border-color: var(--andm-color-on-surface);
+  }
+
+  .andm-select__native:focus {
+    outline: none;
+  }
+
+  .andm-select__native:focus-visible {
+    border-color: var(--andm-color-primary);
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+
+  .andm-select__native:disabled,
+  .andm-select__native[disabled] {
+    cursor: not-allowed;
+    background-color: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+  }
+}

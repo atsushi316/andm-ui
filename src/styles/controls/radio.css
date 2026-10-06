@@ -1,0 +1,97 @@
+@layer andm.components {
+  .andm-radio {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--andm-space-2);
+    margin: 0;
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .andm-radio__input {
+    appearance: none;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: var(--andm-space-5);
+    height: var(--andm-space-5);
+    margin: 0;
+    border: 2px solid var(--andm-color-outline);
+    border-radius: var(--andm-radius-pill);
+    background: var(--andm-color-surface);
+    cursor: inherit;
+    /* 選択状態の highlight */
+    transition:
+      background-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      border-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-radio__input:hover:not(:disabled):not([disabled]) {
+    border-color: var(--andm-color-on-surface);
+  }
+
+  .andm-radio__input:checked {
+    border-color: var(--andm-color-primary);
+    background:
+      radial-gradient(
+        circle at center,
+        var(--andm-color-primary) 0,
+        var(--andm-color-primary) 35%,
+        transparent 36%
+      ),
+      var(--andm-color-surface);
+  }
+
+  .andm-radio__input:focus {
+    outline: none;
+  }
+
+  .andm-radio__input:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+
+  .andm-radio__input:disabled,
+  .andm-radio__input[disabled] {
+    cursor: not-allowed;
+    border-color: var(--andm-color-disabled-outline);
+    background: var(--andm-color-disabled-container);
+  }
+
+  .andm-radio__input:disabled:checked,
+  .andm-radio__input[disabled]:checked {
+    border-color: var(--andm-color-disabled-outline);
+    background:
+      radial-gradient(
+        circle at center,
+        var(--andm-color-on-disabled) 0,
+        var(--andm-color-on-disabled) 35%,
+        transparent 36%
+      ),
+      var(--andm-color-disabled-container);
+  }
+
+  .andm-radio:has(.andm-radio__input:disabled),
+  .andm-radio:has(.andm-radio__input[disabled]) {
+    cursor: not-allowed;
+    color: var(--andm-color-on-disabled);
+  }
+
+  .andm-radio__label {
+    padding-top: var(--andm-space-05);
+  }
+
+  .andm-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--andm-space-2);
+  }
+}

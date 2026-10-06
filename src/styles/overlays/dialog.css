@@ -1,0 +1,72 @@
+@layer andm.components {
+  .andm-dialog {
+    box-sizing: border-box;
+    width: min(28rem, calc(100% - var(--andm-space-8)));
+    max-height: calc(100% - var(--andm-space-8));
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--andm-color-outline-variant);
+    border-radius: var(--andm-control-radius, var(--andm-radius-md));
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-surface);
+    box-shadow: var(--andm-shadow-2);
+    font-family: var(--andm-font-family);
+  }
+
+  .andm-dialog::backdrop {
+    background: rgb(0 0 0 / 0.4);
+  }
+
+  .andm-dialog__panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--andm-space-3);
+    padding: var(--andm-space-5);
+  }
+
+  .andm-dialog__title {
+    margin: 0;
+    font-size: var(--andm-font-size-lg);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+  }
+
+  .andm-dialog__body {
+    margin: 0;
+    font-size: var(--andm-font-size-md);
+    line-height: 1.5;
+    color: var(--andm-color-on-surface-variant);
+  }
+
+  .andm-dialog__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--andm-space-2);
+    margin-top: var(--andm-space-1);
+  }
+
+  /*
+   * details フォールバック。ネイティブ dialog が使えないとき用。
+   * open 状態の見た目だけ揃える。巨大な JS は入れない。
+   */
+  details.andm-dialog {
+    display: block;
+    width: min(28rem, 100%);
+  }
+
+  details.andm-dialog > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--andm-space-3) var(--andm-space-4);
+    font-weight: var(--andm-font-weight-medium);
+  }
+
+  details.andm-dialog > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.andm-dialog[open] > summary {
+    border-bottom: 1px solid var(--andm-color-outline-variant);
+  }
+}

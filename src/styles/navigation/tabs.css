@@ -1,0 +1,87 @@
+@layer andm.components {
+  .andm-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--andm-space-4);
+    font-family: var(--andm-font-family);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid var(--andm-color-outline-variant);
+  }
+
+  .andm-tabs__tab {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--andm-control-height-md);
+    margin: 0;
+    padding: 0 var(--andm-space-4);
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    color: var(--andm-color-on-surface-variant);
+    font-family: inherit;
+    font-size: var(--andm-font-size-md);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    cursor: pointer;
+    /* 選択状態の highlight */
+    transition:
+      color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      border-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-tabs__tab:hover:not(:disabled):not([disabled]) {
+    color: var(--andm-color-on-surface);
+    background: rgb(
+      var(--andm-color-primary-rgb) / var(--andm-state-hover-opacity)
+    );
+  }
+
+  .andm-tabs__tab--selected,
+  .andm-tabs__tab[aria-selected="true"] {
+    color: var(--andm-color-primary);
+    border-bottom-color: var(--andm-color-primary);
+  }
+
+  .andm-tabs__tab:focus {
+    outline: none;
+  }
+
+  .andm-tabs__tab:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: calc(-1 * var(--andm-focus-ring-offset));
+  }
+
+  .andm-tabs__tab:disabled,
+  .andm-tabs__tab[disabled] {
+    cursor: not-allowed;
+    color: var(--andm-color-on-disabled);
+  }
+
+  .andm-tabs__panel {
+    margin: 0;
+    font-size: var(--andm-font-size-md);
+    line-height: 1.5;
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-tabs__panel[hidden] {
+    display: none;
+  }
+}

@@ -1,0 +1,73 @@
+@layer andm.components {
+  .andm-alert {
+    display: flex;
+    flex-direction: column;
+    gap: var(--andm-space-1);
+    margin: 0;
+    padding: var(--andm-space-3) var(--andm-space-4);
+    border: 1px solid transparent;
+    border-radius: var(--andm-control-radius, var(--andm-radius-md));
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    line-height: 1.45;
+    /* 意味の切り替えは highlight（色） */
+    transition:
+      background-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      border-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard);
+  }
+
+  .andm-alert__title {
+    margin: 0;
+    font-size: var(--andm-font-size-md);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+  }
+
+  .andm-alert__body {
+    margin: 0;
+  }
+
+  .andm-alert--info {
+    background: var(--andm-color-info-container);
+    border-color: color-mix(
+      in srgb,
+      var(--andm-color-info) 32%,
+      transparent
+    );
+    color: var(--andm-color-on-info-container);
+  }
+
+  .andm-alert--success {
+    background: var(--andm-color-success-container);
+    border-color: color-mix(
+      in srgb,
+      var(--andm-color-success) 32%,
+      transparent
+    );
+    color: var(--andm-color-on-success-container);
+  }
+
+  .andm-alert--warning {
+    background: var(--andm-color-warning-container);
+    border-color: color-mix(
+      in srgb,
+      var(--andm-color-warning) 32%,
+      transparent
+    );
+    color: var(--andm-color-on-warning-container);
+  }
+
+  .andm-alert--error {
+    background: var(--andm-color-error-container);
+    border-color: color-mix(
+      in srgb,
+      var(--andm-color-error) 32%,
+      transparent
+    );
+    color: var(--andm-color-on-error-container);
+  }
+}

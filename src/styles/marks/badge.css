@@ -1,0 +1,44 @@
+@layer andm.components {
+  .andm-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--andm-space-1);
+    min-height: var(--andm-space-5);
+    padding: 0 var(--andm-space-2);
+    border-radius: var(--andm-radius-sm);
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-sm);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    white-space: nowrap;
+    background: var(--andm-color-secondary-container);
+    color: var(--andm-color-on-secondary-container);
+  }
+
+  .andm-badge--info {
+    background: var(--andm-color-info-container);
+    color: var(--andm-color-on-info-container);
+  }
+
+  .andm-badge--success {
+    background: var(--andm-color-success-container);
+    color: var(--andm-color-on-success-container);
+  }
+
+  .andm-badge--warning {
+    background: var(--andm-color-warning-container);
+    color: var(--andm-color-on-warning-container);
+  }
+
+  .andm-badge--error {
+    background: var(--andm-color-error-container);
+    color: var(--andm-color-on-error-container);
+  }
+
+  .andm-badge--outline {
+    background: transparent;
+    color: var(--andm-color-on-surface);
+    box-shadow: inset 0 0 0 1px var(--andm-color-outline);
+  }
+}

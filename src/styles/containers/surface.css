@@ -1,0 +1,43 @@
+@layer andm.components {
+  .andm-surface {
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    padding: var(--andm-space-4);
+    border: 1px solid var(--andm-color-outline-variant);
+    border-radius: var(--andm-control-radius, var(--andm-radius-md));
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-surface);
+    box-shadow: none;
+    font-family: var(--andm-font-family);
+  }
+
+  .andm-surface--raised {
+    border-color: transparent;
+    box-shadow: var(--andm-shadow-1);
+  }
+
+  .andm-surface--elevated {
+    border-color: transparent;
+    box-shadow: var(--andm-shadow-2);
+  }
+
+  .andm-surface--flush {
+    border-color: transparent;
+    padding: 0;
+  }
+
+  .andm-surface__title {
+    margin: 0 0 var(--andm-space-2);
+    font-size: var(--andm-font-size-md);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+  }
+
+  .andm-surface__body {
+    margin: 0;
+    font-size: var(--andm-font-size-md);
+    line-height: 1.5;
+    color: var(--andm-color-on-surface-variant);
+  }
+}

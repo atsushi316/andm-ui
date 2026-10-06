@@ -1,0 +1,14 @@
+@layer andm.tokens {
+  :root {
+    /*
+     * 入力系が共有する寸法。値は Button の幾何を指す。
+     * Soft / Dense などが --andm-btn-* を差し替えると、ここも追従する。
+     * シリーズ専用の textfield / select クラスは作らない。
+     */
+    --andm-control-height-sm: var(--andm-btn-height-sm);
+    --andm-control-height-md: var(--andm-btn-height-md);
+    --andm-control-height-lg: var(--andm-btn-height-lg);
+    --andm-control-radius: var(--andm-btn-radius);
+    --andm-control-padding-x: var(--andm-btn-padding-x-md);
+  }
+}

@@ -1,0 +1,82 @@
+@layer andm.components {
+  .andm-checkbox {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--andm-space-2);
+    margin: 0;
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .andm-checkbox__input {
+    appearance: none;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: var(--andm-space-5);
+    height: var(--andm-space-5);
+    margin: 0;
+    border: 2px solid var(--andm-color-outline);
+    border-radius: var(--andm-space-1);
+    background: var(--andm-color-surface);
+    cursor: inherit;
+    /* 選択状態の highlight */
+    transition:
+      background-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      border-color var(--andm-motion-duration-short3)
+        var(--andm-motion-easing-standard),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-checkbox__input:hover:not(:disabled):not([disabled]) {
+    border-color: var(--andm-color-on-surface);
+  }
+
+  .andm-checkbox__input:checked {
+    background: var(--andm-color-primary);
+    border-color: var(--andm-color-primary);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' d='M3.5 8.5 6.5 11.5 12.5 4.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px 12px;
+  }
+
+  .andm-checkbox__input:focus {
+    outline: none;
+  }
+
+  .andm-checkbox__input:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+
+  .andm-checkbox__input:disabled,
+  .andm-checkbox__input[disabled] {
+    cursor: not-allowed;
+    border-color: var(--andm-color-disabled-outline);
+    background: var(--andm-color-disabled-container);
+  }
+
+  .andm-checkbox__input:disabled:checked,
+  .andm-checkbox__input[disabled]:checked {
+    background-color: var(--andm-color-disabled-container);
+    border-color: var(--andm-color-disabled-outline);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%238d9196' stroke-width='2' d='M3.5 8.5 6.5 11.5 12.5 4.5'/%3E%3C/svg%3E");
+  }
+
+  .andm-checkbox:has(.andm-checkbox__input:disabled),
+  .andm-checkbox:has(.andm-checkbox__input[disabled]) {
+    cursor: not-allowed;
+    color: var(--andm-color-on-disabled);
+  }
+
+  .andm-checkbox__label {
+    padding-top: var(--andm-space-05);
+  }
+}

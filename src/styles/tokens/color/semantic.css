@@ -30,5 +30,19 @@
       var(--andm-color-outline) 12%,
       transparent
     );
+
+    /* Status。Alert / Badge 用。段階パレットは増やさない */
+    --andm-color-info: var(--andm-color-blue-40);
+    --andm-color-info-container: var(--andm-color-blue-95);
+    --andm-color-on-info-container: var(--andm-color-blue-10);
+    --andm-color-success: #146c2e;
+    --andm-color-success-container: #e6f4ea;
+    --andm-color-on-success-container: #0d401c;
+    --andm-color-warning: #9a6700;
+    --andm-color-warning-container: #fff4ce;
+    --andm-color-on-warning-container: #5c3d00;
+    --andm-color-error: #b3261e;
+    --andm-color-error-container: #fce8e6;
+    --andm-color-on-error-container: #410e0b;
   }
 }

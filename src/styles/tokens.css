@@ -12,6 +12,7 @@
 @import "./tokens/focus/semantic.css";
 @import "./tokens/state/semantic.css";
 @import "./controls/button-tokens.css";
+@import "./controls/control-tokens.css";
 @import "./series/expressive.css";
 @import "./series/dads.css";
 @import "./series/soft.css";

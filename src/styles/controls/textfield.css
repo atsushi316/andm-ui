@@ -1,0 +1,94 @@
+@layer andm.components {
+  .andm-textfield {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--andm-space-1);
+    margin: 0;
+    font-family: var(--andm-font-family);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-textfield__label {
+    font-size: var(--andm-font-size-sm);
+    font-weight: var(--andm-font-weight-medium);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface);
+  }
+
+  .andm-textfield__input {
+    appearance: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--andm-control-height-md);
+    margin: 0;
+    padding: 0 var(--andm-control-padding-x);
+    border: 1px solid var(--andm-color-outline);
+    border-radius: var(--andm-control-radius);
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-surface);
+    font-family: inherit;
+    font-size: var(--andm-font-size-md);
+    line-height: var(--andm-line-height-tight);
+    /* hover / focus の highlight */
+    transition:
+      border-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      background-color var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate),
+      box-shadow var(--andm-motion-duration-short2)
+        var(--andm-motion-easing-decelerate);
+  }
+
+  .andm-textfield__input::placeholder {
+    color: var(--andm-color-on-surface-variant);
+  }
+
+  .andm-textfield__input:hover:not(:disabled):not([disabled]):not(:focus) {
+    border-color: var(--andm-color-on-surface);
+  }
+
+  .andm-textfield__input:focus {
+    outline: none;
+  }
+
+  .andm-textfield__input:focus-visible {
+    border-color: var(--andm-color-primary);
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+      var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+
+  .andm-textfield__input:disabled,
+  .andm-textfield__input[disabled] {
+    cursor: not-allowed;
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+  }
+
+  .andm-textfield__helper,
+  .andm-textfield__error {
+    margin: 0;
+    font-size: var(--andm-font-size-sm);
+    line-height: var(--andm-line-height-tight);
+    color: var(--andm-color-on-surface-variant);
+  }
+
+  .andm-textfield__error {
+    color: var(--andm-color-error);
+  }
+
+  .andm-textfield--error .andm-textfield__input {
+    border-color: var(--andm-color-error);
+  }
+
+  .andm-textfield--error .andm-textfield__input:focus-visible {
+    border-color: var(--andm-color-error);
+    outline-color: var(--andm-color-error);
+  }
+
+  .andm-textfield--error .andm-textfield__label {
+    color: var(--andm-color-error);
+  }
+}

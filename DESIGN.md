@@ -30,7 +30,7 @@ Custom UI は Series に所属しなくてよい。Global Token、Component-loca
 
 ## 使える見た目
 
-Gallery で今使える例です。共通の Button に Token を当てます。Component は増やしません。速度は、出典に duration があるシリーズだけ既存トークンを差し替えます。
+Gallery で今使える例です。共通クラス（`andm-btn` など）に Token を当てます。シリーズ専用クラスは作りません。速度は、出典に duration があるシリーズだけ既存トークンを差し替えます。
 
 | 見た目 | スコープ | 性格 |
 |--------|----------|------|
@@ -46,7 +46,7 @@ Gallery で今使える例です。共通の Button に Token を当てます。
 | Fluent 2 | `andm-series--fluent` | ボタンの角は 4px。大きいボタンは 8px |
 | Carbon | `andm-series--carbon` | 角は 0。塗りは #0f62fe。高さは 32 / 40 / 48px |
 
-Baseline は追加クラスなし。上の 11 は Gallery で切り替えるシリーズです。ボタンのクラスは共通のままです。
+Baseline は追加クラスなし。上の 11 は Gallery で切り替えるシリーズです。部品のクラスは共通のままです。
 
 ## シリーズの詳細（M3 Expressive / DADS）
 

@@ -931,13 +931,28 @@
               >
             </li>
             <li>
-              <a href="#/controls/chip" data-lib-nav="controls/chip"
-                >Chip <span class="g-badge g-badge--planned">予定</span></a
+              <a href="#/controls/text-field" data-lib-nav="controls/text-field"
+                >Text Field <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
             <li>
-              <a href="#/controls/text-field" data-lib-nav="controls/text-field"
-                >Text Field <span class="g-badge g-badge--planned">予定</span></a
+              <a href="#/controls/checkbox" data-lib-nav="controls/checkbox"
+                >Checkbox <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/controls/radio" data-lib-nav="controls/radio"
+                >Radio <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/controls/select" data-lib-nav="controls/select"
+                >Select <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/controls/chip" data-lib-nav="controls/chip"
+                >Chip <span class="g-badge g-badge--planned">予定</span></a
               >
             </li>
             <li>
@@ -952,8 +967,13 @@
           <span class="g-nav__label">Marks</span>
           <ul>
             <li>
-              <a href="#/marks" data-lib-nav="marks" class="g-nav__soon"
-                >Icon <span class="g-badge g-badge--planned">予定</span></a
+              <a href="#/marks/divider" data-lib-nav="marks/divider"
+                >Divider <span class="g-badge g-badge--ready">使える</span></a
+              >
+            </li>
+            <li>
+              <a href="#/marks/badge" data-lib-nav="marks/badge"
+                >Badge <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
           </ul>
@@ -974,8 +994,8 @@
           <span class="g-nav__label">Containers</span>
           <ul>
             <li>
-              <a href="#/containers" data-lib-nav="containers" class="g-nav__soon"
-                >一覧 <span class="g-badge g-badge--planned">予定</span></a
+              <a href="#/containers/surface" data-lib-nav="containers/surface"
+                >Surface <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
           </ul>
@@ -985,8 +1005,8 @@
           <span class="g-nav__label">Navigation</span>
           <ul>
             <li>
-              <a href="#/navigation" data-lib-nav="navigation" class="g-nav__soon"
-                >一覧 <span class="g-badge g-badge--planned">予定</span></a
+              <a href="#/navigation/tabs" data-lib-nav="navigation/tabs"
+                >Tabs <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
           </ul>
@@ -996,8 +1016,8 @@
           <span class="g-nav__label">Feedback</span>
           <ul>
             <li>
-              <a href="#/feedback" data-lib-nav="feedback" class="g-nav__soon"
-                >一覧 <span class="g-badge g-badge--planned">予定</span></a
+              <a href="#/feedback/alert" data-lib-nav="feedback/alert"
+                >Alert <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
           </ul>
@@ -1007,8 +1027,8 @@
           <span class="g-nav__label">Overlays</span>
           <ul>
             <li>
-              <a href="#/overlays" data-lib-nav="overlays" class="g-nav__soon"
-                >一覧 <span class="g-badge g-badge--planned">予定</span></a
+              <a href="#/overlays/dialog" data-lib-nav="overlays/dialog"
+                >Dialog <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
           </ul>
@@ -1035,7 +1055,7 @@
         <header class="g-hero">
           <h1>Design System Explorer</h1>
           <p class="lead">
-            Series で Design Language を体験し、Foundation で Token を調べ、Controls と Patterns で使い方を見ます。Button のクラスは共通のままです。
+            Series で Design Language を体験し、Foundation で Token を調べ、Controls と Patterns で使い方を見ます。部品のクラスは共通のままです。
           </p>
         </header>
 
@@ -1043,7 +1063,7 @@
           <a class="g-goal" href="#/controls/button">
             <p class="g-goal__title">Controls を見る</p>
             <p class="g-goal__desc">
-              今使えるのは Button だけ。単体と、申請フォームの中の両方を見られます。
+              Button、Text Field、Checkbox、Radio、Select。シリーズを切り替えて見た目を比べられます。
             </p>
           </a>
           <a class="g-goal" href="#/patterns/pair">
@@ -1072,15 +1092,27 @@
             <span class="g-badge g-badge--ready">使える</span>
           </li>
           <li>
-            <a href="#/controls/chip">Chip</a>
-            <span class="g-badge g-badge--planned">予定</span>
-          </li>
-          <li>
             <a href="#/controls/text-field">Text Field</a>
-            <span class="g-badge g-badge--planned">予定</span>
+            <span class="g-badge g-badge--ready">使える</span>
           </li>
           <li>
-            <a href="#/controls/fab">FAB</a>
+            <a href="#/controls/checkbox">Checkbox</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/marks/badge">Badge</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/feedback/alert">Alert</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/overlays/dialog">Dialog</a>
+            <span class="g-badge g-badge--ready">使える</span>
+          </li>
+          <li>
+            <a href="#/controls/chip">Chip</a>
             <span class="g-badge g-badge--planned">予定</span>
           </li>
         </ul>
@@ -1659,6 +1691,168 @@
 
         <section
           class="g-section"
+          id="text-field"
+          data-panel="controls"
+          data-panel-id="text-field"
+          aria-labelledby="text-field-title"
+        >
+          <h2 id="text-field-title">
+            Text Field <span class="g-badge g-badge--ready">使える</span>
+          </h2>
+          <p class="g-desc">
+            ラベル・ヘルパー・エラー・無効。クラスは
+            <code>andm-textfield</code>。シリーズ専用クラスは作りません。
+          </p>
+          <div class="g-block">
+            <h3>状態</h3>
+            <div class="g-stack" style="max-width: 22rem; gap: var(--andm-space-4); display: flex; flex-direction: column;">
+              <div class="andm-textfield">
+                <label class="andm-textfield__label" for="tf-default">名前</label>
+                <input
+                  id="tf-default"
+                  class="andm-textfield__input"
+                  type="text"
+                  placeholder="山田 太郎"
+                />
+                <p class="andm-textfield__helper">公開プロフィールに表示されます。</p>
+              </div>
+              <div class="andm-textfield andm-textfield--error">
+                <label class="andm-textfield__label" for="tf-error">メール</label>
+                <input
+                  id="tf-error"
+                  class="andm-textfield__input"
+                  type="email"
+                  value="not-an-email"
+                  aria-invalid="true"
+                  aria-describedby="tf-error-msg"
+                />
+                <p class="andm-textfield__error" id="tf-error-msg">
+                  正しいメール形式で入力してください。
+                </p>
+              </div>
+              <div class="andm-textfield">
+                <label class="andm-textfield__label" for="tf-disabled">所属</label>
+                <input
+                  id="tf-disabled"
+                  class="andm-textfield__input"
+                  type="text"
+                  value="編集不可"
+                  disabled
+                />
+                <p class="andm-textfield__helper">管理者のみ変更できます。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="g-section"
+          id="checkbox"
+          data-panel="controls"
+          data-panel-id="checkbox"
+          aria-labelledby="checkbox-title"
+        >
+          <h2 id="checkbox-title">
+            Checkbox <span class="g-badge g-badge--ready">使える</span>
+          </h2>
+          <p class="g-desc">
+            ネイティブ <code>input[type=checkbox]</code>。クラスは
+            <code>andm-checkbox</code>。
+          </p>
+          <div class="g-block">
+            <h3>状態</h3>
+            <div class="g-stack" style="display: flex; flex-direction: column; gap: var(--andm-space-3);">
+              <label class="andm-checkbox">
+                <input class="andm-checkbox__input" type="checkbox" checked />
+                <span class="andm-checkbox__label">利用規約に同意する</span>
+              </label>
+              <label class="andm-checkbox">
+                <input class="andm-checkbox__input" type="checkbox" />
+                <span class="andm-checkbox__label">お知らせメールを受け取る</span>
+              </label>
+              <label class="andm-checkbox">
+                <input class="andm-checkbox__input" type="checkbox" disabled />
+                <span class="andm-checkbox__label">無効（未選択）</span>
+              </label>
+              <label class="andm-checkbox">
+                <input class="andm-checkbox__input" type="checkbox" checked disabled />
+                <span class="andm-checkbox__label">無効（選択済み）</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="g-section"
+          id="radio"
+          data-panel="controls"
+          data-panel-id="radio"
+          aria-labelledby="radio-title"
+        >
+          <h2 id="radio-title">
+            Radio <span class="g-badge g-badge--ready">使える</span>
+          </h2>
+          <p class="g-desc">
+            ネイティブ <code>input[type=radio]</code>。クラスは
+            <code>andm-radio</code>。
+          </p>
+          <div class="g-block">
+            <h3>グループ</h3>
+            <div class="andm-radio-group" role="radiogroup" aria-label="配送方法">
+              <label class="andm-radio">
+                <input class="andm-radio__input" type="radio" name="ship" value="standard" checked />
+                <span class="andm-radio__label">通常配送</span>
+              </label>
+              <label class="andm-radio">
+                <input class="andm-radio__input" type="radio" name="ship" value="express" />
+                <span class="andm-radio__label">速達</span>
+              </label>
+              <label class="andm-radio">
+                <input class="andm-radio__input" type="radio" name="ship" value="pickup" disabled />
+                <span class="andm-radio__label">店舗受取（準備中）</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="g-section"
+          id="select"
+          data-panel="controls"
+          data-panel-id="select"
+          aria-labelledby="select-title"
+        >
+          <h2 id="select-title">
+            Select <span class="g-badge g-badge--ready">使える</span>
+          </h2>
+          <p class="g-desc">
+            ネイティブ <code>&lt;select&gt;</code>。クラスは
+            <code>andm-select</code>。
+          </p>
+          <div class="g-block">
+            <h3>状態</h3>
+            <div class="g-stack" style="max-width: 22rem; display: flex; flex-direction: column; gap: var(--andm-space-4);">
+              <div class="andm-select">
+                <label class="andm-select__label" for="sel-default">都道府県</label>
+                <select id="sel-default" class="andm-select__native">
+                  <option value="">選択してください</option>
+                  <option>東京都</option>
+                  <option>大阪府</option>
+                  <option>福岡県</option>
+                </select>
+              </div>
+              <div class="andm-select">
+                <label class="andm-select__label" for="sel-disabled">担当者</label>
+                <select id="sel-disabled" class="andm-select__native" disabled>
+                  <option>未割当</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="g-section"
           id="chip"
           data-panel="controls"
           data-panel-id="chip"
@@ -1670,23 +1864,7 @@
           <p class="g-desc">まだ使えません。Controls の置き場所だけ残しています。</p>
           <div class="g-placeholder">
             <strong>予定</strong> — Assist / Filter / Input / Suggestion
-            など。Button のあとで段階的に足します。
-          </div>
-        </section>
-
-        <section
-          class="g-section"
-          id="text-field"
-          data-panel="controls"
-          data-panel-id="text-field"
-          aria-labelledby="text-field-title"
-        >
-          <h2 id="text-field-title">
-            Text Field <span class="g-badge g-badge--planned">予定</span>
-          </h2>
-          <p class="g-desc">まだ使えません。Controls の置き場所だけ残しています。</p>
-          <div class="g-placeholder">
-            <strong>予定</strong> — filled / outlined など。
+            など。段階的に足します。
           </div>
         </section>
 
@@ -1708,18 +1886,58 @@
 
         <section
           class="g-section"
-          id="marks"
+          id="divider"
           data-panel="marks"
-          aria-labelledby="marks-title"
+          data-panel-id="divider"
+          aria-labelledby="divider-title"
         >
-          <h2 id="marks-title">
-            Marks <span class="g-badge g-badge--planned">予定</span>
+          <h2 id="divider-title">
+            Divider <span class="g-badge g-badge--ready">使える</span>
           </h2>
           <p class="g-desc">
-            単一の視覚表現。操作の意味は持ちません。Icon / Avatar / Badge などを置く予定です。
+            区切り線。クラスは <code>andm-divider</code>。
           </p>
-          <div class="g-placeholder">
-            <strong>予定</strong> — まだ部品はありません。トークンの primitive とは別の語です。
+          <div class="g-block">
+            <h3>水平</h3>
+            <p style="margin: 0">上の段落</p>
+            <hr class="andm-divider" />
+            <p style="margin: 0">下の段落</p>
+            <hr class="andm-divider andm-divider--inset" />
+            <p style="margin: 0">インセットの下</p>
+          </div>
+          <div class="g-block">
+            <h3>垂直</h3>
+            <div class="g-row">
+              <span>左</span>
+              <span class="andm-divider andm-divider--vertical" role="separator"></span>
+              <span>右</span>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="g-section"
+          id="badge"
+          data-panel="marks"
+          data-panel-id="badge"
+          aria-labelledby="badge-title"
+        >
+          <h2 id="badge-title">
+            Badge <span class="g-badge g-badge--ready">使える</span>
+          </h2>
+          <p class="g-desc">
+            短い印。クラスは <code>andm-badge</code>。意味色はセマンティックトークン。
+          </p>
+          <div class="g-block">
+            <h3>種類</h3>
+            <div class="g-row">
+              <span class="andm-badge">Default</span>
+              <span class="andm-badge andm-badge--info">Info</span>
+              <span class="andm-badge andm-badge--success">Success</span>
+              <span class="andm-badge andm-badge--warning">Warning</span>
+              <span class="andm-badge andm-badge--error">Error</span>
+              <span class="andm-badge andm-badge--outline">Outline</span>
+            </div>
           </div>
         </section>
 
@@ -1740,61 +1958,210 @@
 
         <section
           class="g-section"
-          id="containers"
+          id="surface"
           data-panel="containers"
-          aria-labelledby="containers-title"
+          data-panel-id="surface"
+          aria-labelledby="surface-title"
         >
-          <h2 id="containers-title">
-            Containers <span class="g-badge g-badge--planned">予定</span>
+          <h2 id="surface-title">
+            Surface <span class="g-badge g-badge--ready">使える</span>
           </h2>
-          <p class="g-desc">中の並びと面をまとめる UI です。</p>
-          <div class="g-placeholder">
-            <strong>予定</strong> — まだ部品はありません。
+          <p class="g-desc">
+            面の容器。角・余白・境界・影はトークン。クラスは
+            <code>andm-surface</code>。
+          </p>
+          <div class="g-block">
+            <h3>種類</h3>
+            <div style="display: grid; gap: var(--andm-space-4); grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));">
+              <div class="andm-surface">
+                <p class="andm-surface__title">Default</p>
+                <p class="andm-surface__body">境界つきの面です。</p>
+              </div>
+              <div class="andm-surface andm-surface--raised">
+                <p class="andm-surface__title">Raised</p>
+                <p class="andm-surface__body">影 1 の面です。</p>
+              </div>
+              <div class="andm-surface andm-surface--elevated">
+                <p class="andm-surface__title">Elevated</p>
+                <p class="andm-surface__body">影 2 の面です。</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <section
           class="g-section"
-          id="navigation"
+          id="tabs"
           data-panel="navigation"
-          aria-labelledby="navigation-title"
+          data-panel-id="tabs"
+          aria-labelledby="tabs-title"
         >
-          <h2 id="navigation-title">
-            Navigation <span class="g-badge g-badge--planned">予定</span>
+          <h2 id="tabs-title">
+            Tabs <span class="g-badge g-badge--ready">使える</span>
           </h2>
-          <p class="g-desc">場所や段階を移す UI です。</p>
-          <div class="g-placeholder">
-            <strong>予定</strong> — まだ部品はありません。
+          <p class="g-desc">
+            見た目と選択状態。ルーティングはしません。クラスは
+            <code>andm-tabs</code>。
+          </p>
+          <div class="g-block">
+            <h3>選択</h3>
+            <div class="andm-tabs" data-demo-tabs>
+              <div class="andm-tabs__list" role="tablist" aria-label="設定">
+                <button
+                  type="button"
+                  class="andm-tabs__tab andm-tabs__tab--selected"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="tab-panel-a"
+                  id="tab-a"
+                  data-tab
+                >
+                  一般
+                </button>
+                <button
+                  type="button"
+                  class="andm-tabs__tab"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="tab-panel-b"
+                  id="tab-b"
+                  data-tab
+                  tabindex="-1"
+                >
+                  通知
+                </button>
+                <button
+                  type="button"
+                  class="andm-tabs__tab"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="tab-panel-c"
+                  id="tab-c"
+                  data-tab
+                  tabindex="-1"
+                >
+                  セキュリティ
+                </button>
+              </div>
+              <div
+                class="andm-tabs__panel"
+                role="tabpanel"
+                id="tab-panel-a"
+                aria-labelledby="tab-a"
+              >
+                アカウントの基本設定です。
+              </div>
+              <div
+                class="andm-tabs__panel"
+                role="tabpanel"
+                id="tab-panel-b"
+                aria-labelledby="tab-b"
+                hidden
+              >
+                メールとプッシュの設定です。
+              </div>
+              <div
+                class="andm-tabs__panel"
+                role="tabpanel"
+                id="tab-panel-c"
+                aria-labelledby="tab-c"
+                hidden
+              >
+                パスワードと二要素認証です。
+              </div>
+            </div>
           </div>
         </section>
 
         <section
           class="g-section"
-          id="feedback"
+          id="alert"
           data-panel="feedback"
-          aria-labelledby="feedback-title"
+          data-panel-id="alert"
+          aria-labelledby="alert-title"
         >
-          <h2 id="feedback-title">
-            Feedback <span class="g-badge g-badge--planned">予定</span>
+          <h2 id="alert-title">
+            Alert <span class="g-badge g-badge--ready">使える</span>
           </h2>
-          <p class="g-desc">処理と結果を伝える UI です。</p>
-          <div class="g-placeholder">
-            <strong>予定</strong> — まだ部品はありません。
+          <p class="g-desc">
+            意味は info / success / warning / error。色はセマンティックトークン。クラスは
+            <code>andm-alert</code>。
+          </p>
+          <div class="g-block">
+            <h3>意味</h3>
+            <div style="display: flex; flex-direction: column; gap: var(--andm-space-3);">
+              <div class="andm-alert andm-alert--info" role="status">
+                <p class="andm-alert__title">お知らせ</p>
+                <p class="andm-alert__body">メンテナンスは日曜 2:00 からです。</p>
+              </div>
+              <div class="andm-alert andm-alert--success" role="status">
+                <p class="andm-alert__title">完了</p>
+                <p class="andm-alert__body">申請を受け付けました。</p>
+              </div>
+              <div class="andm-alert andm-alert--warning" role="status">
+                <p class="andm-alert__title">注意</p>
+                <p class="andm-alert__body">未保存の変更があります。</p>
+              </div>
+              <div class="andm-alert andm-alert--error" role="alert">
+                <p class="andm-alert__title">エラー</p>
+                <p class="andm-alert__body">送信に失敗しました。もう一度試してください。</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <section
           class="g-section"
-          id="overlays"
+          id="dialog"
           data-panel="overlays"
-          aria-labelledby="overlays-title"
+          data-panel-id="dialog"
+          aria-labelledby="dialog-title"
         >
-          <h2 id="overlays-title">
-            Overlays <span class="g-badge g-badge--planned">予定</span>
+          <h2 id="dialog-title">
+            Dialog <span class="g-badge g-badge--ready">使える</span>
           </h2>
-          <p class="g-desc">今の画面の上に一時表示する UI です。</p>
-          <div class="g-placeholder">
-            <strong>予定</strong> — まだ部品はありません。
+          <p class="g-desc">
+            ネイティブ <code>&lt;dialog&gt;</code>。開閉は
+            <code>showModal()</code> と
+            <code>form method="dialog"</code>。クラスは
+            <code>andm-dialog</code>。
+          </p>
+          <div class="g-block">
+            <h3>開閉</h3>
+            <button
+              type="button"
+              class="andm-btn andm-btn--filled andm-btn--md"
+              id="open-demo-dialog"
+            >
+              ダイアログを開く
+            </button>
+            <dialog class="andm-dialog" id="demo-dialog" aria-labelledby="demo-dialog-title">
+              <div class="andm-dialog__panel">
+                <h3 class="andm-dialog__title" id="demo-dialog-title">変更を破棄しますか？</h3>
+                <p class="andm-dialog__body">
+                  保存していない内容は失われます。この操作は取り消せません。
+                </p>
+                <form method="dialog" class="andm-dialog__actions">
+                  <button type="submit" class="andm-btn andm-btn--text andm-btn--md" value="cancel">
+                    キャンセル
+                  </button>
+                  <button type="submit" class="andm-btn andm-btn--filled andm-btn--md" value="discard">
+                    破棄する
+                  </button>
+                </form>
+              </div>
+            </dialog>
+          </div>
+          <div class="g-block">
+            <h3>details フォールバック</h3>
+            <details class="andm-dialog">
+              <summary>詳細を開く</summary>
+              <div class="andm-dialog__panel">
+                <p class="andm-dialog__body">
+                  <code>details</code> でも同じ面のトークンを使えます。
+                </p>
+              </div>
+            </details>
           </div>
         </section>
 
@@ -1812,5 +2179,32 @@
     <script src="series-copy.js"></script>
     <script src="catalog.js"></script>
     <script src="explorer.js"></script>
+    <script>
+      (function () {
+        var openBtn = document.getElementById("open-demo-dialog");
+        var dialog = document.getElementById("demo-dialog");
+        if (openBtn && dialog && typeof dialog.showModal === "function") {
+          openBtn.addEventListener("click", function () {
+            dialog.showModal();
+          });
+        }
+
+        document.querySelectorAll("[data-demo-tabs]").forEach(function (root) {
+          var tabs = Array.prototype.slice.call(root.querySelectorAll("[data-tab]"));
+          tabs.forEach(function (tab) {
+            tab.addEventListener("click", function () {
+              tabs.forEach(function (other) {
+                var selected = other === tab;
+                other.classList.toggle("andm-tabs__tab--selected", selected);
+                other.setAttribute("aria-selected", selected ? "true" : "false");
+                other.tabIndex = selected ? 0 : -1;
+                var panel = document.getElementById(other.getAttribute("aria-controls"));
+                if (panel) panel.hidden = !selected;
+              });
+            });
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
