@@ -69,8 +69,12 @@ npm start          # build してから Gallery を起動
 ## 構成
 
 ```
-src/styles/     Design Tokens + CSS Components
-gallery/        Design System Explorer（dist 参照。Series と Tokens）
+src/styles/
+  tokens/       Foundation（primitive / semantic）
+  controls/     Control（Button の Token と見た目）
+  marks/ …      責務カテゴリの置き場所（空は README のみ）
+  series/       Design Language（親クラスの Token remapping）
+gallery/        Design System Explorer（dist 参照）
 examples/       消費側の最小例
 research/       研究ワークスペース（npm 非含有）
 DESIGN.md       デザイン原則・Design Space

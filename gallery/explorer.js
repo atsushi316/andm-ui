@@ -9,7 +9,6 @@
   var navSeries = document.getElementById("nav-series");
   var tokenCards = document.getElementById("token-cards");
   var tokenStatus = document.getElementById("token-status");
-  var planned = document.getElementById("planned-components");
   var decls = [];
   var items = [];
   var cssReady = null;
@@ -24,6 +23,40 @@
     { id: "motion", label: "Motion" },
     { id: "interaction", label: "Interaction" },
   ];
+
+  var libViews = {
+    series: true,
+    controls: true,
+    marks: true,
+    display: true,
+    containers: true,
+    navigation: true,
+    feedback: true,
+    overlays: true,
+    patterns: true,
+  };
+
+  var libDefaults = {
+    controls: "button",
+    patterns: "pair",
+  };
+
+  var legacyRoutes = {
+    button: { view: "controls", id: "button" },
+    chip: { view: "controls", id: "chip" },
+    "text-field": { view: "controls", id: "text-field" },
+    fab: { view: "controls", id: "fab" },
+    pattern: { view: "patterns", id: "pair" },
+    experience: { view: "patterns", id: "confirm" },
+    marks: { view: "marks", id: "" },
+    display: { view: "display", id: "" },
+    containers: { view: "containers", id: "" },
+    navigation: { view: "navigation", id: "" },
+    feedback: { view: "feedback", id: "" },
+    overlays: { view: "overlays", id: "" },
+    "series-scene": { view: "series", id: "baseline" },
+    top: { view: "series", id: "baseline" },
+  };
 
   var usage = {
     "--andm-color-primary": "主な操作",
@@ -81,12 +114,36 @@
   function parseRoute() {
     var raw = location.hash.replace(/^#\/?/, "");
     var parts = raw.split("/").filter(Boolean);
-    if (parts[0] === "tokens") return { view: "tokens", id: parts[1] || "color" };
-    if (parts[0] === "series") return { view: "series", id: parts[1] || "baseline" };
+    if (parts[0] === "tokens" || parts[0] === "foundation") {
+      return { view: "foundation", id: parts[1] || "color" };
+    }
+    if (parts[0] === "series") {
+      return { view: "series", id: parts[1] || selectSeriesId() };
+    }
+    if (libViews[parts[0]]) {
+      return {
+        view: parts[0],
+        id: parts[1] || libDefaults[parts[0]] || "",
+        seriesId: selectSeriesId(),
+      };
+    }
+    if (parts.length === 1 && legacyRoutes[parts[0]]) {
+      var legacy = legacyRoutes[parts[0]];
+      return {
+        view: legacy.view,
+        id: legacy.id,
+        seriesId: selectSeriesId(),
+      };
+    }
     if (parts.length === 1 && items.some(function (item) { return item.id === parts[0]; })) {
       return { view: "series", id: parts[0] };
     }
     return { view: "series", id: "baseline" };
+  }
+
+  function selectSeriesId() {
+    if (select && select.value) return select.value;
+    return "baseline";
   }
 
   function go(hash) {
@@ -719,22 +776,63 @@
     }
   }
 
+  function showPanels(route) {
+    document.querySelectorAll("[data-panel]").forEach(function (el) {
+      var panel = el.getAttribute("data-panel");
+      var panelId = el.getAttribute("data-panel-id");
+      var matchView = panel === route.view;
+      var matchId = !panelId || panelId === route.id;
+      el.hidden = !(matchView && matchId);
+    });
+  }
+
+  function markLibNav(route) {
+    var key = route.id ? route.view + "/" + route.id : route.view;
+    document.querySelectorAll("[data-lib-nav]").forEach(function (a) {
+      if (a.getAttribute("data-lib-nav") === key) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    if (route.view === "series") return;
+    document.querySelectorAll("[data-series-nav]").forEach(function (a) {
+      a.removeAttribute("aria-current");
+    });
+  }
+
+  function seriesIdFor(route) {
+    if (route.view === "series") return route.id || "baseline";
+    return route.seriesId || selectSeriesId();
+  }
+
   function render() {
     var route = parseRoute();
-    var onTokens = route.view === "tokens";
-    viewSeries.hidden = onTokens;
-    viewTokens.hidden = !onTokens;
-    if (planned) planned.hidden = onTokens;
+    var onFoundation = route.view === "foundation";
+    viewSeries.hidden = onFoundation;
+    viewTokens.hidden = !onFoundation;
     document.body.dataset.view = route.view;
-    if (onTokens) {
+    if (onFoundation) {
+      document.querySelectorAll("[data-lib-nav]").forEach(function (a) {
+        a.removeAttribute("aria-current");
+      });
+      document.querySelectorAll("[data-series-nav]").forEach(function (a) {
+        a.removeAttribute("aria-current");
+      });
       showTokens(route.id);
       return;
     }
-    applySeries(route.id);
+    showPanels(route);
+    applySeries(seriesIdFor(route));
+    markLibNav(route);
   }
 
   select.addEventListener("change", function () {
-    go("#/series/" + select.value);
+    var route = parseRoute();
+    if (route.view === "series" || route.view === "foundation") {
+      go("#/series/" + select.value);
+      return;
+    }
+    // シリーズは中立セレクトのまま。カテゴリページに留まる。
+    applySeries(select.value);
+    markLibNav(route);
   });
 
   window.addEventListener("hashchange", render);

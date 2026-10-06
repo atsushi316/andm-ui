@@ -124,6 +124,19 @@ Baseline は追加クラスなし。上の 11 は Gallery で切り替えるシ�
 | Shape | 角は 0。高さは 32 / 40 / 48px。ボタン SCSS の既定ステップは 48px |
 | Typography | ボタンの字は 0.875rem、字重 400。書体名は IBM Plex Sans。ファイルは同梱しない |
 
+## 責務カテゴリ（UI）
+
+フォルダの主軸は責務である。Atomic Design は補助語に留める。
+
+| カテゴリ | 場所 | いまの中身 |
+|----------|------|------------|
+| Foundation | `src/styles/tokens/**` | 色・字・余白・角・モーションなど |
+| Control | `src/styles/controls/` | Button（`--andm-btn-*` と `.andm-btn`） |
+| Mark | `src/styles/marks/` | 未実装（Icon など） |
+| Display / Container / Navigation / Feedback / Overlay / Pattern | 各フォルダ | 未実装。Pattern の例は Gallery の HTML |
+
+Series はカテゴリに入れない。親の `andm-series--*` が Token を上書きするだけである。トークンの `primitive.css` と、UI の Mark（単一の視覚）は別の語である。
+
 ## Research 境界
 
 ```

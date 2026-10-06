@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- Button の CSS を `src/styles/controls/` へ移設（`button-tokens.css` / `button.css`）。`andm-btn` API は維持
+- Gallery ナビを責務カテゴリ（Foundation / Controls / Marks / Display / Containers / Navigation / Feedback / Overlays / Patterns / Series）に合わせる
+- Token を4層・系統フォルダに分割し、シリーズ CSS を `src/styles/series/` へ分離
+
 ## 0.1.0
 
 ### Breaking / 新規構築
