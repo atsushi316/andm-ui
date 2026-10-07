@@ -1,14 +1,51 @@
 @layer andm.components {
-  /* andm-btn と併用。位置・固定表示は消費側の責務。 */
+  /* 独自仕様。FAB 固有の寸法は公式再現ではない。
+     Button のサイズ・押下 morph を流用しない。配置は消費側の責務。 */
   .andm-fab {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--andm-space-3);
     min-width: var(--andm-fab-size, 56px);
-    height: var(--andm-fab-size, 56px);
-    padding-inline: var(--andm-space-4);
+    min-height: var(--andm-fab-size, 56px);
+    height: auto;
+    padding: var(--andm-space-3) var(--andm-space-4);
+    border: 0;
     border-radius: var(--andm-fab-radius, var(--andm-radius-lg));
+    background: var(--andm-color-primary);
+    color: var(--andm-color-on-primary);
     box-shadow: var(--andm-shadow-2);
+    font: inherit;
+    font-family: var(--andm-font-family);
+    font-size: var(--andm-font-size-md);
+    line-height: 1.5;
+    text-decoration: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    transition: background-color var(--andm-motion-duration-short2) var(--andm-motion-easing-decelerate),
+      box-shadow var(--andm-motion-duration-short2) var(--andm-motion-easing-decelerate);
+  }
+  .andm-fab:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--andm-color-primary) 90%, var(--andm-color-on-primary));
+  }
+  .andm-fab:active:not(:disabled) {
+    box-shadow: none;
+    transition-duration: var(--andm-motion-duration-short1);
+    transition-timing-function: var(--andm-motion-easing-accelerate);
+  }
+  .andm-fab:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+  .andm-fab:disabled {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+    box-shadow: none;
+    cursor: not-allowed;
   }
   .andm-fab--sm { --andm-fab-size: var(--andm-target-min); }
   .andm-fab--lg { --andm-fab-size: 80px; }
   .andm-fab--extended { gap: var(--andm-space-3); }
-  .andm-fab:active:not(:disabled) { border-radius: var(--andm-fab-radius, var(--andm-radius-lg)); }
 }

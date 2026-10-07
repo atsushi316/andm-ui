@@ -12,7 +12,9 @@
     "DESIGN.md",
     "README.md",
     "CHANGELOG.md",
-    "docs/EXPERIENCE.md"
+    "docs/EXPERIENCE.md",
+    "docs/COMPONENT-SOURCES.md",
+    "docs/GALLERY-REVIEW.md"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",

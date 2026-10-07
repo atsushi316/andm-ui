@@ -36,14 +36,14 @@ AI やラボは仮説を提案する。最適と断言しない。採用は人�
 
 primitive → semantic → component-local の順に検討し、意味が不要な局所値は局所に残す。親スコープで差し替える値は、root で別名を解決すると継承先に変更が届かないことに注意する。部品の利用箇所で fallback を解決する。
 
-今回追加した layout-content-max / target-min / layer-floating / layer-overlay は andm-ui 独自の既定値。target-min は新しい部品の既定であり、既存の全操作対象の適合を保証しない。layer は将来の配置で共有する段階で、native dialog の top layer の順序は変更しない。
+今回追加した layout-content-max / target-min は andm-ui 独自の既定値。target-min は新しい部品の既定であり、既存の全操作対象の適合を保証しない。利用箇所の無かった layer トークンは削除した。
 
 `npm run audit:tokens` で未定義参照を点検する。fallback 付きの未定義名は拡張点として列挙し、必須参照の不足と区別する。これは静的点検であり、シリーズの計算値・コントラスト・操作品質は実際の描画で検証する。
 
 ## 次の拡張
 
 1. 実際の個人アプリで必要な部品から、仕様・状態・Gallery の例をセットで追加。
-2. Search / textarea / form group / empty state などを用途から検討。
+2. Search / form group / empty state などを用途から検討。
 3. 比較、編集、探索の体験パターンを蓄積。
 4. 独自シリーズと専用表現を、通常利用と反復利用で評価。
 5. 空間 UI は research/spatial で実機評価し、使える意味・状態の契約を共通化。

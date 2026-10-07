@@ -23,3 +23,11 @@ CSS-first / Framework-agnostic の UI アーキテクトとして、`--andm-*` T
 - press (`:active`): `short1` + `accelerate`
 - hover / focus: `short2` + `decelerate`
 - `prefers-reduced-motion: reduce` に対応
+
+## Evidence before component changes
+
+- 新しい部品・Series の変更前に、対象の `research/analysis/`、責務カテゴリ README、公式の一次資料を確認する。
+- 既存分析を読むことと、元 URL の本文を再確認したことを分けて記録する。取得できない本文から公式値を推測しない。
+- 公式値・andm の対応付け・独自仕様・未確認を区別する。既存 Button の寸法を別部品の公式値として流用しない。
+- 出典や確認記録はドキュメントへ残す。文献の閲覧導線は Gallery に置けるが、研究値を Runtime Token へ自動変換しない。
+- Gallery の Chrome と製品部品の見た目を分離し、携帯の検索・ナビ・コピー・狭幅を確認する。未検証を検証済みと表示しない。

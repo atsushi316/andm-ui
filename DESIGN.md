@@ -150,7 +150,7 @@ Research → Design Space → Principle / Direction / Series候補
   → Token / Spec → andm-ui Core
 ```
 
-- `research/` は Build 外 / Runtime 非依存 / dist・npm・製品 Gallery 非含有
+- `research/` は CSS Build 外 / 製品 Runtime 非依存 / npm 非含有。Gallery の読書ビューでは文献・分析を人間向けに表示できる。研究値を製品トークンへ自動反映しない
 - Research で発見したすべてを Core へ実装しない
 - AI は候補提示まで。採用（recommended）は人間が決める
 - Gallery のシリーズ切替は、親スコープの Token mapping（`andm-series--*`）だけ。ページ全体の Theme Engine ではない。Button のクラスは増やさない

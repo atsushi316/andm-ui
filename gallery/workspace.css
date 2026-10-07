@@ -1,0 +1,99 @@
+/* Explorer の操作面。製品の andm-* 部品や Series を上書きしない。 */
+:root { --g-nav-width: 15rem; --g-chrome-bg: #f5f7fb; --g-chrome-border: #d5dce7; --g-chrome-ink: #182235; --g-chrome-muted: #526176; --g-chrome-accent: #1554b8; }
+[hidden] { display: none !important; }
+body { display: flex; flex-direction: column; color: var(--g-chrome-ink); }
+.g-toolbar { display: flex; align-items: center; gap: 20px; padding: 12px 24px; flex: none; background: white; border-bottom: 1px solid var(--g-chrome-border); position: relative; z-index: 30; }
+.g-workspace-brand { color: var(--g-chrome-ink); text-decoration: none; font-size: 18px; font-weight: 750; white-space: nowrap; }
+.g-workspace-brand span { font-size: 14px; font-weight: 400; color: var(--g-chrome-muted); margin-left: 6px; }
+.g-tool-button, .g-tool-link { display: inline-flex; justify-content: center; align-items: center; min-height: 44px; padding: 8px 12px; border: 1px solid var(--g-chrome-border); border-radius: 8px; background: white; color: var(--g-chrome-ink); font: inherit; font-size: 14px; text-decoration: none; cursor: pointer; }
+.g-tool-button:hover, .g-tool-link:hover { background: #edf3ff; border-color: var(--g-chrome-accent); }
+.g-toolbar #nav-toggle { display: none; }
+.g-search { position: relative; flex: 1; max-width: 42rem; }
+.g-search label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.g-search input { width: 100%; min-height: 44px; padding: 10px 14px; border: 1px solid var(--g-chrome-border); border-radius: 8px; background: var(--g-chrome-bg); font: inherit; font-size: 16px; color: var(--g-chrome-ink); }
+#search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; max-height: 55vh; overflow: auto; background: white; border: 1px solid var(--g-chrome-border); border-radius: 8px; box-shadow: 0 12px 32px rgb(24 34 53 / .14); padding: 8px; }
+#search-results a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 10px; color: var(--g-chrome-ink); text-decoration: none; border-radius: 6px; }
+#search-results a:hover, #search-results a:focus { background: #edf3ff; }
+#search-results small { color: var(--g-chrome-muted); margin-left: auto; }
+#search-results p { padding: 8px; line-height: 1.5; }
+.g-shell { height: auto; flex: 1; min-height: 0; }
+.g-nav { height: 100%; max-height: none; background: var(--g-chrome-bg); padding: 18px 12px; }
+.g-nav__brand { display: none; }
+.g-nav__tag { margin-bottom: 12px; color: var(--g-chrome-muted); font-size: 14px; }
+.g-nav__label { background: transparent; color: var(--g-chrome-ink); min-height: 44px; font-size: 14px; }
+.g-nav a { min-height: 44px; font-size: 14px; }
+.g-nav__hint { font-size: 12px; }
+.g-main { height: 100%; padding: 28px clamp(16px, 3vw, 40px) 64px; background: #fff; min-width: 0; }
+.g-pagehead { max-width: none; margin-bottom: 24px; }
+.g-pagehead h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.g-pagehead__kicker { color: var(--g-chrome-muted); }
+.g-pagehead__lead { font-size: 16px; }
+.g-hero, .g-goals, .g-status { display: none !important; }
+body:not([data-view="home"]) #component-index { display: none; }
+.g-index-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 16px; }
+.g-index-top p { margin: 0; color: var(--g-chrome-muted); }
+.g-index-top a { color: var(--g-chrome-accent); min-height: 44px; display: inline-flex; align-items: center; }
+.g-component-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 16px; }
+.g-component-card { display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--g-chrome-border); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--g-chrome-ink); min-height: 160px; }
+.g-component-card:hover { border-color: var(--g-chrome-accent); background: #f7faff; }
+.g-component-card strong { font-size: 18px; }
+.g-component-card p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--g-chrome-muted); }
+.g-component-card small { margin-top: auto; font-size: 12px; color: var(--g-chrome-muted); }
+.g-series-picker { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 12px 16px; background: var(--g-chrome-bg); border: 1px solid var(--g-chrome-border); border-radius: 10px; }
+.g-series-picker label { font-size: 14px; font-weight: 700; }
+.g-series-picker select { min-height: 44px; max-width: 100%; padding: 8px 32px 8px 12px; border: 1px solid var(--g-chrome-border); border-radius: 6px; background: white; color: var(--g-chrome-ink); font: inherit; font-size: 16px; }
+#series-picker-note { color: var(--g-chrome-muted); font-size: 14px; }
+.g-series-options { margin-top: 12px; } .g-series-options > summary { padding: 8px 0; min-height: 44px; cursor: pointer; font-size: 14px; }
+.g-code-panel { margin-top: 16px; padding: 12px 16px; border: 1px solid var(--g-chrome-border); border-radius: 10px; }
+.g-code-panel summary { cursor: pointer; min-height: 32px; display: list-item; font-weight: 600; }
+.g-code-panel p { font-size: 14px; line-height: 1.6; }
+.g-code-panel pre { max-height: 24rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; background: #f5f7fb; border-radius: 6px; padding: 16px; font-size: 13px; line-height: 1.6; }
+.g-evidence { margin-top: 12px; padding: 12px 16px; border-left: 3px solid #667eaa; background: #f5f7fb; font-size: 14px; line-height: 1.65; }
+.g-evidence p { margin: 0 0 4px; } .g-evidence a { color: var(--g-chrome-accent); }
+.g-badge--draft { background: #fff1d6; color: #674407; }
+.g-row { max-width: 100%; flex-wrap: wrap; }
+.g-table-wrap { max-width: 100%; overflow: auto; }
+.g-token-card h3, .g-token-card__value, .g-token-card__where, .g-exp-motion p, .g-exp-space { overflow-wrap: anywhere; min-width: 0; }
+.g-section { min-width: 0; } .g-stick-scope, #series-preview { min-width: 0; }
+.g-section .g-desc, .g-library-note { line-height: 1.65; }
+.g-prose { line-height: 1.75; max-width: 76ch; }
+.g-prose h2 { scroll-margin-top: 12px; }
+.g-skip { position: fixed; top: 8px; left: 8px; transform: translateY(-150%); z-index: 100; background: white; padding: 12px; color: var(--g-chrome-accent); }
+.g-skip:focus { transform: none; }
+.g-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.g-toolbar :focus-visible, .g-nav :focus-visible, .g-component-card:focus-visible, .g-code-panel :focus-visible { outline: 3px solid var(--g-chrome-accent); outline-offset: 3px; }
+@media(max-width: 800px) {
+  body { height: auto; min-height: 100dvh; overflow: auto; }
+  .g-toolbar { position: sticky; top: 0; display: grid; grid-template-columns: 1fr auto auto; gap: 8px; padding: 10px 12px; }
+  .g-workspace-brand { font-size: 16px; } .g-workspace-brand span { display: none; }
+  .g-toolbar #nav-toggle { display: inline-flex; }
+  .g-search { grid-column: 1 / -1; max-width: none; }
+  .g-shell { display: block; height: auto; }
+  .g-nav { display: none; position: static; height: auto; max-height: none; overflow: visible; border-bottom: 1px solid var(--g-chrome-border); }
+  body[data-nav-open] .g-nav { display: block; }
+  .g-main { height: auto; overflow: visible; padding: 20px 16px 48px; }
+  .g-pagehead { margin-bottom: 20px; }
+  .g-series-picker { gap: 8px; padding: 12px; }
+  #series-picker-note { flex-basis: 100%; }
+  .g-component-card { min-height: 130px; }
+  .g-switch-bar { position: static; }
+  #page-title, #top, .g-prose h2 { scroll-margin-top: 124px; }
+  .g-exp-motion, .g-exp-space { flex-wrap: wrap; }
+  .g-exp-space { max-width: 100%; }
+}
+
+.g-index-top { flex-wrap: wrap; }
+.g-index-top label { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.g-index-top select { min-height: 44px; padding: 8px 12px; border: 1px solid var(--g-chrome-border); border-radius: 6px; background: white; font: inherit; }
+.g-component-preview { display: flex; align-items: center; gap: 8px; height: 80px; overflow: hidden; width: 100%; min-width: 0; pointer-events: none; }
+.g-component-preview > * { max-width: 100%; }
+@media(max-width: 800px) {
+  .g-workspace-brand { grid-row: 1; grid-column: 1; }
+  .g-toolbar #nav-toggle { grid-row: 1; grid-column: 2; }
+  .g-toolbar > .g-tool-link { grid-row: 1; grid-column: 3; }
+  .g-search { grid-row: 2; }
+}
+
+.g-nav .g-nav__brand { display: none; }
+.g-evidence summary { cursor: pointer; min-height: 32px; }
+.g-evidence[open] #evidence-body { margin-top: 12px; }

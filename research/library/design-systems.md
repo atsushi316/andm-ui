@@ -16,9 +16,9 @@
 | Carbon | [../analysis/carbon.md](../analysis/carbon.md) |
 | デジタル庁デザインシステム（DADS） | [../analysis/dads.md](../analysis/dads.md) |
 
-上の5つは、このツリーの `research/analysis/` にファイルがある。相対リンクはそこへ解決する。
+上記の分析に加え、[Atlassian](../analysis/atlassian.md)、[USWDS](../analysis/uswds.md)、[Fluent 2](../analysis/fluent.md) の確認範囲も現在のツリーにある。
 
-Atlassian と USWDS は、このツリーの `research/analysis/` にファイルが無い。リンクは張らない。公式サイトの入口だけを書く。数値は写さない。
+索引から個別の分析へ移動できる。ここには数値を写さない。
 
 <a id="material"></a>
 

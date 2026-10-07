@@ -92,8 +92,12 @@ DESIGN.md       デザイン原則・Design Space
 
 ## 部品と体験の検証
 
-入力・選択、通知、ダイアログ、表、ナビゲーションなどは Gallery で確認できます。Chip は `andm-chip`（選択は `aria-pressed`）、FAB は `andm-btn andm-btn--filled andm-fab`。JS の操作は消費側で実装します。
+入力・選択、通知、ダイアログ、表、ナビゲーションなどは Gallery で確認できます。Chip は `andm-chip`（選択は `aria-pressed`）、FAB は `andm-fab`。JS の操作は消費側で実装します。
 
 `http://127.0.0.1:4180/gallery/lab/` の体験ラボでは、目的からルールに基づく構成候補と検証項目を提示し、明快・没入・大胆の独自試作を比較できます。メモは JSON で書き出せます。入力は自動保存されません。AR / VR は研究計画のみで、XR ランタイムは未実装です。
 
 `npm run audit:tokens` は必須の未定義トークン参照を検出します。描画や使いやすさの評価は別途必要です。
+
+Gallery は日本語検索、携帯用の開閉メニュー、部品一覧、シリーズ選択、先頭見本の HTML コピーに対応します。確認範囲は画面内の「出典」から読めます。[Chip / FAB の根拠](docs/COMPONENT-SOURCES.md)、[Gallery 改善の根拠](docs/GALLERY-REVIEW.md)。
+
+Chip / FAB 固有の寸法・形は andm 独自仕様です。全シリーズの公式 Chip / FAB を再現したものではありません。FAB は `andm-fab` 単独で使います。

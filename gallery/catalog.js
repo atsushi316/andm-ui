@@ -199,7 +199,7 @@
     if (/space/.test(name)) return "spacing";
     if (/radius|shape/.test(name)) return "shape";
     if (/shadow/.test(name)) return "elevation";
-    return "";
+    return "component";
   }
 
   function paintValue(value) {

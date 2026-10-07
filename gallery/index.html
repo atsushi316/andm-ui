@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ja" data-gallery-build="click-reveal-2">
+<html lang="ja" data-gallery-build="workspace-3">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="andm-gallery-build" content="click-reveal-2" />
-    <title>andm-ui Gallery · click-reveal-2</title>
+    <meta name="andm-gallery-build" content="workspace-3" />
+    <title>andm-ui · Workspace</title>
     <link rel="stylesheet" href="../dist/style.css" />
     <style>
       /* Gallery layout only — component look comes from dist/style.css */
@@ -1098,13 +1098,21 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="workspace.css" />
   </head>
   <body>
+    <a class="g-skip" href="#top">内容へ移動</a>
+    <header class="g-toolbar">
+      <a class="g-workspace-brand" href="#/">andm-ui <span>Workspace</span></a>
+      <button type="button" id="nav-toggle" class="g-tool-button" aria-expanded="false" aria-controls="gallery-nav">メニュー</button>
+      <div class="g-search"><label for="component-search">部品・トークン・文献を探す</label><input type="search" id="component-search" placeholder="ボタン、入力、色…" autocomplete="off" aria-controls="search-results" /><div id="search-results" hidden></div><p id="search-status" class="g-sr-only" role="status"></p></div>
+      <a class="g-tool-link" href="lab/">体験ラボ</a>
+    </header>
     <div class="g-shell">
-      <nav class="g-nav" aria-label="Gallery">
+      <nav class="g-nav" id="gallery-nav" aria-label="ギャラリーの項目">
         <a class="g-nav__brand" href="#/" data-home-nav>andm-ui</a>
-        <p><a href="./lab/">体験ラボ →</a></p>
-        <p class="g-nav__tag">見出しを押すと開きます</p>
+
+        <p class="g-nav__tag">部品・表現・資料</p>
 
         <div class="g-nav__group" data-nav-group="library">
           <button type="button" class="g-nav__label" aria-expanded="false">文献</button>
@@ -1122,6 +1130,8 @@
               >
             </li>
             <li><a href="#/library/books" data-library-nav="books">書籍</a></li>
+            <li><a href="#/library/component-sources" data-library-nav="component-sources">Chip / FAB の根拠</a></li>
+            <li><a href="#/library/gallery-review" data-library-nav="gallery-review">ギャラリー改善の根拠</a></li>
           </ul>
         </div>
 
@@ -1142,6 +1152,7 @@
             <li><a href="#/tokens/motion" data-token-nav="motion">Motion</a></li>
             <li><a href="#/tokens/interaction" data-token-nav="interaction">Interaction</a></li>
             <li><a href="#/tokens/layout" data-token-nav="layout">Layout</a></li>
+            <li><a href="#/tokens/component" data-token-nav="component">Component</a></li>
           </ul>
         </div>
 
@@ -1361,22 +1372,27 @@
 
       </nav>
 
-      <main class="g-main" id="top">
+      <main class="g-main" id="top" tabindex="-1">
         <header class="g-pagehead" id="pagehead">
           <p class="g-pagehead__kicker" id="page-kicker">Gallery</p>
-          <h1 id="page-title">Design System Explorer</h1>
+          <h1 id="page-title" tabindex="-1">部品を探す</h1>
           <p class="g-pagehead__lead" id="page-lead"></p>
           <p class="g-pagehead__status" id="page-status"></p>
           <div id="series-tools">
+            <div class="g-series-picker"><label for="series-select">シリーズ</label><select id="series-select"></select><span id="series-picker-note">見本の表現を切り替えます</span></div>
+            <details class="g-series-options"><summary>シリーズを一覧から選ぶ</summary>
             <p class="g-series-label" id="series-switch-label">シリーズ</p>
             <div
               class="g-series-switch"
               id="series-switch"
               role="group"
               aria-labelledby="series-switch-label"
-            ></div>
+            ></div></details>
           </div>
+          <details id="component-code" class="g-code-panel" hidden><summary>この部品のHTMLを使う</summary><p id="code-context"></p><button type="button" id="copy-component" class="g-tool-button">HTMLをコピー</button><p id="copy-status" role="status"></p><pre id="component-html" tabindex="0"></pre></details>
+          <details id="component-evidence" class="g-evidence" hidden><summary>出典と確認範囲</summary><div id="evidence-body"></div></details>
         </header>
+        <section id="component-index" aria-label="部品の一覧"><div class="g-index-top"><label for="component-category">分類<select id="component-category"><option value="">すべて</option></select></label><p id="index-count"></p><a href="#/library">文献を読む</a></div><div id="component-grid" class="g-component-grid"></div><p id="index-empty" hidden>一致する部品がありません。別の言葉で探してください。</p></section>
         <header class="g-hero">
           <h1>Design System Explorer</h1>
           <p class="lead">
@@ -3210,27 +3226,28 @@
           </section>
 
           <section class="g-section" id="chip" data-part="chip" hidden aria-labelledby="chip-title">
-            <h2 id="chip-title">Chip <span class="g-badge g-badge--ready">使える</span></h2>
-            <p class="g-desc">独立した絞り込みは button と aria-pressed。静的ラベルは span。選択済みにはチェックを表示します。</p>
-            <div class="g-row">
+            <h2 id="chip-title">Chip <span class="g-badge g-badge--draft">独自仕様</span></h2>
+            <p class="g-desc">独立した絞り込みは button と aria-pressed。静的ラベルは別の Badge で示します。選択済みにはチェックを表示します。</p>
+            <div class="g-row" role="group" aria-label="絞り込みの状態例">
               <button type="button" class="andm-chip" aria-pressed="false" data-filter-chip><span data-chip-mark aria-hidden="true" hidden>✓</span>研究</button>
               <button type="button" class="andm-chip" aria-pressed="true" data-filter-chip><span data-chip-mark aria-hidden="true">✓</span>試作</button>
               <button type="button" class="andm-chip" disabled>利用不可</button>
-              <span class="andm-chip">静的ラベル</span>
+            </div><p class="g-desc">操作しないラベルは分けて表示します。</p><div class="g-row">
+              <span class="andm-badge">静的ラベル</span>
             </div>
             <details class="g-details"><summary>クラス名と責務</summary><p><code>andm-chip</code>。選択状態は <code>aria-pressed</code>。切替処理は消費側が実装します。削除・入力チップは未実装。</p></details>
           </section>
           <section class="g-section" id="fab" data-part="fab" hidden aria-labelledby="fab-title">
-            <h2 id="fab-title">FAB <span class="g-badge g-badge--ready">使える</span></h2>
+            <h2 id="fab-title">FAB <span class="g-badge g-badge--draft">独自仕様</span></h2>
             <p class="g-desc">主操作を強調するボタン。配置はアプリ側で決めます。</p>
             <div class="g-row">
-              <button type="button" class="andm-btn andm-btn--filled andm-fab andm-fab--sm" aria-label="新規作成">＋</button>
-              <button type="button" class="andm-btn andm-btn--filled andm-fab" aria-label="新規作成">＋</button>
-              <button type="button" class="andm-btn andm-btn--filled andm-fab andm-fab--lg" aria-label="新規作成">＋</button>
-              <button type="button" class="andm-btn andm-btn--filled andm-fab andm-fab--extended"><span aria-hidden="true">＋</span>新規作成</button>
-              <button type="button" class="andm-btn andm-btn--filled andm-fab" disabled aria-label="新規作成">＋</button>
+              <button type="button" class="andm-fab andm-fab--sm" aria-label="新規作成">＋</button>
+              <button type="button" class="andm-fab" aria-label="新規作成">＋</button>
+              <button type="button" class="andm-fab andm-fab--lg" aria-label="新規作成">＋</button>
+              <button type="button" class="andm-fab andm-fab--extended"><span aria-hidden="true">＋</span>新規作成</button>
+              <button type="button" class="andm-fab" disabled aria-label="新規作成">＋</button>
             </div>
-            <details class="g-details"><summary>クラス名</summary><p><code>andm-btn andm-btn--filled andm-fab</code> と <code>andm-fab--sm / --lg / --extended</code>。アイコンだけの場合は操作名を <code>aria-label</code> に指定します。</p></details>
+            <details class="g-details"><summary>クラス名</summary><p><code>andm-fab</code> と <code>andm-fab--sm / --lg / --extended</code>。アイコンだけの場合は操作名を <code>aria-label</code> に指定します。</p></details>
           </section>
 
         </div>
@@ -3249,9 +3266,10 @@
 
       </main>
     </div>
-    <script src="series-copy.js?v=click-reveal-2"></script>
-    <script src="catalog.js?v=click-reveal-2"></script>
-    <script src="library.js?v=click-reveal-2"></script>
-    <script src="explorer.js?v=click-reveal-2"></script>
+    <script src="series-copy.js?v=workspace-3"></script>
+    <script src="catalog.js?v=workspace-3"></script>
+    <script src="library.js?v=workspace-3"></script>
+    <script src="explorer.js?v=workspace-3"></script>
+    <script src="workspace.js?v=workspace-3"></script>
   </body>
 </html>
