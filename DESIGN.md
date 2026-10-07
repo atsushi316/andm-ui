@@ -2,6 +2,10 @@
 
 CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が第一級 API。
 
+## プロジェクトの目的
+
+目的・利用者・世界観に合う UI を高速に提案、構築、検証する個人のデザインシステム。明快さに加え、没入感・高揚感・操作の心地よさも目的に応じて評価する。大胆な UI と AR / VR の研究を含む。構成と採用の手順は [EXPERIENCE.md](docs/EXPERIENCE.md)。
+
 ## 思想
 
 - **CSS-first / FW-agnostic** — Vue / React / WC は本体に含めない
@@ -133,9 +137,9 @@ Baseline は追加クラスなし。上の 13 は Gallery で切り替えるシ�
 | カテゴリ | 場所 | いまの中身 |
 |----------|------|------------|
 | Foundation | `src/styles/tokens/**` | 色・字・余白・角・モーションなど |
-| Control | `src/styles/controls/` | Button（`--andm-btn-*` と `.andm-btn`） |
-| Mark | `src/styles/marks/` | 未実装（Icon など） |
-| Display / Container / Navigation / Feedback / Overlay / Pattern | 各フォルダ | 未実装。Pattern の例は Gallery の HTML |
+| Control | `src/styles/controls/` | Button、入力、選択、Chip、FAB |
+| Mark | `src/styles/marks/` | Divider、Badge、Avatar、Spinner |
+| Display / Container / Navigation / Feedback / Overlay / Pattern | 各フォルダ | Table、Card、List、Accordion、Tabs、通知、Dialog など。体験試作は Gallery / Lab |
 
 Series はカテゴリに入れない。親の `andm-series--*` が Token を上書きするだけである。トークンの `primitive.css` と、UI の Mark（単一の視覚）は別の語である。
 

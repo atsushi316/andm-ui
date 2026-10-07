@@ -1103,6 +1103,7 @@
     <div class="g-shell">
       <nav class="g-nav" aria-label="Gallery">
         <a class="g-nav__brand" href="#/" data-home-nav>andm-ui</a>
+        <p><a href="./lab/">体験ラボ →</a></p>
         <p class="g-nav__tag">見出しを押すと開きます</p>
 
         <div class="g-nav__group" data-nav-group="library">
@@ -1140,6 +1141,7 @@
             <li><a href="#/tokens/elevation" data-token-nav="elevation">Elevation</a></li>
             <li><a href="#/tokens/motion" data-token-nav="motion">Motion</a></li>
             <li><a href="#/tokens/interaction" data-token-nav="interaction">Interaction</a></li>
+            <li><a href="#/tokens/layout" data-token-nav="layout">Layout</a></li>
           </ul>
         </div>
 
@@ -1524,11 +1526,11 @@
           </li>
           <li>
             <a href="#/controls/chip">Chip</a>
-            <span class="g-badge g-badge--planned">予定</span>
+            <span class="g-badge g-badge--ready">使える</span>
           </li>
           <li>
             <a href="#/controls/fab">FAB</a>
-            <span class="g-badge g-badge--planned">予定</span>
+            <span class="g-badge g-badge--ready">使える</span>
           </li>
         </ul>
 
@@ -3208,24 +3210,27 @@
           </section>
 
           <section class="g-section" id="chip" data-part="chip" hidden aria-labelledby="chip-title">
-            <h2 id="chip-title">
-              Chip <span class="g-badge g-badge--planned">予定</span>
-            </h2>
-            <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
-            <div class="g-placeholder">
-              <strong>予定</strong> — Assist / Filter / Input / Suggestion
-              など。
+            <h2 id="chip-title">Chip <span class="g-badge g-badge--ready">使える</span></h2>
+            <p class="g-desc">独立した絞り込みは button と aria-pressed。静的ラベルは span。選択済みにはチェックを表示します。</p>
+            <div class="g-row">
+              <button type="button" class="andm-chip" aria-pressed="false" data-filter-chip><span data-chip-mark aria-hidden="true" hidden>✓</span>研究</button>
+              <button type="button" class="andm-chip" aria-pressed="true" data-filter-chip><span data-chip-mark aria-hidden="true">✓</span>試作</button>
+              <button type="button" class="andm-chip" disabled>利用不可</button>
+              <span class="andm-chip">静的ラベル</span>
             </div>
+            <details class="g-details"><summary>クラス名と責務</summary><p><code>andm-chip</code>。選択状態は <code>aria-pressed</code>。切替処理は消費側が実装します。削除・入力チップは未実装。</p></details>
           </section>
-
           <section class="g-section" id="fab" data-part="fab" hidden aria-labelledby="fab-title">
-            <h2 id="fab-title">
-              FAB <span class="g-badge g-badge--planned">予定</span>
-            </h2>
-            <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
-            <div class="g-placeholder">
-              <strong>予定</strong> — small / regular / large / extended。
+            <h2 id="fab-title">FAB <span class="g-badge g-badge--ready">使える</span></h2>
+            <p class="g-desc">主操作を強調するボタン。配置はアプリ側で決めます。</p>
+            <div class="g-row">
+              <button type="button" class="andm-btn andm-btn--filled andm-fab andm-fab--sm" aria-label="新規作成">＋</button>
+              <button type="button" class="andm-btn andm-btn--filled andm-fab" aria-label="新規作成">＋</button>
+              <button type="button" class="andm-btn andm-btn--filled andm-fab andm-fab--lg" aria-label="新規作成">＋</button>
+              <button type="button" class="andm-btn andm-btn--filled andm-fab andm-fab--extended"><span aria-hidden="true">＋</span>新規作成</button>
+              <button type="button" class="andm-btn andm-btn--filled andm-fab" disabled aria-label="新規作成">＋</button>
             </div>
+            <details class="g-details"><summary>クラス名</summary><p><code>andm-btn andm-btn--filled andm-fab</code> と <code>andm-fab--sm / --lg / --extended</code>。アイコンだけの場合は操作名を <code>aria-label</code> に指定します。</p></details>
           </section>
 
         </div>

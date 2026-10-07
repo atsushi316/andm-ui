@@ -191,6 +191,7 @@
   }
 
   function tokenCategory(name) {
+    if (/layout|target-min|layer-/.test(name)) return "layout";
     if (/motion/.test(name)) return "motion";
     if (/state-|overlay|focus-ring/.test(name)) return "interaction";
     if (/color/.test(name)) return "color";

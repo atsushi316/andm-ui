@@ -11,13 +11,15 @@
     "dist",
     "DESIGN.md",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "docs/EXPERIENCE.md"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",
     "start": "node scripts/gallery.mjs",
     "gallery": "node scripts/gallery.mjs",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "audit:tokens": "npm run build && node scripts/audit-tokens.mjs"
   },
   "keywords": [
     "css",

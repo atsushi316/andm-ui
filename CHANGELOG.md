@@ -1,3 +1,10 @@
+# Unreleased
+
+- 目的・世界観・利用者から体験を検討する開発方針と AR / VR 研究枠を追加。
+- 明快・没入・大胆を比較し、構成仮説と検証メモを出力する体験ラボを追加。
+- Chip / FAB と Gallery の状態例、layout / target / layer トークンを追加。
+- 未定義トークンの静的点検を追加。
+
 # Changelog
 
 ## Unreleased

@@ -18,6 +18,8 @@ const sources = [
   "controls/select.css",
   "controls/slider.css",
   "controls/segmented.css",
+  "controls/chip.css",
+  "controls/fab.css",
   "marks/divider.css",
   "marks/badge.css",
   "marks/avatar.css",

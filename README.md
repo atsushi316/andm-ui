@@ -2,6 +2,10 @@
 
 CSS-first の小さな UI ライブラリーです。Native HTML + `andm-*` class が第一級 API。Framework wrapper / Storybook は含みません。
 
+## 目的
+
+複数の個人アプリのために、目的・利用者・世界観に合う構成と UI を素早く提案、実装、検証する。明快な UI、没入・演出を優先する独自 UI、AR / VR の研究を扱う。[開発方針](docs/EXPERIENCE.md)も参照してください。
+
 ## 使い方
 
 ```bash
@@ -71,8 +75,8 @@ npm start          # build してから Gallery を起動
 ```
 src/styles/
   tokens/       Foundation（primitive / semantic）
-  controls/     Control（Button の Token と見た目）
-  marks/ …      責務カテゴリの置き場所（空は README のみ）
+  controls/     Control（入力・選択・操作の部品）
+  marks/ …      表示・通知・ナビゲーションなどの部品
   series/       Design Language（親クラスの Token remapping）
 gallery/        Design System Explorer（dist 参照）
 examples/       消費側の最小例
@@ -85,3 +89,11 @@ DESIGN.md       デザイン原則・Design Space
 ## デザイン原則
 
 詳細は [DESIGN.md](./DESIGN.md)。平均 UI への収束を禁止し、Design Space 上の複数方向を保持します。
+
+## 部品と体験の検証
+
+入力・選択、通知、ダイアログ、表、ナビゲーションなどは Gallery で確認できます。Chip は `andm-chip`（選択は `aria-pressed`）、FAB は `andm-btn andm-btn--filled andm-fab`。JS の操作は消費側で実装します。
+
+`http://127.0.0.1:4180/gallery/lab/` の体験ラボでは、目的からルールに基づく構成候補と検証項目を提示し、明快・没入・大胆の独自試作を比較できます。メモは JSON で書き出せます。入力は自動保存されません。AR / VR は研究計画のみで、XR ランタイムは未実装です。
+
+`npm run audit:tokens` は必須の未定義トークン参照を検出します。描画や使いやすさの評価は別途必要です。

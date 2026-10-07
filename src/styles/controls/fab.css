@@ -1,0 +1,14 @@
+@layer andm.components {
+  /* andm-btn と併用。位置・固定表示は消費側の責務。 */
+  .andm-fab {
+    min-width: var(--andm-fab-size, 56px);
+    height: var(--andm-fab-size, 56px);
+    padding-inline: var(--andm-space-4);
+    border-radius: var(--andm-fab-radius, var(--andm-radius-lg));
+    box-shadow: var(--andm-shadow-2);
+  }
+  .andm-fab--sm { --andm-fab-size: var(--andm-target-min); }
+  .andm-fab--lg { --andm-fab-size: 80px; }
+  .andm-fab--extended { gap: var(--andm-space-3); }
+  .andm-fab:active:not(:disabled) { border-radius: var(--andm-fab-radius, var(--andm-radius-lg)); }
+}

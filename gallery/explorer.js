@@ -29,6 +29,7 @@
     { id: "elevation", label: "Elevation" },
     { id: "motion", label: "Motion" },
     { id: "interaction", label: "Interaction" },
+    { id: "layout", label: "Layout" },
   ];
 
   var partViews = {
@@ -670,6 +671,14 @@
   }
 
   function initParts() {
+    document.querySelectorAll("[data-filter-chip]").forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var selected = chip.getAttribute("aria-pressed") !== "true";
+        chip.setAttribute("aria-pressed", String(selected));
+        var mark = chip.querySelector("[data-chip-mark]");
+        if (mark) mark.hidden = !selected;
+      });
+    });
     document.querySelectorAll("[data-segmented]").forEach(function (group) {
       var options = group.querySelectorAll(".andm-segmented__option");
       function syncSegmented() {
