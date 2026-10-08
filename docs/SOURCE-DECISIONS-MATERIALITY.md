@@ -41,3 +41,12 @@
 - decision: 操作前と後を別formで記録。期待一致・好み・明確さを分ける。4条件を一度ずつランダム提示。exportも未採用を維持。
 - alternatives: 条件順を固定しない。1人の探索記録から統計推論・自動採用はしない。
 - validation: 完走・export・random permutation・motion記録を機械検証。厳密な盲検・母集団counterbalance・尺度妥当性は未検証。
+
+## mb.expressive-appearance
+
+- basis: andm-original / sourceStatus: not-applicable / recommended: null
+- target: 探索専用の膨らんだ面・平らな面・縁・厚み・陰影
+- decision: 利用者から「角丸だけでは柔らかそうと判断できない」と指摘。複数の視覚手掛かりを使う探索を追加し、従来の角だけの統制条件とNative selectで切替える。予備評価の刺激・出力versionは維持。
+- implementation: gallery/lab/materiality-behavior/button.css / lab.js / index.html
+- sources: この実装の具体値を裏付ける公式/論文はない。利用者のフィードバックを受けた独自試作。以前の文献は期待と知覚を分ける背景としてのみ参照。
+- validation: 狭幅・文字200%・contrast・Native操作・Reduced Motion・切替時の結果保持を確認。柔らかさの知覚・好み・要因別効果は未検証。

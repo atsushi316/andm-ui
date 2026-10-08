@@ -93,3 +93,23 @@ Safari/Firefox、実機タッチ、スクリーンリーダー、ブラウザ全
 - 追記：`README.md`、`docs/EXPERIENCE.md`、`docs/SOURCE-DECISIONS.md`、`gallery/index.html`、`gallery/lab/index.html`
 
 既存Philosophy PoC、Core、公式Series、Token、Research catalog/schemaは変更しない。
+
+## 追加検証：表面・造形プロフィール
+
+角丸だけでは質感を想像できないという利用者の指摘を反映。探索の既定を餅風/金属風へ変更し、餅風・スライム風・ボール風と金属風・石風のNative選択を追加した。Surfaceの光沢/粒/透ける縁と、Formの膨らみ/球面/板/塊を区別して記述する。CSSで表現する独自メタファーであり、実際の物性の再現や知覚の実証ではない。
+
+「角だけ」の統制探索へ切替可能。予備評価の見た目、入力、刺激version、exportは維持。探索では色/陰影/輪郭/ボール寸法など複数要因が変わるため、統制条件と混ぜて評価しない。Surfaceや素材名から復元を自動決定しない。
+
+- build / audit:tokens / audit:design-knowledge / diffチェック通過。
+- Chromiumで6画面×4幅×文字100/200%=48条件、さらに素材6組×4幅×文字100/200%=48条件。横はみ出しなし。
+- axeの該当WCAGタグで12画面・組の検出違反0。gradientの全領域のコントラストを自動保証するものではない。
+- Native select、URLのプロフィール保持、表示切替時の保存回数保持、ボールのSpace操作、Reduced Motion、既存の連続操作/取消/4試行export/独立AI例を確認。
+- desktopの餅/金属、mobileのスライム/石・ボール/石を目視確認。文書と操作領域は変形させない。
+- 今回のプロフィールを渡した独立AI再生成は未実施。以前の独立再利用結果はその時点の仕様の記録。
+- Safari/Firefox、実機、screen reader、素材知覚・好み・要因別効果は引き続き未検証。
+
+[追加の結果JSON](../research/analysis/materiality-behavior-validation/appearance-results.json)
+
+![餅風・金属風](../research/analysis/materiality-behavior-validation/appearance-1280.webp)
+
+[スライム風・石風](../research/analysis/materiality-behavior-validation/slime-stone-390.webp) · [ボール風・石風](../research/analysis/materiality-behavior-validation/ball-stone-390.webp)

@@ -39,3 +39,77 @@
 /* Explicit no-motion setting supplements the OS preference; cannot override it. */
 .mb-scope[data-motion="off"] .mb-button .mb-face,
 .mb-scope[data-motion="off"] .mb-button[data-held="true"]:not(:disabled) .mb-face { transform: none; transition: none; }
+
+/* Expressive exploration only: multiple appearance cues, not controlled evaluation.
+   andm-original hypothesis; no official Series/material simulation claim. */
+.mb-scope [data-surface="material"] .mb-button { min-height: 6rem; }
+.mb-scope [data-surface="material"] .mb-button[data-shape="round"]:not(:disabled) .mb-face {
+  border-radius: 46% 46% 42% 42% / 48% 48% 52% 52%;
+  border: 1px solid #39705d;
+  background:
+    radial-gradient(ellipse 60% 26% at 50% 12%, #ffffff50, #ffffff00 95%),
+    radial-gradient(ellipse at 50% 22%, #427b65 0%, #245348 46%, #143a31 100%);
+  box-shadow: inset 0 3px 5px #d0f1d341, inset 0 -9px 13px #0b292c80,
+    0 6px 0 #163f34, 0 14px 15px -4px #193b3350;
+}
+.mb-scope [data-surface="material"] .mb-button[data-shape="square"]:not(:disabled) .mb-face {
+  border-radius: .18rem;
+  border: 1px solid #102e28;
+  background: linear-gradient(120deg, #356451 0%, #356451 28%, #285744 28%, #285744 72%, #214b3c 72%);
+  box-shadow: inset 0 2px 0 #9eb7a3, inset 2px 0 0 #608774, inset 0 -2px 0 #143f30,
+    0 6px 0 #102f27, 2px 9px 0 #193b332d;
+}
+.mb-scope [data-surface="material"] .mb-button:hover:not(:disabled) .mb-face { filter: brightness(1.06); }
+.mb-scope [data-surface="material"] .mb-button[data-held="true"]:not(:disabled) .mb-face { filter: brightness(.88); }
+@media (forced-colors: active) {
+  .mb-scope [data-surface="material"] .mb-button:not(:disabled) .mb-face { background: ButtonFace; border: 2px solid ButtonText; box-shadow: none; }
+  .mb-scope [data-surface="material"] .mb-button { color: ButtonText; }
+}
+/* Surface cues and object form are independently described in the guide.
+   Stylized material metaphors; these are not measured physical materials. */
+.mb-scope [data-surface="material"] .mb-button[data-material="mochi"]:not(:disabled) { color: #263b31; }
+.mb-scope [data-surface="material"] .mb-button[data-material="mochi"]:not(:disabled) .mb-face {
+  border-color: #d4d2bd;
+  background: radial-gradient(ellipse at 50% 20%, #fffdf1 15%, #ebe9d8 64%, #c0c3ab 100%);
+  box-shadow: inset 0 4px 9px #ffffffc0, inset 0 -8px 15px #878f713c,
+    0 5px 0 #b5b9a1, 0 14px 16px -4px #323d3048;
+}
+.mb-scope [data-surface="material"] .mb-button[data-material="slime"]:not(:disabled) .mb-face {
+  border-radius: 43% 51% 38% 47% / 47% 43% 56% 50%; border-color: #307053;
+  background: radial-gradient(ellipse 25% 12% at 28% 20%, #e0ffd0c0, #ffffff00 100%),
+    radial-gradient(ellipse at 68% 70%, #2f7959 0%, #164f40 52%, #4a8a63 80%, #195347 100%);
+  box-shadow: inset 0 2px 2px #b9f0bc80, inset 0 -5px 7px #103f4080,
+    inset 5px 0 9px #97ce8045, 0 5px 0 #25594c90, 0 11px 13px -4px #193b3340;
+}
+.mb-scope [data-surface="material"] .mb-button[data-material="ball"] { width: 7.5rem; min-height: 7.5rem; }
+.mb-scope [data-surface="material"] .mb-button[data-material="ball"]:not(:disabled) .mb-face {
+  border-radius: 50%; border-color: #234b3f;
+  background: radial-gradient(circle at 30% 24%, #538b6c 0%, #245348 48%, #102e2a 92%);
+  box-shadow: inset -7px -8px 11px #092b3460, inset 2px 2px 3px #a0c1a355, 0 10px 9px -3px #142d3355;
+}
+.mb-scope [data-surface="material"] .mb-button[data-material="ball"] .mb-face::after {
+  content: ''; position: absolute; inset: 4px 24%; border: 1px solid #c3d0a344; border-radius: 50%; pointer-events: none;
+}
+.mb-scope [data-surface="material"] .mb-button[data-material="metal"]:not(:disabled) { color: #142d29; }
+.mb-scope [data-surface="material"] .mb-button[data-material="metal"]:not(:disabled) .mb-face {
+  border-color: #42575b;
+  background: linear-gradient(115deg, #b9c8c6 0%, #e5ebe6 19%, #8eaaa6 22%, #bccac4 47%, #d5dfd9 49%, #b4c4bf 75%, #78938d 100%);
+  box-shadow: inset 0 2px 0 #f6fff5, inset 2px 0 0 #d6dfdb, inset 0 -2px 0 #71857e,
+    0 5px 0 #4d615f, 2px 8px 0 #1d37362d;
+}
+.mb-scope [data-surface="material"] .mb-button[data-material="stone"]:not(:disabled) .mb-face {
+  border-radius: 1rem .55rem .85rem .4rem / .6rem .95rem .5rem .85rem; border-color: #3d4740;
+  background: radial-gradient(circle at 20% 30%, #a3aa984d 0 1px, transparent 1.8px) 0 0 / 9px 13px,
+    radial-gradient(circle at 70% 80%, #19292270 0 1px, transparent 2px) 3px 5px / 13px 9px,
+    radial-gradient(ellipse at 25% 5%, #6d7566, #424e43 70%, #303e36);
+  box-shadow: inset 3px 3px 0 #8a8f7044, inset -4px -5px 0 #1b322c80,
+    1px 8px 0 #28372d, 3px 11px 2px #193b3340;
+}
+@media (forced-colors: active) {
+  .mb-scope [data-surface="material"] .mb-button[data-material]:not(:disabled) .mb-face { background: ButtonFace; border-color: ButtonText; box-shadow: none; }
+  .mb-scope [data-surface="material"] .mb-button[data-material]:not(:disabled) { color: ButtonText; }
+}
+/* Preserve silhouette when disabled; only state treatment changes. */
+.mb-scope [data-surface="material"] .mb-button[data-material="ball"] .mb-face { border-radius: 50%; }
+.mb-scope [data-surface="material"] .mb-button[data-material="slime"] .mb-face { border-radius: 43% 51% 38% 47% / 47% 43% 56% 50%; }
+.mb-scope [data-surface="material"] .mb-button[data-material="stone"] .mb-face { border-radius: 1rem .55rem .85rem .4rem / .6rem .95rem .5rem .85rem; }

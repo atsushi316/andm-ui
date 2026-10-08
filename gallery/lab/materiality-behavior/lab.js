@@ -47,6 +47,42 @@ if (!evaluating) {
   $('conditions').innerHTML = (chosen ? [chosen] : CONDITIONS).map(c=>markup(c,c.id)).join('');
   $('conditions').querySelectorAll('.condition').forEach(a=>connect(a));
 }
+// Expressive exploration is an andm-original visual hypothesis, never an evaluation stimulus.
+if (!evaluating) {
+  const picker = $('surface-choice');
+  picker.value = params.get('appearance') === 'controlled' ? 'controlled' : 'material';
+  const soft = $('soft-material'), hard = $('hard-material');
+  const profiles = {mochi:['餅風の面','つやを抑えた白い面、丸い断面と柔らかな接地影。'],slime:['スライム風の面','層のある光沢、透ける縁、たわんだ輪郭。'],ball:['ボール風の面','球面の明暗、表面の張りと継ぎ目。'],metal:['金属風の面','方向性のある反射、薄い縁と硬い段差。'],stone:['石風の面','粒状の表面、欠けた輪郭と厚い塊。']};
+  if (profiles[params.get('soft')]) soft.value = ['mochi','slime','ball'].includes(params.get('soft')) ? params.get('soft') : 'mochi';
+  if (['metal','stone'].includes(params.get('hard'))) hard.value = params.get('hard');
+  function setSurface() {
+    const material = picker.value === 'material';
+    $('conditions').dataset.surface = picker.value;
+    $('material-choices').hidden = !material;
+    $('surface-note').textContent = material
+      ? '表面の粒・光沢・透け方と、物体の輪郭・厚み・張りを比べます。素材を連想する探索用の独自表現で、実物の物性や柔らかさは保証しません。復元は素材名から自動決定せず、同じ見た目で2種類を試せます。'
+      : '角の形だけを変更。色・寸法・背景・陰影・押し込み量は共通です。名前を伏せた予備評価はこちらの条件を使います。';
+    $('experiment-intro').textContent = material
+      ? '膨らんだ面と、硬い板。同じ「保存する」で、見た目が期待させる触感と復元を比べます。'
+      : '同じ「保存する」で、角の形と離した後の戻り方だけを比べます。';
+    $('conditions').querySelectorAll('.condition').forEach(article => {
+      const c = CONDITIONS.find(c => article.querySelector('.mb-button').dataset.shape === c.shape && article.querySelector('.mb-button').dataset.return === c.reaction);
+      const button = article.querySelector('.mb-button'), profile = c.shape==='round' ? soft.value : hard.value;
+      if (material) button.dataset.material = profile; else delete button.dataset.material;
+      article.querySelector('h3').textContent = material
+        ? c.id+' · '+profiles[profile][0]+' × '+(c.reaction==='elastic'?'弾性的な復元':'単調な復元')
+        : c.id+' · '+c.title;
+      article.querySelector('.description').textContent = material
+        ? profiles[profile][1]+' '+(c.reaction==='elastic'?'離すと一度行き過ぎて戻ります。':'離すと行き過ぎずに戻ります。')
+        : c.explanation;
+      article.querySelector('footer a').href = '?condition='+c.id+'&appearance='+picker.value+'&soft='+soft.value+'&hard='+hard.value;
+    });
+    params.set('appearance',picker.value);params.set('soft',soft.value);params.set('hard',hard.value);history.replaceState(null,'','?'+params);
+  }
+  picker.addEventListener('change',setSurface);soft.addEventListener('change',setSurface);hard.addEventListener('change',setSurface);setSurface();
+} else {
+  $('experiment-intro').textContent = '角の形と復元軌道を絞った4条件で、操作前の期待と操作後の印象を記録します。';
+}
 function shuffled(items) {
   const result = [...items];
   for (let i=result.length-1;i>0;i--) { const value = crypto.getRandomValues(new Uint32Array(1))[0]; const j = Math.floor(value/4294967296*(i+1)); [result[i],result[j]]=[result[j],result[i]]; }
