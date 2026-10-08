@@ -23,7 +23,9 @@
     "docs/SOURCE-FIRST.md",
     "docs/SOURCE-DECISIONS.md",
     "docs/SOURCE-REAUDIT.md",
-    "docs/SOURCE-PROPERTIES.csv"
+    "docs/SOURCE-PROPERTIES.csv",
+    "docs/COMPONENT-COVERAGE.md",
+    "docs/COMPONENT-COVERAGE.json"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",
@@ -31,7 +33,8 @@
     "gallery": "node scripts/gallery.mjs",
     "prepublishOnly": "npm run build",
     "audit:tokens": "npm run build && node scripts/audit-tokens.mjs",
-    "audit:sources": "node scripts/audit-sources.mjs"
+    "audit:sources": "node scripts/audit-sources.mjs",
+    "audit:coverage": "node scripts/audit-coverage.mjs"
   },
   "keywords": [
     "css",

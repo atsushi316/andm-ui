@@ -124,3 +124,5 @@ Chip / FAB 固有の寸法・形は andm 独自仕様です。全シリーズの
 検索・フィルター・フォーム・ヘッダー/サイド/モバイル/ボトムナビ・操作一覧・リスト項目・空状態・読み込みを追加。Native HTML + CSS、動作の参考実装はGallery。[仕様と出典](docs/COMPOSITION-SOURCES.md)。
 
 出典優先の全パーツ再監査は [SOURCE-REAUDIT.md](docs/SOURCE-REAUDIT.md)。`npm run audit:sources` でCSS宣言台帳と新規hookの消費を検証できます。
+
+他体系との機能比較・不足と優先順位は [COMPONENT-COVERAGE.md](docs/COMPONENT-COVERAGE.md)。`npm run audit:coverage` で全Galleryパーツの対応と台帳/文書一致を検証します。

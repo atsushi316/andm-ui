@@ -1,6 +1,10 @@
 /* research/library の Markdown を表示する。値は Token にしない。 */
 (function (root) {
   var shelves = {
+    "COMPONENT-COVERAGE.md": "component-coverage",
+    "SOURCE-REAUDIT.md": "source-reaudit",
+    "SOURCE-FIRST.md": "source-first",
+    "SOURCE-DECISIONS.md": "source-decisions",
     "README.md": "",
     "academic.md": "academic",
     "standards.md": "standards",
@@ -28,6 +32,9 @@
     if (path === "" && hash) {
       var here = shelfId && shelfId !== "index" ? "/" + shelfId : "";
       return { href: "#/library" + here + "/" + encodeURIComponent(hash), external: false };
+    }
+    if (/^(?:COMPONENT-COVERAGE\.json|SOURCE-PROPERTIES\.csv)$/.test(path)) {
+      return {href: '/docs/' + path, external: false};
     }
     if (Object.prototype.hasOwnProperty.call(shelves, path)) {
       var shelf = shelves[path];
@@ -80,7 +87,7 @@
       return !isRule(row);
     });
     if (!kept.length) return "";
-    var html = '<div class="g-table-wrap"><table><thead><tr>';
+    var html = '<div class="g-table-wrap" tabindex="0" role="region" aria-label="表（左右にスクロールできます）"><table><thead><tr>';
     splitRow(kept[0]).forEach(function (cell) {
       html += "<th>" + inline(cell, shelfId) + "</th>";
     });

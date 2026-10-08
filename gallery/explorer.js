@@ -142,6 +142,7 @@
   }
 
   var libraryFiles = {
+    "component-coverage": "../../docs/COMPONENT-COVERAGE.md",
     "source-first": "../../docs/SOURCE-FIRST.md",
     "source-decisions": "../../docs/SOURCE-DECISIONS.md",
     "source-reaudit": "../../docs/SOURCE-REAUDIT.md",
@@ -167,6 +168,7 @@
   };
 
   var libraryTitles = {
+    "component-coverage": "他体系との比較・不足一覧",
     "source-first": "出典優先の設計基準",
     "source-decisions": "プロパティ別の採用判断",
     "source-reaudit": "全パーツの出典優先再監査",

@@ -75,3 +75,18 @@
 - `spinner-duration`: `src/styles/marks/spinner.css` / `src/styles/series/carbon.css`。
 
 採用根拠: 2026-10-08のユーザー依頼（PR #7統合後、全パーツを基準で再監査して修正）。旧記録の維持も同依頼の範囲。各新規公式行は本文確認、未取得行は取得失敗・既存記録のみ。研究から数値を自動生成していない。
+
+
+## capability-coverage-2026-10-08
+
+- Series / target: 全Series / 部品機能と配布範囲の比較。数値・見た目の変更なし。
+- implementation: `docs/COMPONENT-COVERAGE.{md,json}`、`scripts/audit-coverage.mjs`、Galleryの文献ルート/導線。
+- scope: 一般Web、2026-10-08時点の一覧。公式版/取得URLは対応表に記録。andm基点commit `6730349`。
+- sourceStatus: 公式5体系の一覧はspecified。各部品の全仕様と取得失敗のM3/Apple一覧はunverified。Spectrumは新入口を取得できたが全一覧は未確認。
+- basis: 名前から能力への対応はderived、実装状態・優先順位はandm-original。優先順位に対する外部公式はnot-applicable。
+- sources / checkedAt / verification: 対応表「公式資料・版・取得範囲」のURL・版、2026-10-08本文確認。Fluent Combobox/DADS File uploadの本文も確認。既存分析の再読は本文再取得と区別。
+- decision: 部品数の単純比較を避け、Native機能、統合操作、Galleryのみのcontrollerを区別。未実装28能力、簡易版19能力を不足として残す。
+- alternatives: 全体系の部品名をそのまま追加数にする案や、他社asset/framework基盤をandm本体へ追加する案は不採用。一般機能を用途単位で対応付ける。
+- recommended / adoption: true / ユーザーの比較・不足整理の実行依頼。未実装部品の新規実装は今回含めていない。
+- validation: 全58パーツの参照、分類、81能力の台帳/文書一致、build/token/source audit、Galleryの320/1280pxと文献リンク確認。
+- revisit: 新しい機能の追加、公式一覧/版の更新、対象プラットフォームの変更時に該当能力を再評価。

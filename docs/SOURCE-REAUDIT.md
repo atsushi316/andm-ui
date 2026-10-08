@@ -1,5 +1,7 @@
 # 全パーツの出典優先・再監査（2026-10-08）
 
+機能の不足と他体系比較は [COMPONENT-COVERAGE.md](COMPONENT-COVERAGE.md)。
+
 PR #7 の main 統合後の監査。Gallery 全58パーツ、14シリーズ（Baselineを含む）、src/styles 全CSS宣言を棚卸しした。**全パーツの実装監査と表示確認は完了したが、全プロパティが公式確認済みという意味ではない。** 外部由来シリーズは値・状態・用途ごとに判断する。
 
 [判断記録](SOURCE-DECISIONS.md) / [全宣言と変数依存の台帳](SOURCE-PROPERTIES.csv) / [方針](SOURCE-FIRST.md)。台帳は `npm run audit:sources` で実装との一致を検証する。台帳だけから出典の確実性は判断しない。既存の色・寸法・動きの取得記録は [COMPONENT-SOURCES](COMPONENT-SOURCES.md)、[ATOMIC-SOURCES](ATOMIC-SOURCES.md)、[COMPOSITION-SOURCES](COMPOSITION-SOURCES.md)、各シリーズ分析を併読する。

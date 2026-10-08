@@ -1,0 +1,1770 @@
+{
+  "checkedAt": "2026-10-08",
+  "localRevision": "6730349f2372589ac9f770e1e0f57b577630f1bc",
+  "scope": "一般Web向けの能力単位。機能対応と公式見た目の再現度は別軸。",
+  "sources": [
+    {
+      "system": "Carbon",
+      "url": "https://www.carbondesignsystem.com/building-blocks/core/components/overview/components",
+      "version": "Carbon Core、2026-08-18更新表示。package版は未固定",
+      "sourceStatus": "specified",
+      "verification": "一覧本文を確認。各部品の全機能・全実装版を確認した意味ではない。"
+    },
+    {
+      "system": "Fluent 2",
+      "url": "https://fluent2.microsoft.design/components/web/react",
+      "version": "Web React一覧、Fluent UI React v9へのリンク。Preview表示を含む",
+      "sourceStatus": "specified",
+      "verification": "一覧本文を確認。各部品の全機能・全実装版を確認した意味ではない。"
+    },
+    {
+      "system": "DADS",
+      "url": "https://design.digital.go.jp/dads/components/",
+      "version": "β版v2.18.0",
+      "sourceStatus": "specified",
+      "verification": "一覧本文を確認。各部品の全機能・全実装版を確認した意味ではない。"
+    },
+    {
+      "system": "USWDS",
+      "url": "https://designsystem.digital.gov/components/overview/",
+      "version": "v3.14.0、一覧表示47 components",
+      "sourceStatus": "specified",
+      "verification": "一覧本文を確認。各部品の全機能・全実装版を確認した意味ではない。"
+    },
+    {
+      "system": "Atlassian",
+      "url": "https://atlassian.design/components/",
+      "version": "継続更新、package版は未固定。Caution/Beta/Early accessは状態を保持",
+      "sourceStatus": "specified",
+      "verification": "一覧本文を確認。各部品の全機能・全実装版を確認した意味ではない。"
+    }
+  ],
+  "counts": {
+    "実装済み": 29,
+    "簡易版": 19,
+    "未実装": 28,
+    "対象外": 5
+  },
+  "rows": [
+    {
+      "id": "button",
+      "label": "ボタン・アイコンボタン",
+      "status": "実装済み",
+      "parts": [
+        "button",
+        "icon-button"
+      ],
+      "implementation": "Native button、種類・サイズ・無効・選択",
+      "gap": "業務処理はアプリ側。公式再現度とは別軸。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Button"
+        ],
+        "Fluent 2": [
+          "Button"
+        ],
+        "DADS": [
+          "ボタン"
+        ],
+        "USWDS": [
+          "Button"
+        ],
+        "Atlassian": [
+          "Button"
+        ]
+      }
+    },
+    {
+      "id": "fab",
+      "label": "FAB",
+      "status": "実装済み",
+      "parts": [
+        "fab"
+      ],
+      "implementation": "独自の主操作ボタン",
+      "gap": "全シリーズに公式FABがあるという意味ではない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {}
+    },
+    {
+      "id": "text-input",
+      "label": "短文・複数行入力",
+      "status": "実装済み",
+      "parts": [
+        "text-field"
+      ],
+      "implementation": "input / textarea、補足・error・disabled",
+      "gap": "textareaは別Gallery項目として数えない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Text input"
+        ],
+        "Fluent 2": [
+          "Input",
+          "Textarea"
+        ],
+        "DADS": [
+          "インプットテキスト",
+          "テキストエリア"
+        ],
+        "USWDS": [
+          "Text input"
+        ],
+        "Atlassian": [
+          "Text area",
+          "Text field"
+        ]
+      }
+    },
+    {
+      "id": "native-input",
+      "label": "標準日時・数値・色入力",
+      "status": "実装済み",
+      "parts": [
+        "native-input"
+      ],
+      "implementation": "Native date/time/number等",
+      "gap": "ブラウザ任せ。独自calendarやspin buttonには数えない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {}
+    },
+    {
+      "id": "checkbox",
+      "label": "チェックボックス",
+      "status": "実装済み",
+      "parts": [
+        "checkbox"
+      ],
+      "implementation": "Native checkbox、一部選択の見本",
+      "gap": "indeterminate設定は消費側JS。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Checkbox"
+        ],
+        "Fluent 2": [
+          "Checkbox"
+        ],
+        "DADS": [
+          "チェックボックス"
+        ],
+        "USWDS": [
+          "Checkbox"
+        ],
+        "Atlassian": [
+          "Checkbox"
+        ]
+      }
+    },
+    {
+      "id": "radio",
+      "label": "ラジオグループ",
+      "status": "実装済み",
+      "parts": [
+        "radio"
+      ],
+      "implementation": "Native radio + fieldset/legend",
+      "gap": "公式ロールの寸法一致は別監査。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Radio button"
+        ],
+        "Fluent 2": [
+          "Radio group"
+        ],
+        "DADS": [
+          "ラジオボタン"
+        ],
+        "USWDS": [
+          "Radio buttons"
+        ],
+        "Atlassian": [
+          "Radio"
+        ]
+      }
+    },
+    {
+      "id": "switch",
+      "label": "スイッチ",
+      "status": "実装済み",
+      "parts": [
+        "switch"
+      ],
+      "implementation": "Native checkboxのトグル表現",
+      "gap": "設定への即時反映はアプリ側。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Toggle"
+        ],
+        "Fluent 2": [
+          "Switch"
+        ],
+        "DADS": [
+          "スイッチ"
+        ],
+        "Atlassian": [
+          "Toggle"
+        ]
+      }
+    },
+    {
+      "id": "select",
+      "label": "単一セレクト",
+      "status": "実装済み",
+      "parts": [
+        "select"
+      ],
+      "implementation": "Native select",
+      "gap": "検索・複数選択のcomboboxには数えない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Dropdown",
+          "Select"
+        ],
+        "Fluent 2": [
+          "Dropdown",
+          "Select"
+        ],
+        "DADS": [
+          "セレクトボックス"
+        ],
+        "USWDS": [
+          "Select"
+        ],
+        "Atlassian": [
+          "Select"
+        ]
+      }
+    },
+    {
+      "id": "slider",
+      "label": "単一スライダー",
+      "status": "実装済み",
+      "parts": [
+        "slider"
+      ],
+      "implementation": "Native range + 値表示",
+      "gap": "2つのつまみ・区間選択は別機能。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Slider"
+        ],
+        "Fluent 2": [
+          "Slider"
+        ],
+        "USWDS": [
+          "Range slider"
+        ],
+        "Atlassian": [
+          "Range"
+        ]
+      }
+    },
+    {
+      "id": "segmented",
+      "label": "同じ場の切替",
+      "status": "実装済み",
+      "parts": [
+        "segmented"
+      ],
+      "implementation": "aria-pressedボタンとデモ",
+      "gap": "controllerはGalleryのみ。radio契約との使い分けが必要。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Content switcher"
+        ]
+      }
+    },
+    {
+      "id": "chip",
+      "label": "選択チップ",
+      "status": "実装済み",
+      "parts": [
+        "chip"
+      ],
+      "implementation": "フィルター用pressedボタン",
+      "gap": "入力/削除タグとは別。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {}
+    },
+    {
+      "id": "labels",
+      "label": "ラベル・補足・エラー・必須",
+      "status": "実装済み",
+      "parts": [
+        "label",
+        "helper-text",
+        "error-text",
+        "required-marker"
+      ],
+      "implementation": "for/id・describedby・必須/任意表示",
+      "gap": "文字数制限やerror summaryは含まない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Label"
+        ]
+      }
+    },
+    {
+      "id": "field",
+      "label": "フォームフィールド・フォーム",
+      "status": "簡易版",
+      "parts": [
+        "form-field",
+        "form-actions"
+      ],
+      "implementation": "ラベル/入力/説明、検証と保存の見本",
+      "gap": "フォーム全体のエラー集約・非同期検証・再送信状態の共通契約がない。",
+      "priority": "P1",
+      "acceptance": "検証→error summary→入力へfocus→修正→送信の一連の見本",
+      "sources": {
+        "Carbon": [
+          "Form"
+        ],
+        "Fluent 2": [
+          "Field"
+        ],
+        "USWDS": [
+          "Form",
+          "Validation"
+        ],
+        "Atlassian": [
+          "Form"
+        ]
+      }
+    },
+    {
+      "id": "link",
+      "label": "リンク・本文スキップ",
+      "status": "実装済み",
+      "parts": [
+        "link"
+      ],
+      "implementation": "Native a、skip link",
+      "gap": "URL/ルーティングは消費側。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Link"
+        ],
+        "Fluent 2": [
+          "Link"
+        ],
+        "USWDS": [
+          "Link"
+        ],
+        "Atlassian": [
+          "Link"
+        ]
+      }
+    },
+    {
+      "id": "text",
+      "label": "文字・見出し",
+      "status": "実装済み",
+      "parts": [
+        "text"
+      ],
+      "implementation": "用途別typographyロール",
+      "gap": "全シリーズの公式typography全値を再現済みではない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Text"
+        ],
+        "DADS": [
+          "見出し"
+        ],
+        "USWDS": [
+          "Prose",
+          "Typography"
+        ],
+        "Atlassian": [
+          "Heading"
+        ]
+      }
+    },
+    {
+      "id": "code",
+      "label": "コード・キーボードキー",
+      "status": "実装済み",
+      "parts": [
+        "code",
+        "kbd"
+      ],
+      "implementation": "Native code/pre/kbd + CSS",
+      "gap": "構文ハイライトとコピーボタンは未共通化。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Code snippet"
+        ],
+        "Atlassian": [
+          "Code"
+        ]
+      }
+    },
+    {
+      "id": "icons",
+      "label": "アイコン",
+      "status": "実装済み",
+      "parts": [
+        "icon"
+      ],
+      "implementation": "15個の独自SVG symbol",
+      "gap": "スターターのみ。公式アイコン集の網羅や再配布ではない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Icon"
+        ],
+        "USWDS": [
+          "Icon",
+          "Icon list"
+        ],
+        "Atlassian": [
+          "Icon"
+        ]
+      }
+    },
+    {
+      "id": "image",
+      "label": "画像",
+      "status": "実装済み",
+      "parts": [
+        "image"
+      ],
+      "implementation": "Native img、比率・contain",
+      "gap": "キャプション・切り抜き・拡大viewerは含まない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Image"
+        ],
+        "DADS": [
+          "画像"
+        ],
+        "Atlassian": [
+          "Image"
+        ]
+      }
+    },
+    {
+      "id": "badge",
+      "label": "バッジ・状態ラベル",
+      "status": "実装済み",
+      "parts": [
+        "badge",
+        "status"
+      ],
+      "implementation": "静的な分類/状態の表示",
+      "gap": "数値badge、lozenge、tagの差は用途別に再設計が必要。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Tag"
+        ],
+        "Fluent 2": [
+          "Badge"
+        ],
+        "DADS": [
+          "チップラベル"
+        ],
+        "USWDS": [
+          "Tag"
+        ],
+        "Atlassian": [
+          "Badge",
+          "Date label",
+          "Lozenge"
+        ]
+      }
+    },
+    {
+      "id": "avatar",
+      "label": "アバター",
+      "status": "実装済み",
+      "parts": [
+        "avatar"
+      ],
+      "implementation": "単体人物の画像/文字表示",
+      "gap": "group/personaは別機能。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Avatar"
+        ],
+        "Atlassian": [
+          "Avatar"
+        ]
+      }
+    },
+    {
+      "id": "divider",
+      "label": "区切り",
+      "status": "実装済み",
+      "parts": [
+        "divider"
+      ],
+      "implementation": "Native hrとdivider CSS",
+      "gap": "別途のdivider操作はない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Divider"
+        ],
+        "DADS": [
+          "ディバイダー"
+        ]
+      }
+    },
+    {
+      "id": "card",
+      "label": "カード・タイル",
+      "status": "実装済み",
+      "parts": [
+        "card"
+      ],
+      "implementation": "コンテンツ/操作をまとめる面",
+      "gap": "選択tileなど固有操作は別。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Tile"
+        ],
+        "Fluent 2": [
+          "Card"
+        ],
+        "DADS": [
+          "カード"
+        ],
+        "USWDS": [
+          "Card"
+        ],
+        "Atlassian": [
+          "Tile"
+        ]
+      }
+    },
+    {
+      "id": "list",
+      "label": "箇条書き・構造化リスト",
+      "status": "実装済み",
+      "parts": [
+        "list"
+      ],
+      "implementation": "Nativeリスト、情報行",
+      "gap": "structured listの選択・contained listの操作は簡易相当。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "List",
+          "Structured list"
+        ],
+        "Fluent 2": [
+          "List"
+        ],
+        "DADS": [
+          "箇条書きリスト"
+        ],
+        "USWDS": [
+          "List"
+        ]
+      }
+    },
+    {
+      "id": "resource-list",
+      "label": "リソース一覧",
+      "status": "簡易版",
+      "parts": [
+        "resource-item"
+      ],
+      "implementation": "情報/リンク/末尾操作の見本",
+      "gap": "大量データ・選択・複合操作・実データ連携は未共通化。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Contained list"
+        ],
+        "DADS": [
+          "リソースリスト"
+        ],
+        "USWDS": [
+          "Collection"
+        ]
+      }
+    },
+    {
+      "id": "table",
+      "label": "静的テーブル",
+      "status": "実装済み",
+      "parts": [
+        "table"
+      ],
+      "implementation": "Native table、見出しとセル",
+      "gap": "sort/selection/編集付きdata tableではない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "USWDS": [
+          "Table"
+        ],
+        "Atlassian": [
+          "Table"
+        ]
+      }
+    },
+    {
+      "id": "accordion",
+      "label": "アコーディオン・disclosure",
+      "status": "実装済み",
+      "parts": [
+        "accordion"
+      ],
+      "implementation": "Native details/summary",
+      "gap": "複数項目の排他的開閉は消費側。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Accordion"
+        ],
+        "Fluent 2": [
+          "Accordion"
+        ],
+        "DADS": [
+          "アコーディオン",
+          "ディスクロージャー"
+        ],
+        "USWDS": [
+          "Accordion"
+        ]
+      }
+    },
+    {
+      "id": "tabs",
+      "label": "タブ",
+      "status": "簡易版",
+      "parts": [
+        "tabs"
+      ],
+      "implementation": "ARIA関連付け、矢印/Home/End、panel focusのデモ",
+      "gap": "再利用controllerは配布されずGallery専用。遅延/remote panelの契約はない。",
+      "priority": "P1",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Tablist"
+        ],
+        "DADS": [
+          "タブ"
+        ],
+        "Atlassian": [
+          "Tabs"
+        ]
+      }
+    },
+    {
+      "id": "modal",
+      "label": "モーダルダイアログ",
+      "status": "簡易版",
+      "parts": [
+        "dialog"
+      ],
+      "implementation": "Native dialog、Galleryのopen/close",
+      "gap": "再利用controller・非同期確認・積層時の契約は未提供。",
+      "priority": "P1",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Modal"
+        ],
+        "Fluent 2": [
+          "Dialog"
+        ],
+        "DADS": [
+          "モーダルダイアログ"
+        ],
+        "USWDS": [
+          "Modal"
+        ],
+        "Atlassian": [
+          "Modal dialog",
+          "Blanket"
+        ]
+      }
+    },
+    {
+      "id": "drawer",
+      "label": "ドロワー",
+      "status": "簡易版",
+      "parts": [
+        "drawer"
+      ],
+      "implementation": "端からのパネル、見本の開閉",
+      "gap": "modal/non-modal両方のfocus/背景操作契約を製品向けに固定していない。",
+      "priority": "P1",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Drawer"
+        ],
+        "DADS": [
+          "ドロワー"
+        ],
+        "Atlassian": [
+          "Drawer"
+        ]
+      }
+    },
+    {
+      "id": "popover",
+      "label": "ポップオーバー",
+      "status": "簡易版",
+      "parts": [
+        "popover"
+      ],
+      "implementation": "見本の開閉・Escape・focus復帰",
+      "gap": "viewport衝突回避・位置追従・再利用controllerはない。",
+      "priority": "P1",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Popover"
+        ],
+        "Fluent 2": [
+          "Popover"
+        ],
+        "Atlassian": [
+          "Inline dialog",
+          "Popup"
+        ]
+      }
+    },
+    {
+      "id": "tooltip",
+      "label": "ツールチップ",
+      "status": "簡易版",
+      "parts": [
+        "tooltip"
+      ],
+      "implementation": "describedby、hover/focus、Escapeのデモ",
+      "gap": "viewport衝突回避・共通controllerの配布はない。",
+      "priority": "P1",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Tooltip"
+        ],
+        "Fluent 2": [
+          "Tooltip"
+        ],
+        "USWDS": [
+          "Tooltip"
+        ],
+        "Atlassian": [
+          "Tooltip"
+        ]
+      }
+    },
+    {
+      "id": "menu",
+      "label": "アクションメニュー",
+      "status": "簡易版",
+      "parts": [
+        "menu",
+        "action-menu"
+      ],
+      "implementation": "Disclosure + Nativeボタン、Tab/Escape",
+      "gap": "ARIA menuの矢印キー・typeahead・submenuは未実装。",
+      "priority": "P1",
+      "acceptance": "menu契約を採用する場合、Arrow/Home/End/typeahead/submenu/focus復帰を実装",
+      "sources": {
+        "Carbon": [
+          "Menu",
+          "Menu buttons"
+        ],
+        "Fluent 2": [
+          "Menu"
+        ],
+        "DADS": [
+          "メニューリスト",
+          "メニューリストボックス"
+        ],
+        "Atlassian": [
+          "Dropdown menu",
+          "Menu"
+        ]
+      }
+    },
+    {
+      "id": "breadcrumb",
+      "label": "パンくず",
+      "status": "実装済み",
+      "parts": [
+        "breadcrumb"
+      ],
+      "implementation": "階層とaria-current",
+      "gap": "省略/折り返し方針の追加検証は必要。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Breadcrumb"
+        ],
+        "Fluent 2": [
+          "Breadcrumb"
+        ],
+        "DADS": [
+          "パンくずナビゲーション"
+        ],
+        "USWDS": [
+          "Breadcrumb"
+        ],
+        "Atlassian": [
+          "Breadcrumbs"
+        ]
+      }
+    },
+    {
+      "id": "pagination",
+      "label": "ページ送り",
+      "status": "簡易版",
+      "parts": [
+        "pagination"
+      ],
+      "implementation": "移動ボタンの表示・現在ページ",
+      "gap": "データ総件数/URL/disabledとの同期は見本外。",
+      "priority": "P1",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Pagination"
+        ],
+        "DADS": [
+          "ページナビゲーション"
+        ],
+        "USWDS": [
+          "Pagination"
+        ],
+        "Atlassian": [
+          "Pagination"
+        ]
+      }
+    },
+    {
+      "id": "navigation",
+      "label": "ヘッダー・サイド・携帯ナビ",
+      "status": "簡易版",
+      "parts": [
+        "header-nav",
+        "side-nav",
+        "mobile-nav",
+        "bottom-nav"
+      ],
+      "implementation": "リンク・階層details・開閉の見本",
+      "gap": "実ルート同期・大階層・modal携帯メニューの標準契約は未提供。DADS bottomは非推奨。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "UI shell"
+        ],
+        "Fluent 2": [
+          "Nav"
+        ],
+        "DADS": [
+          "水平メニュー",
+          "ハンバーガーメニューボタン",
+          "ヘッダーコンテナ",
+          "ボトムナビゲーション",
+          "モバイルメニュー",
+          "ユーティリティリンク"
+        ],
+        "USWDS": [
+          "Header",
+          "Side navigation"
+        ],
+        "Atlassian": [
+          "Navigation system"
+        ]
+      }
+    },
+    {
+      "id": "toolbar",
+      "label": "ツールバー・ボタングループ",
+      "status": "簡易版",
+      "parts": [
+        "toolbar"
+      ],
+      "implementation": "操作ボタンの群化",
+      "gap": "ARIA toolbarのroving tabindex/矢印操作は未実装。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Toolbar"
+        ],
+        "USWDS": [
+          "Button group"
+        ]
+      }
+    },
+    {
+      "id": "search",
+      "label": "検索・絞り込み・結果ヘッダー",
+      "status": "簡易版",
+      "parts": [
+        "search-form",
+        "filter-bar",
+        "results-header"
+      ],
+      "implementation": "入力/検索/クリア/並び替え見本",
+      "gap": "非同期検索・キャンセル・URL/件数/ページ同期はアプリ側。",
+      "priority": "P1",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Search"
+        ],
+        "Fluent 2": [
+          "Searchbox"
+        ],
+        "DADS": [
+          "検索ボックス"
+        ],
+        "USWDS": [
+          "Search"
+        ]
+      }
+    },
+    {
+      "id": "notification",
+      "label": "アラート・トースト",
+      "status": "簡易版",
+      "parts": [
+        "alert",
+        "toast"
+      ],
+      "implementation": "info/success/warning/error、表示/閉じる見本",
+      "gap": "通知queue・重複抑制・タイムアウト/重要度の共通契約がない。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Notification"
+        ],
+        "Fluent 2": [
+          "Message bar",
+          "Toast"
+        ],
+        "DADS": [
+          "ノティフィケーションバナー"
+        ],
+        "USWDS": [
+          "Alert",
+          "Site alert"
+        ],
+        "Atlassian": [
+          "Flag",
+          "Inline message",
+          "Section message"
+        ]
+      }
+    },
+    {
+      "id": "progress",
+      "label": "処理進捗・読み込み",
+      "status": "簡易版",
+      "parts": [
+        "progress",
+        "spinner",
+        "loading-state"
+      ],
+      "implementation": "progressbar、spinner、busy/完了の見本",
+      "gap": "通信・cancel/retry/失敗時遷移は消費側。DADS部分処理は静止hourglass。",
+      "priority": "P1",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Inline loading",
+          "Loading",
+          "Progress bar"
+        ],
+        "Fluent 2": [
+          "Progress bar",
+          "Spinner"
+        ],
+        "DADS": [
+          "プログレスインジケーター"
+        ],
+        "Atlassian": [
+          "Progress bar",
+          "Spinner"
+        ]
+      }
+    },
+    {
+      "id": "skeleton",
+      "label": "スケルトン",
+      "status": "実装済み",
+      "parts": [
+        "skeleton"
+      ],
+      "implementation": "静止したplaceholder",
+      "gap": "DADSでは使用しない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Skeleton"
+        ],
+        "Atlassian": [
+          "Skeleton"
+        ]
+      }
+    },
+    {
+      "id": "empty",
+      "label": "空状態",
+      "status": "実装済み",
+      "parts": [
+        "empty-state"
+      ],
+      "implementation": "説明と次の操作の見本",
+      "gap": "業務固有の文章と操作はアプリ側。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Atlassian": [
+          "Empty state"
+        ]
+      }
+    },
+    {
+      "id": "file-input",
+      "label": "標準ファイル入力",
+      "status": "実装済み",
+      "parts": [
+        "file-input"
+      ],
+      "implementation": "単一/複数のNative選択・無効・ファイル名表示",
+      "gap": "ドロップ・削除・検証・送信状態とは別機能。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "USWDS": [
+          "File input"
+        ]
+      }
+    },
+    {
+      "id": "combobox",
+      "label": "検索候補・コンボボックス",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "該当APIなし",
+      "gap": "Native select/inputの存在で実装済みにしない。",
+      "priority": "P1",
+      "acceptance": "候補絞り込み、IME、単一選択、Arrow/Enter/Escape、名称/active option、no results、async状態",
+      "sources": {
+        "Fluent 2": [
+          "Combobox"
+        ],
+        "DADS": [
+          "コンボボックス"
+        ],
+        "USWDS": [
+          "Combo box"
+        ]
+      }
+    },
+    {
+      "id": "multi-select",
+      "label": "複数選択・タグピッカー",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "Checkbox群で代替可能",
+      "gap": "検索付き選択、選択済み一覧、解除の統合APIなし。",
+      "priority": "P1",
+      "acceptance": "選択/解除、重複抑止、keyboard、件数/選択状態、候補検索",
+      "sources": {
+        "Carbon": [
+          "Multiselect"
+        ],
+        "Fluent 2": [
+          "Tag picker"
+        ]
+      }
+    },
+    {
+      "id": "removable-tag",
+      "label": "削除可能タグ・入力チップ",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "badge/選択chipは代替にならない",
+      "gap": "独立削除操作と削除後focusがない。",
+      "priority": "P0",
+      "acceptance": "ラベルと削除を分離し、accessible name、Backspace/Delete、削除後focusを定義",
+      "sources": {
+        "Fluent 2": [
+          "Tag"
+        ],
+        "DADS": [
+          "チップタグ"
+        ],
+        "Atlassian": [
+          "Tag",
+          "Tag group"
+        ]
+      }
+    },
+    {
+      "id": "calendar",
+      "label": "日付選択・カレンダー",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "Native dateは別行で実装済み",
+      "gap": "独自カレンダーと日付範囲/制約のAPIなし。",
+      "priority": "P1",
+      "acceptance": "Native代替を維持、月/年移動、日付制限、keyboard、locale、日本語、入力同期",
+      "sources": {
+        "Carbon": [
+          "Date picker"
+        ],
+        "DADS": [
+          "日付ピッカー／カレンダー"
+        ],
+        "USWDS": [
+          "Date picker"
+        ],
+        "Atlassian": [
+          "Calendar",
+          "Date time picker"
+        ]
+      }
+    },
+    {
+      "id": "date-range",
+      "label": "期間選択",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立APIなし",
+      "gap": "開始/終了の関連付け・逆転・範囲制約がない。",
+      "priority": "P1",
+      "acceptance": "開始/終了の同期、逆転エラー、clear、ラベル/補足/keyboard",
+      "sources": {
+        "USWDS": [
+          "Date range picker"
+        ]
+      }
+    },
+    {
+      "id": "date-entry",
+      "label": "記憶している日付の分割入力",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "Native日時入力のみ",
+      "gap": "月/日/年などの分割入力パターンはない。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "USWDS": [
+          "Memorable date"
+        ]
+      }
+    },
+    {
+      "id": "spinbutton",
+      "label": "数値ステッパー・時刻ピッカー",
+      "status": "簡易版",
+      "parts": [
+        "native-input"
+      ],
+      "implementation": "Native number/time",
+      "gap": "専用stepper、カスタム時刻候補は未実装。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Number input"
+        ],
+        "Fluent 2": [
+          "Spin button"
+        ],
+        "USWDS": [
+          "Time picker"
+        ]
+      }
+    },
+    {
+      "id": "range-slider",
+      "label": "区間スライダー",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "つまみ1つのみ",
+      "gap": "2値の順序、同値、keyboard契約なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {}
+    },
+    {
+      "id": "input-affix",
+      "label": "入力の接頭・接尾辞",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立APIなし",
+      "gap": "通貨/単位の表示と入力文字の区別がない。",
+      "priority": "P0",
+      "acceptance": "prefix/suffixを値と区別、読み上げ、長文/狭幅/error/disabled",
+      "sources": {
+        "USWDS": [
+          "Input prefix/suffix"
+        ]
+      }
+    },
+    {
+      "id": "character-count",
+      "label": "文字数カウンター",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立APIなし",
+      "gap": "制限/残り文字数/IME/通知の契約なし。",
+      "priority": "P0",
+      "acceptance": "入力と同期、上限超過、IME中更新、通知の過剰発火防止",
+      "sources": {
+        "USWDS": [
+          "Character count"
+        ]
+      }
+    },
+    {
+      "id": "input-mask",
+      "label": "入力マスク",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "HTML入力型の標準制約のみ",
+      "gap": "書式の整形/貼付け/IME/caret制御がない。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "USWDS": [
+          "Input mask"
+        ]
+      }
+    },
+    {
+      "id": "error-summary",
+      "label": "フォームのエラー集約",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "個々のerror表示のみ",
+      "gap": "一覧、入力へのリンク、送信後focus管理なし。",
+      "priority": "P0",
+      "acceptance": "複数エラーの要約、リンクで入力へfocus、修正後更新、非同期/必須",
+      "sources": {}
+    },
+    {
+      "id": "data-table",
+      "label": "高度なデータテーブル",
+      "status": "簡易版",
+      "parts": [
+        "table",
+        "filter-bar",
+        "results-header",
+        "pagination"
+      ],
+      "implementation": "静的表と独立した操作の見本",
+      "gap": "sort、複数行選択、bulk action、列制御、ページの統合なし。",
+      "priority": "P1",
+      "acceptance": "sort状態/通知、行選択、一部選択、bulk、page/件数同期、空/失敗/待機、狭幅",
+      "sources": {
+        "Carbon": [
+          "Data table"
+        ],
+        "DADS": [
+          "テーブルコントロール",
+          "テーブル／データテーブル"
+        ],
+        "Atlassian": [
+          "Dynamic table"
+        ]
+      }
+    },
+    {
+      "id": "table-tree",
+      "label": "階層テーブル",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立APIなし",
+      "gap": "treegrid、展開/選択/keyboard契約なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Atlassian": [
+          "Table tree"
+        ]
+      }
+    },
+    {
+      "id": "tree",
+      "label": "ツリービュー",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "side-nav detailsで代替可能",
+      "gap": "treeの矢印キー、focus、選択、データ階層の契約なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Tree view"
+        ],
+        "Fluent 2": [
+          "Tree"
+        ]
+      }
+    },
+    {
+      "id": "upload",
+      "label": "ファイルアップロード・ドロップ",
+      "status": "簡易版",
+      "parts": [
+        "file-input"
+      ],
+      "implementation": "Native選択のみ",
+      "gap": "drop、一覧/削除、size/type検証、progress/retry/cancel契約なし。サーバーはアプリ責務。",
+      "priority": "P1",
+      "acceptance": "drop/keyboard両対応、一覧/削除、size/type検証、進捗/失敗/retry/cancelイベント",
+      "sources": {
+        "Carbon": [
+          "File uploader"
+        ],
+        "DADS": [
+          "ファイルアップロード／ドロップエリア"
+        ]
+      }
+    },
+    {
+      "id": "stepper",
+      "label": "手続きのステップ表示",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "progressbarは代替にしない",
+      "gap": "現在/完了/未完/エラー、移動可否の契約なし。",
+      "priority": "P1",
+      "acceptance": "aria-current=step、順序、完了/エラー、戻る/進む、狭幅。処理進捗と区別",
+      "sources": {
+        "Carbon": [
+          "Progress indicator"
+        ],
+        "DADS": [
+          "ステップナビゲーション"
+        ],
+        "USWDS": [
+          "Process list",
+          "Step indicator"
+        ],
+        "Atlassian": [
+          "Progress indicator",
+          "Progress tracker"
+        ]
+      }
+    },
+    {
+      "id": "description-list",
+      "label": "説明リスト",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立CSS/見本なし",
+      "gap": "Native dlを使用可能だが部品化・長文例なし。",
+      "priority": "P0",
+      "acceptance": "dt/ddの関係、長文、複数dd、狭幅、Series文字階層",
+      "sources": {
+        "DADS": [
+          "説明リスト"
+        ]
+      }
+    },
+    {
+      "id": "quote",
+      "label": "引用ブロック",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立CSS/見本なし",
+      "gap": "Native blockquoteの組み込み方針・出典表示なし。",
+      "priority": "P0",
+      "acceptance": "",
+      "sources": {
+        "DADS": [
+          "引用ブロック"
+        ]
+      }
+    },
+    {
+      "id": "annotation",
+      "label": "注釈・要約・補足ブロック",
+      "status": "簡易版",
+      "parts": [
+        "helper-text",
+        "alert"
+      ],
+      "implementation": "短い説明と通知で一部代替",
+      "gap": "補足と通知の意味を分離した独立例なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "DADS": [
+          "注釈ブロック"
+        ],
+        "USWDS": [
+          "Summary box"
+        ]
+      }
+    },
+    {
+      "id": "banner",
+      "label": "サイト全体・緊急バナー",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "局所alertのみ",
+      "gap": "全体通知、配置、緊急情報の契約なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "DADS": [
+          "緊急時バナー"
+        ],
+        "Atlassian": [
+          "Banner"
+        ]
+      }
+    },
+    {
+      "id": "footer",
+      "label": "フッター",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立APIなし",
+      "gap": "長いページの移動と補助情報の組み合わせなし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "USWDS": [
+          "Footer"
+        ]
+      }
+    },
+    {
+      "id": "in-page-nav",
+      "label": "目次・ページ内移動",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "Native aで代替可能",
+      "gap": "目次生成、現在位置、sticky/focus、scroll top部品なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "DADS": [
+          "スクロールトップボタン",
+          "目次"
+        ],
+        "USWDS": [
+          "In-page navigation"
+        ]
+      }
+    },
+    {
+      "id": "mega-menu",
+      "label": "メガメニュー",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "小さいmenuのみ",
+      "gap": "大領域、複数群、閉じる/focus/携帯変換の契約なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "DADS": [
+          "メガメニュー"
+        ]
+      }
+    },
+    {
+      "id": "language-selector",
+      "label": "言語選択",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "selectで代替可能",
+      "gap": "言語名・現在言語・切替先・ページ移動の契約なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "DADS": [
+          "ランゲージセレクター"
+        ],
+        "USWDS": [
+          "Language selector"
+        ]
+      }
+    },
+    {
+      "id": "carousel",
+      "label": "カルーセル・画像スライダー",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "imageのみ",
+      "gap": "移動/ページ位置/停止/keyboard/読み上げの契約なし。",
+      "priority": "P3",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Carousel"
+        ],
+        "DADS": [
+          "イメージスライダー",
+          "カルーセル"
+        ]
+      }
+    },
+    {
+      "id": "avatar-group",
+      "label": "アバター群・人物情報",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "avatar単体のみ",
+      "gap": "overflow人数、persona名/役割、群の説明なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Avatar group",
+          "Persona"
+        ],
+        "Atlassian": [
+          "Avatar group"
+        ]
+      }
+    },
+    {
+      "id": "info-label",
+      "label": "説明ボタン付きラベル",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "label + popoverで構成可能",
+      "gap": "ラベル/入力/説明ボタンのfocusと関連付けの統合例なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "Toggletip"
+        ],
+        "Fluent 2": [
+          "Info label"
+        ]
+      }
+    },
+    {
+      "id": "rating",
+      "label": "評価入力",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立APIなし",
+      "gap": "点数の名前/値/keyboard・読み取り専用表示なし。",
+      "priority": "P3",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Rating"
+        ]
+      }
+    },
+    {
+      "id": "inline-edit",
+      "label": "インライン編集",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "inputはある",
+      "gap": "閲覧/編集、保存/取消/失敗、focus復帰の契約なし。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "Atlassian": [
+          "Inline edit"
+        ]
+      }
+    },
+    {
+      "id": "comment",
+      "label": "コメント",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立APIなし",
+      "gap": "投稿/返信/作者/編集など製品の要件に依存。",
+      "priority": "P3",
+      "acceptance": "",
+      "sources": {
+        "Atlassian": [
+          "Comment"
+        ]
+      }
+    },
+    {
+      "id": "spotlight",
+      "label": "操作ガイド・spotlight",
+      "status": "未実装",
+      "parts": [],
+      "implementation": "独立APIなし",
+      "gap": "順序/skip/背景操作/focus復帰の契約なし。",
+      "priority": "P3",
+      "acceptance": "",
+      "sources": {
+        "Atlassian": [
+          "Spotlight"
+        ]
+      }
+    },
+    {
+      "id": "layout",
+      "label": "レイアウト・ページ・面",
+      "status": "簡易版",
+      "parts": [],
+      "implementation": "tokensと各compositionのflex/grid",
+      "gap": "汎用Box/Stack/Grid APIはない。既存責務で必要分を定義。",
+      "priority": "P2",
+      "acceptance": "",
+      "sources": {
+        "USWDS": [
+          "Grid"
+        ],
+        "Atlassian": [
+          "Page",
+          "Page header",
+          "Panel"
+        ]
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "focus・visually hidden・reduced motion",
+      "status": "実装済み",
+      "parts": [],
+      "implementation": "focus hooks、utility、motion停止",
+      "gap": "全コンポーネントの支援技術適合認証ではない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Atlassian": [
+          "Focus ring",
+          "Visually hidden"
+        ]
+      }
+    },
+    {
+      "id": "provider",
+      "label": "Framework provider・portal・lint支援",
+      "status": "対象外",
+      "parts": [],
+      "implementation": "CSS-first/FW非依存が目的",
+      "gap": "React provider/portal/ESLintプラグインを追加数の目標にしない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Fluent 2": [
+          "Fluent provider"
+        ]
+      }
+    },
+    {
+      "id": "branding",
+      "label": "公式ロゴ・企業固有の物体",
+      "status": "対象外",
+      "parts": [],
+      "implementation": "他社assetは配布しない",
+      "gap": "他社のbrand/logo/objectをandm共通部品にしない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Atlassian": [
+          "Object",
+          "Logo"
+        ]
+      }
+    },
+    {
+      "id": "federal",
+      "label": "米国政府専用の識別バナー",
+      "status": "対象外",
+      "parts": [],
+      "implementation": "andm用途ではない",
+      "gap": "USWDS Banner/Identifierの政府機関表示は再現・偽装しない。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "USWDS": [
+          "Banner",
+          "Identifier"
+        ]
+      }
+    },
+    {
+      "id": "ai-label",
+      "label": "AI固有ラベル",
+      "status": "対象外",
+      "parts": [],
+      "implementation": "一般UIの必須部品ではない",
+      "gap": "AI機能の具体要件がある時に検討。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "Carbon": [
+          "AI label"
+        ]
+      }
+    },
+    {
+      "id": "charts",
+      "label": "グラフ・データ可視化",
+      "status": "対象外",
+      "parts": [],
+      "implementation": "本調査は一般Web部品を対象",
+      "gap": "別ライブラリ領域。必要時に独立設計/調査。",
+      "priority": "—",
+      "acceptance": "",
+      "sources": {
+        "USWDS": [
+          "Data visualizations"
+        ]
+      }
+    }
+  ]
+}
