@@ -4,6 +4,8 @@ UI デザインシステムを作るとき、人が判断するために開く�
 
 このライブラリは知識の棚である。頻度や優先度を集計して Core のトークン、半径、余白、色を決めてはいけない。
 
+Series の補完に使うときは [出典優先設計](../../docs/SOURCE-FIRST.md)に従う。対象公式の仕様・尺度を先に確認し、未定義部分の原則を本文確認済みの資料で補う。原則からの判断と数値の選択を分け、[判断記録](../../docs/SOURCE-DECISIONS.md)へ残す。本文未取得は公式の欠落と扱わない。資料から Runtime Token への自動変換は行わない。
+
 ## 使い方
 
 1. 判断の種類で棚を選ぶ。知覚や認知の限界は [学術・理論](academic.md)。試験できる要求や交換形式は [標準・ガイドライン](standards.md)。実在のシステムがどう文書化しているかは [主要 Design System](design-systems.md)。通読して考え方が身につくものは [書籍](books.md)。
@@ -31,7 +33,7 @@ Community Group の報告書（Design Tokens、Open UI）は公式に公開さ�
 
 Fluent 2 も同じである。公式サイトの案内をカードにしても、シリーズの再現仕様にはしない。
 
-シリーズ再現の正本は `research/analysis/` である。このライブラリはそれを書き換えない。数値も写さない。この作業時点でリポジトリから相対リンクできる分析は、M3 Expressive、Apple HIG、Spectrum、Carbon、DADS である。Atlassian と USWDS の分析ファイルは、この時点のツリーに無かった。相対リンクは置かず、公式サイトへの索引カードだけにした。Fluent とモーションのシリーズメモも、このツリーには無かった。モーションの設計メモは文献ライブラリではない。
+シリーズ再現の正本は `research/analysis/` である。このライブラリはそれを書き換えない。数値も写さない。現在のツリーには M3 Expressive、Apple HIG、Spectrum、Carbon、DADS、Atlassian、USWDS の分析がある。2026-10-07 に Fluent の確認範囲メモを追加した。各資料の確認日は分析ファイルに残す。モーションの設計メモは文献ライブラリではない。
 
 ## 判断材料をトークンにしない
 
@@ -100,13 +102,13 @@ Gestalt、Fitts's Law、Hick の法則、認知負荷、ミラーの短期的な
 | --- | --- | --- | --- |
 | 高 | 現行 | [Material Design（M3 Expressive）](design-systems.md#material) | あり。索引のみ |
 | 高 | 現行 | [Human Interface Guidelines](design-systems.md#apple-hig) | あり。索引のみ |
-| 高 | 現行 | [Fluent 2](design-systems.md#fluent) | リポジトリに分析ファイルは無い |
+| 高 | 現行 | [Fluent 2](design-systems.md#fluent) | [確認範囲](../analysis/fluent.md) |
 | 高 | 現行 | [Carbon](design-systems.md#carbon) | あり。索引のみ |
 | 高 | 現行 | [Spectrum](design-systems.md#spectrum) | あり。索引のみ |
 | 高 | 現行 | [デジタル庁デザインシステム](design-systems.md#dads) | あり。索引のみ |
 | 高 | 現行 | [GOV.UK Design System](design-systems.md#govuk) | シリーズにしない |
-| 中 | 現行 | [Atlassian Design System](design-systems.md#atlassian) | このツリーに分析ファイルは無い |
-| 中 | 現行 | [U.S. Web Design System](design-systems.md#uswds) | このツリーに分析ファイルは無い |
+| 中 | 現行 | [Atlassian Design System](design-systems.md#atlassian) | あり。索引のみ |
+| 中 | 現行 | [U.S. Web Design System](design-systems.md#uswds) | あり。索引のみ |
 | 中 | 現行 | [Lightning Design System 2](design-systems.md#lightning) | シリーズにしない |
 
 ### 書籍（16）

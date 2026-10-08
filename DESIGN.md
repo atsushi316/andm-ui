@@ -2,6 +2,10 @@
 
 CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が第一級 API。
 
+## プロジェクトの目的
+
+目的・利用者・世界観に合う UI を高速に提案、構築、検証する個人のデザインシステム。明快さに加え、没入感・高揚感・操作の心地よさも目的に応じて評価する。大胆な UI と AR / VR の研究を含む。構成と採用の手順は [EXPERIENCE.md](docs/EXPERIENCE.md)。
+
 ## 思想
 
 - **CSS-first / FW-agnostic** — Vue / React / WC は本体に含めない
@@ -12,7 +16,17 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 - **Token は檻にしない** — Global Token で表せるときはそれを優先する。足りない Component 固有の意味は Component-local Token。名前が要らない局所値だけ Local Value。特殊な UI を既存 Token に無理に合わせない
 - **Motion は三層** — Character は傾向。Pattern は Trigger × Effect（highlight / lift / compress / morph）。Token は duration と easing。Pattern を増やすために Token 名は増やさない
 
-Custom UI は Series に所属しなくてよい。Global Token、Component-local Token、Core Component、Composition、最小の Local Value で作る。Research は Runtime にも Gallery の値にも流さない。
+Custom UI は Series に所属しなくてよい。Global Token、Component-local Token、Core Component、Composition、最小の Local Value で作る。Research は Runtime や Gallery の値へ自動で流さず、採用した判断のみ Spec / Token / CSS に明示的に反映する。
+
+## 出典優先設計（Source-First Design）
+
+各 Series の元となる公式デザインシステムを正本とする。公式の部品仕様 → 同じ公式体系の尺度・関連部品からの導出 → 未定義部分を文献・標準で補完 → andm 独自判断、の順で設計する。他社の見た目を穴埋めに混入させず、元の言語を保つ。
+
+本文を取得できない「未確認」と、読んだ範囲に「定義がない」を分ける。値・構造・操作ごとに `official` / `derived` / `research-based` / `andm-original` / `unverified` と公式の確認状態を別々に残す。Baseline の継承を対象 Series の公式仕様にしない。
+
+余白は関連要素・グループ・セクション・領域という関係から判断し、具体値は対象 Series の尺度を優先する。視覚的階層、群化、操作の意味を保ちながら表現の違いを許容する。共通の px 値を科学的な法則として強制しない。
+
+確認手順・分類・補完条件・更新時の扱いは [SOURCE-FIRST.md](docs/SOURCE-FIRST.md)、変更ごとの根拠は [SOURCE-DECISIONS.md](docs/SOURCE-DECISIONS.md) が正本。既存の部品別出典文書も併用する。全値の監査・自動補完は未完了。AI の作業指示は [AGENTS.md](AGENTS.md)。
 
 ## Design Space（Button）
 
@@ -88,7 +102,7 @@ Baseline は追加クラスなし。上の 13 は Gallery で切り替えるシ�
 | 向いている用途 | 今の Apple の画面に近い、案内や設定 |
 | 出典 | [HIG（日本語）](https://developer.apple.com/jp/design/human-interface-guidelines)。英語は [入口](https://developer.apple.com/design/human-interface-guidelines) から color / layout / materials / buttons |
 | HIG から採用した数値 | なし。色・寸法のページはタイトルのみで本文が取れない |
-| Motion | duration は official value not specified。速度トークンは差し替えない。押下の縮小は Baseline の 0.96 のまま。HIG の測定値ではない |
+| Motion | 2026-09-30 に確認した motion 本文の範囲に duration の数値なし。他の公式資料まで不在とは断定しない。速度トークンは差し替えない。押下の縮小は Baseline の 0.96 のまま。HIG の測定値ではない |
 | フォント | `-apple-system, BlinkMacSystemFont` は HIG の測定値ではない。ファイルは同梱しない |
 
 ### Spectrum
@@ -133,9 +147,9 @@ Baseline は追加クラスなし。上の 13 は Gallery で切り替えるシ�
 | カテゴリ | 場所 | いまの中身 |
 |----------|------|------------|
 | Foundation | `src/styles/tokens/**` | 色・字・余白・角・モーションなど |
-| Control | `src/styles/controls/` | Button（`--andm-btn-*` と `.andm-btn`） |
-| Mark | `src/styles/marks/` | 未実装（Icon など） |
-| Display / Container / Navigation / Feedback / Overlay / Pattern | 各フォルダ | 未実装。Pattern の例は Gallery の HTML |
+| Control | `src/styles/controls/` | Button、入力、選択、Chip、FAB |
+| Mark | `src/styles/marks/` | Divider、Badge、Avatar、Spinner |
+| Display / Container / Navigation / Feedback / Overlay / Pattern | 各フォルダ | Table、Card、List、Accordion、Tabs、通知、Dialog など。体験試作は Gallery / Lab |
 
 Series はカテゴリに入れない。親の `andm-series--*` が Token を上書きするだけである。トークンの `primitive.css` と、UI の Mark（単一の視覚）は別の語である。
 
@@ -146,7 +160,7 @@ Research → Design Space → Principle / Direction / Series候補
   → Token / Spec → andm-ui Core
 ```
 
-- `research/` は Build 外 / Runtime 非依存 / dist・npm・製品 Gallery 非含有
+- `research/` は CSS Build 外 / 製品 Runtime 非依存 / npm 非含有。Gallery の読書ビューでは文献・分析を人間向けに表示できる。研究値を製品トークンへ自動反映しない
 - Research で発見したすべてを Core へ実装しない
 - AI は候補提示まで。採用（recommended）は人間が決める
 - Gallery のシリーズ切替は、親スコープの Token mapping（`andm-series--*`）だけ。ページ全体の Theme Engine ではない。Button のクラスは増やさない
@@ -161,3 +175,7 @@ Research → Design Space → Principle / Direction / Series候補
 ## Risk
 
 自動化 → 平均化 → 画一化を避ける。Token は少数段階を保持し、唯一値強制と無制限増殖の両方を避ける。
+
+## 用途別タイポグラフィ
+
+文字はdisplay/headline/title/body/body-small/label/caption/code/actionの役割で定義する。Seriesは役割別のサイズ・行高・太さ・字間・書体を差し替えられる。見出しの意味はNative HTML、見た目はクラスで選ぶ。既存ButtonのサイズAPIを維持し、本文へButtonの行高を流用しない。公式値・andmへの対応付け・独自補完は [ATOMIC-SOURCES.md](docs/ATOMIC-SOURCES.md) に記録する。

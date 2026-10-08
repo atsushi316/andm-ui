@@ -1,5 +1,7 @@
 @layer andm.components {
   .andm-textfield {
+    min-width: 0;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -20,6 +22,8 @@
     appearance: none;
     box-sizing: border-box;
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
     height: var(--andm-field-height, var(--andm-btn-height-md));
     margin: 0;
     padding: 0 var(--andm-field-padding-x, var(--andm-btn-padding-x-md));

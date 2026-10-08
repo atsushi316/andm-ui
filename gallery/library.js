@@ -36,10 +36,8 @@
       return { href: route, external: false };
     }
     if (path.indexOf("../analysis/") === 0) {
-      return {
-        href: "/research/analysis/" + path.slice("../analysis/".length),
-        external: true,
-      };
+      var id = path.slice("../analysis/".length).replace(/\.md$/, "");
+      return { href: "#/library/analysis-" + encodeURIComponent(id) + (hash ? "/" + encodeURIComponent(hash) : ""), external: false };
     }
     return { href: href, external: false };
   }
@@ -117,6 +115,13 @@
         flushPara();
         html.push('<a id="' + escapeHtml(anchor[1]) + '"></a>');
         i += 1;
+        continue;
+      }
+      if (/^```/.test(line)) {
+        flushPara(); i += 1; var code = [];
+        while (i < lines.length && !/^```/.test(lines[i])) { code.push(lines[i]); i += 1; }
+        if (i < lines.length) i += 1;
+        html.push('<pre><code>' + escapeHtml(code.join('\n')) + '</code></pre>');
         continue;
       }
       if (/^\s*$/.test(line)) {

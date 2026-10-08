@@ -89,3 +89,9 @@
     }
   }
 }
+
+@layer andm.components {
+ .andm-tooltip:hover .andm-tooltip__bubble,.andm-tooltip:focus-within .andm-tooltip__bubble {pointer-events:auto;}
+ .andm-tooltip__bubble::before {content:"";position:absolute;inset:-.75rem;z-index:-1;}
+ .andm-tooltip.is-dismissed .andm-tooltip__bubble {opacity:0;pointer-events:none;}
+}

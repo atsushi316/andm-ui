@@ -64,6 +64,8 @@
     opacity: 1;
   }
 
+  .andm-checkbox__input:indeterminate { background: var(--andm-color-primary); border-color: var(--andm-color-primary); color: var(--andm-color-on-primary); }
+  .andm-checkbox__input:indeterminate::after { width: 60%; height: 0; margin: 0; border: 0; border-top: var(--andm-space-05) solid currentColor; transform: none; opacity: 1; }
   .andm-checkbox__input:focus {
     outline: none;
   }

@@ -1,0 +1,45 @@
+@layer andm.components {
+  /* 独自仕様。公式 Chip の寸法再現ではない。docs/COMPONENT-SOURCES.md */
+  .andm-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--andm-space-2);
+    min-height: var(--andm-chip-height, var(--andm-target-min));
+    min-width: var(--andm-target-min);
+    max-width: 100%;
+    padding: var(--andm-space-1) var(--andm-space-3);
+    border: var(--andm-chip-border-width, 1px) solid var(--andm-color-outline);
+    border-radius: var(--andm-chip-radius, var(--andm-radius-pill));
+    background: var(--andm-color-surface);
+    color: var(--andm-color-on-surface);
+    font: inherit;
+    font-size: var(--andm-font-size-sm);
+    overflow-wrap: anywhere;
+    text-decoration: none;
+    transition: background-color var(--andm-motion-duration-short2) var(--andm-motion-easing-decelerate);
+  }
+  button.andm-chip, a.andm-chip { appearance: none; cursor: pointer; }
+  .andm-chip:active:not(:disabled) {
+    transition-timing-function: var(--andm-motion-easing-accelerate);
+    transition-duration: var(--andm-motion-duration-short1);
+  }
+  .andm-chip[aria-pressed="true"] {
+    background: var(--andm-color-secondary-container);
+    color: var(--andm-color-on-secondary-container);
+    border-color: var(--andm-color-primary);
+  }
+  button.andm-chip:hover:not(:disabled), a.andm-chip:hover {
+    box-shadow: inset 0 0 0 1px var(--andm-color-primary);
+  }
+  .andm-chip:focus-visible {
+    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color);
+    outline-offset: var(--andm-focus-ring-offset);
+  }
+  .andm-chip:disabled {
+    background: var(--andm-color-disabled-container);
+    color: var(--andm-color-on-disabled);
+    border-color: var(--andm-color-disabled-outline);
+    cursor: not-allowed;
+  }
+}

@@ -16,3 +16,10 @@
 シリーズ専用クラスは作らない。見た目の差は親の `andm-series--*` によるトークン差し替え。
 
 IconButton はここ。Icon そのものは Mark。
+
+- `chip.css` — `.andm-chip`。操作には Native button と aria-pressed。静的ラベルは Control に含めず、既存 Badge で別に示す。
+- `fab.css` — `.andm-fab`。Button の押下形状は継承しない。主操作の独自仕様。
+
+Chip / FAB の寸法は、既存シリーズの公式部品を再現したものではない。確認範囲と独自設計は [COMPONENT-SOURCES.md](../../../docs/COMPONENT-SOURCES.md) を参照。
+
+IconButton / File inputを追加。Native inputの種類はText fieldを再利用する。根拠と確認範囲は [ATOMIC-SOURCES.md](../../../docs/ATOMIC-SOURCES.md)。

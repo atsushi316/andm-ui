@@ -12,6 +12,7 @@
   var libraryCache = Object.create(null);
   var seriesSwitch = document.getElementById("series-switch");
   var currentSeriesId = "baseline";
+  try { currentSeriesId = localStorage.getItem("andm-gallery-series") || "baseline"; } catch (_) {}
   var navSeries = document.getElementById("nav-series");
   var tokenCards = document.getElementById("token-cards");
   var tokenStatus = document.getElementById("token-status");
@@ -29,9 +30,12 @@
     { id: "elevation", label: "Elevation" },
     { id: "motion", label: "Motion" },
     { id: "interaction", label: "Interaction" },
+    { id: "layout", label: "Layout" },
+    { id: "component", label: "Component" },
   ];
 
   var partViews = {
+    patterns: true,
     controls: true,
     marks: true,
     containers: true,
@@ -93,7 +97,7 @@
     "--andm-color-secondary-container": "弱い面",
     "--andm-font-family": "本文の書体",
     "--andm-font-size-sm": "小さい文字",
-    "--andm-font-size-md": "本文の大きさ",
+    "--andm-font-size-md": "既存の操作ラベル（中）の大きさ",
     "--andm-font-size-lg": "大きい文字",
     "--andm-font-weight-medium": "ボタンの字重",
     "--andm-line-height-tight": "詰めた行間",
@@ -138,11 +142,25 @@
   }
 
   var libraryFiles = {
+    "component-audit": "../../docs/COMPONENT-AUDIT.md",
+    "composition-sources": "../../docs/COMPOSITION-SOURCES.md",
     index: "README.md",
     academic: "academic.md",
     standards: "standards.md",
     "design-systems": "design-systems.md",
     books: "books.md",
+    "analysis-m3-expressive": "../analysis/m3-expressive.md",
+    "analysis-dads": "../analysis/dads.md",
+    "analysis-apple-hig": "../analysis/apple-hig.md",
+    "analysis-spectrum": "../analysis/spectrum.md",
+    "analysis-carbon": "../analysis/carbon.md",
+    "analysis-atlassian": "../analysis/atlassian.md",
+    "analysis-uswds": "../analysis/uswds.md",
+    "analysis-fluent": "../analysis/fluent.md",
+    "component-sources": "../../docs/COMPONENT-SOURCES.md",
+    "gallery-review": "../../docs/GALLERY-REVIEW.md",
+    "atomic-sources": "../../docs/ATOMIC-SOURCES.md",
+    "atomic-inventory": "../../docs/ATOMIC-INVENTORY.md",
   };
 
   var libraryTitles = {
@@ -151,6 +169,20 @@
     standards: "標準・ガイドライン",
     "design-systems": "主要 Design System",
     books: "書籍",
+    "analysis-m3-expressive": "M3 Expressive の確認範囲",
+    "analysis-dads": "DADS の確認範囲",
+    "analysis-apple-hig": "Apple HIG の確認範囲",
+    "analysis-spectrum": "Spectrum 2 の確認範囲",
+    "analysis-carbon": "Carbon の確認範囲",
+    "analysis-atlassian": "Atlassian の確認範囲",
+    "analysis-uswds": "USWDS の確認範囲",
+    "analysis-fluent": "Fluent 2 の確認範囲",
+    "component-sources": "Chip / FAB の仕様と根拠",
+    "gallery-review": "ギャラリー改善の根拠",
+    "atomic-sources": "小さな部品・文字の仕様と根拠",
+    "component-audit": "部品の概念・出典との照合",
+    "composition-sources": "組み合わせ部品の仕様と出典",
+    "atomic-inventory": "アトミック部品の整備範囲",
   };
 
   var partKickers = {
@@ -218,7 +250,8 @@
       return;
     }
     var top = el.getBoundingClientRect().top - main.getBoundingClientRect().top + main.scrollTop;
-    main.scrollTop = Math.max(0, top - 12);
+    if (window.matchMedia("(max-width: 800px)").matches) el.scrollIntoView({ block: "start" });
+    else main.scrollTop = Math.max(0, top - 12);
   }
 
   function showPart(route) {
@@ -284,6 +317,12 @@
 
   function fillSelect() {
     if (seriesSwitch) seriesSwitch.replaceChildren();
+    var select = document.getElementById("series-select");
+    if (select) {
+      select.replaceChildren();
+      items.forEach(function (item) { var option = document.createElement("option"); option.value = item.id; option.textContent = item.label; select.append(option); });
+      select.addEventListener("change", function () { chooseSeries(select.value); window.dispatchEvent(new Event("andm:viewchange")); });
+    }
     items.forEach(function (item) {
       var button = document.createElement("button");
       button.type = "button";
@@ -313,6 +352,9 @@
     if (!item) return;
     catalog.applySeries(preview, item.className);
     currentSeriesId = item.id;
+    try { localStorage.setItem("andm-gallery-series", item.id); } catch (_) {}
+    var select = document.getElementById("series-select");
+    if (select) select.value = item.id;
     document.querySelectorAll(".g-series-chip").forEach(function (button) {
       var on = button.dataset.seriesId === item.id;
       button.setAttribute("aria-pressed", on ? "true" : "false");
@@ -556,7 +598,7 @@
   function syncNavGroups() {
     var current = document.querySelector(".g-nav a[aria-current='page']");
     document.querySelectorAll(".g-nav__group").forEach(function (group) {
-      var open = !!(current && group.contains(current));
+      var open = group.hasAttribute("data-open") || !!(current && group.contains(current));
       group.toggleAttribute("data-open", open);
       var btn = group.querySelector(":scope > .g-nav__label");
       if (btn && btn.tagName === "BUTTON") btn.setAttribute("aria-expanded", open ? "true" : "false");
@@ -643,8 +685,8 @@
       clearNav("[data-series-nav]");
       setPagehead(
         "Gallery",
-        "Design System Explorer",
-        "左の見出しから、部品、Token、文献を開きます。シリーズの見た目は、部品のページで切り替えます。",
+        "部品を探す",
+        "部品を開き、シリーズを切り替えて比較できます。",
       );
       scrollMainToTop();
       syncNavGroups();
@@ -670,6 +712,14 @@
   }
 
   function initParts() {
+    document.querySelectorAll("[data-filter-chip]").forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var selected = chip.getAttribute("aria-pressed") !== "true";
+        chip.setAttribute("aria-pressed", String(selected));
+        var mark = chip.querySelector("[data-chip-mark]");
+        if (mark) mark.hidden = !selected;
+      });
+    });
     document.querySelectorAll("[data-segmented]").forEach(function (group) {
       var options = group.querySelectorAll(".andm-segmented__option");
       function syncSegmented() {
@@ -695,7 +745,12 @@
     document.querySelectorAll("[data-tabs]").forEach(function (root) {
       var tabs = root.querySelectorAll('[role="tab"]');
       var panels = root.querySelectorAll('[role="tabpanel"]');
-      tabs.forEach(function (tab) {
+      tabs.forEach(function (tab, index) {
+        tab.addEventListener("keydown", function (event) {
+          var next = event.key === "ArrowRight" ? (index + 1) % tabs.length : event.key === "ArrowLeft" ? (index - 1 + tabs.length) % tabs.length : event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : -1;
+          if (next < 0) return;
+          event.preventDefault(); tabs[next].focus(); tabs[next].click();
+        });
         tab.addEventListener("click", function () {
           var id = tab.getAttribute("aria-controls");
           tabs.forEach(function (item) {
@@ -783,9 +838,15 @@
           if (button === page) button.setAttribute("aria-current", "page");
           else button.removeAttribute("aria-current");
         });
+        var context = nav.closest(".g-context");
+        var summary = context && context.querySelector("[data-page-summary]");
+        var result = context && context.querySelector("[data-page-results]");
+        if (summary) summary.textContent = "全80件中、" + (index * 20 + 1) + "〜" + ((index + 1) * 20) + "件を表示";
+        if (result) { result.replaceChildren(); result.start = index * 20 + 1; for (var n = 0; n < 3; n++) { var li = document.createElement("li"); li.textContent = "申請記録 " + (index * 20 + n + 1); result.appendChild(li); } }
         if (prev) prev.disabled = index <= 0;
         if (next) next.disabled = index >= pages.length - 1;
       }
+      if (pages.length) selectPage(nav.querySelector('[aria-current="page"]') || pages[0]);
       pages.forEach(function (button) {
         button.addEventListener("click", function () {
           selectPage(button);
@@ -848,66 +909,38 @@
     }
 
     document.querySelectorAll("[data-menu]").forEach(function (menu) {
-      var panel = menu.querySelector(".andm-menu__panel");
-      var trigger = menu.querySelector("[data-menu-open]");
-      if (trigger) {
-        trigger.addEventListener("click", function () {
-          if (panel && !panel.hidden && !panel.classList.contains("is-closed")) {
-            closePanel(menu, panel, "[data-menu-open]");
-          } else {
-            openPanel(menu, panel, "[data-menu-open]");
-          }
-        });
-      }
-      menu.querySelectorAll(".andm-menu__item").forEach(function (item) {
-        item.addEventListener("click", function () {
-          if (item.disabled) return;
-          menu.querySelectorAll(".andm-menu__item").forEach(function (other) {
-            if (other === item) other.setAttribute("aria-current", "page");
-            else other.removeAttribute("aria-current");
-          });
-          closePanel(menu, panel, "[data-menu-open]");
-        });
-      });
+      var panel=menu.querySelector(".andm-menu__panel"),trigger=menu.querySelector("[data-menu-open]");
+      function close(restore) {panel.hidden=true;panel.classList.add("is-closed");trigger.setAttribute("aria-expanded","false");if(restore)trigger.focus();}
+      trigger.addEventListener("click",function(){if(!panel.hidden)close(false);else openPanel(menu,panel,"[data-menu-open]");});
+      menu.addEventListener("keydown",function(e){if(e.key==="Escape"&&!panel.hidden){e.preventDefault();close(true);}});
+      menu.addEventListener("focusout",function(e){if(e.relatedTarget&&!menu.contains(e.relatedTarget))close(false);});
+      document.addEventListener("click",function(e){if(!menu.contains(e.target))close(false);});
+      menu.querySelectorAll(".andm-menu__item").forEach(function(item){item.addEventListener("click",function(){
+        var status=menu.closest("[data-part]").querySelector("[data-menu-status]");if(status)status.textContent=item.textContent+"を実行しました（動作例）";close(true);
+      });});
     });
 
     document.querySelectorAll("[data-popover]").forEach(function (popover) {
       var panel = popover.querySelector(".andm-popover__panel");
       var trigger = popover.querySelector("[data-popover-open]");
+      function dismiss(restore) {panel.hidden=true;panel.classList.add("is-closed");trigger.setAttribute("aria-expanded","false");if(restore)trigger.focus();}
+      popover.addEventListener("keydown",function(e){if(e.key==="Escape"&&!panel.hidden){e.preventDefault();dismiss(true);}});
+      popover.addEventListener("focusout",function(e){if(e.relatedTarget&&!popover.contains(e.relatedTarget))dismiss(false);});
+      document.addEventListener("click",function(e){if(!popover.contains(e.target))dismiss(false);});
       if (trigger) {
         trigger.addEventListener("click", function () {
           if (panel && !panel.hidden && !panel.classList.contains("is-closed")) {
             closePanel(popover, panel, "[data-popover-open]");
           } else {
             openPanel(popover, panel, "[data-popover-open]");
+            var first=panel.querySelector("button,input,a[href],select");if(first)first.focus();
           }
         });
       }
       popover.querySelectorAll("[data-popover-close]").forEach(function (button) {
         button.addEventListener("click", function () {
-          closePanel(popover, panel, "[data-popover-open]");
+          dismiss(true);
         });
-      });
-    });
-
-    document.addEventListener("click", function (event) {
-      document.querySelectorAll("[data-menu]").forEach(function (menu) {
-        if (menu.contains(event.target)) return;
-        closePanel(menu, menu.querySelector(".andm-menu__panel"), "[data-menu-open]");
-      });
-      document.querySelectorAll("[data-popover]").forEach(function (popover) {
-        if (popover.contains(event.target)) return;
-        closePanel(popover, popover.querySelector(".andm-popover__panel"), "[data-popover-open]");
-      });
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key !== "Escape") return;
-      document.querySelectorAll("[data-menu]").forEach(function (menu) {
-        closePanel(menu, menu.querySelector(".andm-menu__panel"), "[data-menu-open]");
-      });
-      document.querySelectorAll("[data-popover]").forEach(function (popover) {
-        closePanel(popover, popover.querySelector(".andm-popover__panel"), "[data-popover-open]");
       });
     });
 
@@ -975,14 +1008,8 @@
     btn.addEventListener("click", function () {
       var group = btn.parentElement;
       var willOpen = !group.hasAttribute("data-open");
-      document.querySelectorAll(".g-nav__group").forEach(function (other) {
-        var on = other === group && willOpen;
-        other.toggleAttribute("data-open", on);
-        var label = other.querySelector(":scope > .g-nav__label");
-        if (label && label.tagName === "BUTTON") {
-          label.setAttribute("aria-expanded", on ? "true" : "false");
-        }
-      });
+      group.toggleAttribute("data-open", willOpen);
+      btn.setAttribute("aria-expanded", String(willOpen));
     });
   });
 

@@ -5,19 +5,30 @@
   "type": "module",
   "style": "./dist/style.css",
   "exports": {
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./icons.svg": "./dist/icons.svg"
   },
   "files": [
     "dist",
     "DESIGN.md",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "docs/EXPERIENCE.md",
+    "docs/COMPONENT-SOURCES.md",
+    "docs/GALLERY-REVIEW.md",
+    "docs/ATOMIC-SOURCES.md",
+    "docs/ATOMIC-INVENTORY.md",
+    "docs/COMPOSITION-SOURCES.md",
+    "docs/COMPONENT-AUDIT.md",
+    "docs/SOURCE-FIRST.md",
+    "docs/SOURCE-DECISIONS.md"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",
     "start": "node scripts/gallery.mjs",
     "gallery": "node scripts/gallery.mjs",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "audit:tokens": "npm run build && node scripts/audit-tokens.mjs"
   },
   "keywords": [
     "css",

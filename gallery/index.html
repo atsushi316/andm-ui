@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ja" data-gallery-build="click-reveal-2">
+<html lang="ja" data-gallery-build="workspace-3">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="andm-gallery-build" content="click-reveal-2" />
-    <title>andm-ui Gallery · click-reveal-2</title>
+    <meta name="andm-gallery-build" content="workspace-3" />
+    <title>andm-ui · Workspace</title>
     <link rel="stylesheet" href="../dist/style.css" />
     <style>
       /* Gallery layout only — component look comes from dist/style.css */
@@ -1098,12 +1098,21 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="workspace.css" />
   </head>
   <body>
-    <div class="g-shell">
-      <nav class="g-nav" aria-label="Gallery">
+    <a class="g-skip" href="#top">内容へ移動</a>
+    <header class="g-toolbar">
+      <a class="g-workspace-brand" href="#/">andm-ui <span>Workspace</span></a>
+      <button type="button" id="nav-toggle" class="g-tool-button" aria-expanded="false" aria-controls="gallery-nav">部品を選ぶ</button>
+      <div class="g-search"><label for="component-search">部品・トークン・文献を探す</label><input type="search" id="component-search" placeholder="部品を探す：ボタン、検索…" autocomplete="off" aria-controls="search-results" /><div id="search-results" hidden></div><p id="search-status" class="g-sr-only" role="status"></p></div>
+      <a class="g-tool-link" href="lab/">体験ラボ</a>
+    </header>
+    <a class="andm-link andm-skip-link" href="#top">本文へ移動</a><div class="g-shell">
+      <nav class="g-nav" id="gallery-nav" aria-label="ギャラリーの項目">
         <a class="g-nav__brand" href="#/" data-home-nav>andm-ui</a>
-        <p class="g-nav__tag">見出しを押すと開きます</p>
+
+        <p class="g-nav__tag">部品・表現・資料</p>
 
         <div class="g-nav__group" data-nav-group="library">
           <button type="button" class="g-nav__label" aria-expanded="false">文献</button>
@@ -1121,6 +1130,8 @@
               >
             </li>
             <li><a href="#/library/books" data-library-nav="books">書籍</a></li>
+            <li><a href="#/library/component-sources" data-library-nav="component-sources">Chip / FAB の根拠</a></li>
+            <li><a href="#/library/gallery-review" data-library-nav="gallery-review">ギャラリー改善の根拠</a></li>
           </ul>
         </div>
 
@@ -1129,7 +1140,8 @@
           <ul id="nav-series"></ul>
         </div>
 
-        <div class="g-nav__group">
+        <div class="g-nav__group"><button class="g-nav__label" type="button" aria-expanded="false">組み合わせ部品</button><ul><li><a href="#/patterns/form-field" data-part-nav="form-field">フォームフィールド</a></li><li><a href="#/patterns/search-form" data-part-nav="search-form">検索フォーム</a></li><li><a href="#/patterns/filter-bar" data-part-nav="filter-bar">フィルターバー</a></li><li><a href="#/patterns/results-header" data-part-nav="results-header">検索結果ヘッダー</a></li><li><a href="#/patterns/form-actions" data-part-nav="form-actions">フォームアクション</a></li><li><a href="#/navigation/header-nav" data-part-nav="header-nav">ヘッダーナビ</a></li><li><a href="#/navigation/side-nav" data-part-nav="side-nav">サイドナビ</a></li><li><a href="#/navigation/mobile-nav" data-part-nav="mobile-nav">モバイルナビ</a></li><li><a href="#/navigation/bottom-nav" data-part-nav="bottom-nav">ボトムナビ</a></li><li><a href="#/patterns/toolbar" data-part-nav="toolbar">ツールバー</a></li><li><a href="#/patterns/action-menu" data-part-nav="action-menu">アクションメニュー</a></li><li><a href="#/display/resource-item" data-part-nav="resource-item">リスト項目</a></li><li><a href="#/feedback/empty-state" data-part-nav="empty-state">空状態・結果なし</a></li><li><a href="#/feedback/loading-state" data-part-nav="loading-state">ローディング状態</a></li><li><a href="#/navigation/breadcrumb">パンくず</a></li><li><a href="#/navigation/pagination">ページネーション</a></li><li><a href="#/library/composition-sources" data-library-nav="composition-sources">仕様と出典</a></li></ul></div>
+<div class="g-nav__group">
           <button type="button" class="g-nav__label" aria-expanded="false">Tokens</button>
           <ul>
             <li><a href="#/tokens/color" data-token-nav="color">Color</a></li>
@@ -1140,6 +1152,8 @@
             <li><a href="#/tokens/elevation" data-token-nav="elevation">Elevation</a></li>
             <li><a href="#/tokens/motion" data-token-nav="motion">Motion</a></li>
             <li><a href="#/tokens/interaction" data-token-nav="interaction">Interaction</a></li>
+            <li><a href="#/tokens/layout" data-token-nav="layout">Layout</a></li>
+            <li><a href="#/tokens/component" data-token-nav="component">Component</a></li>
           </ul>
         </div>
 
@@ -1196,7 +1210,7 @@
                 >FAB <span class="g-badge g-badge--planned">予定</span></a
               >
             </li>
-          </ul>
+          <li><a href="#/controls/icon-button" data-part-nav="icon-button">アイコンボタン <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/controls/file-input" data-part-nav="file-input">ファイル入力 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/controls/native-input" data-part-nav="native-input">標準入力の種類 <span class="g-badge g-badge--ready">使える</span></a></li></ul>
         </div>
 
         <div class="g-nav__group">
@@ -1222,7 +1236,7 @@
                 >Spinner <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
-          </ul>
+          <li><a href="#/marks/icon" data-part-nav="icon">アイコン <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/marks/status" data-part-nav="status">状態表示 <span class="g-badge g-badge--ready">使える</span></a></li></ul>
         </div>
 
         <div class="g-nav__group">
@@ -1254,7 +1268,7 @@
                 >Table <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
-          </ul>
+          <li><a href="#/display/text" data-part-nav="text">文字・タイポグラフィ <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/label" data-part-nav="label">入力ラベル <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/helper-text" data-part-nav="helper-text">説明文 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/error-text" data-part-nav="error-text">エラー文 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/required-marker" data-part-nav="required-marker">必須・任意の表示 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/code" data-part-nav="code">コード表記 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/kbd" data-part-nav="kbd">キーボード表記 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/image" data-part-nav="image">画像 <span class="g-badge g-badge--ready">使える</span></a></li></ul>
         </div>
 
         <div class="g-nav__group">
@@ -1332,7 +1346,7 @@
                 >Menu <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
-          </ul>
+          <li><a href="#/navigation/link" data-part-nav="link">テキストリンク <span class="g-badge g-badge--ready">使える</span></a></li></ul>
         </div>
 
         <div class="g-nav__group">
@@ -1359,22 +1373,25 @@
 
       </nav>
 
-      <main class="g-main" id="top">
-        <header class="g-pagehead" id="pagehead">
-          <p class="g-pagehead__kicker" id="page-kicker">Gallery</p>
-          <h1 id="page-title">Design System Explorer</h1>
-          <p class="g-pagehead__lead" id="page-lead"></p>
-          <p class="g-pagehead__status" id="page-status"></p>
-          <div id="series-tools">
+      <main class="g-main" id="top" tabindex="-1">
+          <aside id="series-tools" class="g-series-dock" aria-label="見本のシリーズ切り替え">
+            <div class="g-series-picker"><label for="series-select">シリーズ</label><select id="series-select"></select><button type="button" class="g-tool-button" id="series-prev" aria-label="前のシリーズ">前へ</button><button type="button" class="g-tool-button" id="series-next" aria-label="次のシリーズ">次へ</button></div>
+            <details class="g-series-options" hidden><summary>シリーズを一覧から選ぶ</summary>
             <p class="g-series-label" id="series-switch-label">シリーズ</p>
             <div
               class="g-series-switch"
               id="series-switch"
               role="group"
               aria-labelledby="series-switch-label"
-            ></div>
-          </div>
+            ></div></details>
+          </aside>
+        <header class="g-pagehead" id="pagehead">
+          <p class="g-pagehead__kicker" id="page-kicker">Gallery</p>
+          <a id="back-to-parts" class="g-back-link" href="#/" hidden>部品一覧へ</a><h1 id="page-title" tabindex="-1">部品を探す</h1>
+          <p class="g-pagehead__lead" id="page-lead"></p>
+          <p class="g-pagehead__status" id="page-status"></p>
         </header>
+        <section id="component-index" aria-label="部品の一覧"><p class="g-atomic-shortcut"><a href="#/display/text">文字・タイポグラフィを比較する</a> · <a href="#/library/atomic-sources">小さな部品の仕様と出典</a></p><div class="g-index-top"><label for="component-category">分類<select id="component-category"><option value="">すべて</option></select></label><p id="index-count"></p><a href="#/library">文献を読む</a></div><div id="component-grid" class="g-component-grid"></div><p id="index-empty" hidden>一致する部品がありません。別の言葉で探してください。</p></section>
         <header class="g-hero">
           <h1>Design System Explorer</h1>
           <p class="lead">
@@ -1524,11 +1541,11 @@
           </li>
           <li>
             <a href="#/controls/chip">Chip</a>
-            <span class="g-badge g-badge--planned">予定</span>
+            <span class="g-badge g-badge--ready">使える</span>
           </li>
           <li>
             <a href="#/controls/fab">FAB</a>
-            <span class="g-badge g-badge--planned">予定</span>
+            <span class="g-badge g-badge--ready">使える</span>
           </li>
         </ul>
 
@@ -1606,7 +1623,404 @@
           </details>
 
         <div id="series-preview">
-          <section class="g-section" id="series-overview" data-part="series" aria-labelledby="series-overview-title">
+          <section class="g-section" data-part="text" hidden aria-labelledby="atomic-text-title">
+<h2 id="atomic-text-title">文字・タイポグラフィ <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">シリーズを切り替え、用途ごとの文字と実際の表示値を比較できます。見出しの見た目とHTMLの見出し階層は別に選びます。</p>
+<div class="g-stack">
+<div class="g-type-specimen">
+<span class="g-type-role">Display</span>
+<p class="andm-text andm-text--display" data-type-sample="display">選ぶ、その先へ。</p>
+<output class="g-type-metrics" data-type-metrics="display">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Headline</span>
+<p class="andm-text andm-text--headline" data-type-sample="headline">今日を少し面白く</p>
+<output class="g-type-metrics" data-type-metrics="headline">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Title</span>
+<p class="andm-text andm-text--title" data-type-sample="title">新しいプロジェクト</p>
+<output class="g-type-metrics" data-type-metrics="title">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Body</span>
+<p class="andm-text" data-type-sample="body">使う人が、自分のペースで目的を達成できる。文字の階層と余白は、その体験を支えます。</p>
+<output class="g-type-metrics" data-type-metrics="body">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Body small</span>
+<p class="andm-text andm-text--small" data-type-sample="small">2026年10月8日 · 編集できます</p>
+<output class="g-type-metrics" data-type-metrics="small">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Label</span>
+<p class="andm-label" data-type-sample="label">プロジェクト名</p>
+<output class="g-type-metrics" data-type-metrics="label">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Caption</span>
+<p class="andm-text andm-text--caption" data-type-sample="caption">変更は保存するまで反映されません。</p>
+<output class="g-type-metrics" data-type-metrics="caption">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Code</span>
+<code class="andm-code" data-type-sample="code">const idea = "まず触ってみよう";</code>
+<output class="g-type-metrics" data-type-metrics="code">
+</output>
+</div>
+</div>
+<p class="g-desc" id="type-evidence-note">
+</p>
+<a href="#/library/atomic-sources">シリーズごとの対応と出典を見る</a>
+</section>
+<section class="g-section" data-part="icon" hidden aria-labelledby="atomic-icon-title">
+<h2 id="atomic-icon-title">アイコン <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">独自の線画14種。公式アイコンの再配布ではありません。記号と操作名を分けて扱います。</p>
+<div class="g-stack">
+<div class="g-atom-icons">
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="10.5" cy="10.5" r="6.5"/>
+<path d="m16 16 5 5"/>
+</svg>
+<span>search</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m6 6 12 12M18 6 6 18"/>
+</svg>
+<span>close</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 4v16M4 12h16"/>
+</svg>
+<span>add</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m4 12 5 5L20 6"/>
+</svg>
+<span>check</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m4 16 12-12 4 4L8 20H4zM14 6l4 4"/>
+</svg>
+<span>edit</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7M14 10v7"/>
+</svg>
+<span>delete</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 11v6M12 7v.1"/>
+</svg>
+<span>info</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m12 3 10 18H2zM12 9v5M12 17v.1"/>
+</svg>
+<span>warning</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m5 9 7 7 7-7"/>
+</svg>
+<span>chevron-down</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M14 3h7v7M21 3 11 13M10 4H4v16h16v-6"/>
+</svg>
+<span>external</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M4 6h16M4 12h16M4 18h16"/>
+</svg>
+<span>menu</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 16V3m-5 5 5-5 5 5M4 16v5h16v-5"/>
+</svg>
+<span>upload</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4"/>
+</svg>
+<span>download</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 20 3 11C-1 3 9 1 12 7c3-6 13-4 9 4z"/>
+</svg>
+<span>heart</span>
+</div>
+</div>
+<p class="andm-text">大きさ <svg class="andm-icon andm-icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 11v6M12 7v.1"/>
+</svg>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 11v6M12 7v.1"/>
+</svg>
+<svg class="andm-icon andm-icon--lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 11v6M12 7v.1"/>
+</svg>
+</p>
+</div>
+<details class="g-details">
+<summary>使い方</summary>
+<p>装飾は aria-hidden="true"。単独で意味を伝えるSVGには role="img" と aria-label。配布用 dist/icons.svg の symbol を use href で参照できます。</p>
+</details>
+</section>
+<section class="g-section" data-part="icon-button" hidden aria-labelledby="atomic-icon-button-title">
+<h2 id="atomic-icon-button-title">アイコンボタン <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">通常・強調・アウトライン・選択・無効。操作名を持ち、アイコンとは別にタッチ領域を確保します。</p>
+<div class="g-stack">
+<div class="g-row">
+<button type="button" class="andm-icon-button" aria-label="追加" data-atom-action="追加を押しました">
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 4v16M4 12h16"/>
+</svg>
+</button>
+<button type="button" class="andm-icon-button andm-icon-button--filled" aria-label="編集" data-atom-action="編集を押しました">
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m4 16 12-12 4 4L8 20H4zM14 6l4 4"/>
+</svg>
+</button>
+<button type="button" class="andm-icon-button andm-icon-button--outlined" aria-label="検索" data-atom-action="検索を押しました">
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="10.5" cy="10.5" r="6.5"/>
+<path d="m16 16 5 5"/>
+</svg>
+</button>
+<button type="button" class="andm-icon-button" aria-label="お気に入り" aria-pressed="false" data-atom-toggle>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 20 3 11C-1 3 9 1 12 7c3-6 13-4 9 4z"/>
+</svg>
+</button>
+<button type="button" class="andm-icon-button" aria-label="削除" disabled>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7M14 10v7"/>
+</svg>
+</button>
+</div>
+<p class="andm-helper" id="atom-button-result" role="status">操作すると結果がここに出ます。</p>
+</div>
+</section>
+<section class="g-section" data-part="link" hidden aria-labelledby="atomic-link-title">
+<h2 id="atomic-link-title">テキストリンク <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">本文内のリンク、外部リンク、長いURL。訪問済み色は独立したトークンで指定できます。</p>
+<div class="g-stack">
+<p class="andm-text">仕様は<a class="andm-link" href="#/library/atomic-sources">出典の記録</a>で確認できます。</p>
+<p class="andm-text">
+<a class="andm-link" href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer">W3C WAI <svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M14 3h7v7M21 3 11 13M10 4H4v16h16v-6"/>
+</svg>
+<span class="andm-visually-hidden">（新しいタブで開きます）</span>
+</a>
+</p>
+<p class="andm-text">
+<a class="andm-link" href="#/display/text">https://example.com/projects/very-long-name-for-a-mobile-layout-check</a>
+</p>
+</div>
+</section>
+<section class="g-section" data-part="label" hidden aria-labelledby="atomic-label-title">
+<h2 id="atomic-label-title">入力ラベル <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">入力の名前。for と id を関連付け、クリックすると入力へ移動します。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-label-name">プロジェクト名</label>
+<input class="andm-textfield__input" id="atom-label-name" placeholder="新しいアイデア" />
+</div>
+</div>
+</section>
+<section class="g-section" data-part="helper-text" hidden aria-labelledby="atomic-helper-text-title">
+<h2 id="atomic-helper-text-title">説明文 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">入力方法や条件を伝える小さな文章。aria-describedby で入力に関連付けます。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-helper-name">公開名</label>
+<input class="andm-textfield__input" id="atom-helper-name" aria-describedby="atom-helper-note"/>
+<p class="andm-helper" id="atom-helper-note">他の人に表示する名前です。あとから変更できます。</p>
+</div>
+</div>
+</section>
+<section class="g-section" data-part="error-text" hidden aria-labelledby="atomic-error-text-title">
+<h2 id="atomic-error-text-title">エラー文 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">色だけでなく文章で問題と直し方を伝えます。例を操作して、エラーの表示と解除を試せます。</p>
+<div class="g-stack">
+<form id="atom-error-form" novalidate class="andm-textfield">
+<label class="andm-label" for="atom-email">メールアドレス<span class="andm-required">必須</span>
+</label>
+<input class="andm-textfield__input" id="atom-email" type="email" required aria-describedby="atom-email-help"/>
+<p class="andm-helper" id="atom-email-help">例：name@example.com</p>
+<p class="andm-error" id="atom-email-error" hidden>エラー：メールアドレスを正しい形式で入力してください。</p>
+<button type="submit" class="andm-btn andm-btn--filled">入力を確認</button>
+<p class="andm-helper" id="atom-email-status" role="status">
+</p>
+</form>
+</div>
+</section>
+<section class="g-section" data-part="required-marker" hidden aria-labelledby="atomic-required-marker-title">
+<h2 id="atomic-required-marker-title">必須・任意の表示 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">表示だけでは必須入力になりません。入力の required とセットで使います。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-required">名前<span class="andm-required">必須</span>
+</label>
+<input class="andm-textfield__input" id="atom-required" required/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-optional">ひとこと<span class="andm-optional">任意</span>
+</label>
+<input class="andm-textfield__input" id="atom-optional"/>
+</div>
+</div>
+</section>
+<section class="g-section" data-part="status" hidden aria-labelledby="atomic-status-title">
+<h2 id="atomic-status-title">状態表示 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">色付きの印とテキスト。読み取り専用で、押せるボタンにはしません。</p>
+<div class="g-stack">
+<div class="g-row">
+<span class="andm-status">下書き</span>
+<span class="andm-status andm-status--info">確認中</span>
+<span class="andm-status andm-status--success">保存済み</span>
+<span class="andm-status andm-status--warning">要確認</span>
+<span class="andm-status andm-status--error">保存に失敗</span>
+</div>
+</div>
+</section>
+<section class="g-section" data-part="code" hidden aria-labelledby="atomic-code-title">
+<h2 id="atomic-code-title">コード表記 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">本文中の短いコードと、横スクロールできるコードブロック。</p>
+<div class="g-stack">
+<p class="andm-text">クラス名は <code class="andm-code">andm-text</code> です。</p>
+<pre class="andm-code" tabindex="0" aria-label="コード例">
+<code>&lt;p class="andm-text andm-text--title"&gt;世界を少し面白く&lt;/p&gt;
+const projectName = "途中のアイデアも残しておこう";</code>
+</pre>
+</div>
+</section>
+<section class="g-section" data-part="kbd" hidden aria-labelledby="atomic-kbd-title">
+<h2 id="atomic-kbd-title">キーボード表記 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">ショートカットの案内。見た目はキーですが、操作ボタンではありません。</p>
+<div class="g-stack">
+<p class="andm-text">
+<kbd class="andm-kbd">⌘</kbd> + <kbd class="andm-kbd">S</kbd> で保存</p>
+<p class="andm-text">
+<kbd class="andm-kbd">Esc</kbd> で閉じる</p>
+</div>
+</section>
+<section class="g-section" data-part="image" hidden aria-labelledby="atomic-image-title">
+<h2 id="atomic-image-title">画像 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">自然な比率・正方形・横長。意味のある画像には説明、装飾には空のaltを指定します。</p>
+<div class="g-stack">
+<figure style="margin:0">
+<img class="andm-image andm-image--wide" src="assets/crop-fixture.svg" alt="画像の切り取りを比較するための、中央と四隅に印を置いたテスト画像" width="480" height="270"/>
+<figcaption class="andm-text andm-text--caption">16:9の枠。切り取り位置は object-position で指定できます。</figcaption>
+</figure>
+</div>
+</section>
+<section class="g-section" data-part="file-input" hidden aria-labelledby="atomic-file-input-title">
+<h2 id="atomic-file-input-title">ファイル入力 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">ブラウザ標準のファイル選択。選択済み・無効・複数ファイルに対応します。この見本ではアップロードしません。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-file">添付ファイル</label>
+<input type="file" class="andm-file-input" id="atom-file" multiple aria-describedby="atom-file-help"/>
+<p class="andm-helper" id="atom-file-help">端末からファイルを選びます。</p>
+<p class="andm-helper" id="atom-file-result" role="status">未選択</p>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-file-disabled">ファイル入力（無効）</label>
+<input type="file" class="andm-file-input" id="atom-file-disabled" disabled/>
+</div>
+</div>
+</section>
+<section class="g-section" data-part="native-input" hidden aria-labelledby="atomic-native-input-title">
+<h2 id="atomic-native-input-title">標準入力の種類 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">既存Text fieldを使う検索・メール・数値・日付・時刻・色。ピッカーの内部表示はブラウザとOSの標準です。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-search">検索</label>
+<input class="andm-textfield__input" id="atom-native-search" type="search" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-email">メール</label>
+<input class="andm-textfield__input" id="atom-native-email" type="email" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-password">パスワード</label>
+<input class="andm-textfield__input" id="atom-native-password" type="password" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-tel">電話番号</label>
+<input class="andm-textfield__input" id="atom-native-tel" type="tel" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-url">URL</label>
+<input class="andm-textfield__input" id="atom-native-url" type="url" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-number">数量</label>
+<input class="andm-textfield__input" id="atom-native-number" type="number" value="2" min="0" step="1"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-date">日付</label>
+<input class="andm-textfield__input" id="atom-native-date" type="date" value="2026-10-08"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-time">時刻</label>
+<input class="andm-textfield__input" id="atom-native-time" type="time" value="10:30"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-datetime-local">日時</label>
+<input class="andm-textfield__input" id="atom-native-datetime-local" type="datetime-local" value="2026-10-08T10:30"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-color">色</label>
+<input class="andm-textfield__input" id="atom-native-color" type="color" value="#0b57d0"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-readonly">読み取り専用</label>
+<input class="andm-textfield__input" id="atom-readonly" value="変更できない値" readonly/>
+</div>
+</div>
+</section>
+<section class="g-section" id="series-overview" data-part="series" aria-labelledby="series-overview-title">
             <h2 id="series-overview-title">Overview</h2>
             <p class="g-exp-character" id="series-character"></p>
             <dl class="g-series-brief">
@@ -2172,7 +2586,7 @@
                 <code>andm-checkbox__label</code>。
               </p>
             </details>
-          </section>
+          <div class="g-row"><label class="andm-checkbox"><input class="andm-checkbox__input" type="checkbox" data-indeterminate/><span class="andm-checkbox__label">一部選択（クリックして変更）</span></label></div></section>
 
           <section class="g-section" id="radio" data-part="radio" hidden aria-labelledby="radio-title">
             <h2 id="radio-title">
@@ -2631,22 +3045,22 @@
             </p>
             <div class="g-block">
               <h3>配置</h3>
-              <div class="g-context g-place-stage g-tip-show">
+              <div class="g-context g-place-stage">
                 <span class="andm-tooltip andm-tooltip--top">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">上</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">上に出します</span>
+                  <button aria-describedby="tooltip-description-1" type="button" class="andm-btn andm-btn--outlined andm-btn--md">上</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-1" role="tooltip">上に出します</span>
                 </span>
                 <span class="andm-tooltip andm-tooltip--bottom">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">下</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">下に出します</span>
+                  <button aria-describedby="tooltip-description-2" type="button" class="andm-btn andm-btn--outlined andm-btn--md">下</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-2" role="tooltip">下に出します</span>
                 </span>
                 <span class="andm-tooltip andm-tooltip--left">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">左</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">左に出します</span>
+                  <button aria-describedby="tooltip-description-3" type="button" class="andm-btn andm-btn--outlined andm-btn--md">左</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-3" role="tooltip">左に出します</span>
                 </span>
                 <span class="andm-tooltip andm-tooltip--right">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">右</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">右に出します</span>
+                  <button aria-describedby="tooltip-description-4" type="button" class="andm-btn andm-btn--outlined andm-btn--md">右</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-4" role="tooltip">右に出します</span>
                 </span>
               </div>
             </div>
@@ -2654,8 +3068,8 @@
               <h3>In Context</h3>
               <div class="g-context">
                 <span class="andm-tooltip">
-                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">下書きを保存します</span>
+                  <button aria-describedby="tooltip-description-5" type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-5" role="tooltip">下書きを保存します</span>
                 </span>
               </div>
             </div>
@@ -2664,8 +3078,8 @@
               <p>
                 提出の前に
                 <span class="andm-tooltip">
-                  <button type="button" class="andm-btn andm-btn--text andm-btn--sm">確認</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">内容はあとから直せません</span>
+                  <button aria-describedby="tooltip-description-6" type="button" class="andm-btn andm-btn--text andm-btn--sm">確認</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-6" role="tooltip">内容はあとから直せません</span>
                 </span>
                 してください。
               </p>
@@ -2729,7 +3143,7 @@
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
-                <p>申請の一覧です。1 ページに 20 件。</p>
+                <p class="andm-text" role="status" data-page-summary>全80件中、1〜20件を表示</p><ol data-page-results class="andm-text"></ol>
                 <nav class="andm-pagination" aria-label="ページ" data-pagination>
                   <button type="button" class="andm-pagination__control" data-page-prev disabled>前へ</button>
                   <ol class="andm-pagination__list">
@@ -2787,24 +3201,24 @@
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context g-menu-stage">
-                <p>申請の操作です。</p>
+                <p>申請の操作です。Tabで操作、Escapeで閉じます。</p><p class="andm-text" role="status" data-menu-status></p>
                 <div class="andm-menu" data-menu>
                   <button
                     type="button"
                     class="andm-btn andm-btn--outlined andm-btn--md"
                     data-menu-open
                     aria-expanded="false"
-                    aria-haspopup="menu"
+
                     aria-controls="apply-menu"
                   >
                     操作
                   </button>
-                  <div class="andm-menu__panel is-closed" id="apply-menu" role="menu" hidden>
-                    <button type="button" class="andm-menu__item" role="menuitem" aria-current="page">概要</button>
-                    <button type="button" class="andm-menu__item" role="menuitem">詳細</button>
-                    <button type="button" class="andm-menu__item" role="menuitem">履歴</button>
+                  <div class="andm-menu__panel is-closed" id="apply-menu"  hidden>
+                    <button type="button" class="andm-menu__item"  >編集</button>
+                    <button type="button" class="andm-menu__item" >複製</button>
+                    <button type="button" class="andm-menu__item" >アーカイブ</button>
                     <hr class="andm-menu__separator" />
-                    <button type="button" class="andm-menu__item" role="menuitem" disabled>削除</button>
+                    <button type="button" class="andm-menu__item"  disabled>削除</button>
                   </div>
                 </div>
               </div>
@@ -2812,11 +3226,11 @@
             <div class="g-block">
               <h3>項目</h3>
               <div class="andm-menu g-menu-sample">
-                <div class="andm-menu__panel" role="menu">
-                  <button type="button" class="andm-menu__item" role="menuitem" aria-current="page">概要</button>
-                  <button type="button" class="andm-menu__item" role="menuitem">詳細</button>
+                <div class="andm-menu__panel" >
+                  <button type="button" class="andm-menu__item"  >編集</button>
+                  <button type="button" class="andm-menu__item" >複製</button>
                   <hr class="andm-menu__separator" />
-                  <button type="button" class="andm-menu__item" role="menuitem" disabled>削除</button>
+                  <button type="button" class="andm-menu__item"  disabled>削除</button>
                 </div>
               </div>
             </div>
@@ -2919,25 +3333,25 @@
               <div class="g-context g-place-stage">
                 <div class="andm-popover andm-popover--top">
                   <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">上</button>
-                  <div class="andm-popover__panel" role="dialog">
+                  <div class="andm-popover__panel">
                     <p class="andm-popover__body">上に出します。</p>
                   </div>
                 </div>
                 <div class="andm-popover andm-popover--bottom">
                   <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">下</button>
-                  <div class="andm-popover__panel" role="dialog">
+                  <div class="andm-popover__panel">
                     <p class="andm-popover__body">下に出します。</p>
                   </div>
                 </div>
                 <div class="andm-popover andm-popover--left">
                   <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">左</button>
-                  <div class="andm-popover__panel" role="dialog">
+                  <div class="andm-popover__panel">
                     <p class="andm-popover__body">左に出します。</p>
                   </div>
                 </div>
                 <div class="andm-popover andm-popover--right">
                   <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">右</button>
-                  <div class="andm-popover__panel" role="dialog">
+                  <div class="andm-popover__panel">
                     <p class="andm-popover__body">右に出します。</p>
                   </div>
                 </div>
@@ -3208,29 +3622,367 @@
           </section>
 
           <section class="g-section" id="chip" data-part="chip" hidden aria-labelledby="chip-title">
-            <h2 id="chip-title">
-              Chip <span class="g-badge g-badge--planned">予定</span>
-            </h2>
-            <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
-            <div class="g-placeholder">
-              <strong>予定</strong> — Assist / Filter / Input / Suggestion
-              など。
+            <h2 id="chip-title">Chip <span class="g-badge g-badge--draft">独自仕様</span></h2>
+            <p class="g-desc">独立した絞り込みは button と aria-pressed。静的ラベルは別の Badge で示します。選択済みにはチェックを表示します。</p>
+            <div class="g-row" role="group" aria-label="絞り込みの状態例">
+              <button type="button" class="andm-chip" aria-pressed="false" data-filter-chip><span data-chip-mark aria-hidden="true" hidden>✓</span>研究</button>
+              <button type="button" class="andm-chip" aria-pressed="true" data-filter-chip><span data-chip-mark aria-hidden="true">✓</span>試作</button>
+              <button type="button" class="andm-chip" disabled>利用不可</button>
+            </div><p class="g-desc">操作しないラベルは分けて表示します。</p><div class="g-row">
+              <span class="andm-badge">静的ラベル</span>
             </div>
+            <details class="g-details"><summary>クラス名と責務</summary><p><code>andm-chip</code>。選択状態は <code>aria-pressed</code>。切替処理は消費側が実装します。削除・入力チップは未実装。</p></details>
           </section>
-
           <section class="g-section" id="fab" data-part="fab" hidden aria-labelledby="fab-title">
-            <h2 id="fab-title">
-              FAB <span class="g-badge g-badge--planned">予定</span>
-            </h2>
-            <p class="g-desc">まだ使えません。置き場所だけ残しています。</p>
-            <div class="g-placeholder">
-              <strong>予定</strong> — small / regular / large / extended。
+            <h2 id="fab-title">FAB <span class="g-badge g-badge--draft">独自仕様</span></h2>
+            <p class="g-desc">主操作を強調するボタン。配置はアプリ側で決めます。</p>
+            <div class="g-row">
+              <button type="button" class="andm-fab andm-fab--sm" aria-label="新規作成">＋</button>
+              <button type="button" class="andm-fab" aria-label="新規作成">＋</button>
+              <button type="button" class="andm-fab andm-fab--lg" aria-label="新規作成">＋</button>
+              <button type="button" class="andm-fab andm-fab--extended"><span aria-hidden="true">＋</span>新規作成</button>
+              <button type="button" class="andm-fab" disabled aria-label="新規作成">＋</button>
             </div>
+            <details class="g-details"><summary>クラス名</summary><p><code>andm-fab</code> と <code>andm-fab--sm / --lg / --extended</code>。アイコンだけの場合は操作名を <code>aria-label</code> に指定します。</p></details>
           </section>
-
+<section class="g-section" id="form-field" data-part="form-field" hidden aria-labelledby="form-field-title">
+<h2 id="form-field-title">フォームフィールド</h2>
+<p class="g-desc">ラベル・説明・エラーを関連付けます。</p>
+<div class="g-stack">
+<form data-compose-validate novalidate>
+<div class="andm-field">
+<label class="andm-label" for="compose-email">メールアドレス（必須）</label>
+<input class="andm-textfield__input" id="compose-email" type="email" required aria-describedby="compose-email-help compose-email-error">
+<p class="andm-helper" id="compose-email-help">例：name@example.com</p>
+</div>
+<p class="andm-error" id="compose-email-error" hidden>メールアドレスを正しく入力してください。</p>
+<div class="andm-form-actions">
+<button class="andm-btn andm-btn--filled" type="submit">確認</button>
+</div>
+<p role="status" data-validation-status>
+</p>
+</form>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="search-form" data-part="search-form" hidden aria-labelledby="search-form-title">
+<h2 id="search-form-title">検索フォーム</h2>
+<p class="g-desc">作品名で検索できます。</p>
+<div class="g-stack">
+<form class="andm-search" role="search" aria-label="作品検索" data-compose-search>
+<div class="andm-search__field">
+<div class="andm-field">
+<label class="andm-label" for="compose-query">キーワード</label>
+<input class="andm-textfield__input" id="compose-query" type="search" name="q" placeholder="例：宇宙">
+</div>
+</div>
+<div class="andm-search__controls">
+<button class="andm-btn andm-btn--filled" type="submit">検索</button>
+<button class="andm-btn andm-btn--outlined" type="button" data-search-clear>クリア</button>
+</div>
+</form>
+<p class="andm-text" role="status" data-search-status>3件の作品</p>
+<ul class="andm-search-results" data-search-results>
+</ul>
+<div class="andm-empty-state" data-search-empty hidden>
+<h3 class="andm-text andm-text--title">見つかりませんでした</h3>
+<p class="andm-text">別のキーワードで検索してください。</p>
+<button class="andm-btn andm-btn--outlined" type="button" data-search-clear>検索条件をクリア</button>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="filter-bar" data-part="filter-bar" hidden aria-labelledby="filter-bar-title">
+<h2 id="filter-bar-title">フィルターバー</h2>
+<p class="g-desc">適用するまで結果を変えず、条件をまとめて反映します。</p>
+<div class="g-stack">
+<form class="andm-filter-bar" data-compose-filter>
+<div class="andm-field">
+<label class="andm-label" for="compose-kind">種類</label>
+<select class="andm-select__native" id="compose-kind">
+<option value="all">すべて</option>
+<option value="research">研究</option>
+<option value="prototype">試作</option>
+</select>
+</div>
+<button class="andm-btn andm-btn--filled" type="submit">適用</button>
+<button class="andm-btn andm-btn--text" type="reset">リセット</button>
+</form>
+<p role="status" class="andm-text" data-filter-status>すべて：3件</p>
+<ul data-filter-results>
+</ul>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="results-header" data-part="results-header" hidden aria-labelledby="results-header-title">
+<h2 id="results-header-title">検索結果ヘッダー</h2>
+<p class="g-desc">件数・適用条件・並び順をまとめます。並び替えが下の一覧に反映されます。</p>
+<div class="g-stack">
+<div class="andm-results-header">
+<div class="andm-results-header__summary">
+<h3 class="andm-text andm-text--title">作品：3件</h3>
+<p class="andm-text andm-text--small">条件：すべて</p>
+</div>
+<div class="andm-field">
+<label class="andm-label" for="compose-sort">並び順</label>
+<select class="andm-select__native" id="compose-sort" data-compose-sort>
+<option value="new">新しい順</option>
+<option value="name">名前順</option>
+</select>
+</div>
+</div>
+<ul data-sort-results>
+</ul>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="form-actions" data-part="form-actions" hidden aria-labelledby="form-actions-title">
+<h2 id="form-actions-title">フォームアクション</h2>
+<p class="g-desc">保存中は二重送信を防ぎ、完了を通知します。サンプルでは通信・保存を行いません。</p>
+<div class="g-stack">
+<form data-compose-save>
+<div class="andm-field">
+<label class="andm-label" for="compose-name">作品名</label>
+<input class="andm-textfield__input" id="compose-name" value="宇宙の観測ノート" required>
+</div>
+<div class="andm-form-actions">
+<button class="andm-btn andm-btn--text" type="reset">キャンセル</button>
+<button class="andm-btn andm-btn--filled" type="submit" data-save-button>保存</button>
+</div>
+<p class="andm-text" role="status" data-save-status>
+</p>
+</form>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="header-nav" data-part="header-nav" hidden aria-labelledby="header-nav-title">
+<h2 id="header-nav-title">ヘッダーナビ</h2>
+<p class="g-desc">主要なページへの移動とアカウント操作。リンクは実際の部品ページへ移動します。</p>
+<div class="g-stack">
+<header class="andm-header-nav">
+<a class="andm-header-nav__brand" href="#/">andm Studio</a>
+<nav aria-label="主要ページ">
+<div class="andm-header-nav__links">
+<a class="andm-nav-link" href="#/navigation/header-nav" aria-current="page">概要</a>
+<a class="andm-nav-link" href="#/display/resource-item">作品</a>
+<a class="andm-nav-link" href="#/patterns/form-field">設定</a>
+</div>
+</nav>
+<div class="andm-header-nav__account">
+<details>
+<summary class="andm-nav-link">アカウント</summary>
+<a class="andm-link" href="#/patterns/form-field">プロフィール設定</a>
+</details>
+</div>
+</header>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="side-nav" data-part="side-nav" hidden aria-labelledby="side-nav-title">
+<h2 id="side-nav-title">サイドナビ</h2>
+<p class="g-desc">Native detailsで階層を開閉。現在のページをaria-currentで示します。</p>
+<div class="g-stack">
+<nav class="andm-side-nav" aria-label="作品のページ">
+<ul>
+<li>
+<a class="andm-nav-link" href="#/navigation/side-nav" aria-current="page">概要</a>
+</li>
+<li>
+<details open>
+<summary>作品</summary>
+<ul>
+<li>
+<a class="andm-nav-link" href="#/display/resource-item">一覧</a>
+</li>
+<li>
+<a class="andm-nav-link" href="#/patterns/search-form">検索</a>
+</li>
+</ul>
+</details>
+</li>
+<li>
+<a class="andm-nav-link" href="#/patterns/form-field">設定</a>
+</li>
+</ul>
+</nav>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="mobile-nav" data-part="mobile-nav" hidden aria-labelledby="mobile-nav-title">
+<h2 id="mobile-nav-title">モバイルナビ</h2>
+<p class="g-desc">インラインの開閉式ナビ。Tabで移動、Escapeで閉じてボタンへ戻ります。</p>
+<div class="g-stack">
+<div class="andm-mobile-nav" data-compose-disclosure>
+<button class="andm-btn andm-btn--outlined" type="button" aria-expanded="false" aria-controls="compose-mobile-panel">メニュー</button>
+<nav class="andm-mobile-nav__panel" id="compose-mobile-panel" aria-label="モバイルの主要ページ" hidden>
+<a class="andm-nav-link" href="#/navigation/header-nav" aria-current="page">概要</a>
+<a class="andm-nav-link" href="#/display/resource-item">作品</a>
+<a class="andm-nav-link" href="#/patterns/form-field">設定</a>
+</nav>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="bottom-nav" data-part="bottom-nav" hidden aria-labelledby="bottom-nav-title">
+<h2 id="bottom-nav-title">ボトムナビ</h2><p class="g-source-note" data-dads-bottom-warning hidden>DADSではボトムナビは非推奨です。この見本はandm独自の組み合わせです。DADSに従う場合はヘッダーとモバイルメニューを使ってください。</p>
+<p class="g-desc">主要な移動先を常にラベルで示します。固定配置はアプリ側で指定します。</p>
+<div class="g-stack">
+<nav class="andm-bottom-nav" aria-label="主要画面">
+<ul class="andm-bottom-nav__list">
+<li>
+<a class="andm-nav-link" href="#/navigation/bottom-nav" aria-current="page">ホーム</a>
+</li>
+<li>
+<a class="andm-nav-link" href="#/patterns/search-form">検索</a>
+</li>
+<li>
+<a class="andm-nav-link" href="#/display/resource-item">作品</a>
+</li>
+</ul>
+</nav>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="toolbar" data-part="toolbar" hidden aria-labelledby="toolbar-title">
+<h2 id="toolbar-title">ツールバー</h2>
+<p class="g-desc">通常のボタングループ。Tabで各操作に移動し、実行結果を表示します。</p>
+<div class="g-stack">
+<div class="andm-toolbar" role="group" aria-label="作品の編集操作">
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="編集を開始しました">編集</button>
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="コピーを作成しました">複製</button>
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="アーカイブしました">アーカイブ</button>
+</div>
+<p class="andm-text" role="status" data-action-status>
+</p>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="action-menu" data-part="action-menu" hidden aria-labelledby="action-menu-title">
+<h2 id="action-menu-title">アクションメニュー</h2>
+<p class="g-desc">Tabで操作する開閉式の操作一覧。Escape・外側クリックで閉じます。ARIA menuパターンではありません。</p>
+<div class="g-stack">
+<div class="andm-action-menu" data-compose-disclosure>
+<button class="andm-btn andm-btn--outlined" type="button" aria-expanded="false" aria-controls="compose-action-panel">操作</button>
+<div class="andm-action-menu__panel" id="compose-action-panel" hidden>
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="編集を開始しました">編集</button>
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="コピーを作成しました">複製</button>
+<button class="andm-btn andm-btn--text" type="button" disabled>削除（権限なし）</button>
+</div>
+</div>
+<p class="andm-text" role="status" data-action-status>
+</p>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="resource-item" data-part="resource-item" hidden aria-labelledby="resource-item-title">
+<h2 id="resource-item-title">リスト項目</h2>
+<p class="g-desc">項目全体をリンクにせず、見出しリンクと末尾操作を分けます。</p>
+<div class="g-stack">
+<div class="andm-resource-item">
+<span class="andm-badge">研究</span>
+<div class="andm-resource-item__content">
+<h3 class="andm-text andm-text--title">
+<a class="andm-link" href="#/patterns/search-form">宇宙の観測ノート</a>
+</h3>
+<p class="andm-text andm-text--small">観測記録を整理する試作・更新 2026年10月8日</p>
+</div>
+<button class="andm-btn andm-btn--outlined" type="button" data-resource-favorite aria-pressed="false">お気に入り</button>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="empty-state" data-part="empty-state" hidden aria-labelledby="empty-state-title">
+<h2 id="empty-state-title">空状態・結果なし</h2>
+<p class="g-desc">初回の空状態と、検索結果なしを使い分けます。</p>
+<div class="g-stack">
+<div class="andm-empty-state">
+<h3 class="andm-text andm-text--title">まだ作品がありません</h3>
+<p class="andm-text">最初の作品を登録してみましょう。</p>
+<a class="andm-btn andm-btn--filled" href="#/patterns/form-actions">作品を登録</a>
+</div>
+<div class="andm-empty-state">
+<h3 class="andm-text andm-text--title">条件に合う作品がありません</h3>
+<p class="andm-text">検索条件を減らして試してください。</p>
+<a class="andm-link" href="#/patterns/search-form">検索へ戻る</a>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="loading-state" data-part="loading-state" hidden aria-labelledby="loading-state-title">
+<h2 id="loading-state-title">ローディング状態</h2>
+<p class="g-desc">読み込み中・完了を試せます。更新される領域にaria-busyを付けます。</p>
+<div class="g-stack">
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-load>読み込みを試す</button>
+<p class="andm-text" role="status" data-load-status>準備できています</p>
+<div data-load-content aria-busy="false">
+<p class="andm-text">作品一覧</p>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
         </div>
         </div>
 
+        <aside class="g-inspect-details" aria-label="組み込みと根拠">
+          <details id="component-code" class="g-code-panel" hidden><summary>この部品のHTMLを使う</summary><p id="code-context"></p><button type="button" id="copy-component" class="g-tool-button">HTMLをコピー</button><p id="copy-status" role="status"></p><pre id="component-html" tabindex="0"></pre></details>
+          <details id="component-evidence" class="g-evidence" hidden><summary>出典と確認範囲</summary><div id="evidence-body"></div></details>
+        </aside>
         <section class="g-section g-library" id="view-library" hidden>
           <p class="g-library-note">優先度は編集メモであり、部品の数値にはしない。</p>
           <div class="g-prose" id="library-body"></div>
@@ -3244,9 +3996,12 @@
 
       </main>
     </div>
-    <script src="series-copy.js?v=click-reveal-2"></script>
-    <script src="catalog.js?v=click-reveal-2"></script>
-    <script src="library.js?v=click-reveal-2"></script>
-    <script src="explorer.js?v=click-reveal-2"></script>
+    <script src="series-copy.js?v=workspace-3"></script>
+    <script src="catalog.js?v=workspace-3"></script>
+    <script src="library.js?v=workspace-3"></script>
+    <script src="atoms.js"></script>
+    <script src="compositions.js"></script>
+    <script src="explorer.js?v=workspace-3"></script>
+    <script src="workspace.js?v=workspace-3"></script>
   </body>
 </html>

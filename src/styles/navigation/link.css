@@ -1,0 +1,10 @@
+@layer andm.components {
+  .andm-link { color: var(--andm-link-color); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 0.08em; overflow-wrap: anywhere; }
+  .andm-link:visited { color: var(--andm-link-visited-color); }
+  .andm-link:hover { text-decoration-thickness: 0.15em; }
+  .andm-link:active { text-decoration-style: double; }
+  .andm-link:focus-visible { outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color); outline-offset: var(--andm-focus-ring-offset); border-radius: 0.125rem; }
+  .andm-link .andm-icon { --andm-icon-size: 1em; }
+  .andm-skip-link { position: absolute; inset-inline-start: 1rem; top: 1rem; z-index: 100; padding: 0.75rem; background: var(--andm-color-surface); transform: translateY(-200%); }
+  .andm-skip-link:focus { transform: none; }
+}

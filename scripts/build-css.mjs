@@ -18,6 +18,8 @@ const sources = [
   "controls/select.css",
   "controls/slider.css",
   "controls/segmented.css",
+  "controls/chip.css",
+  "controls/fab.css",
   "marks/divider.css",
   "marks/badge.css",
   "marks/avatar.css",
@@ -39,6 +41,17 @@ const sources = [
   "navigation/breadcrumb.css",
   "navigation/pagination.css",
   "navigation/menu.css",
+  "marks/icon.css",
+  "marks/status.css",
+  "controls/icon-button.css",
+  "controls/file-input.css",
+  "navigation/link.css",
+  "display/field-text.css",
+  "display/code.css",
+  "display/image.css",
+  "display/typography.css",
+  "patterns/compositions.css",
+  "utilities.css",
 ];
 
 const banner = "/*! @atsushi316/andm-ui — built from src/styles */\n";
@@ -69,4 +82,5 @@ for (const name of sources) {
 
 await mkdir(dirname(outFile), { recursive: true });
 await writeFile(outFile, banner + chunks.join("\n"), "utf8");
+await writeFile(join(root, "dist", "icons.svg"), await readFile(join(root, "src", "icons", "icons.svg")));
 console.log(`Wrote ${outFile}`);

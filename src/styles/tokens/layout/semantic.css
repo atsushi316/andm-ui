@@ -1,0 +1,9 @@
+@layer andm.tokens {
+  :root {
+    /* andm-ui の独自値。公式システムの測定値ではない。
+       target-min はタッチ向けの設計選択。WCAG AA の一律 44px 要求ではない。
+       docs/COMPONENT-SOURCES.md に要件と採用値の区別を記録。 */
+    --andm-layout-content-max: 72rem;
+    --andm-target-min: 44px;
+  }
+}

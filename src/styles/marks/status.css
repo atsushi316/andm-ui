@@ -1,0 +1,8 @@
+@layer andm.components {
+  .andm-status { display: inline-flex; align-items: baseline; gap: var(--andm-space-2); font-family: var(--andm-type-body-font); font-size: var(--andm-type-body-small-size); line-height: var(--andm-type-body-small-line-height); color: var(--andm-color-on-surface); }
+  .andm-status::before { content: ""; display: inline-block; width: 0.5em; height: 0.5em; flex: 0 0 0.5em; border-radius: 50%; background: var(--andm-color-on-surface-variant); }
+  .andm-status--success::before { background: var(--andm-color-success); }
+  .andm-status--warning::before { background: var(--andm-color-warning); }
+  .andm-status--error::before { background: var(--andm-color-error); }
+  .andm-status--info::before { background: var(--andm-color-primary); }
+}

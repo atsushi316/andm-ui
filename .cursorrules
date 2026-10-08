@@ -23,3 +23,26 @@ CSS-first / Framework-agnostic の UI アーキテクトとして、`--andm-*` T
 - press (`:active`): `short1` + `accelerate`
 - hover / focus: `short2` + `decelerate`
 - `prefers-reduced-motion: reduce` に対応
+
+## Evidence before component changes
+
+- 共通の AI 実装指示は `AGENTS.md`。出典優先設計の正本は `docs/SOURCE-FIRST.md`。公式仕様 → 同じ Series の尺度・関連部品から導出 → 未定義部分を文献・標準で補完 → 独自判断の順に進める。
+- 変更の根拠は `docs/SOURCE-DECISIONS.md` に記録する。`basis` の5分類と `sourceStatus` を分け、本文未取得を公式の欠落と断定しない。原則と数値の選択を別々に記録する。
+- 新しい部品・Series の変更前に、対象の `research/analysis/`、責務カテゴリ README、公式の一次資料を確認する。
+- 既存分析を読むことと、元 URL の本文を再確認したことを分けて記録する。取得できない本文から公式値を推測しない。
+- 公式値・andm の対応付け・独自仕様・未確認を区別する。既存 Button の寸法を別部品の公式値として流用しない。
+- 出典や確認記録はドキュメントへ残す。文献の閲覧導線は Gallery に置けるが、研究値を Runtime Token へ自動変換しない。
+- Gallery の Chrome と製品部品の見た目を分離し、携帯の検索・ナビ・コピー・狭幅を確認する。未検証を検証済みと表示しない。
+
+## Typography and atomic inventory
+
+- 新しい小部品は docs/ATOMIC-INVENTORY.md と照合して責務を重複させない。
+- 本文・見出し・操作ラベルは --andm-type-* の用途別トークンを使う。Button の line-height/weight を本文へ流用しない。
+- Series の文字変更は対象プラットフォーム・版・公式ロールを記録する。未取得の公式値を平均値で埋めない。
+- Gallery でシリーズ、長い日本語、文字拡大、フォーカス、エラーの関連付けを確認する。
+
+## Gallery task review
+
+- 横はみ出し検査だけで「確認済み」「使いやすい」と判断しない。変更した見本を実表示し、入力・ラベル・操作の位置関係、文字・状態、携帯/デスクトップの見本到達位置を目視する。
+- 部品を見たままSeriesを変更でき、入力/選択/スクロールを保つ。仕様・コードは見本より後に置く。GalleryのChromeはSeriesを継承しない。
+- 出典の「非推奨」「用途制約」も照合する。roleとキー操作モデルを一致させる。公式の概念と、汎用Compositionの独自補完を区別する。

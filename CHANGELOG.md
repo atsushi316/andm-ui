@@ -1,3 +1,15 @@
+# Unreleased
+
+- Gallery を部品検索・分類・実物プレビュー・携帯メニュー・シリーズ選択・HTML コピーを備える Workspace へ改善。
+- シリーズ分析を読書ビューへつなぎ、今回の出典と採用範囲を記録。
+- Chip / FAB を独自仕様として明示し、FAB と Button の形状を分離。未使用 layer トークンを削除。
+- Gallery のタブに矢印キー・Home/End操作を追加。
+
+- 目的・世界観・利用者から体験を検討する開発方針と AR / VR 研究枠を追加。
+- 明快・没入・大胆を比較し、構成仮説と検証メモを出力する体験ラボを追加。
+- Chip / FAB と Gallery の状態例、layout / target / layer トークンを追加。
+- 未定義トークンの静的点検を追加。
+
 # Changelog
 
 ## Unreleased
