@@ -1,0 +1,329 @@
+{
+  "matrix": [
+    {
+      "route": "",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "route": "",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "route": "",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "route": "",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "route": "",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "route": "",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "route": "",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "route": "",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "route": "?mode=evaluate",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "route": "?mode=evaluate",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "route": "?mode=evaluate",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "route": "?mode=evaluate",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "route": "?mode=evaluate",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "route": "?mode=evaluate",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "route": "?mode=evaluate",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "route": "?mode=evaluate",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "route": "?condition=D",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "route": "?condition=D",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "route": "?condition=D",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "route": "?condition=D",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "route": "?condition=D",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "route": "?condition=D",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "route": "?condition=D",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "route": "?condition=D",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "route": "example.html",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "route": "example.html",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "route": "example.html",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "route": "example.html",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "route": "example.html",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "route": "example.html",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "route": "example.html",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "route": "example.html",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "route": "reuse-test/",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "route": "reuse-test/",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "route": "reuse-test/",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "route": "reuse-test/",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "route": "reuse-test/",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "route": "reuse-test/",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "route": "reuse-test/",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "route": "reuse-test/",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    }
+  ],
+  "axe": [
+    {
+      "route": "",
+      "violations": []
+    },
+    {
+      "route": "?mode=evaluate",
+      "violations": []
+    },
+    {
+      "route": "?condition=D",
+      "violations": []
+    },
+    {
+      "route": "example.html",
+      "violations": []
+    },
+    {
+      "route": "reuse-test/",
+      "violations": []
+    }
+  ],
+  "trajectories": [
+    {
+      "condition": "A",
+      "pressed": 0.94,
+      "samples": [
+        0.969403,
+        1.02062,
+        1.01912,
+        1.00182
+      ],
+      "elastic": true
+    },
+    {
+      "condition": "B",
+      "pressed": 0.94,
+      "samples": [
+        0.94627,
+        0.970341,
+        0.989954,
+        0.999412
+      ],
+      "elastic": false
+    },
+    {
+      "condition": "C",
+      "pressed": 0.94,
+      "samples": [
+        0.94626,
+        0.97034,
+        0.989953,
+        0.999412
+      ],
+      "elastic": false
+    },
+    {
+      "condition": "D",
+      "pressed": 0.94,
+      "samples": [
+        0.969413,
+        1.02462,
+        1.01669,
+        1.00113
+      ],
+      "elastic": true
+    }
+  ],
+  "operations": [
+    "same geometry/color/press; elastic overshoot vs monotonic; rapid 8 clicks; native Enter/Space; Escape/blur/outside/pointercancel; assistive after cancel; disabled; focus; OS/manual reduced motion",
+    "four neutral trials, gated prior expectations, separate ratings, randomized permutation, JSON null adoption export",
+    "native required form validation; long Japanese 320px/200%; five emulated touch taps",
+    "independently generated reuse screen: Enter held/result independence, cancellation then assistive activation, rapid clicks, reduced motion"
+  ],
+  "otherEngines": [
+    {
+      "engine": "firefox",
+      "unverified": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/firefox-1538/firefox/firefox"
+    },
+    {
+      "engine": "webkit",
+      "unverified": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/webkit-2336/pw_run.sh"
+    }
+  ],
+  "errors": []
+}

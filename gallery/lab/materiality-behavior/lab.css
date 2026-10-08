@@ -1,0 +1,54 @@
+/* All chrome selectors scoped; the Gallery and Series do not inherit this sheet. */
+.mb-lab { margin: 0; color: #1c3029; background: #f5f6f0; font: 1rem/1.7 system-ui, sans-serif; }
+.mb-lab * { box-sizing: border-box; }
+.mb-lab [hidden] { display: none !important; }
+.mb-lab a { color: #194e42; text-underline-offset: .22em; }
+.mb-lab :focus-visible { outline: 3px solid #102f58; outline-offset: 4px; }
+.mb-lab .skip { position: absolute; top: -5rem; left: 1rem; background: #fff; padding: .5rem; }
+.mb-lab .skip:focus { top: .5rem; z-index: 10; }
+.mb-lab header, .mb-lab main { width: min(76rem, 100%); margin-inline: auto; padding: 1.5rem clamp(1rem, 4vw, 3rem); }
+.mb-lab header { padding-top: 2rem; }
+.mb-lab h1 { margin: 1.5rem 0 .8rem; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.2; letter-spacing: -.04em; overflow-wrap: anywhere; }
+.mb-lab h2 { line-height: 1.35; font-size: 1.55rem; }
+.mb-lab h3 { line-height: 1.4; }
+.mb-lab p { max-width: 64ch; }
+.mb-lab .eyebrow { letter-spacing: .16em; font-size: .8rem; font-weight: 700; }
+.mb-lab .intro { font-size: 1.125rem; }
+.mb-lab nav, .mb-lab .tools { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+.mb-lab nav { margin-top: 1.5rem; }
+.mb-lab nav a { border: 1px solid #88988e; border-radius: .4rem; padding: .55rem 1rem; background: #fff; }
+.mb-lab nav a[aria-current="page"] { background: #245348; color: #fff; border-color: #245348; }
+.mb-lab .lab-action { font: inherit; background: #fff; color: #1c3029; border: 1px solid #78877e; border-radius: .4rem; padding: .55rem 1rem; cursor: pointer; }
+.mb-lab .lab-action:disabled { color: #546057; background: #e5e8e2; cursor: not-allowed; }
+.mb-lab label { display: block; }
+.mb-lab select, .mb-lab textarea { font: inherit; color: #1c3029; background: #fff; border: 1px solid #78877e; padding: .55rem; border-radius: .3rem; max-width: 100%; }
+.mb-lab select { width: 100%; }
+.mb-lab textarea { width: 100%; min-height: 6rem; }
+.mb-lab .tools label { display: flex; gap: .5rem; align-items: center; }
+.mb-lab .tools input { width: 1.2rem; height: 1.2rem; }
+.mb-lab .conditions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 1.5rem 0 3rem; }
+.mb-lab .condition { border: 1px solid #a6b0a7; background: #fff; border-radius: .5rem; padding: 1.25rem; min-width: 0; }
+.mb-lab .condition h3 { margin: 0; font-size: 1.25rem; }
+.mb-lab .condition .description { min-height: 3.5rem; color: #47584e; }
+.mb-lab .stage { display: grid; place-items: center; padding: 2rem .5rem; background: #f0f3ed; border-radius: .25rem; margin-block: 1rem; }
+.mb-lab .event-state { font-size: .875rem; margin-bottom: 0; color: #47584e; }
+.mb-lab .result { margin-top: .25rem; min-height: 3.4rem; font-weight: 600; }
+.mb-lab .condition footer { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: space-between; }
+.mb-lab .note, .mb-lab .research { padding: 1.25rem; border-left: 3px solid #748b7c; background: #ebefe7; }
+.mb-lab .research { margin-block: 2rem; }
+.mb-lab .research summary { cursor: pointer; font-weight: 700; }
+.mb-lab .research li { margin-block: .5rem; }
+.mb-lab .evaluation { max-width: 48rem; margin-inline: auto; }
+.mb-lab .evaluation form { display: grid; gap: 1rem; }
+.mb-lab fieldset { border: 1px solid #a6b0a7; border-radius: .4rem; padding: 1rem; min-width: 0; }
+.mb-lab legend { font-weight: 700; padding-inline: .3rem; }
+.mb-lab .form-row { display: grid; gap: .4rem; }
+.mb-lab .evaluation .condition { margin-block: 1rem; }
+.mb-lab .eval-progress { font-weight: 700; }
+.mb-lab .summary-list li { margin-block: 1rem; }
+.mb-lab .standalone .conditions { max-width: 38rem; margin-inline: auto; grid-template-columns: 1fr; }
+.mb-lab .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 42rem) { .mb-lab .conditions { grid-template-columns: 1fr; } }
+.mb-lab { overflow-wrap: anywhere; }
+.mb-lab .stage { grid-template-columns: minmax(0, 1fr); }
+.mb-lab nav > *, .mb-lab .tools > *, .mb-lab .lab-action { min-width: 0; max-width: 100%; white-space: normal; }

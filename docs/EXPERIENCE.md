@@ -51,3 +51,7 @@ primitive → semantic → component-local の順に検討し、意味が不要�
 ## Design Philosophyの比較実験
 
 [ORBIT NOTE PoC](../gallery/lab/philosophy-poc/)は同じ内容から読む構成・露出した構造・関係探索を比較する独立実験。[責務と知識構造](DESIGN-PHILOSOPHIES.md)、[検証記録](PHILOSOPHY-POC-VALIDATION.md)。思想の適性・正式採用は未決で、既存Labを置き換えない。
+
+## Materiality & Behavior
+
+[Buttonの4条件実験](../gallery/lab/materiality-behavior/)は造形と復元を独立に比較するLab限定の試作。[実装・再利用仕様](MATERIALITY-BEHAVIOR.md)。既存Motion/Componentの契約を保ち、研究からCoreへの自動採用は行わない。

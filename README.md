@@ -126,3 +126,7 @@ Chip / FAB 固有の寸法・形は andm 独自仕様です。全シリーズの
 ## Design Philosophy PoC
 
 Seriesとは独立した思想・構成・部品利用方式を比較する[Experience Lab PoC](gallery/lab/philosophy-poc/)を追加。[知識構造](docs/DESIGN-PHILOSOPHIES.md)。Researchは設計時参照のみで、生成エンジンや新Seriesではありません。
+
+## 質感と振る舞いの実験
+
+[Materiality Button Lab](gallery/lab/materiality-behavior/)で角と復元の4条件を探索・予備評価。[AI再利用仕様](docs/MATERIALITY-BEHAVIOR.md)。Core/公式Seriesへの自動採用は行わない。

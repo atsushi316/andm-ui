@@ -41,3 +41,7 @@
 ## philosophy-poc（Lab限定）
 
 Minimalism / Web Brutalism / Original / A′の新規判断は、[Philosophy判断参照](SOURCE-DECISIONS-PHILOSOPHY.md)と知識カタログの安定IDを正本として参照する。全新規 `recommended` はnull。公式Series・既存58部品のAPIは変更しない。
+
+## Materiality & Behavior Lab
+
+[判断記録](SOURCE-DECISIONS-MATERIALITY.md)：mb.stimulus / mb.activation / mb.evaluation。公式Seriesとは独立、刺激値は独自、recommendedはnull。

@@ -1,0 +1,100 @@
+.reuse-page {
+  margin: 0;
+  padding: clamp(1rem, 5vw, 4rem) 1rem;
+  background: #f4f2eb;
+  color: #24352e;
+  font-family: system-ui, sans-serif;
+  line-height: 1.65;
+}
+.reuse-page * { box-sizing: border-box; }
+.reuse-card {
+  width: min(100%, 40rem);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 5vw, 3rem);
+  border: 1px solid #d7ddd3;
+  border-radius: 1.5rem;
+  background: #fffefa;
+}
+.reuse-eyebrow { margin: 0; font-size: .8rem; color: #52645b; }
+.reuse-card h1 { margin: .4rem 0 1rem; font-size: clamp(1.65rem, 6vw, 2.25rem); }
+.reuse-intro { margin-bottom: 1.75rem; }
+.reuse-card label { display: block; font-weight: 600; }
+.reuse-required { font-size: .85rem; font-weight: 400; }
+.reuse-card textarea {
+  display: block;
+  width: 100%;
+  min-height: 9rem;
+  margin-top: .5rem;
+  padding: .85rem;
+  border: 1px solid #778a7e;
+  border-radius: .65rem;
+  background: #fff;
+  color: #24352e;
+  font: inherit;
+  resize: vertical;
+}
+.reuse-card textarea::placeholder { color: #64736b; opacity: 1; }
+.reuse-card textarea:focus-visible,
+.reuse-card summary:focus-visible,
+.reuse-card input:focus-visible { outline: 3px solid #245348; outline-offset: 4px; }
+.reuse-help { margin: .4rem 0 1rem; font-size: .85rem; color: #52645b; }
+.reuse-actions { margin-top: 1.5rem; }
+/* The native hit target, focus outline and label never scale. */
+.reuse-card .reuse-save,
+.reuse-card .reuse-save:hover,
+.reuse-card .reuse-save:active {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 19rem);
+  height: auto;
+  min-height: 3.5rem;
+  padding: .9rem 1.4rem;
+  border-radius: 2rem;
+  transform: none;
+  background: transparent;
+  color: #fff;
+  box-shadow: none;
+  white-space: normal;
+  line-height: 1.5;
+  font-family: inherit;
+  font-size: 1rem;
+}
+.reuse-card .reuse-save::before { content: none; }
+.reuse-card .reuse-save:focus-visible { outline: 3px solid #245348; outline-offset: 5px; }
+.reuse-face {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 2rem;
+  background: #245348;
+  box-shadow: inset 0 2px 0 #ffffff24, 0 3px 8px #18392f24;
+  transform: scale(1);
+  transition: transform 480ms cubic-bezier(.34, 1.65, .3, 1), background-color 120ms ease-out;
+}
+.reuse-label { pointer-events: none; overflow-wrap: anywhere; }
+.reuse-save:hover:not(:disabled) .reuse-face { background: #1c453b; }
+.reuse-save[data-held="true"] .reuse-face {
+  background: #163e33;
+  transform: scale(.94);
+  transition: transform 80ms ease-out, background-color 80ms ease-out;
+}
+.reuse-card .reuse-save:disabled { color: #47534d; cursor: not-allowed; }
+.reuse-save:disabled .reuse-face { background: #d8ddd7; box-shadow: none; transform: none; }
+.reuse-feedback { min-height: 1.65em; margin: .65rem 0; font-size: .9rem; }
+.reuse-result { min-height: 3rem; padding: .8rem 1rem; background: #edf2eb; border-radius: .6rem; }
+.reuse-details { margin-top: 1.8rem; border-top: 1px solid #d7ddd3; padding-top: 1rem; font-size: .9rem; }
+.reuse-details summary { cursor: pointer; }
+.reuse-card .reuse-option { display: flex; align-items: center; gap: .6rem; margin-block: 1rem; font-weight: 400; }
+.reuse-option input { width: 1.15rem; height: 1.15rem; flex-shrink: 0; accent-color: #245348; }
+.reuse-page[data-static="true"] .reuse-face,
+.reuse-page[data-static="true"] .reuse-save[data-held="true"] .reuse-face { transform: none; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reuse-page .reuse-face,
+  .reuse-page .reuse-save[data-held="true"] .reuse-face { transform: none; transition: none; }
+}
+@media (forced-colors: active) {
+  .reuse-card .reuse-save { border: 2px solid ButtonText; color: ButtonText; }
+  .reuse-face { background: ButtonFace; box-shadow: none; }
+  .reuse-save[data-held="true"] .reuse-face { border: 3px solid Highlight; }
+}
