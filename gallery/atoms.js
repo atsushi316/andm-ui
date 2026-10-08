@@ -1,5 +1,11 @@
 /* Gallery-only interactions; Native HTML remains the library API. */
 (function () {
+  document.querySelectorAll('.andm-tooltip').forEach(function(root){
+    root.addEventListener('keydown',function(e){if(e.key==='Escape'){root.classList.add('is-dismissed');}});
+    root.addEventListener('mouseleave',function(){root.classList.remove('is-dismissed');});
+    root.addEventListener('focusout',function(e){if(!root.contains(e.relatedTarget))root.classList.remove('is-dismissed');});
+  });
+
   function updateTypography() {
     document.querySelectorAll('[data-type-sample]').forEach(function (sample) {
       var metrics = document.querySelector('[data-type-metrics="' + sample.dataset.typeSample + '"]');

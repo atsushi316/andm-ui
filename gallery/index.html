@@ -1104,8 +1104,8 @@
     <a class="g-skip" href="#top">内容へ移動</a>
     <header class="g-toolbar">
       <a class="g-workspace-brand" href="#/">andm-ui <span>Workspace</span></a>
-      <button type="button" id="nav-toggle" class="g-tool-button" aria-expanded="false" aria-controls="gallery-nav">メニュー</button>
-      <div class="g-search"><label for="component-search">部品・トークン・文献を探す</label><input type="search" id="component-search" placeholder="ボタン、入力、色…" autocomplete="off" aria-controls="search-results" /><div id="search-results" hidden></div><p id="search-status" class="g-sr-only" role="status"></p></div>
+      <button type="button" id="nav-toggle" class="g-tool-button" aria-expanded="false" aria-controls="gallery-nav">部品を選ぶ</button>
+      <div class="g-search"><label for="component-search">部品・トークン・文献を探す</label><input type="search" id="component-search" placeholder="部品を探す：ボタン、検索…" autocomplete="off" aria-controls="search-results" /><div id="search-results" hidden></div><p id="search-status" class="g-sr-only" role="status"></p></div>
       <a class="g-tool-link" href="lab/">体験ラボ</a>
     </header>
     <a class="andm-link andm-skip-link" href="#top">本文へ移動</a><div class="g-shell">
@@ -1374,14 +1374,9 @@
       </nav>
 
       <main class="g-main" id="top" tabindex="-1">
-        <header class="g-pagehead" id="pagehead">
-          <p class="g-pagehead__kicker" id="page-kicker">Gallery</p>
-          <h1 id="page-title" tabindex="-1">部品を探す</h1>
-          <p class="g-pagehead__lead" id="page-lead"></p>
-          <p class="g-pagehead__status" id="page-status"></p>
-          <div id="series-tools">
-            <div class="g-series-picker"><label for="series-select">シリーズ</label><select id="series-select"></select><span id="series-picker-note">見本の表現を切り替えます</span></div>
-            <details class="g-series-options"><summary>シリーズを一覧から選ぶ</summary>
+          <aside id="series-tools" class="g-series-dock" aria-label="見本のシリーズ切り替え">
+            <div class="g-series-picker"><label for="series-select">シリーズ</label><select id="series-select"></select><button type="button" class="g-tool-button" id="series-prev" aria-label="前のシリーズ">前へ</button><button type="button" class="g-tool-button" id="series-next" aria-label="次のシリーズ">次へ</button></div>
+            <details class="g-series-options" hidden><summary>シリーズを一覧から選ぶ</summary>
             <p class="g-series-label" id="series-switch-label">シリーズ</p>
             <div
               class="g-series-switch"
@@ -1389,9 +1384,12 @@
               role="group"
               aria-labelledby="series-switch-label"
             ></div></details>
-          </div>
-          <details id="component-code" class="g-code-panel" hidden><summary>この部品のHTMLを使う</summary><p id="code-context"></p><button type="button" id="copy-component" class="g-tool-button">HTMLをコピー</button><p id="copy-status" role="status"></p><pre id="component-html" tabindex="0"></pre></details>
-          <details id="component-evidence" class="g-evidence" hidden><summary>出典と確認範囲</summary><div id="evidence-body"></div></details>
+          </aside>
+        <header class="g-pagehead" id="pagehead">
+          <p class="g-pagehead__kicker" id="page-kicker">Gallery</p>
+          <a id="back-to-parts" class="g-back-link" href="#/" hidden>部品一覧へ</a><h1 id="page-title" tabindex="-1">部品を探す</h1>
+          <p class="g-pagehead__lead" id="page-lead"></p>
+          <p class="g-pagehead__status" id="page-status"></p>
         </header>
         <section id="component-index" aria-label="部品の一覧"><p class="g-atomic-shortcut"><a href="#/display/text">文字・タイポグラフィを比較する</a> · <a href="#/library/atomic-sources">小さな部品の仕様と出典</a></p><div class="g-index-top"><label for="component-category">分類<select id="component-category"><option value="">すべて</option></select></label><p id="index-count"></p><a href="#/library">文献を読む</a></div><div id="component-grid" class="g-component-grid"></div><p id="index-empty" hidden>一致する部品がありません。別の言葉で探してください。</p></section>
         <header class="g-hero">
@@ -3047,22 +3045,22 @@ const projectName = "途中のアイデアも残しておこう";</code>
             </p>
             <div class="g-block">
               <h3>配置</h3>
-              <div class="g-context g-place-stage g-tip-show">
+              <div class="g-context g-place-stage">
                 <span class="andm-tooltip andm-tooltip--top">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">上</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">上に出します</span>
+                  <button aria-describedby="tooltip-description-1" type="button" class="andm-btn andm-btn--outlined andm-btn--md">上</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-1" role="tooltip">上に出します</span>
                 </span>
                 <span class="andm-tooltip andm-tooltip--bottom">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">下</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">下に出します</span>
+                  <button aria-describedby="tooltip-description-2" type="button" class="andm-btn andm-btn--outlined andm-btn--md">下</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-2" role="tooltip">下に出します</span>
                 </span>
                 <span class="andm-tooltip andm-tooltip--left">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">左</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">左に出します</span>
+                  <button aria-describedby="tooltip-description-3" type="button" class="andm-btn andm-btn--outlined andm-btn--md">左</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-3" role="tooltip">左に出します</span>
                 </span>
                 <span class="andm-tooltip andm-tooltip--right">
-                  <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">右</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">右に出します</span>
+                  <button aria-describedby="tooltip-description-4" type="button" class="andm-btn andm-btn--outlined andm-btn--md">右</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-4" role="tooltip">右に出します</span>
                 </span>
               </div>
             </div>
@@ -3070,8 +3068,8 @@ const projectName = "途中のアイデアも残しておこう";</code>
               <h3>In Context</h3>
               <div class="g-context">
                 <span class="andm-tooltip">
-                  <button type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">下書きを保存します</span>
+                  <button aria-describedby="tooltip-description-5" type="button" class="andm-btn andm-btn--filled andm-btn--md">保存</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-5" role="tooltip">下書きを保存します</span>
                 </span>
               </div>
             </div>
@@ -3080,8 +3078,8 @@ const projectName = "途中のアイデアも残しておこう";</code>
               <p>
                 提出の前に
                 <span class="andm-tooltip">
-                  <button type="button" class="andm-btn andm-btn--text andm-btn--sm">確認</button>
-                  <span class="andm-tooltip__bubble" role="tooltip">内容はあとから直せません</span>
+                  <button aria-describedby="tooltip-description-6" type="button" class="andm-btn andm-btn--text andm-btn--sm">確認</button>
+                  <span class="andm-tooltip__bubble" id="tooltip-description-6" role="tooltip">内容はあとから直せません</span>
                 </span>
                 してください。
               </p>
@@ -3203,24 +3201,24 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context g-menu-stage">
-                <p>申請の操作です。</p>
+                <p>申請の操作です。Tabで操作、Escapeで閉じます。</p><p class="andm-text" role="status" data-menu-status></p>
                 <div class="andm-menu" data-menu>
                   <button
                     type="button"
                     class="andm-btn andm-btn--outlined andm-btn--md"
                     data-menu-open
                     aria-expanded="false"
-                    aria-haspopup="menu"
+
                     aria-controls="apply-menu"
                   >
                     操作
                   </button>
-                  <div class="andm-menu__panel is-closed" id="apply-menu" role="menu" hidden>
-                    <button type="button" class="andm-menu__item" role="menuitem" aria-current="page">概要</button>
-                    <button type="button" class="andm-menu__item" role="menuitem">詳細</button>
-                    <button type="button" class="andm-menu__item" role="menuitem">履歴</button>
+                  <div class="andm-menu__panel is-closed" id="apply-menu"  hidden>
+                    <button type="button" class="andm-menu__item"  >編集</button>
+                    <button type="button" class="andm-menu__item" >複製</button>
+                    <button type="button" class="andm-menu__item" >アーカイブ</button>
                     <hr class="andm-menu__separator" />
-                    <button type="button" class="andm-menu__item" role="menuitem" disabled>削除</button>
+                    <button type="button" class="andm-menu__item"  disabled>削除</button>
                   </div>
                 </div>
               </div>
@@ -3228,11 +3226,11 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <div class="g-block">
               <h3>項目</h3>
               <div class="andm-menu g-menu-sample">
-                <div class="andm-menu__panel" role="menu">
-                  <button type="button" class="andm-menu__item" role="menuitem" aria-current="page">概要</button>
-                  <button type="button" class="andm-menu__item" role="menuitem">詳細</button>
+                <div class="andm-menu__panel" >
+                  <button type="button" class="andm-menu__item"  >編集</button>
+                  <button type="button" class="andm-menu__item" >複製</button>
                   <hr class="andm-menu__separator" />
-                  <button type="button" class="andm-menu__item" role="menuitem" disabled>削除</button>
+                  <button type="button" class="andm-menu__item"  disabled>削除</button>
                 </div>
               </div>
             </div>
@@ -3335,25 +3333,25 @@ const projectName = "途中のアイデアも残しておこう";</code>
               <div class="g-context g-place-stage">
                 <div class="andm-popover andm-popover--top">
                   <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">上</button>
-                  <div class="andm-popover__panel" role="dialog">
+                  <div class="andm-popover__panel">
                     <p class="andm-popover__body">上に出します。</p>
                   </div>
                 </div>
                 <div class="andm-popover andm-popover--bottom">
                   <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">下</button>
-                  <div class="andm-popover__panel" role="dialog">
+                  <div class="andm-popover__panel">
                     <p class="andm-popover__body">下に出します。</p>
                   </div>
                 </div>
                 <div class="andm-popover andm-popover--left">
                   <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">左</button>
-                  <div class="andm-popover__panel" role="dialog">
+                  <div class="andm-popover__panel">
                     <p class="andm-popover__body">左に出します。</p>
                   </div>
                 </div>
                 <div class="andm-popover andm-popover--right">
                   <button type="button" class="andm-btn andm-btn--outlined andm-btn--md">右</button>
-                  <div class="andm-popover__panel" role="dialog">
+                  <div class="andm-popover__panel">
                     <p class="andm-popover__body">右に出します。</p>
                   </div>
                 </div>
@@ -3673,7 +3671,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
 </section>
 <section class="g-section" id="search-form" data-part="search-form" hidden aria-labelledby="search-form-title">
 <h2 id="search-form-title">検索フォーム</h2>
-<p class="g-desc">Enterで検索、クリアで全件に戻ります。画面内のサンプル作品を検索します。</p>
+<p class="g-desc">作品名で検索できます。</p>
 <div class="g-stack">
 <form class="andm-search" role="search" aria-label="作品検索" data-compose-search>
 <div class="andm-search__field">
@@ -3688,7 +3686,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
 </div>
 </form>
 <p class="andm-text" role="status" data-search-status>3件の作品</p>
-<ul data-search-results>
+<ul class="andm-search-results" data-search-results>
 </ul>
 <div class="andm-empty-state" data-search-empty hidden>
 <h3 class="andm-text andm-text--title">見つかりませんでした</h3>
@@ -3858,7 +3856,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
 </details>
 </section>
 <section class="g-section" id="bottom-nav" data-part="bottom-nav" hidden aria-labelledby="bottom-nav-title">
-<h2 id="bottom-nav-title">ボトムナビ</h2>
+<h2 id="bottom-nav-title">ボトムナビ</h2><p class="g-source-note" data-dads-bottom-warning hidden>DADSではボトムナビは非推奨です。この見本はandm独自の組み合わせです。DADSに従う場合はヘッダーとモバイルメニューを使ってください。</p>
 <p class="g-desc">主要な移動先を常にラベルで示します。固定配置はアプリ側で指定します。</p>
 <div class="g-stack">
 <nav class="andm-bottom-nav" aria-label="主要画面">
@@ -3981,6 +3979,10 @@ const projectName = "途中のアイデアも残しておこう";</code>
         </div>
         </div>
 
+        <aside class="g-inspect-details" aria-label="組み込みと根拠">
+          <details id="component-code" class="g-code-panel" hidden><summary>この部品のHTMLを使う</summary><p id="code-context"></p><button type="button" id="copy-component" class="g-tool-button">HTMLをコピー</button><p id="copy-status" role="status"></p><pre id="component-html" tabindex="0"></pre></details>
+          <details id="component-evidence" class="g-evidence" hidden><summary>出典と確認範囲</summary><div id="evidence-body"></div></details>
+        </aside>
         <section class="g-section g-library" id="view-library" hidden>
           <p class="g-library-note">優先度は編集メモであり、部品の数値にはしない。</p>
           <div class="g-prose" id="library-body"></div>

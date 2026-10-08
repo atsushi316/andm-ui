@@ -142,6 +142,7 @@
   }
 
   var libraryFiles = {
+    "component-audit": "../../docs/COMPONENT-AUDIT.md",
     "composition-sources": "../../docs/COMPOSITION-SOURCES.md",
     index: "README.md",
     academic: "academic.md",
@@ -179,6 +180,8 @@
     "component-sources": "Chip / FAB の仕様と根拠",
     "gallery-review": "ギャラリー改善の根拠",
     "atomic-sources": "小さな部品・文字の仕様と根拠",
+    "component-audit": "部品の概念・出典との照合",
+    "composition-sources": "組み合わせ部品の仕様と出典",
     "atomic-inventory": "アトミック部品の整備範囲",
   };
 
@@ -906,66 +909,38 @@
     }
 
     document.querySelectorAll("[data-menu]").forEach(function (menu) {
-      var panel = menu.querySelector(".andm-menu__panel");
-      var trigger = menu.querySelector("[data-menu-open]");
-      if (trigger) {
-        trigger.addEventListener("click", function () {
-          if (panel && !panel.hidden && !panel.classList.contains("is-closed")) {
-            closePanel(menu, panel, "[data-menu-open]");
-          } else {
-            openPanel(menu, panel, "[data-menu-open]");
-          }
-        });
-      }
-      menu.querySelectorAll(".andm-menu__item").forEach(function (item) {
-        item.addEventListener("click", function () {
-          if (item.disabled) return;
-          menu.querySelectorAll(".andm-menu__item").forEach(function (other) {
-            if (other === item) other.setAttribute("aria-current", "page");
-            else other.removeAttribute("aria-current");
-          });
-          closePanel(menu, panel, "[data-menu-open]");
-        });
-      });
+      var panel=menu.querySelector(".andm-menu__panel"),trigger=menu.querySelector("[data-menu-open]");
+      function close(restore) {panel.hidden=true;panel.classList.add("is-closed");trigger.setAttribute("aria-expanded","false");if(restore)trigger.focus();}
+      trigger.addEventListener("click",function(){if(!panel.hidden)close(false);else openPanel(menu,panel,"[data-menu-open]");});
+      menu.addEventListener("keydown",function(e){if(e.key==="Escape"&&!panel.hidden){e.preventDefault();close(true);}});
+      menu.addEventListener("focusout",function(e){if(e.relatedTarget&&!menu.contains(e.relatedTarget))close(false);});
+      document.addEventListener("click",function(e){if(!menu.contains(e.target))close(false);});
+      menu.querySelectorAll(".andm-menu__item").forEach(function(item){item.addEventListener("click",function(){
+        var status=menu.closest("[data-part]").querySelector("[data-menu-status]");if(status)status.textContent=item.textContent+"を実行しました（動作例）";close(true);
+      });});
     });
 
     document.querySelectorAll("[data-popover]").forEach(function (popover) {
       var panel = popover.querySelector(".andm-popover__panel");
       var trigger = popover.querySelector("[data-popover-open]");
+      function dismiss(restore) {panel.hidden=true;panel.classList.add("is-closed");trigger.setAttribute("aria-expanded","false");if(restore)trigger.focus();}
+      popover.addEventListener("keydown",function(e){if(e.key==="Escape"&&!panel.hidden){e.preventDefault();dismiss(true);}});
+      popover.addEventListener("focusout",function(e){if(e.relatedTarget&&!popover.contains(e.relatedTarget))dismiss(false);});
+      document.addEventListener("click",function(e){if(!popover.contains(e.target))dismiss(false);});
       if (trigger) {
         trigger.addEventListener("click", function () {
           if (panel && !panel.hidden && !panel.classList.contains("is-closed")) {
             closePanel(popover, panel, "[data-popover-open]");
           } else {
             openPanel(popover, panel, "[data-popover-open]");
+            var first=panel.querySelector("button,input,a[href],select");if(first)first.focus();
           }
         });
       }
       popover.querySelectorAll("[data-popover-close]").forEach(function (button) {
         button.addEventListener("click", function () {
-          closePanel(popover, panel, "[data-popover-open]");
+          dismiss(true);
         });
-      });
-    });
-
-    document.addEventListener("click", function (event) {
-      document.querySelectorAll("[data-menu]").forEach(function (menu) {
-        if (menu.contains(event.target)) return;
-        closePanel(menu, menu.querySelector(".andm-menu__panel"), "[data-menu-open]");
-      });
-      document.querySelectorAll("[data-popover]").forEach(function (popover) {
-        if (popover.contains(event.target)) return;
-        closePanel(popover, popover.querySelector(".andm-popover__panel"), "[data-popover-open]");
-      });
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key !== "Escape") return;
-      document.querySelectorAll("[data-menu]").forEach(function (menu) {
-        closePanel(menu, menu.querySelector(".andm-menu__panel"), "[data-menu-open]");
-      });
-      document.querySelectorAll("[data-popover]").forEach(function (popover) {
-        closePanel(popover, popover.querySelector(".andm-popover__panel"), "[data-popover-open]");
       });
     });
 

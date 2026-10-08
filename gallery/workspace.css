@@ -109,3 +109,40 @@ body:not([data-view="home"]) #component-index { display: none; }
 
 .g-stack { grid-template-columns: minmax(0, 1fr); }
 .g-stack > * { min-width:0; }
+
+/* Compare the specimen in place; documentation follows the specimen. */
+.g-series-dock {position:fixed;inset-inline-end:24px;bottom:max(20px,env(safe-area-inset-bottom));z-index:40;max-width:calc(100vw - 32px);box-shadow:0 6px 28px rgb(24 34 53 / .16);border-radius:12px;}
+.g-series-dock .g-series-picker {background:#fff;padding:8px;gap:8px;flex-wrap:nowrap;}
+.g-series-dock select {width:11.5rem;min-width:0;flex:1;}
+.g-series-dock .g-tool-button {flex:none;font-size:14px;}
+.g-series-dock label {font-size:12px;}
+.g-main {padding-bottom:140px;scroll-padding-bottom:120px;}
+.g-main .g-inspect-details {margin-top:28px;}
+.g-inspect-details:has(> [hidden]):not(:has(> :not([hidden]))) {display:none;}
+.g-back-link {display:inline-flex;align-items:center;min-height:44px;color:var(--g-chrome-accent);font:14px/1.5 system-ui,sans-serif;text-underline-offset:3px;}
+.g-pagehead {margin-bottom:20px;}
+.g-pagehead__kicker {display:none;}
+.g-pagehead h1 {margin:0;}
+.g-source-note {padding:12px;border-left:3px solid #a16b00;background:#fff6df;font:14px/1.65 system-ui,sans-serif;}
+.g-series-dock :focus-visible {outline:3px solid var(--g-chrome-accent);outline-offset:2px;}
+
+@media(max-width:800px) {
+ .g-series-dock {inset-inline:12px;bottom:max(12px,env(safe-area-inset-bottom));max-width:none;}
+ .g-series-dock .g-series-picker {padding:8px;gap:6px;}
+ .g-series-dock label {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
+ .g-series-dock select {width:0;}
+ .g-main {padding-bottom:120px;}
+ .g-pagehead h1 {font-size:1.5rem;}
+ .g-toolbar .g-tool-link {display:none;}
+ .g-toolbar {grid-template-columns:1fr auto;}
+ .g-toolbar .g-search {grid-column:1/-1;}
+}
+@media(prefers-reduced-motion:reduce) {.g-series-dock {scroll-behavior:auto;}}
+
+.g-component-preview {height:100px;align-items:flex-start;}
+.g-component-preview form {margin:0;}
+.g-inspect-details {max-width:52rem;}
+html {scroll-padding-bottom:120px;}
+
+.g-component-preview:has(.andm-search),.g-component-preview:has(.andm-field) {height:auto;min-height:100px;overflow:visible;}
+#page-title:focus {outline:none;}

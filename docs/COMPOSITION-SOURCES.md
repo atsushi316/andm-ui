@@ -46,3 +46,7 @@ CSSはsrc/styles/patterns/compositions.css。GalleryのコピーでHTMLを取得
 ## 検証結果
 
 Chromium 153：16種 × 14 Series × 携帯幅320/390 × 文字100%/200% = 896組で部品領域の横はみ出しなし。加えて800/1280幅の基本レイアウトを確認。検索/クリア/結果なし、条件適用/リセット、並び替え、必須メールの不正/正常、MobileのEscapeとfocus復帰、Actionの実行後開閉、Toolbar、Favorite、ページの一覧/件数更新、保存中の二重操作防止、読み込みのbusy/完了を確認。JS例外なし。トークン未定義なし。日本語フォントで携帯画面を目視確認。
+
+## 2026-10-08の見直し
+
+検索の入力・操作配置、DADS Bottom navの非推奨、Disclosure/ARIA役割の区別を再照合。[全58部品の記録](COMPONENT-AUDIT.md)と[Galleryの操作設計](GALLERY-REVIEW.md)を参照。過去の横幅テストは、位置のずれ・使いやすさを証明するものではなかった。

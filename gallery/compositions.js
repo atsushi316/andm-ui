@@ -64,7 +64,7 @@
     b.closest('[data-part]').querySelector('[data-action-status]').textContent=b.dataset.composeAction;
     const d=b.closest('[data-compose-disclosure]');if(d)close(d,true);
   }));
-  document.querySelector('[data-resource-favorite]').addEventListener('click',e=>{const b=e.currentTarget,on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.textContent=on?'お気に入り済み':'お気に入り';});
+  document.querySelector('[data-resource-favorite]').addEventListener('click',e=>{const b=e.currentTarget,on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));});
   document.querySelector('[data-compose-load]').addEventListener('click',e=>{
     const b=e.currentTarget,part=b.closest('[data-part]'),content=part.querySelector('[data-load-content]'),status=part.querySelector('[data-load-status]');
     b.disabled=true;content.setAttribute('aria-busy','true');status.textContent='読み込み中';

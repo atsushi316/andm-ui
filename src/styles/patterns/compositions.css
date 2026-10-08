@@ -3,7 +3,18 @@
  .andm-field {display:grid;gap:var(--andm-space-2);min-width:0;}
  .andm-search,.andm-filter-bar,.andm-form-actions,.andm-results-header,.andm-toolbar,.andm-header-nav {display:flex;flex-wrap:wrap;align-items:center;gap:var(--andm-space-3);min-width:0;}
  .andm-field > .andm-select__native {appearance:auto;min-width:0;}
- .andm-search__field {flex:1 1 12rem;min-width:0;}
+ .andm-search-results {list-style:none;margin:0;padding:0;}
+ .andm-search {align-items:flex-end;}
+ .andm-search__field {flex:1 1 18rem;min-width:0;}
+ .andm-search__controls {align-items:stretch;}
+ .andm-search .andm-textfield__input,.andm-search .andm-btn {min-height:max(var(--andm-field-height,var(--andm-btn-height-md)),calc(var(--andm-type-body-size) * var(--andm-type-body-line-height) + .75rem));}
+ .andm-search__controls .andm-btn {white-space:normal;overflow-wrap:anywhere;}
+ @media(max-width:600px) {
+   .andm-search__field {flex-basis:100%;}
+   .andm-search__controls {width:100%;}
+   .andm-search__controls .andm-btn[type="submit"] {flex:1;}
+ }
+
  .andm-search__controls {display:flex;flex-wrap:wrap;gap:var(--andm-space-2);}
  .andm-filter-bar {align-items:end;padding:var(--andm-space-4);background:var(--andm-color-surface);border:1px solid var(--andm-color-outline-variant);border-radius:var(--andm-radius-md);}
  .andm-filter-bar > .andm-field {flex:1 1 10rem;}
