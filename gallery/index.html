@@ -1099,7 +1099,14 @@
       }
     </style>
     <link rel="stylesheet" href="workspace.css" />
-  </head>
+  <style id="lab-shortcuts-style">
+.g-lab-shortcuts { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; padding: 8px 24px; flex: none; background: #f5f7fb; }
+.g-lab-shortcuts .g-experiment-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; max-width: 100%; padding: 8px 10px; border: 1px solid #d5dce7; border-radius: 8px; color: #182235; background: #fff; font-size: .875rem; text-decoration: none; overflow-wrap: anywhere; }
+.g-lab-shortcuts .g-experiment-link:hover { background: #edf3ff; }
+.g-lab-shortcuts :focus-visible { outline: 3px solid #1554b8; outline-offset: 3px; }
+@media (max-width: 800px) { .g-lab-shortcuts { padding: 8px 12px; } .g-lab-shortcuts .g-experiment-link { flex: 1; } }
+</style>
+</head>
   <body>
     <a class="g-skip" href="#top">内容へ移動</a>
     <header class="g-toolbar">
@@ -1107,9 +1114,8 @@
       <button type="button" id="nav-toggle" class="g-tool-button" aria-expanded="false" aria-controls="gallery-nav">部品を選ぶ</button>
       <div class="g-search"><label for="component-search">部品・トークン・文献を探す</label><input type="search" id="component-search" placeholder="部品を探す：ボタン、検索…" autocomplete="off" aria-controls="search-results" /><div id="search-results" hidden></div><p id="search-status" class="g-sr-only" role="status"></p></div>
       <a class="g-tool-link" href="lab/">体験ラボ</a>
-      <a class="g-tool-link" href="lab/materiality-behavior/">質感を触って比較</a>
-      <a class="g-tool-link" href="lab/philosophy-poc/">思想を画面で比較</a>
     </header>
+    <nav class="g-lab-shortcuts" aria-label="実験を比較"><a class="g-experiment-link" href="lab/materiality-behavior/">質感の比較</a><a class="g-experiment-link" href="lab/philosophy-poc/">思想の比較</a></nav>
     <a class="andm-link andm-skip-link" href="#top">本文へ移動</a><div class="g-shell">
       <nav class="g-nav" id="gallery-nav" aria-label="ギャラリーの項目">
         <a class="g-nav__brand" href="#/" data-home-nav>andm-ui</a>

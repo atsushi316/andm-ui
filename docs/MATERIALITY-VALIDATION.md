@@ -41,6 +41,7 @@ CSSで軌道を実装し、JSはNative activationを維持しながら保持・�
 | 日本語・長文 | 320px/文字200%の長いラベル、長いメモ、Native必須form validationを確認 |
 | タッチ | Chromium hasTouchの390pxエミュレーションで5連続tap。実機ではない |
 | 自動アクセシビリティ | axe-coreのWCAG 2A/2AA/2.1AA/2.2AAタグ、5画面で検出違反0。全AA適合を保証しない |
+| Gallery入口 | 4幅 × 文字100/200%で2つの実験リンクが見え、重ならないことを確認。既存のsticky toolbar外に置き、アンカー移動を妨げない |
 | 既存回帰 | Galleryの58部品、検索、Carbon切替、旧Labのbrief/dialog/Escape。Philosophy Cの選択/linear保持、比較/単独/狭幅、export、focusなどを再確認 |
 | スクリーンショット | 390/1280pxの探索、評価、使用例、独立生成画面を取得。探索のdesktop/mobileと評価mobileを目視、文字・ボタン・読み順を確認 |
 | JS例外 | 検証中0 |
