@@ -97,3 +97,15 @@ body:not([data-view="home"]) #component-index { display: none; }
 .g-nav .g-nav__brand { display: none; }
 .g-evidence summary { cursor: pointer; min-height: 32px; }
 .g-evidence[open] #evidence-body { margin-top: 12px; }
+
+.g-type-specimen { min-width:0; padding:1rem 0; border-bottom:1px solid #dce2eb; }
+.g-type-role { display:block; margin-bottom:.65rem; font:600 12px/1.5 system-ui,sans-serif; color:#596579; }
+.g-type-metrics { display:block; margin-top:.65rem; font:12px/1.5 ui-monospace,monospace; color:#596579; overflow-wrap:anywhere; }
+.g-atom-icons { display:grid; grid-template-columns:repeat(auto-fit,minmax(96px,1fr)); gap:12px; }
+.g-atom-icons > div { display:flex; flex-direction:column; align-items:center; gap:8px; padding:12px; border:1px solid #dce2eb; border-radius:8px; }
+.g-atom-icons span { font:12px/1.5 system-ui,sans-serif; }
+.g-atomic-shortcut { font:14px/1.6 system-ui,sans-serif; }
+.g-type-specimen .andm-text--display, .g-type-specimen .andm-text--headline { overflow-wrap:anywhere; }
+
+.g-stack { grid-template-columns: minmax(0, 1fr); }
+.g-stack > * { min-width:0; }

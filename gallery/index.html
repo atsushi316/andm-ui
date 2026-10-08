@@ -1108,7 +1108,7 @@
       <div class="g-search"><label for="component-search">部品・トークン・文献を探す</label><input type="search" id="component-search" placeholder="ボタン、入力、色…" autocomplete="off" aria-controls="search-results" /><div id="search-results" hidden></div><p id="search-status" class="g-sr-only" role="status"></p></div>
       <a class="g-tool-link" href="lab/">体験ラボ</a>
     </header>
-    <div class="g-shell">
+    <a class="andm-link andm-skip-link" href="#top">本文へ移動</a><div class="g-shell">
       <nav class="g-nav" id="gallery-nav" aria-label="ギャラリーの項目">
         <a class="g-nav__brand" href="#/" data-home-nav>andm-ui</a>
 
@@ -1209,7 +1209,7 @@
                 >FAB <span class="g-badge g-badge--planned">予定</span></a
               >
             </li>
-          </ul>
+          <li><a href="#/controls/icon-button" data-part-nav="icon-button">アイコンボタン <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/controls/file-input" data-part-nav="file-input">ファイル入力 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/controls/native-input" data-part-nav="native-input">標準入力の種類 <span class="g-badge g-badge--ready">使える</span></a></li></ul>
         </div>
 
         <div class="g-nav__group">
@@ -1235,7 +1235,7 @@
                 >Spinner <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
-          </ul>
+          <li><a href="#/marks/icon" data-part-nav="icon">アイコン <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/marks/status" data-part-nav="status">状態表示 <span class="g-badge g-badge--ready">使える</span></a></li></ul>
         </div>
 
         <div class="g-nav__group">
@@ -1267,7 +1267,7 @@
                 >Table <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
-          </ul>
+          <li><a href="#/display/text" data-part-nav="text">文字・タイポグラフィ <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/label" data-part-nav="label">入力ラベル <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/helper-text" data-part-nav="helper-text">説明文 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/error-text" data-part-nav="error-text">エラー文 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/required-marker" data-part-nav="required-marker">必須・任意の表示 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/code" data-part-nav="code">コード表記 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/kbd" data-part-nav="kbd">キーボード表記 <span class="g-badge g-badge--ready">使える</span></a></li><li><a href="#/display/image" data-part-nav="image">画像 <span class="g-badge g-badge--ready">使える</span></a></li></ul>
         </div>
 
         <div class="g-nav__group">
@@ -1345,7 +1345,7 @@
                 >Menu <span class="g-badge g-badge--ready">使える</span></a
               >
             </li>
-          </ul>
+          <li><a href="#/navigation/link" data-part-nav="link">テキストリンク <span class="g-badge g-badge--ready">使える</span></a></li></ul>
         </div>
 
         <div class="g-nav__group">
@@ -1392,7 +1392,7 @@
           <details id="component-code" class="g-code-panel" hidden><summary>この部品のHTMLを使う</summary><p id="code-context"></p><button type="button" id="copy-component" class="g-tool-button">HTMLをコピー</button><p id="copy-status" role="status"></p><pre id="component-html" tabindex="0"></pre></details>
           <details id="component-evidence" class="g-evidence" hidden><summary>出典と確認範囲</summary><div id="evidence-body"></div></details>
         </header>
-        <section id="component-index" aria-label="部品の一覧"><div class="g-index-top"><label for="component-category">分類<select id="component-category"><option value="">すべて</option></select></label><p id="index-count"></p><a href="#/library">文献を読む</a></div><div id="component-grid" class="g-component-grid"></div><p id="index-empty" hidden>一致する部品がありません。別の言葉で探してください。</p></section>
+        <section id="component-index" aria-label="部品の一覧"><p class="g-atomic-shortcut"><a href="#/display/text">文字・タイポグラフィを比較する</a> · <a href="#/library/atomic-sources">小さな部品の仕様と出典</a></p><div class="g-index-top"><label for="component-category">分類<select id="component-category"><option value="">すべて</option></select></label><p id="index-count"></p><a href="#/library">文献を読む</a></div><div id="component-grid" class="g-component-grid"></div><p id="index-empty" hidden>一致する部品がありません。別の言葉で探してください。</p></section>
         <header class="g-hero">
           <h1>Design System Explorer</h1>
           <p class="lead">
@@ -1624,7 +1624,404 @@
           </details>
 
         <div id="series-preview">
-          <section class="g-section" id="series-overview" data-part="series" aria-labelledby="series-overview-title">
+          <section class="g-section" data-part="text" hidden aria-labelledby="atomic-text-title">
+<h2 id="atomic-text-title">文字・タイポグラフィ <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">シリーズを切り替え、用途ごとの文字と実際の表示値を比較できます。見出しの見た目とHTMLの見出し階層は別に選びます。</p>
+<div class="g-stack">
+<div class="g-type-specimen">
+<span class="g-type-role">Display</span>
+<p class="andm-text andm-text--display" data-type-sample="display">選ぶ、その先へ。</p>
+<output class="g-type-metrics" data-type-metrics="display">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Headline</span>
+<p class="andm-text andm-text--headline" data-type-sample="headline">今日を少し面白く</p>
+<output class="g-type-metrics" data-type-metrics="headline">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Title</span>
+<p class="andm-text andm-text--title" data-type-sample="title">新しいプロジェクト</p>
+<output class="g-type-metrics" data-type-metrics="title">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Body</span>
+<p class="andm-text" data-type-sample="body">使う人が、自分のペースで目的を達成できる。文字の階層と余白は、その体験を支えます。</p>
+<output class="g-type-metrics" data-type-metrics="body">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Body small</span>
+<p class="andm-text andm-text--small" data-type-sample="small">2026年10月8日 · 編集できます</p>
+<output class="g-type-metrics" data-type-metrics="small">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Label</span>
+<p class="andm-label" data-type-sample="label">プロジェクト名</p>
+<output class="g-type-metrics" data-type-metrics="label">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Caption</span>
+<p class="andm-text andm-text--caption" data-type-sample="caption">変更は保存するまで反映されません。</p>
+<output class="g-type-metrics" data-type-metrics="caption">
+</output>
+</div>
+<div class="g-type-specimen">
+<span class="g-type-role">Code</span>
+<code class="andm-code" data-type-sample="code">const idea = "まず触ってみよう";</code>
+<output class="g-type-metrics" data-type-metrics="code">
+</output>
+</div>
+</div>
+<p class="g-desc" id="type-evidence-note">
+</p>
+<a href="#/library/atomic-sources">シリーズごとの対応と出典を見る</a>
+</section>
+<section class="g-section" data-part="icon" hidden aria-labelledby="atomic-icon-title">
+<h2 id="atomic-icon-title">アイコン <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">独自の線画14種。公式アイコンの再配布ではありません。記号と操作名を分けて扱います。</p>
+<div class="g-stack">
+<div class="g-atom-icons">
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="10.5" cy="10.5" r="6.5"/>
+<path d="m16 16 5 5"/>
+</svg>
+<span>search</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m6 6 12 12M18 6 6 18"/>
+</svg>
+<span>close</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 4v16M4 12h16"/>
+</svg>
+<span>add</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m4 12 5 5L20 6"/>
+</svg>
+<span>check</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m4 16 12-12 4 4L8 20H4zM14 6l4 4"/>
+</svg>
+<span>edit</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7M14 10v7"/>
+</svg>
+<span>delete</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 11v6M12 7v.1"/>
+</svg>
+<span>info</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m12 3 10 18H2zM12 9v5M12 17v.1"/>
+</svg>
+<span>warning</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m5 9 7 7 7-7"/>
+</svg>
+<span>chevron-down</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M14 3h7v7M21 3 11 13M10 4H4v16h16v-6"/>
+</svg>
+<span>external</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M4 6h16M4 12h16M4 18h16"/>
+</svg>
+<span>menu</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 16V3m-5 5 5-5 5 5M4 16v5h16v-5"/>
+</svg>
+<span>upload</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4"/>
+</svg>
+<span>download</span>
+</div>
+<div>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 20 3 11C-1 3 9 1 12 7c3-6 13-4 9 4z"/>
+</svg>
+<span>heart</span>
+</div>
+</div>
+<p class="andm-text">大きさ <svg class="andm-icon andm-icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 11v6M12 7v.1"/>
+</svg>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 11v6M12 7v.1"/>
+</svg>
+<svg class="andm-icon andm-icon--lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 11v6M12 7v.1"/>
+</svg>
+</p>
+</div>
+<details class="g-details">
+<summary>使い方</summary>
+<p>装飾は aria-hidden="true"。単独で意味を伝えるSVGには role="img" と aria-label。配布用 dist/icons.svg の symbol を use href で参照できます。</p>
+</details>
+</section>
+<section class="g-section" data-part="icon-button" hidden aria-labelledby="atomic-icon-button-title">
+<h2 id="atomic-icon-button-title">アイコンボタン <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">通常・強調・アウトライン・選択・無効。操作名を持ち、アイコンとは別にタッチ領域を確保します。</p>
+<div class="g-stack">
+<div class="g-row">
+<button type="button" class="andm-icon-button" aria-label="追加" data-atom-action="追加を押しました">
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 4v16M4 12h16"/>
+</svg>
+</button>
+<button type="button" class="andm-icon-button andm-icon-button--filled" aria-label="編集" data-atom-action="編集を押しました">
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="m4 16 12-12 4 4L8 20H4zM14 6l4 4"/>
+</svg>
+</button>
+<button type="button" class="andm-icon-button andm-icon-button--outlined" aria-label="検索" data-atom-action="検索を押しました">
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<circle cx="10.5" cy="10.5" r="6.5"/>
+<path d="m16 16 5 5"/>
+</svg>
+</button>
+<button type="button" class="andm-icon-button" aria-label="お気に入り" aria-pressed="false" data-atom-toggle>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M12 20 3 11C-1 3 9 1 12 7c3-6 13-4 9 4z"/>
+</svg>
+</button>
+<button type="button" class="andm-icon-button" aria-label="削除" disabled>
+<svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7M14 10v7"/>
+</svg>
+</button>
+</div>
+<p class="andm-helper" id="atom-button-result" role="status">操作すると結果がここに出ます。</p>
+</div>
+</section>
+<section class="g-section" data-part="link" hidden aria-labelledby="atomic-link-title">
+<h2 id="atomic-link-title">テキストリンク <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">本文内のリンク、外部リンク、長いURL。訪問済み色は独立したトークンで指定できます。</p>
+<div class="g-stack">
+<p class="andm-text">仕様は<a class="andm-link" href="#/library/atomic-sources">出典の記録</a>で確認できます。</p>
+<p class="andm-text">
+<a class="andm-link" href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer">W3C WAI <svg class="andm-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M14 3h7v7M21 3 11 13M10 4H4v16h16v-6"/>
+</svg>
+<span class="andm-visually-hidden">（新しいタブで開きます）</span>
+</a>
+</p>
+<p class="andm-text">
+<a class="andm-link" href="#/display/text">https://example.com/projects/very-long-name-for-a-mobile-layout-check</a>
+</p>
+</div>
+</section>
+<section class="g-section" data-part="label" hidden aria-labelledby="atomic-label-title">
+<h2 id="atomic-label-title">入力ラベル <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">入力の名前。for と id を関連付け、クリックすると入力へ移動します。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-label-name">プロジェクト名</label>
+<input class="andm-textfield__input" id="atom-label-name" placeholder="新しいアイデア" />
+</div>
+</div>
+</section>
+<section class="g-section" data-part="helper-text" hidden aria-labelledby="atomic-helper-text-title">
+<h2 id="atomic-helper-text-title">説明文 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">入力方法や条件を伝える小さな文章。aria-describedby で入力に関連付けます。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-helper-name">公開名</label>
+<input class="andm-textfield__input" id="atom-helper-name" aria-describedby="atom-helper-note"/>
+<p class="andm-helper" id="atom-helper-note">他の人に表示する名前です。あとから変更できます。</p>
+</div>
+</div>
+</section>
+<section class="g-section" data-part="error-text" hidden aria-labelledby="atomic-error-text-title">
+<h2 id="atomic-error-text-title">エラー文 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">色だけでなく文章で問題と直し方を伝えます。例を操作して、エラーの表示と解除を試せます。</p>
+<div class="g-stack">
+<form id="atom-error-form" novalidate class="andm-textfield">
+<label class="andm-label" for="atom-email">メールアドレス<span class="andm-required">必須</span>
+</label>
+<input class="andm-textfield__input" id="atom-email" type="email" required aria-describedby="atom-email-help"/>
+<p class="andm-helper" id="atom-email-help">例：name@example.com</p>
+<p class="andm-error" id="atom-email-error" hidden>エラー：メールアドレスを正しい形式で入力してください。</p>
+<button type="submit" class="andm-btn andm-btn--filled">入力を確認</button>
+<p class="andm-helper" id="atom-email-status" role="status">
+</p>
+</form>
+</div>
+</section>
+<section class="g-section" data-part="required-marker" hidden aria-labelledby="atomic-required-marker-title">
+<h2 id="atomic-required-marker-title">必須・任意の表示 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">表示だけでは必須入力になりません。入力の required とセットで使います。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-required">名前<span class="andm-required">必須</span>
+</label>
+<input class="andm-textfield__input" id="atom-required" required/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-optional">ひとこと<span class="andm-optional">任意</span>
+</label>
+<input class="andm-textfield__input" id="atom-optional"/>
+</div>
+</div>
+</section>
+<section class="g-section" data-part="status" hidden aria-labelledby="atomic-status-title">
+<h2 id="atomic-status-title">状態表示 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">色付きの印とテキスト。読み取り専用で、押せるボタンにはしません。</p>
+<div class="g-stack">
+<div class="g-row">
+<span class="andm-status">下書き</span>
+<span class="andm-status andm-status--info">確認中</span>
+<span class="andm-status andm-status--success">保存済み</span>
+<span class="andm-status andm-status--warning">要確認</span>
+<span class="andm-status andm-status--error">保存に失敗</span>
+</div>
+</div>
+</section>
+<section class="g-section" data-part="code" hidden aria-labelledby="atomic-code-title">
+<h2 id="atomic-code-title">コード表記 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">本文中の短いコードと、横スクロールできるコードブロック。</p>
+<div class="g-stack">
+<p class="andm-text">クラス名は <code class="andm-code">andm-text</code> です。</p>
+<pre class="andm-code" tabindex="0" aria-label="コード例">
+<code>&lt;p class="andm-text andm-text--title"&gt;世界を少し面白く&lt;/p&gt;
+const projectName = "途中のアイデアも残しておこう";</code>
+</pre>
+</div>
+</section>
+<section class="g-section" data-part="kbd" hidden aria-labelledby="atomic-kbd-title">
+<h2 id="atomic-kbd-title">キーボード表記 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">ショートカットの案内。見た目はキーですが、操作ボタンではありません。</p>
+<div class="g-stack">
+<p class="andm-text">
+<kbd class="andm-kbd">⌘</kbd> + <kbd class="andm-kbd">S</kbd> で保存</p>
+<p class="andm-text">
+<kbd class="andm-kbd">Esc</kbd> で閉じる</p>
+</div>
+</section>
+<section class="g-section" data-part="image" hidden aria-labelledby="atomic-image-title">
+<h2 id="atomic-image-title">画像 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">自然な比率・正方形・横長。意味のある画像には説明、装飾には空のaltを指定します。</p>
+<div class="g-stack">
+<figure style="margin:0">
+<img class="andm-image andm-image--wide" src="assets/crop-fixture.svg" alt="画像の切り取りを比較するための、中央と四隅に印を置いたテスト画像" width="480" height="270"/>
+<figcaption class="andm-text andm-text--caption">16:9の枠。切り取り位置は object-position で指定できます。</figcaption>
+</figure>
+</div>
+</section>
+<section class="g-section" data-part="file-input" hidden aria-labelledby="atomic-file-input-title">
+<h2 id="atomic-file-input-title">ファイル入力 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">ブラウザ標準のファイル選択。選択済み・無効・複数ファイルに対応します。この見本ではアップロードしません。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-file">添付ファイル</label>
+<input type="file" class="andm-file-input" id="atom-file" multiple aria-describedby="atom-file-help"/>
+<p class="andm-helper" id="atom-file-help">端末からファイルを選びます。</p>
+<p class="andm-helper" id="atom-file-result" role="status">未選択</p>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-file-disabled">ファイル入力（無効）</label>
+<input type="file" class="andm-file-input" id="atom-file-disabled" disabled/>
+</div>
+</div>
+</section>
+<section class="g-section" data-part="native-input" hidden aria-labelledby="atomic-native-input-title">
+<h2 id="atomic-native-input-title">標準入力の種類 <span class="g-badge g-badge--ready">使える</span>
+</h2>
+<p class="g-desc">既存Text fieldを使う検索・メール・数値・日付・時刻・色。ピッカーの内部表示はブラウザとOSの標準です。</p>
+<div class="g-stack">
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-search">検索</label>
+<input class="andm-textfield__input" id="atom-native-search" type="search" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-email">メール</label>
+<input class="andm-textfield__input" id="atom-native-email" type="email" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-password">パスワード</label>
+<input class="andm-textfield__input" id="atom-native-password" type="password" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-tel">電話番号</label>
+<input class="andm-textfield__input" id="atom-native-tel" type="tel" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-url">URL</label>
+<input class="andm-textfield__input" id="atom-native-url" type="url" value=""/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-number">数量</label>
+<input class="andm-textfield__input" id="atom-native-number" type="number" value="2" min="0" step="1"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-date">日付</label>
+<input class="andm-textfield__input" id="atom-native-date" type="date" value="2026-10-08"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-time">時刻</label>
+<input class="andm-textfield__input" id="atom-native-time" type="time" value="10:30"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-datetime-local">日時</label>
+<input class="andm-textfield__input" id="atom-native-datetime-local" type="datetime-local" value="2026-10-08T10:30"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-native-color">色</label>
+<input class="andm-textfield__input" id="atom-native-color" type="color" value="#0b57d0"/>
+</div>
+<div class="andm-textfield">
+<label class="andm-label" for="atom-readonly">読み取り専用</label>
+<input class="andm-textfield__input" id="atom-readonly" value="変更できない値" readonly/>
+</div>
+</div>
+</section>
+<section class="g-section" id="series-overview" data-part="series" aria-labelledby="series-overview-title">
             <h2 id="series-overview-title">Overview</h2>
             <p class="g-exp-character" id="series-character"></p>
             <dl class="g-series-brief">
@@ -2190,7 +2587,7 @@
                 <code>andm-checkbox__label</code>。
               </p>
             </details>
-          </section>
+          <div class="g-row"><label class="andm-checkbox"><input class="andm-checkbox__input" type="checkbox" data-indeterminate/><span class="andm-checkbox__label">一部選択（クリックして変更）</span></label></div></section>
 
           <section class="g-section" id="radio" data-part="radio" hidden aria-labelledby="radio-title">
             <h2 id="radio-title">
@@ -3269,6 +3666,7 @@
     <script src="series-copy.js?v=workspace-3"></script>
     <script src="catalog.js?v=workspace-3"></script>
     <script src="library.js?v=workspace-3"></script>
+    <script src="atoms.js"></script>
     <script src="explorer.js?v=workspace-3"></script>
     <script src="workspace.js?v=workspace-3"></script>
   </body>

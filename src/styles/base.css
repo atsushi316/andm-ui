@@ -11,9 +11,9 @@
 
   body {
     margin: 0;
-    font-family: var(--andm-font-family);
-    font-size: var(--andm-font-size-md);
-    line-height: var(--andm-line-height-tight);
+    font-family: var(--andm-type-body-font);
+    font-size: var(--andm-type-body-size);
+    line-height: var(--andm-type-body-line-height);
     color: var(--andm-color-on-surface);
     background: var(--andm-color-surface);
   }

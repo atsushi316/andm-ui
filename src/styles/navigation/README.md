@@ -8,3 +8,5 @@
 - `menu.css` — `.andm-menu`（項目の一覧。開閉は Gallery の短いスクリプト）
 
 同じ場での値の変更は Control。
+
+Text link / Skip linkを追加。根拠と確認範囲は [ATOMIC-SOURCES.md](../../../docs/ATOMIC-SOURCES.md)。

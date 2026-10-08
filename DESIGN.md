@@ -165,3 +165,7 @@ Research → Design Space → Principle / Direction / Series候補
 ## Risk
 
 自動化 → 平均化 → 画一化を避ける。Token は少数段階を保持し、唯一値強制と無制限増殖の両方を避ける。
+
+## 用途別タイポグラフィ
+
+文字はdisplay/headline/title/body/body-small/label/caption/code/actionの役割で定義する。Seriesは役割別のサイズ・行高・太さ・字間・書体を差し替えられる。見出しの意味はNative HTML、見た目はクラスで選ぶ。既存ButtonのサイズAPIを維持し、本文へButtonの行高を流用しない。公式値・andmへの対応付け・独自補完は [ATOMIC-SOURCES.md](docs/ATOMIC-SOURCES.md) に記録する。

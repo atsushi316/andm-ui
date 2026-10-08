@@ -1,0 +1,8 @@
+@layer andm.components {
+  .andm-label { display: inline-block; color: var(--andm-color-on-surface); overflow-wrap: anywhere; }
+  .andm-helper, .andm-error { display: block; margin: 0; overflow-wrap: anywhere; }
+  .andm-helper { color: var(--andm-color-on-surface-variant); }
+  .andm-error { color: var(--andm-color-error); }
+  .andm-required { display: inline-block; margin-inline-start: 0.5em; color: var(--andm-color-error); font: inherit; font-weight: 700; }
+  .andm-optional { display: inline-block; margin-inline-start: 0.5em; color: var(--andm-color-on-surface-variant); font: inherit; font-weight: 400; }
+}

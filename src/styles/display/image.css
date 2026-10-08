@@ -1,0 +1,6 @@
+@layer andm.components {
+  .andm-image { display: block; max-width: 100%; height: auto; object-fit: var(--andm-image-fit, cover); border-radius: var(--andm-surface-radius, var(--andm-radius-md)); }
+  .andm-image--square { aspect-ratio: 1; width: 100%; }
+  .andm-image--wide { aspect-ratio: 16 / 9; width: 100%; }
+  .andm-image--contain { --andm-image-fit: contain; }
+}

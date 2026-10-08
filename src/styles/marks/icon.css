@@ -1,0 +1,6 @@
+@layer andm.components {
+  .andm-icon { display: inline-block; width: var(--andm-icon-size); height: var(--andm-icon-size); flex: 0 0 auto; vertical-align: -0.15em; fill: none; stroke: currentColor; stroke-width: var(--andm-icon-stroke); stroke-linecap: round; stroke-linejoin: round; }
+  .andm-icon--sm { --andm-icon-size: 1rem; }
+  .andm-icon--lg { --andm-icon-size: 1.5rem; }
+  .andm-icon--filled { fill: currentColor; stroke: none; }
+}

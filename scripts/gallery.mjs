@@ -27,7 +27,7 @@ const types = {
   ".md": "text/plain; charset=utf-8",
 };
 
-const galleryScripts = ["series-copy.js", "catalog.js", "library.js", "explorer.js", "workspace.js"];
+const galleryScripts = ["series-copy.js", "catalog.js", "library.js", "explorer.js", "workspace.js", "atoms.js"];
 
 function localPath(urlPath) {
   let pathname = decodeURIComponent(urlPath.split("?")[0]);

@@ -31,3 +31,10 @@ CSS-first / Framework-agnostic の UI アーキテクトとして、`--andm-*` T
 - 公式値・andm の対応付け・独自仕様・未確認を区別する。既存 Button の寸法を別部品の公式値として流用しない。
 - 出典や確認記録はドキュメントへ残す。文献の閲覧導線は Gallery に置けるが、研究値を Runtime Token へ自動変換しない。
 - Gallery の Chrome と製品部品の見た目を分離し、携帯の検索・ナビ・コピー・狭幅を確認する。未検証を検証済みと表示しない。
+
+## Typography and atomic inventory
+
+- 新しい小部品は docs/ATOMIC-INVENTORY.md と照合して責務を重複させない。
+- 本文・見出し・操作ラベルは --andm-type-* の用途別トークンを使う。Button の line-height/weight を本文へ流用しない。
+- Series の文字変更は対象プラットフォーム・版・公式ロールを記録する。未取得の公式値を平均値で埋めない。
+- Gallery でシリーズ、長い日本語、文字拡大、フォーカス、エラーの関連付けを確認する。

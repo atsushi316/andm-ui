@@ -101,3 +101,18 @@ DESIGN.md       デザイン原則・Design Space
 Gallery は日本語検索、携帯用の開閉メニュー、部品一覧、シリーズ選択、先頭見本の HTML コピーに対応します。確認範囲は画面内の「出典」から読めます。[Chip / FAB の根拠](docs/COMPONENT-SOURCES.md)、[Gallery 改善の根拠](docs/GALLERY-REVIEW.md)。
 
 Chip / FAB 固有の寸法・形は andm 独自仕様です。全シリーズの公式 Chip / FAB を再現したものではありません。FAB は `andm-fab` 単独で使います。
+
+## 小さな部品と文字の体系
+
+本文・見出し・操作ラベルを別の用途として定義します。`.andm-text` と用途modifier、Icon/IconButton、Link、Label/Helper/Error、Required/Optional、Status、Code/Kbd、Image、File inputを使えます。[整備範囲とAPI](docs/ATOMIC-INVENTORY.md)、[シリーズ別の一次資料・独自補完](docs/ATOMIC-SOURCES.md)を参照。
+
+```html
+<div class="andm-series--dads">
+  <h2 class="andm-text andm-text--title">プロジェクト</h2>
+  <p class="andm-text">次に試したいアイデアを残しましょう。</p>
+</div>
+```
+
+フォントファイルは同梱しません。Apple/Spectrumの新しい文字ロールの数値はBaselineによる独自補完です。全シリーズの公式部品を完全再現するものではありません。
+
+確認用静的Galleryは `npm run build` の後に `node scripts/export-gallery.mjs /absolute/output/directory` で書き出せます。変更したCSS/JSはキャッシュ識別子付きで配信します。

@@ -96,7 +96,7 @@
     "--andm-color-secondary-container": "弱い面",
     "--andm-font-family": "本文の書体",
     "--andm-font-size-sm": "小さい文字",
-    "--andm-font-size-md": "本文の大きさ",
+    "--andm-font-size-md": "既存の操作ラベル（中）の大きさ",
     "--andm-font-size-lg": "大きい文字",
     "--andm-font-weight-medium": "ボタンの字重",
     "--andm-line-height-tight": "詰めた行間",
@@ -156,6 +156,8 @@
     "analysis-fluent": "../analysis/fluent.md",
     "component-sources": "../../docs/COMPONENT-SOURCES.md",
     "gallery-review": "../../docs/GALLERY-REVIEW.md",
+    "atomic-sources": "../../docs/ATOMIC-SOURCES.md",
+    "atomic-inventory": "../../docs/ATOMIC-INVENTORY.md",
   };
 
   var libraryTitles = {
@@ -174,6 +176,8 @@
     "analysis-fluent": "Fluent 2 の確認範囲",
     "component-sources": "Chip / FAB の仕様と根拠",
     "gallery-review": "ギャラリー改善の根拠",
+    "atomic-sources": "小さな部品・文字の仕様と根拠",
+    "atomic-inventory": "アトミック部品の整備範囲",
   };
 
   var partKickers = {

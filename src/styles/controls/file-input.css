@@ -1,0 +1,8 @@
+@layer andm.components {
+  .andm-file-input { display: block; width: 100%; max-width: 100%; min-height: var(--andm-target-min); padding: var(--andm-space-2); border: 1px solid var(--andm-color-outline); border-radius: var(--andm-field-radius, var(--andm-radius-md)); background: var(--andm-color-surface); color: var(--andm-color-on-surface); font-family: var(--andm-type-body-font); font-size: var(--andm-type-body-size); line-height: var(--andm-type-body-line-height); }
+  .andm-file-input::file-selector-button { margin-inline-end: var(--andm-space-3); padding: var(--andm-space-2); border: 1px solid var(--andm-color-outline); border-radius: var(--andm-radius-sm); background: var(--andm-color-secondary-container); color: var(--andm-color-on-secondary-container); font: inherit; cursor: pointer; }
+  .andm-file-input:focus-visible { outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color); outline-offset: var(--andm-focus-ring-offset); }
+  .andm-file-input[aria-invalid="true"] { border-color: var(--andm-color-error); }
+  .andm-file-input:disabled { color: var(--andm-color-on-disabled); background: var(--andm-color-disabled-container); cursor: not-allowed; }
+  .andm-file-input:disabled::file-selector-button { color: var(--andm-color-on-disabled); background: var(--andm-color-disabled-container); cursor: not-allowed; }
+}

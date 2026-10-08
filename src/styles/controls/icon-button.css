@@ -1,0 +1,10 @@
+@layer andm.components {
+  .andm-icon-button { display: inline-flex; align-items: center; justify-content: center; width: max(var(--andm-icon-button-target), var(--andm-btn-height-md)); min-width: var(--andm-icon-button-target); min-height: max(var(--andm-icon-button-target), var(--andm-btn-height-md)); aspect-ratio: 1; padding: var(--andm-space-2); border: 1px solid transparent; border-radius: var(--andm-btn-radius); background: transparent; color: var(--andm-color-primary); cursor: pointer; appearance: none; transition: background-color var(--andm-motion-duration-short2) var(--andm-motion-easing-decelerate); }
+  .andm-icon-button:hover:not(:disabled) { background: var(--andm-color-secondary-container); color: var(--andm-color-on-secondary-container); }
+  .andm-icon-button:active:not(:disabled) { background: var(--andm-color-secondary-container); transition-duration: var(--andm-motion-duration-short1); transition-timing-function: var(--andm-motion-easing-accelerate); }
+  .andm-icon-button[aria-pressed="true"], .andm-icon-button--filled { background: var(--andm-color-primary); color: var(--andm-color-on-primary); }
+  .andm-icon-button--outlined { border-color: currentColor; }
+  .andm-icon-button:focus-visible { outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style) var(--andm-focus-ring-color); outline-offset: var(--andm-focus-ring-offset); }
+  .andm-icon-button:disabled { background: var(--andm-color-disabled-container); color: var(--andm-color-on-disabled); cursor: not-allowed; }
+  @media (prefers-reduced-motion: reduce) { .andm-icon-button { transition: none; } }
+}

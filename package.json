@@ -5,7 +5,8 @@
   "type": "module",
   "style": "./dist/style.css",
   "exports": {
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./icons.svg": "./dist/icons.svg"
   },
   "files": [
     "dist",
@@ -14,7 +15,9 @@
     "CHANGELOG.md",
     "docs/EXPERIENCE.md",
     "docs/COMPONENT-SOURCES.md",
-    "docs/GALLERY-REVIEW.md"
+    "docs/GALLERY-REVIEW.md",
+    "docs/ATOMIC-SOURCES.md",
+    "docs/ATOMIC-INVENTORY.md"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",

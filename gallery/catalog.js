@@ -187,7 +187,7 @@
   }
 
   function isTypeToken(name) {
-    return /font|line-height|tracking/.test(name);
+    return /font|line-height|tracking|--andm-type-/.test(name);
   }
 
   function tokenCategory(name) {
@@ -195,7 +195,7 @@
     if (/motion/.test(name)) return "motion";
     if (/state-|overlay|focus-ring/.test(name)) return "interaction";
     if (/color/.test(name)) return "color";
-    if (/font|line-height|tracking/.test(name)) return "typography";
+    if (/font|line-height|tracking|--andm-type-/.test(name)) return "typography";
     if (/space/.test(name)) return "spacing";
     if (/radius|shape/.test(name)) return "shape";
     if (/shadow/.test(name)) return "elevation";
