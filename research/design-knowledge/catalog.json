@@ -1,0 +1,779 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "id": "history.minimal-art",
+      "kind": "historical-style",
+      "title": "Minimal Art：歴史資料",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "Minimal Art：歴史資料",
+      "basis": "research-based",
+      "sourceStatus": "specified",
+      "checkedScope": "記述の範囲のみ確認。UI数値の公式根拠ではない",
+      "sources": [
+        {
+          "authority": "professional",
+          "locator": "https://www.guggenheim-bilbao.eus/en/learn/schools/teachers-guides/untitled-no-85-065-1985",
+          "version": "継続更新 / 確認日固定",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "Judd作品解説の歴史・素材・空間の記述。UIの余白値を規定しない"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "BilbaoのJudd作品解説は、単純化された幾何形態、工業素材、作品と空間の関係を説明する。Judd自身は分類ラベルを拒んだとも記す。",
+        "history": "美術史の資料記述。Web Minimalismや白背景の必須性と同一視しない",
+        "limits": [
+          "作品解説の範囲。運動全体の歴史を確定する資料ではない"
+        ]
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "history.architectural-brutalism",
+      "kind": "historical-style",
+      "title": "建築Brutalism：本文確認待ち",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "建築Brutalism：本文確認待ち",
+      "basis": "unverified",
+      "sourceStatus": "unverified",
+      "checkedScope": "記述の範囲のみ確認。UI数値の公式根拠ではない",
+      "sources": [
+        {
+          "authority": "professional",
+          "locator": "https://sah-archipedia.org/essays/TH-01-ART-013",
+          "version": "継続更新 / 確認日固定",
+          "checkedAt": null,
+          "verification": "直接取得403。検索抜粋のみ。本文未確認",
+          "supports": [
+            "建築史の確認先"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "建築史とWeb表現を同じ運動として扱わない。詳細な歴史は本文確認待ち。"
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "history.web-brutalism",
+      "kind": "historical-style",
+      "title": "Web Brutalism：コレクションの立場",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "Web Brutalism：コレクションの立場",
+      "basis": "research-based",
+      "sourceStatus": "specified",
+      "checkedScope": "記述の範囲のみ確認。UI数値の公式根拠ではない",
+      "sources": [
+        {
+          "authority": "professional",
+          "locator": "https://brutalistwebsites.com/",
+          "version": "継続更新 / 確認日固定",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "冒頭のコレクション定義"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "Brutalist Websitesは、粗さと快適さを優先しない表現を、軽快で楽観的なWebデザインへの反応として説明する。これは運営者の立場であり普遍的規格ではない。",
+        "limits": [
+          "建築史との同一性、使いやすさ、具体的なCSS値は裏付けない"
+        ]
+      },
+      "relatedIds": [
+        "history.architectural-brutalism"
+      ],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "philosophy.minimalism",
+      "kind": "aesthetic",
+      "title": "Minimalism：UI適用仮説",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "Minimalism：UI適用仮説",
+      "basis": "research-based",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "記述の範囲のみ確認。UI数値の公式根拠ではない",
+      "sources": [
+        {
+          "authority": "professional",
+          "locator": "https://www.guggenheim-bilbao.eus/en/learn/schools/teachers-guides/untitled-no-85-065-1985",
+          "version": "継続更新 / 確認日固定",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "形態と空間の関係を参照する出発点。UIへの適用はandm解釈"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "必要な判断情報を残し、役割と読む経路を絞って構造を伝える。",
+        "principles": [
+          "必要な情報・状態を消さない",
+          "文字役割と群化で優先度を伝える",
+          "装飾を目的から評価する"
+        ],
+        "typography": "見出し・本文・操作ラベルの役割を分ける。特定書体は必須にしない",
+        "spaceDensity": "読む区間に余白を配分。関連情報を離しすぎない",
+        "hierarchy": "価値説明→機能→使い方→制約",
+        "gridComposition": "線形Editorial以外にも適用可能",
+        "decorationMaterialMotion": "動きを必要条件にしない",
+        "suitableUses": [
+          "価値の説明・個人の紹介"
+        ],
+        "unsuitableUses": [
+          "情報や状態を消して密な業務タスクを隠す用途"
+        ],
+        "limits": [
+          "効果はユーザー観察前"
+        ],
+        "interpretation": "歴史資料はWebの文字サイズ・配色・操作数を規定しない"
+      },
+      "relatedIds": [
+        "history.minimal-art"
+      ],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "philosophy.web-brutalism",
+      "kind": "aesthetic",
+      "title": "Web Brutalism：UI適用仮説",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "Web Brutalism：UI適用仮説",
+      "basis": "research-based",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "記述の範囲のみ確認。UI数値の公式根拠ではない",
+      "sources": [
+        {
+          "authority": "professional",
+          "locator": "https://brutalistwebsites.com/",
+          "version": "継続更新 / 確認日固定",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "反慣習という立場を参照。アクセシビリティ放棄は採用しない"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "慣習的な整ったカード群から離れ、情報の構造と操作の境界を露出させる。",
+        "principles": [
+          "大胆な文字と配置で構造を露出",
+          "意味・読順・focusは維持",
+          "太枠だけで思想を表した扱いにしない"
+        ],
+        "typography": "タイトルと本文の大きな対比。局所サイズは独自値",
+        "spaceDensity": "非対称な密度と直接的な説明",
+        "hierarchy": "声明→露出した索引→機能表→使い方",
+        "gridComposition": "非対称Editorial。Canvasと一対一ではない",
+        "decorationMaterialMotion": "罫線・番号は任意の技法。動きは今回追加しない",
+        "suitableUses": [
+          "実験的な紹介"
+        ],
+        "unsuitableUses": [
+          "誤解や操作障害を意図的に隠す用途"
+        ],
+        "limits": [
+          "適性・印象は未検証"
+        ],
+        "interpretation": "読みやすさとkeyboardは独立した要求として維持"
+      },
+      "relatedIds": [
+        "history.web-brutalism"
+      ],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "composition.editorial",
+      "kind": "composition",
+      "title": "Editorial",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "Editorial",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "読む順序と強調で説明を組織する。"
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "composition.relational",
+      "kind": "composition",
+      "title": "関係探索＋線形説明",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "関係探索＋線形説明",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "複数対象の関係と選択状態を保持し、線形表示へ復帰する。"
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "composition.spatial",
+      "kind": "composition",
+      "title": "Spatial：研究候補",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "Spatial：研究候補",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "距離・視角・遮蔽・入力・姿勢の条件を研究する。今回実装しない。"
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "intent.orbit-note",
+      "kind": "design-intent",
+      "title": "ORBIT NOTEの意図",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "ORBIT NOTEの意図",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "散らばった考えがつながる発見と、自分で整理できる安心。"
+      },
+      "relatedIds": [
+        "composition.editorial",
+        "composition.relational",
+        "constraint.common-content"
+      ],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "constraint.common-content",
+      "kind": "constraint",
+      "title": "同じ内容・同じ操作先",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "同じ内容・同じ操作先",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "内容ID、価値、機能、使い方、制約を全候補で一致させる。表示順と構造は変えられる。"
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "constraint.native",
+      "kind": "constraint",
+      "title": "Native操作と表現の分離",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "Native操作と表現の分離",
+      "basis": "official",
+      "sourceStatus": "specified",
+      "checkedScope": "記述の範囲のみ確認。UI数値の公式根拠ではない",
+      "sources": [
+        {
+          "authority": "standard",
+          "locator": "https://www.w3.org/TR/WCAG22/",
+          "version": "継続更新 / 確認日固定",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "Keyboard、Meaningful Sequence、Name/Role/Value等の該当要求"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "リンクで移動、buttonで状態変更、pressedで選択を示す。表現の自由とアクセシビリティを独立に評価。"
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "alternative.shared-template",
+      "kind": "alternative",
+      "title": "単一DOMのテーマ切替",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "単一DOMのテーマ切替",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "実装は短いが構成の差を比較できないため今回は使わない。"
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "alternative.tabs-only",
+      "kind": "alternative",
+      "title": "既存Tabsだけで詳細を切替",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "既存Tabsだけで詳細を切替",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "詳細の選択は満たせるが、複数機能の接続と選択関係を併せて辿る構造は提供しない。Native button等の原子は再利用する。"
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "poc.minimal",
+      "kind": "decision",
+      "title": "A · Minimalismの構成",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "A · Minimalismの構成",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "読む経路を明確にするが、印象の強さが弱い可能性",
+        "philosophyIds": [
+          "philosophy.minimalism"
+        ],
+        "compositionIds": [
+          "composition.editorial"
+        ],
+        "constraintIds": [
+          "constraint.common-content",
+          "constraint.native"
+        ],
+        "series": "Soft",
+        "implementation": "gallery/lab/philosophy-poc/minimal.html / poc.css / candidate.js",
+        "componentUses": [
+          {
+            "part": "Typography / Link",
+            "mode": "reuse",
+            "contract": "Native見出しとリンクの意味を保持",
+            "changes": [],
+            "decisionIds": [
+              "poc.minimal"
+            ]
+          }
+        ],
+        "interpretation": "具体値、配置、Cの世界観はandm独自。公式部品の再現と称しない"
+      },
+      "relatedIds": [
+        "intent.orbit-note",
+        "constraint.common-content",
+        "constraint.native",
+        "philosophy.minimalism",
+        "composition.editorial"
+      ],
+      "alternatives": [
+        {
+          "id": "alternative.shared-template",
+          "benefit": "既存構造だけで小さく作れる",
+          "cost": "今回比較したい構成や関係の要件を満たさない"
+        }
+      ],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [
+        "validation.poc"
+      ],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "poc.brutal",
+      "kind": "decision",
+      "title": "B · Web Brutalismの構成",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "B · Web Brutalismの構成",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "構造が印象に残るが、強い文字が探索を遅くする可能性",
+        "philosophyIds": [
+          "philosophy.web-brutalism"
+        ],
+        "compositionIds": [
+          "composition.editorial"
+        ],
+        "constraintIds": [
+          "constraint.common-content",
+          "constraint.native"
+        ],
+        "series": "Technical（独自Series）",
+        "implementation": "gallery/lab/philosophy-poc/brutal.html / poc.css / candidate.js",
+        "componentUses": [
+          {
+            "part": "Typography / Link",
+            "mode": "extend",
+            "contract": "Native見出しとリンクの意味を保持",
+            "changes": [
+              "局所の文字サイズ、枠、配置。公式Seriesは変更しない"
+            ],
+            "decisionIds": [
+              "poc.brutal"
+            ]
+          }
+        ],
+        "interpretation": "具体値、配置、Cの世界観はandm独自。公式部品の再現と称しない"
+      },
+      "relatedIds": [
+        "intent.orbit-note",
+        "constraint.common-content",
+        "constraint.native",
+        "philosophy.web-brutalism",
+        "composition.editorial"
+      ],
+      "alternatives": [
+        {
+          "id": "alternative.shared-template",
+          "benefit": "既存構造だけで小さく作れる",
+          "cost": "今回比較したい構成や関係の要件を満たさない"
+        }
+      ],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [
+        "validation.poc"
+      ],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "poc.original",
+      "kind": "decision",
+      "title": "C · Originalの構成",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "C · Originalの構成",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "関係を辿る発見を表現するが、初見の学習負荷がある",
+        "philosophyIds": [],
+        "compositionIds": [
+          "composition.relational"
+        ],
+        "constraintIds": [
+          "constraint.common-content",
+          "constraint.native"
+        ],
+        "series": "Soft（独自Series）",
+        "implementation": "gallery/lab/philosophy-poc/original.html / poc.css / candidate.js",
+        "componentUses": [
+          {
+            "part": "Typography / Link",
+            "mode": "extend",
+            "contract": "Native見出しとリンクの意味を保持",
+            "changes": [
+              "暗い独自背景に合わせた文字・リンク・Chipの局所色",
+              "導入見出しの局所書体。SoftとCoreは無変更"
+            ],
+            "decisionIds": [
+              "poc.original"
+            ]
+          },
+          {
+            "part": "機能関係インスペクタ",
+            "mode": "create",
+            "contract": "Native button / aria-pressed / 詳細領域 / 線形表示切替。選択保持、ドラッグ不要",
+            "changes": [
+              "Lab内だけの新しい複合構造・参考controller"
+            ],
+            "decisionIds": [
+              "poc.original"
+            ]
+          }
+        ],
+        "interpretation": "具体値、配置、Cの世界観はandm独自。公式部品の再現と称しない"
+      },
+      "relatedIds": [
+        "intent.orbit-note",
+        "constraint.common-content",
+        "constraint.native",
+        "composition.relational"
+      ],
+      "alternatives": [
+        {
+          "id": "alternative.tabs-only",
+          "benefit": "既存構造だけで小さく作れる",
+          "cost": "今回比較したい構成や関係の要件を満たさない"
+        }
+      ],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [
+        "validation.poc"
+      ],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "poc.minimal-extended",
+      "kind": "decision",
+      "title": "A′ · Minimalism + Extendの構成",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "A′ · Minimalism + Extendの構成",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "CTAの識別を強めるが、静かな階層を乱す可能性",
+        "philosophyIds": [
+          "philosophy.minimalism"
+        ],
+        "compositionIds": [
+          "composition.editorial"
+        ],
+        "constraintIds": [
+          "constraint.common-content",
+          "constraint.native"
+        ],
+        "series": "Soft",
+        "implementation": "gallery/lab/philosophy-poc/minimal-extended.html / poc.css / candidate.js",
+        "componentUses": [
+          {
+            "part": "Typography / Link",
+            "mode": "reuse",
+            "contract": "Native見出しとリンクの意味を保持",
+            "changes": [],
+            "decisionIds": [
+              "poc.minimal-extended"
+            ]
+          },
+          {
+            "part": "主CTA",
+            "mode": "extend",
+            "contract": "aで使い方へ移動。到達先とDOMをAと一致",
+            "changes": [
+              "下線、囲み、余白の局所表現"
+            ],
+            "decisionIds": [
+              "poc.minimal-extended"
+            ]
+          }
+        ],
+        "interpretation": "具体値、配置、Cの世界観はandm独自。公式部品の再現と称しない"
+      },
+      "relatedIds": [
+        "intent.orbit-note",
+        "constraint.common-content",
+        "constraint.native",
+        "philosophy.minimalism",
+        "composition.editorial"
+      ],
+      "alternatives": [
+        {
+          "id": "alternative.shared-template",
+          "benefit": "既存構造だけで小さく作れる",
+          "cost": "今回比較したい構成や関係の要件を満たさない"
+        }
+      ],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [
+        "validation.poc"
+      ],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "validation.poc",
+      "kind": "validation",
+      "title": "PoC検証記録",
+      "scope": "ORBIT NOTE / Web / Lab限定 / 提案",
+      "target": "PoC検証記録",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "andm独自の構成・表現・契約。外部仕様の主張なし",
+      "sources": [],
+      "content": {
+        "statement": "自動・目視の結果はdocs/PHILOSOPHY-POC-VALIDATION.mdに記録。効果のユーザー調査は未実施。",
+        "conditions": "Chromium / 320,390,768,1280px / 100,200% / keyboard / reduced motion",
+        "result": "Chromium 153: 48幅/文字条件で横はみ出しなし。axe 6ページで検出違反0。状態保持・keyboard・export・代表Gallery操作成功。docs/PHILOSOPHY-POC-VALIDATION.md参照。ユーザー調査/SR/実機/Firefox/XRは未検証。"
+      },
+      "relatedIds": [
+        "poc.minimal",
+        "poc.brutal",
+        "poc.original",
+        "poc.minimal-extended"
+      ],
+      "alternatives": [],
+      "decision": "比較・検証する提案。効果の一般化や正式採用は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の範囲でPoC実装。思想の有効性・Core採用は未決",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+/* Lab-only values are andm-original, not historical/official specifications.
+   A uses existing Typography/Link/Soft component CSS without overrides. */
+.poc-candidate { margin:0; background:#f7f7f2; color:#202822; font-family:system-ui,'Noto Sans CJK JP',sans-serif; line-height:1.7; overflow-wrap:anywhere; }
+.poc-candidate *, .poc-candidate *::before, .poc-candidate *::after { box-sizing:border-box; }
+.poc-candidate :focus-visible:not(.andm-link):not(.andm-chip) { outline:3px solid #1b63bf; outline-offset:4px; }
+.poc-candidate [hidden] { display:none !important; }
+.poc-candidate .candidate-bar { padding:.75rem 1.5rem; border-bottom:1px solid #aebbb1; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:.875rem; background:#fff; }
+.poc-candidate .candidate-bar a,.poc-candidate .product-footer a { color:#204c35; text-underline-offset:.2em; }
+.poc-candidate .product-header { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; padding:2rem 0; max-width:72rem; margin:auto; width:calc(100% - 3rem); border-bottom:1px solid #aebbb1; }
+.poc-candidate .wordmark { font-size:1rem; font-weight:750; letter-spacing:.13em; }
+.poc-candidate .product-header nav { display:flex; gap:1.25rem; flex-wrap:wrap; }
+.poc-candidate main { width:calc(100% - 3rem); max-width:72rem; margin:auto; }
+.poc-candidate main section { scroll-margin-top:1rem; padding:4.5rem 0; border-bottom:1px solid #aebbb1; min-width:0; }
+.poc-candidate #overview { padding:6rem 0 5rem; max-width:52rem; }
+.poc-candidate #overview > .overview-kicker { font-size:.875rem; letter-spacing:.12em; margin:0 0 2.5rem; }
+.poc-candidate .world-line { font-size:1rem; max-width:36rem; margin:1.5rem 0; }
+.poc-candidate .actions { display:flex; flex-wrap:wrap; gap:2rem; align-items:center; margin:2.5rem 0; }
+.poc-candidate .values { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:3rem; margin-top:3rem; }
+.poc-candidate .sequence { font-size:.875rem; color:#415748; }
+.poc-candidate .feature-list { padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2.5rem 4rem; margin:3rem 0 0; }
+.poc-candidate .feature-list li { min-width:0; }
+.poc-candidate #relations > p { max-width:42rem; }
+.poc-candidate #usage > p,.poc-candidate #limits > p { max-width:44rem; }
+.poc-candidate .product-footer { padding:2rem 1.5rem; max-width:75rem; margin:auto; font-size:.875rem; }
+/* A′ shares A's main DOM and composition; only the CTA is extended. */
+.poc-candidate.expression-minimal-extended .primary-cta { display:inline-block; color:#203c2c; padding:.75rem 1.25rem; border:2px solid #375642; text-decoration-thickness:.12em; border-radius:0; }
+/* B changes information structure, typography and grouping, not just palette. */
+.poc-candidate.expression-brutal { background:#fffdf1; color:#111; }
+.poc-candidate.expression-brutal .product-header { align-items:start; border-bottom:3px solid #111; }
+.poc-candidate.expression-brutal #overview { max-width:none; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); column-gap:3rem; padding:3rem 0; }
+.poc-candidate.expression-brutal #overview > .overview-kicker { grid-column:1; align-self:start; }
+.poc-candidate.expression-brutal #overview > h1 { grid-column:2; grid-row:1 / span 2; margin:0; font-size:clamp(3rem,7vw,7rem); font-family:system-ui,sans-serif; font-weight:900; line-height:1.08; letter-spacing:-.055em; }
+.poc-candidate.expression-brutal #overview > p,.poc-candidate.expression-brutal #overview > .actions { grid-column:2; }
+.poc-candidate.expression-brutal .andm-text--headline { font-size:2.4rem; font-family:system-ui,sans-serif; font-weight:850; letter-spacing:-.03em; }
+.poc-candidate.expression-brutal .andm-link { color:#111; text-decoration-thickness:.12em; }
+.poc-candidate.expression-brutal .primary-cta { background:#eee967; border:2px solid #111; padding:.75rem 1rem; font-weight:800; }
+.poc-candidate.expression-brutal .brutal-columns { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:3rem; }
+.poc-candidate.expression-brutal .values { display:block; margin-top:2rem; }
+.poc-candidate.expression-brutal .values article { margin:2rem 0; border-top:2px solid #111; padding-top:1rem; }
+.poc-candidate.expression-brutal .feature-ledger { margin:3rem 0 0; }
+.poc-candidate.expression-brutal .feature-ledger > div { border-top:2px solid #111; padding:1.5rem 0; }
+.poc-candidate.expression-brutal .feature-ledger dt { font-size:1.5rem; font-weight:800; display:flex; gap:1rem; flex-wrap:wrap; }
+.poc-candidate.expression-brutal .feature-ledger dd { margin:0 0 0 2.8rem; }
+.poc-candidate.expression-brutal main section { border-color:#111; }
+/* C: object relations and a persistent detail inspector, Native HTML controls. */
+.poc-candidate.expression-original { background:#10291f; color:#eff6ec; }
+.poc-candidate.expression-original .candidate-bar { background:#10291f; border-color:#6d9080; }
+.poc-candidate.expression-original .candidate-bar a,.poc-candidate.expression-original .product-footer a { color:#d9edb0; }
+.poc-candidate.expression-original .andm-link { color:#d9edb0; }
+.poc-candidate.expression-original .product-header,.poc-candidate.expression-original main section { border-color:#6d9080; }
+.poc-candidate.expression-original #overview { max-width:50rem; padding:4rem 0; }
+.poc-candidate.expression-original #overview > h1 { font-family:Georgia,'Noto Serif CJK JP',serif; font-weight:500; }
+.poc-candidate.expression-original .sequence { color:#c8dcce; }
+.poc-candidate.expression-original :focus-visible { outline-color:#e6f59a; }
+.poc-candidate .inspector { margin:2rem 0; border:1px solid #8aab9a; padding:1.5rem; }
+.poc-candidate .view-switch { display:flex; flex-wrap:wrap; gap:.75rem; }
+.poc-candidate .view-switch .andm-chip { background:#173d2e; color:#eff6ec; border-color:#8aab9a; }
+.poc-candidate .view-switch .andm-chip[aria-pressed="true"] { background:#d9edb0; color:#10291f; }
+.poc-candidate .orbit-map { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.8rem 4rem; margin:2rem 0; position:relative; }
+.poc-candidate .orbit-node { font:inherit; padding:1.3rem 1rem; color:#eff6ec; background:#173d2e; border:1px solid #8aab9a; text-align:start; cursor:pointer; min-width:0; position:relative; }
+.poc-candidate .orbit-node > span { display:block; color:#c8dcce; font-size:.875rem; }
+.poc-candidate .orbit-node[aria-pressed="true"] { border:3px solid #d9edb0; background:#294f3d; padding:calc(1.3rem - 2px) calc(1rem - 2px); }
+.poc-candidate .orbit-map .orbit-node:nth-child(1)::after,.poc-candidate .orbit-map .orbit-node:nth-child(3)::after { content:''; position:absolute; width:4rem; height:2px; background:#8aab9a; top:50%; left:100%; pointer-events:none; }
+.poc-candidate .orbit-map .orbit-node:nth-child(-n+2)::before { content:''; position:absolute; height:1.8rem; width:2px; background:#8aab9a; top:100%; left:50%; pointer-events:none; }
+.poc-candidate .orbit-map .orbit-node:nth-child(3) { grid-column:2; grid-row:2; }
+.poc-candidate .orbit-map .orbit-node:nth-child(4) { grid-column:1; grid-row:2; }
+.poc-candidate .orbit-map .orbit-node:nth-child(3)::after { left:auto; right:100%; }
+.poc-candidate .inspector[data-view="linear"] .orbit-map { grid-template-columns:1fr; gap:1rem; }
+.poc-candidate .inspector[data-view="linear"] .orbit-node { grid-column:auto; grid-row:auto; }
+.poc-candidate .inspector[data-view="linear"] .orbit-node::before,.poc-candidate .inspector[data-view="linear"] .orbit-node::after { display:none; }
+.poc-candidate .node-detail { padding:1.5rem; border-left:3px solid #d9edb0; background:#173d2e; }
+.poc-candidate .node-detail h3 { margin-top:0; }
+.poc-candidate .inspector-hint { font-size:.875rem; color:#c8dcce; }
+@media (max-width:45rem) {
+ .poc-candidate .product-header { align-items:start; flex-direction:column; padding:1.25rem 0; }
+ .poc-candidate main section,.poc-candidate #overview { padding:2.5rem 0; }
+ .poc-candidate .values,.poc-candidate .feature-list { grid-template-columns:1fr; gap:1.5rem; }
+ .poc-candidate.expression-brutal #overview,.poc-candidate.expression-brutal .brutal-columns { display:block; }
+ .poc-candidate.expression-brutal #overview > h1 { font-size:2.8rem; }
+ .poc-candidate.expression-brutal .feature-ledger dd { margin-left:0; }
+ .poc-candidate .inspector { padding:1rem; }
+ .poc-candidate .orbit-map { gap:1.5rem 1rem; }
+ .poc-candidate .orbit-map .orbit-node::after { width:1rem; }
+ .poc-candidate .orbit-map .orbit-node::before { height:1.5rem; }
+ .poc-candidate .orbit-node { padding:1rem .5rem; }
+ .poc-candidate .orbit-node[aria-pressed="true"] { padding:calc(1rem - 2px) calc(.5rem - 2px); }
+}
+@media (prefers-reduced-motion:reduce) { .poc-candidate *, .poc-candidate *::before, .poc-candidate *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+
+.poc-candidate .orbit-map .orbit-node:nth-child(1)::before { display:none; }
+/* C extends foreground/heading font locally to match the dark experiment;
+   these values do not modify Soft or any official Series. */
+.poc-candidate.expression-original .andm-text { color:#eff6ec; }

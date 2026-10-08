@@ -37,3 +37,7 @@
 | 見直し | 各 Series の検索・フォーム間隔の仕様と基礎尺度を確認したとき、Series 別に値と対応付けを再評価 |
 
 新しい補完時には、上記の間隔の数値根拠と、近接などの原則を適用する判断を別々に記録する。今ある余白を後付けで「研究に基づく値」と呼び直さない。
+
+## philosophy-poc（Lab限定）
+
+Minimalism / Web Brutalism / Original / A′の新規判断は、[Philosophy判断参照](SOURCE-DECISIONS-PHILOSOPHY.md)と知識カタログの安定IDを正本として参照する。全新規 `recommended` はnull。公式Series・既存58部品のAPIは変更しない。

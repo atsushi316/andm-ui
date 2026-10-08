@@ -28,7 +28,8 @@
     "start": "node scripts/gallery.mjs",
     "gallery": "node scripts/gallery.mjs",
     "prepublishOnly": "npm run build",
-    "audit:tokens": "npm run build && node scripts/audit-tokens.mjs"
+    "audit:tokens": "npm run build && node scripts/audit-tokens.mjs",
+    "audit:design-knowledge": "node scripts/audit-design-knowledge.mjs"
   },
   "keywords": [
     "css",

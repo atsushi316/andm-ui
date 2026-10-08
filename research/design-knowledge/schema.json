@@ -1,0 +1,364 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "andm design knowledge proposal v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "records"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    }
+  },
+  "$defs": {
+    "refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "locator",
+        "version",
+        "checkedAt",
+        "verification",
+        "supports"
+      ],
+      "properties": {
+        "authority": {
+          "enum": [
+            "series",
+            "standard",
+            "academic",
+            "professional",
+            "andm"
+          ]
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "checkedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verification": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supports": {
+          "$ref": "#/$defs/refs"
+        }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "scope",
+        "target",
+        "basis",
+        "sourceStatus",
+        "checkedScope",
+        "sources",
+        "content",
+        "relatedIds",
+        "alternatives",
+        "decision",
+        "recommended",
+        "adoption",
+        "validation",
+        "revisit"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "kind": {
+          "enum": [
+            "source-spec",
+            "aesthetic",
+            "historical-style",
+            "technique",
+            "composition",
+            "design-intent",
+            "constraint",
+            "alternative",
+            "decision",
+            "validation"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "basis": {
+          "enum": [
+            "official",
+            "derived",
+            "research-based",
+            "andm-original",
+            "unverified"
+          ]
+        },
+        "sourceStatus": {
+          "enum": [
+            "specified",
+            "not-specified-in-checked-scope",
+            "unverified",
+            "not-applicable"
+          ]
+        },
+        "checkedScope": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "content": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "statement"
+          ],
+          "properties": {
+            "statement": {
+              "type": "string",
+              "minLength": 1
+            },
+            "history": {
+              "type": "string"
+            },
+            "principles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "typography": {
+              "type": "string"
+            },
+            "spaceDensity": {
+              "type": "string"
+            },
+            "hierarchy": {
+              "type": "string"
+            },
+            "gridComposition": {
+              "type": "string"
+            },
+            "decorationMaterialMotion": {
+              "type": "string"
+            },
+            "suitableUses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "unsuitableUses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "limits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "interpretation": {
+              "type": "string"
+            },
+            "requirementIds": {
+              "$ref": "#/$defs/refs"
+            },
+            "philosophyIds": {
+              "$ref": "#/$defs/refs"
+            },
+            "compositionIds": {
+              "$ref": "#/$defs/refs"
+            },
+            "constraintIds": {
+              "$ref": "#/$defs/refs"
+            },
+            "series": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "implementation": {
+              "type": "string"
+            },
+            "componentUses": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "part",
+                  "mode",
+                  "contract",
+                  "changes",
+                  "decisionIds"
+                ],
+                "properties": {
+                  "part": {
+                    "type": "string"
+                  },
+                  "mode": {
+                    "enum": [
+                      "reuse",
+                      "extend",
+                      "create"
+                    ]
+                  },
+                  "contract": {
+                    "type": "string"
+                  },
+                  "changes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "decisionIds": {
+                    "$ref": "#/$defs/refs"
+                  }
+                }
+              }
+            },
+            "observations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "conditions": {
+              "type": "string"
+            },
+            "result": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "relatedIds": {
+          "$ref": "#/$defs/refs"
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "benefit",
+              "cost"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "benefit": {
+                "type": "string"
+              },
+              "cost": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "decision": {
+          "type": "string"
+        },
+        "recommended": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "adoption": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "actor",
+            "at",
+            "note",
+            "revision"
+          ],
+          "properties": {
+            "actor": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "note": {
+              "type": "string"
+            },
+            "revision": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "validation": {
+          "$ref": "#/$defs/refs"
+        },
+        "revisit": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

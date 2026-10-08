@@ -122,3 +122,7 @@ Chip / FAB 固有の寸法・形は andm 独自仕様です。全シリーズの
 ## 組み合わせ部品
 
 検索・フィルター・フォーム・ヘッダー/サイド/モバイル/ボトムナビ・操作一覧・リスト項目・空状態・読み込みを追加。Native HTML + CSS、動作の参考実装はGallery。[仕様と出典](docs/COMPOSITION-SOURCES.md)。
+
+## Design Philosophy PoC
+
+Seriesとは独立した思想・構成・部品利用方式を比較する[Experience Lab PoC](gallery/lab/philosophy-poc/)を追加。[知識構造](docs/DESIGN-PHILOSOPHIES.md)。Researchは設計時参照のみで、生成エンジンや新Seriesではありません。

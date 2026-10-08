@@ -1,0 +1,42 @@
+{
+  "minimal": {
+    "title": "A · Minimalism",
+    "philosophy": "Minimalism",
+    "composition": "Editorial / 価値から読む",
+    "mode": "Reuse中心",
+    "series": "Soft",
+    "derivation": "外部公式Seriesは使わず、独自Seriesの既存部品を利用。 既存部品のCSS/APIは無変更。",
+    "decisionId": "poc.minimal",
+    "tradeoff": "読む経路を明確にするが、印象の強さが弱い可能性"
+  },
+  "brutal": {
+    "title": "B · Web Brutalism",
+    "philosophy": "Web Brutalism",
+    "composition": "Editorial / 声明と露出した機能表",
+    "mode": "Extend中心",
+    "series": "Technical（独自Series）",
+    "derivation": "外部公式Seriesは使わず、独自Seriesの既存部品を利用。 構造・文字をLab内で局所拡張。",
+    "decisionId": "poc.brutal",
+    "tradeoff": "構造が印象に残るが、強い文字が探索を遅くする可能性"
+  },
+  "original": {
+    "title": "C · Original",
+    "philosophy": "ORBIT NOTE独自仮説",
+    "composition": "関係探索＋線形説明",
+    "mode": "Create + Extend + Reuse",
+    "series": "Soft（独自Series）",
+    "derivation": "外部公式Seriesは使わず、独自Seriesの既存部品を利用。 関係インスペクタはLab限定。",
+    "decisionId": "poc.original",
+    "tradeoff": "関係を辿る発見を表現するが、初見の学習負荷がある"
+  },
+  "minimal-extended": {
+    "title": "A′ · Minimalism + Extend",
+    "philosophy": "Minimalism",
+    "composition": "Editorial / Aと同一構成",
+    "mode": "Extend（CTAのみ）",
+    "series": "Soft",
+    "derivation": "外部公式Seriesは使わず、独自Seriesの既存部品を利用。 CTAの局所拡張のみ。",
+    "decisionId": "poc.minimal-extended",
+    "tradeoff": "CTAの識別を強めるが、静かな階層を乱す可能性"
+  }
+}

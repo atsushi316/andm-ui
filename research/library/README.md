@@ -148,3 +148,7 @@ Gestalt、Fitts's Law、Hick の法則、認知負荷、ミラーの短期的な
 - デザインシステム: Apple HIG と Material の公式本文は今回取り直していない。Atlassian と USWDS はトップページのみ
 
 確認済みの範囲は各項目の「確認」に書く。
+
+## 思想とUIへの適用仮説
+
+[Design Knowledge](../design-knowledge/catalog.json)にMinimal Artの歴史資料、Web Brutalismのコレクションの立場、andmの適用仮説を分けて記録。[概念と境界](../../docs/DESIGN-PHILOSOPHIES.md)。本文未取得の建築史は未確認。ResearchからRuntimeへの自動変換は行わない。
