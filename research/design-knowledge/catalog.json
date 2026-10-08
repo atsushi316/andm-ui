@@ -774,6 +774,214 @@
       },
       "validation": [],
       "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "evidence.waveform-progress",
+      "kind": "source-spec",
+      "title": "進捗演出研究の対象と限界",
+      "scope": "Waveform Expression / Web / Lab限定",
+      "target": "進捗演出研究の対象と限界",
+      "basis": "research-based",
+      "sourceStatus": "specified",
+      "checkedScope": "資料本文/実験条件を確認。知覚効果の一般化・Core採用は未検証",
+      "sources": [
+        {
+          "authority": "academic",
+          "locator": "https://chrisharrison.net/projects/progressbars2/ProgressBarsHarrison.pdf",
+          "version": "CHI 2010",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "進捗の知覚時間を特定の課題で比較。波形Buttonの有効性を示さず、CSS値の根拠にしない。"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "進捗の知覚時間を特定の課題で比較。波形Buttonの有効性を示さず、CSS値の根拠にしない。",
+        "limits": [
+          "PoCの動作確認は知覚効果の実証ではない"
+        ]
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "ユーザー依頼のPoC実装。Core昇格と効果の採用判断は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の局所PoC。AI自動採用は行わない",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "evidence.waveform-transitions",
+      "kind": "source-spec",
+      "title": "図表遷移研究の対象と限界",
+      "scope": "Waveform Expression / Web / Lab限定",
+      "target": "図表遷移研究の対象と限界",
+      "basis": "research-based",
+      "sourceStatus": "specified",
+      "checkedScope": "資料本文/実験条件を確認。知覚効果の一般化・Core採用は未検証",
+      "sources": [
+        {
+          "authority": "academic",
+          "locator": "https://idl.cs.washington.edu/files/2007-AnimatedTransitions-InfoVis.pdf",
+          "version": "InfoVis 2007",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "24人の図表追跡・値変化推定。課題依存の結果で、全てのアニメーションへ一般化しない。"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "24人の図表追跡・値変化推定。課題依存の結果で、全てのアニメーションへ一般化しない。",
+        "limits": [
+          "PoCの動作確認は知覚効果の実証ではない"
+        ]
+      },
+      "relatedIds": [],
+      "alternatives": [],
+      "decision": "ユーザー依頼のPoC実装。Core昇格と効果の採用判断は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の局所PoC。AI自動採用は行わない",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "technique.waveform-roles",
+      "kind": "technique",
+      "title": "波形の4役割",
+      "scope": "Waveform Expression / Web / Lab限定",
+      "target": "波形の4役割",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "資料本文/実験条件を確認。知覚効果の一般化・Core採用は未検証",
+      "sources": [
+        {
+          "authority": "andm",
+          "locator": "docs/WAVEFORM-EXPRESSION.md",
+          "version": "Lab v1",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "Surface / Behavior / Feedback / Dataを分け、意味から表現を選ぶ。生成装飾と測定値を混ぜない。"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "Surface / Behavior / Feedback / Dataを分け、意味から表現を選ぶ。生成装飾と測定値を混ぜない。",
+        "limits": [
+          "PoCの動作確認は知覚効果の実証ではない"
+        ]
+      },
+      "relatedIds": [
+        "evidence.waveform-progress",
+        "evidence.waveform-transitions"
+      ],
+      "alternatives": [],
+      "decision": "ユーザー依頼のPoC実装。Core昇格と効果の採用判断は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の局所PoC。AI自動採用は行わない",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "constraint.waveform-source",
+      "kind": "constraint",
+      "title": "データ出所と代替情報",
+      "scope": "Waveform Expression / Web / Lab限定",
+      "target": "データ出所と代替情報",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "資料本文/実験条件を確認。知覚効果の一般化・Core採用は未検証",
+      "sources": [
+        {
+          "authority": "andm",
+          "locator": "docs/SOURCE-DECISIONS-WAVEFORM.md",
+          "version": "Lab v1",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "ローカル受付間隔、固定模擬音声、模擬進捗は別の出所。データの単位・軸・表を表示し、装飾パラメータから独立する。"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "ローカル受付間隔、固定模擬音声、模擬進捗は別の出所。データの単位・軸・表を表示し、装飾パラメータから独立する。",
+        "limits": [
+          "PoCの動作確認は知覚効果の実証ではない"
+        ]
+      },
+      "relatedIds": [
+        "technique.waveform-roles"
+      ],
+      "alternatives": [],
+      "decision": "ユーザー依頼のPoC実装。Core昇格と効果の採用判断は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の局所PoC。AI自動採用は行わない",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
+    },
+    {
+      "id": "decision.waveform-lab",
+      "kind": "decision",
+      "title": "SVGによる局所PoC",
+      "scope": "Waveform Expression / Web / Lab限定",
+      "target": "SVGによる局所PoC",
+      "basis": "andm-original",
+      "sourceStatus": "not-applicable",
+      "checkedScope": "資料本文/実験条件を確認。知覚効果の一般化・Core採用は未検証",
+      "sources": [
+        {
+          "authority": "andm",
+          "locator": "docs/WAVEFORM-EXPRESSION.md",
+          "version": "Lab v1",
+          "checkedAt": "2026-10-08",
+          "verification": "本文確認",
+          "supports": [
+            "Native ButtonをReuseし局所SVGをExtend。意味図はLab限定Create。Core Token/API/Seriesを変更しない。"
+          ]
+        }
+      ],
+      "content": {
+        "statement": "Native ButtonをReuseし局所SVGをExtend。意味図はLab限定Create。Core Token/API/Seriesを変更しない。",
+        "limits": [
+          "PoCの動作確認は知覚効果の実証ではない"
+        ]
+      },
+      "relatedIds": [
+        "technique.waveform-roles",
+        "constraint.waveform-source"
+      ],
+      "alternatives": [],
+      "decision": "ユーザー依頼のPoC実装。Core昇格と効果の採用判断は未決",
+      "recommended": null,
+      "adoption": {
+        "actor": null,
+        "at": null,
+        "note": "ユーザー指示の局所PoC。AI自動採用は行わない",
+        "revision": null
+      },
+      "validation": [],
+      "revisit": "内容・利用環境・出典更新、観察で問題が見つかった場合"
     }
   ]
 }

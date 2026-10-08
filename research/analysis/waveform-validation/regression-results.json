@@ -1,0 +1,73 @@
+{
+  "matrix": [],
+  "axe": [],
+  "focus": {
+    "style": "solid",
+    "width": "3px"
+  },
+  "gallery": {
+    "parts": 58,
+    "inputs": [
+      {
+        "id": "component-search",
+        "placeholder": "部品を探す：ボタン、検索…"
+      },
+      {
+        "id": "",
+        "placeholder": "例：宇宙"
+      },
+      {
+        "id": "",
+        "placeholder": ""
+      },
+      {
+        "id": "atom-native-search",
+        "placeholder": ""
+      },
+      {
+        "id": "compose-query",
+        "placeholder": "例：宇宙"
+      }
+    ],
+    "selects": [
+      {
+        "id": "series-select",
+        "len": 14
+      },
+      {
+        "id": "component-category",
+        "len": 7
+      },
+      {
+        "id": "",
+        "len": 3
+      },
+      {
+        "id": "",
+        "len": 2
+      },
+      {
+        "id": "",
+        "len": 3
+      },
+      {
+        "id": "",
+        "len": 3
+      },
+      {
+        "id": "",
+        "len": 1
+      },
+      {
+        "id": "compose-kind",
+        "len": 3
+      },
+      {
+        "id": "compose-sort",
+        "len": 2
+      }
+    ]
+  },
+  "errors": [],
+  "operations": "C Enter/Space/state/focus; compare section/state/single/two-up/mobile; export null; long Japanese; reduced-motion"
+}

@@ -45,3 +45,7 @@ Minimalism / Web Brutalism / Original / A′の新規判断は、[Philosophy判�
 ## Materiality & Behavior Lab
 
 [判断記録](SOURCE-DECISIONS-MATERIALITY.md)：mb.stimulus / mb.activation / mb.evaluation。公式Seriesとは独立、刺激値は独自、recommendedはnull。
+
+## Waveform Expression Lab
+
+[波形表現の出典・判断](SOURCE-DECISIONS-WAVEFORM.md)。公式Series・共通Tokenは無変更。

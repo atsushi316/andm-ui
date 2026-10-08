@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>同期リクエスト — Wave仕様の独立再利用</title>
+  <link rel="stylesheet" href="../../../../dist/style.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="sync-demo">
+    <header>
+      <a href="../">← 波形実験へ戻る</a>
+      <p class="sync-demo__eyebrow">LAB / INDEPENDENT REUSE</p>
+      <h1>同期リクエスト</h1>
+      <p>ローカルだけで動く模擬同期です。通信やファイル更新は行いません。</p>
+    </header>
+    <label class="sync-demo__series" for="series">操作部分の見た目
+      <select id="series">
+        <option value="">Baseline</option>
+        <option value="andm-series--soft">Soft</option>
+        <option value="andm-series--technical">Technical</option>
+        <option value="andm-series--expressive">M3 Expressive</option>
+      </select>
+    </label>
+    <p>既存SeriesのButtonとLab独自の装飾を併用します。波形は公式仕様ではありません。</p>
+    <section class="sync-demo__panel" id="panel" aria-labelledby="request-title">
+      <h2 id="request-title">作業メモを同期する</h2>
+      <p>受付はすぐに通知します。約2.4秒の模擬処理は波とは別に完了します。再入力すると、新しいリクエストに置き換わります。</p>
+      <div class="sync-demo__actions">
+        <button type="button" class="andm-btn andm-btn--filled" id="request">同期をリクエスト</button>
+        <button type="button" class="andm-btn andm-btn--outlined" id="cancel" disabled>処理を中止</button>
+      </div>
+      <p id="receipt" role="status" aria-atomic="true">まだ受け付けていません。</p>
+      <div class="sync-demo__progress">
+        <label for="progress">模擬処理</label>
+        <progress id="progress" max="1" value="0"></progress>
+        <p id="result" role="status" aria-atomic="true">待機中</p>
+      </div>
+      <figure class="sync-demo__decoration">
+        <svg viewBox="0 0 360 84" aria-hidden="true" focusable="false">
+          <path id="wave" d="M12 42 L348 42"></path>
+        </svg>
+        <figcaption>入力に反応する生成した装飾。進捗・音声・実測値ではありません。</figcaption>
+      </figure>
+      <div class="sync-demo__actions">
+        <button type="button" class="andm-btn andm-btn--text" id="stop-wave">波を止める</button>
+      </div>
+      <label class="sync-demo__option"><input type="checkbox" id="motion" checked> 波の演出を使う</label>
+      <p id="motion-note">受付時だけ有限の波を表示します。</p>
+      <label class="sync-demo__option"><input type="checkbox" id="fail"> 次の模擬処理をエラーにする</label>
+      <p class="sync-demo__help">Escape、操作中の取消、フォーカス移動でも波を停止します。処理の中止は「処理を中止」で行います。画面外・非表示中は休止し、再表示後に続きます。</p>
+    </section>
+    <noscript>この模擬同期にはJavaScriptが必要です。</noscript>
+  </main>
+</body>
+</html>

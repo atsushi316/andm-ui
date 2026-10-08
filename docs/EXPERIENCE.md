@@ -55,3 +55,7 @@ primitive → semantic → component-local の順に検討し、意味が不要�
 ## Materiality & Behavior
 
 [Buttonの4条件実験](../gallery/lab/materiality-behavior/)は造形と復元を独立に比較するLab限定の試作。[実装・再利用仕様](MATERIALITY-BEHAVIOR.md)。既存Motion/Componentの契約を保ち、研究からCoreへの自動採用は行わない。
+
+## Waveform Expressionの実験
+
+[波形Lab](../gallery/lab/waveform-expression/)で装飾・入力反応・状態・データを比較する。[仕様](WAVEFORM-EXPRESSION.md)。Materialityと既存Motionの局所試作として扱い、独立したSeriesや共通Tokenにはしない。
