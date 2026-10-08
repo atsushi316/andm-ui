@@ -42,6 +42,9 @@ frame=page.frames().find(f=>f.url().endsWith('/original.html'));assert.equal(awa
 assert(await page.locator('#right-pane').isVisible());await page.locator('#two-up').uncheck();assert(!(await page.locator('#right-pane').isVisible()));await page.locator('#two-up').check();
 await page.setViewportSize({width:390,height:900});await page.waitForFunction(()=>document.getElementById('right-pane').hidden);assert(!(await page.locator('#right-pane').isVisible()));
 await page.locator('#notes').fill('日本語の長い観察メモ。読み順と世界観を別々に記録する。');const d=page.waitForEvent('download');await page.locator('#export').click();const download=await d;const file=await download.path();const exported=JSON.parse(await readFile(file,'utf8'));assert.equal(exported.recommended,null);assert.equal(exported.notes,'日本語の長い観察メモ。読み順と世界観を別々に記録する。');
+await page.setViewportSize({width:1280,height:900});
+const leftFrame=page.frames().find(f=>f.url().endsWith('/original.html'));
+await leftFrame.locator('.candidate-bar a').click();assert.equal(page.url(),base);
 // Long Japanese does not break flow.
 await page.goto(base+'brutal.html');await page.evaluate(()=>document.querySelector('h1').textContent='散らばった考えを関連付けて履歴から振り返りながら自分で整理していける、非常に長い日本語の見出し');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
 await page.keyboard.press('Tab');const active=await page.evaluate(()=>document.activeElement.tagName);assert.notEqual(active,'BODY');

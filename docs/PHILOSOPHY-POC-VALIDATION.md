@@ -26,6 +26,7 @@ Chromium 153 + Playwrightで確認。日本語フォントをQA環境に用意�
 | 比較：機能区間→候補変更 | 同じ区間へ移動。scroll marginを含む位置を確認 |
 | 比較：C→A→C | 選択と線形表示を復元 |
 | 広幅2案/1案、390pxへの変更 | 右pane表示/非表示、狭幅1案へ切替 |
+| フレーム内の戻るリンク | 比較画面をフレーム内に入れ子にせず、親画面へ戻ることを確認 |
 | JSON export | 日本語メモと条件、decision IDs、recommended:nullを確認 |
 | 日本語長文 | B見出しを長文に置換して狭幅で横はみ出しなし |
 | Reduced Motion | reduce環境で検証。新PoCのanimation/transitionなし |

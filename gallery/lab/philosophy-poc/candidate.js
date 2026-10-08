@@ -1,5 +1,7 @@
 // Reference controller for a Lab-only relation inspector. No Research imports.
 const root = document.body;
+// Back/evidence links leave the embedded candidate instead of nesting Lab pages.
+if(window.parent !== window) document.querySelectorAll(".candidate-bar a, .product-footer a").forEach(a=>a.target="_top");
 const nodes = [...document.querySelectorAll('[data-node]')];
 let selected = 'save';
 let view = 'map';
