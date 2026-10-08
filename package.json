@@ -19,7 +19,9 @@
     "docs/ATOMIC-SOURCES.md",
     "docs/ATOMIC-INVENTORY.md",
     "docs/COMPOSITION-SOURCES.md",
-    "docs/COMPONENT-AUDIT.md"
+    "docs/COMPONENT-AUDIT.md",
+    "docs/SOURCE-FIRST.md",
+    "docs/SOURCE-DECISIONS.md"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",

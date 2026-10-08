@@ -90,6 +90,8 @@ DESIGN.md       デザイン原則・Design Space
 
 詳細は [DESIGN.md](./DESIGN.md)。平均 UI への収束を禁止し、Design Space 上の複数方向を保持します。
 
+各 Series の公式デザインシステムを優先し、未定義の部分だけ同じ尺度・文献・標準で補完します。[出典優先設計](docs/SOURCE-FIRST.md)と[判断記録](docs/SOURCE-DECISIONS.md)で、公式・導出・研究による補完・独自判断・未確認を区別します。AI の作業指示は [AGENTS.md](AGENTS.md)。
+
 ## 部品と体験の検証
 
 入力・選択、通知、ダイアログ、表、ナビゲーションなどは Gallery で確認できます。Chip は `andm-chip`（選択は `aria-pressed`）、FAB は `andm-fab`。JS の操作は消費側で実装します。

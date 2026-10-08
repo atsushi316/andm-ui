@@ -16,7 +16,17 @@ CSS-first の小さな UI ライブラリー。Native HTML + `andm-*` class が�
 - **Token は檻にしない** — Global Token で表せるときはそれを優先する。足りない Component 固有の意味は Component-local Token。名前が要らない局所値だけ Local Value。特殊な UI を既存 Token に無理に合わせない
 - **Motion は三層** — Character は傾向。Pattern は Trigger × Effect（highlight / lift / compress / morph）。Token は duration と easing。Pattern を増やすために Token 名は増やさない
 
-Custom UI は Series に所属しなくてよい。Global Token、Component-local Token、Core Component、Composition、最小の Local Value で作る。Research は Runtime にも Gallery の値にも流さない。
+Custom UI は Series に所属しなくてよい。Global Token、Component-local Token、Core Component、Composition、最小の Local Value で作る。Research は Runtime や Gallery の値へ自動で流さず、採用した判断のみ Spec / Token / CSS に明示的に反映する。
+
+## 出典優先設計（Source-First Design）
+
+各 Series の元となる公式デザインシステムを正本とする。公式の部品仕様 → 同じ公式体系の尺度・関連部品からの導出 → 未定義部分を文献・標準で補完 → andm 独自判断、の順で設計する。他社の見た目を穴埋めに混入させず、元の言語を保つ。
+
+本文を取得できない「未確認」と、読んだ範囲に「定義がない」を分ける。値・構造・操作ごとに `official` / `derived` / `research-based` / `andm-original` / `unverified` と公式の確認状態を別々に残す。Baseline の継承を対象 Series の公式仕様にしない。
+
+余白は関連要素・グループ・セクション・領域という関係から判断し、具体値は対象 Series の尺度を優先する。視覚的階層、群化、操作の意味を保ちながら表現の違いを許容する。共通の px 値を科学的な法則として強制しない。
+
+確認手順・分類・補完条件・更新時の扱いは [SOURCE-FIRST.md](docs/SOURCE-FIRST.md)、変更ごとの根拠は [SOURCE-DECISIONS.md](docs/SOURCE-DECISIONS.md) が正本。既存の部品別出典文書も併用する。全値の監査・自動補完は未完了。AI の作業指示は [AGENTS.md](AGENTS.md)。
 
 ## Design Space（Button）
 
@@ -92,7 +102,7 @@ Baseline は追加クラスなし。上の 13 は Gallery で切り替えるシ�
 | 向いている用途 | 今の Apple の画面に近い、案内や設定 |
 | 出典 | [HIG（日本語）](https://developer.apple.com/jp/design/human-interface-guidelines)。英語は [入口](https://developer.apple.com/design/human-interface-guidelines) から color / layout / materials / buttons |
 | HIG から採用した数値 | なし。色・寸法のページはタイトルのみで本文が取れない |
-| Motion | duration は official value not specified。速度トークンは差し替えない。押下の縮小は Baseline の 0.96 のまま。HIG の測定値ではない |
+| Motion | 2026-09-30 に確認した motion 本文の範囲に duration の数値なし。他の公式資料まで不在とは断定しない。速度トークンは差し替えない。押下の縮小は Baseline の 0.96 のまま。HIG の測定値ではない |
 | フォント | `-apple-system, BlinkMacSystemFont` は HIG の測定値ではない。ファイルは同梱しない |
 
 ### Spectrum
