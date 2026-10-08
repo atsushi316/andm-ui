@@ -1,6 +1,6 @@
 @layer andm.components {
   /*
-   * 公式の直径は未記載。official value not specified。
+   * 公式の直径は未記載。当該プロパティは未確認（公式全体の欠落とは断定しない）。
    * M3 lists は leading avatar をスロットとして書くだけで、寸法は無い。
    * 一辺は space-10。形は radius-pill。字は font-size-sm。
    */

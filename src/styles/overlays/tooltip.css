@@ -30,6 +30,7 @@
     inset-inline-start: 0;
     inset-block-start: calc(100% + var(--andm-space-2));
     width: max-content;
+    overflow-wrap: anywhere;
     max-width: calc(var(--andm-space-24) * 3);
     margin: 0;
     padding: var(--andm-space-1) var(--andm-space-2);
@@ -50,6 +51,10 @@
         var(--andm-motion-easing-decelerate),
       transform var(--andm-motion-duration-short2)
         var(--andm-motion-easing-decelerate);
+  }
+
+  @media (max-width: 600px) {
+    .andm-tooltip__bubble { max-width: 100%; }
   }
 
   .andm-tooltip:hover .andm-tooltip__bubble,

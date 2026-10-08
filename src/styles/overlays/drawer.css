@@ -20,7 +20,7 @@
     font-family: var(--andm-font-family);
     /*
      * M3 side sheets と Carbon に drawer の enter ms は無い。
-     * official value not specified。開閉は short4 + standard。
+     * 当該プロパティは未確認（公式全体の欠落とは断定しない）。開閉は short4 + standard。
      */
     transition:
       transform var(--andm-motion-duration-short4)

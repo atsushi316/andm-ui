@@ -142,6 +142,9 @@
   }
 
   var libraryFiles = {
+    "source-first": "../../docs/SOURCE-FIRST.md",
+    "source-decisions": "../../docs/SOURCE-DECISIONS.md",
+    "source-reaudit": "../../docs/SOURCE-REAUDIT.md",
     "component-audit": "../../docs/COMPONENT-AUDIT.md",
     "composition-sources": "../../docs/COMPOSITION-SOURCES.md",
     index: "README.md",
@@ -164,6 +167,9 @@
   };
 
   var libraryTitles = {
+    "source-first": "出典優先の設計基準",
+    "source-decisions": "プロパティ別の採用判断",
+    "source-reaudit": "全パーツの出典優先再監査",
     index: "文献ライブラリ",
     academic: "学術・理論",
     standards: "標準・ガイドライン",

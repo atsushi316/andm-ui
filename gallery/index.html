@@ -1391,7 +1391,7 @@
           <p class="g-pagehead__lead" id="page-lead"></p>
           <p class="g-pagehead__status" id="page-status"></p>
         </header>
-        <section id="component-index" aria-label="部品の一覧"><p class="g-atomic-shortcut"><a href="#/display/text">文字・タイポグラフィを比較する</a> · <a href="#/library/atomic-sources">小さな部品の仕様と出典</a></p><div class="g-index-top"><label for="component-category">分類<select id="component-category"><option value="">すべて</option></select></label><p id="index-count"></p><a href="#/library">文献を読む</a></div><div id="component-grid" class="g-component-grid"></div><p id="index-empty" hidden>一致する部品がありません。別の言葉で探してください。</p></section>
+        <section id="component-index" aria-label="部品の一覧"><p class="g-atomic-shortcut"><a href="#/display/text">文字・タイポグラフィを比較する</a> · <a href="#/library/atomic-sources">小さな部品の仕様と出典</a></p><div class="g-index-top"><label for="component-category">分類<select id="component-category"><option value="">すべて</option></select></label><p id="index-count"></p><a href="#/library/source-reaudit">全パーツの再監査</a> · <a href="#/library">文献を読む</a></div><div id="component-grid" class="g-component-grid"></div><p id="index-empty" hidden>一致する部品がありません。別の言葉で探してください。</p></section>
         <header class="g-hero">
           <h1>Design System Explorer</h1>
           <p class="lead">
@@ -1684,7 +1684,7 @@
 <section class="g-section" data-part="icon" hidden aria-labelledby="atomic-icon-title">
 <h2 id="atomic-icon-title">アイコン <span class="g-badge g-badge--ready">使える</span>
 </h2>
-<p class="g-desc">独自の線画14種。公式アイコンの再配布ではありません。記号と操作名を分けて扱います。</p>
+<p class="g-desc">独自の線画15種。公式アイコンの再配布ではありません。記号と操作名を分けて扱います。</p>
 <div class="g-stack">
 <div class="g-atom-icons">
 <div>
@@ -2864,9 +2864,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="dialog-title">
               Dialog <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              native の dialog です。M3、Carbon、Fluent、Apple に出現の時間は無いので short4 + standard です。すぐ出す、とも書いていません。official value not specified。
-            </p>
+            <p class="g-desc">確認や決定のためのnative dialogです。出現の動きはandm独自の既定で、各シリーズの公式時間ではありません。</p>
             <div class="g-block">
               <button type="button" class="andm-btn andm-btn--filled andm-btn--md" data-dialog-open="apply-dialog">
                 確認を開く
@@ -2911,13 +2909,13 @@ const projectName = "途中のアイデアも残しておこう";</code>
                   履歴
                 </button>
               </div>
-              <div class="andm-tabs__panel" role="tabpanel" id="apply-panel-summary" aria-labelledby="apply-tab-summary">
+              <div class="andm-tabs__panel" role="tabpanel" tabindex="0" id="apply-panel-summary" aria-labelledby="apply-tab-summary">
                 申請の概要です。提出前に確認します。
               </div>
-              <div class="andm-tabs__panel" role="tabpanel" id="apply-panel-detail" aria-labelledby="apply-tab-detail" hidden>
+              <div class="andm-tabs__panel" role="tabpanel" tabindex="0" id="apply-panel-detail" aria-labelledby="apply-tab-detail" hidden>
                 明細は 3 行です。
               </div>
-              <div class="andm-tabs__panel" role="tabpanel" id="apply-panel-history" aria-labelledby="apply-tab-history" hidden>
+              <div class="andm-tabs__panel" role="tabpanel" tabindex="0" id="apply-panel-history" aria-labelledby="apply-tab-history" hidden>
                 昨日、下書きを保存しました。
               </div>
             </div>
@@ -2973,9 +2971,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="toast-title">
               Toast <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              しばらく見せる結果です。Carbon は右上から 240ms。M3 は画面下、enter の時間は未記載。Fluent は右上か右下で、時間は未記載。official value not specified。見本の中に収め、ページ見出しは覆いません。
-            </p>
+            <p class="g-desc">操作の結果を伝えます。入場の動き・置き場所と通知の意味を分け、詳細な根拠は下の監査記録で確認できます。</p>
             <div class="g-block">
               <h3>出す</h3>
               <div class="g-context g-toast-stage">
@@ -3040,9 +3036,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="tooltip-title">
               Tooltip <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              ホバーかキーボードフォーカスで、短い説明を出します。上・下・左・右は同じ部品です。間隔は space-2。公式の配置寸法は未記載です。official value not specified。
-            </p>
+            <p class="g-desc">ホバーかキーボードフォーカスで短い説明を出します。Escapeで閉じ、説明へポインターを移動できます。配置と間隔は独自仕様です。</p>
             <div class="g-block">
               <h3>配置</h3>
               <div class="g-context g-place-stage">
@@ -3101,9 +3095,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="breadcrumb-title">
               Breadcrumb <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              いまの場所までの道です。現在地はリンクにしません。縦の余白は space-2 です。公式のパンくず測定ではありません。official value not specified。
-            </p>
+            <p class="g-desc">現在位置までの階層を示します。現在地はリンクにせず、余白と字の役割はシリーズの値を継承します。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
@@ -3137,9 +3129,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="pagination-title">
               Pagination <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              同じ一覧のページを移します。M3、Carbon、Fluent、Spectrum、USWDS、Atlassian に円形のページボタンは無いので、円にはしていません。
-            </p>
+            <p class="g-desc">同じ一覧のページを切り替えます。現在ページと前後の移動を示します。各社の公式ページ構成そのものではありません。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
@@ -3248,9 +3238,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="drawer-title">
               Drawer <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              画面の端に出す native の dialog です。開閉の公式時間は未記載なので short4 + standard です。official value not specified。
-            </p>
+            <p class="g-desc">画面端に出すnative dialogです。開閉とフォーカスは標準のモーダル動作、移動の時間と幅は独自の既定です。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
@@ -3384,9 +3372,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="table-title">
               Table <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              表です。行の高さと字はシリーズの既存トークンです。Carbon の md 行とヘッダー 600 以外、公式の寸法は未記載です。official value not specified。
-            </p>
+            <p class="g-desc">行と列で情報を比較します。見出しと本文の文字ロールを分け、行高・余白の対応付けと未確認事項は監査記録に残しています。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context g-frame">
@@ -3423,9 +3409,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="list-title">
               List <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              一覧です。M3 の one-line は 56 / 72 / 88dp で、一つの高さにはしていません。他の公式な行高は未記載です。official value not specified。
-            </p>
+            <p class="g-desc">関連する情報を一覧にします。文字は用途別ロール、配置と余白は独自の共通仕様です。M3のdp値をWebの公式pxとは扱いません。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context g-frame">
@@ -3456,9 +3440,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="accordion-title">
               Accordion <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              見出しで本文を開きます。開閉の公式時間は無いので short4 + standard です。official value not specified。
-            </p>
+            <p class="g-desc">見出しで本文を開くnative detailsです。内容の意味と開閉状態を保ち、動きの時間は独自の既定を使います。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context g-frame">
@@ -3492,23 +3474,21 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="progress-title">
               Progress <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              進み具合です。太さは M3 の track 既定 4dp と一致する space-1 です。Carbon の Big 8px は既定ではないので使いません。他の公式な太さと時間は未記載です。official value not specified。
-            </p>
+            <p class="g-desc">一時的な処理の進捗を示します。手続きのステップ位置とは分けます。4pxの線はandmの既定で、全シリーズの公式寸法ではありません。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
                 <div
                   class="andm-progress"
                   role="progressbar"
-                  aria-valuenow="40"
+                  aria-valuenow="50"
                   aria-valuemin="0"
                   aria-valuemax="100"
                   aria-labelledby="progress-save-label"
                 >
                   <span class="andm-progress__label" id="progress-save-label">保存しています</span>
                   <span class="andm-progress__track">
-                    <span class="andm-progress__bar" style="--andm-progress-value: 40%"></span>
+                    <span class="andm-progress__bar" style="--andm-progress-value: 50%"></span>
                   </span>
                   <span class="andm-progress__helper">4 件中 2 件</span>
                 </div>
@@ -3528,9 +3508,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="spinner-title">
               Spinner <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              待ちの印です。Carbon loading の回転は 690ms です。M3 と Fluent に周期は無いので、その 690ms を使います。
-            </p>
+            <p class="g-desc">処理中を示す回転の印です。共通の周期は独自の800ms、Carbonは既存記録の690msを維持。DADSでは画面全体の処理中に使い、部分処理には静止した砂時計を使います。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
@@ -3547,9 +3525,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="skeleton-title">
               Skeleton <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              中身が来る前の静かな面です。Carbon の既定は四角で、style ページに点滅時間は無いので動かしません。official value not specified。DADS では出しません。
-            </p>
+            <p class="g-desc">読み込み前のレイアウトの骨格です。静止表示はandmの採用判断。DADSでは使用せず、プログレスインジケーターを選びます。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
@@ -3579,9 +3555,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="avatar-title">
               Avatar <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              人の印です。公式の直径は未記載です。official value not specified。一辺は space-10 です。
-            </p>
+            <p class="g-desc">人を表す印です。40pxの大きさと画像のクロップは独自仕様。名前や画像の代替文を添えます。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
@@ -3598,9 +3572,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <h2 id="segmented-title">
               Segmented control <span class="g-badge g-badge--ready">使える</span>
             </h2>
-            <p class="g-desc">
-              同じ場で一つを選びます。選択の移動は short3 + standard です。公式の移動時間は未記載です。official value not specified。
-            </p>
+            <p class="g-desc">同じ場で一つの値を選びます。選択状態はaria-pressedで伝えます。移動の時間は独自の既定です。</p>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">

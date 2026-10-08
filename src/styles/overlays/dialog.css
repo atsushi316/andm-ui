@@ -13,7 +13,7 @@
     font-family: var(--andm-font-family);
     /*
      * M3 / Carbon / Fluent / Apple の dialog ページに enter の ms は無い。
-     * すぐ出す、とも書いていない。official value not specified。
+     * すぐ出す、とも書いていない。当該プロパティは未確認（公式全体の欠落とは断定しない）。
      * 出現は short4 + standard。
      */
     opacity: 1;

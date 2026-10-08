@@ -75,5 +75,12 @@
       --andm-toast-enter-easing: var(--andm-motion-easing-decelerate);
       /* tabs style（v10）: 選択ラベル SemiBold 600。未選択は 400（font-weight-medium）。 */
       --andm-tabs-selected-weight: 600;
+    /* 2026-10-08 property audit: docs/SOURCE-DECISIONS.md. */
+    --andm-spinner-duration: 690ms;
+    --andm-field-height: 40px;
+    --andm-field-padding-x: 16px;
+    --andm-field-gap: 8px;
+    --andm-field-help-gap: 4px;
+
     }
 }

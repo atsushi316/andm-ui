@@ -39,5 +39,11 @@
     --andm-divider-color: var(--andm-color-outline-variant);
     /* ease-out practical。ホバーの背景フェード */
     --andm-motion-easing-decelerate: cubic-bezier(0.4, 1, 0.6, 1);
+    /* 2026-10-08 property audit: docs/SOURCE-DECISIONS.md. */
+    --andm-menu-radius: 8px;
+    --andm-popover-radius: 8px;
+    --andm-tooltip-radius: 4px;
+    --andm-code-radius: 2px;
+
   }
 }

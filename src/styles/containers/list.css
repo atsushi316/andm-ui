@@ -3,7 +3,7 @@
    * M3 lists の one-line は 56 / 72 / 88dp。一つの既定高にはしない。
    * Expressive の btn-height-md は 56px なので、そのシリーズだけ最短の公式行と一致する。
    * Carbon structured list の既定行は 60px、condensed は 36px。data table の行高と違うのでコピーしない。
-   * 他シリーズの公式な list 高・余白・hover は未記載。official value not specified。
+   * 他シリーズの公式な list 高・余白・hover は未記載。当該プロパティは未確認（公式全体の欠落とは断定しない）。
    * 行の高さは既存の --andm-btn-height-md。余白は space-4。
    */
   .andm-list {

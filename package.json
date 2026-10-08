@@ -21,14 +21,17 @@
     "docs/COMPOSITION-SOURCES.md",
     "docs/COMPONENT-AUDIT.md",
     "docs/SOURCE-FIRST.md",
-    "docs/SOURCE-DECISIONS.md"
+    "docs/SOURCE-DECISIONS.md",
+    "docs/SOURCE-REAUDIT.md",
+    "docs/SOURCE-PROPERTIES.csv"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",
     "start": "node scripts/gallery.mjs",
     "gallery": "node scripts/gallery.mjs",
     "prepublishOnly": "npm run build",
-    "audit:tokens": "npm run build && node scripts/audit-tokens.mjs"
+    "audit:tokens": "npm run build && node scripts/audit-tokens.mjs",
+    "audit:sources": "node scripts/audit-sources.mjs"
   },
   "keywords": [
     "css",

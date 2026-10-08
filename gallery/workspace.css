@@ -146,3 +146,18 @@ html {scroll-padding-bottom:120px;}
 
 .g-component-preview:has(.andm-search),.g-component-preview:has(.andm-field) {height:auto;min-height:100px;overflow:visible;}
 #page-title:focus {outline:none;}
+
+/* DADS prohibits animated indicators for partial updates. */
+[data-partial-wait] { display: none; }
+.andm-series--dads [data-partial-spinner] { display: none; }
+.andm-series--dads [data-partial-wait] { display: inline-block; }
+
+/* Gallery placement specimens remain readable when text is enlarged. */
+@media (max-width: 800px) {
+  .g-place-stage { grid-template-columns: minmax(0, 1fr); padding: 1rem; gap: 2rem; }
+  .g-place-stage .andm-tooltip, .g-place-stage .andm-popover { display: flex; flex-direction: column; gap: .5rem; width: 100%; min-width: 0; }
+  .g-place-stage .andm-tooltip .andm-tooltip__bubble,
+  .g-place-stage .andm-popover .andm-popover__panel {
+    position: static; inset: auto; transform: none; width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;
+  }
+}
