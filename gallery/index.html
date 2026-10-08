@@ -1140,7 +1140,8 @@
           <ul id="nav-series"></ul>
         </div>
 
-        <div class="g-nav__group">
+        <div class="g-nav__group"><button class="g-nav__label" type="button" aria-expanded="false">組み合わせ部品</button><ul><li><a href="#/patterns/form-field" data-part-nav="form-field">フォームフィールド</a></li><li><a href="#/patterns/search-form" data-part-nav="search-form">検索フォーム</a></li><li><a href="#/patterns/filter-bar" data-part-nav="filter-bar">フィルターバー</a></li><li><a href="#/patterns/results-header" data-part-nav="results-header">検索結果ヘッダー</a></li><li><a href="#/patterns/form-actions" data-part-nav="form-actions">フォームアクション</a></li><li><a href="#/navigation/header-nav" data-part-nav="header-nav">ヘッダーナビ</a></li><li><a href="#/navigation/side-nav" data-part-nav="side-nav">サイドナビ</a></li><li><a href="#/navigation/mobile-nav" data-part-nav="mobile-nav">モバイルナビ</a></li><li><a href="#/navigation/bottom-nav" data-part-nav="bottom-nav">ボトムナビ</a></li><li><a href="#/patterns/toolbar" data-part-nav="toolbar">ツールバー</a></li><li><a href="#/patterns/action-menu" data-part-nav="action-menu">アクションメニュー</a></li><li><a href="#/display/resource-item" data-part-nav="resource-item">リスト項目</a></li><li><a href="#/feedback/empty-state" data-part-nav="empty-state">空状態・結果なし</a></li><li><a href="#/feedback/loading-state" data-part-nav="loading-state">ローディング状態</a></li><li><a href="#/navigation/breadcrumb">パンくず</a></li><li><a href="#/navigation/pagination">ページネーション</a></li><li><a href="#/library/composition-sources" data-library-nav="composition-sources">仕様と出典</a></li></ul></div>
+<div class="g-nav__group">
           <button type="button" class="g-nav__label" aria-expanded="false">Tokens</button>
           <ul>
             <li><a href="#/tokens/color" data-token-nav="color">Color</a></li>
@@ -3144,7 +3145,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
             <div class="g-block">
               <h3>In Context</h3>
               <div class="g-context">
-                <p>申請の一覧です。1 ページに 20 件。</p>
+                <p class="andm-text" role="status" data-page-summary>全80件中、1〜20件を表示</p><ol data-page-results class="andm-text"></ol>
                 <nav class="andm-pagination" aria-label="ページ" data-pagination>
                   <button type="button" class="andm-pagination__control" data-page-prev disabled>前へ</button>
                   <ol class="andm-pagination__list">
@@ -3646,7 +3647,337 @@ const projectName = "途中のアイデアも残しておこう";</code>
             </div>
             <details class="g-details"><summary>クラス名</summary><p><code>andm-fab</code> と <code>andm-fab--sm / --lg / --extended</code>。アイコンだけの場合は操作名を <code>aria-label</code> に指定します。</p></details>
           </section>
-
+<section class="g-section" id="form-field" data-part="form-field" hidden aria-labelledby="form-field-title">
+<h2 id="form-field-title">フォームフィールド</h2>
+<p class="g-desc">ラベル・説明・エラーを関連付けます。</p>
+<div class="g-stack">
+<form data-compose-validate novalidate>
+<div class="andm-field">
+<label class="andm-label" for="compose-email">メールアドレス（必須）</label>
+<input class="andm-textfield__input" id="compose-email" type="email" required aria-describedby="compose-email-help compose-email-error">
+<p class="andm-helper" id="compose-email-help">例：name@example.com</p>
+</div>
+<p class="andm-error" id="compose-email-error" hidden>メールアドレスを正しく入力してください。</p>
+<div class="andm-form-actions">
+<button class="andm-btn andm-btn--filled" type="submit">確認</button>
+</div>
+<p role="status" data-validation-status>
+</p>
+</form>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="search-form" data-part="search-form" hidden aria-labelledby="search-form-title">
+<h2 id="search-form-title">検索フォーム</h2>
+<p class="g-desc">Enterで検索、クリアで全件に戻ります。画面内のサンプル作品を検索します。</p>
+<div class="g-stack">
+<form class="andm-search" role="search" aria-label="作品検索" data-compose-search>
+<div class="andm-search__field">
+<div class="andm-field">
+<label class="andm-label" for="compose-query">キーワード</label>
+<input class="andm-textfield__input" id="compose-query" type="search" name="q" placeholder="例：宇宙">
+</div>
+</div>
+<div class="andm-search__controls">
+<button class="andm-btn andm-btn--filled" type="submit">検索</button>
+<button class="andm-btn andm-btn--outlined" type="button" data-search-clear>クリア</button>
+</div>
+</form>
+<p class="andm-text" role="status" data-search-status>3件の作品</p>
+<ul data-search-results>
+</ul>
+<div class="andm-empty-state" data-search-empty hidden>
+<h3 class="andm-text andm-text--title">見つかりませんでした</h3>
+<p class="andm-text">別のキーワードで検索してください。</p>
+<button class="andm-btn andm-btn--outlined" type="button" data-search-clear>検索条件をクリア</button>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="filter-bar" data-part="filter-bar" hidden aria-labelledby="filter-bar-title">
+<h2 id="filter-bar-title">フィルターバー</h2>
+<p class="g-desc">適用するまで結果を変えず、条件をまとめて反映します。</p>
+<div class="g-stack">
+<form class="andm-filter-bar" data-compose-filter>
+<div class="andm-field">
+<label class="andm-label" for="compose-kind">種類</label>
+<select class="andm-select__native" id="compose-kind">
+<option value="all">すべて</option>
+<option value="research">研究</option>
+<option value="prototype">試作</option>
+</select>
+</div>
+<button class="andm-btn andm-btn--filled" type="submit">適用</button>
+<button class="andm-btn andm-btn--text" type="reset">リセット</button>
+</form>
+<p role="status" class="andm-text" data-filter-status>すべて：3件</p>
+<ul data-filter-results>
+</ul>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="results-header" data-part="results-header" hidden aria-labelledby="results-header-title">
+<h2 id="results-header-title">検索結果ヘッダー</h2>
+<p class="g-desc">件数・適用条件・並び順をまとめます。並び替えが下の一覧に反映されます。</p>
+<div class="g-stack">
+<div class="andm-results-header">
+<div class="andm-results-header__summary">
+<h3 class="andm-text andm-text--title">作品：3件</h3>
+<p class="andm-text andm-text--small">条件：すべて</p>
+</div>
+<div class="andm-field">
+<label class="andm-label" for="compose-sort">並び順</label>
+<select class="andm-select__native" id="compose-sort" data-compose-sort>
+<option value="new">新しい順</option>
+<option value="name">名前順</option>
+</select>
+</div>
+</div>
+<ul data-sort-results>
+</ul>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="form-actions" data-part="form-actions" hidden aria-labelledby="form-actions-title">
+<h2 id="form-actions-title">フォームアクション</h2>
+<p class="g-desc">保存中は二重送信を防ぎ、完了を通知します。サンプルでは通信・保存を行いません。</p>
+<div class="g-stack">
+<form data-compose-save>
+<div class="andm-field">
+<label class="andm-label" for="compose-name">作品名</label>
+<input class="andm-textfield__input" id="compose-name" value="宇宙の観測ノート" required>
+</div>
+<div class="andm-form-actions">
+<button class="andm-btn andm-btn--text" type="reset">キャンセル</button>
+<button class="andm-btn andm-btn--filled" type="submit" data-save-button>保存</button>
+</div>
+<p class="andm-text" role="status" data-save-status>
+</p>
+</form>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="header-nav" data-part="header-nav" hidden aria-labelledby="header-nav-title">
+<h2 id="header-nav-title">ヘッダーナビ</h2>
+<p class="g-desc">主要なページへの移動とアカウント操作。リンクは実際の部品ページへ移動します。</p>
+<div class="g-stack">
+<header class="andm-header-nav">
+<a class="andm-header-nav__brand" href="#/">andm Studio</a>
+<nav aria-label="主要ページ">
+<div class="andm-header-nav__links">
+<a class="andm-nav-link" href="#/navigation/header-nav" aria-current="page">概要</a>
+<a class="andm-nav-link" href="#/display/resource-item">作品</a>
+<a class="andm-nav-link" href="#/patterns/form-field">設定</a>
+</div>
+</nav>
+<div class="andm-header-nav__account">
+<details>
+<summary class="andm-nav-link">アカウント</summary>
+<a class="andm-link" href="#/patterns/form-field">プロフィール設定</a>
+</details>
+</div>
+</header>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="side-nav" data-part="side-nav" hidden aria-labelledby="side-nav-title">
+<h2 id="side-nav-title">サイドナビ</h2>
+<p class="g-desc">Native detailsで階層を開閉。現在のページをaria-currentで示します。</p>
+<div class="g-stack">
+<nav class="andm-side-nav" aria-label="作品のページ">
+<ul>
+<li>
+<a class="andm-nav-link" href="#/navigation/side-nav" aria-current="page">概要</a>
+</li>
+<li>
+<details open>
+<summary>作品</summary>
+<ul>
+<li>
+<a class="andm-nav-link" href="#/display/resource-item">一覧</a>
+</li>
+<li>
+<a class="andm-nav-link" href="#/patterns/search-form">検索</a>
+</li>
+</ul>
+</details>
+</li>
+<li>
+<a class="andm-nav-link" href="#/patterns/form-field">設定</a>
+</li>
+</ul>
+</nav>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="mobile-nav" data-part="mobile-nav" hidden aria-labelledby="mobile-nav-title">
+<h2 id="mobile-nav-title">モバイルナビ</h2>
+<p class="g-desc">インラインの開閉式ナビ。Tabで移動、Escapeで閉じてボタンへ戻ります。</p>
+<div class="g-stack">
+<div class="andm-mobile-nav" data-compose-disclosure>
+<button class="andm-btn andm-btn--outlined" type="button" aria-expanded="false" aria-controls="compose-mobile-panel">メニュー</button>
+<nav class="andm-mobile-nav__panel" id="compose-mobile-panel" aria-label="モバイルの主要ページ" hidden>
+<a class="andm-nav-link" href="#/navigation/header-nav" aria-current="page">概要</a>
+<a class="andm-nav-link" href="#/display/resource-item">作品</a>
+<a class="andm-nav-link" href="#/patterns/form-field">設定</a>
+</nav>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="bottom-nav" data-part="bottom-nav" hidden aria-labelledby="bottom-nav-title">
+<h2 id="bottom-nav-title">ボトムナビ</h2>
+<p class="g-desc">主要な移動先を常にラベルで示します。固定配置はアプリ側で指定します。</p>
+<div class="g-stack">
+<nav class="andm-bottom-nav" aria-label="主要画面">
+<ul class="andm-bottom-nav__list">
+<li>
+<a class="andm-nav-link" href="#/navigation/bottom-nav" aria-current="page">ホーム</a>
+</li>
+<li>
+<a class="andm-nav-link" href="#/patterns/search-form">検索</a>
+</li>
+<li>
+<a class="andm-nav-link" href="#/display/resource-item">作品</a>
+</li>
+</ul>
+</nav>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="toolbar" data-part="toolbar" hidden aria-labelledby="toolbar-title">
+<h2 id="toolbar-title">ツールバー</h2>
+<p class="g-desc">通常のボタングループ。Tabで各操作に移動し、実行結果を表示します。</p>
+<div class="g-stack">
+<div class="andm-toolbar" role="group" aria-label="作品の編集操作">
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="編集を開始しました">編集</button>
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="コピーを作成しました">複製</button>
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="アーカイブしました">アーカイブ</button>
+</div>
+<p class="andm-text" role="status" data-action-status>
+</p>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="action-menu" data-part="action-menu" hidden aria-labelledby="action-menu-title">
+<h2 id="action-menu-title">アクションメニュー</h2>
+<p class="g-desc">Tabで操作する開閉式の操作一覧。Escape・外側クリックで閉じます。ARIA menuパターンではありません。</p>
+<div class="g-stack">
+<div class="andm-action-menu" data-compose-disclosure>
+<button class="andm-btn andm-btn--outlined" type="button" aria-expanded="false" aria-controls="compose-action-panel">操作</button>
+<div class="andm-action-menu__panel" id="compose-action-panel" hidden>
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="編集を開始しました">編集</button>
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-action="コピーを作成しました">複製</button>
+<button class="andm-btn andm-btn--text" type="button" disabled>削除（権限なし）</button>
+</div>
+</div>
+<p class="andm-text" role="status" data-action-status>
+</p>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="resource-item" data-part="resource-item" hidden aria-labelledby="resource-item-title">
+<h2 id="resource-item-title">リスト項目</h2>
+<p class="g-desc">項目全体をリンクにせず、見出しリンクと末尾操作を分けます。</p>
+<div class="g-stack">
+<div class="andm-resource-item">
+<span class="andm-badge">研究</span>
+<div class="andm-resource-item__content">
+<h3 class="andm-text andm-text--title">
+<a class="andm-link" href="#/patterns/search-form">宇宙の観測ノート</a>
+</h3>
+<p class="andm-text andm-text--small">観測記録を整理する試作・更新 2026年10月8日</p>
+</div>
+<button class="andm-btn andm-btn--outlined" type="button" data-resource-favorite aria-pressed="false">お気に入り</button>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="empty-state" data-part="empty-state" hidden aria-labelledby="empty-state-title">
+<h2 id="empty-state-title">空状態・結果なし</h2>
+<p class="g-desc">初回の空状態と、検索結果なしを使い分けます。</p>
+<div class="g-stack">
+<div class="andm-empty-state">
+<h3 class="andm-text andm-text--title">まだ作品がありません</h3>
+<p class="andm-text">最初の作品を登録してみましょう。</p>
+<a class="andm-btn andm-btn--filled" href="#/patterns/form-actions">作品を登録</a>
+</div>
+<div class="andm-empty-state">
+<h3 class="andm-text andm-text--title">条件に合う作品がありません</h3>
+<p class="andm-text">検索条件を減らして試してください。</p>
+<a class="andm-link" href="#/patterns/search-form">検索へ戻る</a>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
+<section class="g-section" id="loading-state" data-part="loading-state" hidden aria-labelledby="loading-state-title">
+<h2 id="loading-state-title">ローディング状態</h2>
+<p class="g-desc">読み込み中・完了を試せます。更新される領域にaria-busyを付けます。</p>
+<div class="g-stack">
+<button class="andm-btn andm-btn--outlined" type="button" data-compose-load>読み込みを試す</button>
+<p class="andm-text" role="status" data-load-status>準備できています</p>
+<div data-load-content aria-busy="false">
+<p class="andm-text">作品一覧</p>
+</div>
+</div>
+<details class="g-details">
+<summary>仕様・組み込み方</summary>
+<p>Native HTMLとandmクラスを使用。動作例はgallery/compositions.js。通信・永続化・ルーティングはアプリ側の責務です。</p>
+<a href="#/library/composition-sources">出典と確認範囲</a>
+</details>
+</section>
         </div>
         </div>
 
@@ -3667,6 +3998,7 @@ const projectName = "途中のアイデアも残しておこう";</code>
     <script src="catalog.js?v=workspace-3"></script>
     <script src="library.js?v=workspace-3"></script>
     <script src="atoms.js"></script>
+    <script src="compositions.js"></script>
     <script src="explorer.js?v=workspace-3"></script>
     <script src="workspace.js?v=workspace-3"></script>
   </body>

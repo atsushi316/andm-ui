@@ -17,7 +17,8 @@
     "docs/COMPONENT-SOURCES.md",
     "docs/GALLERY-REVIEW.md",
     "docs/ATOMIC-SOURCES.md",
-    "docs/ATOMIC-INVENTORY.md"
+    "docs/ATOMIC-INVENTORY.md",
+    "docs/COMPOSITION-SOURCES.md"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",

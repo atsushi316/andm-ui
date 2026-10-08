@@ -116,3 +116,7 @@ Chip / FAB 固有の寸法・形は andm 独自仕様です。全シリーズの
 フォントファイルは同梱しません。Apple/Spectrumの新しい文字ロールの数値はBaselineによる独自補完です。全シリーズの公式部品を完全再現するものではありません。
 
 確認用静的Galleryは `npm run build` の後に `node scripts/export-gallery.mjs /absolute/output/directory` で書き出せます。変更したCSS/JSはキャッシュ識別子付きで配信します。
+
+## 組み合わせ部品
+
+検索・フィルター・フォーム・ヘッダー/サイド/モバイル/ボトムナビ・操作一覧・リスト項目・空状態・読み込みを追加。Native HTML + CSS、動作の参考実装はGallery。[仕様と出典](docs/COMPOSITION-SOURCES.md)。

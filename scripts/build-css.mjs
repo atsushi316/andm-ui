@@ -50,6 +50,7 @@ const sources = [
   "display/code.css",
   "display/image.css",
   "display/typography.css",
+  "patterns/compositions.css",
   "utilities.css",
 ];
 

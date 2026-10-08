@@ -10,3 +10,5 @@
 同じ場での値の変更は Control。
 
 Text link / Skip linkを追加。根拠と確認範囲は [ATOMIC-SOURCES.md](../../../docs/ATOMIC-SOURCES.md)。
+
+Header / Side / Mobile / Bottom navは組み合わせ部品としてpatterns/compositions.cssに定義。既存のBreadcrumbとPaginationを再利用。[確認範囲](../../../docs/COMPOSITION-SOURCES.md)。

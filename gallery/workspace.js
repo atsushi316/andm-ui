@@ -17,7 +17,7 @@
     uswds: { label: 'USWDS', file: 'uswds', url: 'https://designsystem.digital.gov/', note: '公式の用途・基礎仕様と、独自解釈を区別しています。' },
     fluent: { label: 'Fluent 2', file: 'fluent', url: 'https://fluent2.microsoft.design/shapes', note: '形・文字の基礎仕様のみ参照。Chip / FAB の公式寸法は未確認です。' }
   };
-  Object.assign(aliases, {text:['文字','タイポグラフィ','見出し','本文'],icon:['アイコン','記号'],'icon-button':['アイコンボタン','閉じる'],link:['リンク'],label:['ラベル'],'helper-text':['説明','補足'],'error-text':['エラー','検証'],'required-marker':['必須','任意'],status:['状態'],code:['コード'],kbd:['キーボード','キー'],image:['画像'],'file-input':['ファイル','添付'],'native-input':['日付','時刻','数値','パスワード','標準入力']});
+  Object.assign(aliases, {"form-field":["フォーム","入力"],"search-form":["検索","検索フォーム"],"filter-bar":["絞り込み","フィルター"],"results-header":["検索結果","並び替え"],"form-actions":["保存","キャンセル"],"header-nav":["ヘッダー","ナビ"],"side-nav":["サイド","階層"],"mobile-nav":["モバイル","メニュー"],"bottom-nav":["ボトム","携帯"],toolbar:["ツールバー","操作"],"action-menu":["アクション","操作メニュー"],"resource-item":["リスト","作品"],"empty-state":["空状態","結果なし"],"loading-state":["読み込み","ローディング"],text:['文字','タイポグラフィ','見出し','本文'],icon:['アイコン','記号'],'icon-button':['アイコンボタン','閉じる'],link:['リンク'],label:['ラベル'],'helper-text':['説明','補足'],'error-text':['エラー','検証'],'required-marker':['必須','任意'],status:['状態'],code:['コード'],kbd:['キーボード','キー'],image:['画像'],'file-input':['ファイル','添付'],'native-input':['日付','時刻','数値','パスワード','標準入力']});
   var entries = [];
   var initialized = false;
   var search = $('component-search');
@@ -137,6 +137,7 @@
       el.append(note, analysis, document.createTextNode(' · '), official);
     } else { var note = document.createElement('p'); note.textContent = 'Baseline / Soft / Dense / Technical / Editorial / Playful は andm 独自の設計です。'; el.append(note); }
     if (['text','icon','icon-button','link','label','helper-text','error-text','required-marker','status','code','kbd','image','file-input','native-input'].includes(part)) { var atomic = document.createElement('a'); atomic.href = '#/library/atomic-sources'; atomic.textContent = '今回の仕様・シリーズ対応・未確認事項'; el.append(document.createElement('br'), atomic); }
+    if (['form-field','search-form','filter-bar','results-header','form-actions','header-nav','side-nav','mobile-nav','bottom-nav','toolbar','action-menu','resource-item','empty-state','loading-state'].includes(part)) { var c=document.createElement('a');c.href='#/library/composition-sources';c.textContent='組み合わせ部品の仕様・出典';el.append(document.createElement('br'),c); }
     if (part === 'chip' || part === 'fab') { var a = document.createElement('a'); a.href = '#/library/component-sources'; a.textContent = '今回の部品の仕様と根拠'; el.append(document.createElement('br'), a); }
   }
   function update() {

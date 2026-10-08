@@ -35,6 +35,7 @@
   ];
 
   var partViews = {
+    patterns: true,
     controls: true,
     marks: true,
     containers: true,
@@ -141,6 +142,7 @@
   }
 
   var libraryFiles = {
+    "composition-sources": "../../docs/COMPOSITION-SOURCES.md",
     index: "README.md",
     academic: "academic.md",
     standards: "standards.md",
@@ -833,9 +835,15 @@
           if (button === page) button.setAttribute("aria-current", "page");
           else button.removeAttribute("aria-current");
         });
+        var context = nav.closest(".g-context");
+        var summary = context && context.querySelector("[data-page-summary]");
+        var result = context && context.querySelector("[data-page-results]");
+        if (summary) summary.textContent = "全80件中、" + (index * 20 + 1) + "〜" + ((index + 1) * 20) + "件を表示";
+        if (result) { result.replaceChildren(); result.start = index * 20 + 1; for (var n = 0; n < 3; n++) { var li = document.createElement("li"); li.textContent = "申請記録 " + (index * 20 + n + 1); result.appendChild(li); } }
         if (prev) prev.disabled = index <= 0;
         if (next) next.disabled = index >= pages.length - 1;
       }
+      if (pages.length) selectPage(nav.querySelector('[aria-current="page"]') || pages[0]);
       pages.forEach(function (button) {
         button.addEventListener("click", function () {
           selectPage(button);
