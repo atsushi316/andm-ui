@@ -6,7 +6,7 @@
     margin: 0;
     min-width: 0;
     overflow-wrap: anywhere;
-    padding: var(--andm-card-padding, var(--andm-space-4));
+    padding: var(--andm-card-padding, var(--andm-space-inset));
     border: var(--andm-card-border-width, 1px) solid
       var(
         --andm-card-border-color,
@@ -25,7 +25,7 @@
   }
 
   .andm-card__title {
-    margin: 0 0 var(--andm-space-2);
+    margin: 0 0 var(--andm-space-related);
     font-size: var(--andm-font-size-md);
     font-weight: var(--andm-font-weight-medium);
     line-height: var(--andm-line-height-tight);
@@ -41,7 +41,7 @@
   .andm-card__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--andm-space-2);
-    margin-top: var(--andm-space-4);
+    gap: var(--andm-space-actions);
+    margin-top: var(--andm-space-group);
   }
 }

@@ -63,5 +63,19 @@
     --andm-alert-padding-x: 1.25rem;
     --andm-alert-padding-y: 1rem;
 
-  }
+
+    /* 2026-10-11: source-first spacing; mappings and limits in SPACING-AND-OVERLAYS.md. */
+    --andm-space-related: 8px;
+    --andm-space-group: 16px;
+    --andm-space-section: 24px;
+    --andm-space-region: 40px;
+    --andm-space-inset: 24px;
+    --andm-space-paragraph: 16px;
+    --andm-space-actions: 8px;
+    --andm-dialog-padding: 2.5rem 2rem 2rem;
+    --andm-dialog-gap: 1rem;
+    --andm-dialog-actions-space: .5rem;
+    --andm-dialog-actions-align: flex-start;
+    --andm-overlay-edge: 1.5rem;
+}
 }

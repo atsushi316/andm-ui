@@ -61,5 +61,36 @@
       --andm-btn-press-scale: 1;
       /* 区切りの公式色は未確認。Baseline の outline-variant。見た目は変えない。 */
       --andm-divider-color: var(--andm-color-outline-variant);
+
+    /* 2026-10-11: source-first spacing; mappings and limits in SPACING-AND-OVERLAYS.md. */
+    --andm-space-related: 8px;
+    --andm-space-group: 24px;
+    --andm-space-section: 32px;
+    --andm-space-region: 64px;
+    --andm-space-inset: 24px;
+    --andm-space-paragraph: 16px;
+    --andm-space-actions: 8px;
+    --andm-dialog-padding: 0;
+    --andm-dialog-gap: .75rem;
+    --andm-dialog-actions-space: 0;
+    --andm-dialog-title-padding: .5rem 1rem 0;
+    --andm-dialog-body-padding: 0 1rem 2rem;
+    --andm-dialog-footer-padding: 0 1rem 1rem;
+    --andm-dialog-radius: .5rem;
+    --andm-dialog-max-width: 30rem;
+    --andm-dialog-title-size: 1.5rem;
+    --andm-dialog-border-color: #000;
+}
+}
+
+@layer andm.tokens {
+  @media (min-width: 48rem) {
+    .andm-series--dads {
+      --andm-dialog-gap: 1rem;
+      --andm-dialog-title-padding: 1.5rem 1.5rem 0;
+      --andm-dialog-body-padding: 0 1.5rem 2rem;
+      --andm-dialog-footer-padding: 0 1.5rem 1.5rem;
+      --andm-dialog-title-size: 1.75rem;
     }
+  }
 }

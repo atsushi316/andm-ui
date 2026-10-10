@@ -45,5 +45,17 @@
     --andm-tooltip-radius: 4px;
     --andm-code-radius: 2px;
 
-  }
+
+    /* 2026-10-11: source-first spacing; mappings and limits in SPACING-AND-OVERLAYS.md. */
+    --andm-space-related: 8px;
+    --andm-space-group: 16px;
+    --andm-space-section: 24px;
+    --andm-space-region: 32px;
+    --andm-space-inset: 24px;
+    --andm-space-paragraph: 8px;
+    --andm-space-actions: 8px;
+    --andm-dialog-padding: 24px;
+    --andm-dialog-gap: 16px;
+    --andm-dialog-actions-space: 8px;
+}
 }

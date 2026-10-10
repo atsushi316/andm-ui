@@ -136,3 +136,8 @@
   .andm-segmented__option, .andm-tabs__tab, .andm-menu__item { min-width: 0; overflow-wrap: anywhere; padding-block: .25rem; }
   .andm-tabs__panel { outline-offset: var(--andm-focus-ring-offset); }
 }
+
+@layer andm.components {
+  .andm-dialog__title { font-size: var(--andm-dialog-title-size, var(--andm-type-title-size)); }
+  .andm-dialog__body { font-size: var(--andm-dialog-body-size, var(--andm-type-body-size)); }
+}

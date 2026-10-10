@@ -27,7 +27,8 @@
     "docs/SOURCE-PROPERTIES.csv",
     "docs/COMPONENT-COVERAGE.md",
     "docs/COMPONENT-COVERAGE.json",
-    "docs/BEHAVIOR.md"
+    "docs/BEHAVIOR.md",
+    "docs/SPACING-AND-OVERLAYS.md"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",
