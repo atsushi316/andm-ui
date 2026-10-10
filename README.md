@@ -138,3 +138,5 @@ Seriesとは独立した思想・構成・部品利用方式を比較する[Expe
 ## 操作を組み合わせる画面
 
 [設定・検索一覧・詳細編集の見本](gallery/completion/) と [任意の操作API](docs/BEHAVIOR.md)。CSS単独で利用でき、必要な部品だけ `/behavior` を明示的にimportします。96見本（既存58＋38追加）の数と、各公式体系の全仕様再現は別です。[対応表](docs/COMPONENT-COVERAGE.md) と [検証・限界](docs/COMPONENT-COMPLETION-VALIDATION.md) を参照してください。
+
+余白とDialogの責務・Series別の一次資料・検証限界: [SPACING-AND-OVERLAYS.md](docs/SPACING-AND-OVERLAYS.md)。同じ内容の比較は `gallery/spacing/`。

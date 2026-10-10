@@ -1,4 +1,40 @@
-body{margin:0;background:#f1f4f5;color:#172a34;font-family:system-ui,sans-serif;line-height:1.6}.completion-chrome{padding:24px;max-width:1120px;margin:auto}.completion-chrome label{display:inline-block;margin:8px 20px 8px 0}.completion-chrome select{font:inherit;padding:8px;max-width:100%}#screen-content{max-width:1120px;margin:auto;padding:24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.completion-card{min-width:0;padding:24px;border:1px solid #a1b2bb;background:var(--andm-color-surface,#fff);color:var(--andm-color-on-surface,#172a34);border-radius:12px}.completion-card h2{font-size:1.4rem;margin-top:0;line-height:1.4}.completion-card p{overflow-wrap:anywhere}.completion-card label{display:block}.completion-card input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),.completion-card select,.completion-card textarea{max-width:100%;box-sizing:border-box}.completion-card .andm-textfield{width:100%}.completion-card .andm-btn{height:auto;min-height:44px;white-space:normal;overflow-wrap:anywhere;font-size:1rem}.completion-card :focus-visible{outline:3px solid #a64718;outline-offset:3px}[hidden]{display:none!important}.completion-card dialog{max-width:min(36rem,calc(100vw - 32px));box-sizing:border-box}.completion-card .andm-tooltip__bubble{max-width:min(20rem,80vw)}@media(max-width:700px){#screen-content{grid-template-columns:minmax(0,1fr);padding:16px}.completion-chrome,.completion-card{padding:16px}}
-.completion-chrome label{max-width:100%;overflow-wrap:anywhere}.completion-card fieldset{min-inline-size:0;margin-inline:0;max-width:100%}.completion-card label{overflow-wrap:anywhere}.completion-card .andm-affix{max-width:100%}.completion-card .andm-date-entry input{min-width:0}
-.completion-card progress{width:100%;max-width:100%}
-.completion-card textarea.andm-textfield__input{height:auto;min-height:6rem;resize:vertical}
+/* The picker belongs to Gallery; specimen appearance belongs to its Series. */
+body { margin: 0; background: #f1f4f5; color: #172a34; font-family: system-ui, sans-serif; line-height: 1.6; }
+.completion-chrome { padding: 24px; max-width: 1120px; margin: auto; }
+.completion-chrome label { display: inline-block; margin: 8px 20px 8px 0; }
+.completion-chrome select { font: inherit; padding: 8px; max-width: 100%; }
+#screen-content {
+  max-width: 1120px; margin: auto; padding: var(--andm-space-region) var(--andm-space-section);
+  display: grid; align-items: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--andm-space-section);
+  font-family: var(--andm-type-body-font); font-size: var(--andm-type-body-size);
+  line-height: var(--andm-type-body-line-height);
+}
+.completion-card {
+  display: flex; flex-direction: column; align-items: stretch;
+  gap: var(--andm-space-group); min-width: 0;
+  padding: var(--andm-card-padding, var(--andm-space-inset));
+  border: var(--andm-card-border-width, 1px) solid var(--andm-color-outline-variant);
+  background: var(--andm-color-surface); color: var(--andm-color-on-surface);
+  border-radius: var(--andm-card-radius, var(--andm-surface-radius, var(--andm-radius-md)));
+}
+.completion-card > :where(h2, h3, p, form, fieldset, ul, ol, dl, figure) { margin: 0; }
+.completion-card > h2 {
+  font-family: var(--andm-type-heading-font); font-size: var(--andm-type-title-size);
+  font-weight: var(--andm-type-title-weight); line-height: var(--andm-type-title-line-height);
+  letter-spacing: var(--andm-type-title-tracking); overflow-wrap: anywhere;
+}
+.completion-card > .andm-btn { align-self: flex-start; }
+.completion-card p, .completion-card label { overflow-wrap: anywhere; }
+.completion-card fieldset { min-inline-size: 0; max-width: 100%; }
+.completion-card :where(select, input, textarea) { max-width: 100%; box-sizing: border-box; }
+.completion-card .andm-textfield { width: 100%; }
+.completion-card .andm-affix { max-width: 100%; }
+.completion-card .andm-date-entry input { min-width: 0; }
+.completion-card .andm-tooltip__bubble { max-width: min(20rem, 80vw); }
+.completion-chrome label { max-width: 100%; overflow-wrap: anywhere; }
+[hidden] { display: none !important; }
+@media (max-width: 700px) {
+  #screen-content { grid-template-columns: minmax(0, 1fr); padding-inline: 16px; }
+  .completion-chrome { padding: 16px; }
+}

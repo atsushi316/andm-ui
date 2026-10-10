@@ -8,3 +8,5 @@
 - `popover.css` — `.andm-popover`（クリックで開き、中で操作できる）
 
 ページ内の面は Container。
+
+Dialog/Drawerは `__panel` に `__title` / `__body` / `__actions` を配置。panelを省くと内側余白とスクロール契約を失う。余白の根拠と適応範囲は [SPACING-AND-OVERLAYS](../../../docs/SPACING-AND-OVERLAYS.md)。

@@ -106,3 +106,14 @@ Minimalism / Web Brutalism / Original / A′の新規判断は、[Philosophy判�
 ## 操作能力の追加（2026-10-10）
 
 参照判断ID `completion-native-contract`: [Native契約・局所値・確認範囲](SOURCE-DECISIONS-COMPLETION.md)。追加CSSは既存意味Tokenを継承し、固有配置・数値はandm-original。公式Series CSSの変更なし。
+
+## spacing-overlay-source-first-20261011
+
+- 対象: `src/styles/tokens/spacing/semantic.css`、Seriesの余白mapping、Coreの面/構成/Dialog/Drawer、Galleryの見本HTML/CSS。
+- scope: Web Native HTML、各一次資料の版/branchと共通slotへの対応は [SPACING-AND-OVERLAYS](SPACING-AND-OVERLAYS.md)。確認日2026-10-11。
+- basis / sourceStatus: プロパティ単位のofficial/derived/andm-original/unverifiedを同文書の表で分ける。Appleの未取得本文とAtlassian dialog専用寸法を研究で確認済みにしない。
+- decision: 関係の余白を再利用可能な責務へ割当。部品専用公式値を優先。固定の画面上書き、panel欠落、既定marginとの二重余白を修正。独自Seriesの密度は外部公式と区別。
+- adoption: ユーザーの余白・モーダル修正とSeriesの特色保持の依頼。recommended: true。
+- alternatives: 全Seriesを同じpxへ統一する方式、研究の近接原則からpxを生成する方式、本文未取得を公式欠落と扱う方式は不採用。
+- validation: build/各監査/HTML契約/JS構文。今回のブラウザと実機は未検証。旧ブラウザ記録の流用なし。
+- revisit: 各公式部品/Tokenの版更新、Apple/Atlassian本文取得、実表示/実機検証での不具合。Series固有の未対応size/variant/APIは別途個別に扱う。

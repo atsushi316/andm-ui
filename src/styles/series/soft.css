@@ -12,5 +12,15 @@
       --andm-shadow-1: 0 1px 2px rgb(0 0 0 / 0.08);
       --andm-shadow-2: 0 8px 20px rgb(0 0 0 / 0.08);
       --andm-btn-press-scale: 0.98;
-    }
+
+    /* 2026-10-11: source-first spacing; mappings and limits in SPACING-AND-OVERLAYS.md. */
+    --andm-space-related: 12px;
+    --andm-space-group: 20px;
+    --andm-space-section: 32px;
+    --andm-space-region: 48px;
+    --andm-space-inset: 32px;
+    --andm-space-paragraph: 16px;
+    --andm-space-actions: 12px;
+    --andm-dialog-radius: 20px;
+}
 }

@@ -7,6 +7,7 @@
     );
     height: 100%;
     max-height: 100%;
+    overflow: auto;
     margin: 0;
     margin-inline-start: auto;
     padding: 0;
@@ -57,13 +58,17 @@
   .andm-drawer__panel {
     display: flex;
     flex-direction: column;
-    gap: var(--andm-space-3);
+    gap: var(--andm-space-group);
     box-sizing: border-box;
     height: 100%;
-    padding: var(--andm-space-5);
+    min-height: 100%;
+    height: auto;
+    padding: var(--andm-space-inset);
   }
 
   .andm-drawer__title {
+    flex-shrink: 0;
+    overflow-wrap: anywhere;
     margin: 0;
     font-size: var(--andm-font-size-lg);
     font-weight: var(--andm-font-weight-medium);
@@ -80,8 +85,10 @@
   .andm-drawer__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--andm-space-2);
+    flex-shrink: 0;
+    gap: var(--andm-space-actions);
     margin-top: auto;
+    padding-block-start: var(--andm-space-group);
   }
 
   @media (prefers-reduced-motion: reduce) {

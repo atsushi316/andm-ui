@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-10-11",
+  "scope": "Selected properties; no package-wide conformance claim",
+  "files": [
+    {
+      "name": "fluent-constants",
+      "url": "https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-dialog/library/src/contexts/constants.ts",
+      "sha256": "9894794463f4d5a807f41cdddfa6fa725db988ec52965af2cb34589e88cd7da5",
+      "bytes": 361,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "fluent-surface",
+      "url": "https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-dialog/library/src/components/DialogSurface/useDialogSurfaceStyles.styles.ts",
+      "sha256": "40fee41e97cd7cd84727ce6fb11e7f57678e510d1d10bd11f019707a99659409",
+      "bytes": 3510,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "fluent-body",
+      "url": "https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-dialog/library/src/components/DialogBody/useDialogBodyStyles.styles.ts",
+      "sha256": "9705b213bcae0b3dd538387bcb1f57d30810bcf2fb721a9661edf1f713af6c70",
+      "bytes": 1360,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "fluent-spacing",
+      "url": "https://raw.githubusercontent.com/microsoft/fluentui/master/packages/tokens/src/global/spacings.ts",
+      "sha256": "63a64eba054236a88c80293f3128f89e988f22da90e7b4637a53ad92a89f9c2d",
+      "bytes": 1315,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "fluent-radius",
+      "url": "https://raw.githubusercontent.com/microsoft/fluentui/master/packages/tokens/src/global/borderRadius.ts",
+      "sha256": "156bf14d20515100a28356daa7c07c9766a1108a0e4efef86ae171ee8c505f34",
+      "bytes": 435,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "carbon-modal",
+      "url": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/styles/scss/components/modal/_modal.scss",
+      "sha256": "b4ba35b500a16eaf510ffa224cc32bcdd2fb8eb04f88519a5f408ed294344f3a",
+      "bytes": 16568,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "uswds-modal",
+      "url": "https://raw.githubusercontent.com/uswds/uswds/develop/packages/usa-modal/src/styles/_usa-modal.scss",
+      "sha256": "4b23f1578114ba88a92d7501f2a5af11309cade9fef70d0fbcd158a8577d994e",
+      "bytes": 3342,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "material-dialog-core",
+      "url": "https://raw.githubusercontent.com/material-components/material-web/main/dialog/internal/_dialog.scss",
+      "sha256": "096922af1ac52f4678e68d971dbc4e992b1805c92a99117d639483af21a94ae5",
+      "bytes": 5673,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "spectrum-dialog",
+      "url": "https://raw.githubusercontent.com/adobe/spectrum-css/main/components/dialog/index.css",
+      "sha256": "0c9b3c0f49ec32956a6e1e962c80b8f57c94ff135aa0829f0e6a9b921c688fc3",
+      "bytes": 14364,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "spectrum-global",
+      "url": "https://unpkg.com/@spectrum-css/tokens@16.0.2/dist/css/global-vars.css",
+      "sha256": "ed26ca8ce7727d4e5c44890c5ff3d9c04a10deb8c40e8906ec601f407c4919dc",
+      "bytes": 45255,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "spectrum-medium",
+      "url": "https://unpkg.com/@spectrum-css/tokens@16.0.2/dist/css/medium-vars.css",
+      "sha256": "3d9a467a20d29257458a66cd4e5b5fbd21c1fd39a733e319e6325dad36fd0ddf",
+      "bytes": 33015,
+      "verification": "body retrieved"
+    },
+    {
+      "name": "dads-modal",
+      "url": "https://raw.githubusercontent.com/digital-go-jp/design-system-example-components-html/main/src/components/modal-dialog/modal-dialog.css",
+      "sha256": "951635177e46bbd55d99f4e3a7a80d733f87518393119a446b2dd6ab88cbd34b",
+      "bytes": 5130,
+      "verification": "body retrieved"
+    }
+  ]
+}

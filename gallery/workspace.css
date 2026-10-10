@@ -142,7 +142,7 @@ body:not([data-view="home"]) #component-index { display: none; }
 }
 @media(prefers-reduced-motion:reduce) {.g-series-dock {scroll-behavior:auto;}}
 
-.g-component-preview {height:100px;align-items:flex-start;}
+.g-component-preview {height:auto;min-height:100px;align-items:flex-start;}
 .g-component-preview form {margin:0;}
 .g-inspect-details {max-width:52rem;}
 html {scroll-padding-bottom:120px;}
@@ -164,3 +164,7 @@ html {scroll-padding-bottom:120px;}
     position: static; inset: auto; transform: none; width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;
   }
 }
+
+/* Only specimen composition inherits the selected Series' relationship gaps. */
+.g-stick-scope .g-row { gap: var(--andm-space-actions); }
+.g-stick-scope .g-stack { gap: var(--andm-space-group); }
