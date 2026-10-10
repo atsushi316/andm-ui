@@ -74,9 +74,10 @@
   }
 
   .andm-radio__input:focus-visible {
-    outline: var(--andm-focus-ring-width) var(--andm-focus-ring-style)
+    outline: var(--andm-control-focus-width, var(--andm-focus-ring-width)) var(--andm-focus-ring-style)
       var(--andm-focus-ring-color);
-    outline-offset: var(--andm-focus-ring-offset);
+    outline-offset: var(--andm-control-focus-offset, var(--andm-focus-ring-offset));
+    box-shadow: var(--andm-control-focus-shadow, none);
   }
 
   .andm-radio__input:disabled,

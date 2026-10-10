@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>観察メモ — AI再利用テスト</title>
+  <link rel="stylesheet" href="../../../../dist/style.css">
+  <link rel="stylesheet" href="./local.css">
+  <script type="module" src="./local.js"></script>
+</head>
+<body class="reuse-page">
+  <main class="reuse-card">
+    <p class="reuse-eyebrow">AI再利用テスト · Lab</p>
+    <h1>観察メモ</h1>
+    <p class="reuse-intro">気づいたことを短く残しましょう。押した反応と、保存の結果を別々に確認できます。</p>
+    <form id="observation-form">
+      <label for="observation">メモ <span class="reuse-required">（必須）</span></label>
+      <textarea id="observation" name="observation" rows="5" required maxlength="2000" aria-describedby="note-help" placeholder="例：指を離すと、面がふわっと戻った。"></textarea>
+      <p id="note-help" class="reuse-help">2,000文字まで。空欄では保存できません。</p>
+      <div class="reuse-actions">
+        <button id="save-observation" type="submit" class="andm-btn andm-btn--filled reuse-save" aria-describedby="press-feedback">
+          <span class="reuse-face" aria-hidden="true"></span>
+          <span class="reuse-label">観察メモを保存</span>
+        </button>
+        <p id="press-feedback" class="reuse-feedback" role="status" aria-live="polite">操作できます。</p>
+      </div>
+      <p id="save-result" class="reuse-result" role="status" aria-live="polite" aria-atomic="true">まだ保存していません。</p>
+    </form>
+    <details class="reuse-details">
+      <summary>この画面について</summary>
+      <p>保存はこの画面のメモリ内だけの模擬処理です。ページを閉じる・再読み込みすると消えます。外部には送信しません。</p>
+      <p>丸い面と弾性的な復元は独自のLab表現です。柔らかさの知覚や最適値を証明するものではありません。Tabで移動し、Enter／Spaceでも操作できます。</p>
+      <label class="reuse-option"><input id="stop-motion" type="checkbox"> 動きを止める</label>
+      <label class="reuse-option"><input id="disable-save" type="checkbox"> 保存ボタンを無効にする（確認用）</label>
+      <p id="motion-description" class="reuse-help"></p>
+    </details>
+    <noscript><p>この模擬保存にはJavaScriptが必要です。入力内容は保存されません。</p></noscript>
+  </main>
+</body>
+</html>

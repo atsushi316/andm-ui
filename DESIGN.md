@@ -26,7 +26,7 @@ Custom UI は Series に所属しなくてよい。Global Token、Component-loca
 
 余白は関連要素・グループ・セクション・領域という関係から判断し、具体値は対象 Series の尺度を優先する。視覚的階層、群化、操作の意味を保ちながら表現の違いを許容する。共通の px 値を科学的な法則として強制しない。
 
-確認手順・分類・補完条件・更新時の扱いは [SOURCE-FIRST.md](docs/SOURCE-FIRST.md)、変更ごとの根拠は [SOURCE-DECISIONS.md](docs/SOURCE-DECISIONS.md) が正本。既存の部品別出典文書も併用する。全値の監査・自動補完は未完了。AI の作業指示は [AGENTS.md](AGENTS.md)。
+確認手順・分類・補完条件・更新時の扱いは [SOURCE-FIRST.md](docs/SOURCE-FIRST.md)、変更ごとの根拠は [SOURCE-DECISIONS.md](docs/SOURCE-DECISIONS.md) が正本。既存の部品別出典文書も併用する。全パーツの実装棚卸しと再監査は [SOURCE-REAUDIT.md](docs/SOURCE-REAUDIT.md) を参照。公式本文の全値確認は未完了で、未確認値は明示して維持する。AI の作業指示は [AGENTS.md](AGENTS.md)。
 
 ## Design Space（Button）
 

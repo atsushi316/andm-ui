@@ -7,7 +7,7 @@
    * 右 25% と幅による margin はレイアウト規則なのでコピーしない。
    * USWDS / DADS のアコーディオンページに寸法・時間・hover は無い。
    * M3 / Apple / Spectrum / Fluent / Atlassian に同名の公式寸法は確認できず。
-   * 開閉の時間は公式ページに無い。official value not specified。
+   * 開閉の時間は公式ページに無い。当該プロパティは未確認（公式全体の欠落とは断定しない）。
    * 開閉は short4 + standard。hover は short2、押下は short1。
    */
   .andm-accordion {

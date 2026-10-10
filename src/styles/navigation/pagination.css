@@ -35,7 +35,7 @@
      * M3 / Carbon / Fluent / Spectrum / USWDS / Atlassian の
      * pagination に円形ページボタンは無い。円にはしない。
      */
-    border-radius: var(--andm-radius-md);
+    border-radius: var(--andm-pagination-radius, var(--andm-radius-md));
     background: var(--andm-color-surface);
     color: var(--andm-color-on-surface);
     font-family: inherit;

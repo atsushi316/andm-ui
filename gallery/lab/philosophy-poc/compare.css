@@ -1,0 +1,38 @@
+/* Comparison chrome does not inherit a Series. All selectors stay in this page. */
+.poc-comparison { margin:0; color:#26312b; background:#eef0ea; font:1rem/1.7 system-ui,'Noto Sans CJK JP',sans-serif; overflow-wrap:anywhere; }
+.poc-comparison * { box-sizing:border-box; }
+.poc-comparison a { color:#244d38; text-underline-offset:.2em; }
+.poc-comparison :focus-visible { outline:3px solid #1b63bf; outline-offset:4px; }
+.poc-comparison .skip { position:absolute; top:0; left:1rem; transform:translateY(-200%); background:white; padding:.75rem; z-index:2; }
+.poc-comparison .skip:focus { transform:none; }
+.poc-comparison .lab-heading { padding:2.5rem 2rem 1.5rem; max-width:96rem; margin:auto; }
+.poc-comparison .eyebrow { font-size:.8rem; font-weight:700; letter-spacing:.15em; }
+.poc-comparison h1 { font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-.04em; line-height:1.3; margin:1rem 0; }
+.poc-comparison .caution { max-width:55rem; font-size:.9rem; }
+.poc-comparison main { max-width:96rem; margin:auto; padding:0 2rem 3rem; }
+.poc-comparison .compare-settings { border:1px solid #8d9b90; background:#fafbf7; padding:1rem 1.5rem; margin-bottom:1.5rem; }
+.poc-comparison summary { cursor:pointer; padding:.25rem 0; font-weight:700; }
+.poc-comparison .comparison-controls { display:flex; gap:1rem; flex-wrap:wrap; align-items:end; margin-top:1rem; }
+.poc-comparison label { display:grid; gap:.35rem; min-width:0; }
+.poc-comparison select,.poc-comparison textarea,.poc-comparison button { font:inherit; max-width:100%; padding:.65rem .8rem; color:inherit; background:#fff; border:1px solid #6e8274; border-radius:.25rem; }
+.poc-comparison select { width:100%; }
+.poc-comparison button { cursor:pointer; background:#254d37; color:#fff; }
+.poc-comparison input { accent-color:#254d37; width:1.2rem; height:1.2rem; }
+.poc-comparison .compare-toggle { display:flex; align-items:center; padding:.65rem 0; }
+.poc-comparison .previews { display:grid; grid-template-columns:minmax(0,1fr); gap:1.5rem; }
+.poc-comparison .preview-pane { min-width:0; border:1px solid #8d9b90; background:white; }
+.poc-comparison .pane-heading { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding:1rem; }
+.poc-comparison .pane-heading h2 { margin:0; font-size:1.2rem; }
+.poc-comparison .candidate-details { border-top:1px solid #b0bdb2; padding:.7rem 1rem; }
+.poc-comparison dl { margin:1rem 0; }
+.poc-comparison dt { font-weight:750; }
+.poc-comparison dd { margin:0 0 .75rem; }
+.poc-comparison iframe { display:block; width:100%; height:70vh; min-height:28rem; border:0; border-top:1px solid #8d9b90; }
+.poc-comparison .observation { margin-top:2rem; max-width:55rem; }
+.poc-comparison .observation button { margin-top:1rem; }
+.poc-comparison .decision-document { max-width:60rem; }
+.poc-comparison .decision-document article,.poc-comparison .decision-document section { margin:2rem 0; padding:2rem; border:1px solid #8d9b90; background:#fafbf7; scroll-margin-top:1rem; }
+.poc-comparison [hidden] { display:none !important; }
+@media(min-width:70rem) { .poc-comparison .previews[data-two="true"] { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:35rem) { .poc-comparison .lab-heading { padding:1.5rem 1rem 1rem; } .poc-comparison main { padding:0 1rem 2rem; } .poc-comparison .compare-settings { padding:1rem; } .poc-comparison .comparison-controls { display:grid; grid-template-columns:minmax(0,1fr); } .poc-comparison .decision-document article,.poc-comparison .decision-document section { padding:1rem; } }
+@media(prefers-reduced-motion:reduce) { .poc-comparison * { scroll-behavior:auto !important; animation:none !important; transition:none !important; } }

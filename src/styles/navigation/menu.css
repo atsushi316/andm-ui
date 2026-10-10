@@ -50,7 +50,7 @@
     margin: 0;
     padding: 0 var(--andm-space-3);
     border: 0;
-    border-radius: var(--andm-radius-sm);
+    border-radius: var(--andm-field-radius, var(--andm-radius-sm));
     background: transparent;
     color: var(--andm-color-on-surface);
     font-family: inherit;

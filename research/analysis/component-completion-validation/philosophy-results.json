@@ -1,0 +1,463 @@
+{
+  "matrix": [
+    {
+      "candidate": "minimal",
+      "width": 320,
+      "scale": 1,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "minimal",
+      "width": 320,
+      "scale": 2,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "minimal",
+      "width": 390,
+      "scale": 1,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "minimal",
+      "width": 390,
+      "scale": 2,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "minimal",
+      "width": 768,
+      "scale": 1,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "minimal",
+      "width": 768,
+      "scale": 2,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "minimal",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "minimal",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "brutal",
+      "width": 320,
+      "scale": 1,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "brutal",
+      "width": 320,
+      "scale": 2,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "brutal",
+      "width": 390,
+      "scale": 1,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "brutal",
+      "width": 390,
+      "scale": 2,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "brutal",
+      "width": 768,
+      "scale": 1,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "brutal",
+      "width": 768,
+      "scale": 2,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "brutal",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "brutal",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "original",
+      "width": 320,
+      "scale": 1,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "original",
+      "width": 320,
+      "scale": 2,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "original",
+      "width": 390,
+      "scale": 1,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "original",
+      "width": 390,
+      "scale": 2,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "original",
+      "width": 768,
+      "scale": 1,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "original",
+      "width": 768,
+      "scale": 2,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "original",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "original",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "minimal-extended",
+      "width": 320,
+      "scale": 1,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "minimal-extended",
+      "width": 320,
+      "scale": 2,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "minimal-extended",
+      "width": 390,
+      "scale": 1,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "minimal-extended",
+      "width": 390,
+      "scale": 2,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "minimal-extended",
+      "width": 768,
+      "scale": 1,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "minimal-extended",
+      "width": 768,
+      "scale": 2,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "minimal-extended",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "minimal-extended",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "index",
+      "width": 320,
+      "scale": 1,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "index",
+      "width": 320,
+      "scale": 2,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "index",
+      "width": 390,
+      "scale": 1,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "index",
+      "width": 390,
+      "scale": 2,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "index",
+      "width": 768,
+      "scale": 1,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "index",
+      "width": 768,
+      "scale": 2,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "index",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "index",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "decisions",
+      "width": 320,
+      "scale": 1,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "decisions",
+      "width": 320,
+      "scale": 2,
+      "doc": 320,
+      "over": []
+    },
+    {
+      "candidate": "decisions",
+      "width": 390,
+      "scale": 1,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "decisions",
+      "width": 390,
+      "scale": 2,
+      "doc": 390,
+      "over": []
+    },
+    {
+      "candidate": "decisions",
+      "width": 768,
+      "scale": 1,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "decisions",
+      "width": 768,
+      "scale": 2,
+      "doc": 768,
+      "over": []
+    },
+    {
+      "candidate": "decisions",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280,
+      "over": []
+    },
+    {
+      "candidate": "decisions",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280,
+      "over": []
+    }
+  ],
+  "axe": [
+    {
+      "candidate": "minimal",
+      "violations": []
+    },
+    {
+      "candidate": "brutal",
+      "violations": []
+    },
+    {
+      "candidate": "original",
+      "violations": []
+    },
+    {
+      "candidate": "minimal-extended",
+      "violations": []
+    },
+    {
+      "candidate": "index",
+      "violations": []
+    },
+    {
+      "candidate": "decisions",
+      "violations": []
+    }
+  ],
+  "focus": {
+    "style": "solid",
+    "width": "3px"
+  },
+  "gallery": {
+    "parts": 96,
+    "inputs": [
+      {
+        "id": "component-search",
+        "placeholder": "部品を探す：ボタン、検索…"
+      },
+      {
+        "id": "",
+        "placeholder": ""
+      },
+      {
+        "id": "",
+        "placeholder": "例：宇宙"
+      },
+      {
+        "id": "",
+        "placeholder": ""
+      },
+      {
+        "id": "atom-native-search",
+        "placeholder": ""
+      },
+      {
+        "id": "compose-query",
+        "placeholder": "例：宇宙"
+      },
+      {
+        "id": "",
+        "placeholder": ""
+      }
+    ],
+    "selects": [
+      {
+        "id": "series-select",
+        "len": 14
+      },
+      {
+        "id": "component-category",
+        "len": 8
+      },
+      {
+        "id": "",
+        "len": 2
+      },
+      {
+        "id": "",
+        "len": 2
+      },
+      {
+        "id": "",
+        "len": 3
+      },
+      {
+        "id": "",
+        "len": 2
+      },
+      {
+        "id": "",
+        "len": 3
+      },
+      {
+        "id": "",
+        "len": 3
+      },
+      {
+        "id": "",
+        "len": 1
+      },
+      {
+        "id": "compose-kind",
+        "len": 3
+      },
+      {
+        "id": "compose-sort",
+        "len": 2
+      },
+      {
+        "id": "cc-language",
+        "len": 2
+      },
+      {
+        "id": "",
+        "len": 2
+      },
+      {
+        "id": "",
+        "len": 2
+      }
+    ]
+  },
+  "errors": [],
+  "operations": "C Enter/Space/state/focus; compare section/state/single/two-up/mobile; export null; long Japanese; reduced-motion"
+}

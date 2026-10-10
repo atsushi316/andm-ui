@@ -5,7 +5,7 @@
    * xs 24 / sm 32 / lg 48 / xl 64 はサイズ違いであり、既定にはしない。
    * セル余白は space-4。Carbon の column padding 16px（$spacing-05）と一致する。
    * M3 / Apple / Spectrum / Fluent / Atlassian / USWDS / DADS の
-   * 表の行高・余白・hover は公式ページに無い。official value not specified。
+   * 表の行高・余白・hover は公式ページに無い。当該プロパティは未確認（公式全体の欠落とは断定しない）。
    * ヘッダー字重は --andm-table-header-weight。無ければ font-weight-medium。
    * Carbon の column header は 14px / 600、行は 14px / 400。
    */

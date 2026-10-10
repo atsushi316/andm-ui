@@ -4,13 +4,15 @@
     display: block;
     box-sizing: border-box;
     margin: 0;
-    padding: var(--andm-space-4);
-    border: 1px solid
+    min-width: 0;
+    overflow-wrap: anywhere;
+    padding: var(--andm-card-padding, var(--andm-space-4));
+    border: var(--andm-card-border-width, 1px) solid
       var(
         --andm-card-border-color,
         color-mix(in srgb, var(--andm-color-on-surface) 24%, transparent)
       );
-    border-radius: var(--andm-card-radius, var(--andm-radius-md));
+    border-radius: var(--andm-card-radius, var(--andm-surface-radius, var(--andm-radius-md)));
     background: var(--andm-color-surface);
     color: var(--andm-color-on-surface);
     box-shadow: none;

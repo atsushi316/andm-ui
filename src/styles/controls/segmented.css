@@ -6,7 +6,7 @@
    * M3 segmented buttons は現行では非推奨。古い 40dp は Expressive の寸法にしない。
    * Apple HIG の segmented controls ページから寸法は取れなかった。
    * Spectrum / Fluent / Atlassian / USWDS / DADS の公式な角・hover 時間は未記載。
-   * 選択インジケータの移動時間は公式ページに無い。official value not specified。
+   * 選択インジケータの移動時間は公式ページに無い。当該プロパティは未確認（公式全体の欠落とは断定しない）。
    * 移動は short3 + standard。hover は short2 + decelerate、押下は short1 + accelerate。
    */
   .andm-segmented {

@@ -18,7 +18,11 @@
 | メディア | Image（自然比率、正方形、横長、contain） | 追加 |
 | 補助 | Visually hidden、Focus、Reduced motion | utility追加、既存の標準focus/motionを利用 |
 
-文字の太さ、斜体など意味を持つHTML（strong/em等）はブラウザ標準を利用し、全タグに新しいクラスを作らない。Iconの線画は14種のスターターで、世の中の全記号を網羅するものではない。
+文字の太さ、斜体など意味を持つHTML（strong/em等）はブラウザ標準を利用し、全タグに新しいクラスを作らない。Iconの線画は15種のスターターで、世の中の全記号を網羅するものではない。
+
+## 他体系と比べた完成範囲
+
+この一覧の整備完了は、成熟したデザインシステムとの同等性を意味しない。複合操作や足りない小部品は [COMPONENT-COVERAGE.md](COMPONENT-COVERAGE.md) を参照。Native日時入力とCalendar、File選択とUploadを区別する。
 
 ## 使い方
 

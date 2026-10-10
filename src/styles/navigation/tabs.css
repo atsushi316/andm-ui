@@ -22,10 +22,10 @@
     align-items: center;
     justify-content: center;
     min-height: var(--andm-field-height, var(--andm-btn-height-md));
-    margin: 0 0 calc(var(--andm-focus-ring-width) * -1);
+    margin: 0 0 calc(var(--andm-tabs-indicator-width, 2px) * -1);
     padding: 0 var(--andm-space-4);
     border: 0;
-    border-bottom: var(--andm-focus-ring-width) solid transparent;
+    border-bottom: var(--andm-tabs-indicator-width, 2px) solid transparent;
     border-radius: var(--andm-tabs-radius, 0);
     background: transparent;
     color: var(--andm-color-on-surface-variant);

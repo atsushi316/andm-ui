@@ -112,6 +112,7 @@
     var example = section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
     if (!example) { panel.hidden = true; return; }
     var clone = example.cloneNode(true);
+    clone.querySelectorAll(selectedSeries() === 'dads' ? '[data-partial-spinner]' : '[data-partial-wait]').forEach(function (node) { node.remove(); });
     clone.querySelectorAll(".g-type-role, .g-type-metrics").forEach(function (node) { node.remove(); });
     [clone].concat(Array.from(clone.querySelectorAll('*'))).forEach(function (node) {
       Array.from(node.attributes).forEach(function (attr) { if (attr.name.startsWith('data-')) node.removeAttribute(attr.name); });
@@ -130,7 +131,7 @@
     el = $('evidence-body'); el.replaceChildren(); var id = selectedSeries(); var part = section.dataset.part;
     var p = document.createElement('p');
     p.textContent = part === 'chip' || part === 'fab' ? '独自仕様：色・文字はシリーズを継承します。Chip / FAB 固有の寸法・角・動きは公式再現として未確認です。' : 'シリーズは公開システムの解釈です。各部品が公式仕様どおりであることを保証するものではありません。';
-    el.append(p); var audit=document.createElement('a');audit.href='#/library/component-audit';audit.textContent='この部品の概念・出典との照合';el.append(audit,document.createElement('br')); var source = sources[id];
+    el.append(p); var recheck=document.createElement('a');recheck.href='#/library/source-reaudit';recheck.textContent='全パーツの再監査・プロパティ別の根拠';el.append(recheck,document.createElement('br')); var audit=document.createElement('a');audit.href='#/library/component-audit';audit.textContent='この部品の概念・出典との照合';el.append(audit,document.createElement('br')); var source = sources[id];
     if (source) {
       var note = document.createElement('p'); note.textContent = source.note;
       var analysis = document.createElement('a'); analysis.href = '#/library/analysis-' + source.file; analysis.textContent = '確認済み・未確認の範囲';

@@ -1,0 +1,230 @@
+[
+  {
+    "id": "combobox",
+    "title": "検索候補・コンボボックス",
+    "group": "controls",
+    "html": "<div class=\"andm-combobox\" id=\"cc-combobox\" data-combo=\"false\"><label for=\"cc-combobox-input\">都市を選択</label><input id=\"cc-combobox-input\" class=\"andm-textfield__input\" autocomplete=\"off\"><ul role=\"listbox\" aria-label=\"候補\" class=\"andm-combobox__options\" hidden></ul><div data-tags class=\"andm-tags\"></div><p data-status role=\"status\"></p></div>"
+  },
+  {
+    "id": "multi-select",
+    "title": "複数選択・タグピッカー",
+    "group": "controls",
+    "html": "<div class=\"andm-combobox\" id=\"cc-multi-select\" data-combo=\"true\"><label for=\"cc-multi-select-input\">担当者を複数選択</label><input id=\"cc-multi-select-input\" class=\"andm-textfield__input\" autocomplete=\"off\"><ul role=\"listbox\" aria-label=\"候補\" class=\"andm-combobox__options\" hidden></ul><div data-tags class=\"andm-tags\"></div><p data-status role=\"status\"></p></div>"
+  },
+  {
+    "id": "removable-tag",
+    "title": "削除可能タグ",
+    "group": "controls",
+    "html": "<div class=\"andm-tags\" data-removable><span class=\"andm-tag\">デザイン<button type=\"button\" class=\"andm-btn andm-btn--outlined\" aria-label=\"デザインを削除\" data-remove>×</button></span><span class=\"andm-tag\">研究<button type=\"button\" class=\"andm-btn andm-btn--outlined\" aria-label=\"研究を削除\" data-remove>×</button></span><span class=\"andm-tag\">試作<button type=\"button\" class=\"andm-btn andm-btn--outlined\" aria-label=\"試作を削除\" data-remove>×</button></span></div><p data-status role=\"status\"></p>"
+  },
+  {
+    "id": "calendar",
+    "title": "カレンダー・日付ピッカー",
+    "group": "controls",
+    "html": "<label for=\"cc-date-value\">選択日</label><input type=\"date\" id=\"cc-date-value\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-calendar-open\">カレンダーを開く</button><dialog id=\"cc-calendar-dialog\" class=\"andm-dialog\" aria-labelledby=\"cc-calendar-month\"><div class=\"andm-calendar\" id=\"cc-calendar\" data-calendar=\"false\"><div class=\"andm-calendar__header\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-prev-month>前月</button><h3 id=\"cc-calendar-month\" data-month aria-live=\"polite\"></h3><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-next-month>翌月</button></div><table role=\"grid\" aria-labelledby=\"cc-calendar-month\"><thead><tr><th scope=\"col\" abbr=\"日曜日\">日</th><th scope=\"col\" abbr=\"月曜日\">月</th><th scope=\"col\" abbr=\"火曜日\">火</th><th scope=\"col\" abbr=\"水曜日\">水</th><th scope=\"col\" abbr=\"木曜日\">木</th><th scope=\"col\" abbr=\"金曜日\">金</th><th scope=\"col\" abbr=\"土曜日\">土</th></tr></thead><tbody></tbody></table><p>矢印で日移動、PageUp/Downで月移動。Shift併用で年移動。</p><p data-status role=\"status\"></p></div><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-close>閉じる</button></dialog>"
+  },
+  {
+    "id": "date-range",
+    "title": "期間選択",
+    "group": "controls",
+    "html": "<div class=\"andm-calendar\" id=\"cc-date-range\" data-calendar=\"true\"><div class=\"andm-calendar__header\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-prev-month>前月</button><h3 id=\"cc-date-range-month\" data-month aria-live=\"polite\"></h3><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-next-month>翌月</button></div><table role=\"grid\" aria-labelledby=\"cc-date-range-month\" aria-multiselectable=\"true\"><thead><tr><th scope=\"col\" abbr=\"日曜日\">日</th><th scope=\"col\" abbr=\"月曜日\">月</th><th scope=\"col\" abbr=\"火曜日\">火</th><th scope=\"col\" abbr=\"水曜日\">水</th><th scope=\"col\" abbr=\"木曜日\">木</th><th scope=\"col\" abbr=\"金曜日\">金</th><th scope=\"col\" abbr=\"土曜日\">土</th></tr></thead><tbody></tbody></table><p>矢印で日移動、PageUp/Downで月移動。Shift併用で年移動。</p><p data-status role=\"status\"></p></div><output id=\"cc-range-value\">開始日・終了日を選択</output>"
+  },
+  {
+    "id": "date-entry",
+    "title": "記憶している日付の分割入力",
+    "group": "controls",
+    "html": "<fieldset class=\"andm-date-entry\" id=\"cc-date-entry\"><legend>誕生日（年・月・日）</legend><label>年<input id=\"cc-birth-year\" inputmode=\"numeric\" autocomplete=\"bday-year\" type=\"number\" min=\"1900\" max=\"2100\" aria-describedby=\"cc-birth-help\"></label><label>月<input id=\"cc-birth-month\" inputmode=\"numeric\" autocomplete=\"bday-month\" type=\"number\" min=\"1\" max=\"12\" aria-describedby=\"cc-birth-help\"></label><label>日<input id=\"cc-birth-day\" inputmode=\"numeric\" autocomplete=\"bday-day\" type=\"number\" min=\"1\" max=\"31\" aria-describedby=\"cc-birth-help\"></label><p id=\"cc-birth-help\">存在する日付か確認します。</p><p data-status role=\"status\"></p></fieldset>"
+  },
+  {
+    "id": "range-slider",
+    "title": "区間スライダー",
+    "group": "controls",
+    "html": "<div class=\"andm-range-input\" id=\"cc-range\"><label>下限<input type=\"range\" min=\"0\" max=\"100\" value=\"20\"><output>20</output></label><label>上限<input type=\"range\" min=\"0\" max=\"100\" value=\"80\"><output>80</output></label></div>"
+  },
+  {
+    "id": "input-affix",
+    "title": "入力の接頭・接尾辞",
+    "group": "controls",
+    "html": "<label for=\"cc-amount\">金額（円）</label><div class=\"andm-affix\"><span aria-hidden=\"true\">¥</span><input type=\"number\" id=\"cc-amount\" min=\"0\" value=\"1000\"><span aria-hidden=\"true\">円</span></div>"
+  },
+  {
+    "id": "character-count",
+    "title": "文字数カウンター",
+    "group": "controls",
+    "html": "<label for=\"cc-count-input\">紹介（100文字まで）</label><textarea class=\"andm-textfield__input\" id=\"cc-count-input\" aria-describedby=\"cc-count\" rows=\"3\"></textarea><p class=\"andm-counter\" id=\"cc-count\" aria-live=\"polite\"></p>"
+  },
+  {
+    "id": "input-mask",
+    "title": "入力マスク・整形",
+    "group": "controls",
+    "html": "<label for=\"cc-postcode\">郵便番号（7桁）</label><input class=\"andm-textfield__input\" id=\"cc-postcode\" inputmode=\"numeric\" autocomplete=\"postal-code\" aria-describedby=\"cc-post-help\"><p id=\"cc-post-help\">例：123-4567。入力中のカーソルを強制移動せず、入力を離れた時に整形します。</p><p data-status role=\"status\"></p>"
+  },
+  {
+    "id": "error-summary",
+    "title": "フォーム・エラー集約",
+    "group": "feedback",
+    "html": "<form id=\"cc-form\"><div data-error-summary class=\"andm-error-summary\" hidden></div><div class=\"andm-stack\"><label>表示名<input class=\"andm-textfield__input\" name=\"name\" id=\"cc-name\" required></label><label>連絡先メール<input class=\"andm-textfield__input\" type=\"email\" name=\"email\" id=\"cc-email\" required></label><label><input type=\"checkbox\" id=\"cc-fail-save\">模擬保存を失敗させる</label></div><p>保存はこの画面の模擬処理です。通信しません。</p><div class=\"andm-inline\"><button class=\"andm-btn andm-btn--filled\" type=\"submit\">保存する</button><button class=\"andm-btn andm-btn--outlined\" type=\"reset\">入力を戻す</button></div><p data-status role=\"status\"></p></form>"
+  },
+  {
+    "id": "tree",
+    "title": "ツリービュー",
+    "group": "navigation",
+    "html": "<ul role=\"tree\" aria-label=\"資料の階層\" class=\"andm-tree\" id=\"cc-tree\"><li role=\"treeitem\" id=\"cc-tree-root\" aria-expanded=\"false\" aria-level=\"1\" aria-selected=\"false\">▸ 資料</li><li role=\"treeitem\" id=\"cc-tree-a\" data-parent=\"cc-tree-root\" aria-level=\"2\" aria-selected=\"false\">デザイン</li><li role=\"treeitem\" id=\"cc-tree-b\" data-parent=\"cc-tree-root\" aria-level=\"2\" aria-selected=\"false\">実装</li><li role=\"treeitem\" id=\"cc-tree-c\" aria-level=\"1\" aria-selected=\"false\">アーカイブ</li></ul><p>上下で移動、右で展開、左で閉じる、Enter/Spaceで選択。</p><p data-status role=\"status\"></p>"
+  },
+  {
+    "id": "table-tree",
+    "title": "階層テーブル",
+    "group": "display",
+    "html": "<div class=\"andm-data-table__viewport\" tabindex=\"0\" role=\"region\" aria-label=\"階層表のスクロール\"><table class=\"andm-table andm-treegrid\" role=\"treegrid\" aria-label=\"フォルダーの階層表\" id=\"cc-treegrid\"><thead><tr><th>名前</th><th>件数</th></tr></thead><tbody><tr data-tree-row id=\"cc-grid-root\" aria-level=\"1\" aria-expanded=\"false\" aria-selected=\"false\"><td>資料</td><td>2</td></tr><tr data-tree-row id=\"cc-grid-a\" data-parent=\"cc-grid-root\" aria-level=\"2\" aria-selected=\"false\"><td>デザイン</td><td>1</td></tr><tr data-tree-row id=\"cc-grid-b\" data-parent=\"cc-grid-root\" aria-level=\"2\" aria-selected=\"false\"><td>実装</td><td>1</td></tr></tbody></table></div>"
+  },
+  {
+    "id": "upload",
+    "title": "ファイルアップロード・ドロップ",
+    "group": "controls",
+    "html": "<div class=\"andm-upload\" id=\"cc-upload\"><label>ファイル（テキスト、5MBまで）<input type=\"file\" accept=\".txt,text/plain\" multiple></label><p>ここへドロップ、またはファイルを選択。転送は模擬処理です。</p><label><input type=\"checkbox\" id=\"cc-upload-fail\">模擬転送を失敗させる</label><div data-files></div><p data-status role=\"status\"></p></div>"
+  },
+  {
+    "id": "stepper",
+    "title": "手続きステップ",
+    "group": "navigation",
+    "html": "<div id=\"cc-stepper\"><ol class=\"andm-stepper\"><li aria-current=\"step\">入力</li><li>確認</li><li>完了</li></ol><p data-step-body>入力の段階</p><div class=\"andm-inline\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-step-back disabled>戻る</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-step-next>次へ</button></div><p data-status role=\"status\"></p></div>"
+  },
+  {
+    "id": "description-list",
+    "title": "説明リスト",
+    "group": "display",
+    "html": "<dl class=\"andm-description-list\"><dt>サービス</dt><dd>考えをつなげて整理する、個人向けのアプリ</dd><dt>対象</dt><dd>長い日本語や複数の説明を含む情報</dd><dt>利用環境</dt><dd>Webブラウザ</dd></dl>"
+  },
+  {
+    "id": "quote",
+    "title": "引用ブロック",
+    "group": "display",
+    "html": "<figure class=\"andm-quote\"><blockquote><p>散らばった考えを、自分の言葉でつなぐ。</p></blockquote><figcaption>架空プロダクトの紹介文。引用の出所をここへ記載します。</figcaption></figure>"
+  },
+  {
+    "id": "annotation",
+    "title": "補足・要約ブロック",
+    "group": "display",
+    "html": "<aside class=\"andm-annotation\" aria-labelledby=\"cc-annotation-title\"><h3 id=\"cc-annotation-title\">利用前に確認</h3><p>これは補足情報です。警告・成功通知と区別して表示します。</p></aside>"
+  },
+  {
+    "id": "banner",
+    "title": "全体・緊急バナー",
+    "group": "feedback",
+    "html": "<section class=\"andm-banner\" aria-labelledby=\"cc-banner-title\" id=\"cc-banner\"><div><strong id=\"cc-banner-title\">メンテナンスのお知らせ</strong><p>予定された作業の情報です。政府公式の識別バナーではありません。</p></div><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-banner-dismiss>閉じる</button></section><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-banner-show\">バナーを再表示</button>"
+  },
+  {
+    "id": "footer",
+    "title": "フッター",
+    "group": "navigation",
+    "html": "<footer class=\"andm-footer\"><nav aria-label=\"補助ページ\"><a href=\"#/controls/button\">部品一覧</a><a href=\"#/library/component-coverage\">機能対応表</a><a href=\"completion/\">画面の使用例</a></nav><p>andm-ui · Native HTML + CSS</p></footer>"
+  },
+  {
+    "id": "in-page-nav",
+    "title": "目次・ページ内移動",
+    "group": "navigation",
+    "html": "<nav class=\"andm-page-nav\" aria-label=\"この見本の目次\" id=\"cc-page-nav\"><a href=\"#cc-section-one\">概要</a><a href=\"#cc-section-two\">仕様</a></nav><section id=\"cc-section-one\" tabindex=\"-1\"><h3>概要</h3><p>ページ内の位置へ移動します。</p></section><section id=\"cc-section-two\" tabindex=\"-1\"><h3>仕様</h3><p>移動先にfocusを渡し、現在位置を識別します。</p></section><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-scroll-top\">上へ戻る</button>"
+  },
+  {
+    "id": "mega-menu",
+    "title": "メガメニュー",
+    "group": "navigation",
+    "html": "<button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-mega-trigger\">関連ページを開く</button><div class=\"andm-mega-menu\" popover id=\"cc-mega\"><div><section><h3>作る</h3><a href=\"#/controls/combobox\">入力・選択</a><a href=\"#/display/data-table\">データ一覧</a></section><section><h3>調べる</h3><a href=\"#/library/component-coverage\">対応表</a><a href=\"lab/\">体験ラボ</a></section></div></div>"
+  },
+  {
+    "id": "language-selector",
+    "title": "言語選択",
+    "group": "navigation",
+    "html": "<label for=\"cc-language\">言語 / Language</label><span class=\"andm-select__field\"><select id=\"cc-language\" class=\"andm-select__native\"><option value=\"ja\" lang=\"ja\">日本語</option><option value=\"en\" lang=\"en\">English</option></select></span><p>このサンプルの説明だけを切り替えます。アプリ全体の翻訳を装いません。</p><p id=\"cc-language-copy\" lang=\"ja\">選択した言語：日本語</p>"
+  },
+  {
+    "id": "carousel",
+    "title": "カルーセル",
+    "group": "display",
+    "html": "<section class=\"andm-carousel\" id=\"cc-carousel\" aria-roledescription=\"カルーセル\" aria-label=\"作品の紹介\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-rotation>自動再生</button><div data-slide class=\"andm-carousel__slide\" role=\"group\" aria-roledescription=\"スライド\" aria-label=\"1 / 3\"><h3>発見</h3><p>考えを見つける</p></div><div data-slide class=\"andm-carousel__slide\" role=\"group\" aria-roledescription=\"スライド\" aria-label=\"2 / 3\" hidden><h3>接続</h3><p>考えをつなげる</p></div><div data-slide class=\"andm-carousel__slide\" role=\"group\" aria-roledescription=\"スライド\" aria-label=\"3 / 3\" hidden><h3>整理</h3><p>自分で整理する</p></div><div class=\"andm-inline\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-prev>前へ</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-next>次へ</button></div><p data-status role=\"status\"></p></section>"
+  },
+  {
+    "id": "avatar-group",
+    "title": "アバター群・人物情報",
+    "group": "display",
+    "html": "<div class=\"andm-avatar-group\" role=\"group\" aria-label=\"参加者3人\"><span class=\"andm-avatar\" aria-label=\"宮本\">宮</span><span class=\"andm-avatar\" aria-label=\"佐藤\">佐</span><span>ほか1人</span><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-people-open\">全員を見る</button></div><dialog class=\"andm-dialog\" id=\"cc-people-dialog\" aria-labelledby=\"cc-people-title\"><h3 id=\"cc-people-title\">参加者</h3><ul><li>宮本（デザイン）</li><li>佐藤（実装）</li><li>田中（研究）</li></ul><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-close>閉じる</button></dialog><p class=\"andm-persona\"><span class=\"andm-avatar\" aria-hidden=\"true\">宮</span><span><strong>宮本</strong><small>デザイナー</small></span></p>"
+  },
+  {
+    "id": "info-label",
+    "title": "説明ボタン付きラベル",
+    "group": "controls",
+    "html": "<div class=\"andm-inline\"><label for=\"cc-secret\">公開範囲</label><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-info-open\" aria-label=\"公開範囲の説明\">説明</button></div><input class=\"andm-textfield__input\" id=\"cc-secret\" aria-describedby=\"cc-info-text\"><div class=\"andm-popover\" popover id=\"cc-info\"><p id=\"cc-info-text\">共有する相手を選んでください。</p></div>"
+  },
+  {
+    "id": "rating",
+    "title": "評価入力",
+    "group": "controls",
+    "html": "<fieldset class=\"andm-rating\"><legend>使いやすさの評価</legend><label><input type=\"radio\" name=\"cc-rating\" value=\"1\">1点</label><label><input type=\"radio\" name=\"cc-rating\" value=\"2\">2点</label><label><input type=\"radio\" name=\"cc-rating\" value=\"3\">3点</label><label><input type=\"radio\" name=\"cc-rating\" value=\"4\">4点</label><label><input type=\"radio\" name=\"cc-rating\" value=\"5\">5点</label></fieldset><p>読み取り専用の例：4 / 5点</p>"
+  },
+  {
+    "id": "inline-edit",
+    "title": "インライン編集",
+    "group": "controls",
+    "html": "<div class=\"andm-inline-edit\" id=\"cc-edit\"><p data-view>新しいプロジェクト</p><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-edit>名前を編集</button><form data-editor hidden><label>名前<input required maxlength=\"100\"></label><label><input type=\"checkbox\" id=\"cc-edit-fail\">保存を失敗させる</label><div class=\"andm-inline\"><button class=\"andm-btn andm-btn--filled\" type=\"submit\">保存</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-cancel>取消</button></div></form><p data-status role=\"status\"></p></div>"
+  },
+  {
+    "id": "comment",
+    "title": "コメント・返信",
+    "group": "display",
+    "html": "<section id=\"cc-comments\"><article class=\"andm-comment\"><header><strong>宮本</strong> <time datetime=\"2026-10-10\">2026年10月10日</time></header><p>この案を確認しました。</p><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-reply>返信する</button></article><div data-posts></div><form id=\"cc-comment-form\"><label for=\"cc-comment-text\">コメント<textarea class=\"andm-textfield__input\" id=\"cc-comment-text\" required></textarea></label><button type=\"submit\" class=\"andm-btn andm-btn--filled\">投稿する</button></form><p>ローカルのサンプルです。再読み込みで消えます。</p><p data-status role=\"status\"></p></section>"
+  },
+  {
+    "id": "spotlight",
+    "title": "操作ガイド",
+    "group": "overlays",
+    "html": "<button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-tour-open\">操作ガイドを開く</button><dialog class=\"andm-dialog\" id=\"cc-tour\" aria-labelledby=\"cc-tour-title\"><h3 id=\"cc-tour-title\" data-title></h3><p data-description></p><div class=\"andm-inline\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-prev>戻る</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-next>次へ</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-skip>ガイドを終了</button></div><p data-status role=\"status\"></p></dialog>"
+  },
+  {
+    "id": "layout",
+    "title": "Stack・Grid・ページ構成",
+    "group": "patterns",
+    "html": "<div class=\"andm-grid\"><article class=\"andm-card\"><h3>領域A</h3><p>内容に応じて折り返すGrid</p></article><article class=\"andm-card\"><h3>領域B</h3><p>Seriesの既存余白を使います</p></article></div>"
+  },
+  {
+    "id": "meter",
+    "title": "容量メーター",
+    "group": "feedback",
+    "html": "<label for=\"cc-meter\">ストレージ使用量（処理進捗ではありません）</label><meter class=\"andm-meter\" id=\"cc-meter\" min=\"0\" max=\"100\" low=\"60\" high=\"90\" optimum=\"30\" value=\"42\">42 / 100</meter><p>42 / 100 GB</p>"
+  },
+  {
+    "id": "color-picker",
+    "title": "色の選択・領域・スウォッチ",
+    "group": "controls",
+    "html": "<div id=\"cc-color\" class=\"andm-color-area\"><div class=\"andm-color-plane\" data-plane aria-hidden=\"true\"></div><label>色相 / Hue<input type=\"range\" data-hue min=\"0\" max=\"360\" value=\"210\"></label><label>彩度<input type=\"range\" data-saturation min=\"0\" max=\"100\" value=\"60\"></label><label>明度<input type=\"range\" data-brightness min=\"0\" max=\"100\" value=\"70\"></label><label>色コード<input type=\"color\" data-color value=\"#477cb3\"></label><span class=\"andm-color-swatch\" data-swatch aria-hidden=\"true\"></span><output data-color-value>#477cb3</output></div>"
+  },
+  {
+    "id": "tabs-contract",
+    "title": "タブの操作契約",
+    "group": "navigation",
+    "html": "<div id=\"cc-tabs\" role=\"tablist\" aria-label=\"情報の区間\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-tab-0\" role=\"tab\" aria-controls=\"cc-panel-0\" aria-selected=\"true\">概要</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-tab-1\" role=\"tab\" aria-controls=\"cc-panel-1\" aria-selected=\"false\">詳細</button></div><div id=\"cc-panel-0\" role=\"tabpanel\" aria-labelledby=\"cc-tab-0\" tabindex=\"0\">概要の内容</div><div id=\"cc-panel-1\" role=\"tabpanel\" aria-labelledby=\"cc-tab-1\" tabindex=\"0\" hidden>詳細の内容</div>"
+  },
+  {
+    "id": "overlay-contract",
+    "title": "Dialog・Drawer・Popover・Tooltip",
+    "group": "overlays",
+    "html": "<div class=\"andm-inline\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-dialog-open\">モーダルを開く</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-drawer-open\">ドロワーを開く</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-popover-open\">補足を開く</button></div><dialog class=\"andm-dialog\" id=\"cc-dialog\" aria-labelledby=\"cc-dialog-title\"><h3 id=\"cc-dialog-title\">確認</h3><p>TabはNative dialog内を移動し、閉じると開いたButtonへ戻ります。</p><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-close>閉じる</button></dialog><dialog class=\"andm-drawer\" id=\"cc-drawer\" aria-labelledby=\"cc-drawer-title\"><h3 id=\"cc-drawer-title\">絞り込み</h3><label>分類<select><option>すべて</option><option>研究</option></select></label><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-close>閉じる</button></dialog><div class=\"andm-popover\" id=\"cc-popover\" popover><p>補足の内容。Escapeで閉じます。</p></div><span class=\"andm-tooltip\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-tooltip-target\" aria-describedby=\"cc-tooltip\">説明の対象</button><span class=\"andm-tooltip__bubble\" role=\"tooltip\" id=\"cc-tooltip\">操作の補足。Escapeで消せます。</span></span>"
+  },
+  {
+    "id": "menu-contract",
+    "title": "アクションメニュー・ツールバー",
+    "group": "navigation",
+    "html": "<button type=\"button\" class=\"andm-btn andm-btn--outlined\" id=\"cc-menu-open\">操作を開く</button><div class=\"andm-popover\" popover id=\"cc-menu\" role=\"menu\" aria-label=\"操作\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" role=\"menuitem\" data-value=\"copy\">複製</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" role=\"menuitem\" data-value=\"move\">移動</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" role=\"menuitem\" data-value=\"delete\">削除</button></div><div class=\"andm-toolbar\" role=\"toolbar\" aria-label=\"表示操作\" id=\"cc-toolbar\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" aria-pressed=\"false\">一覧</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" aria-pressed=\"false\">カード</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" aria-pressed=\"false\">詳細</button></div><p data-status role=\"status\"></p>"
+  },
+  {
+    "id": "notification-contract",
+    "title": "通知・読み込み・中断",
+    "group": "feedback",
+    "html": "<div id=\"cc-task\"><p>模擬処理です。通知の演出から処理結果を分離します。</p><div class=\"andm-inline\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-task-start>処理を開始</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-task-cancel disabled>中止</button><label><input type=\"checkbox\" data-task-fail>失敗させる</label></div><progress max=\"100\" value=\"0\" aria-label=\"模擬処理の進捗\"></progress><div class=\"andm-alert\" hidden data-task-alert></div><p data-status role=\"status\"></p></div>"
+  },
+  {
+    "id": "data-table",
+    "title": "検索・高度なデータテーブル",
+    "group": "display",
+    "html": "<div id=\"cc-table\" class=\"andm-data-table\"><div class=\"andm-inline\"><label>検索<input class=\"andm-textfield__input\" data-search type=\"search\"></label><label>表示件数<select data-size><option>5</option><option>10</option></select></label><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-bulk disabled>選択をまとめて処理</button></div><details><summary>表示する列</summary><label><input type=\"checkbox\" checked data-column-toggle=\"status\">状態</label></details><div class=\"andm-inline\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-table-loading>読込状態</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-table-error>失敗状態</button><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-table-retry>再試行</button></div><div class=\"andm-data-table__viewport\" role=\"region\" aria-label=\"一覧表のスクロール\" tabindex=\"0\"><table><caption>ローカルのプロジェクト一覧</caption><thead><tr><th><input type=\"checkbox\" data-select-all aria-label=\"このページの全行を選択\"></th><th data-sort=\"name\"><button type=\"button\">名前で並べ替え</button></th><th data-sort=\"status\" data-column=\"status\"><button type=\"button\">状態で並べ替え</button></th></tr></thead><tbody></tbody></table></div><nav class=\"andm-inline\" aria-label=\"一覧のページ\"><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-prev-page>前ページ</button><span data-page></span><button type=\"button\" class=\"andm-btn andm-btn--outlined\" data-next-page>次ページ</button></nav><p data-status role=\"status\"></p></div>"
+  }
+]

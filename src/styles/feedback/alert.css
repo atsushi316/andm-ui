@@ -4,7 +4,7 @@
     flex-direction: column;
     gap: var(--andm-space-1);
     margin: 0;
-    padding: var(--andm-space-3) var(--andm-space-4);
+    padding: var(--andm-alert-padding-y, var(--andm-space-3)) var(--andm-alert-padding-x, var(--andm-space-4));
     border: 1px solid transparent;
     border-radius: var(--andm-alert-radius, var(--andm-radius-md));
     font-family: var(--andm-font-family);

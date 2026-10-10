@@ -4,7 +4,7 @@
    * M3 progress indicators specs の track 既定は Fixed 4dp。
    * Carbon progress bar は Big 8px / Small 4px。既定サイズの名は無いので 8px は採らない。
    * Fluent / Atlassian / Apple / USWDS / DADS / Spectrum の公式な太さ・時間は未記載。
-   * official value not specified。確定値の幅は見本の --andm-progress-value（割合）であり寸法トークンではない。
+   * 当該プロパティは未確認（公式全体の欠落とは断定しない）。確定値の幅は見本の --andm-progress-value（割合）であり寸法トークンではない。
    */
   .andm-progress {
     --andm-progress-thickness: var(--andm-space-1);

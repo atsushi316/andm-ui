@@ -1,0 +1,39 @@
+/* Lab-local composition and decoration; no Core or Series token mutation. */
+.sync-demo {
+  box-sizing: border-box;
+  width: min(100%, 42rem);
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 2rem);
+  font-family: var(--andm-font-family, system-ui, sans-serif);
+  color: var(--andm-color-on-surface, #202a33);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.sync-demo *, .sync-demo *::before, .sync-demo *::after { box-sizing: border-box; }
+.sync-demo h1 { font-size: 1.8rem; line-height: 1.3; }
+.sync-demo h2 { font-size: 1.25rem; line-height: 1.5; margin-top: 0; }
+.sync-demo__eyebrow { font-size: .8rem; letter-spacing: .1em; }
+.sync-demo__panel {
+  margin-block: 1.5rem;
+  padding: var(--andm-space-4, 1rem);
+  border: 1px solid var(--andm-color-outline, #87939e);
+  border-radius: var(--andm-radius-md, .75rem);
+  background: var(--andm-color-surface, #fff);
+}
+.sync-demo__series { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.sync-demo select { max-width: 100%; min-width: 0; font: inherit; padding: .4em; }
+.sync-demo__actions { display: flex; flex-wrap: wrap; gap: var(--andm-space-3, .75rem); }
+/* Labels may wrap at large text zoom; the native Button keeps its tokens/states. */
+.sync-demo__actions .andm-btn { max-width: 100%; white-space: normal; height: auto; min-height: var(--andm-btn-height-md, 2.75rem); padding-block: .6rem; }
+.sync-demo__progress { padding-block: .75rem; border-block: 1px solid var(--andm-color-outline, #87939e); }
+.sync-demo progress { display: block; width: 100%; margin-block: .5rem; }
+.sync-demo__decoration { margin: 1rem 0; }
+.sync-demo svg { display: block; width: 100%; height: auto; max-height: 6rem; color: var(--andm-color-primary, #245ea8); }
+.sync-demo path { fill: none; stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.sync-demo figcaption, .sync-demo__help, .sync-demo #motion-note { font-size: .875rem; }
+.sync-demo__option { display: flex; align-items: baseline; gap: .5rem; margin-block: .75rem; }
+.sync-demo input { flex-shrink: 0; }
+.sync-demo select:focus-visible, .sync-demo input:focus-visible { outline: 3px solid var(--andm-focus-ring-color, #245ea8); outline-offset: 3px; }
+@media (max-width: 24rem) {
+  .sync-demo__actions { flex-direction: column; align-items: stretch; }
+}
