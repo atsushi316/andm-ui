@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile, cp } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -51,6 +51,11 @@ const sources = [
   "display/image.css",
   "display/typography.css",
   "patterns/compositions.css",
+  "controls/advanced.css",
+  "display/advanced.css",
+  "patterns/advanced.css",
+  "navigation/advanced.css",
+  "feedback/advanced.css",
   "utilities.css",
 ];
 
@@ -84,3 +89,5 @@ await mkdir(dirname(outFile), { recursive: true });
 await writeFile(outFile, banner + chunks.join("\n"), "utf8");
 await writeFile(join(root, "dist", "icons.svg"), await readFile(join(root, "src", "icons", "icons.svg")));
 console.log(`Wrote ${outFile}`);
+
+await cp(join(root,"src","behavior"),join(root,"dist","behavior"),{recursive:true});

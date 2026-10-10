@@ -1,5 +1,10 @@
 # Unreleased
 
+- 公式5体系の部品一覧と全58パーツを照合し、81能力の対応表・不足優先順位を追加。実装済み/簡易版/未実装/対象外を分離し、Galleryから閲覧できる。
+
+- 出典優先基準で全58パーツ・14シリーズを再監査し、CSS宣言台帳を追加。Seriesの角丸・フォーカス・タブ線・文字ロールを修正。
+- Fluent / Atlassian / USWDS / Carbon の確認済みプロパティを用途別に反映。DADSの部分処理を静止砂時計に変更。
+
 - Gallery を部品検索・分類・実物プレビュー・携帯メニュー・シリーズ選択・HTML コピーを備える Workspace へ改善。
 - シリーズ分析を読書ビューへつなぎ、今回の出典と採用範囲を記録。
 - Chip / FAB を独自仕様として明示し、FAB と Button の形状を分離。未使用 layer トークンを削除。
@@ -41,3 +46,7 @@
 - `andm-series--dads`（デジタル庁デザインシステムの色・角丸・タイポ・ボタン性格の Token remapping。公式アセットの再配布ではない）
 - `examples/consumer/` 最小利用例
 - `research/` 空構造と `DESIGN.md`（Research / Design Space 方針）
+
+### 2026-10-10 — 操作能力・統合見本
+
+38見本と任意ESM controller、設定/検索/編集画面、契約/出典/検証記録を追加。Galleryに4つの入口。閉じたNative popoverの表示と行選択後のfocusを修正。公式Seriesと既存CSS APIは維持。Materiality/Philosophy/Waveformの統合回帰を確認。

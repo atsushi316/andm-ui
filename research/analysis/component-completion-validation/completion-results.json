@@ -1,0 +1,217 @@
+{
+  "matrix": [
+    {
+      "screen": "settings",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "screen": "settings",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "screen": "settings",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "screen": "settings",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "screen": "settings",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "screen": "search",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "screen": "search",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "screen": "search",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "screen": "search",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "screen": "detail",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "screen": "detail",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "screen": "detail",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "screen": "detail",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "screen": "components",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "screen": "components",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "screen": "components",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "screen": "components",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    }
+  ],
+  "axe": [
+    {
+      "screen": "settings",
+      "violations": []
+    },
+    {
+      "screen": "search",
+      "violations": []
+    },
+    {
+      "screen": "detail",
+      "violations": []
+    },
+    {
+      "screen": "components",
+      "violations": []
+    }
+  ],
+  "operations": [
+    "combo query/arrow/confirm/Escape; multi select/remove/Backspace; calendar arrows/PageDown/confirm/focus return/range; tabs arrows; menu/Escape; dialog/drawer/popover/tooltip; tree/treegrid; form errors/focus/success/failure/reset; table sort/selection/partial/page/search/columns/loading/error/retry; upload type validation and simulated completion; inline save/cancel; safe comment text; carousel/reduced motion; tour/focus; Series retains state"
+  ]
+}

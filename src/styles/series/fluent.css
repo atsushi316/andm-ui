@@ -8,9 +8,9 @@
      * 32px 未満は 2px、と本文にある。現行 sm は高さ 32px なので 2px にはしない。
      * typography（Web）: Caption 1 は 12px、Body 1 は 14px、Subtitle 2 は 16px。
      * 書体名は Segoe UI。ファイルは置かない。
-     * 色、余白、高さ、影、duration の数値はこれらのページ本文に無かったので書かない。
+     * 色、余白、高さ、影、duration は今回の Shapes 取得範囲では未確認。共有値を暫定維持。
      * 速度トークンは差し替えない。
-     * dropdown の角は本文の 4px。入力の角はボタン角へのフォールバックなので 4px になる。
+     * dropdown の角は本文の4px。field/menu は共通矩形からの andm の導出。
      * Text field 固有の px は未確認。
      */
     .andm-series--fluent {
@@ -20,5 +20,12 @@
       --andm-font-size-sm: 12px;
       --andm-font-size-md: 14px;
       --andm-font-size-lg: 16px;
+    /* 2026-10-08 property audit: docs/SOURCE-DECISIONS.md. */
+    --andm-field-radius: 4px;
+    --andm-surface-radius: 4px;
+    --andm-badge-radius: 2px;
+    --andm-popover-radius: 12px;
+    --andm-menu-radius: 4px;
+
     }
 }

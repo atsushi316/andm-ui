@@ -26,7 +26,7 @@
     /*
      * 出現: Carbon motion は toast に duration-moderate-02（240ms）と entrance。
      * その値は Carbon シリーズの --andm-toast-enter-* だけ。
-     * M3 snackbar と Fluent toast に enter の ms は無い。official value not specified。
+     * M3 snackbar と Fluent toast に enter の ms は無い。当該プロパティは未確認（公式全体の欠落とは断定しない）。
      * 既定は short4 + standard。色は short3 + standard。
      */
     transition:

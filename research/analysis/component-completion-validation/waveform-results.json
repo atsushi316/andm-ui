@@ -1,0 +1,232 @@
+{
+  "matrix": [
+    {
+      "type": "button",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "type": "button",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "type": "button",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "type": "button",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "type": "button",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "type": "button",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "type": "button",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "type": "button",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "type": "status",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "type": "status",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "type": "status",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "type": "status",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "type": "status",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "type": "status",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "type": "status",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "type": "status",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "type": "audio",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "type": "audio",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "type": "audio",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "type": "audio",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "type": "audio",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "type": "audio",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "type": "audio",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "type": "audio",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    },
+    {
+      "type": "reuse-test/",
+      "width": 320,
+      "scale": 1,
+      "doc": 320
+    },
+    {
+      "type": "reuse-test/",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "type": "reuse-test/",
+      "width": 390,
+      "scale": 1,
+      "doc": 390
+    },
+    {
+      "type": "reuse-test/",
+      "width": 390,
+      "scale": 2,
+      "doc": 390
+    },
+    {
+      "type": "reuse-test/",
+      "width": 768,
+      "scale": 1,
+      "doc": 768
+    },
+    {
+      "type": "reuse-test/",
+      "width": 768,
+      "scale": 2,
+      "doc": 768
+    },
+    {
+      "type": "reuse-test/",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "type": "reuse-test/",
+      "width": 1280,
+      "scale": 2,
+      "doc": 1280
+    }
+  ],
+  "axe": [
+    {
+      "type": "button",
+      "violations": []
+    },
+    {
+      "type": "status",
+      "violations": []
+    },
+    {
+      "type": "audio",
+      "violations": []
+    },
+    {
+      "type": "reuse-test/",
+      "violations": []
+    }
+  ],
+  "operations": [
+    "data coordinate/range validation; four Native buttons; immediate reception; 8 rapid clicks; Enter/Space; Escape/outside/pointercancel; assistive after cancel; disabled; focus; OS/manual motion off; local intervals; decorative params independent of data; single/compare preserves values",
+    "simulated status start/pause/resume/cancel/error/complete/rapid restart; no stale complete; audio fixture exact mapping and 24-row alternative; pause/hidden type retention/finish/stop; no microphone request",
+    "JSON null adoption export; long Japanese/200%/320px; Experience Lab link",
+    "independent AI screen immediate receipt vs separate completion; finite decoration; restart/cancel/error; native Space; assistive after cancel; reduced/manual motion; existing Series selector"
+  ],
+  "otherEngines": [
+    {
+      "engine": "firefox",
+      "status": "unverified",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/firefox-1538/firefox/firefox"
+    },
+    {
+      "engine": "webkit",
+      "status": "unverified",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/webkit-2336/pw_run.sh"
+    }
+  ]
+}

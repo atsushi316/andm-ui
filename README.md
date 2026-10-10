@@ -123,6 +123,10 @@ Chip / FAB 固有の寸法・形は andm 独自仕様です。全シリーズの
 
 検索・フィルター・フォーム・ヘッダー/サイド/モバイル/ボトムナビ・操作一覧・リスト項目・空状態・読み込みを追加。Native HTML + CSS、動作の参考実装はGallery。[仕様と出典](docs/COMPOSITION-SOURCES.md)。
 
+出典優先の全パーツ再監査は [SOURCE-REAUDIT.md](docs/SOURCE-REAUDIT.md)。`npm run audit:sources` でCSS宣言台帳と新規hookの消費を検証できます。
+
+他体系との機能比較・不足と優先順位は [COMPONENT-COVERAGE.md](docs/COMPONENT-COVERAGE.md)。`npm run audit:coverage` で全Galleryパーツの対応と台帳/文書一致を検証します。
+
 ## Design Philosophy PoC
 
 Seriesとは独立した思想・構成・部品利用方式を比較する[Experience Lab PoC](gallery/lab/philosophy-poc/)を追加。[知識構造](docs/DESIGN-PHILOSOPHIES.md)。Researchは設計時参照のみで、生成エンジンや新Seriesではありません。
@@ -130,3 +134,7 @@ Seriesとは独立した思想・構成・部品利用方式を比較する[Expe
 ## 質感と振る舞いの実験
 
 [Materiality Button Lab](gallery/lab/materiality-behavior/)で角と復元の4条件を探索・予備評価。[AI再利用仕様](docs/MATERIALITY-BEHAVIOR.md)。Core/公式Seriesへの自動採用は行わない。
+
+## 操作を組み合わせる画面
+
+[設定・検索一覧・詳細編集の見本](gallery/completion/) と [任意の操作API](docs/BEHAVIOR.md)。CSS単独で利用でき、必要な部品だけ `/behavior` を明示的にimportします。96見本（既存58＋38追加）の数と、各公式体系の全仕様再現は別です。[対応表](docs/COMPONENT-COVERAGE.md) と [検証・限界](docs/COMPONENT-COMPLETION-VALIDATION.md) を参照してください。

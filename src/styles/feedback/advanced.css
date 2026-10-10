@@ -1,0 +1,3 @@
+@layer andm.components {
+.andm-error-summary{padding:var(--andm-space-4);border:3px solid var(--andm-color-error);border-radius:var(--andm-radius-sm);color:var(--andm-color-on-surface);background:var(--andm-color-surface)}.andm-error-summary h2{font-size:var(--andm-font-size-lg);margin-top:0}.andm-banner{display:flex;gap:var(--andm-space-3);flex-wrap:wrap;justify-content:space-between;padding:var(--andm-space-4);border-block:2px solid var(--andm-color-error);background:var(--andm-color-error-container);color:var(--andm-color-on-error-container)}.andm-banner p{margin:0}.andm-counter{font-size:var(--andm-font-size-sm);margin-block:var(--andm-space-2)}.andm-counter[data-over=true]{color:var(--andm-color-error)}.andm-meter{width:100%;height:1rem}
+}

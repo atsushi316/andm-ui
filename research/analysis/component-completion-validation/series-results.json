@@ -1,0 +1,796 @@
+{
+  "matrix": [
+    {
+      "screen": "settings",
+      "series": "",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "soft",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "soft",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "dense",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "dense",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "technical",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "technical",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "editorial",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "editorial",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "playful",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "playful",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "expressive",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "expressive",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "dads",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "dads",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "apple",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "apple",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "spectrum",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "spectrum",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "fluent",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "fluent",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "carbon",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "carbon",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "atlassian",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "atlassian",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "settings",
+      "series": "uswds",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "settings",
+      "series": "uswds",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "soft",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "soft",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "dense",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "dense",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "technical",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "technical",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "editorial",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "editorial",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "playful",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "playful",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "expressive",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "expressive",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "dads",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "dads",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "apple",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "apple",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "spectrum",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "spectrum",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "fluent",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "fluent",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "carbon",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "carbon",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "atlassian",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "atlassian",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "search",
+      "series": "uswds",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "search",
+      "series": "uswds",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "soft",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "soft",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "dense",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "dense",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "technical",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "technical",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "editorial",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "editorial",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "playful",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "playful",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "expressive",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "expressive",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "dads",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "dads",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "apple",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "apple",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "spectrum",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "spectrum",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "fluent",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "fluent",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "carbon",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "carbon",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "atlassian",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "atlassian",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "detail",
+      "series": "uswds",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "detail",
+      "series": "uswds",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "soft",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "soft",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "dense",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "dense",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "technical",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "technical",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "editorial",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "editorial",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "playful",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "playful",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "expressive",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "expressive",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "dads",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "dads",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "apple",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "apple",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "spectrum",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "spectrum",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "fluent",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "fluent",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "carbon",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "carbon",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "atlassian",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "atlassian",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    },
+    {
+      "screen": "components",
+      "series": "uswds",
+      "width": 320,
+      "scale": 2,
+      "doc": 320
+    },
+    {
+      "screen": "components",
+      "series": "uswds",
+      "width": 1280,
+      "scale": 1,
+      "doc": 1280
+    }
+  ],
+  "gallery": [
+    "combobox",
+    "calendar",
+    "upload",
+    "data-table",
+    "tree",
+    "overlay-contract"
+  ]
+}

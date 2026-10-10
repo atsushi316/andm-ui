@@ -70,7 +70,9 @@
     b.disabled=true;content.setAttribute('aria-busy','true');status.textContent='読み込み中';
     const loading=document.createElement('div');loading.className='andm-loading-state';
     const spinner=document.createElement('span');spinner.className='andm-spinner';spinner.setAttribute('aria-hidden','true');
-    const label=document.createElement('span');label.className='andm-text';label.textContent='作品を読み込んでいます';loading.append(spinner,label);content.replaceChildren(loading);
+    const label=document.createElement('span');label.className='andm-text';label.textContent='作品を読み込んでいます';spinner.dataset.partialSpinner='';
+    const wait=document.createElementNS('http://www.w3.org/2000/svg','svg');wait.classList.add('andm-icon');wait.dataset.partialWait='';wait.setAttribute('aria-hidden','true');wait.innerHTML='<use href="../dist/icons.svg#hourglass"></use>';
+    loading.append(spinner,wait,label);content.replaceChildren(loading);
     setTimeout(()=>{render(content,records);content.setAttribute('aria-busy','false');status.textContent='3件の作品を読み込みました';b.disabled=false;},800);
   });
 })();

@@ -77,7 +77,7 @@
       apple: {
         trait: "システムフォントだけです。色や寸法は公式の値を入れていません。",
         use: "案内や設定など、Apple の画面に近づけたいときに向きます。",
-        motion: "公式の duration は official value not specified。ホバーは色。押すと縮む。速度は共有トークンのまま。",
+        motion: "公式の duration 数値は未確認。ホバーは色。押すと縮む。速度は共有トークンのまま。",
       },
       spectrum: {
         trait: "青の塗り、角は高さの半分、境界は 2px です。",
@@ -196,7 +196,7 @@
         sourceKind: "official",
         sourceNote: "デジタル庁デザインシステムの公開情報の解釈。公式ファイルは同梱しない。",
         verification: "verified",
-        duration: "official value not specified",
+        duration: "今回の確認範囲では未確認",
         official: "モーションの duration は本文に無い。",
         interpretation: "速度トークンは差し替えない。ホバーは色。押しても縮まない。",
         patterns: [{ trigger: "hover", effect: "highlight" }],
@@ -206,7 +206,7 @@
         sourceKind: "official",
         sourceNote: "Human Interface Guidelines。duration の数値は本文に無い。",
         verification: "verified",
-        duration: "official value not specified",
+        duration: "今回の確認範囲では未確認",
         official: "HIG の motion には考え方がある。duration も cubic-bezier も本文に無い。",
         interpretation: "速度トークンは差し替えない。press の scale は Baseline のままで、HIG の測定値ではない。シリーズ差はシステムフォントだけ。",
         patterns: [
@@ -229,7 +229,7 @@
         sourceKind: "official",
         sourceNote: "Fluent 2 の shapes と typography。duration は本文に無かった。",
         verification: "verified",
-        duration: "official value not specified",
+        duration: "今回の確認範囲では未確認",
         official: "ボタンの角は本文の shapes。duration の数値は無い。",
         interpretation: "速度トークンは差し替えない。押すと共有の縮み。角は変えない。",
         patterns: [
@@ -252,7 +252,7 @@
         sourceKind: "official",
         sourceNote: "Atlassian Design の foundations。色の hex は本文に残らなかった。",
         verification: "verified",
-        duration: "official value not specified",
+        duration: "今回の確認範囲では未確認",
         official: "操作の duration は 50–150ms の範囲。単一の ms は本文に無い。ホバーの曲線は ease-out practical。",
         interpretation: "速度トークンは差し替えない。押下の縮小は Baseline のまま。色は Baseline のまま。",
         patterns: [
@@ -265,7 +265,7 @@
         sourceKind: "official",
         sourceNote: "U.S. Web Design System のトークンと settings。公式ファイルは同梱しない。",
         verification: "verified",
-        duration: "official value not specified",
+        duration: "今回の確認範囲では未確認",
         official: "今回読んだ本文に duration は無い。",
         interpretation: "速度トークンは差し替えない。押下の縮小は Baseline のまま。アウトラインの枠は 2px。",
         patterns: [

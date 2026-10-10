@@ -48,10 +48,10 @@ await leftFrame.locator('.candidate-bar a').click();assert.equal(page.url(),base
 // Long Japanese does not break flow.
 await page.goto(base+'brutal.html');await page.evaluate(()=>document.querySelector('h1').textContent='散らばった考えを関連付けて履歴から振り返りながら自分で整理していける、非常に長い日本語の見出し');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
 await page.keyboard.press('Tab');const active=await page.evaluate(()=>document.activeElement.tagName);assert.notEqual(active,'BODY');
-// Gallery regression: unchanged 58 parts, Series switching and search interaction.
+// Gallery regression: 58 retained parts plus 38 additions, Series switching and search interaction.
 await page.goto('http://127.0.0.1:4181/gallery/');await page.waitForTimeout(500);
 const gallery=await page.evaluate(()=>({parts:document.querySelectorAll('[data-part].g-section:not([data-part="series"])').length,inputs:[...document.querySelectorAll('input')].filter(x=>x.type==='search').map(x=>({id:x.id,placeholder:x.placeholder})),selects:[...document.querySelectorAll('select')].map(x=>({id:x.id,len:x.options.length}))}));
-assert.equal(gallery.parts,58);
+assert.equal(gallery.parts,96);
 await page.locator('#component-search').fill('検索');await page.waitForTimeout(180);assert(await page.locator('#search-results').isVisible());
 await page.goto('http://127.0.0.1:4181/gallery/#/series/baseline');await page.waitForTimeout(250);
 const seriesOptions=await page.locator('#series-select option').evaluateAll(x=>x.map(o=>o.value));

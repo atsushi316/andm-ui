@@ -55,5 +55,13 @@
     --andm-alert-radius: 8px;
     /* 区切りの公式色は未確認。Baseline の outline-variant。見た目は変えない。 */
     --andm-divider-color: var(--andm-color-outline-variant);
+    /* 2026-10-08 property audit: docs/SOURCE-DECISIONS.md. */
+    --andm-field-line-height: 1.35;
+    --andm-card-border-width: 2px;
+    --andm-card-padding: 1.5rem;
+    --andm-pagination-radius: 0.25rem;
+    --andm-alert-padding-x: 1.25rem;
+    --andm-alert-padding-y: 1rem;
+
   }
 }
