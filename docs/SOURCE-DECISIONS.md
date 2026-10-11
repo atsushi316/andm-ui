@@ -266,3 +266,13 @@ revisit: user visual review across backgrounds and narrow screens
 - adoption: user-requested Gallery repairs and responsive mobile/desktop specimens. recommended: true within that scope.
 - validation: build, 238 tokens with no required undefined references; 3402 property inventory; coverage; JS syntax; 360/132/28 unique IDs and ARIA/assets. Node EventTarget carousel checks cover wrapping, page pickers, rotation, focus cancellation, reduced motion and dispose. DOM/controller checks are not rendering tests. Supported control-browser absent: actual browser/touch, narrow viewport, text zoom, contrast and screen-reader behavior remain unverified.
 - revisit: real-device layout/animation report; official per-component specifications or Series tokens change; sample reuse and large text regression.
+
+## state-expression-lab-20261012
+
+- Scope: Gallery Labのみ。旧waveform-expression入口をstate-expressionへ案内。
+- Sources: docs/STATE-EXPRESSION.mdの公式文書・著者公開論文本文を2026-10-12確認。
+- Official: determinate/indeterminateの用途区別、status通知、非必須演出の抑制。
+- Derived: 共通snapshotによる比較、知覚時間と状態理解を別に観察する仕様。
+- Original: 18候補、形状・配色・速度・固定信号・比較操作。Baseline余白とandm-btnを再利用。
+- Unverified: 優位性、実ブラウザ表示、実機、支援技術。recommended:null。Core/Seriesへの採用なし。
+- Validation: pure model、HTML参照、JS構文、build/token audit/source inventory/coverage成功。
