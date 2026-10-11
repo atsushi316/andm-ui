@@ -117,3 +117,15 @@ Minimalism / Web Brutalism / Original / A′の新規判断は、[Philosophy判�
 - alternatives: 全Seriesを同じpxへ統一する方式、研究の近接原則からpxを生成する方式、本文未取得を公式欠落と扱う方式は不採用。
 - validation: build/各監査/HTML契約/JS構文。今回のブラウザと実機は未検証。旧ブラウザ記録の流用なし。
 - revisit: 各公式部品/Tokenの版更新、Apple/Atlassian本文取得、実表示/実機検証での不具合。Series固有の未対応size/variant/APIは別途個別に扱う。
+
+## m3-integrated-expressive-20261011
+
+- series: M3（既存expressiveスコープ）
+- target / implementation: `src/styles/series/expressive-motion.css` のSwitch/Chip/Tabs/FAB/Dialog/Segmented、既存ButtonのReduced Motion。`gallery/m3/` に操作見本。
+- scope: Web CSS / Native HTML。既存M3に統合、標準との製品切替なし。
+- sourceStatus / checkedScope / basis / sources: [M3-INTEGRATION](M3-INTEGRATION.md) のプロパティ別判断。公式motion本文の今回取得はunverified、2026-09-30の既存記録を再読。再取得を本文確認済みにしない。
+- decision: 既存fast spatial/effectsの4Tokenを再利用。動きの役割へのderived対応付けと独自形状・演出を区別。237Tokenを維持。
+- alternatives: 別Series/標準Expressiveプリセット/旧short Tokenへの無条件置換/無用なToken追加は不採用。
+- recommended / adoption: true / ユーザーの統合・楽しいモーション実装依頼。
+- validation: build/token/source/coverageとJS構文・参照確認。今回の実ブラウザ・目視・実機は未検証。
+- revisit: 公式仕様更新、本文取得成功、実機操作の不具合。

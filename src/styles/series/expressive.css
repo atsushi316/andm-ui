@@ -1,7 +1,7 @@
 @layer andm.tokens {
   /*
      * M3 Expressive の Token remapping。
-     * 切替シリーズの一つ。親に付けるだけで子孫の Button が切り替わる。
+     * 一つの M3 シリーズに Expressive を統合。標準 / Expressive の切替は作らない。
      * ボタンのクラスは共通のまま。Baseline（:root）を壊さない。唯一の正解にしない。
      * 形は expressive fast spatial、色は expressive fast effects。
      * short1–short4 には詰めない。押下の角は specs の S / M / L のまま。

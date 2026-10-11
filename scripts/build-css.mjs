@@ -57,6 +57,7 @@ const sources = [
   "navigation/advanced.css",
   "feedback/advanced.css",
   "utilities.css",
+  "series/expressive-motion.css",
 ];
 
 const banner = "/*! @atsushi316/andm-ui — built from src/styles */\n";
