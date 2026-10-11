@@ -1,7 +1,7 @@
 @layer andm.components {
   /*
    * Carbon skeleton mixin の既定角は未指定（四角）。円は circular variant だけ。
-   * style ページに shimmer の時間は無いので、点滅は付けない。
+   * 明滅は任意の loading variant。速度は独自判断で公式Seriesの値ではない。
    * 面の色トークンは公開ページに無い。既存の disabled container。
    * DADS はスケルトンを使わない。シリーズ側では出さない（gallery の注記）。
    */
@@ -24,5 +24,14 @@
     width: var(--andm-space-10);
     height: var(--andm-space-10);
     border-radius: var(--andm-radius-pill);
+  }
+}
+
+@layer andm.components {
+  /* STATE-EXPRESSION: opt-in loading pulse; keep static default. */
+  .andm-skeleton--loading { animation: andm-skeleton-pulse 2s ease-in-out infinite; }
+  @keyframes andm-skeleton-pulse { 50% { opacity: .5; } }
+  @media (prefers-reduced-motion: reduce) {
+    .andm-skeleton--loading { animation: none; }
   }
 }

@@ -21,6 +21,8 @@
     width: var(--andm-check-size, var(--andm-space-5));
     height: var(--andm-check-size, var(--andm-space-5));
     margin: 0;
+    font: inherit;
+    margin-block-start: max(0px, calc((1lh - var(--andm-check-size, var(--andm-space-5))) / 2));
     border: var(--andm-check-border-width, var(--andm-space-05)) solid
       var(--andm-color-on-surface-variant);
     border-radius: var(--andm-check-radius, var(--andm-space-1));
@@ -99,6 +101,8 @@
   }
 
   .andm-checkbox__label {
-    padding-top: var(--andm-space-05);
+    min-width: 0;
+    overflow-wrap: anywhere;
+    padding-block-start: max(0px, calc((var(--andm-check-size, var(--andm-space-5)) - 1lh) / 2));
   }
 }

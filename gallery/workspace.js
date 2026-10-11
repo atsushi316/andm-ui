@@ -61,7 +61,7 @@
       if (sample) {
         var clone = sample.cloneNode(true);
         clone.querySelectorAll('.andm-textfield__helper, .andm-textfield__error').forEach(function (node) { node.remove(); });
-        [clone].concat(Array.from(clone.querySelectorAll('*'))).forEach(function (node) { node.removeAttribute('id'); node.removeAttribute('name'); node.removeAttribute('autofocus'); node.removeAttribute('aria-controls'); node.removeAttribute('aria-labelledby'); node.removeAttribute('aria-describedby'); node.removeAttribute('for'); Array.from(node.attributes).forEach(function (attr) { if (attr.name.startsWith('data-')) node.removeAttribute(attr.name); }); });
+        [clone].concat(Array.from(clone.querySelectorAll('*'))).forEach(function (node) { node.removeAttribute('id'); node.removeAttribute('name'); node.removeAttribute('autofocus'); node.removeAttribute('aria-controls'); node.removeAttribute('aria-labelledby'); node.removeAttribute('aria-describedby'); node.removeAttribute('for'); Array.from(node.attributes).forEach(function (attr) { if (['data-held','data-andm-pressed','data-drag','data-enhanced'].includes(attr.name)) node.removeAttribute(attr.name); }); });
         preview.append(clone);
       }
       a.append(title, description, preview, group); $('component-grid').append(a);
@@ -109,13 +109,13 @@
     var isPart = document.body.dataset.shell === 'part';
     var panel = $('component-code'); panel.hidden = !isPart || !section;
     if (panel.hidden) return;
-    var example = section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
+    var example = section.querySelector('.cc-sample') || section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
     if (!example) { panel.hidden = true; return; }
     var clone = example.cloneNode(true);
     clone.querySelectorAll(selectedSeries() === 'dads' ? '[data-partial-spinner]' : '[data-partial-wait]').forEach(function (node) { node.remove(); });
     clone.querySelectorAll(".g-type-role, .g-type-metrics").forEach(function (node) { node.remove(); });
     [clone].concat(Array.from(clone.querySelectorAll('*'))).forEach(function (node) {
-      Array.from(node.attributes).forEach(function (attr) { if (attr.name.startsWith('data-')) node.removeAttribute(attr.name); });
+      Array.from(node.attributes).forEach(function (attr) { if (['data-held','data-andm-pressed','data-drag','data-enhanced'].includes(attr.name)) node.removeAttribute(attr.name); });
       if (node.classList) { Array.from(node.classList).forEach(function (name) { if (name.startsWith('g-')) node.classList.remove(name); }); if (!node.className) node.removeAttribute('class'); }
     });
     var id = selectedSeries();
@@ -167,5 +167,12 @@
   $('series-switch').addEventListener('click', function () { requestAnimationFrame(update); });
   var observer = new MutationObserver(function () { update(); });
   observer.observe($('nav-series'), { childList: true });
+  var skeletonControl=$('skeleton-motion'),skeleton=$('skeleton-demo');
+  if(skeletonControl&&skeleton)skeletonControl.addEventListener('click',function(){
+    var paused=skeletonControl.getAttribute('aria-pressed')!=='true';
+    skeletonControl.setAttribute('aria-pressed',String(paused));skeleton.dataset.paused=String(paused);
+    skeletonControl.textContent=paused?'動きを再開':'動きを止める';
+    $('skeleton-status').textContent=paused?'静止した読み込みの見本です。':'読み込み中の見本です。動きを減らすOS設定では静止します。';
+  });
   update();
 })();

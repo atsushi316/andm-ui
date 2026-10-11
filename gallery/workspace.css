@@ -168,3 +168,21 @@ html {scroll-padding-bottom:120px;}
 /* Only specimen composition inherits the selected Series' relationship gaps. */
 .g-stick-scope .g-row { gap: var(--andm-space-actions); }
 .g-stick-scope .g-stack { gap: var(--andm-space-group); }
+
+/* Detail-page chrome: separate the specimen from its supporting documentation. */
+body[data-shell="part"] .g-section {max-width:64rem;margin-inline:auto;padding-top:0;}
+body[data-shell="part"] .g-section > .g-desc {max-width:64ch;margin-block-end:24px;}
+body[data-shell="part"] .g-section > .cc-sample {padding:clamp(16px,3vw,28px);border:1px solid var(--g-chrome-border);border-radius:12px;background:var(--g-chrome-bg);}
+body[data-shell="part"] .g-section > details {margin-block-start:28px;padding:16px 20px;border:1px solid var(--g-chrome-border);border-radius:10px;background:white;}
+body[data-shell="part"] .g-section > details > summary {min-height:28px;cursor:pointer;font:600 14px/1.6 system-ui,sans-serif;color:var(--g-chrome-ink);}
+body[data-shell="part"] .g-section > details > p {max-width:68ch;margin:16px 0;line-height:1.75;color:var(--g-chrome-muted);font:14px/1.75 system-ui,sans-serif;}
+body[data-shell="part"] .g-section > details > a {display:inline-block;margin-block:8px;line-height:1.65;}
+
+/* Portrait crop demonstrations only; Core avatar size remains unchanged. */
+.g-avatar-examples{display:flex;flex-wrap:wrap;align-items:end;gap:var(--andm-space-group)}
+.g-avatar-examples figure{margin:0;display:grid;justify-items:center;gap:var(--andm-space-related)}
+.g-avatar-examples figcaption{font-size:var(--andm-type-caption-size);line-height:var(--andm-type-caption-line-height)}
+.g-avatar--small{width:var(--andm-space-8);height:var(--andm-space-8)}
+.g-avatar--large{width:var(--andm-space-16);height:var(--andm-space-16)}
+.g-avatar-examples img,.andm-persona img,.andm-avatar-group img{object-position:center 36%}
+#skeleton-demo[data-paused="true"] .andm-skeleton{animation:none}

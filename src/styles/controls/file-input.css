@@ -6,3 +6,9 @@
   .andm-file-input:disabled { color: var(--andm-color-on-disabled); background: var(--andm-color-disabled-container); cursor: not-allowed; }
   .andm-file-input:disabled::file-selector-button { color: var(--andm-color-on-disabled); background: var(--andm-color-disabled-container); cursor: not-allowed; }
 }
+
+@layer andm.components {
+ .andm-file-input {box-sizing:border-box;padding:var(--andm-space-related);border-color:color-mix(in srgb,var(--andm-color-outline) 50%,transparent);}
+ .andm-file-input::file-selector-button {min-height:var(--andm-target-min);padding-inline:var(--andm-space-group);border-color:transparent;}
+ .andm-file-input:not(:disabled)::file-selector-button:hover {border-color:var(--andm-color-primary);}
+}

@@ -51,3 +51,9 @@ Safari / iOS 実機、支援技術、全状態のコントラスト、長期利�
 このドックはGalleryの比較操作であり、DADS製品のBottom navigationの再現ではない。DADSはBottom navを非推奨としているため、製品部品のDADS表示には注意と代替を明示する。Spectrum Attention hierarchyの「注意の強さを使い分ける」概念を見本優先の判断に参照した。具体的な浮動ドックの配置はandm独自の設計。
 
 検証：Searchは14Series × 320/390/800/1280 × 文字100%/200%=112組で、同じ行なら下端が揃い、折返し時は重ならないことを座標で検証。58部品 × 14Series × 390/1280=1,624組で表示・ページ横はみ出し・JS例外を確認。携帯/デスクトップのスクリーンショットを目視。シリーズ変更後の検索内容・スクロール・次の部品への選択継承、DADS注意、Menu/Popover/TooltipのEscape・関連付け・focusを確認。iOS実機、実ユーザーによる使いやすさ評価は未実施。
+
+## 2026-10-12 Gallery repairs
+
+Carousel now includes landscape images, individual slide selection and explicit rotation control. Mega-menu groups real destination links. Upload includes empty state, chooser and independent file progress/actions. Checkbox/radio align with the first label line; specimen documentation has separate reading space. Avatar demonstrates original fictional portrait images at 32/40/64px plus the text fallback. Skeleton has opt-in pulse, pause and reduced-motion support. Gallery and reusable completion samples are synchronized.
+
+Spacing retains the existing relationship tokens and each Series' prior values. New composition and illustration details are independent design choices. Validation evidence and remaining browser/device limits: SOURCE-DECISIONS.md#gallery-responsive-specimens-20261012.
