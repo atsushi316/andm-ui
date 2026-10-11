@@ -251,3 +251,6 @@ revisit: user visual review across backgrounds and narrow screens
 ```
 
 2026-10-12 follow-up to `liquid-toolbar-state-20261012`: user explicitly requested a shared active background token for selected bottom navigation. `--andm-glass-color-active-background` retains the existing toggle background `rgb(98 176 255 / .28)` and also feeds the selected tabs/segment lens in light and dark. This is an andm-original mapping, not an Apple-measured color. Reduced-transparency and forced-color fallbacks remain independent.
+
+
+2026-10-12 / `m3-dialog-focus-gutter-20261012`: user reported the name input's focus outline clipping at both sides. The body uses overflow:auto, while the input fills its content width. M3 specimen body now reserves existing --andm-space-2 paint gutters with matching negative inline margins, preserving input/title alignment and panel padding. This is an andm-original Web specimen layout repair; no new official values or focus style changes. Sources: controls/textfield.css focus-visible and overlays/dialog.css body scroll contract, read 2026-10-12. SourceStatus: not-applicable for this layout compensation. Adoption: user issue report under authorized fixes. Code/diff verified; actual browser focus and narrow-screen rendering remain unverified. Revisit after mobile visual review or focus-ring token changes.

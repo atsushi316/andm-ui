@@ -7,3 +7,9 @@ body{margin:0;background:#f6f3fb;color:#25202e;font-family:system-ui,sans-serif}
 .andm-fab-menu{min-height:max(280px,calc(10em + 76px))}
 
 .andm-material-icon{width:24px;height:24px;flex:none;fill:currentColor;vertical-align:middle;pointer-events:none}.andm-action-bar__items button span{font-size:12px;line-height:1.4;overflow-wrap:anywhere}.andm-fab-menu__item{display:flex;align-items:center;gap:10px}
+
+/* Preserve the shared field alignment while reserving paint space inside the scrollport. */
+#dialog .andm-dialog__body {
+  padding-inline: var(--andm-space-2);
+  margin-inline: calc(-1 * var(--andm-space-2));
+}
