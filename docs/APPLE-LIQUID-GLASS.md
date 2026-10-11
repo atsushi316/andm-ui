@@ -125,3 +125,8 @@ The rAF sampler reports callback intervals and the 95th percentile, not GPU comp
 ### Alternative approaches considered
 
 Full live-DOM refraction would require a different rendering path and broader browser verification. This pass keeps controlled-image refraction plus real HTML blur/light, avoiding continuous DOM screenshots. Dark mode uses a restrained tint and lighter ink/selection rather than amplifying every highlight. Mapping matches panel corners instead of increasing displacement strength to conceal the shape error. These are implementation decisions and require visual review; they are not Apple-measured constants.
+
+
+## Refinement v4 — 2026-10-12
+
+Segment labels are centered on both axes in the component stylesheet. Shared toolbar icons use `--andm-glass-color-active` for transient press and persistent `aria-pressed` selection, also shared by selected tabs and standalone toggles. Light/dark mappings retain the existing blue colors. Toolbar selection now uses an inset circular surface (`--andm-glass-inset-fill`, `--andm-glass-inset-shadow`) instead of a flat highlight. Fixed targets, native toggle behavior and focus indicators are preserved; forced-colors replaces the shadow with an outline. These are user-requested andm design choices, not measured Apple specifications. Browser/device appearance remains unverified.

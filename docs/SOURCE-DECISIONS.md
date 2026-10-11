@@ -197,3 +197,55 @@ Minimalism / Web Brutalism / Original / A′の新規判断は、[Philosophy判�
 - alternatives: external font/CDN unnecessary; extra floating link rejected per user request. Do not regress newer spacing, source-audit or gallery heading changes while merging historical branches.
 - recommended: true. adoption: explicit user review and request to integrate every branch into main.
 - validation: build, token audit, source property inventory, coverage, JS syntax, links/ARIA/SVG references and branch ancestry. Browser/touch/visual QA capability unavailable; actual mobile blue flash and animations remain unverified. Revisit if the user sees a blue overlay after this change (could be component focus or state styling rather than UA highlight), narrow Japanese labels, or SVG/browser differences.
+
+
+## 2026-10-12 — Restore existing input components in specimens
+
+```yaml
+id: gallery-input-contract-20261012
+series: all existing Series; M3 specimen
+target: calendar/date-entry/inline-edit/table-size inputs and M3 dialog initial focus
+implementation: gallery/index.html; gallery/completion/index.html; gallery/completion/parts.json; gallery/m3/index.html; gallery/m3/demo.js
+scope: existing CSS-first Web component contract; no new dimensions
+sourceStatus: not-applicable
+checkedScope: controls/README.md; controls/textfield.css; controls/select.css; patterns/compositions.css; SPACING-AND-OVERLAYS.md; ATOMIC-SOURCES.md
+basis: andm-original
+sources:
+  - authority: andm
+    locator: src/styles/controls/textfield.css; src/styles/controls/select.css; docs/SPACING-AND-OVERLAYS.md
+    version: reviewed integration 30aac6b
+    checkedAt: 2026-10-12
+    verification: 本文確認
+    supports: existing input height/padding and field relationship contract
+decision: Reuse andm-textfield__input and andm-field; table select reuses andm-select__native with native arrow; synchronize reusable parts. Preserve affix component's own input contract and Gallery chrome. M3 dialog initially focuses its heading, with keyboard access to the input and focus restoration on close.
+alternatives: New per-specimen padding CSS rejected because existing component already defines it.
+recommended: true
+adoption: user requested repair of similar components
+validation: build and tokens pass; HTML classes, references, parts parity and JS syntax checked; browser, mobile keyboard, zoom and assistive technology unverified because control-browser unavailable
+revisit: Real-device focus/keyboard and narrow Japanese layout review; official field-specific values remain under prior source classifications
+```
+
+
+```yaml
+id: liquid-toolbar-state-20261012
+series: Apple Liquid Glass experimental
+target: segment label alignment; toolbar press/selection color and inset circle
+implementation: src/experimental/apple-liquid-glass/style.css
+scope: experimental CSS Web interpretation, light/dark/forced-colors
+sourceStatus: not-applicable
+checkedScope: existing APPLE-LIQUID-GLASS.md v3 and experimental CSS/behavior
+basis: andm-original
+sources:
+  - authority: andm
+    locator: docs/APPLE-LIQUID-GLASS.md#refinement-v4--2026-10-12
+    version: v4
+    checkedAt: 2026-10-12
+    verification: 本文確認
+    supports: user-requested alignment and inset selection design
+decision: Center tab labels on both axes. Share existing light/dark active blues via --andm-glass-color-active. Use local inset fill/shadow tokens for toolbar pressed/selected circle, with forced-color outline.
+alternatives: Flat translucent circle replaced per user feedback; native hit target unchanged.
+recommended: true
+adoption: explicit user request
+validation: build/token and syntax checks; real browser/device/contrast unverified
+revisit: user visual review across backgrounds and narrow screens
+```

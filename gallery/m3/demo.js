@@ -7,7 +7,7 @@ document.querySelectorAll('#actions button').forEach(button=>button.addEventList
 document.querySelectorAll('#choices button').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('#choices button').forEach(other=>other.setAttribute('aria-pressed',String(other===button)));document.querySelector('#choice-result').textContent=`${button.textContent}を選択中`;}));
 document.querySelector('#notify').addEventListener('change',event=>document.querySelector('#switch-result').textContent=event.target.checked?'通知はオン':'通知はオフ');
 const open=document.querySelector('#open'),dialog=document.querySelector('#dialog');
-open.addEventListener('click',()=>{if(!dialog.open) dialog.showModal();});
+open.addEventListener('click',()=>{if(!dialog.open){dialog.showModal();document.querySelector("#dialog-title").focus();}});
 document.querySelector('#cancel').addEventListener('click',()=>dialog.close());
 document.querySelector('#create-form').addEventListener('submit',event=>{event.preventDefault();const name=document.querySelector('#name');if(!name.value.trim()){name.setCustomValidity('名前を入力してください');name.reportValidity();return;}document.querySelector('#create-result').textContent=`「${name.value.trim()}」を作成しました（見本）`;dialog.close();});
 document.querySelector('#name').addEventListener('input',event=>event.target.setCustomValidity(''));
