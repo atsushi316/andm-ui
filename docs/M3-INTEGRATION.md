@@ -57,3 +57,24 @@
 例: https://github.com/androidx/androidx/blob/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ButtonGroup.kt
 
 検証：build、tokens（237、必須未定義なし）、JS構文、Native DOM controllerのイベント検証、HTMLのID/参照整合。control-browserが提供されないため実ブラウザ・画面目視・touch・Safari・支援技術は未検証。今回も完全な検証済みとは扱わない。実機の取消/連打/狭幅/文字拡大/色/動きを次の見直し条件とする。
+
+
+## 2026-10-12 動画3本からの追加
+
+ユーザー提供の公式ページ画面録画をフレームで確認。資料はscreen-20261012-021715、021907、022102。画像の順序/輪郭/展開は観察できたが、spring物理値は測定していない。録画観察と公式sourceの値を区別する。
+
+- FABメニュー：Native buttonで展開。下の項目から順にopacity/translate/scale、＋→×、角丸四角→円。閉じると元へ収納。contentは即時inert/aria-hiddenとなり、表示アニメーションの間も非操作。Escapeでtriggerへ戻す。外側clickは閉じるが外側のfocusを奪わない。Tab/Enter/Spaceの通常操作、ARIA menuと偽らない。
+- 操作バー：同じ面が56→340px（max-width100%）へ広がる。Native buttonsが順次現れる。録画の印象を移植したandm-original構成/寸法で、公式Toolbar APIそのものではない。
+- Loading Indicator：38/48 dpの公式構成と連続polygon morphを参照。WebのSVG d補間で花風/五角形風/楕円/4葉風が回転。輪郭座標は独自に生成した近似で、公式MaterialShapes全7形状とMorph algorithmのportではない。2400ms周期も独自。通常48px、見本は観察用80px。対応しないブラウザでは静的path＋回転へ縮退。OS/手動Reduced Motionは静的。開始/停止をユーザーが操作し、実通信/実進捗を装わない。
+- 再生状態ボタン：triangle→pauseのclip-path、corner20→36px。実音声なし。録画を参照した独自構造/寸法。状態はNative click/aria-pressedで即時確定。
+- Gallery右下の「M3の動きを試す」固定リンクはユーザー要望で削除。専用ページURLは維持。
+
+公式AndroidX sourceを2026-10-12本文確認：
+- FloatingActionButtonMenu.kt blob41311364fb72a576b988cee9fb1d7f05d77bdb34。stagger visibility、FastSpatial width / FastEffects opacity。ただし公式のstaggerはSlowEffectsのspring。今回0/45/90ms等のCSS delayは独自近似である。
+- LoadingIndicator.kt blobfd569c6ad2f1ed6868417364bd8028b6a1516307。RoundedPolygon/Morph、Indeterminateは7形状、determinateはCircle→SoftBurst。今回不定形の見本のみ、数値progress APIは足さない。
+- tokens/LoadingIndicatorTokens.kt blobbafe68c384582e0aea189069cdd06f8304a0ba25、v0_7_0。ActiveSize38、container48×48、primary role。Web対応はderived。
+URL base：https://github.com/androidx/androidx/blob/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/
+
+任意controllerは `disclosure(root)` を明示import。rootにdata-andm-open、triggerにdata-disclosure-trigger/data-open-label/data-close-label、contentにID/data-disclosure-content。destroyは閉じてevent listenerを解除。アニメーション時間から状態を決めず、連打はCSSが途中状態から再ターゲットする。
+
+検証：build/token/source台帳、JS構文、controllerのopen/close/Escape/outside/selection/dispose、HTML参照、SVG morphの同一コマンド構成、diff。対応browser QA機能がなく、実画面/タッチ/狭幅/200%目視/Safariは未検証。CSSのinterpolation、連打時の形状、読み上げは実機での再確認条件。既存部品の検証結果を新パーツへ流用しない。

@@ -25,3 +25,5 @@ Chip / FAB の寸法は、既存シリーズの公式部品を再現したもの
 IconButton / File inputを追加。Native inputの種類はText fieldを再利用する。根拠と確認範囲は [ATOMIC-SOURCES.md](../../../docs/ATOMIC-SOURCES.md)。
 
 ButtonGroup: `.andm-button-group` は今回3項目の等幅操作、`--connected` は3項目の単一選択見本。M3の幅反応とcornerはexpressive-motion.css。任意 `pressFeedback(root)` は短tapの視覚だけを保持し、操作はNative click。仕様と制限はdocs/M3-INTEGRATION.md。
+
+再生状態の見本: `.andm-media-toggle`、Native button aria-pressed。marks/loading-indicator.cssに形の演出を定義。実再生は消費側の責務。

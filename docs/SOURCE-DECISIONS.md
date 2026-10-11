@@ -144,3 +144,18 @@ Minimalism / Web Brutalism / Original / A′の新規判断は、[Philosophy判�
 - recommended: true / adoption: ユーザー依頼
 - validation: build/token/JS/controller/HTML整合。ブラウザ・実機・視覚検証は未実施。
 - revisit: AndroidX source更新、実機のpress/cancel/連打/狭幅/拡大/色/focus不具合。
+
+
+## m3-recording-actions-20261012
+
+- series: M3 / target: FAB action disclosure, expanding action bar, morphing loading mark, media toggle
+- scope: ユーザー提供公式ページ録画3本とAndroidX androidx-mainをNative HTML/CSS/SVGへ対応
+- implementation: patterns/expressive-actions.css、marks/loading-indicator.css、behavior/disclosure.js、gallery/m3/
+- sourceStatus: specified（公式source本文）/ 動画は形と順序の観察、物理数値未確認
+- basis: derived（FastSpatial/FastEffects、48/38寸法、stagger方向）、andm-original（delay、周期、SVG座標、toolbar/media geometry、palette）
+- sources: FloatingActionButtonMenu.kt、LoadingIndicator.kt、LoadingIndicatorTokens.kt。authority series、2026-10-12本文確認。blob SHA/確認範囲はM3-INTEGRATION改訂節。
+- decision: 動画で観察した展開/収納/輪郭morph/アイコン反応を再利用可能なクラスと任意DOM controllerへ実装。公式全shape/Android spring完全portは主張しない。
+- alternatives: 静止装飾だけでは操作の変化を伝えないため不採用。動画からspring stiffness/dampingを推測して公式値とする方法は不採用。
+- recommended: true / adoption: ユーザー依頼
+- validation: build/tokens/source台帳/controller/HTML/同一SVG構成。実ブラウザ未検証。
+- revisit: 公式source更新、連打/取消/触覚/見た目/読み上げの不具合、browserのSVG d補間対応。

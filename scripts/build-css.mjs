@@ -58,6 +58,8 @@ const sources = [
   "feedback/advanced.css",
   "utilities.css",
   "series/expressive-motion.css",
+  "patterns/expressive-actions.css",
+  "marks/loading-indicator.css",
 ];
 
 const banner = "/*! @atsushi316/andm-ui — built from src/styles */\n";
