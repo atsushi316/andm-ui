@@ -106,3 +106,94 @@ Minimalism / Web Brutalism / Original / A′の新規判断は、[Philosophy判�
 ## 操作能力の追加（2026-10-10）
 
 参照判断ID `completion-native-contract`: [Native契約・局所値・確認範囲](SOURCE-DECISIONS-COMPLETION.md)。追加CSSは既存意味Tokenを継承し、固有配置・数値はandm-original。公式Series CSSの変更なし。
+
+## spacing-overlay-source-first-20261011
+
+- 対象: `src/styles/tokens/spacing/semantic.css`、Seriesの余白mapping、Coreの面/構成/Dialog/Drawer、Galleryの見本HTML/CSS。
+- scope: Web Native HTML、各一次資料の版/branchと共通slotへの対応は [SPACING-AND-OVERLAYS](SPACING-AND-OVERLAYS.md)。確認日2026-10-11。
+- basis / sourceStatus: プロパティ単位のofficial/derived/andm-original/unverifiedを同文書の表で分ける。Appleの未取得本文とAtlassian dialog専用寸法を研究で確認済みにしない。
+- decision: 関係の余白を再利用可能な責務へ割当。部品専用公式値を優先。固定の画面上書き、panel欠落、既定marginとの二重余白を修正。独自Seriesの密度は外部公式と区別。
+- adoption: ユーザーの余白・モーダル修正とSeriesの特色保持の依頼。recommended: true。
+- alternatives: 全Seriesを同じpxへ統一する方式、研究の近接原則からpxを生成する方式、本文未取得を公式欠落と扱う方式は不採用。
+- validation: build/各監査/HTML契約/JS構文。今回のブラウザと実機は未検証。旧ブラウザ記録の流用なし。
+- revisit: 各公式部品/Tokenの版更新、Apple/Atlassian本文取得、実表示/実機検証での不具合。Series固有の未対応size/variant/APIは別途個別に扱う。
+
+## m3-integrated-expressive-20261011
+
+- series: M3（既存expressiveスコープ）
+- target / implementation: `src/styles/series/expressive-motion.css` のSwitch/Chip/Tabs/FAB/Dialog/Segmented、既存ButtonのReduced Motion。`gallery/m3/` に操作見本。
+- scope: Web CSS / Native HTML。既存M3に統合、標準との製品切替なし。
+- sourceStatus / checkedScope / basis / sources: [M3-INTEGRATION](M3-INTEGRATION.md) のプロパティ別判断。公式motion本文の今回取得はunverified、2026-09-30の既存記録を再読。再取得を本文確認済みにしない。
+- decision: 既存fast spatial/effectsの4Tokenを再利用。動きの役割へのderived対応付けと独自形状・演出を区別。237Tokenを維持。
+- alternatives: 別Series/標準Expressiveプリセット/旧short Tokenへの無条件置換/無用なToken追加は不採用。
+- recommended / adoption: true / ユーザーの統合・楽しいモーション実装依頼。
+- validation: build/token/source/coverageとJS構文・参照確認。今回の実ブラウザ・目視・実機は未検証。
+- revisit: 公式仕様更新、本文取得成功、実機操作の不具合。
+
+
+## m3-responsive-groups-20261011
+
+- series: M3 Expressive / target: ButtonGroup, connected selection, Switch geometry, action press feedback
+- implementation: src/styles/series/expressive-motion.css、src/behavior/press.js、gallery/m3/
+- scope: AndroidX androidx-main official Compose implementation → Native HTML/CSS px port, 3-button example
+- sourceStatus: specified（公式sourceの本文をGitHub connector経由で取得）。M3 websiteの本文取得はunverifiedのまま。
+- basis: derived（寸法dp→px、色ロール、CSS幅配分、FastSpatial）、andm-original（短押し120ms視覚保持、面の24px/.88登場、見本palette）
+- sources: AndroidX ButtonGroup.kt / Switch.kt / SwitchTokens.kt / ConnectedButtonGroupSmallTokens.kt / ButtonGroupSmallTokens.kt。authority: series。2026-10-11本文確認、blob SHAとversionはdocs/M3-INTEGRATION.md改訂節。
+- decision: 押下に隣接が応える標準group、選択でfullになるconnected group、16/24/28のSwitch thumbを既存M3へ追加。単なる縮小だけの見本から公式の部品特性が読める見本へ変更。結果はNative click/change/submitで確定し演出の完了から決めない。
+- alternatives: 色変化だけのChip/Tabは今回の中心から外した。Androidレイアウト/overflow menuの完全portは対象外。
+- recommended: true / adoption: ユーザー依頼
+- validation: build/token/JS/controller/HTML整合。ブラウザ・実機・視覚検証は未実施。
+- revisit: AndroidX source更新、実機のpress/cancel/連打/狭幅/拡大/色/focus不具合。
+
+
+## m3-recording-actions-20261012
+
+- series: M3 / target: FAB action disclosure, expanding action bar, morphing loading mark, media toggle
+- scope: ユーザー提供公式ページ録画3本とAndroidX androidx-mainをNative HTML/CSS/SVGへ対応
+- implementation: patterns/expressive-actions.css、marks/loading-indicator.css、behavior/disclosure.js、gallery/m3/
+- sourceStatus: specified（公式source本文）/ 動画は形と順序の観察、物理数値未確認
+- basis: derived（FastSpatial/FastEffects、48/38寸法、stagger方向）、andm-original（delay、周期、SVG座標、toolbar/media geometry、palette）
+- sources: FloatingActionButtonMenu.kt、LoadingIndicator.kt、LoadingIndicatorTokens.kt。authority series、2026-10-12本文確認。blob SHA/確認範囲はM3-INTEGRATION改訂節。
+- decision: 動画で観察した展開/収納/輪郭morph/アイコン反応を再利用可能なクラスと任意DOM controllerへ実装。公式全shape/Android spring完全portは主張しない。
+- alternatives: 静止装飾だけでは操作の変化を伝えないため不採用。動画からspring stiffness/dampingを推測して公式値とする方法は不採用。
+- recommended: true / adoption: ユーザー依頼
+- validation: build/tokens/source台帳/controller/HTML/同一SVG構成。実ブラウザ未検証。
+- revisit: 公式source更新、連打/取消/触覚/見た目/読み上げの不具合、browserのSVG d補間対応。
+
+## apple-liquid-study-20261011
+
+- series: Apple · Liquid Glass experimental Web variation。既存Appleは変更なし。
+- target / implementation: `src/experimental/apple-liquid-glass/{style.css,index.js,optics.js}`、`gallery/lab/apple-liquid-glass/`。別import・別親スコープ。
+- scope: WWDC25/iOS 26の光学・動きの概念をWebへ近似。0–100%のNative Range、Button、Tabs、Menu。
+- sourceStatus: 概念はspecified（WWDC公式本文・一部フレーム確認）。HIG寸法/数値・完全な光学/軌道はunverified。
+- basis: 概念の出典はofficial、Webへの役割割当はderived、光学近似/局所寸法/色/ばね/時間はandm-original。APGのキー操作とARIAはstandard由来でAppleの仕様にしない。
+- sources / checkedAt: 2026-10-11。Apple session 219、Kube CSS/SVG記事、rdev/ybouane README、APG。URL・節・今回の確認範囲はAPPLE-LIQUID-GLASS.md。公開READMEは継続更新でcommit未固定。
+- decision: 任意DOMの毎フレーム画像化を避け、登録した背景画像の画素をSVGで変位。Motionは操作値を遅らせず装飾面に限定。静止時ループ停止。
+- alternatives: Chromium限定SVG backdrop（Safari側の質感差）、任意DOM画像化WebGL（取得コストと構造制約）、ぼかしのみ（比較モードとして残す）。
+- recommended: true（実験追加のみ）。Core標準化はnull。
+- adoption: 既存を壊さない別Appleバリエーションとブラウザ確認の明示依頼。
+- validation: build/token/構文/計算/構造/配布境界/既存不変。実ブラウザ、実機性能、コントラスト、読み上げは未検証。結果はAPPLE-LIQUID-GLASS.mdへ追記。
+- revisit: 実表示/Safari/低速端末/文字拡大の不具合、公式更新、Core採用時。
+
+
+## apple-liquid-refinement-20261011
+
+- Series / scope: Apple Liquid Glass, WWDC25 219, Web experiment v2. User-requested refinement; existing Apple/Core unchanged.
+- Official concepts (`basis: official`, `sourceStatus: specified`): resting controls lift into glass on interaction; press illuminates and flexes; menu bubble expands continuously; avoid glass on glass. https://developer.apple.com/videos/play/wwdc2025/219/ Dynamics / Principles, transcript re-read 2026-10-11. Prior extracted control frames visually re-read; full continuous video remains unverified.
+- Local values (`basis: andm-original`, `sourceStatus: not-specified-in-checked-scope`): slider resting scale .68, press scale 1.06 / 1.10, velocity deformation capped .10; button growth 1.045; menu spring 240 / 29, fixed optical field 260×226. No Apple numerical equivalence claimed.
+- Implementation: src/experimental/apple-liquid-glass/{index.js,style.css}, gallery/lab/apple-liquid-glass/{index.html,lab.js,lab.css}. Native range hover/active shadow disabled; stable optical map with per-frame position updates; one shared toolbar surface; original SVG icons.
+- Backgrounds: HTML text and light UI use live CSS backdrop blur/light; grid PNG and Jason Leung Unsplash photo use controlled-image refraction. https://unsplash.com/photos/1FQQUCInRVA. Coast/night removed from choices. No arbitrary DOM capture.
+- Primary author comparisons re-read: https://kube.io/blog/liquid-glass-css-svg/ (SVG backdrop browser constraint, map regeneration cost); https://github.com/rdev/liquid-glass-react (elasticity/browser limitations). User-provided ELLE article consulted as nontechnical context, not numerical evidence.
+- Validation: JS syntax and whitespace, library build/token audit, local HTML ID/ARIA references, spring convergence. Browser automation skill unavailable, so touch behavior, dynamic contrast, font scaling and actual rendered continuity remain unverified. Revisit after user observation, iOS/Safari rendering differences, resize or reduced-preference defects.
+- recommended: true for experiment only; Core adoption: null.
+
+## m3-review-and-integration-20261012
+
+- series / scope: M3 Expressive, Web Gallery, Google Material Icons 24px. Liquid Glass v3 restoration from the previously saved archive `liquid-v3.tar.gz`; no new Apple measurements.
+- target / implementation: `src/icons/material-icons.svg`, `gallery/m3/index.html`, `src/styles/patterns/expressive-actions.css`, `src/styles/marks/loading-indicator.css`, `src/styles/base.css`, `gallery/index.html`, `src/experimental/apple-liquid-glass/`.
+- sourceStatus / basis: icon geometry specified / official (series assets); sprite extraction derived. Collapsed clipping, circular trigger, toolbar labels, icon crossfade and navigation are andm-original / not-applicable, explicitly requested by the user. No claim of official Toolbar API conformance.
+- sources: https://github.com/google/material-design-icons, src/content/{add,create,save}, src/image/add_a_photo, src/file/create_new_folder, src/action/favorite_border, src/social/share, src/av/{play_arrow,pause}, materialicons/24px.svg, master. Full asset bodies and Apache-2.0 license fetched 2026-10-12; blob versions in src/icons/MATERIAL-ICONS.md. Prior motion evidence remains M3-INTEGRATION.md; not re-fetched for unchanged timing.
+- decision: replace text glyphs and hand-made action icons with licensed SVG assets; retain plus-to-close rotation and state transition. Official play/pause geometry uses an independently designed scale/fade transition rather than pretending the previous custom morph was a Material asset. Clip the collapsed 56px bar to its circular face so hidden flex contents cannot expose a purple oval. Use browser tap-highlight transparency for interactive elements, keep component pressed feedback and focus-visible. Liquid Glass v3 already has local tap styling; import its latest saved source unchanged.
+- alternatives: external font/CDN unnecessary; extra floating link rejected per user request. Do not regress newer spacing, source-audit or gallery heading changes while merging historical branches.
+- recommended: true. adoption: explicit user review and request to integrate every branch into main.
+- validation: build, token audit, source property inventory, coverage, JS syntax, links/ARIA/SVG references and branch ancestry. Browser/touch/visual QA capability unavailable; actual mobile blue flash and animations remain unverified. Revisit if the user sees a blue overlay after this change (could be component focus or state styling rather than UA highlight), narrow Japanese labels, or SVG/browser differences.

@@ -63,5 +63,19 @@
       /* 境界は gray-400。outline が既にその色。 */
       --andm-color-outline-variant: var(--andm-color-outline);
       --andm-divider-color: var(--andm-color-outline);
-    }
+        /* Spectrum CSS tokens 16.0.2, medium desktop; confirmed 2026-10-11. */
+    --andm-space-related: 8px;
+    --andm-space-group: 16px;
+    --andm-space-section: 24px;
+    --andm-space-region: 40px;
+    --andm-space-inset: 24px;
+    --andm-space-paragraph: 12px;
+    --andm-space-actions: 8px;
+    --andm-dialog-padding: 40px;
+    --andm-dialog-gap: 16px;
+    --andm-dialog-actions-space: 24px;
+    --andm-dialog-max-width: 30rem;
+    --andm-dialog-title-size: 1.125rem;
+    --andm-dialog-body-size: .875rem;
+}
 }

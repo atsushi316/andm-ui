@@ -51,10 +51,9 @@
       --andm-motion-easing-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
       --andm-motion-easing-decelerate: cubic-bezier(0, 0, 0.38, 0.9);
       --andm-motion-easing-accelerate: cubic-bezier(0, 0, 0.38, 0.9);
-      /* 入力・カードは layout の 4px。ボタンの 0 とは別。パネルとモーダルは 8px。 */
+      /* 入力・カードは layout の 4px。ボタンの 0 とは別。モーダルの角は今回の公式コード照合で0へ訂正。 */
       --andm-field-radius: 4px;
       --andm-surface-radius: 4px;
-      --andm-dialog-radius: 8px;
       /* general components の 4px。Alert / Badge 固有の半径は未確認（andm の傾向）。 */
       --andm-alert-radius: 4px;
       --andm-badge-radius: 4px;
@@ -82,5 +81,24 @@
     --andm-field-gap: 8px;
     --andm-field-help-gap: 4px;
 
-    }
+
+    /* 2026-10-11: source-first spacing; mappings and limits in SPACING-AND-OVERLAYS.md. */
+    --andm-space-related: 8px;
+    --andm-space-group: 16px;
+    --andm-space-section: 32px;
+    --andm-space-region: 48px;
+    --andm-space-inset: 16px;
+    --andm-space-paragraph: 16px;
+    --andm-space-actions: 8px;
+    --andm-dialog-padding: 0;
+    --andm-dialog-gap: 16px;
+    --andm-dialog-actions-space: 0;
+    --andm-dialog-title-padding: 16px 20% 0 16px;
+    --andm-dialog-body-padding: 0 20% 32px 16px;
+    --andm-dialog-footer-gap: 0;
+    --andm-dialog-action-flex: 1 1 50%;
+    --andm-dialog-action-height: 64px;
+    --andm-dialog-action-radius: 0;
+    --andm-dialog-radius: 0px;
+}
 }

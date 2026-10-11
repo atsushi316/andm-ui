@@ -7,7 +7,10 @@
   "exports": {
     "./style.css": "./dist/style.css",
     "./icons.svg": "./dist/icons.svg",
-    "./behavior": "./dist/behavior/index.js"
+    "./behavior": "./dist/behavior/index.js",
+    "./experimental/apple-liquid-glass": "./dist/experimental/apple-liquid-glass/index.js",
+    "./experimental/apple-liquid-glass/style.css": "./dist/experimental/apple-liquid-glass/style.css",
+    "./material-icons.svg": "./dist/material-icons.svg"
   },
   "files": [
     "dist",
@@ -27,7 +30,9 @@
     "docs/SOURCE-PROPERTIES.csv",
     "docs/COMPONENT-COVERAGE.md",
     "docs/COMPONENT-COVERAGE.json",
-    "docs/BEHAVIOR.md"
+    "docs/BEHAVIOR.md",
+    "docs/SPACING-AND-OVERLAYS.md",
+    "docs/APPLE-LIQUID-GLASS.md"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",

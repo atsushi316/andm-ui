@@ -1,1 +1,17 @@
-.cc-sample{min-width:0;max-width:100%;overflow-wrap:anywhere}.cc-sample fieldset{min-inline-size:0;max-width:100%;margin-inline:0}.cc-sample progress{width:100%;max-width:100%}.cc-sample textarea.andm-textfield__input{height:auto;min-height:6rem;resize:vertical}.cc-sample .andm-btn{height:auto;white-space:normal;max-width:100%;overflow-wrap:anywhere;min-height:44px}.cc-sample select,.cc-sample input{max-width:100%;box-sizing:border-box}.cc-sample .andm-tooltip__bubble{max-width:min(20rem,80vw)}
+/* Responsive constraints only: never replace a Series' font, height, radius or focus. */
+.cc-sample { min-width: 0; max-width: 100%; overflow-wrap: anywhere; display: flex; flex-direction: column; align-items: stretch; gap: var(--andm-space-group); }
+.cc-sample > :where(p, form, fieldset, ul, ol, dl, figure) { margin: 0; }
+.cc-sample > .andm-btn { align-self: flex-start; }
+.cc-sample fieldset { min-inline-size: 0; max-width: 100%; margin-inline: 0; }
+:is(.cc-sample, .completion-card) progress { width: 100%; max-width: 100%; }
+:is(.cc-sample, .completion-card) textarea.andm-textfield__input { height: auto; min-height: 6rem; resize: vertical; }
+.cc-sample select, .cc-sample input { max-width: 100%; box-sizing: border-box; }
+.cc-sample .andm-tooltip__bubble { max-width: min(20rem, 80vw); }
+:is(.cc-sample, .completion-card) [role="status"]:empty,
+:is(.cc-sample, .completion-card) [data-tags]:empty { display: none; }
+/* Specimen composition uses relationship gaps, not the browser's default p margins. */
+:is(.cc-sample, .completion-card) .andm-stack > :where(p, h3, ul, ol, form) { margin: 0; }
+:is(.cc-sample, .completion-card) .andm-field > :where(p, label) { margin: 0; }
+:is(.cc-sample, .completion-card) .andm-calendar > p { margin: var(--andm-space-related) 0 0; }
+:is(.cc-sample, .completion-card) .andm-calendar__header h3 { margin: 0; }
+:is(.cc-sample, .completion-card) .andm-calendar table { margin-block-start: var(--andm-space-related); }

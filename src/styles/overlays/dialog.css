@@ -1,11 +1,13 @@
 @layer andm.components {
   .andm-dialog {
     box-sizing: border-box;
-    width: min(28rem, calc(100% - var(--andm-space-8)));
-    max-height: calc(100% - var(--andm-space-8));
+    width: min(var(--andm-dialog-max-width), calc(100% - 2 * var(--andm-overlay-edge)));
+    max-width: calc(100% - 2 * var(--andm-overlay-edge));
+    max-height: calc(100dvh - 2 * var(--andm-overlay-edge));
+    overflow: hidden;
     margin: auto;
     padding: 0;
-    border: 1px solid var(--andm-color-on-surface-variant);
+    border: 1px solid var(--andm-dialog-border-color, var(--andm-color-on-surface-variant));
     border-radius: var(--andm-dialog-radius, var(--andm-radius-md));
     background: var(--andm-color-surface);
     color: var(--andm-color-on-surface);
@@ -68,11 +70,16 @@
   .andm-dialog__panel {
     display: flex;
     flex-direction: column;
-    gap: var(--andm-space-3);
-    padding: var(--andm-space-5);
+    min-width: 0;
+    max-height: calc(100dvh - 2 * var(--andm-overlay-edge) - 2px);
+    gap: var(--andm-dialog-gap);
+    padding: var(--andm-dialog-padding);
   }
 
   .andm-dialog__title {
+    flex-shrink: 0;
+    overflow-wrap: anywhere;
+    padding: var(--andm-dialog-title-padding, 0);
     margin: 0;
     font-size: var(--andm-font-size-lg);
     font-weight: var(--andm-font-weight-medium);
@@ -80,6 +87,12 @@
   }
 
   .andm-dialog__body {
+    min-height: 0;
+    min-width: 0;
+    overflow: auto;
+    overflow-wrap: anywhere;
+    overscroll-behavior: contain;
+    padding: var(--andm-dialog-body-padding, 0);
     margin: 0;
     font-size: var(--andm-font-size-md);
     line-height: var(--andm-line-height-tight);
@@ -89,8 +102,27 @@
   .andm-dialog__actions {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: var(--andm-space-2);
-    margin-top: var(--andm-space-1);
+    flex-shrink: 0;
+    justify-content: var(--andm-dialog-actions-align);
+    gap: var(--andm-dialog-footer-gap, var(--andm-space-actions));
+    padding: var(--andm-dialog-footer-padding, 0);
+    margin-top: var(--andm-dialog-actions-space);
+  }
+
+  .andm-dialog__body > :first-child { margin-block-start: 0; }
+  .andm-dialog__body > :last-child { margin-block-end: 0; }
+  .andm-dialog__body > :where(p, ul, ol, dl) + :where(p, ul, ol, dl) {
+    margin-block-start: var(--andm-space-paragraph);
+  }
+  .andm-dialog__actions > .andm-btn {
+    min-width: 0;
+    flex: var(--andm-dialog-action-flex, 0 1 auto);
+    min-height: max(var(--andm-dialog-action-height, var(--andm-btn-height-md)), calc(1em * var(--andm-type-action-line-height) + .5rem));
+    border-radius: var(--andm-dialog-action-radius, var(--andm-btn-radius));
+  }
+  /* A long label may wrap; header/footer remain reachable on short viewports. */
+  @media (max-height: 360px) {
+    .andm-dialog { overflow: auto; }
+    .andm-dialog__panel { max-height: none; }
   }
 }

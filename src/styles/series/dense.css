@@ -13,5 +13,15 @@
       --andm-font-size-lg: 13px;
       --andm-btn-press-scale: 0.98;
       --andm-btn-tracking: 0;
-    }
+
+    /* 2026-10-11: source-first spacing; mappings and limits in SPACING-AND-OVERLAYS.md. */
+    --andm-space-related: 4px;
+    --andm-space-group: 12px;
+    --andm-space-section: 20px;
+    --andm-space-region: 24px;
+    --andm-space-inset: 16px;
+    --andm-space-paragraph: 8px;
+    --andm-space-actions: 8px;
+    --andm-dialog-radius: 4px;
+}
 }

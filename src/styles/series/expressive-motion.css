@@ -1,0 +1,94 @@
+/* M3 integrated motion. Existing tokens only. See docs/M3-INTEGRATION.md.
+   Component mappings and microinteraction geometry are andm-derived/original;
+   they are not claims of full official component reproduction. */
+@layer andm.components {
+
+  .andm-series--expressive :is(.andm-chip, .andm-chip:active, .andm-fab, .andm-fab:active, .andm-tabs__tab, .andm-tabs__tab:active, .andm-switch__input, .andm-switch__input:active, .andm-segmented__option, .andm-segmented__option:active) {
+    transition: background-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects), color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects), border-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects), box-shadow var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects), border-radius var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial), transform var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial);
+  }
+  .andm-series--expressive .andm-switch__input::after {
+    transition: transform var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial), background-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects);
+  }
+  .andm-series--expressive .andm-segmented__indicator { transition: transform var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial); }
+  .andm-series--expressive button.andm-chip:active:not(:disabled) {
+    border-radius: var(--andm-radius-sm);
+  }
+  .andm-series--expressive .andm-fab:active:not(:disabled) { transform: scale(.96); }
+  .andm-series--expressive .andm-tabs__tab { position: relative; }
+  .andm-series--expressive .andm-tabs__tab::after {
+    content: ""; position: absolute; inset-inline: var(--andm-space-4); bottom: 0;
+    height: var(--andm-tabs-indicator-width, 2px); border-radius: var(--andm-radius-pill);
+    background: var(--andm-color-primary); transform: scaleX(0); transition: transform var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial);
+  }
+  .andm-series--expressive .andm-tabs__tab[aria-selected="true"],
+  .andm-series--expressive .andm-tabs__tab--selected { border-bottom-color: transparent; }
+  .andm-series--expressive .andm-tabs__tab[aria-selected="true"]::after,
+  .andm-series--expressive .andm-tabs__tab--selected::after { transform: scaleX(1); }
+  .andm-series--expressive .andm-tabs__panel:not([hidden]) { animation: andm-m3-panel var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial) both; }
+  @keyframes andm-m3-panel { from { opacity: 0; transform: translateY(var(--andm-space-2)); } to { opacity: 1; transform: none; } }
+  .andm-series--expressive.andm-dialog,
+  .andm-series--expressive .andm-dialog {
+    transition: opacity var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects), transform var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial), overlay var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial) allow-discrete, display var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial) allow-discrete;
+  }
+  .andm-series--expressive.andm-dialog::backdrop,
+  .andm-series--expressive .andm-dialog::backdrop { transition: opacity var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects) allow-discrete; }
+  @media (prefers-reduced-motion: reduce) {
+    .andm-series--expressive :is(.andm-btn, .andm-chip, .andm-fab, .andm-tabs__tab, .andm-switch__input, .andm-segmented__option),
+    .andm-series--expressive :is(.andm-btn, .andm-chip, .andm-fab, .andm-tabs__tab, .andm-switch__input, .andm-segmented__option):active {
+      transition: background-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects), color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects), border-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects), box-shadow var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects);
+    }
+    .andm-series--expressive button.andm-chip:active:not(:disabled) { border-radius: var(--andm-chip-radius, var(--andm-radius-pill)); }
+    .andm-series--expressive :is(.andm-btn, .andm-fab):active:not(:disabled) { transform: none; }
+    .andm-series--expressive .andm-btn:active:not(:disabled) { border-radius: var(--andm-btn-radius-rest, var(--andm-btn-radius)); }
+    .andm-series--expressive .andm-tabs__panel { animation: none; }
+    .andm-series--expressive .andm-tabs__tab::after,
+    .andm-series--expressive .andm-segmented__indicator { transition: none; }
+    .andm-series--expressive .andm-switch__input::after { transition: background-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects); }
+    .andm-series--expressive.andm-dialog,
+    .andm-series--expressive .andm-dialog,
+    .andm-series--expressive.andm-dialog::backdrop,
+    .andm-series--expressive .andm-dialog::backdrop { transition: none; transform: none; }
+    @starting-style {
+      .andm-series--expressive.andm-dialog[open], .andm-series--expressive .andm-dialog[open] { transform: none; opacity: 1; }
+    }
+  }
+
+  /* Connected selection and standard width response: AndroidX M3 port. */
+  .andm-button-group { display:flex; gap:12px; }
+  .andm-button-group > .andm-btn { flex:1 1 0; min-width:min-content; padding-inline:12px; }
+  .andm-series--expressive .andm-button-group > .andm-btn { transition: flex-grow var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial), border-radius var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial), background-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects), color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects); }
+  .andm-series--expressive .andm-button-group:not(.andm-button-group--connected):has(> .andm-btn:is(:active,[data-andm-pressed])) > .andm-btn { flex-grow:.925; }
+  .andm-series--expressive .andm-button-group:not(.andm-button-group--connected) > .andm-btn:is(:active,[data-andm-pressed]):not(:disabled) { flex-grow:1.15; }
+  .andm-series--expressive .andm-button-group:not(.andm-button-group--connected):has(> .andm-btn:first-child:is(:active,[data-andm-pressed])) > .andm-btn:last-child,
+  .andm-series--expressive .andm-button-group:not(.andm-button-group--connected):has(> .andm-btn:last-child:is(:active,[data-andm-pressed])) > .andm-btn:first-child {flex-grow:1;}
+  .andm-series--expressive .andm-button-group:not(.andm-button-group--connected):has(> .andm-btn:is(:first-child,:last-child):is(:active,[data-andm-pressed])) > .andm-btn:nth-child(2) {flex-grow:.85;}
+  .andm-button-group--connected {gap:2px;}
+  .andm-series--expressive .andm-button-group--connected > .andm-btn {--andm-btn-radius:8px;}
+  .andm-series--expressive .andm-button-group--connected > .andm-btn:first-child {border-start-start-radius:20px;border-end-start-radius:20px;}
+  .andm-series--expressive .andm-button-group--connected > .andm-btn:last-child {border-start-end-radius:20px;border-end-end-radius:20px;}
+  .andm-series--expressive .andm-button-group--connected > .andm-btn[aria-pressed="true"] {border-radius:20px;background:var(--andm-color-primary);color:var(--andm-color-on-primary);}
+  .andm-series--expressive .andm-button-group--connected > .andm-btn:is(:active,[data-andm-pressed]):not(:disabled) {border-radius:4px;}
+  .andm-series--expressive .andm-button-group--connected > .andm-btn:first-child:is(:active,[data-andm-pressed]):not(:disabled) {border-start-start-radius:20px;border-end-start-radius:20px;}
+  .andm-series--expressive .andm-button-group--connected > .andm-btn:last-child:is(:active,[data-andm-pressed]):not(:disabled) {border-start-end-radius:20px;border-end-end-radius:20px;}
+  .andm-series--expressive .andm-btn[data-andm-pressed]:not(:disabled),
+  .andm-series--expressive .andm-dialog__actions > .andm-btn:is(:active,[data-andm-pressed]):not(:disabled) {border-radius:var(--andm-btn-radius-pressed);transform:none;}
+  /* M3 track and selected / unselected / pressed thumb geometry. */
+  .andm-series--expressive .andm-switch__input {width:52px;height:32px;border:2px solid var(--andm-color-outline);background:var(--andm-color-surface);}
+  .andm-series--expressive .andm-switch__input::after {width:16px;height:16px;top:6px;left:6px;background:var(--andm-color-outline);transform:none;transition:width var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial),height var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial),top var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial),left var(--andm-motion-duration-expressive-fast-spatial) var(--andm-motion-easing-expressive-fast-spatial),background-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects);}
+  .andm-series--expressive .andm-switch__input:checked {background:var(--andm-color-primary);border-color:var(--andm-color-primary);}
+  .andm-series--expressive .andm-switch__input:checked::after {width:24px;height:24px;top:2px;left:22px;transform:none;background:var(--andm-color-on-primary);}
+  .andm-series--expressive .andm-switch__input:active:not(:disabled)::after {width:28px;height:28px;top:0;left:0;transition:none;}
+  .andm-series--expressive .andm-switch__input:checked:active:not(:disabled)::after {left:20px;}
+  .andm-series--expressive .andm-switch__input:disabled {background:var(--andm-color-disabled-container);border-color:var(--andm-color-disabled-outline);}
+  .andm-series--expressive .andm-switch__input:disabled::after {background:var(--andm-color-on-disabled);}
+  @media(prefers-reduced-motion:reduce) {
+    .andm-series--expressive .andm-button-group > .andm-btn {transition:background-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects),color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects);}
+    .andm-series--expressive .andm-button-group:not(.andm-button-group--connected):has(> .andm-btn:is(:active,[data-andm-pressed])) > .andm-btn {flex-grow:1;}
+    .andm-series--expressive .andm-btn[data-andm-pressed]:not(:disabled), .andm-series--expressive .andm-dialog__actions > .andm-btn:is(:active,[data-andm-pressed]):not(:disabled) {border-radius:var(--andm-btn-radius-rest,var(--andm-btn-radius));}
+    .andm-series--expressive .andm-button-group--connected > .andm-btn:is(:active,[data-andm-pressed]):not(:disabled) {border-radius:var(--andm-btn-radius);}
+    .andm-series--expressive .andm-button-group--connected > .andm-btn[aria-pressed="true"] {border-radius:20px;}
+    .andm-series--expressive .andm-button-group--connected > .andm-btn:first-child {border-start-start-radius:20px;border-end-start-radius:20px;}
+    .andm-series--expressive .andm-button-group--connected > .andm-btn:last-child {border-start-end-radius:20px;border-end-end-radius:20px;}
+    .andm-series--expressive .andm-switch__input::after {transition:background-color var(--andm-motion-duration-expressive-fast-effects) var(--andm-motion-easing-expressive-fast-effects);}
+  }
+}

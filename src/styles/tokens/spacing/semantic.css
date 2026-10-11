@@ -1,1 +1,18 @@
-/* 余白の意味エイリアスは未定義。スケールは tokens/spacing/primitive.css の --andm-space-*。 */
+/* Relationship mappings, not universal laws. See docs/SPACING-AND-OVERLAYS.md. */
+@layer andm.tokens {
+  :root, :where([class*="andm-series--"]) {
+    --andm-space-related: var(--andm-space-2);
+    --andm-space-group: var(--andm-space-4);
+    --andm-space-section: var(--andm-space-6);
+    --andm-space-region: var(--andm-space-8);
+    --andm-space-inset: var(--andm-space-6);
+    --andm-space-paragraph: var(--andm-space-3);
+    --andm-space-actions: var(--andm-space-2);
+    --andm-dialog-padding: var(--andm-space-inset);
+    --andm-dialog-gap: var(--andm-space-group);
+    --andm-dialog-actions-space: var(--andm-space-related);
+    --andm-dialog-actions-align: flex-end;
+    --andm-dialog-max-width: 28rem;
+    --andm-overlay-edge: 1rem;
+  }
+}

@@ -3,7 +3,7 @@
     display: block;
     box-sizing: border-box;
     margin: 0;
-    padding: var(--andm-space-4);
+    padding: var(--andm-space-inset);
     border: 1px solid var(--andm-color-outline-variant);
     border-radius: var(--andm-surface-radius, var(--andm-btn-radius));
     background: var(--andm-color-surface);
@@ -28,7 +28,7 @@
   }
 
   .andm-surface__title {
-    margin: 0 0 var(--andm-space-2);
+    margin: 0 0 var(--andm-space-related);
     font-size: var(--andm-font-size-md);
     font-weight: var(--andm-font-weight-medium);
     line-height: var(--andm-line-height-tight);

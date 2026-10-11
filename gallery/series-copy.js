@@ -24,7 +24,7 @@
       technical: "Technical",
       editorial: "Editorial",
       playful: "Playful",
-      expressive: "M3 Expressive",
+      expressive: "M3 · Expressive統合",
       dads: "DADS",
       apple: "Apple",
       spectrum: "Spectrum",

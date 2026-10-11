@@ -1,0 +1,23 @@
+import {pressFeedback,disclosure} from '../../dist/behavior/index.js';
+pressFeedback(document.querySelector('main'));
+pressFeedback(document.querySelector('#dialog'));
+let count=0,actions=0;
+document.querySelector('#count').addEventListener('click',()=>document.querySelector('#result').textContent=`${++count}回操作しました`);
+document.querySelectorAll('#actions button').forEach(button=>button.addEventListener('click',()=>{document.querySelector('#action-result').textContent=`${button.dataset.action}（見本・${++actions}回目）`;}));
+document.querySelectorAll('#choices button').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('#choices button').forEach(other=>other.setAttribute('aria-pressed',String(other===button)));document.querySelector('#choice-result').textContent=`${button.textContent}を選択中`;}));
+document.querySelector('#notify').addEventListener('change',event=>document.querySelector('#switch-result').textContent=event.target.checked?'通知はオン':'通知はオフ');
+const open=document.querySelector('#open'),dialog=document.querySelector('#dialog');
+open.addEventListener('click',()=>{if(!dialog.open) dialog.showModal();});
+document.querySelector('#cancel').addEventListener('click',()=>dialog.close());
+document.querySelector('#create-form').addEventListener('submit',event=>{event.preventDefault();const name=document.querySelector('#name');if(!name.value.trim()){name.setCustomValidity('名前を入力してください');name.reportValidity();return;}document.querySelector('#create-result').textContent=`「${name.value.trim()}」を作成しました（見本）`;dialog.close();});
+document.querySelector('#name').addEventListener('input',event=>event.target.setCustomValidity(''));
+dialog.addEventListener('close',()=>open.focus());
+document.querySelector('#theme').addEventListener('click',event=>{const dark=document.body.classList.toggle('dark');event.currentTarget.setAttribute('aria-pressed',String(dark));event.currentTarget.textContent=dark?'ライト表示':'ダーク表示';});
+document.querySelector('#motion').addEventListener('click',event=>{const reduce=document.body.classList.toggle('reduce-motion');event.currentTarget.setAttribute('aria-pressed',String(reduce));event.currentTarget.textContent=reduce?'動きを戻す':'動きを減らす';});
+
+disclosure(document.querySelector('#fab-menu'));
+disclosure(document.querySelector('#action-bar'));
+document.querySelectorAll('[data-menu-action]').forEach(button=>button.addEventListener('click',()=>document.querySelector('#menu-result').textContent=`${button.dataset.menuAction}を選びました（見本）`));
+document.querySelectorAll('[data-bar-action]').forEach(button=>button.addEventListener('click',()=>document.querySelector('#bar-result').textContent=`${button.dataset.barAction}を選びました（見本）`));
+document.querySelector('#load-toggle').addEventListener('click',event=>{const indicator=document.querySelector('#loading');const running=indicator.dataset.running!=='true';indicator.dataset.running=String(running);event.currentTarget.textContent=running?'読み込みを停止':'読み込みを試す';document.querySelector('#load-result').textContent=running?'読み込み中（模擬）。停止ボタンで終了します。':'読み込みを停止しました。';});
+document.querySelector('#media-toggle').addEventListener('click',event=>{const playing=event.currentTarget.getAttribute('aria-pressed')!=='true';event.currentTarget.setAttribute('aria-pressed',String(playing));document.querySelector('#media-result').textContent=playing?'再生中（見本）。もう一度押すと停止します。':'停止中。';});

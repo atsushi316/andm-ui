@@ -57,6 +57,9 @@ const sources = [
   "navigation/advanced.css",
   "feedback/advanced.css",
   "utilities.css",
+  "series/expressive-motion.css",
+  "patterns/expressive-actions.css",
+  "marks/loading-indicator.css",
 ];
 
 const banner = "/*! @atsushi316/andm-ui — built from src/styles */\n";
@@ -91,3 +94,8 @@ await writeFile(join(root, "dist", "icons.svg"), await readFile(join(root, "src"
 console.log(`Wrote ${outFile}`);
 
 await cp(join(root,"src","behavior"),join(root,"dist","behavior"),{recursive:true});
+
+// Explicit opt-in experiment: separate from Core CSS.
+await cp(join(root,"src","experimental"),join(root,"dist","experimental"),{recursive:true});
+await cp(join(root,"src","icons","material-icons.svg"),join(root,"dist","material-icons.svg"));
+await cp(join(root,"src","icons","LICENSE-material-icons.txt"),join(root,"dist","LICENSE-material-icons.txt"));

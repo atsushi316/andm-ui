@@ -5,3 +5,5 @@ export {form,characterCount,range,inlineEdit,upload} from './forms.js';
 export {calendar} from './calendar.js';
 export {dataTable} from './table.js';
 export {dialog,popover,tooltip,tour} from './overlays.js';
+export {pressFeedback} from './press.js';
+export {disclosure} from './disclosure.js';

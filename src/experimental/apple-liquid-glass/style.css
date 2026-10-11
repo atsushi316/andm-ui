@@ -1,0 +1,227 @@
+/* Optional experimental Web interpretation; not Apple's implementation or measured tokens.
+   Load AFTER andm-ui/style.css. Existing Apple and Core selectors are untouched. */
+.andm-series--apple-liquid-glass {
+  --andm-font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", system-ui, sans-serif;
+  --andm-glass-tint: rgb(255 255 255 / .24);
+  --andm-glass-ink: #162337;
+  --andm-glass-blur: 2px;
+  --andm-glass-radius: 999px;
+  --andm-glass-edge: rgb(255 255 255 / .85);
+  --andm-glass-shadow: 0 10px 22px rgb(15 29 47 / .16), 0 2px 4px rgb(15 29 47 / .12);
+  font-family: var(--andm-font-family);
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass {
+  position: relative; isolation: isolate; color: var(--andm-glass-ink);
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__face {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  border-radius: var(--andm-glass-radius); background: var(--andm-glass-tint);
+  box-shadow: var(--andm-glass-shadow), inset 0 1px 1px rgb(255 255 255 / .95), inset 0 -1px 1px rgb(34 48 72 / .22);
+  backdrop-filter: blur(var(--andm-glass-blur)) saturate(1.25);
+  -webkit-backdrop-filter: blur(var(--andm-glass-blur)) saturate(1.25);
+  transform: scale(var(--glass-sx, 1), var(--glass-sy, 1));
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__face::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  border: 1px solid var(--andm-glass-edge);
+  background: linear-gradient(135deg, rgb(255 255 255 / .5), transparent 28%, transparent 65%, rgb(255 255 255 / .33));
+  box-shadow: inset 1px 0 0 rgb(255 255 255 / .6), inset -1px 0 0 rgb(0 0 0 / .13);
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__texture {
+  position: absolute; inset: 0; border-radius: inherit; overflow: hidden;
+  opacity: .7; background-repeat: no-repeat; pointer-events: none;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__light {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(ellipse at var(--glass-light-x, 30%) 0%, rgb(255 255 255 / .75), transparent 60%);
+  opacity: .5;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-btn.andm-glass {
+  min-height: 48px; height: auto; padding: 12px 24px; border: 0;
+  border-radius: var(--andm-glass-radius); background: transparent;
+  box-shadow: none; font: 600 16px/1.4 var(--andm-font-family);
+  overflow: visible; transform: none; text-shadow: 0 1px 8px rgb(255 255 255 / .65);
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-btn.andm-glass::before { display: none; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass:focus-visible,
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass :focus-visible,
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input:focus-visible {
+  outline: 3px solid #0757c8; outline-offset: 4px;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass:disabled { opacity: .5; cursor: not-allowed; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass[data-held="true"] .andm-glass__light { opacity: 1; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider { position: relative; width: 100%; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__rail {
+  position: relative; height: 58px; display: grid; align-items: center;
+  margin-top: 8px; padding-inline: 28px;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__track {
+  height: 8px; border-radius: 99px;
+  background: linear-gradient(to right, #137dce var(--glass-fill, 50%), rgb(25 37 55 / .17) var(--glass-fill, 50%));
+  box-shadow: inset 0 1px 2px rgb(17 32 54 / .13);
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input {
+  appearance: none; -webkit-appearance: none; position: absolute; inset: 0;
+  margin: 0; width: 100%; height: 58px; background: transparent; z-index: 2; cursor: pointer;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input::-webkit-slider-runnable-track { height: 8px; background: transparent; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input::-webkit-slider-thumb {
+  appearance: none; width: 56px; height: 44px; margin-top: -18px; border: 0; background: transparent;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input::-moz-range-track { height: 8px; background: transparent; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input::-moz-range-progress { background: transparent; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input::-moz-range-thumb { width: 56px; height: 44px; border: 0; background: transparent; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__thumb {
+  position: absolute; left: 0; top: 14px; width: 56px; height: 30px;
+  pointer-events: none; z-index: 1; --andm-glass-tint: rgb(255 255 255 / .24);
+  transition: height 160ms ease, top 160ms ease;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider[data-held="true"] .andm-glass-slider__thumb { top: 7px; height: 44px; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__thumb .andm-glass__face { z-index: 0; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__readout { display: flex; justify-content: space-between; gap: 16px; font-weight: 600; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input:disabled { cursor: not-allowed; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider:has(:disabled) { opacity: .5; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs {
+  display: flex; padding: 6px; border-radius: 999px; gap: 2px;
+  width: min(100%, 360px); min-height: 62px;
+  --andm-glass-tint: rgb(255 255 255 / .35);
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__tab {
+  position: relative; flex: 1; min-width: 0; min-height: 50px; padding: 8px 6px;
+  border: 0; border-radius: 99px; background: transparent; color: #223149;
+  font: 600 14px/1.4 var(--andm-font-family); z-index: 1; cursor: pointer;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__tab[aria-selected="true"] { color: #0647a5; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__lens {
+  position: absolute; top: 6px; left: 6px; height: calc(100% - 12px);
+  pointer-events: none; --andm-glass-tint: rgb(255 255 255 / .36);
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__lens .andm-glass__face { z-index: 0; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu { position: relative; min-height: 230px; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__bubble {
+  position: absolute; right: 0; top: 0; width: 52px; height: 52px;
+  --andm-glass-radius: 26px; --andm-glass-tint: rgb(255 255 255 / .54);
+  transition: none;
+}
+
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__trigger {
+  position: absolute; right: 0; top: 0; width: 52px; height: 52px; z-index: 2;
+  border: 0; border-radius: 99px; background: transparent; color: #162337;
+  font: 700 24px/1 var(--andm-font-family); cursor: pointer;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__items {
+  position: absolute; top: 54px; right: 8px; width: min(244px, calc(100% - 16px));
+  display: grid; gap: 2px; z-index: 3;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__items[hidden] { display: none; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__item {
+  min-height: 48px; padding: 12px 14px; border: 0; border-radius: 14px;
+  background: transparent; color: #162337; text-align: left;
+  font: 500 16px/1.5 var(--andm-font-family); cursor: pointer;
+}
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__item:hover,
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__item:focus-visible { background: rgb(255 255 255 / .5); }
+.andm-series--apple-liquid-glass[data-transparency="reduced"] { --andm-glass-tint: #edf3f9; --andm-glass-shadow: 0 4px 12px rgb(15 29 47 / .12); }
+.andm-series--apple-liquid-glass[data-transparency="reduced"] .andm-glass__face { background: #edf3f9; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.andm-series--apple-liquid-glass[data-transparency="reduced"] .andm-glass__texture,
+.andm-series--apple-liquid-glass[data-optics="frost"] .andm-glass__texture { display: none; }
+.andm-series--apple-liquid-glass[data-motion="reduced"] .andm-glass__face { transform: none; }
+.andm-series--apple-liquid-glass[data-motion="reduced"] .andm-glass-menu__bubble,
+.andm-series--apple-liquid-glass[data-motion="reduced"] .andm-glass-slider__thumb { transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__face { transform: none; }
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__bubble,
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__thumb { transition: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__face { background: #edf3f9; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__texture { display: none; }
+}
+@media (forced-colors: active) {
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__face { background: Canvas; border: 1px solid ButtonText; box-shadow: none; backdrop-filter: none; }
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__texture,
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__light { display: none; }
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__tab,
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__trigger,
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__item { color: ButtonText; }
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__tab[aria-selected="true"] { outline: 2px solid Highlight; }
+  .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__track { background: CanvasText; }
+}
+
+/* Native range owns input, while only the decorative lens owns visual effects. */
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input::-webkit-slider-thumb { box-shadow: none !important; transform: none !important; background: transparent !important; transition: none !important; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input::-moz-range-thumb { box-shadow: none !important; transform: none !important; background: transparent !important; transition: none !important; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__thumb { top: 7px; height: 44px; transition: none; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__thumb .andm-glass__face { --glass-sy: .68; background: #fff; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider:not([data-held="true"]) .andm-glass__texture,
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider:not([data-held="true"]) .andm-glass__light { opacity: 0; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider[data-held="true"] .andm-glass__face { background: rgb(255 255 255 / .22); }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-btn.andm-glass-icon { width: 52px; height: 52px; min-height: 52px; padding: 14px; display: inline-grid; place-items: center; }
+.andm-glass-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__trigger { touch-action: manipulation; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__face::after { border-color: rgb(255 255 255 / .6); }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__light { transition: opacity 160ms ease; }
+
+/* Shared navigation surface; items are thin overlays rather than glass on glass. */
+.andm-series--apple-liquid-glass[data-enhanced="true"] .icon-toolbar > .andm-glass-icon { background:transparent; border:0; box-shadow:none; color:var(--andm-glass-ink); }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .icon-toolbar > .andm-glass-icon:active { background:rgb(255 255 255 / .38); }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__thumb .andm-glass__texture { opacity:.18; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__thumb .andm-glass__face { --andm-glass-blur:.3px; }
+.andm-series--apple-liquid-glass[data-motion="reduced"] .andm-glass__light { transition:none; }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-transparency="reduced"] .andm-glass__face { background:#edf3f9; }
+@media(prefers-reduced-transparency:reduce) { .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__face { background:#edf3f9 !important; } }
+@media(prefers-reduced-motion:reduce) { .andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__light { transition:none; } }
+
+/* Refinement v3: stable hit targets, visible selection and touch feedback. */
+.andm-series--apple-liquid-glass { -webkit-tap-highlight-color: transparent; }
+.andm-series--apple-liquid-glass button { touch-action: manipulation; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input { padding:0; border:0; border-radius:999px; box-shadow:none; touch-action:pan-y; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__input:focus:not(:focus-visible),
+.andm-series--apple-liquid-glass[data-enhanced="true"] button:focus:not(:focus-visible) { outline:none; box-shadow:none; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider__thumb .andm-glass__face { background:rgb(255 255 255 / .18); --glass-sy:.82; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider:not([data-held="true"]) .andm-glass__texture { opacity:.3; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider:not([data-held="true"]) .andm-glass__light { opacity:.4; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-slider[data-held="true"] .andm-glass__texture { opacity:.65; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__trigger { display:grid; place-items:center; padding:0; }
+.menu-dots { display:flex; align-items:center; justify-content:center; gap:4px; }
+.menu-dots i { display:block; width:4px; height:4px; border-radius:50%; background:currentColor; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-menu__item[data-chosen="true"] { background:rgb(20 105 218 / .16); }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__tab { border:0; margin:0; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__tab:active { background:transparent; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs { touch-action:pan-y; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__lens { z-index:0; --andm-glass-tint:rgb(255 255 255 / .55); }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs__lens .andm-glass__face { box-shadow:0 2px 6px rgb(20 35 60 / .2),inset 0 1px 1px rgb(255 255 255 / .9); }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-tabs[data-held="true"] .andm-glass-tabs__lens .andm-glass__light { opacity:1; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] button[aria-pressed="true"] { color:#0758b8; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] button[aria-pressed="true"] .andm-glass__face { background:rgb(98 176 255 / .28); }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .icon-toolbar > button { position:relative; isolation:isolate; background:transparent; transform:none; border-radius:999px; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .icon-toolbar > button::before { display:none; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .icon-toolbar > button::after { content:""; position:absolute; inset:2px; border-radius:inherit; background:rgb(255 255 255 / .35); opacity:0; z-index:-1; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .icon-toolbar > button[data-held="true"]::after,
+.andm-series--apple-liquid-glass[data-enhanced="true"] .icon-toolbar > button[aria-pressed="true"]::after { opacity:1; }
+.icon-toolbar svg { transform:scale(var(--glass-sx,1),var(--glass-sy,1)); }
+.andm-series--apple-liquid-glass[data-theme="dark"] { --andm-glass-ink:#f2f6ff; --andm-glass-tint:rgb(32 40 56 / .52); --andm-glass-edge:rgb(255 255 255 / .35); --andm-glass-shadow:0 10px 22px rgb(0 0 0 / .35); }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass-tabs { --andm-glass-tint:rgb(22 29 42 / .6); }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass-tabs__lens { --andm-glass-tint:rgb(170 190 220 / .2); }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass-menu__bubble { --andm-glass-tint:rgb(28 36 52 / .62); }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass-slider__thumb .andm-glass__face { background:rgb(84 98 122 / .25); }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass-menu__trigger,
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass-menu__item,
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass-tabs__tab { color:#e9f0ff; }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass-tabs__tab[aria-selected="true"],
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] button[aria-pressed="true"] { color:#8cc8ff; }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass-slider__track { background:linear-gradient(to right,#73baff var(--glass-fill,50%),rgb(196 213 241 / .2) var(--glass-fill,50%)); }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass__light { opacity:.28; }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass[data-held="true"] .andm-glass__light { opacity:.7; }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"][data-transparency="reduced"] .andm-glass__face { background:#273349; }
+.andm-series--apple-liquid-glass[data-motion="reduced"] .icon-toolbar svg { transform:none; }
+@media(prefers-reduced-motion:reduce) { .icon-toolbar svg { transform:none; } }
+@media(prefers-reduced-transparency:reduce) { .andm-series--apple-liquid-glass[data-theme="dark"] .andm-glass__face { background:#273349 !important; } }
+@media(forced-colors:active) {
+ .andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] button { color:ButtonText; }
+ .andm-series--apple-liquid-glass[data-enhanced="true"] button[aria-pressed="true"] { outline:2px solid Highlight; }
+ .andm-series--apple-liquid-glass[data-enhanced="true"][data-theme="dark"] .andm-glass__face { background:Canvas !important; }
+}
+/* Pointer input never gets keyboard decoration; Tab restores visible focus. */
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-input="pointer"] :focus-visible { outline:none; box-shadow:none; }
+.andm-series--apple-liquid-glass[data-enhanced="true"][data-input="keyboard"] :focus-visible { outline:3px solid #0757c8; outline-offset:4px; }

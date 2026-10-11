@@ -18,6 +18,11 @@
     background: var(--andm-color-surface);
   }
 
+  /* Browser touch flash is replaced by component press states; keyboard focus stays visible. */
+  :is(button, a, input, select, textarea, summary, [role="button"], label) {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   button {
     font: inherit;
   }
