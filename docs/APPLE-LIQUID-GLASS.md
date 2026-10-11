@@ -130,3 +130,5 @@ Full live-DOM refraction would require a different rendering path and broader br
 ## Refinement v4 — 2026-10-12
 
 Segment labels are centered on both axes in the component stylesheet. Shared toolbar icons use `--andm-glass-color-active` for transient press and persistent `aria-pressed` selection, also shared by selected tabs and standalone toggles. Light/dark mappings retain the existing blue colors. Toolbar selection now uses an inset circular surface (`--andm-glass-inset-fill`, `--andm-glass-inset-shadow`) instead of a flat highlight. Fixed targets, native toggle behavior and focus indicators are preserved; forced-colors replaces the shadow with an outline. These are user-requested andm design choices, not measured Apple specifications. Browser/device appearance remains unverified.
+
+Selected navigation and segmented lenses now share the standalone toggle's translucent blue background through `--andm-glass-color-active-background`; foreground uses `--andm-glass-color-active`. The inset treatment remains toolbar-only.

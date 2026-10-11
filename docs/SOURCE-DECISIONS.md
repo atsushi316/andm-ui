@@ -249,3 +249,5 @@ adoption: explicit user request
 validation: build/token and syntax checks; real browser/device/contrast unverified
 revisit: user visual review across backgrounds and narrow screens
 ```
+
+2026-10-12 follow-up to `liquid-toolbar-state-20261012`: user explicitly requested a shared active background token for selected bottom navigation. `--andm-glass-color-active-background` retains the existing toggle background `rgb(98 176 255 / .28)` and also feeds the selected tabs/segment lens in light and dark. This is an andm-original mapping, not an Apple-measured color. Reduced-transparency and forced-color fallbacks remain independent.
