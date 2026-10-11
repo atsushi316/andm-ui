@@ -129,3 +129,18 @@ Minimalism / Web Brutalism / Original / A′の新規判断は、[Philosophy判�
 - recommended / adoption: true / ユーザーの統合・楽しいモーション実装依頼。
 - validation: build/token/source/coverageとJS構文・参照確認。今回の実ブラウザ・目視・実機は未検証。
 - revisit: 公式仕様更新、本文取得成功、実機操作の不具合。
+
+
+## m3-responsive-groups-20261011
+
+- series: M3 Expressive / target: ButtonGroup, connected selection, Switch geometry, action press feedback
+- implementation: src/styles/series/expressive-motion.css、src/behavior/press.js、gallery/m3/
+- scope: AndroidX androidx-main official Compose implementation → Native HTML/CSS px port, 3-button example
+- sourceStatus: specified（公式sourceの本文をGitHub connector経由で取得）。M3 websiteの本文取得はunverifiedのまま。
+- basis: derived（寸法dp→px、色ロール、CSS幅配分、FastSpatial）、andm-original（短押し120ms視覚保持、面の24px/.88登場、見本palette）
+- sources: AndroidX ButtonGroup.kt / Switch.kt / SwitchTokens.kt / ConnectedButtonGroupSmallTokens.kt / ButtonGroupSmallTokens.kt。authority: series。2026-10-11本文確認、blob SHAとversionはdocs/M3-INTEGRATION.md改訂節。
+- decision: 押下に隣接が応える標準group、選択でfullになるconnected group、16/24/28のSwitch thumbを既存M3へ追加。単なる縮小だけの見本から公式の部品特性が読める見本へ変更。結果はNative click/change/submitで確定し演出の完了から決めない。
+- alternatives: 色変化だけのChip/Tabは今回の中心から外した。Androidレイアウト/overflow menuの完全portは対象外。
+- recommended: true / adoption: ユーザー依頼
+- validation: build/token/JS/controller/HTML整合。ブラウザ・実機・視覚検証は未実施。
+- revisit: AndroidX source更新、実機のpress/cancel/連打/狭幅/拡大/色/focus不具合。
