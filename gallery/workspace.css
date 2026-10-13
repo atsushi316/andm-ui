@@ -186,3 +186,22 @@ body[data-shell="part"] .g-section > details > a {display:inline-block;margin-bl
 .g-avatar--large{width:var(--andm-space-16);height:var(--andm-space-16)}
 .g-avatar-examples img,.andm-persona img,.andm-avatar-group img{object-position:center 36%}
 #skeleton-demo[data-paused="true"] .andm-skeleton{animation:none}
+
+/* Purpose-first discovery: keep Gallery chrome independent from displayed Series. */
+.g-purpose-filters { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px; }
+.g-purpose-label { width:100%; font-size:13px; font-weight:700; color:var(--g-chrome-muted); }
+.g-purpose-option { appearance:none; border:1px solid var(--g-chrome-border); border-radius:999px; padding:8px 13px; min-height:40px; background:#fff; color:var(--g-chrome-ink); font:600 13px/1.3 system-ui,sans-serif; cursor:pointer; }
+.g-purpose-option:hover { border-color:var(--g-chrome-accent); }
+.g-purpose-option[aria-pressed="true"] { background:var(--g-chrome-ink); color:#fff; border-color:var(--g-chrome-ink); }
+.g-purpose-option:focus-visible { outline:3px solid var(--g-chrome-accent); outline-offset:3px; }
+.g-component-card { position:relative; isolation:isolate; overflow:hidden; transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
+.g-component-card .g-component-preview { order:-1; min-height:112px; height:112px; padding:16px; margin-bottom:6px; justify-content:center; border-radius:8px; background:#f3f5f8; transition:background-color 160ms ease, transform 160ms ease; }
+.g-component-card .g-component-preview:empty::after { content:"プレビュー準備中"; font:12px/1.5 system-ui,sans-serif; color:#64748b; }
+.g-component-card .g-component-preview > * { flex-shrink:0; }
+.g-component-card .g-card-explore { font:600 12px/1.5 system-ui,sans-serif; color:var(--g-chrome-accent); opacity:0; transform:translateY(3px); transition:opacity 160ms ease,transform 160ms ease; }
+.g-component-card:is(:hover,:focus-visible) { box-shadow:0 10px 28px rgb(24 34 53 / .10); transform:translateY(-2px); }
+.g-component-card:is(:hover,:focus-visible) .g-component-preview { background:#e9f0fa; transform:scale(1.015); }
+.g-component-card:is(:hover,:focus-visible) .g-card-explore { opacity:1; transform:none; }
+.g-component-card:focus-visible { outline:3px solid var(--g-chrome-accent); outline-offset:3px; }
+@media (hover:none) { .g-component-card .g-card-explore { opacity:1; transform:none; } }
+@media (prefers-reduced-motion:reduce) { .g-component-card, .g-component-card .g-component-preview, .g-component-card .g-card-explore { transition:none; } .g-component-card:is(:hover,:focus-visible), .g-component-card:is(:hover,:focus-visible) .g-component-preview { transform:none; } }
