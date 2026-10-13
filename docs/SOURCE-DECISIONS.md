@@ -390,3 +390,35 @@ revisit: visual/touch/keyboard review in real browsers, text contrast and respon
 - decision: Gallery09と実行時のimport/初期化を撤去。既存Liquid Glassパーツと08の通常ミニプレーヤーは維持。独自描画・音源・過去の検証コードは削除せず保持。
 - reason: 静止時の質感・音で揺れる体験がユーザーの目標に達しなかった。シェーダー描画や計算チェックの通過を視覚品質の達成と扱わない。
 - revisit: 静止画の視覚比較と実ブラウザ検証が可能な条件で、ユーザーの再挑戦指示があるとき。
+
+## gallery-discovery-20261013
+
+```yaml
+id: gallery-discovery-20261013
+series: Gallery chrome (independent of specimen Series)
+target: Catalog structure, task filters, specimen snapshots, comparison disclosures, touch access
+implementation: gallery/discovery.js; gallery/workspace.js; gallery/workspace.css; gallery/completion/screen.js; scripts/export-gallery.mjs
+scope: Web / Japanese / Gallery-only / existing 96 parts and 14 Series
+sourceStatus: not-applicable
+checkedScope: DESIGN.md, SOURCE-FIRST.md, EXPERIENCE.md, COMPOSITION-SOURCES.md, DESIGN-PHILOSOPHIES.md, GALLERY-REVIEW.md, Series copy and existing Gallery DOM. Series CSS values preserved; no new official numeric values inferred.
+basis: andm-original
+sources:
+  - authority: professional
+    locator: https://envydesign.jp/patterns/parts/header/
+    version: live website, 2026-10-13
+    checkedAt: 2026-10-13
+    verification: HTML/CSS and page accessibility tree examined
+    supports: Inspiration for task-led classification, preview-first catalog and optional pre-navigation inspection; not a source of official Series dimensions
+  - authority: andm
+    locator: DESIGN.md; docs/SOURCE-FIRST.md; docs/EXPERIENCE.md
+    version: main 717b50e and PR 15 dd1f757
+    checkedAt: 2026-10-13
+    verification: repository contents read
+    supports: Preserve native component API, source distinctions, intent/composition/Series boundaries and scoped specimen switching
+decision: Five catalog entrances; actual DOM specimens from existing examples; hover/focus opens a native details disclosure, click/tap pins it, Escape closes it. Existing Series tokens apply to specimens only. Original Gallery spacing, dimensions and neutral green chrome; not scientific constants or official Series tokens.
+alternatives: A screenshot-only catalog would hide live Series differences; a hover-only popup would exclude touch. Both rejected.
+recommended: true
+adoption: explicit user request; PR 15 revision; no merge to main
+validation: Build, token/source/coverage/knowledge audits and DOM regression passed. Browser QA is tracked separately in GALLERY-DISCOVERY.md; DOM checks do not establish layout, contrast or physical-touch quality.
+revisit: Browser clipping, focus/state loss, added examples or changed source/license conditions
+```

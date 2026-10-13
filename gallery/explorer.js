@@ -694,7 +694,7 @@
       setPagehead(
         "Gallery",
         "部品を探す",
-        "部品を開き、シリーズを切り替えて比較できます。",
+        "実装見本から、部品・画面構成・デザインの違いを探す。",
       );
       scrollMainToTop();
       syncNavGroups();
