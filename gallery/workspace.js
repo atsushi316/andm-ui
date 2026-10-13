@@ -48,7 +48,7 @@
     });
   }
   function matches(entry, query) {
-    var haystack = normalize([entry.title, entry.group].concat(entry.keywords).join(' '));
+    var haystack = normalize([entry.title, entry.group, window.ANDM_USAGE && window.ANDM_USAGE.entries[entry.id] ? window.ANDM_USAGE.entries[entry.id].when : ''].concat(entry.keywords).join(' '));
     return query.split(/\s+/).every(function (word) { return haystack.includes(word); });
   }
   // Discover by task first; keep source group labels and routes intact.
@@ -76,6 +76,7 @@
         $('component-category').value = item.value;
         syncPurposeFilters();
         buildIndex(normalize(search.value));
+        if(mobile.matches){setNav(false);var heading=$('gd-catalog-title');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}window.scrollTo(0,0);}
       });
       region.append(button);
     });
@@ -135,14 +136,15 @@
     var panel = $('component-code'); panel.hidden = !isPart || !section;
     if (panel.hidden) return;
     var navigation = ['header-nav','side-nav','bottom-nav'].includes(section.dataset.part);
-    var example = (navigation && section.querySelector('.andm-header-nav, .andm-side-nav, .andm-bottom-nav')) || section.querySelector('.cc-sample') || section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
+    var overlay = ['dialog','drawer'].includes(section.dataset.part) && section.querySelector('dialog');
+    var example = overlay || (navigation && section.querySelector('.andm-header-nav, .andm-side-nav, .andm-bottom-nav')) || section.querySelector('.cc-sample') || section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
     if (!example) { panel.hidden = true; return; }
     var clone = example.cloneNode(true);
     clone.querySelectorAll(selectedSeries() === 'dads' ? '[data-partial-spinner]' : '[data-partial-wait]').forEach(function (node) { node.remove(); });
     clone.querySelectorAll(".g-type-role, .g-type-metrics").forEach(function (node) { node.remove(); });
     [clone].concat(Array.from(clone.querySelectorAll('*'))).forEach(function (node) {
       Array.from(node.attributes).forEach(function (attr) { if (['data-held','data-andm-pressed','data-drag','data-enhanced'].includes(attr.name)) node.removeAttribute(attr.name); });
-      if (node.classList) { Array.from(node.classList).forEach(function (name) { if (name.startsWith('g-')) node.classList.remove(name); }); if (!node.className) node.removeAttribute('class'); }
+      if (node.classList) { Array.from(node.classList).forEach(function (name) { if (name.startsWith('g-') || name.startsWith('gd-')) node.classList.remove(name); }); if (!node.className) node.removeAttribute('class'); }
     });
     var id = selectedSeries();
     var wrapper = document.createElement('div'); if (id !== 'baseline') wrapper.className = 'andm-series--' + id;

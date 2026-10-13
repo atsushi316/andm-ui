@@ -6,7 +6,7 @@ const root=new URL('../',import.meta.url).pathname;
 const window=new Window({url:'https://test.local/gallery/'});
 window.fetch=async url=>{const p=new URL(url,'https://test.local/gallery/').pathname;try{return new window.Response(await readFile(root+p.slice(1),'utf8'),{status:200});}catch{return new window.Response('',{status:404});}};
 window.document.write((await readFile(root+'gallery/index.html','utf8')).replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,''));
-for(const file of ['series-copy.js','catalog.js','library.js','atoms.js','compositions.js','explorer.js','discovery.js','workspace.js'])window.eval(await readFile(root+'gallery/'+file,'utf8'));
+for(const file of ['series-copy.js','catalog.js','library.js','atoms.js','compositions.js','usage.js','explorer.js','discovery.js','workspace.js','details.js'])window.eval(await readFile(root+'gallery/'+file,'utf8'));
 await new Promise(r=>setTimeout(r,800));
 const d=window.document;
 const cards=()=>d.querySelectorAll('#component-grid > article');

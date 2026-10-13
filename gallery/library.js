@@ -1,6 +1,7 @@
 /* research/library の Markdown を表示する。値は Token にしない。 */
 (function (root) {
   var shelves = {
+    "COMPONENT-USAGE.md": "component-usage",
     "COMPONENT-COVERAGE.md": "component-coverage",
     "SOURCE-REAUDIT.md": "source-reaudit",
     "SOURCE-FIRST.md": "source-first",

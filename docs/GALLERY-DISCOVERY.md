@@ -31,3 +31,14 @@ Open the preview Gallery. Check purpose filters and Japanese search; Tab onto a 
 The first catalog revision still exposed competing navigation rows, a floating Series dock, duplicate search results and expanding hover cards. This revision consolidates destinations in one sidebar, retains the complete index and Labs behind native disclosures, makes Series comparison inline, and keeps hover comparison inside each card footprint. Search on the home catalog filters the actual visible cards. Mobile gets a compact catalog switch and native purpose selector. Header/side/bottom details now show the original navigation alongside a page context; copied HTML remains the real navigation API.
 
 `shell.css` defines only original Gallery chrome and demonstration placement. Official component/Series CSS and package exports are unchanged. No claim of visual/browser QA success is made: the managed preview permission failure and the private preview's cloud-browser sign-in wall remain unresolved.
+
+## Mobile and detail correction / real browser verification
+
+2026-10-13: The requested actual-browser QA is now available in an isolated repository test environment. Previous statements that browser verification was unavailable describe earlier revisions, not this validation. The managed Sites preview infrastructure itself remains blocked; no site access policy was changed.
+
+- Restore the fixed bottom Series select with previous/next and measured padding.
+- Fix home Series selection carrying into a detail page and touch primary navigation being intercepted by focus-triggered card preview. Keyboard focus continues to preview; touch summary explicitly pins it.
+- Normalize detail sections and their inspector inside the main reading region, retain live component nodes and consolidate generic implementation notes into one disclosure.
+- Add all96 usage notes and alternatives with37 cited primary references. [Scope and source table](COMPONENT-USAGE.md).
+- Add detail styling, Japanese titles, contextual samples, source disclosures and direct jumps. Keep source disclosure state while changing Series.
+- Real Chromium validation: [report](GALLERY-MOBILE-VALIDATION.md). Core component styles and Series numerical values are unchanged.

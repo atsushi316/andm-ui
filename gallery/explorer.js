@@ -142,6 +142,7 @@
   }
 
   var libraryFiles = {
+    "component-usage": "../../docs/COMPONENT-USAGE.md",
     "design-philosophies": "../../docs/DESIGN-PHILOSOPHIES.md",
     "component-coverage": "../../docs/COMPONENT-COVERAGE.md",
     "source-first": "../../docs/SOURCE-FIRST.md",
@@ -169,6 +170,7 @@
   };
 
   var libraryTitles = {
+    "component-usage": "部品の用途・使い分け",
     "design-philosophies": "Design Knowledge：目的・思想・構成",
     "component-coverage": "他体系との比較・不足一覧",
     "source-first": "出典優先の設計基準",
@@ -1009,7 +1011,7 @@
       go("#/series/" + id);
       return;
     }
-    if (route.view === "tokens" || route.view === "library" || route.view === "home") return;
+    if (route.view === "tokens" || route.view === "library") return;
     applySeries(id);
   }
 

@@ -1,0 +1,46 @@
+{
+  "browser": "153.0.8010.0",
+  "operations": [
+    "mobile menu → purpose selection closes menu → home Series persists into details",
+    "bottom prev/next & select; input and scroll retention",
+    "usage jump; one implementation disclosure; source links and code panel",
+    "native dialog opens, cancels and restores focus",
+    "data table behavior remains connected after detail normalization",
+    "desktop hover & keyboard preview, stable card layout and Escape"
+  ],
+  "errors": [],
+  "overflow": [],
+  "zoom": {
+    "page": 390,
+    "width": 390,
+    "dock": {
+      "x": 24,
+      "y": 645,
+      "width": 342,
+      "height": 175,
+      "top": 645,
+      "right": 366,
+      "bottom": 820,
+      "left": 24
+    }
+  },
+  "date": "2026-10-13",
+  "allPartCases": 672,
+  "allSeriesRepresentativeCases": 84,
+  "parts": 96,
+  "series": 14,
+  "widths": [
+    320,
+    390,
+    768,
+    1280
+  ],
+  "finalSmoke": [
+    "touch first navigation",
+    "Japanese heading",
+    "literature rendering",
+    "source disclosure persistence",
+    "usage library loading"
+  ],
+  "physicalDevicesTested": false
+}

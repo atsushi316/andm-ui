@@ -448,3 +448,35 @@ adoption: User explicitly requested a full usability and appearance correction; 
 validation: Build/token audit and DOM regression; no real layout or physical-touch claim. Existing managed-preview and private-browser authentication limitations remain.
 revisit: Observed clipping, discovery failures, zoom/reflow issues, keyboard focus conflicts or user feedback
 ```
+
+## gallery-mobile-details-20261013
+
+```yaml
+id: gallery-mobile-details-20261013
+series: Gallery chrome; existing Series component properties unchanged
+target: Mobile navigation, fixed Series dock, detail hierarchy, implementation notes, component purpose and alternatives
+implementation: gallery/details.js; gallery/usage.js; gallery/shell.css; gallery/discovery.js; gallery/explorer.js; gallery/workspace.js
+scope: Web / Japanese / Gallery / Chrome mobile emulation and desktop / 96 parts, 14 Series
+sourceStatus: not-applicable
+checkedScope: DESIGN.md, SOURCE-FIRST.md, GALLERY-REVIEW.md, current native component markup and Gallery scripts; 37 primary references indexed in COMPONENT-USAGE.md. M3 JavaScript-only guideline pages not treated as absent; use readable Android Developers purpose guidance for navigation bar.
+basis: andm-original
+sources:
+  - authority: andm
+    locator: docs/COMPONENT-USAGE.md (37 references, per-part mapping and interpretation limits)
+    version: live primary reference pages retrieved 2026-10-13; existing Gallery implementation
+    checkedAt: 2026-10-13
+    verification: primary reference retrieval and purpose/concept/guidance review; independently preserved Series source status
+    supports: Human-facing use cases and alternatives. No official numeric token changes. W3C APG Tooltip remains a work-in-progress pattern.
+  - authority: andm
+    locator: current user request; docs/GALLERY-REVIEW.md; scripts/check-gallery-mobile.mjs
+    version: PR15 mobile/detail correction
+    checkedAt: 2026-10-13
+    verification: user-requested change and real Chromium rendering / touch / keyboard / state-retention checks
+    supports: Bottom Series restoration, one implementation disclosure, nearby usage/source information and responsive detail layout
+decision: Restore the Gallery's bottom comparison controls, with safe-area and measured content padding; original chrome dimensions/colors rather than product navigation tokens. Keep existing component nodes, normalize malformed/orphaned note placement, consolidate implementation notes. Add per-part usage and alternatives as andm's application of referenced guidelines, not as official per-Series component reproduction. Restrict automatic focus preview to keyboard focus-visible so the first touch activates its link.
+alternatives: An inline-only Series picker rejected by user preference. A duplicate implementation disclosure and hover-expanding list rejected for unnecessary friction.
+recommended: true
+adoption: explicit user request; PR15 without merge
+validation: GALLERY-MOBILE-VALIDATION.md; Chromium153, 672 all-part width/Series cases plus84 all-Series representative cases; no page-level horizontal overflow or JavaScript errors, 200% reflow and representative touch/keyboard interactions. Physical iOS/Android keyboards, Safari and assistive technology not tested.
+revisit: Actual-device issues, focus obstruction, browser changes or updated source guidance
+```

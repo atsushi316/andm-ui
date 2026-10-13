@@ -98,6 +98,10 @@
       else {parent.replaceChild(frame,nav);if(id==='header-nav')frame.append(nav,backdrop());else frame.append(backdrop(),nav);}
     });
   }
+  function modeIcon(id) {
+    const paths={parts:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 10h18M10 10v11"/>',screens:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 8h18M8 8v13"/>',series:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18"/>',motion:'<path d="M4 18c0-6 6 0 6-6s7 0 7-7M15 3h6v6"/>',knowledge:'<path d="M3 5c4-2 7-1 9 1 2-2 5-3 9-1v14c-4-2-7-1-9 1-2-2-5-3-9-1V5zM12 6v14"/>'};
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('gd-mode-icon');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.5');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');svg.setAttribute('aria-hidden','true');svg.innerHTML=paths[id];return svg;
+  }
   function setMode(id) {
     mode=id;$('component-category').value='';
     $('component-category').dispatchEvent(new Event('change',{bubbles:true}));
@@ -111,7 +115,7 @@
     const index=node('details','gd-all-index');index.append(node('summary','','すべての項目'));
     [...nav.children].forEach(child=>{if(child.classList.contains('g-nav__group'))index.append(child);});
     const sidebar=node('div','gd-sidebar-primary');sidebar.append(node('p','gd-sidebar-heading','ライブラリ'));
-    Object.entries(modes).forEach(([id,label],i)=>{const b=node('button','gd-mode-button');b.type='button';b.dataset.mode=id;b.append(node('span','gd-mode-icon',['◫','▤','◐','↗','≡'][i]),node('span','',label));b.addEventListener('click',()=>setMode(id));sidebar.append(b);});
+    Object.entries(modes).forEach(([id,label],i)=>{const b=node('button','gd-mode-button');b.type='button';b.dataset.mode=id;b.append(modeIcon(id),node('span','',label));b.addEventListener('click',()=>setMode(id));sidebar.append(b);});
     const extras=node('details','gd-lab-menu');extras.append(node('summary','','実験室'));
     const shortcuts=document.querySelector('.g-lab-shortcuts');[...shortcuts.children].forEach(a=>extras.append(a));shortcuts.remove();
     nav.prepend(sidebar);const purposes=$('purpose-filters');if(purposes)sidebar.after(purposes);nav.append(index,extras);
@@ -124,12 +128,12 @@
     $('component-index').prepend(region,mobileNav,controls);
     [...$('series-select').options].forEach(opt=>$('gd-compare-series').append(opt.cloneNode(true)));
     $('gd-compare-series').value='carbon';$('gd-compare-series').addEventListener('change',applyScopes);
-    $('series-tools').querySelector('label').textContent='見本のデザイン';
+    $('series-tools').querySelector('label').textContent='見本のSeries';
     $('index-count').setAttribute('role','status');
     const note=node('details','gd-license');note.innerHTML='<summary>利用条件と出典について</summary><p>HTML・CSSの見本です。通信・保存・業務判断はアプリ側で実装します。現在のリポジトリは <code>UNLICENSED</code>。利用・再配布の許諾条件を確認してください。各Seriesは公開仕様の解釈で、公式パッケージの再配布ではありません。</p><a href="https://github.com/atsushi316/andm-ui/blob/main/package.json" target="_blank" rel="noopener noreferrer">利用条件 ↗</a> · <a href="#/library/source-first">出典と採用ルール</a>';
     $('component-grid').after(note);
-    function placeTools(){const home=document.body.dataset.view==='home';if(home)controls.prepend($('series-tools'));else $('pagehead').before($('series-tools'));}
-    window.addEventListener('andm:viewchange',placeTools);window.addEventListener('hashchange',()=>{placeTools();updateActive();});placeTools();
+    $('top').append($('series-tools'));
+    window.addEventListener('hashchange',updateActive);
   }
   function updateActive(){
     const home=document.body.dataset.view==='home';
@@ -155,7 +159,7 @@
     summary.addEventListener('click',event=>{event.preventDefault();pinned=!pinned;details.open=pinned;});
     article.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse')details.open=true;});
     article.addEventListener('pointerleave',()=>{if(!pinned&&!article.contains(document.activeElement))details.open=false;});
-    article.addEventListener('focusin',()=>{details.open=true;});
+    article.addEventListener('focusin',event=>{if(event.target.matches(':focus-visible'))details.open=true;});
     article.addEventListener('focusout',event=>{if(!pinned&&!article.contains(event.relatedTarget)&&!article.matches(':hover'))details.open=false;});
     article.addEventListener('keydown',event=>{if(event.key==='Escape'){pinned=false;details.open=false;summary.focus();details.open=false;event.stopPropagation();}});
     return article;
@@ -167,11 +171,11 @@
     const query=context.query, category=context.category;
     const matches=e=>(!query||query.split(/\s+/).every(w=>[e.title,e.use,e.group,e.info].join(' ').normalize('NFKC').toLowerCase().includes(w))) && (!category || e.group===category);
     let cards=[];
-    if(mode==='parts') cards=context.entries.filter(e=>(!category||e.group===category)&&(!query||context.matches(e,query))).map(e=>{
+    if(mode==='parts') {const priority=['button','text-field','checkbox','radio','switch','select','card','tabs','dialog','header-nav','side-nav','bottom-nav'];cards=context.entries.slice().sort((a,b)=>{const ai=priority.indexOf(a.id),bi=priority.indexOf(b.id);return (ai<0?999:ai)-(bi<0?999:bi);}).filter(e=>(!category||e.group===category)&&(!query||context.matches(e,query))).map(e=>{
       const section=document.querySelector('[data-part="'+e.id+'"]');
       const desc=section&&section.querySelector('.g-desc');
-      return card({...e,use:context.descriptions[e.id]||e.keywords.join('・')||'詳細で状態と操作を確認。',info:desc?desc.textContent.trim():''},[e.id],e.href);
-    });
+      return card({...e,use:(window.ANDM_USAGE&&window.ANDM_USAGE.entries[e.id]&&window.ANDM_USAGE.entries[e.id].when)||context.descriptions[e.id]||e.keywords.join('・')||'詳細で状態と操作を確認。',info:desc?desc.textContent.trim():''},[e.id],e.href);
+    });}
     if(mode==='screens') cards=screens.filter(matches).map(e=>card(e,e.parts,'completion/?screen='+e.id));
     if(mode==='series') cards=[...$('series-select').options].map(o=>{const b=window.ANDM_SERIES_COPY.briefs[o.value]||{};return {id:o.value,title:o.textContent,use:b.use,info:b.trait,group:'Series'};}).filter(e=>!query||matches({...e,group:category})).map(e=>card(e,['button','form-field'],'#/series/'+e.id,e.id));
     if(mode==='knowledge') cards=knowledge.filter(e=>!query||matches({...e,group:category})).map(e=>{
