@@ -20,6 +20,13 @@ first.querySelector('summary').click();assert(details.open,'touch can pin quick 
 d.querySelector('#series-select').value='expressive';d.querySelector('#series-select').dispatchEvent(new window.Event('change'));
 assert(first.querySelector('[data-gd-series="selected"]').classList.contains('andm-series--expressive'));
 assert.equal(cards()[0],first,'Series change retains card DOM');
+for(const id of ['header-nav','side-nav','bottom-nav'])assert(d.querySelector('[data-part="'+id+'"] .gd-navigation-demo'),'navigation is shown in page context');
+assert.equal(d.querySelectorAll('.gd-sidebar-primary').length,1,'one primary navigation');
+assert.equal(d.querySelector('.g-lab-shortcuts'),null,'shortcut strip is replaced by the lab menu');
+const sampleInput=d.querySelector('[data-part="text-field"] input');sampleInput.value='保持する入力';
+d.querySelector('#series-select').value='carbon';d.querySelector('#series-select').dispatchEvent(new window.Event('change'));
+assert.equal(sampleInput.value,'保持する入力','Series switch keeps existing input state');
+d.querySelector('#series-select').value='expressive';d.querySelector('#series-select').dispatchEvent(new window.Event('change'));
 const nav=id=>d.querySelector('[data-mode="'+id+'"]').click();
 nav('screens');assert.equal(cards().length,3);assert(cards()[0].querySelector('a').href.includes('series=expressive'));
 nav('series');assert.equal(cards().length,14);

@@ -422,3 +422,29 @@ adoption: explicit user request; PR 15 revision; no merge to main
 validation: Build, token/source/coverage/knowledge audits and DOM regression passed. Browser QA is tracked separately in GALLERY-DISCOVERY.md; DOM checks do not establish layout, contrast or physical-touch quality.
 revisit: Browser clipping, focus/state loss, added examples or changed source/license conditions
 ```
+
+## gallery-shell-20261013
+
+```yaml
+id: gallery-shell-20261013
+series: Gallery chrome; existing component Series preserved
+target: Information hierarchy, navigation, comparison location, stable card previews, navigation context
+implementation: gallery/shell.css; gallery/discovery.js; gallery/workspace.js; gallery/index.html
+scope: Web / Gallery UI / Japanese / desktop and narrow-layout rules
+sourceStatus: not-applicable
+checkedScope: DESIGN.md, SOURCE-FIRST.md, EXPERIENCE.md, GALLERY-REVIEW.md, GALLERY-DISCOVERY.md; current header/side/bottom examples and existing compositions CSS. No new official Series values adopted.
+basis: andm-original
+sources:
+  - authority: andm
+    locator: docs/EXPERIENCE.md; docs/GALLERY-REVIEW.md; docs/SOURCE-FIRST.md
+    version: current repository and existing documented source checks
+    checkedAt: 2026-10-13
+    verification: repository documents and implementation read; external standards not re-fetched in this change
+    supports: Task-first exploration, visual relationships, scoped specimens, state retention, accessible native disclosure
+decision: Consolidate primary destinations in a sidebar; keep complete index and Labs in disclosures. Search filters the current home catalog without covering it with duplicate results; other pages retain search navigation. Replace floating Series dock with nearby inline controls. Quick comparison overlays within the same card footprint. Navigation details use the original elements in a page context; implementation copy extracts the actual nav. Colors, spacing, type, frame sizes and breakpoints are original Gallery choices, not scientific laws or official Series tokens.
+alternatives: Persistent shortcut strip and multiple navigation rows rejected for duplicated emphasis. Auto-expanding card rejected because it moves neighboring results while scanning.
+recommended: true
+adoption: User explicitly requested a full usability and appearance correction; continue PR 15 without merging main
+validation: Build/token audit and DOM regression; no real layout or physical-touch claim. Existing managed-preview and private-browser authentication limitations remain.
+revisit: Observed clipping, discovery failures, zoom/reflow issues, keyboard focus conflicts or user feedback
+```

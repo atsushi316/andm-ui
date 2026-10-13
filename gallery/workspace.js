@@ -79,7 +79,8 @@
       });
       region.append(button);
     });
-    top.after(region);
+    var sidebar=document.querySelector('.gd-sidebar-primary');
+    if(sidebar)sidebar.after(region);else top.after(region);
   }
   function syncPurposeFilters() {
     document.querySelectorAll('.g-purpose-option').forEach(function (button) {
@@ -104,7 +105,7 @@
       a.append(title, group); $('search-results').append(a);
     });
     if (!found.length) { var p = document.createElement('p'); p.textContent = '一致する項目がありません。別の言葉で探してください。'; $('search-results').append(p); }
-    $('search-results').hidden = false; $('search-status').textContent = found.length + ' 件見つかりました。';
+    $('search-results').hidden = document.body.dataset.view === 'home'; $('search-status').textContent = found.length + ' 件見つかりました。';
   }
   $('component-category').addEventListener('change', function () { syncPurposeFilters(); buildIndex(normalize(search.value)); });
   setupPurposeFilters();
@@ -133,7 +134,8 @@
     var isPart = document.body.dataset.shell === 'part';
     var panel = $('component-code'); panel.hidden = !isPart || !section;
     if (panel.hidden) return;
-    var example = section.querySelector('.cc-sample') || section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
+    var navigation = ['header-nav','side-nav','bottom-nav'].includes(section.dataset.part);
+    var example = (navigation && section.querySelector('.andm-header-nav, .andm-side-nav, .andm-bottom-nav')) || section.querySelector('.cc-sample') || section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
     if (!example) { panel.hidden = true; return; }
     var clone = example.cloneNode(true);
     clone.querySelectorAll(selectedSeries() === 'dads' ? '[data-partial-spinner]' : '[data-partial-wait]').forEach(function (node) { node.remove(); });

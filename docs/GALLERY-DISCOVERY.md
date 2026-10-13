@@ -25,3 +25,9 @@ Browser verification: cloud browser connection initially timed out and recovered
 ## Manual review
 
 Open the preview Gallery. Check purpose filters and Japanese search; Tab onto a card, then its quick-view summary and links; Escape closes; tap summary to pin. Compare Baseline, Carbon, DADS and Expressive. Open Header, Dialog, Text field and a completion screen; enter text, change Series and check retained state. Review at 390px and 200% text. Check Motion, Knowledge, sources and copied implementation HTML.
+
+## User-facing shell revision
+
+The first catalog revision still exposed competing navigation rows, a floating Series dock, duplicate search results and expanding hover cards. This revision consolidates destinations in one sidebar, retains the complete index and Labs behind native disclosures, makes Series comparison inline, and keeps hover comparison inside each card footprint. Search on the home catalog filters the actual visible cards. Mobile gets a compact catalog switch and native purpose selector. Header/side/bottom details now show the original navigation alongside a page context; copied HTML remains the real navigation API.
+
+`shell.css` defines only original Gallery chrome and demonstration placement. Official component/Series CSS and package exports are unchanged. No claim of visual/browser QA success is made: the managed preview permission failure and the private preview's cloud-browser sign-in wall remain unresolved.

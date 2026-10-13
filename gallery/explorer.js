@@ -142,6 +142,7 @@
   }
 
   var libraryFiles = {
+    "design-philosophies": "../../docs/DESIGN-PHILOSOPHIES.md",
     "component-coverage": "../../docs/COMPONENT-COVERAGE.md",
     "source-first": "../../docs/SOURCE-FIRST.md",
     "source-decisions": "../../docs/SOURCE-DECISIONS.md",
@@ -168,6 +169,7 @@
   };
 
   var libraryTitles = {
+    "design-philosophies": "Design Knowledge：目的・思想・構成",
     "component-coverage": "他体系との比較・不足一覧",
     "source-first": "出典優先の設計基準",
     "source-decisions": "プロパティ別の採用判断",
