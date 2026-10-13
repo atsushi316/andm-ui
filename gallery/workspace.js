@@ -45,6 +45,41 @@
     var haystack = normalize([entry.title, entry.group].concat(entry.keywords).join(' '));
     return query.split(/\s+/).every(function (word) { return haystack.includes(word); });
   }
+  // Discover by task first; keep source group labels and routes intact.
+  var purposeGroups = ['入力・操作', 'ナビゲーション', '面・情報表示', '状態・通知', '重ねて表示', '文字・記号', '組み合わせ部品'];
+  function setupPurposeFilters() {
+    var top = document.querySelector('.g-index-top');
+    if (!top || document.getElementById('purpose-filters')) return;
+    var region = document.createElement('div');
+    region.id = 'purpose-filters';
+    region.className = 'g-purpose-filters';
+    region.setAttribute('role', 'group');
+    region.setAttribute('aria-label', '用途から探す');
+    var heading = document.createElement('span');
+    heading.className = 'g-purpose-label';
+    heading.textContent = '用途から選ぶ';
+    region.append(heading);
+    [{ label: 'すべて', value: '' }].concat(purposeGroups.map(function (name) { return { label: name, value: name }; })).forEach(function (item) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'g-purpose-option';
+      button.textContent = item.label;
+      button.dataset.category = item.value;
+      button.setAttribute('aria-pressed', String($('component-category').value === item.value));
+      button.addEventListener('click', function () {
+        $('component-category').value = item.value;
+        syncPurposeFilters();
+        buildIndex(normalize(search.value));
+      });
+      region.append(button);
+    });
+    top.after(region);
+  }
+  function syncPurposeFilters() {
+    document.querySelectorAll('.g-purpose-option').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.category === $('component-category').value));
+    });
+  }
   function buildIndex(query) {
     var category = $('component-category').value;
     var list = entries.filter(function (entry) { return entry.part && (!category || entry.group === category) && (!query || matches(entry, query)); });
@@ -64,7 +99,8 @@
         [clone].concat(Array.from(clone.querySelectorAll('*'))).forEach(function (node) { node.removeAttribute('id'); node.removeAttribute('name'); node.removeAttribute('autofocus'); node.removeAttribute('aria-controls'); node.removeAttribute('aria-labelledby'); node.removeAttribute('aria-describedby'); node.removeAttribute('for'); Array.from(node.attributes).forEach(function (attr) { if (['data-held','data-andm-pressed','data-drag','data-enhanced'].includes(attr.name)) node.removeAttribute(attr.name); }); });
         preview.append(clone);
       }
-      a.append(title, description, preview, group); $('component-grid').append(a);
+      var explore = document.createElement('span'); explore.className = 'g-card-explore'; explore.textContent = '見本と使い方を見る →';
+      a.append(title, description, preview, group, explore); $('component-grid').append(a);
     });
     $('index-count').textContent = list.length + ' 部品'; $('index-empty').hidden = !!list.length;
   }
@@ -83,7 +119,8 @@
     if (!found.length) { var p = document.createElement('p'); p.textContent = '一致する項目がありません。別の言葉で探してください。'; $('search-results').append(p); }
     $('search-results').hidden = false; $('search-status').textContent = found.length + ' 件見つかりました。';
   }
-  $('component-category').addEventListener('change', function () { buildIndex(normalize(search.value)); });
+  $('component-category').addEventListener('change', function () { syncPurposeFilters(); buildIndex(normalize(search.value)); });
+  setupPurposeFilters();
   search.addEventListener('input', searchEntries);
   search.addEventListener('focus', function () { if (search.value.trim()) searchEntries(); });
   search.addEventListener('keydown', function (event) {
