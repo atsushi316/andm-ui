@@ -276,3 +276,117 @@ revisit: user visual review across backgrounds and narrow screens
 - Original: 18候補、形状・配色・速度・固定信号・比較操作。Baseline余白とandm-btnを再利用。
 - Unverified: 優位性、実ブラウザ表示、実機、支援技術。recommended:null。Core/Seriesへの採用なし。
 - Validation: pure model、HTML参照、JS構文、build/token audit/source inventory/coverage成功。
+
+
+## liquid-rim-touch-20261013
+
+```yaml
+id: liquid-rim-touch-20261013
+series: Apple Liquid Glass experimental
+target: decorative rim, central tint, pointer/keyboard light
+implementation: src/experimental/apple-liquid-glass/{style.css,index.js}; gallery/lab/apple-liquid-glass/{index.html,lab.js}
+scope: Web experimental v5; light/dark; pointer and keyboard
+sourceStatus: specified
+checkedScope: WWDC25 session 219 transcript, Dynamics and Principles, fetched 2026-10-13; existing APPLE-LIQUID-GLASS.md and apple-hig.md re-read
+basis: andm-original
+sources:
+  - authority: series
+    locator: https://developer.apple.com/videos/play/wwdc2025/219/
+    version: WWDC25
+    checkedAt: 2026-10-13
+    verification: 本文確認
+    supports: geometric highlights, interaction illumination, content visibility; principles only, not CSS values
+decision: principles follow the checked official description; masked conic rim, radial touch light, alpha values, 1/3px widths and 180ms fade are independent andm values. Preserve Native action/value ownership and active blue. Coalesce light updates without rebuilding maps. No live-DOM colour sampling.
+alternatives: full DOM capture or shader lighting deferred; unnecessary for requested fixed/radial highlights and broader cost/compatibility impact
+recommended: true
+adoption: explicit user request for rim light, clear centre and touch-position response
+validation: build/tokens/sources/coverage/syntax/diff; EventTarget harness, not rendering; actual browser/device and contrast unverified
+revisit: browser/device visual review, poor label contrast, mask support, mobile performance or official updates
+```
+
+
+## liquid-stable-hover-controls-20261013
+
+```yaml
+id: liquid-stable-hover-controls-20261013
+series: Apple Liquid Glass experimental
+target: hover/press distinction, switch, compact media composition
+implementation: src/experimental/apple-liquid-glass/{index.js,style.css}; gallery/lab/apple-liquid-glass/{index.html,lab.js,lab.css}
+scope: Web v6, Native checkbox/buttons, light/dark, pointer/keyboard
+sourceStatus: specified
+checkedScope: WWDC25 session 208 Pointer transcript; session 219 Dynamics/Principles; W3C APG Switch Pattern
+basis: andm-original
+sources:
+  - authority: series
+    locator: https://developer.apple.com/videos/play/wwdc2025/208/
+    version: WWDC25 iPadOS 26
+    checkedAt: 2026-10-13
+    verification: 本文確認
+    supports: hover glass highlight platter over target and tracking across control clusters; not a universal whole-control distortion rule
+  - authority: standard
+    locator: https://www.w3.org/WAI/ARIA/apg/patterns/switch/
+    version: current APG
+    checkedAt: 2026-10-13
+    verification: 本文確認
+    supports: stable label, native checkbox checked state, Space behavior, switch role
+decision: hover remains geometrically stable with fixed rim; pressed interior illumination alone follows pointer. The static hover alpha, switch 64x44/28px geometry and spring parameters, media composition and mock content are andm-original. Switch semantics use checked official standard; Apple does not prescribe these CSS values.
+alternatives: reproducing a separate refractive hover platter deferred; user prefers stable geometry and restrained light
+recommended: true
+adoption: user explicitly requests correction and appropriate new Liquid Glass parts
+validation: build/tokens/sources/coverage/syntax/diff; EventTarget behavior and ID/ARIA checks. Not actual rendering or accessibility certification.
+revisit: visual/touch/keyboard review in real browsers, text contrast and responsive integration, switch or platform guidance changes
+```
+
+
+## liquid-reuse-correction-20261013
+
+- target: v5/v6 global optics and new switch/player integration; src/experimental/apple-liquid-glass/{style.css,index.js}, Gallery lab HTML/CSS.
+- sourceStatus: not-applicable for independent Web geometry; existing official principle sources remain liquid-stable-hover-controls-20261013 and liquid-rim-touch-20261013. No new Apple measurements or research claim.
+- basis: andm-original (restore v4 optical values); derived (reuse existing slider thumb and icon-toolbar APIs).
+- decision: preserve v4 CSS verbatim; remove conic mask and tint remapping. Fix switch specificity with enhanced absolute positioning, 56x44 slider thumb in 84x52 area and 20px travel. Keep label backing away from control. Compose player from existing shared icon toolbar rather than separate sizes, radius and selected-state rules.
+- alternatives: further aesthetic reinvention rejected after user feedback; no additional parts before visual acceptance.
+- adoption: user correction; recommended:true for these identified repairs.
+- validation: build/tokens/sources/coverage/syntax/diff; non-rendering state/scheduler checks, original CSS prefix and reused classes verified. No browser/device or visual acceptance verified.
+- revisit: actual screenshots, touch/keyboard and Japanese/narrow/text-zoom visual review.
+
+
+## liquid-vessel-original-20261013
+
+- series: andm-original experiment, not Apple reproduction.
+- target: liquid inside a stable glass mini-player; src/experimental/liquid-vessel/{model.js,index.js,style.css}; Gallery example09; explicit package exports.
+- sourceStatus: not-applicable; basis: andm-original for SVG waves, fill, colours, envelope, timing and vessel shape; derived for reuse of existing shared glass toolbar/native controls. No new official numeric claims.
+- checkedScope: DESIGN.md/SOURCE-FIRST.md and prior glass responsibility/source records re-read. Existing APG-native semantics retained; no new scientific superiority claim.
+- decision: preserve example08 and existing glass module. Add a decorative SVG clipped inside a fixed shell with native controls above it. One isolated frame loop, deterministic simulated signal; no audio, fluid solver, DOM capture or per-frame glass map rebuild.
+- adoption: explicit user request for independent liquid-in-glass expression; recommended:true within this experiment only; not Core/official Series adoption.
+- validation: build/tokens/sources/coverage/syntax/diff/ID/ARIA; model/controller checks of wave bounds, stop convergence, rapid input, visibility, motion reduction and disposal. Not rendering/GPU/mobile verification.
+- revisit: actual visual feedback, narrow/text zoom contrast, performance or future real audio integration.
+
+
+## liquid-vessel-clear-water-20261013
+
+- target: transparent water treatment, meniscus, controlled-image registration and slower waves; experimental/liquid-vessel and Gallery09.
+- scope/sourceStatus/basis: independent Web experiment / not-applicable / andm-original; no official Apple or physical-water reproduction claim.
+- decision: remove coloured gradients and metadata panel; neutral weak depth fill, paired surface reflection/shadow, bottom/side glints. Slower smaller simulated waves. Map the supplied image below the animated clip with a small fixed magnification/offset; no live-DOM capture or per-frame image/filter regeneration. Existing glass module and other examples remain unchanged.
+- adoption: explicit user request to try transparent liquid; recommended:true within this experiment.
+- validation: build/tokens/sources/coverage/syntax/diff/ID/ARIA; model/controller tests plus clipping and scene-read checks. Browser/device/rendering/contrast not verified.
+- revisit: actual visual acceptance, photo/grid legibility, image positioning at resize, real audio integration if requested.
+
+
+## water-study-shader-audio-20261013
+
+- target: Gallery09 and src/experimental/water-player; new dedicated renderer, original WAV, measured audio coupling.
+- scope: independent andm experiment; sourceStatus:not-applicable for art direction; basis:andm-original for shader/material/audio/modal parameters, derived for RMS extraction and damped response.
+- sources: https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getFloatTimeDomainData ; https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_best_practices ; fetched 2026-10-13. Supports PCM acquisition and resource/lifecycle choices, not physical or visual fidelity.
+- decision: controlled studio scene with 2.5D glass boundaries, reflections and depth cues, plus real locally synthesized audio. Use audio RMS changes to excite modes, not a periodic fake wave. Native buttons/audio state; no autoplay; reduced motion and hidden/offscreen pause; cleanup GPU/audio resources.
+- adoption: explicit request to rebuild static vessel first and then react to actual sound; recommended:true within experiment only.
+- validation: standalone EGL/GLES shader compile/link/render and static visual inspection; pure audio/water model; build/tokens/sources/coverage/syntax/diff/HTML. Not actual browser or mobile/device verification.
+- revisit: actual appearance/audio review, GPU capability/lifecycle and mobile performance. Reference photograph is inspiration, not claimed reproduction.
+
+
+## liquid-vessel-shelved-20261013
+
+- adoption: ユーザー判断で液体プレーヤーをお蔵入り。将来再挑戦する未採用項目。
+- recommended: false（現在の試作の利用推奨）。将来の再設計は未決。
+- decision: Gallery09と実行時のimport/初期化を撤去。既存Liquid Glassパーツと08の通常ミニプレーヤーは維持。独自描画・音源・過去の検証コードは削除せず保持。
+- reason: 静止時の質感・音で揺れる体験がユーザーの目標に達しなかった。シェーダー描画や計算チェックの通過を視覚品質の達成と扱わない。
+- revisit: 静止画の視覚比較と実ブラウザ検証が可能な条件で、ユーザーの再挑戦指示があるとき。

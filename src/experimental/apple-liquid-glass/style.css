@@ -242,3 +242,32 @@
   .andm-series--apple-liquid-glass[data-enhanced="true"] .icon-toolbar > .andm-glass-icon:is(:active, [data-held="true"], [aria-pressed="true"]) { color: Highlight; outline: 2px solid Highlight; }
   .andm-series--apple-liquid-glass[data-enhanced="true"] .icon-toolbar > button::after { box-shadow: none; background: transparent; }
 }
+
+/* v7: preserve v4 rim/shadow/tint; touch light never moves on hover. */
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass__light {
+ background:radial-gradient(ellipse at var(--glass-light-x,30%) var(--glass-light-y,0%), rgb(255 255 255 / .75), transparent 60%);
+}
+.andm-series--apple-liquid-glass .andm-glass-switch { position:relative; display:inline-block; flex:none; width:84px; height:52px; }
+.andm-series--apple-liquid-glass .andm-glass-switch__track { position:absolute; inset:12px 0; border:1px solid rgb(100 115 135 / .35); border-radius:999px; background:rgb(100 115 135 / .16); pointer-events:none; }
+.andm-series--apple-liquid-glass .andm-glass-switch__thumb { position:absolute; top:4px; left:4px; width:56px; height:44px; border-radius:999px; background:rgb(255 255 255 / .8); pointer-events:none; }
+.andm-series--apple-liquid-glass .andm-glass-switch__input { appearance:none; -webkit-appearance:none; position:absolute; inset:0; margin:0; width:84px; height:52px; border:0; padding:0; background:transparent; border-radius:999px; cursor:pointer; z-index:2; box-shadow:none; transform:none; }
+.andm-series--apple-liquid-glass .andm-glass-switch__input::after { display:none; }
+.andm-series--apple-liquid-glass .andm-glass-switch__input:is(:hover,:active,:checked) { background:transparent; box-shadow:none; transform:none; }
+.andm-series--apple-liquid-glass .andm-glass-switch:has(:checked) .andm-glass-switch__track { background:var(--andm-glass-color-active-background); border-color:var(--andm-glass-color-active); }
+.andm-series--apple-liquid-glass:not([data-enhanced="true"]) .andm-glass-switch:has(:checked) .andm-glass-switch__thumb { transform:translateX(20px); }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-switch__thumb { background:transparent; position:absolute; top:4px; left:4px; width:56px; height:44px; --andm-glass-radius:999px; }
+.andm-series--apple-liquid-glass[data-enhanced="true"] .andm-glass-switch__thumb .andm-glass__face { z-index:0; }
+.andm-series--apple-liquid-glass .andm-glass-switch:has(:disabled) { opacity:.5; }
+.andm-series--apple-liquid-glass .andm-glass-switch__input:disabled { cursor:not-allowed; }
+.andm-series--apple-liquid-glass .andm-glass-switch__input:focus-visible { outline:3px solid var(--andm-glass-color-focus); outline-offset:3px; }
+/* Compact player is the existing shared icon toolbar plus metadata. */
+.andm-series--apple-liquid-glass .icon-toolbar.andm-glass-media { width:100%; margin-top:0; }
+.andm-series--apple-liquid-glass .andm-glass-media__info { flex:1; min-width:0; padding-inline:12px 4px; }
+.andm-glass-media__title { display:block; font-size:15px; line-height:1.5; overflow-wrap:anywhere; }
+.andm-glass-media__subtitle { display:block; font-size:12px; line-height:1.5; }
+.andm-series--apple-liquid-glass .icon-toolbar.andm-glass-media > button { flex:none; }
+@media(forced-colors:active) {
+ .andm-series--apple-liquid-glass .andm-glass-switch__track { border-color:ButtonText; background:Canvas; }
+ .andm-series--apple-liquid-glass .andm-glass-switch:has(:checked) .andm-glass-switch__track { background:Highlight; border-color:Highlight; }
+ .andm-series--apple-liquid-glass .andm-glass-switch__thumb { background:ButtonText; }
+}

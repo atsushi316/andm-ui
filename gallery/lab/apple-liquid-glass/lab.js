@@ -1,4 +1,4 @@
-import {enhanceLiquidGlass} from '../../../dist/experimental/apple-liquid-glass/index.js';
+import {enhanceLiquidGlass} from '../../../dist/experimental/apple-liquid-glass/index.js?v=liquid-archive-v1';
 const scope=document.querySelector('#trial'),scene=document.querySelector('#scene');
 const background={element:scene,image:null};
 const status=document.querySelector('#action-status');
@@ -14,6 +14,18 @@ const controller=enhanceLiquidGlass(scope,{background,onAction(action,button){
       button.querySelector('path').setAttribute('d',pressed?'M8 5v14 M16 5v14':'M8 4l12 8-12 8Z');
       status.textContent=pressed?'再生中（操作デモ。音声は流れません）。':'一時停止しました（操作デモ）。';
     } else {button.querySelector('svg').style.fill=pressed?'currentColor':'none';status.textContent=pressed?'お気に入りに追加しました（この画面だけ）。':'お気に入りを解除しました。';}
+  }
+  if(action==='ambient-play') {
+    const playing=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',String(playing));
+    button.setAttribute('aria-label',playing?'停止':'再生');
+    button.querySelector('path').setAttribute('d',playing?'M8 5v14 M16 5v14':'M8 4l12 8-12 8Z');
+    scope.querySelector('#ambient-state').textContent=(playing?'再生中':'停止中')+' · 操作デモ';
+  }
+  if(action==='ambient-next') {
+    const titles=['雨の庭','森の朝','夜の海'],title=scope.querySelector('#ambient-title');
+    title.textContent=titles[(titles.indexOf(title.textContent)+1)%titles.length];
+    const playing=scope.querySelector('[data-action="ambient-play"]').getAttribute('aria-pressed')==='true';
+    scope.querySelector('#ambient-state').textContent=title.textContent+' · '+(playing?'再生中':'停止中')+' · 操作デモ';
   }
   if(action==='search'||action==='add')status.textContent=({search:'検索',add:'追加'})[action]+'ボタンを試しました。';
 }});
@@ -58,3 +70,6 @@ measure.addEventListener('click',()=>{
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&measuring)stopMeasurement('画面が非表示になったため測定を中止しました。');});
 window.addEventListener('pagehide',()=>stopMeasurement());
+
+const ambientSwitch=scope.querySelector('#ambient-switch');
+ambientSwitch.addEventListener('change',()=>{scope.querySelector('#switch-state').value=ambientSwitch.checked?'オン':'オフ';});

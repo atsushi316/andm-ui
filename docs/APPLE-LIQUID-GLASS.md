@@ -132,3 +132,34 @@ Full live-DOM refraction would require a different rendering path and broader br
 Segment labels are centered on both axes in the component stylesheet. Shared toolbar icons use `--andm-glass-color-active` for transient press and persistent `aria-pressed` selection, also shared by selected tabs and standalone toggles. Light/dark mappings retain the existing blue colors. Toolbar selection now uses an inset circular surface (`--andm-glass-inset-fill`, `--andm-glass-inset-shadow`) instead of a flat highlight. Fixed targets, native toggle behavior and focus indicators are preserved; forced-colors replaces the shadow with an outline. These are user-requested andm design choices, not measured Apple specifications. Browser/device appearance remains unverified.
 
 Selected navigation and segmented lenses now share the standalone toggle's translucent blue background through `--andm-glass-color-active-background`; foreground uses `--andm-glass-color-active`. The inset treatment remains toolbar-only.
+
+
+## Refinement v5 — 2026-10-13 / rim and touch light
+
+Thin masked conic highlights vary around the rim instead of a uniform white outline. A low-opacity radial highlight preserves the transparent centre, with a three-pixel rim accent. Light/dark surface tints are reduced; selected blue remains the same. These gradients, alpha values and 180ms fade are andm-original Web approximations, not Apple measured values. The implementation does not sample nearby DOM colours or add physical colour dispersion.
+
+All decorative faces track pointer position in two dimensions; keyboard input uses a centred glow. Coordinates are clamped and pointer events are coalesced into the existing requestAnimationFrame scheduler. Light-only updates do not synchronize textures or regenerate displacement maps. Geometry animation still uses the existing texture path. Event listeners for light do not prevent defaults, dispatch actions, change values or alter hit targets. Release/cancel/blur/hidden state clears touch intensity. Reduced motion fixes the light position and removes the fade; reduced transparency removes the light layer. Forced colours retain the existing semantic outline fallback. Mask compositing has an ordinary thin-border fallback.
+
+Verification: build, tokens, sources, coverage, JavaScript syntax and diff checks passed. A non-rendering EventTarget harness checks pointer coalescing, light-only texture bypass, cancellation, disabled controls, reduction and destruction. Browser control capability unavailable: actual appearance, Japanese text readability, keyboard/pointer integration and mobile/GPU performance remain unverified. The existing five-second interval sampler can support within-device comparisons; it is not a rendering or power guarantee.
+
+
+## Refinement v6 — 2026-10-13 / stable hover and new controls
+
+Supersedes v5 hover tracking: the rim direction now stays fixed at rest, hover and press. Hover never schedules pointer-position updates or shape animation; a standalone button only receives a modest static highlight. Interior light follows the pointer only while pressed and returns to its default position on release/cancel/leave/focus loss. Existing press and drag springs remain separate. This is an andm Web adaptation, not a full reproduction of iPadOS 26's glass platter hover described in WWDC25 session 208, Pointer section (8:40).
+
+Added optional experimental `.andm-glass-switch`: a labelled native checkbox with `role="switch"` owns the immediate checked state; only its decorative 28px thumb follows with a spring across 28px of travel. The 64×44px hit area stays fixed. Its label is stable, Space is native, disabled input remains disabled. The example contains an enabled and disabled switch. Appearance and dimensions are andm-original; checked semantics follow the W3C APG Switch Pattern. Existing Core switch is not changed.
+
+Added `.andm-glass-media`: a compact floating control surface with a title, playback state, native play/stop and next buttons. It reuses the existing glass face and icon controls. This is a composition for media navigation over content, not a glass content card. Gallery has three mock track names and explicit simulated playback: no audio, timers, network request or auto-play. Application authors own real media behavior.
+
+Build, token/source/coverage checks, JS syntax, unique IDs and label/ARIA references passed. Non-rendering EventTarget harness confirms hover schedules no geometry/light tracking, pressed light is frame-coalesced and bypasses texture synchronization after geometry settles, release/reset, disabled/reduced motion/destroy behavior, and switch immediate state plus eventual thumb positions. Browser QA unavailable; actual appearance, narrow screens, text zoom, keyboard/screen-reader integration and GPU/mobile frame time remain unverified.
+
+
+## Refinement v7 — 2026-10-13 / reuse correction
+
+User visual feedback rejected v5/v6 quality. Restore the full v4 optical stylesheet (rim, shadows, tints, transparency, dark maps); remove conic rim masks and newly reduced surface alphas. Keep the press-only light scheduler and fixed hover geometry; vertical interior light placement is the sole added optical rule.
+
+A CSS specificity conflict was found: `.andm-glass`'s enhanced relative positioning outranked the unenhanced new switch thumb absolute positioning. Correct with an enhanced-scoped absolute rule, and reuse the original `.andm-glass-slider__thumb` class, 56×44px face, .82 resting scale, and makeFace/elastic/filter path. Switch control is 84×52px with 20px travel and 4px margins. The Gallery row no longer places an opaque panel under the lens; text-only backing protects labels. These switch geometry choices are andm-original mappings of the existing slider, not Apple measurements.
+
+The compact player now uses `.icon-toolbar.andm-glass` directly, inheriting the existing capsule radius, 52px icon buttons, press spring, inset selected state, active colour, and single shared glass face. Only metadata layout is new. It no longer defines separate 44px controls or a 26px glass panel.
+
+Checks: v4 stylesheet retained verbatim as prefix; no conic gradient remains; new HTML uses the slider thumb and icon-toolbar classes. Build, tokens, sources, coverage, syntax/diff, ID/ARIA and non-rendering behavior checks pass. Browser capability still absent: this fixes identified code/layout errors but does not establish visual acceptance. Review actual screenshots/device interaction before claiming quality is restored.

@@ -18,17 +18,33 @@ export function enhanceLiquidGlass(scope, {background = null, onAction = () => {
   const jobs = new Set(), cleanup = [], faces = [], springs = [], mapCache = new Map();
   listen(scope,'pointerdown',()=>{scope.dataset.input='pointer';},{capture:true});
   listen(scope,'keydown',()=>{scope.dataset.input='keyboard';},{capture:true});
-  let raf = 0, last = 0, alive = true;
+  let raf = 0, last = 0, alive = true, texturesDirty = true;
+  const pendingLights = new Map(), activeLights = new Set();
   const svg = svgElement('svg', {width: 0, height: 0, 'aria-hidden': 'true'});
   svg.style.cssText = 'position:absolute;pointer-events:none;overflow:hidden';
   const defs = svgElement('defs', {}); svg.append(defs); scope.append(svg);
   function tick(now) {
     raf = 0; const dt = last ? (now-last)/1000 : 1/60; last = now;
+    const geometryChanged = texturesDirty || jobs.size > 0;
+    texturesDirty = false;
     for (const fn of [...jobs]) if (!fn(dt)) jobs.delete(fn);
-    syncTextures();
+    // Read all light geometry before writing styles; coalesce pointer events per frame.
+    const lights = [...pendingLights].map(([item, point]) => {
+      const r = item.face.getBoundingClientRect();
+      const x = point ? Math.max(0, Math.min(100, (point.x-r.left)/Math.max(1,r.width)*100)) : 50;
+      const y = point ? Math.max(0, Math.min(100, (point.y-r.top)/Math.max(1,r.height)*100)) : 50;
+      return {item,x,y};
+    });
+    pendingLights.clear();
+    for (const {item,x,y} of lights) {
+      item.face.style.setProperty("--glass-light-x", `${x.toFixed(2)}%`);
+      item.face.style.setProperty("--glass-light-y", `${y.toFixed(2)}%`);
+      // Rim orientation is fixed; only the interior touch light follows input.
+    }
+    if (geometryChanged) syncTextures();
     if (jobs.size && alive) raf = requestAnimationFrame(tick); else last = 0;
   }
-  function schedule(fn) { if (fn) jobs.add(fn); if (!raf && alive) raf = requestAnimationFrame(tick); }
+  function schedule(fn) { if (fn) jobs.add(fn); else texturesDirty = true; if (!raf && alive) raf = requestAnimationFrame(tick); }
   function elastic(face) {
     const baseY=face.parentElement.classList.contains('andm-glass-slider__thumb')?.82:1;
     let x = {x:1,v:0}, y = {x:baseY,v:0}, tx = 1, ty = baseY;
@@ -91,7 +107,7 @@ export function enhanceLiquidGlass(scope, {background = null, onAction = () => {
     const hold=()=>{if(button.disabled)return;button.dataset.held='true';spring.set(1.075,1.055);};
     const release=()=>{if(button.dataset.held!=='true')return;delete button.dataset.held;spring.set(1,1);};
     listen(button,'pointerleave',release);
-    listen(button,'pointerdown',hold);listen(button,'pointermove',e=>{const r=button.getBoundingClientRect();face.style.setProperty('--glass-light-x',`${Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100))}%`);});
+    listen(button,'pointerdown',hold);
     listen(button,'keydown',e=>{if(e.key===' '||e.key==='Enter')hold();if(e.key==='Escape')release();});
     for(const event of ['pointerup','pointercancel','keyup','blur'])listen(button,event,release);
     listen(window,'pointerup',release);listen(window,'blur',release);
@@ -127,6 +143,20 @@ export function enhanceLiquidGlass(scope, {background = null, onAction = () => {
     listen(input,'pointercancel',()=>{drag=null;});
     listen(input,'lostpointercapture',()=>{drag=null;release();});
     for(const event of ['pointerup','pointercancel','blur','keyup'])listen(input,event,release);
+    listen(window,'pointerup',release);listen(window,'blur',release);
+    cleanup.push(update);update();
+  }
+  for (const control of scope.querySelectorAll('.andm-glass-switch')) {
+    const input=control.querySelector('input[type="checkbox"]'),thumb=control.querySelector('.andm-glass-switch__thumb');
+    const {face}=makeFace(thumb),spring=elastic(face);
+    let position={x:input.checked?20:0,v:0},target=position.x;
+    const move=dt=>{position=quiet()?{x:target,v:0}:springStep(position,target,dt,300,30);thumb.style.transform=`translateX(${position.x}px)`;return position.x!==target;};
+    const update=()=>{target=input.checked?20:0;schedule(move);};
+    const release=()=>{delete control.dataset.held;spring.set(1,1);};
+    listen(input,'change',update);
+    listen(input,'pointerdown',e=>{if(!input.disabled&&e.button===0){control.dataset.held='true';spring.set(1.04,1.06);}});
+    listen(input,'keydown',e=>{if(!input.disabled&&e.key===' '){control.dataset.held='true';spring.set(1.04,1.06);}});
+    for(const name of ['pointerup','pointercancel','blur','keyup'])listen(input,name,release);
     listen(window,'pointerup',release);listen(window,'blur',release);
     cleanup.push(update);update();
   }
@@ -175,11 +205,38 @@ export function enhanceLiquidGlass(scope, {background = null, onAction = () => {
     listen(document,'pointerdown',e=>{if(!menu.contains(e.target))toggle(false);});
     listen(menu,'focusout',()=>queueMicrotask(()=>{if(alive&&!menu.contains(document.activeElement)&&document.activeElement!==trigger)toggle(false);}));
   }
+  // Light is decorative: no input cancellation, synthetic action, or moving hit target.
+  // Separate from the texture scheduler so hover never rebuilds optical maps.
+  function aimLight(item, event) {
+    if (quiet() || opaque()) return;
+    pendingLights.set(item, event ? {x:event.clientX,y:event.clientY} : null);
+    if (!raf && alive) raf=requestAnimationFrame(tick);
+  }
+  function releaseLight(item) {
+    item.face.style.setProperty('--glass-light-energy', '0');
+    activeLights.delete(item);
+    pendingLights.delete(item);
+    item.face.style.setProperty('--glass-light-x','30%');
+    item.face.style.setProperty('--glass-light-y','0%');
+  }
+  for (const item of faces) {
+    const source=item.host.closest('.andm-glass-switch')?.querySelector('input[type="checkbox"]') || item.host.closest('.andm-glass-slider')?.querySelector('input[type="range"]')
+      || item.host.closest('.andm-glass-menu') || (item.host.classList.contains('andm-glass-tabs__lens') ? item.host.parentElement : item.host);
+    const disabled=()=>source.disabled || (source.querySelector?.('input[type="range"]')?.disabled);
+    listen(source,'pointermove',e=>{if(!disabled()&&activeLights.has(item))aimLight(item,e);}, {passive:true});
+    listen(source,'pointerdown',e=>{if(disabled()||e.button!==0)return;activeLights.add(item);item.face.style.setProperty('--glass-light-energy','1');aimLight(item,e);}, {passive:true});
+    for (const name of ['pointerleave','pointerup','pointercancel','lostpointercapture','focusout']) listen(source,name,()=>releaseLight(item));
+    listen(source,'keydown',e=>{if(!disabled()&&[' ','Enter','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key)){activeLights.add(item);item.face.style.setProperty('--glass-light-energy','1');aimLight(item,null);}});
+    listen(source,'keyup',()=>releaseLight(item));
+  }
+  const releaseLights=()=>{for(const item of activeLights)releaseLight(item);};
+  for(const name of ['pointerup','pointercancel','blur'])listen(window,name,releaseLights);
+  listen(document,'visibilitychange',()=>{if(document.hidden)releaseLights();});
   const observer=new ResizeObserver(()=>{for(const update of cleanup)update();schedule();});observer.observe(scope);if(background)observer.observe(background.element);
   listen(window,'resize',()=>schedule());listen(window,'scroll',()=>schedule(),{passive:true});
-  const preference=()=>{if(quiet())for(const spring of springs)spring.reset();schedule();};
+  const preference=()=>{if(quiet())for(const spring of springs)spring.reset();if(quiet()||opaque()){pendingLights.clear();releaseLights();}schedule();};
   listen(motion,'change',preference);listen(transparency,'change',preference);
   const mutations=new MutationObserver(preference);mutations.observe(scope,{attributes:true,attributeFilter:['data-motion','data-transparency','data-optics']});
   schedule();
-  return {refresh(){for(const update of cleanup)update();schedule();},destroy(){delete scope.dataset.enhanced;alive=false;abort.abort();observer.disconnect();mutations.disconnect();cancelAnimationFrame(raf);jobs.clear();for(const item of faces)item.face.remove();for(const lens of scope.querySelectorAll('.andm-glass-tabs__lens'))lens.remove();svg.remove();mapCache.clear();}};
+  return {refresh(){for(const update of cleanup)update();schedule();},destroy(){delete scope.dataset.enhanced;alive=false;abort.abort();observer.disconnect();mutations.disconnect();cancelAnimationFrame(raf);jobs.clear();pendingLights.clear();activeLights.clear();for(const item of faces)item.face.remove();for(const lens of scope.querySelectorAll('.andm-glass-tabs__lens'))lens.remove();svg.remove();mapCache.clear();}};
 }

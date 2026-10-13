@@ -10,7 +10,11 @@
     "./behavior": "./dist/behavior/index.js",
     "./experimental/apple-liquid-glass": "./dist/experimental/apple-liquid-glass/index.js",
     "./experimental/apple-liquid-glass/style.css": "./dist/experimental/apple-liquid-glass/style.css",
-    "./material-icons.svg": "./dist/material-icons.svg"
+    "./material-icons.svg": "./dist/material-icons.svg",
+    "./experimental/liquid-vessel": "./dist/experimental/liquid-vessel/index.js",
+    "./experimental/liquid-vessel/style.css": "./dist/experimental/liquid-vessel/style.css",
+    "./experimental/water-player": "./dist/experimental/water-player/index.js",
+    "./experimental/water-player/style.css": "./dist/experimental/water-player/style.css"
   },
   "files": [
     "dist",

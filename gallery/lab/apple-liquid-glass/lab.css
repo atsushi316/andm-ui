@@ -98,3 +98,12 @@ details a { color: #185bb1; }
 #measure { font:inherit; padding:10px 16px; border:1px solid #bccada; background:#fff; color:#20354e; border-radius:12px; cursor:pointer; }
 #measure-result { font-size:13px; color:#526174; }
 @media(forced-colors:active) { .sample { background:Canvas; } .scene[data-theme="dark"] .sample :is(p,.sample-top,.tab-copy) { background:Canvas;color:CanvasText; } }
+
+.glass-switch-row { display:flex; align-items:center; gap:12px; min-height:64px; margin:12px 0; font-size:14px; }
+.glass-switch-row label { flex:1; min-width:0; width:fit-content; overflow-wrap:anywhere; cursor:pointer; }
+.glass-switch-row label,.glass-switch-row output,.glass-switch-row>span:last-child { background:rgb(255 255 255 / .88); border-radius:8px; padding:4px 8px; }
+.glass-switch-row output,.glass-switch-row>span:last-child { min-width:2em; font-size:12px; }
+.scene[data-theme="dark"] .glass-switch-row :is(label,output),.scene[data-theme="dark"] .glass-switch-row>span:last-child { background:rgb(15 22 34 / .92); color:#e5edfa; }
+.trial[data-variant="apple"] .andm-glass-media { display:flex; align-items:center; gap:12px; padding:12px; border-radius:16px; background:#f8fafc; }
+.trial[data-variant="apple"] .andm-glass-switch { flex:none; }
+@media(forced-colors:active) { .glass-switch-row :is(label,output) { background:Canvas; color:CanvasText; } }

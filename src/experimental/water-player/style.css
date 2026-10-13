@@ -1,0 +1,13 @@
+.andm-water-player { padding:24px; border-radius:24px; background:#e9edeb; color:#26302e; }
+.andm-water-player__heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.andm-water-player__heading p { margin:0; font-size:12px; letter-spacing:.08em; }
+.andm-water-player__heading strong { display:block; font-size:20px; font-weight:500; letter-spacing:.03em; margin-top:6px; }
+.andm-water-player canvas { display:block; width:100%; height:260px; border-radius:16px; margin:20px 0; }
+.andm-water-player button { min-width:76px; min-height:44px; padding:10px 18px; border:1px solid #75817b; border-radius:999px; background:rgb(255 255 255 / .5); color:#26302e; font:inherit; cursor:pointer; }
+.andm-water-player button:disabled { opacity:.5; cursor:not-allowed; }
+.andm-water-player__settings { display:flex; flex-wrap:wrap; gap:16px; align-items:center; font-size:13px; }
+.andm-water-player__settings label { display:flex; gap:8px; align-items:center; }
+.andm-water-player input[type="range"] { width:100px; accent-color:#596b60; }
+.andm-water-player__status { min-height:2.8em; margin-top:16px; font-size:12px; line-height:1.6; }
+@media(max-width:700px){.andm-water-player{padding:16px}.andm-water-player canvas{height:220px}.andm-water-player__heading strong{font-size:17px}}
+@media(forced-colors:active){.andm-water-player{background:Canvas;color:CanvasText}.andm-water-player canvas{display:none}.andm-water-player button{background:ButtonFace;color:ButtonText;border-color:ButtonText}}
