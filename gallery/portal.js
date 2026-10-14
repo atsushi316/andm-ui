@@ -2,6 +2,7 @@
 (()=>{
  'use strict';
  const entries=[
+  {id:'construction-reveal',title:'UIが組み上がる',evidence:'#/library/construction-reveal',path:'lab/construction-reveal/',use:'点と輪郭、ワイヤーフレーム、スケルトンから、触れるUIへ。'},
   {id:'m3',title:'M3 · 動きの見本',path:'m3/',use:'形の変化、強調、押下の反応を比べる。'},
   {id:'apple-liquid-glass',title:'Apple · Liquid Glass',path:'lab/apple-liquid-glass/',use:'背景、光、透過の関係を操作して確かめる。'},
   {id:'spacing',title:'余白・モーダル比較',path:'spacing/',use:'情報の群化と、モーダルの配置を比べる。'},
@@ -39,7 +40,7 @@
   if(route.kind==='screens'){const related=make('div','gd-related');related.append(make('h2','','構成している部品'));entry.parts.forEach(id=>{const source=document.querySelector('[data-part-nav="'+id+'"]');if(source){const a=make('a','',source.textContent.trim()+' →');a.href=source.getAttribute('href');related.append(a);}});panel.append(related);}
   const implementation=make('details','gd-portal-resources');implementation.append(make('summary','','実装・利用条件・出典'));const p=make('p','','見本の通信・保存は模擬動作です。コードはandm-uiの実装で、既存リポジトリの利用条件（UNLICENSED）を確認してください。');implementation.append(p);
   const code=make('a','','この見本の実装コード ↗');code.href='https://github.com/atsushi316/andm-ui/tree/feature/gallery-discovery-hover-preview/gallery/'+(route.kind==='screens'?'completion':entry.path.replace(/\/$/,''));code.target='_blank';code.rel='noopener noreferrer';implementation.append(code);
-  const evidence=make('a','','設計の根拠・確認範囲 →');evidence.href=route.kind==='screens'?'#/library/composition-sources':'#/library/source-first';implementation.append(evidence);panel.append(implementation);
+  const evidence=make('a','','設計の根拠・確認範囲 →');evidence.href=route.kind==='screens'?'#/library/composition-sources':entry.evidence||'#/library/source-first';implementation.append(evidence);panel.append(implementation);
  }
  window.ANDM_PORTAL={entries,has:(kind,id)=>kind==='screens'?!!screens[id]:entries.some(e=>e.id===id),show,hide,syncSeries};
  document.addEventListener('change',e=>{if(e.target.id==='series-select')syncSeries();});

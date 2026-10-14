@@ -495,3 +495,21 @@ revisit: Actual-device issues, focus obstruction, browser changes or updated sou
 - integration: 既存の画面構成3例・独立実験7例を共通Gallery詳細内の同一originフレームで表示。個別controllerとCore CSSを再利用し、外枠だけ整える。画面構成のSeriesは入力・状態を保持して変更。独立Labは専用操作を残す。
 - validation: `scripts/check-gallery-mobile.mjs` と `check-gallery-navigation.mjs` の実Chromium検証。結果は `docs/GALLERY-HIERARCHY-VALIDATION.md`。ブラウザ読み込み中のフレーム高さ測定raceと、比較パネルが主カードのクリックを遮る問題を修正。
 - recheck: 部品追加時の規模分類、Series追加時のsourceKind、文献追加時の棚・章リンク、Lab追加時の同一originと独立操作、実機Safari/Android。
+
+## construction-reveal-lab — 2026-10-14
+
+- series: Gallery Lab限定。14既存SeriesのCore仕様・数値は変更しない
+- target: 点/輪郭/スケルトンから完成UIへ変わる登場演出、途中省略、状態保持
+- implementation: `gallery/lab/construction-reveal/{index.html,reveal.js,reveal.css,lab.js,lab.css}`、Galleryのportal/Motion入口
+- scope: ユーザーの動画を参考にした3表現・3操作カード。Web、模擬データ、独立ES module、Core/npm対象外
+- visual sourceStatus: not-applicable
+- visual basis: andm-original
+- checkedScope: ユーザー提供 `1000000435.mp4` を時系列フレームで確認。視覚的な参考としてTransitions.dev。コード・素材・パッケージのコピーなし。外部Seriesの公式登場演出として扱わない
+- sources:
+  - authority: standard; locator: https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html; version: WCAG2.2 SC2.3.3 Understanding（AAA）; checkedAt: 2026-10-14; verification: 本文確認; supports: 非必須の操作起点motionを省略できること
+  - authority: standard; locator: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html; version: WCAG2.2 SC4.1.3 Understanding; checkedAt: 2026-10-14; verification: 本文確認; supports: focusを移さない状態通知
+- operation sourceStatus: specified（上記の個別要求の範囲）
+- operation basis: official（standard）。DOM同一性・inertの具体的接続・停止/再実行方式はandm-original
+- adoption: ユーザーが2026-10-14に試作を明示依頼。Coreへの正式採用は未決。duration800/1800/3600ms・曲線・線の色/太さ・順序は比較用のLab独自値
+- validation: `scripts/check-construction-reveal.mjs`、`docs/CONSTRUCTION-REVEAL.md`。3表現×14 Series×4幅、reduced motion、状態保持、タッチ、文字拡大、外部リクエストなしを実ブラウザで確認。320pxのNative selectの縮小制約を修正
+- recheck: 新たなカード構造/開閉要素、レイアウト/文字拡大、既存inert/aria-hidden、実機、画面での反復使用、正式採用時の仕様化

@@ -142,6 +142,7 @@
   }
 
   var libraryFiles = {
+    "construction-reveal":"../../docs/CONSTRUCTION-REVEAL.md",
     "component-usage": "../../docs/COMPONENT-USAGE.md",
     "design-philosophies": "../../docs/DESIGN-PHILOSOPHIES.md",
     "component-coverage": "../../docs/COMPONENT-COVERAGE.md",
@@ -171,6 +172,7 @@
   };
 
   var libraryTitles = {
+    "construction-reveal":"UIが組み上がる演出の仕様",
     "component-usage": "部品の用途・使い分け",
     "design-philosophies": "Design Knowledge：目的・思想・構成",
     "component-coverage": "他体系との比較・不足一覧",
