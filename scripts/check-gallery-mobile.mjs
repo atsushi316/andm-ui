@@ -18,6 +18,7 @@ try{
  await page.goto(base);await page.waitForSelector('#component-grid > article');
  const routes=await page.locator('.g-nav [data-part-nav]').evaluateAll(es=>[...new Map(es.map(e=>[e.dataset.partNav,{id:e.dataset.partNav,href:e.getAttribute('href')}])).values()]);assert.equal(routes.length,96);
  await page.locator('#nav-toggle').tap();assert(await page.locator('body').getAttribute('data-nav-open')!==null);
+ await page.getByText('用途から絞り込む',{exact:true}).click();
  await page.locator('.g-purpose-option[data-category="ナビゲーション"]').tap();assert.equal(await page.locator('body').getAttribute('data-nav-open'),null);
  await page.locator('#series-select').selectOption('carbon');
  await page.locator('[data-catalog-id="header-nav"] .gd-card-link').tap();await page.waitForFunction(()=>document.body.dataset.shell==='part');

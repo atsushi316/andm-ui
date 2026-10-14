@@ -155,6 +155,7 @@
     standards: "standards.md",
     "design-systems": "design-systems.md",
     books: "books.md",
+    waveform: "waveform.md",
     "analysis-m3-expressive": "../analysis/m3-expressive.md",
     "analysis-dads": "../analysis/dads.md",
     "analysis-apple-hig": "../analysis/apple-hig.md",
@@ -181,6 +182,7 @@
     standards: "標準・ガイドライン",
     "design-systems": "主要 Design System",
     books: "書籍",
+    waveform: "波形・動きの一次資料",
     "analysis-m3-expressive": "M3 Expressive の確認範囲",
     "analysis-dads": "DADS の確認範囲",
     "analysis-apple-hig": "Apple HIG の確認範囲",
@@ -216,6 +218,8 @@
     var raw = hash.replace(/^#\/?/, "");
     var parts = raw.split("/").filter(Boolean);
     if (!parts.length) return { view: "home", id: "", anchor: "" };
+    if (parts[0] === "catalog") return {view:"home",id:"",anchor:""};
+    if (["screens","labs"].includes(parts[0]) && window.ANDM_PORTAL.has(parts[0],parts[1])) return {view:"embedded",kind:parts[0],id:parts[1],anchor:""};
     if (parts[0] === "library") {
       var shelf = parts[1] && libraryFiles[parts[1]] ? parts[1] : "index";
       return { view: "library", id: shelf, anchor: parts[2] ? decodeURIComponent(parts[2]) : "" };
@@ -616,6 +620,7 @@
       if (btn && btn.tagName === "BUTTON") btn.setAttribute("aria-expanded", open ? "true" : "false");
     });
     if (!current) return;
+    var ancestor=current.parentElement;while(ancestor){if(ancestor.matches("details.gd-menu-branch"))ancestor.open=true;ancestor=ancestor.parentElement;}
     var nav = document.querySelector(".g-nav");
     if (!nav) return;
     var navRect = nav.getBoundingClientRect();
@@ -658,10 +663,11 @@
     var onLibrary = route.view === "library";
     var onHome = route.view === "home";
     var onSeries = route.view === "series";
+    var embedded = route.view === "embedded";
     var shell = onHome || onSeries || onTokens || onLibrary ? route.view : "part";
     document.body.dataset.view = route.view;
     document.body.dataset.shell = shell;
-    if (viewSeries) viewSeries.hidden = onTokens || onLibrary || onHome;
+    if (viewSeries) viewSeries.hidden = onTokens || onLibrary || onHome || embedded;
     if (viewTokens) viewTokens.hidden = !onTokens;
     if (viewLibrary) viewLibrary.hidden = !onLibrary;
     if (planned) planned.hidden = !onHome;
@@ -669,6 +675,14 @@
     if (brand) {
       if (onHome) brand.setAttribute("aria-current", "page");
       else brand.removeAttribute("aria-current");
+    }
+    if (window.ANDM_PORTAL) window.ANDM_PORTAL.hide();
+    if (embedded) {
+      document.body.dataset.shell="embedded";
+      window.ANDM_PORTAL.show(route);
+      clearNav("[data-part-nav]");clearNav("[data-token-nav]");clearNav("[data-library-nav]");clearNav("[data-series-nav]");
+      scrollMainToTop();
+      return;
     }
     if (onLibrary) {
       clearNav("[data-part-nav]");

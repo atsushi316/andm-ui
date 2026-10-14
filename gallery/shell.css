@@ -210,3 +210,49 @@ html {scroll-padding-top:calc(var(--gd-header-height,5rem) + .75rem);}
 body .g-main {scroll-padding-top:.75rem;}
 @media(max-height:480px) and (max-width:800px) {html {scroll-padding-top:.75rem;}}
 svg.gd-mode-icon {height:1.125rem;width:1.125rem;flex-shrink:0;}
+/* Hierarchical library navigation and consistent routed specimen pages. */
+.gd-menu-branch{margin:.125rem 0;color:#30493d;}
+.gd-menu-branch>summary{cursor:pointer;min-height:2.75rem;padding:.7rem .75rem;font:600 .8125rem/1.5 system-ui,sans-serif;border-radius:.5rem;}
+.gd-menu-branch>summary:hover{background:#edf3ef;}
+.gd-menu-branch .gd-menu-branch{margin-left:.75rem;border-left:1px solid #dde7e0;padding-left:.35rem;}
+.gd-menu-branch .gd-menu-branch>summary{font-size:.75rem;font-weight:500;}
+.gd-menu-leaf,.gd-menu-branch>a{display:block;width:100%;min-height:2.75rem;padding:.7rem .8rem;border:0;border-radius:.5rem;background:none;text-align:left;text-decoration:none;color:#526259;font:400 .75rem/1.5 system-ui,sans-serif;white-space:normal;}
+.gd-menu-leaf:hover,.gd-menu-leaf[aria-pressed=true],.gd-menu-branch>a[aria-current=page]{background:#eaf2ed;color:#1c533b;}
+.gd-menu-branch :is(summary,a,button):focus-visible{outline:2px solid #28654e;outline-offset:2px;}
+.gd-sidebar-primary .g-purpose-filters{padding:.5rem 0;}
+.gd-provenance{border-top:1px solid #e5ece7;padding-top:.75rem;color:#465a4f!important;font-size:.75rem!important;}
+.gd-provenance-limit{display:block;color:#69796f;font:.6875rem/1.6 system-ui,sans-serif;padding:0 1rem 1rem;}
+.gd-portal{min-width:0;max-width:100%;}
+.gd-portal[hidden]{display:none;}
+.gd-portal-back{display:inline-flex;min-height:2.75rem;align-items:center;color:#28654e;text-decoration:none;font-size:.8125rem;}
+.gd-portal-note{font:.8125rem/1.8 system-ui,sans-serif;color:#67796e;max-width:65ch;margin:.5rem 0 1.5rem;}
+.gd-portal-stage{background:#fff;border:1px solid #dee8e1;border-radius:1rem;overflow:hidden;min-width:0;}
+.gd-portal-frame{display:block;width:100%;border:0;min-height:25rem;}
+.gd-portal-frame[hidden]{display:none;}
+.gd-related{margin:2rem 0;display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;}
+.gd-related h2{width:100%;font-size:1rem;margin:0 0 .25rem;}
+.gd-related a,.gd-portal-resources a{min-height:2.75rem;display:inline-flex;align-items:center;font-size:.8125rem;color:#28654e;margin-right:1rem;}
+.gd-portal-resources{margin:1.5rem 0;padding:1rem 1.25rem;border:1px solid #dee8e1;border-radius:.75rem;background:white;}
+.gd-portal-resources summary{cursor:pointer;min-height:2.75rem;font-size:.875rem;}
+.gd-portal-resources p{font-size:.8125rem;line-height:1.8;color:#66776d;}
+body[data-shell=embedded] :is(.g-inspect-details,#component-usage,#detail-actions){display:none!important;}
+body[data-portal-kind=labs] #series-tools{display:none;}
+@media(max-width:640px){.gd-portal-stage{border-radius:.75rem;}.gd-portal-note{font-size:.75rem;}.gd-portal-resources{padding:.75rem;}}
+.gd-reading-section{margin:.75rem 0;border:1px solid #dce6df;border-radius:.75rem;background:#fff;padding:0 1rem;}
+.gd-reading-section>summary{min-height:3rem;padding:.85rem 0;cursor:pointer;font:500 .875rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere;}
+.gd-reading-section>h2{display:none;}
+.gd-reading-section[open]{padding-bottom:1rem;}
+.gd-reading-section[hidden]{display:none;}
+.gd-reading-tools{padding:1rem;margin-bottom:1.5rem;background:#f2f6f3;border-radius:.75rem;display:grid;gap:.5rem;font-size:.75rem;}
+.gd-reading-tools label{display:grid;gap:.5rem;font-weight:500;}
+.gd-reading-tools input{width:100%;min-width:0;min-height:2.75rem;border:1px solid #cfdcd3;border-radius:.5rem;padding:.6rem .75rem;background:#fff;font:inherit;}
+.gd-reading-tools span{color:#697c6f;}
+.gd-reading-section summary:focus-visible{outline:2px solid #28654e;outline-offset:2px;}
+/* Preview text must never steal the primary card activation. */
+.gd-quick-panel{pointer-events:none;}
+.gd-quick-panel .gd-detail-link{pointer-events:auto;}
+.gd-lab-mark{display:flex;min-height:7rem;align-items:center;justify-content:center;margin:1rem;background:linear-gradient(135deg,#edf4ef,#f8f5ee);border:1px solid #e2e9e3;border-radius:.75rem;font:.75rem/1.5 system-ui,sans-serif;letter-spacing:.08em;color:#547560;}
+body[data-portal-kind=labs] #series-tools.g-series-dock{display:none;}
+/* Keep collapsed branches compact in live views and full-page captures. */
+.gd-menu-branch:not([open])>:not(summary),.gd-reading-section:not([open])>:not(summary){display:none!important;}
+#library-body>h1{display:none;}

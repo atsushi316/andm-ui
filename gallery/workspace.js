@@ -42,7 +42,7 @@
     }).map(function(entry) {
       if (entry.group === '追加・操作整備部品') {
         var responsibility=entry.href.split('/')[1];
-        entry.group=({controls:'入力・操作',display:'面・情報表示',navigation:'ナビゲーション',feedback:'状態・通知',overlays:'重ねて表示'})[responsibility]||entry.group;
+        entry.group=({controls:'入力・操作',display:'面・情報表示',navigation:'ナビゲーション',feedback:'状態・通知',overlays:'重ねて表示',patterns:'組み合わせ部品'})[responsibility]||entry.group;
       }
       return entry;
     });
@@ -159,6 +159,7 @@
     el = $('evidence-body'); el.replaceChildren(); var id = selectedSeries(); var part = section.dataset.part;
     var p = document.createElement('p');
     p.textContent = part === 'chip' || part === 'fab' ? '独自仕様：色・文字はシリーズを継承します。Chip / FAB 固有の寸法・角・動きは公式再現として未確認です。' : 'シリーズは公開システムの解釈です。各部品が公式仕様どおりであることを保証するものではありません。';
+    if(!sources[id])p.textContent='andmオリジナル：独自の視覚・操作の設計です。外部の公式ライブラリを再現したSeriesではありません。';
     el.append(p); var recheck=document.createElement('a');recheck.href='#/library/source-reaudit';recheck.textContent='全パーツの再監査・プロパティ別の根拠';el.append(recheck,document.createElement('br')); var audit=document.createElement('a');audit.href='#/library/component-audit';audit.textContent='この部品の概念・出典との照合';el.append(audit,document.createElement('br')); var source = sources[id];
     if (source) {
       var note = document.createElement('p'); note.textContent = source.note;

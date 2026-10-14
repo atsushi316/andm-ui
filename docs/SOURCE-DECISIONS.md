@@ -480,3 +480,18 @@ adoption: explicit user request; PR15 without merge
 validation: GALLERY-MOBILE-VALIDATION.md; Chromium153, 672 all-part width/Series cases plus84 all-Series representative cases; no page-level horizontal overflow or JavaScript errors, 200% reflow and representative touch/keyboard interactions. Physical iOS/Android keyboards, Safari and assistive technology not tested.
 revisit: Actual-device issues, focus obstruction, browser changes or updated source guidance
 ```
+
+## gallery-hierarchical-navigation — 2026-10-14
+
+- series: Gallery chromeのみ（Core/Seriesの数値変更なし）
+- target: ライブラリの階層、規模分類、Seriesの由来、画面構成/Labの詳細、文献の読書
+- implementation: `gallery/discovery.js`, `portal.js`, `explorer.js`, `library.js`, `shell.css`
+- scope: Web Gallery、日本語、320/390/768/1280px、Native details、タッチ/キーボード
+- sourceStatus: not-applicable
+- basis: andm-original
+- sources: ユーザーの2026-10-14の明示依頼と以前の分類（小さなパーツ→用途のある部品→画面・構成）。既存の `docs/ATOMIC-INVENTORY.md`, `COMPOSITION-SOURCES.md`, `SOURCE-FIRST.md`, `DESIGN-PHILOSOPHIES.md`, `research/library/*.md`, `gallery/series-copy.js` の内容・既存確認記録を分類の正本として再読。今回は外部仕様の再取得・数値採用をしていない。
+- adoption: 96部品を32の小部品と64の用途を持つ組み合わせに重複なく分類。実装フォルダの責務分類は維持。画面構成は別の規模段階として扱う。デザイン比較は6独自Series/8公式資料参照Seriesを明示するが、部品全体の公式準拠認定は行わない。
+- documents: 使いどころ・操作 / 設計の原則・判断 / 部品の仕様・根拠 / Seriesの公式仕様 / 研究・書籍の5棚。本文の見出しをNative disclosureにまとめ、本文検索・直接章リンクを残す。書籍・未取得規格の確認状態は既存文書のまま。
+- integration: 既存の画面構成3例・独立実験7例を共通Gallery詳細内の同一originフレームで表示。個別controllerとCore CSSを再利用し、外枠だけ整える。画面構成のSeriesは入力・状態を保持して変更。独立Labは専用操作を残す。
+- validation: `scripts/check-gallery-mobile.mjs` と `check-gallery-navigation.mjs` の実Chromium検証。結果は `docs/GALLERY-HIERARCHY-VALIDATION.md`。ブラウザ読み込み中のフレーム高さ測定raceと、比較パネルが主カードのクリックを遮る問題を修正。
+- recheck: 部品追加時の規模分類、Series追加時のsourceKind、文献追加時の棚・章リンク、Lab追加時の同一originと独立操作、実機Safari/Android。
