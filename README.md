@@ -148,3 +148,15 @@ M3の動きの統合見本： [M3を触って確認](gallery/m3/)。標準／Exp
 [Material 3](gallery/m3/) · [Apple Liquid Glass](gallery/lab/apple-liquid-glass/)
 
 Liquid Glassは明示importの実験バリエーション。M3見本のアイコンはGoogle Material Icons（Apache-2.0）を使用し、ライセンスをdistに同梱しています。
+
+## 任意で使うモーショングラフィックス
+
+[24の表現と実装API](docs/MOTION-GRAPHICS.md)。UIの実Elementへ登場・反応・開閉を付ける独立したexperimentalモジュールです。Core/Seriesに自動適用しません。今回のGitブランチでbuildして使えます（npmの新バージョンは未公開）。
+
+```js
+import { createMotionGraphics } from '@atsushi316/andm-ui/experimental/motion-graphics';
+import '@atsushi316/andm-ui/experimental/motion-graphics/style.css';
+const motion = createMotionGraphics(target);
+await motion.play('pop-in', { duration: 600, strength: 0.6 });
+// motion.cancel() / motion.transition({ visible, focusTarget }) / motion.destroy()
+```

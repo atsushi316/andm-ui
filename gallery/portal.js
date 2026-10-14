@@ -2,6 +2,7 @@
 (()=>{
  'use strict';
  const entries=[
+  {id:'motion-graphics',title:'モーショングラフィックス24',evidence:'#/library/motion-graphics',path:'lab/motion-graphics/',use:'動きを登場・反応・状態切り替えのロジックとして使う。24の語彙と実装API。'},
   {id:'construction-reveal',title:'UIが組み上がる',evidence:'#/library/construction-reveal',path:'lab/construction-reveal/',use:'点と輪郭、ワイヤーフレーム、スケルトンから、触れるUIへ。'},
   {id:'m3',title:'M3 · 動きの見本',path:'m3/',use:'形の変化、強調、押下の反応を比べる。'},
   {id:'apple-liquid-glass',title:'Apple · Liquid Glass',path:'lab/apple-liquid-glass/',use:'背景、光、透過の関係を操作して確かめる。'},

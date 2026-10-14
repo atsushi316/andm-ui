@@ -262,3 +262,8 @@ body[data-portal-kind=labs] #series-tools.g-series-dock{display:none;}
 .gd-reveal-mini>.andm-card{flex:1;min-width:0;min-height:160px;}
 .gd-reveal-value{font-size:38px;margin:16px 0;line-height:1;}
 .gd-reveal-value small{font-size:12px;margin-left:4px;}
+.gd-motion-mini{display:flex;align-items:center;gap:12px;width:100%;padding:12px;}
+.gd-motion-mini>div{flex:1;min-width:0;text-align:center;display:grid;justify-items:center;gap:16px;}
+.gd-motion-mini svg{width:65px;height:65px;color:var(--andm-color-primary,#468169);}
+.gd-motion-mini small{font:10px/1.5 system-ui,sans-serif;color:#6e887b;}
+.gd-motion-mini .andm-card{font-size:13px;}

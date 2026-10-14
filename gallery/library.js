@@ -1,6 +1,7 @@
 /* research/library の Markdown を表示する。値は Token にしない。 */
 (function (root) {
   var shelves = {
+    "MOTION-GRAPHICS.md":"motion-graphics",
     "CONSTRUCTION-REVEAL.md":"construction-reveal",
     "COMPONENT-USAGE.md": "component-usage",
     "DESIGN-PHILOSOPHIES.md":"design-philosophies",

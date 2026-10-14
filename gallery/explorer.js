@@ -142,6 +142,7 @@
   }
 
   var libraryFiles = {
+    "motion-graphics":"../../docs/MOTION-GRAPHICS.md",
     "construction-reveal":"../../docs/CONSTRUCTION-REVEAL.md",
     "component-usage": "../../docs/COMPONENT-USAGE.md",
     "design-philosophies": "../../docs/DESIGN-PHILOSOPHIES.md",
@@ -172,6 +173,7 @@
   };
 
   var libraryTitles = {
+    "motion-graphics":"モーション24種と実装API",
     "construction-reveal":"UIが組み上がる演出の仕様",
     "component-usage": "部品の用途・使い分け",
     "design-philosophies": "Design Knowledge：目的・思想・構成",

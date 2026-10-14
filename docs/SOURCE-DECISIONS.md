@@ -513,3 +513,24 @@ revisit: Actual-device issues, focus obstruction, browser changes or updated sou
 - adoption: ユーザーが2026-10-14に試作を明示依頼。Coreへの正式採用は未決。duration800/1800/3600ms・曲線・線の色/太さ・順序は比較用のLab独自値
 - validation: `scripts/check-construction-reveal.mjs`、`docs/CONSTRUCTION-REVEAL.md`。3表現×14 Series×4幅、reduced motion、状態保持、タッチ、文字拡大、外部リクエストなしを実ブラウザで確認。320pxのNative selectの縮小制約を修正
 - recheck: 新たなカード構造/開閉要素、レイアウト/文字拡大、既存inert/aria-hidden、実機、画面での反復使用、正式採用時の仕様化
+
+## motion-graphics-ui-logic — 2026-10-14
+
+- series: 独立experimental API。Core/既存14 Seriesの値・公開APIは維持
+- target: モーショングラフィックス24種をUIの実Element/イベント/開閉状態へ接続
+- implementation: `src/experimental/motion-graphics/{index.js,presets.js,style.css}`、`gallery/lab/motion-graphics`、packageの明示的opt-in exports
+- scope: Native HTML/SVG、Framework非依存、依存なし、24プリセット、時間/変位の強さ/対象の契約
+- visual sourceStatus: not-applicable
+- visual basis: andm-original
+- checkedScope: ユーザー提供 `1000000440.png` と2本の動画を視覚確認。24種の語彙を検討材料とし、コード/図形/曲線/画像/動画の流用なし。独自実装を公式Seriesのmotionとして扱わない
+- sources:
+  - authority: standard; locator: https://developer.mozilla.org/en-US/docs/Web/API/Element/animate; version: Web Animations APIのMDN現行文書; checkedAt: 2026-10-14; verification: 本文確認; supports: DOMへkeyframesを適用するAPI、timing、終了Promise
+  - authority: standard; locator: https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel; version: MDN現行文書; checkedAt: 2026-10-14; verification: 本文確認; supports: controller自身のanimationだけを解除する設計
+  - authority: standard; locator: https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html; version: WCAG2.2 SC2.3.3 Understanding（AAA）; checkedAt: 2026-10-14; verification: 本文確認; supports: 非必須motionの省略
+  - authority: standard; locator: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html; version: WCAG2.2 SC4.1.3 Understanding; checkedAt: 2026-10-14; verification: 本文確認; supports: focusを奪わない状態通知
+- operation sourceStatus: specified（上記の個別要求/APIの範囲のみ）
+- operation basis: official（standard）。play/cancel/transition/bind/destroyの接続と復元、focusガード、値/形の終状態の設計はandm-original
+- adoption: 2026-10-14のユーザーによるUI実装ロジックの明示依頼。任意importできるexperimentalモジュールとして整備。Coreへの自動適用/正式昇格、npm公開、mainマージはしない
+- numeric decisions: strength0.6、変位係数、粒12/24/8の上限、独自curve、glitch最低900msは局所独自値。duration未指定時の既存token参照は対象の値の再利用であり、この24表現の公式認定ではない
+- validation: 実Chromiumで24種×14 Series×4幅＝1,344開始/停止/復元/レイアウトケース。24種の自然完了、reduced motion、開閉とfocus、再入、無効入力、イベント解除/destroy、保存/エラーの入力保持、キーボード、タッチ、文字200%を確認。`scripts/check-motion-graphics.mjs` / `docs/MOTION-GRAPHICS.md`
+- recheck: 実プロダクトでの対象/transformの競合、実機Safari/Android、支援技術、無効パラメータ、長文、大きな一覧、正式採用前の反復利用評価

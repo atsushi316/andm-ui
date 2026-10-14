@@ -33,6 +33,8 @@
     return section.querySelector(selector[id] || '.cc-sample') || section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
   }
   function cloneSample(id) {
+    if(id==='motion-graphics'){const mini=node('div','gd-motion-mini');mini.innerHTML='<div><span class="andm-btn andm-btn--filled">✓</span><small>Pop-in / Burst</small></div><div><svg viewBox="0 0 80 80" aria-hidden="true"><polygon points="40,4 48,28 74,28 53,44 62,70 40,54 18,70 27,44 6,28 32,28" fill="currentColor"/></svg><small>Shape morph</small></div><div><span class="andm-card">次の内容へ →</span><small>Mask / Flip</small></div>';return mini;}
+
     if(id==='construction-reveal'){
       const preview=node('div','gd-reveal-mini');preview.innerHTML='<svg viewBox="0 0 150 170" aria-hidden="true"><rect x="3" y="3" width="144" height="164" rx="10" fill="none" stroke="currentColor" stroke-dasharray="2 4"/><path d="M18 27h55M18 56h85M18 94h114M18 122h30m17 0h30m17 0h18M18 149h70" fill="none" stroke="currentColor"/><g fill="currentColor"><circle cx="18" cy="27" r="2"/><circle cx="18" cy="56" r="2"/><circle cx="18" cy="94" r="2"/></g></svg><span aria-hidden="true">→</span><article class="andm-card andm-card--raised"><h4 class="andm-card__title">プロジェクトの進捗</h4><p class="gd-reveal-value">72<small>%</small></p><p class="andm-card__body">点と輪郭から、完成したUIへ。</p></article>';return preview;
     }
@@ -148,7 +150,7 @@
       ['設計の原則・判断',[['source-first','出典優先の設計'],['design-philosophies','目的・世界観・設計思想'],['source-decisions','採用した設計判断'],['gallery-review','Galleryの改善根拠']]],
       ['部品の仕様・根拠',[['atomic-sources','小さなパーツ・文字'],['composition-sources','フォーム・ナビ等の組み合わせ'],['component-sources','Chip・FAB'],['component-audit','部品の概念との照合'],['source-reaudit','全パーツの確認済み・未確認']]],
       ['Seriesの公式仕様',[['design-systems','公式デザインシステムの索引'],['analysis-m3-expressive','M3 Expressive'],['analysis-dads','DADS'],['analysis-apple-hig','Apple HIG'],['analysis-spectrum','Spectrum 2'],['analysis-fluent','Fluent 2'],['analysis-carbon','Carbon'],['analysis-atlassian','Atlassian'],['analysis-uswds','USWDS']]],
-      ['研究・書籍',[['academic','知覚・認知・情報探索'],['books','設計・HCIの書籍'],['waveform','波形・動きの一次資料'],['construction-reveal','UIが組み上がる演出の仕様']]]
+      ['研究・書籍',[['academic','知覚・認知・情報探索'],['books','設計・HCIの書籍'],['waveform','波形・動きの一次資料'],['construction-reveal','UIが組み上がる演出の仕様'],['motion-graphics','モーション24種と実装API']]]
     ];
     shelves.forEach(([label,items])=>{const g=branch(label,resources);items.forEach(([id,title])=>{const original=index.querySelector('[data-library-nav="'+id+'"]');const a=original||menuLink(title,'#/library/'+id,g);a.textContent=title;a.dataset.libraryNav=id;if(original)g.append(a);});});
 
@@ -226,12 +228,13 @@
       const article=node('article','g-component-card gd-knowledge-card');const a=node('a','gd-card-link');a.href=e.href||'#/library/'+e.id;a.append(node('span','gd-knowledge-mark',e.mark),node('h3','',e.title),node('p','',e.use),node('span','gd-detail-link','資料と根拠を読む →'));article.append(a);if(e.id==='catalog'){const raw=node('a','gd-raw-link','参照データ（JSON）');raw.href='../research/design-knowledge/catalog.json';article.append(raw);}return article;
     });
     if(mode==='motion') cards=[
+      {id:'motion-graphics',title:'モーショングラフィックス24',use:'24の表現を、時間・強さ・対象で指定。UIの状態やイベントにつなげる。',info:'任意で読み込む独立API。保存・エラー・開閉で使う見本とコード。',group:'UIのモーションロジック',href:'#/labs/motion-graphics'},
       {id:'construction-reveal',title:'UIが組み上がる',use:'点と輪郭から完成する登場演出。3つの表現を操作して比較。',info:'andm独自のLab。完成後の操作、Series、演出停止も試せます。',group:'登場・生成の演出',href:'#/labs/construction-reveal'},
       {id:'motion',title:'Motion Tokens',use:'時間・曲線・反応を実表示で確認。',info:'Character / Pattern / Tokenの三層を区別。',group:'動き',href:'#/tokens/motion'},
       {id:'m3',title:'M3 · 動きの見本',use:'押下の形、速度、強調を操作して比べる。',info:'既存のMaterial 3検証ページ。',group:'動き',href:'#/labs/m3'},
       {id:'materiality',title:'質感と復元',use:'形と反応を独立に比べる研究Lab。',info:'独立実験。Coreへの自動採用はしません。',group:'研究Lab',href:'#/labs/materiality-behavior'},
       {id:'waveform',title:'波形と状態表現',use:'装飾・入力反応・状態・データの違いを見る。',info:'波形表現の独立実験。',group:'研究Lab',href:'#/labs/waveform-expression'}
-    ].filter(e=>!query||matches({...e,group:category})).map(e=>card(e,[e.id==='construction-reveal'?'construction-reveal':'button'],e.href));
+    ].filter(e=>!query||matches({...e,group:category})).map(e=>card(e,[['construction-reveal','motion-graphics'].includes(e.id)?e.id:'button'],e.href));
     if(mode==='labs')cards=window.ANDM_PORTAL.entries.filter(e=>!query||matches({...e,group:category,use:e.use})).map(e=>{const article=node('article','g-component-card gd-lab-card');article.dataset.catalogId=e.id;const a=node('a','gd-card-link');a.href='#/labs/'+e.id;a.append(node('span','gd-lab-mark','操作できる実験'),node('h3','',e.title),node('p','',e.use),node('span','gd-card-category','andmの独立研究'),node('span','gd-detail-link','見本を操作・実装と出典を見る →'));article.append(a);return article;});
     $('component-grid').replaceChildren(...cards);
     $('index-count').textContent=cards.length+' '+(mode==='parts'?'部品':mode==='screens'?'構成':'項目');$('index-empty').hidden=!!cards.length;
