@@ -11,9 +11,10 @@ for(const folder of ['library','analysis','spatial']) {
  await mkdir(join(target,'research',folder),{recursive:true});
  for(const file of await readdir(join(root,'research',folder))) if(file.endsWith('.md')) await cp(join(root,'research',folder,file),join(target,'research',folder,file));
 }
+await cp(join(root,'research','design-knowledge'),join(target,'research','design-knowledge'),{recursive:true});
 await cp(join(root,'research','README.md'),join(target,'research','README.md'));
 await writeFile(join(target,'index.html'),'<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>andm-ui</title><meta http-equiv="refresh" content="0;url=/gallery/"><a href="/gallery/">ギャラリーを開く</a></html>');
-const stamp=createHash('sha256').update(await readFile(join(root,'dist/style.css'))).update(await readFile(join(root,'gallery/index.html'))).digest('hex').slice(0,12);
+const stamp=createHash('sha256').update(await readFile(join(root,'dist/style.css'))).update(await readFile(join(root,'gallery/index.html'))).update(await readFile(join(root,'gallery/discovery.js'))).update(await readFile(join(root,'gallery/usage.js'))).update(await readFile(join(root,'gallery/details.js'))).update(await readFile(join(root,'gallery/portal.js'))).update(await readFile(join(root,'gallery/library.js'))).update(await readFile(join(root,'gallery/explorer.js'))).update(await readFile(join(root,'gallery/workspace.css'))).update(await readFile(join(root,'gallery/shell.css'))).update(await readFile(join(root,'gallery/workspace.js'))).digest('hex').slice(0,12);
 const p=join(target,'gallery/index.html');let html=await readFile(p,'utf8');
 html=html.replace(/src="([\w-]+\.js)(?:\?[^"]*)?"/g,'src="$1?v='+stamp+'"');
 html=html.replace(/href="([^"?]*\.css)(?:\?[^"]*)?"/g,'href="$1?v='+stamp+'"');

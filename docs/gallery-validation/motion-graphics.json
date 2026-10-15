@@ -1,0 +1,18 @@
+{
+  "browser": "153.0.8010.0",
+  "cases": 1344,
+  "caseScope": "24 presets × 14 Series × 4 widths; start/cancel/layout/restoration",
+  "naturalCompletion": 24,
+  "reducedMotion": 24,
+  "operations": [
+    "all 24 naturally complete; cancellation restores text/style and removes decorations",
+    "mock save/error; input retained; real panel open/close restores focus",
+    "24 reduced-motion results; semantic state still changes; focus guard; cancel settles requested close",
+    "invalid-input checks; reentrant cancellation; bind disposal and destroy",
+    "filter, card selection, keyboard, generated code, 200% root font at 390px",
+    "Gallery card route; touch play/stop/save; no top-level overflow"
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "physicalDevicesTested": false
+}

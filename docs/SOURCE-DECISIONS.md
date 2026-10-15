@@ -390,3 +390,147 @@ revisit: visual/touch/keyboard review in real browsers, text contrast and respon
 - decision: Gallery09と実行時のimport/初期化を撤去。既存Liquid Glassパーツと08の通常ミニプレーヤーは維持。独自描画・音源・過去の検証コードは削除せず保持。
 - reason: 静止時の質感・音で揺れる体験がユーザーの目標に達しなかった。シェーダー描画や計算チェックの通過を視覚品質の達成と扱わない。
 - revisit: 静止画の視覚比較と実ブラウザ検証が可能な条件で、ユーザーの再挑戦指示があるとき。
+
+## gallery-discovery-20261013
+
+```yaml
+id: gallery-discovery-20261013
+series: Gallery chrome (independent of specimen Series)
+target: Catalog structure, task filters, specimen snapshots, comparison disclosures, touch access
+implementation: gallery/discovery.js; gallery/workspace.js; gallery/workspace.css; gallery/completion/screen.js; scripts/export-gallery.mjs
+scope: Web / Japanese / Gallery-only / existing 96 parts and 14 Series
+sourceStatus: not-applicable
+checkedScope: DESIGN.md, SOURCE-FIRST.md, EXPERIENCE.md, COMPOSITION-SOURCES.md, DESIGN-PHILOSOPHIES.md, GALLERY-REVIEW.md, Series copy and existing Gallery DOM. Series CSS values preserved; no new official numeric values inferred.
+basis: andm-original
+sources:
+  - authority: professional
+    locator: https://envydesign.jp/patterns/parts/header/
+    version: live website, 2026-10-13
+    checkedAt: 2026-10-13
+    verification: HTML/CSS and page accessibility tree examined
+    supports: Inspiration for task-led classification, preview-first catalog and optional pre-navigation inspection; not a source of official Series dimensions
+  - authority: andm
+    locator: DESIGN.md; docs/SOURCE-FIRST.md; docs/EXPERIENCE.md
+    version: main 717b50e and PR 15 dd1f757
+    checkedAt: 2026-10-13
+    verification: repository contents read
+    supports: Preserve native component API, source distinctions, intent/composition/Series boundaries and scoped specimen switching
+decision: Five catalog entrances; actual DOM specimens from existing examples; hover/focus opens a native details disclosure, click/tap pins it, Escape closes it. Existing Series tokens apply to specimens only. Original Gallery spacing, dimensions and neutral green chrome; not scientific constants or official Series tokens.
+alternatives: A screenshot-only catalog would hide live Series differences; a hover-only popup would exclude touch. Both rejected.
+recommended: true
+adoption: explicit user request; PR 15 revision; no merge to main
+validation: Build, token/source/coverage/knowledge audits and DOM regression passed. Browser QA is tracked separately in GALLERY-DISCOVERY.md; DOM checks do not establish layout, contrast or physical-touch quality.
+revisit: Browser clipping, focus/state loss, added examples or changed source/license conditions
+```
+
+## gallery-shell-20261013
+
+```yaml
+id: gallery-shell-20261013
+series: Gallery chrome; existing component Series preserved
+target: Information hierarchy, navigation, comparison location, stable card previews, navigation context
+implementation: gallery/shell.css; gallery/discovery.js; gallery/workspace.js; gallery/index.html
+scope: Web / Gallery UI / Japanese / desktop and narrow-layout rules
+sourceStatus: not-applicable
+checkedScope: DESIGN.md, SOURCE-FIRST.md, EXPERIENCE.md, GALLERY-REVIEW.md, GALLERY-DISCOVERY.md; current header/side/bottom examples and existing compositions CSS. No new official Series values adopted.
+basis: andm-original
+sources:
+  - authority: andm
+    locator: docs/EXPERIENCE.md; docs/GALLERY-REVIEW.md; docs/SOURCE-FIRST.md
+    version: current repository and existing documented source checks
+    checkedAt: 2026-10-13
+    verification: repository documents and implementation read; external standards not re-fetched in this change
+    supports: Task-first exploration, visual relationships, scoped specimens, state retention, accessible native disclosure
+decision: Consolidate primary destinations in a sidebar; keep complete index and Labs in disclosures. Search filters the current home catalog without covering it with duplicate results; other pages retain search navigation. Replace floating Series dock with nearby inline controls. Quick comparison overlays within the same card footprint. Navigation details use the original elements in a page context; implementation copy extracts the actual nav. Colors, spacing, type, frame sizes and breakpoints are original Gallery choices, not scientific laws or official Series tokens.
+alternatives: Persistent shortcut strip and multiple navigation rows rejected for duplicated emphasis. Auto-expanding card rejected because it moves neighboring results while scanning.
+recommended: true
+adoption: User explicitly requested a full usability and appearance correction; continue PR 15 without merging main
+validation: Build/token audit and DOM regression; no real layout or physical-touch claim. Existing managed-preview and private-browser authentication limitations remain.
+revisit: Observed clipping, discovery failures, zoom/reflow issues, keyboard focus conflicts or user feedback
+```
+
+## gallery-mobile-details-20261013
+
+```yaml
+id: gallery-mobile-details-20261013
+series: Gallery chrome; existing Series component properties unchanged
+target: Mobile navigation, fixed Series dock, detail hierarchy, implementation notes, component purpose and alternatives
+implementation: gallery/details.js; gallery/usage.js; gallery/shell.css; gallery/discovery.js; gallery/explorer.js; gallery/workspace.js
+scope: Web / Japanese / Gallery / Chrome mobile emulation and desktop / 96 parts, 14 Series
+sourceStatus: not-applicable
+checkedScope: DESIGN.md, SOURCE-FIRST.md, GALLERY-REVIEW.md, current native component markup and Gallery scripts; 37 primary references indexed in COMPONENT-USAGE.md. M3 JavaScript-only guideline pages not treated as absent; use readable Android Developers purpose guidance for navigation bar.
+basis: andm-original
+sources:
+  - authority: andm
+    locator: docs/COMPONENT-USAGE.md (37 references, per-part mapping and interpretation limits)
+    version: live primary reference pages retrieved 2026-10-13; existing Gallery implementation
+    checkedAt: 2026-10-13
+    verification: primary reference retrieval and purpose/concept/guidance review; independently preserved Series source status
+    supports: Human-facing use cases and alternatives. No official numeric token changes. W3C APG Tooltip remains a work-in-progress pattern.
+  - authority: andm
+    locator: current user request; docs/GALLERY-REVIEW.md; scripts/check-gallery-mobile.mjs
+    version: PR15 mobile/detail correction
+    checkedAt: 2026-10-13
+    verification: user-requested change and real Chromium rendering / touch / keyboard / state-retention checks
+    supports: Bottom Series restoration, one implementation disclosure, nearby usage/source information and responsive detail layout
+decision: Restore the Gallery's bottom comparison controls, with safe-area and measured content padding; original chrome dimensions/colors rather than product navigation tokens. Keep existing component nodes, normalize malformed/orphaned note placement, consolidate implementation notes. Add per-part usage and alternatives as andm's application of referenced guidelines, not as official per-Series component reproduction. Restrict automatic focus preview to keyboard focus-visible so the first touch activates its link.
+alternatives: An inline-only Series picker rejected by user preference. A duplicate implementation disclosure and hover-expanding list rejected for unnecessary friction.
+recommended: true
+adoption: explicit user request; PR15 without merge
+validation: GALLERY-MOBILE-VALIDATION.md; Chromium153, 672 all-part width/Series cases plus84 all-Series representative cases; no page-level horizontal overflow or JavaScript errors, 200% reflow and representative touch/keyboard interactions. Physical iOS/Android keyboards, Safari and assistive technology not tested.
+revisit: Actual-device issues, focus obstruction, browser changes or updated source guidance
+```
+
+## gallery-hierarchical-navigation — 2026-10-14
+
+- series: Gallery chromeのみ（Core/Seriesの数値変更なし）
+- target: ライブラリの階層、規模分類、Seriesの由来、画面構成/Labの詳細、文献の読書
+- implementation: `gallery/discovery.js`, `portal.js`, `explorer.js`, `library.js`, `shell.css`
+- scope: Web Gallery、日本語、320/390/768/1280px、Native details、タッチ/キーボード
+- sourceStatus: not-applicable
+- basis: andm-original
+- sources: ユーザーの2026-10-14の明示依頼と以前の分類（小さなパーツ→用途のある部品→画面・構成）。既存の `docs/ATOMIC-INVENTORY.md`, `COMPOSITION-SOURCES.md`, `SOURCE-FIRST.md`, `DESIGN-PHILOSOPHIES.md`, `research/library/*.md`, `gallery/series-copy.js` の内容・既存確認記録を分類の正本として再読。今回は外部仕様の再取得・数値採用をしていない。
+- adoption: 96部品を32の小部品と64の用途を持つ組み合わせに重複なく分類。実装フォルダの責務分類は維持。画面構成は別の規模段階として扱う。デザイン比較は6独自Series/8公式資料参照Seriesを明示するが、部品全体の公式準拠認定は行わない。
+- documents: 使いどころ・操作 / 設計の原則・判断 / 部品の仕様・根拠 / Seriesの公式仕様 / 研究・書籍の5棚。本文の見出しをNative disclosureにまとめ、本文検索・直接章リンクを残す。書籍・未取得規格の確認状態は既存文書のまま。
+- integration: 既存の画面構成3例・独立実験7例を共通Gallery詳細内の同一originフレームで表示。個別controllerとCore CSSを再利用し、外枠だけ整える。画面構成のSeriesは入力・状態を保持して変更。独立Labは専用操作を残す。
+- validation: `scripts/check-gallery-mobile.mjs` と `check-gallery-navigation.mjs` の実Chromium検証。結果は `docs/GALLERY-HIERARCHY-VALIDATION.md`。ブラウザ読み込み中のフレーム高さ測定raceと、比較パネルが主カードのクリックを遮る問題を修正。
+- recheck: 部品追加時の規模分類、Series追加時のsourceKind、文献追加時の棚・章リンク、Lab追加時の同一originと独立操作、実機Safari/Android。
+
+## construction-reveal-lab — 2026-10-14
+
+- series: Gallery Lab限定。14既存SeriesのCore仕様・数値は変更しない
+- target: 点/輪郭/スケルトンから完成UIへ変わる登場演出、途中省略、状態保持
+- implementation: `gallery/lab/construction-reveal/{index.html,reveal.js,reveal.css,lab.js,lab.css}`、Galleryのportal/Motion入口
+- scope: ユーザーの動画を参考にした3表現・3操作カード。Web、模擬データ、独立ES module、Core/npm対象外
+- visual sourceStatus: not-applicable
+- visual basis: andm-original
+- checkedScope: ユーザー提供 `1000000435.mp4` を時系列フレームで確認。視覚的な参考としてTransitions.dev。コード・素材・パッケージのコピーなし。外部Seriesの公式登場演出として扱わない
+- sources:
+  - authority: standard; locator: https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html; version: WCAG2.2 SC2.3.3 Understanding（AAA）; checkedAt: 2026-10-14; verification: 本文確認; supports: 非必須の操作起点motionを省略できること
+  - authority: standard; locator: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html; version: WCAG2.2 SC4.1.3 Understanding; checkedAt: 2026-10-14; verification: 本文確認; supports: focusを移さない状態通知
+- operation sourceStatus: specified（上記の個別要求の範囲）
+- operation basis: official（standard）。DOM同一性・inertの具体的接続・停止/再実行方式はandm-original
+- adoption: ユーザーが2026-10-14に試作を明示依頼。Coreへの正式採用は未決。duration800/1800/3600ms・曲線・線の色/太さ・順序は比較用のLab独自値
+- validation: `scripts/check-construction-reveal.mjs`、`docs/CONSTRUCTION-REVEAL.md`。3表現×14 Series×4幅、reduced motion、状態保持、タッチ、文字拡大、外部リクエストなしを実ブラウザで確認。320pxのNative selectの縮小制約を修正
+- recheck: 新たなカード構造/開閉要素、レイアウト/文字拡大、既存inert/aria-hidden、実機、画面での反復使用、正式採用時の仕様化
+
+## motion-graphics-ui-logic — 2026-10-14
+
+- series: 独立experimental API。Core/既存14 Seriesの値・公開APIは維持
+- target: モーショングラフィックス24種をUIの実Element/イベント/開閉状態へ接続
+- implementation: `src/experimental/motion-graphics/{index.js,presets.js,style.css}`、`gallery/lab/motion-graphics`、packageの明示的opt-in exports
+- scope: Native HTML/SVG、Framework非依存、依存なし、24プリセット、時間/変位の強さ/対象の契約
+- visual sourceStatus: not-applicable
+- visual basis: andm-original
+- checkedScope: ユーザー提供 `1000000440.png` と2本の動画を視覚確認。24種の語彙を検討材料とし、コード/図形/曲線/画像/動画の流用なし。独自実装を公式Seriesのmotionとして扱わない
+- sources:
+  - authority: standard; locator: https://developer.mozilla.org/en-US/docs/Web/API/Element/animate; version: Web Animations APIのMDN現行文書; checkedAt: 2026-10-14; verification: 本文確認; supports: DOMへkeyframesを適用するAPI、timing、終了Promise
+  - authority: standard; locator: https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel; version: MDN現行文書; checkedAt: 2026-10-14; verification: 本文確認; supports: controller自身のanimationだけを解除する設計
+  - authority: standard; locator: https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html; version: WCAG2.2 SC2.3.3 Understanding（AAA）; checkedAt: 2026-10-14; verification: 本文確認; supports: 非必須motionの省略
+  - authority: standard; locator: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html; version: WCAG2.2 SC4.1.3 Understanding; checkedAt: 2026-10-14; verification: 本文確認; supports: focusを奪わない状態通知
+- operation sourceStatus: specified（上記の個別要求/APIの範囲のみ）
+- operation basis: official（standard）。play/cancel/transition/bind/destroyの接続と復元、focusガード、値/形の終状態の設計はandm-original
+- adoption: 2026-10-14のユーザーによるUI実装ロジックの明示依頼。任意importできるexperimentalモジュールとして整備。Coreへの自動適用/正式昇格、npm公開、mainマージはしない
+- numeric decisions: strength0.6、変位係数、粒12/24/8の上限、独自curve、glitch最低900msは局所独自値。duration未指定時の既存token参照は対象の値の再利用であり、この24表現の公式認定ではない
+- validation: 実Chromiumで24種×14 Series×4幅＝1,344開始/停止/復元/レイアウトケース。24種の自然完了、reduced motion、開閉とfocus、再入、無効入力、イベント解除/destroy、保存/エラーの入力保持、キーボード、タッチ、文字200%を確認。`scripts/check-motion-graphics.mjs` / `docs/MOTION-GRAPHICS.md`
+- recheck: 実プロダクトでの対象/transformの競合、実機Safari/Android、支援技術、無効パラメータ、長文、大きな一覧、正式採用前の反復利用評価

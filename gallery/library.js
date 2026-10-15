@@ -1,6 +1,15 @@
 /* research/library の Markdown を表示する。値は Token にしない。 */
 (function (root) {
   var shelves = {
+    "MOTION-GRAPHICS.md":"motion-graphics",
+    "CONSTRUCTION-REVEAL.md":"construction-reveal",
+    "COMPONENT-USAGE.md": "component-usage",
+    "DESIGN-PHILOSOPHIES.md":"design-philosophies",
+    "COMPOSITION-SOURCES.md":"composition-sources",
+    "COMPONENT-AUDIT.md":"component-audit",
+    "ATOMIC-SOURCES.md":"atomic-sources",
+    "ATOMIC-INVENTORY.md":"atomic-inventory",
+    "waveform.md":"waveform",
     "COMPONENT-COVERAGE.md": "component-coverage",
     "SOURCE-REAUDIT.md": "source-reaudit",
     "SOURCE-FIRST.md": "source-first",
@@ -22,6 +31,7 @@
 
   function linkHref(href, shelfId) {
     if (/^[a-z][a-z0-9+.-]*:/i.test(href)) return { href: href, external: true };
+    href=href.replace(/^\.\.\/\.\.\/docs\//, "");
     var hash = "";
     var path = href;
     var cut = href.indexOf("#");
@@ -199,6 +209,24 @@
 
   function renderInto(el, markdown, shelfId) {
     el.innerHTML = renderMarkdown(markdown, shelfId);
+    var sections=[], current=null, pending=null;
+    Array.from(el.children).forEach(function(child){
+      if(child.matches('h2')){
+        current=document.createElement('details');current.className='gd-reading-section';
+        var summary=document.createElement('summary');summary.textContent=child.textContent;
+        current.append(summary);el.insertBefore(current,child);current.append(child);sections.push(current);
+        if(pending){current.insertBefore(pending,summary);pending=null;}
+      }else if(child.matches('a[id]')){pending=child;}
+      else if(current){if(pending){current.append(pending);pending=null;}current.append(child);}
+    });
+    if(sections.length>2){
+      var tools=document.createElement('div');tools.className='gd-reading-tools';
+      var label=document.createElement('label');label.textContent='この資料の中を探す';var input=document.createElement('input');input.type='search';input.placeholder='用途・キーワード';label.append(input);
+      var status=document.createElement('span');status.setAttribute('role','status');status.textContent=sections.length+'項目。見出しを開いて読めます。';tools.append(label,status);el.prepend(tools);
+      input.addEventListener('input',function(){var query=input.value.normalize('NFKC').toLowerCase().trim(),count=0;sections.forEach(function(section){var match=!query||section.textContent.normalize('NFKC').toLowerCase().includes(query);section.hidden=!match;if(query&&match)section.open=true;if(match)count++;});status.textContent=count+'項目';});
+    }
+    var anchor=location.hash.split('/')[3];if(anchor){var target=el.querySelector('[id="'+CSS.escape(decodeURIComponent(anchor))+'"]');if(target){var group=target.closest('details');if(group)group.open=true;}}
+
   }
 
   root.ANDM_LIBRARY = {

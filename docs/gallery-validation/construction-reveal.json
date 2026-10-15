@@ -1,0 +1,25 @@
+{
+  "browser": "153.0.8010.0",
+  "cases": 168,
+  "widths": [
+    320,
+    390,
+    768,
+    1280
+  ],
+  "series": 14,
+  "variants": [
+    "blueprint",
+    "wireframe",
+    "skeleton"
+  ],
+  "operations": [
+    "task/period/timer controls; replay/skip/Series preserve widget state and input",
+    "manual/OS reduced motion, including preference change mid-play",
+    "keyboard replay; 200% root font at 390px",
+    "shared Gallery route; touch replay/skip/period; no top-level overflow"
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "physicalDevicesTested": false
+}

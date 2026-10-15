@@ -186,3 +186,76 @@ body[data-shell="part"] .g-section > details > a {display:inline-block;margin-bl
 .g-avatar--large{width:var(--andm-space-16);height:var(--andm-space-16)}
 .g-avatar-examples img,.andm-persona img,.andm-avatar-group img{object-position:center 36%}
 #skeleton-demo[data-paused="true"] .andm-skeleton{animation:none}
+
+/* Purpose-first discovery: keep Gallery chrome independent from displayed Series. */
+.g-purpose-filters { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px; }
+.g-purpose-label { width:100%; font-size:13px; font-weight:700; color:var(--g-chrome-muted); }
+.g-purpose-option { appearance:none; border:1px solid var(--g-chrome-border); border-radius:999px; padding:8px 13px; min-height:40px; background:#fff; color:var(--g-chrome-ink); font:600 13px/1.3 system-ui,sans-serif; cursor:pointer; }
+.g-purpose-option:hover { border-color:var(--g-chrome-accent); }
+.g-purpose-option[aria-pressed="true"] { background:var(--g-chrome-ink); color:#fff; border-color:var(--g-chrome-ink); }
+.g-purpose-option:focus-visible { outline:3px solid var(--g-chrome-accent); outline-offset:3px; }
+.g-component-card { position:relative; isolation:isolate; overflow:hidden; transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
+.g-component-card .g-component-preview { order:-1; min-height:112px; height:112px; padding:16px; margin-bottom:6px; justify-content:center; border-radius:8px; background:#f3f5f8; transition:background-color 160ms ease, transform 160ms ease; }
+.g-component-card .g-component-preview:empty::after { content:"プレビュー準備中"; font:12px/1.5 system-ui,sans-serif; color:#64748b; }
+.g-component-card .g-component-preview > * { flex-shrink:0; }
+.g-component-card .g-card-explore { font:600 12px/1.5 system-ui,sans-serif; color:var(--g-chrome-accent); opacity:0; transform:translateY(3px); transition:opacity 160ms ease,transform 160ms ease; }
+.g-component-card:is(:hover,:focus-visible) { box-shadow:0 10px 28px rgb(24 34 53 / .10); transform:translateY(-2px); }
+.g-component-card:is(:hover,:focus-visible) .g-component-preview { background:#e9f0fa; transform:scale(1.015); }
+.g-component-card:is(:hover,:focus-visible) .g-card-explore { opacity:1; transform:none; }
+.g-component-card:focus-visible { outline:3px solid var(--g-chrome-accent); outline-offset:3px; }
+@media (hover:none) { .g-component-card .g-card-explore { opacity:1; transform:none; } }
+@media (prefers-reduced-motion:reduce) { .g-component-card, .g-component-card .g-component-preview, .g-component-card .g-card-explore { transition:none; } .g-component-card:is(:hover,:focus-visible), .g-component-card:is(:hover,:focus-visible) .g-component-preview { transform:none; } }
+
+/* Discovery chrome: original editorial catalog, independent of Series. */
+:root {--g-chrome-bg:#f5f5f2;--g-chrome-ink:#242925;--g-chrome-muted:#5c645f;--g-chrome-accent:#24654c;--g-chrome-border:#d9dfd9;}
+body[data-view="home"] .g-pagehead {display:none;}
+.g-workspace-brand span {font-size:12px;letter-spacing:.08em;}
+.gd-intro {padding:8px 0 24px;max-width:55rem;}
+.gd-eyebrow {font:600 11px/1.5 system-ui,sans-serif;letter-spacing:.15em;color:var(--g-chrome-accent);}
+.gd-intro h2 {font:650 clamp(24px,3vw,36px)/1.4 system-ui,sans-serif;letter-spacing:-.03em;margin:12px 0;}
+.gd-intro > p:last-child {font:15px/1.8 system-ui,sans-serif;color:var(--g-chrome-muted);}
+.gd-catalog-nav {display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--g-chrome-border);margin-bottom:18px;}
+.gd-catalog-nav button {background:none;border:0;border-bottom:3px solid transparent;color:var(--g-chrome-muted);font:600 14px/1.5 system-ui,sans-serif;padding:12px 16px;min-height:48px;cursor:pointer;}
+.gd-catalog-nav button[aria-pressed="true"] {color:var(--g-chrome-accent);border-color:var(--g-chrome-accent);}
+.gd-compare-tools {display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:16px 0;font:13px/1.6 system-ui,sans-serif;}
+.gd-compare-tools p {margin:0 auto 0 0;color:var(--g-chrome-muted);}
+.gd-compare-tools select {font:inherit;min-height:44px;max-width:100%;padding:8px;border:1px solid var(--g-chrome-border);border-radius:6px;background:white;}
+.g-atomic-shortcut,.g-index-top > a {display:none;}
+.g-index-top {margin-bottom:12px;justify-content:flex-end;}
+.g-index-top > label {margin-right:auto;}
+#component-index:not([data-catalog-mode="parts"]):not([data-catalog-mode="screens"]) .g-purpose-filters,
+#component-index:not([data-catalog-mode="parts"]):not([data-catalog-mode="screens"]) .g-index-top > label {display:none;}
+#component-index:is([data-catalog-mode="knowledge"],[data-catalog-mode="series"]) .gd-compare-tools {display:none;}
+.g-component-grid {grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:24px;align-items:start;}
+.g-component-card {padding:0;gap:0;border-radius:10px;background:#fff;overflow:visible;transform:none !important;box-shadow:none;}
+.gd-card-link {display:flex;flex-direction:column;gap:10px;padding:16px;text-decoration:none;color:var(--g-chrome-ink);border-radius:10px;}
+.gd-card-link h3 {font:650 17px/1.45 system-ui,sans-serif;margin:2px 0 0;}
+.gd-card-link p {font:13px/1.7 system-ui,sans-serif;min-height:3.4em;}
+.gd-card-category {font:12px/1.5 system-ui,sans-serif;color:var(--g-chrome-muted);}
+.gd-preview-label {font:11px/1.6 system-ui,sans-serif !important;margin:0 !important;color:var(--g-chrome-muted);}
+.gd-specimen {position:relative;overflow:hidden;background:#f4f5f2;border-radius:6px;min-height:140px;width:100%;pointer-events:none;}
+.gd-specimen-inner {width:480px;position:relative;transform-origin:top left;padding:24px;display:flex;flex-direction:column;gap:var(--andm-space-group);color:var(--andm-color-on-surface);font-family:var(--andm-font-family);background:var(--andm-color-surface);min-height:200px;box-sizing:border-box;}
+.gd-specimen-inner .g-row {display:flex;flex-wrap:wrap;gap:var(--andm-space-actions);}
+.gd-specimen-inner > * {max-width:100%;flex-shrink:0;}
+.gd-specimen-inner dialog {display:block;position:static;margin:0;max-height:none;width:100%;max-width:100%;transform:none;}
+.gd-specimen-inner :is(.andm-tooltip__bubble,.andm-popover__panel) {position:static;display:block;opacity:1;visibility:visible;transform:none;margin:8px 0;width:auto;}
+.gd-specimen-inner [popover] {display:block;position:static;}
+.gd-specimen-inner .andm-skeleton,.gd-specimen-inner .andm-spinner {animation:none;}
+.gd-specimen-inner .cc-sample {padding:0;border:0;background:transparent;}
+.gd-quick {position:relative;border-top:1px solid var(--g-chrome-border);border-radius:0 0 10px 10px;}
+.gd-quick > summary {font:600 12px/1.5 system-ui,sans-serif;padding:12px 16px;min-height:44px;cursor:pointer;color:var(--g-chrome-accent);}
+.gd-quick-panel {display:none;padding:0 16px 16px;background:white;border-radius:0 0 10px 10px;}
+.gd-quick[open] > .gd-quick-panel {display:block;}
+.gd-quick-panel > p {font:13px/1.7 system-ui,sans-serif;margin:0 0 12px;}
+.gd-quick-panel .gd-specimen {margin-block:8px 12px;}
+.gd-detail-link {display:inline-flex;align-items:center;min-height:44px;font:600 12px/1.6 system-ui,sans-serif;color:var(--g-chrome-accent);text-decoration:none;}
+.gd-knowledge-mark {min-height:110px;display:flex;align-items:center;font:600 12px/1.5 system-ui,sans-serif;letter-spacing:.13em;color:var(--g-chrome-accent);border-bottom:1px solid var(--g-chrome-border);}
+.gd-license {margin-top:36px;padding:20px;border:1px solid var(--g-chrome-border);border-radius:8px;font:13px/1.8 system-ui,sans-serif;color:var(--g-chrome-muted);}
+.gd-license a {color:var(--g-chrome-accent);}
+.gd-catalog-nav button:focus-visible,.gd-card-link:focus-visible,.gd-quick summary:focus-visible,.gd-detail-link:focus-visible {outline:3px solid var(--g-chrome-accent);outline-offset:3px;}
+
+@media(max-width:800px) {.g-component-grid {gap:16px;}.gd-catalog-nav button {padding-inline:10px;}.gd-intro {padding-top:0;}.gd-compare-tools p {width:100%;}.gd-compare-tools label {flex:1;}}
+body[data-view="home"] #series-tools {display:block;}
+.gd-specimen-inner dialog {height:auto;transition:none;}
+.gd-specimen-inner .andm-drawer__panel {height:auto;min-height:0;}
+@media(prefers-reduced-motion:reduce) {.g-component-card {transition:none;}}

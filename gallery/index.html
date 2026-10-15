@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="andm-gallery-build" content="workspace-3" />
-    <title>andm-ui · Workspace</title>
+    <title>andm-ui · UI Explorer</title>
     <link rel="stylesheet" href="../dist/style.css" />
     <style>
       /* Gallery layout only — component look comes from dist/style.css */
@@ -1107,17 +1107,18 @@
 @media (max-width: 800px) { .g-lab-shortcuts { padding: 8px 12px; } .g-lab-shortcuts .g-experiment-link { flex: 1 1 calc(50% - 8px); box-sizing: border-box; } }
 </style>
 <link rel="stylesheet" href="completion/sample.css">
+<link rel="stylesheet" href="shell.css">
 </head>
   <body>
     <a class="g-skip" href="#top">内容へ移動</a>
     <header class="g-toolbar">
-      <a class="g-workspace-brand" href="#/">andm-ui <span>Workspace</span></a>
-      <button type="button" id="nav-toggle" class="g-tool-button" aria-expanded="false" aria-controls="gallery-nav">部品を選ぶ</button>
-      <div class="g-search"><label for="component-search">部品・トークン・文献を探す</label><input type="search" id="component-search" placeholder="部品を探す：ボタン、検索…" autocomplete="off" aria-controls="search-results" /><div id="search-results" hidden></div><p id="search-status" class="g-sr-only" role="status"></p></div>
-      <a class="g-tool-link" href="lab/">体験ラボ</a>
+      <a class="g-workspace-brand" href="#/"><span class="gd-brand-mark">a</span> andm-ui</a>
+      <button type="button" id="nav-toggle" class="g-tool-button" aria-expanded="false" aria-controls="gallery-nav">メニュー</button>
+      <div class="g-search"><label for="component-search">部品・トークン・文献を探す</label><input type="search" id="component-search" placeholder="検索：ボタン、ヘッダー、入力…" autocomplete="off" aria-controls="search-results" /><div id="search-results" hidden></div><p id="search-status" class="g-sr-only" role="status"></p></div>
+      <a class="g-tool-link gd-header-docs" href="#/library/source-first">使い方と出典 ↗</a>
     </header>
     <nav class="g-lab-shortcuts" aria-label="実験を比較"><a class="g-tool-link" href="m3/">Material 3 · 動きの見本</a><a class="g-experiment-link" href="lab/apple-liquid-glass/">Apple · Liquid Glass</a><a class="g-tool-link" href="spacing/">余白・モーダル比較</a><a class="g-experiment-link" href="lab/materiality-behavior/">質感の比較</a><a class="g-experiment-link" href="lab/philosophy-poc/">思想の比較</a><a class="g-experiment-link" href="lab/state-expression/">状態の伝え方</a><a class="g-experiment-link" href="completion/">画面の使用例</a></nav>
-    <a class="andm-link andm-skip-link" href="#top">本文へ移動</a><div class="g-shell">
+    <div class="g-shell">
       <nav class="g-nav" id="gallery-nav" aria-label="ギャラリーの項目">
         <a class="g-nav__brand" href="#/" data-home-nav>andm-ui</a>
 
@@ -1139,6 +1140,7 @@
               >
             </li>
             <li><a href="#/library/books" data-library-nav="books">書籍</a></li>
+            <li><a href="#/library/component-usage" data-library-nav="component-usage">部品の使いどころ</a></li>
             <li><a href="#/library/component-coverage" data-library-nav="component-coverage">他体系との比較・不足一覧</a></li>
             <li><a href="#/library/component-sources" data-library-nav="component-sources">Chip / FAB の根拠</a></li>
             <li><a href="#/library/gallery-review" data-library-nav="gallery-review">ギャラリー改善の根拠</a></li>
@@ -1402,7 +1404,7 @@
           <p class="g-pagehead__lead" id="page-lead"></p>
           <p class="g-pagehead__status" id="page-status"></p>
         </header>
-        <section id="component-index" aria-label="部品の一覧"><p class="g-atomic-shortcut"><a href="#/display/text">文字・タイポグラフィを比較する</a> · <a href="#/library/atomic-sources">小さな部品の仕様と出典</a></p><div class="g-index-top"><label for="component-category">分類<select id="component-category"><option value="">すべて</option></select></label><p id="index-count"></p><a href="#/library/component-coverage">他体系との比較・不足一覧</a> · <a href="#/library/source-reaudit">全パーツの再監査</a> · <a href="#/library">文献を読む</a></div><div id="component-grid" class="g-component-grid"></div><p id="index-empty" hidden>一致する部品がありません。別の言葉で探してください。</p></section>
+        <section id="component-index" aria-label="部品の一覧"><p class="g-atomic-shortcut"><a href="#/display/text">文字・タイポグラフィを比較する</a> · <a href="#/library/atomic-sources">小さな部品の仕様と出典</a></p><div class="g-index-top"><label for="component-category">用途<select id="component-category"><option value="">すべて</option></select></label><p id="index-count"></p><a href="#/library/component-coverage">他体系との比較・不足一覧</a> · <a href="#/library/source-reaudit">全パーツの再監査</a> · <a href="#/library">文献を読む</a></div><div id="component-grid" class="g-component-grid"></div><p id="index-empty" hidden>一致する部品がありません。別の言葉で探してください。</p></section>
         <header class="g-hero">
           <h1>Design System Explorer</h1>
           <p class="lead">
@@ -4024,7 +4026,11 @@ const projectName = "途中のアイデアも残しておこう";</code>
     <script type="module" src="completion/behaviors.js"></script>
     <script src="atoms.js"></script>
     <script src="compositions.js"></script>
+    <script src="usage.js"></script>
+    <script src="portal.js"></script>
     <script src="explorer.js?v=workspace-3"></script>
+    <script src="discovery.js"></script>
     <script src="workspace.js?v=workspace-3"></script>
+    <script src="details.js"></script>
   </body>
 </html>

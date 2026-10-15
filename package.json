@@ -14,7 +14,9 @@
     "./experimental/liquid-vessel": "./dist/experimental/liquid-vessel/index.js",
     "./experimental/liquid-vessel/style.css": "./dist/experimental/liquid-vessel/style.css",
     "./experimental/water-player": "./dist/experimental/water-player/index.js",
-    "./experimental/water-player/style.css": "./dist/experimental/water-player/style.css"
+    "./experimental/water-player/style.css": "./dist/experimental/water-player/style.css",
+    "./experimental/motion-graphics": "./dist/experimental/motion-graphics/index.js",
+    "./experimental/motion-graphics/style.css": "./dist/experimental/motion-graphics/style.css"
   },
   "files": [
     "dist",
@@ -36,7 +38,8 @@
     "docs/COMPONENT-COVERAGE.json",
     "docs/BEHAVIOR.md",
     "docs/SPACING-AND-OVERLAYS.md",
-    "docs/APPLE-LIQUID-GLASS.md"
+    "docs/APPLE-LIQUID-GLASS.md",
+    "docs/MOTION-GRAPHICS.md"
   ],
   "scripts": {
     "build": "node scripts/build-css.mjs",

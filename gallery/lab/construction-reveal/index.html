@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UIが組み上がる · andm-ui Lab</title><link rel="stylesheet" href="../../../dist/style.css"><link rel="stylesheet" href="reveal.css"><link rel="stylesheet" href="lab.css"></head>
+<body>
+<header class="cr-heading"><p class="cr-eyebrow">ANDM / CONSTRUCTION REVEAL</p><h1>UIが、組み上がる。</h1><p>点と輪郭から、触れるカードへ。完成したUIに付ける登場演出の実験です。</p></header>
+<main>
+<section class="cr-controls" aria-label="演出の設定">
+<label>表現<select id="reveal-style"><option value="blueprint">点と輪郭</option><option value="wireframe">ワイヤーフレーム</option><option value="skeleton">スケルトン</option></select></label>
+<label>演出の長さ<select id="reveal-speed"><option value="1800">標準 · 1.8秒</option><option value="3600">ゆっくり · 3.6秒</option><option value="800">短く · 0.8秒</option></select></label>
+<label>見本のSeries<select id="reveal-series"></select></label>
+<div class="cr-playback"><button type="button" id="replay" class="cr-primary">もう一度見る</button><button type="button" id="skip">完成形を表示</button></div>
+<label class="cr-check"><input id="disable-motion" type="checkbox">演出をオフ</label>
+</section>
+<div class="cr-statusline"><span class="cr-state-dot" aria-hidden="true"></span><p id="reveal-status" role="status">完成形を表示しています。</p><span class="cr-independent">andm独自実装</span></div>
+<div class="cr-stage" id="reveal-stage"><div class="cr-deck" id="specimens">
+<article class="andm-card andm-card--raised cr-card" data-reveal-card aria-labelledby="project-title"><div class="cr-content">
+<div class="cr-unit cr-card-header"><span class="cr-kind" data-reveal-part="text">PROJECT</span><span class="andm-badge" data-reveal-part="shape">進行中</span></div>
+<h2 class="cr-unit andm-card__title" id="project-title" data-reveal-part="text">プロジェクトの進捗</h2>
+<div class="cr-unit cr-metric"><strong id="project-value" data-reveal-part="text">72</strong><span data-reveal-part="text">% 完了</span></div>
+<div class="cr-unit cr-chart" data-reveal-part="chart"><svg viewBox="0 0 260 80" role="img" aria-label="模擬データ：進捗が徐々に上がる推移"><path class="cr-chart-grid" d="M0 20H260M0 40H260M0 60H260M40 0V80M100 0V80M160 0V80M220 0V80"/><path class="cr-spark" d="M0 70L28 65L48 68L72 50L100 48L126 30L148 36L177 18L204 24L228 12L260 8"/></svg></div>
+<dl class="cr-unit cr-stats"><div data-reveal-part="text"><dt>完了</dt><dd id="done-count">18件</dd></div><div data-reveal-part="text"><dt>残り</dt><dd id="remaining-count">7件</dd></div><div data-reveal-part="text"><dt>全タスク</dt><dd>25件</dd></div></dl>
+<div class="cr-unit andm-card__actions"><button class="andm-btn andm-btn--outlined" id="complete-task" type="button" data-reveal-part="shape">1件を完了にする</button></div>
+</div></article>
+<article class="andm-card andm-card--raised cr-card" data-reveal-card aria-labelledby="activity-title"><div class="cr-content">
+<div class="cr-unit cr-card-header"><span class="cr-kind" data-reveal-part="text">ACTIVITY</span><span class="cr-live-label" data-reveal-part="text">模擬データ</span></div>
+<h2 class="cr-unit andm-card__title" id="activity-title" data-reveal-part="text">作業のリズム</h2>
+<div class="cr-unit cr-period" role="group" aria-label="活動の期間" data-reveal-part="shape"><button type="button" data-period="week" aria-pressed="true">今週</button><button type="button" data-period="month" aria-pressed="false">今月</button></div>
+<div class="cr-unit cr-total" data-reveal-part="text"><strong id="activity-total">24</strong><span>時間</span><span id="period-label">月〜日</span></div>
+<div class="cr-unit cr-bars" id="activity-bars" data-reveal-part="chart" role="img" aria-label="模擬データ：今週の作業時間。月3、火4、水5、木2、金4、土4、日2時間。"></div>
+<div class="cr-unit cr-legend" data-reveal-part="text"><span><i class="cr-plan"></i>考える</span><span><i class="cr-build"></i>つくる</span><span><i class="cr-review"></i>確かめる</span></div>
+<details class="cr-unit cr-card-details" data-reveal-part="shape"><summary>データの内訳</summary><p id="activity-breakdown">考える 6時間 / つくる 12時間 / 確かめる 6時間</p><p>期間切り替えを試すための固定データです。</p></details>
+</div></article>
+<article class="andm-card andm-card--raised cr-card" data-reveal-card aria-labelledby="focus-title"><div class="cr-content">
+<div class="cr-unit cr-card-header"><span class="cr-kind" data-reveal-part="text">FOCUS</span><span class="cr-live-label" data-reveal-part="text">ローカル</span></div>
+<div class="cr-unit cr-orbit" data-reveal-part="shape" aria-hidden="true"><span></span><i></i><b></b></div>
+<h2 class="cr-unit andm-card__title" id="focus-title" data-reveal-part="text">ひとつのことに集中</h2>
+<p class="cr-unit andm-card__body" data-reveal-part="text">小さく始める、5分のセッション。</p>
+<p class="cr-unit cr-timer" id="timer-display" role="timer" aria-live="off" data-reveal-part="text">05:00</p>
+<div class="cr-unit cr-timer-track" data-reveal-part="shape"><progress id="focus-progress" value="0" max="300" aria-label="集中セッションの経過"></progress></div>
+<div class="cr-unit andm-card__actions"><button type="button" class="andm-btn" id="timer-toggle" aria-pressed="false" data-reveal-part="shape">開始</button><button type="button" class="andm-btn andm-btn--text" id="timer-reset" data-reveal-part="shape">リセット</button></div>
+<label class="cr-unit cr-note-label" data-reveal-part="shape">取り組むこと<input class="andm-textfield__input" id="focus-note" placeholder="例：アイデアを一つ描く"></label>
+</div></article>
+</div></div>
+<p class="cr-caption">通信やAI生成は行いません。登場演出は既にある見本を見せる表現で、処理の進捗ではありません。</p>
+<p class="cr-feedback" id="widget-status" role="status"></p>
+<details class="cr-about"><summary>使いどころ・実装・出典</summary><div class="cr-about-grid"><section><h2>どんなときに使う？</h2><p>新しいダッシュボードの初回表示、AIが作ったUIのお披露目、構造を見せたいデモに。頻繁に使う画面では「短く」か「演出をオフ」で待ち時間を減らします。</p><p>実際の読み込みやAI生成が終わるまで待たせる場合は、実際の状態を別に通知してください。この演出から完了率を推測させません。</p></section><section><h2>取り付け方</h2><p>既存HTMLを保持し、<code>reveal.js</code>が部位の位置から輪郭を描きます。初期値は完成形。演出中だけ操作を止め、「完成形を表示」で即座に戻れます。ライブラリの公式仕様を変えるものではありません。</p><pre><code>import { createConstructionReveal } from './reveal.js';
+const effect = createConstructionReveal(card);
+await effect.play({ style: 'blueprint', duration: 1800 });
+// effect.finish() / effect.destroy()</code></pre><a href="https://github.com/atsushi316/andm-ui/tree/feature/gallery-discovery-hover-preview/gallery/lab/construction-reveal" target="_blank" rel="noopener noreferrer">実装コード ↗</a></section><section><h2>参考と独自の判断</h2><p>参考：Transitions.devとユーザー提供の動画。点・輪郭からUIが現れるという表現を参考に、コード・図形・構成・時間はandmで独自実装しています。外部パッケージやスキルのインストールは不要です。</p><ul><li><a href="https://transitions.dev/" target="_blank" rel="noopener noreferrer">Transitions.dev ↗</a></li><li><a href="https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html" target="_blank" rel="noopener noreferrer">W3C：動きを減らす設定 ↗</a></li><li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html" target="_blank" rel="noopener noreferrer">W3C：状態の通知 ↗</a></li></ul><p>Seriesは既存の仕様・確認範囲を継承します。演出を各Seriesの公式モーションとして扱いません。利用条件はandm-uiの既存条件（UNLICENSED）を確認してください。</p></section></div></details>
+</main><script src="../../series-copy.js"></script><script type="module" src="lab.js"></script></body></html>

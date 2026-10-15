@@ -39,35 +39,60 @@
       var label = link.cloneNode(true); label.querySelectorAll('.g-badge').forEach(function (badge) { badge.remove(); });
       var id = link.dataset.partNav || link.dataset.tokenNav || link.dataset.libraryNav || link.dataset.seriesNav || '';
       return { href: link.getAttribute('href'), title: label.textContent.trim(), group: ['form-field','search-form','filter-bar','results-header','form-actions','toolbar','action-menu'].includes(id)?'入力・操作':['header-nav','side-nav','mobile-nav','bottom-nav'].includes(id)?'ナビゲーション':['resource-item'].includes(id)?'面・情報表示':['empty-state','loading-state'].includes(id)?'状態・通知':groupLabel(link), id: id, part: !!link.dataset.partNav, keywords: aliases[id] || [] };
+    }).map(function(entry) {
+      if (entry.group === '追加・操作整備部品') {
+        var responsibility=entry.href.split('/')[1];
+        entry.group=({controls:'入力・操作',display:'面・情報表示',navigation:'ナビゲーション',feedback:'状態・通知',overlays:'重ねて表示',patterns:'組み合わせ部品'})[responsibility]||entry.group;
+      }
+      return entry;
     });
   }
   function matches(entry, query) {
-    var haystack = normalize([entry.title, entry.group].concat(entry.keywords).join(' '));
+    var haystack = normalize([entry.title, entry.group, window.ANDM_USAGE && window.ANDM_USAGE.entries[entry.id] ? window.ANDM_USAGE.entries[entry.id].when : ''].concat(entry.keywords).join(' '));
     return query.split(/\s+/).every(function (word) { return haystack.includes(word); });
+  }
+  // Discover by task first; keep source group labels and routes intact.
+  var purposeGroups = ['入力・操作', 'ナビゲーション', '面・情報表示', '状態・通知', '重ねて表示', '文字・記号', '組み合わせ部品'];
+  function setupPurposeFilters() {
+    var top = document.querySelector('.g-index-top');
+    if (!top || document.getElementById('purpose-filters')) return;
+    var region = document.createElement('div');
+    region.id = 'purpose-filters';
+    region.className = 'g-purpose-filters';
+    region.setAttribute('role', 'group');
+    region.setAttribute('aria-label', '用途から探す');
+    var heading = document.createElement('span');
+    heading.className = 'g-purpose-label';
+    heading.textContent = '用途から選ぶ';
+    region.append(heading);
+    [{ label: 'すべて', value: '' }].concat(purposeGroups.map(function (name) { return { label: name, value: name }; })).forEach(function (item) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'g-purpose-option';
+      button.textContent = item.label;
+      button.dataset.category = item.value;
+      button.setAttribute('aria-pressed', String($('component-category').value === item.value));
+      button.addEventListener('click', function () {
+        $('component-category').value = item.value;
+        syncPurposeFilters();
+        buildIndex(normalize(search.value));
+        if(mobile.matches){setNav(false);var heading=$('gd-catalog-title');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}window.scrollTo(0,0);}
+      });
+      region.append(button);
+    });
+    var sidebar=document.querySelector('.gd-sidebar-primary');
+    if(sidebar)sidebar.after(region);else top.after(region);
+  }
+  function syncPurposeFilters() {
+    document.querySelectorAll('.g-purpose-option').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.category === $('component-category').value));
+    });
   }
   function buildIndex(query) {
     var category = $('component-category').value;
-    var list = entries.filter(function (entry) { return entry.part && (!category || entry.group === category) && (!query || matches(entry, query)); });
-    $('component-grid').replaceChildren();
-    list.forEach(function (entry) {
-      var a = document.createElement('a'); a.className = 'g-component-card'; a.href = entry.href;
-      var title = document.createElement('strong'); title.textContent = entry.title;
-      var description = document.createElement('p'); description.textContent = descriptions[entry.id] || entry.keywords.join('・') || '状態とシリーズの見た目を確認する。';
-      var group = document.createElement('small'); group.textContent = entry.group;
-      var preview = document.createElement('div'); preview.className = 'g-component-preview'; preview.setAttribute('aria-hidden', 'true'); preview.inert = true;
-      var section = document.querySelector('[data-part="' + entry.id + '"]');
-      var samples={'search-form':'.andm-search','form-field':'.andm-field','form-actions':'.andm-form-actions','filter-bar':'.andm-filter-bar','header-nav':'.andm-header-nav','side-nav':'.andm-side-nav','bottom-nav':'.andm-bottom-nav'};
-      var sample = section && (section.querySelector(samples[entry.id]||'[class*="andm-"]:not(dialog)') || section.querySelector('.andm-btn--filled'));
-      if (sample) {
-        var clone = sample.cloneNode(true);
-        clone.querySelectorAll('.andm-textfield__helper, .andm-textfield__error').forEach(function (node) { node.remove(); });
-        [clone].concat(Array.from(clone.querySelectorAll('*'))).forEach(function (node) { node.removeAttribute('id'); node.removeAttribute('name'); node.removeAttribute('autofocus'); node.removeAttribute('aria-controls'); node.removeAttribute('aria-labelledby'); node.removeAttribute('aria-describedby'); node.removeAttribute('for'); Array.from(node.attributes).forEach(function (attr) { if (['data-held','data-andm-pressed','data-drag','data-enhanced'].includes(attr.name)) node.removeAttribute(attr.name); }); });
-        preview.append(clone);
-      }
-      a.append(title, description, preview, group); $('component-grid').append(a);
-    });
-    $('index-count').textContent = list.length + ' 部品'; $('index-empty').hidden = !!list.length;
+    window.ANDM_DISCOVERY.render(entries.filter(e => e.part), query, category, descriptions, matches);
   }
+
   function searchEntries() {
     var query = normalize(search.value);
     buildIndex(query);
@@ -81,9 +106,10 @@
       a.append(title, group); $('search-results').append(a);
     });
     if (!found.length) { var p = document.createElement('p'); p.textContent = '一致する項目がありません。別の言葉で探してください。'; $('search-results').append(p); }
-    $('search-results').hidden = false; $('search-status').textContent = found.length + ' 件見つかりました。';
+    $('search-results').hidden = document.body.dataset.view === 'home'; $('search-status').textContent = found.length + ' 件見つかりました。';
   }
-  $('component-category').addEventListener('change', function () { buildIndex(normalize(search.value)); });
+  $('component-category').addEventListener('change', function () { syncPurposeFilters(); buildIndex(normalize(search.value)); });
+  setupPurposeFilters();
   search.addEventListener('input', searchEntries);
   search.addEventListener('focus', function () { if (search.value.trim()) searchEntries(); });
   search.addEventListener('keydown', function (event) {
@@ -109,14 +135,16 @@
     var isPart = document.body.dataset.shell === 'part';
     var panel = $('component-code'); panel.hidden = !isPart || !section;
     if (panel.hidden) return;
-    var example = section.querySelector('.cc-sample') || section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
+    var navigation = ['header-nav','side-nav','bottom-nav'].includes(section.dataset.part);
+    var overlay = ['dialog','drawer'].includes(section.dataset.part) && section.querySelector('dialog');
+    var example = overlay || (navigation && section.querySelector('.andm-header-nav, .andm-side-nav, .andm-bottom-nav')) || section.querySelector('.cc-sample') || section.querySelector('.g-row, .g-stack, .g-compare') || section.querySelector('[class*="andm-"]');
     if (!example) { panel.hidden = true; return; }
     var clone = example.cloneNode(true);
     clone.querySelectorAll(selectedSeries() === 'dads' ? '[data-partial-spinner]' : '[data-partial-wait]').forEach(function (node) { node.remove(); });
     clone.querySelectorAll(".g-type-role, .g-type-metrics").forEach(function (node) { node.remove(); });
     [clone].concat(Array.from(clone.querySelectorAll('*'))).forEach(function (node) {
       Array.from(node.attributes).forEach(function (attr) { if (['data-held','data-andm-pressed','data-drag','data-enhanced'].includes(attr.name)) node.removeAttribute(attr.name); });
-      if (node.classList) { Array.from(node.classList).forEach(function (name) { if (name.startsWith('g-')) node.classList.remove(name); }); if (!node.className) node.removeAttribute('class'); }
+      if (node.classList) { Array.from(node.classList).forEach(function (name) { if (name.startsWith('g-') || name.startsWith('gd-')) node.classList.remove(name); }); if (!node.className) node.removeAttribute('class'); }
     });
     var id = selectedSeries();
     var wrapper = document.createElement('div'); if (id !== 'baseline') wrapper.className = 'andm-series--' + id;
@@ -131,6 +159,7 @@
     el = $('evidence-body'); el.replaceChildren(); var id = selectedSeries(); var part = section.dataset.part;
     var p = document.createElement('p');
     p.textContent = part === 'chip' || part === 'fab' ? '独自仕様：色・文字はシリーズを継承します。Chip / FAB 固有の寸法・角・動きは公式再現として未確認です。' : 'シリーズは公開システムの解釈です。各部品が公式仕様どおりであることを保証するものではありません。';
+    if(!sources[id])p.textContent='andmオリジナル：独自の視覚・操作の設計です。外部の公式ライブラリを再現したSeriesではありません。';
     el.append(p); var recheck=document.createElement('a');recheck.href='#/library/source-reaudit';recheck.textContent='全パーツの再監査・プロパティ別の根拠';el.append(recheck,document.createElement('br')); var audit=document.createElement('a');audit.href='#/library/component-audit';audit.textContent='この部品の概念・出典との照合';el.append(audit,document.createElement('br')); var source = sources[id];
     if (source) {
       var note = document.createElement('p'); note.textContent = source.note;
@@ -150,6 +179,7 @@
     if (!initialized && $('series-select').options.length) { initialized = true; collect();
       Array.from(new Set(entries.filter(function (entry) { return entry.part; }).map(function (entry) { return entry.group; }))).forEach(function (label) { var option = document.createElement('option'); option.value = label; option.textContent = label; $('component-category').append(option); });
       buildIndex(normalize(search.value)); }
+    if (initialized) window.ANDM_DISCOVERY.applySeries();
     var section = currentPart(); updateCode(section); updateEvidence(section);
   }
   $('copy-component').addEventListener('click', async function () {
